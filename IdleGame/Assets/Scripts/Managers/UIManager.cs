@@ -21,7 +21,7 @@ public class UIManager
             return root;
         }
     }
-    public UIScene SceneUI { get; private set; }
+    public UIScene Scene { get; private set; }
 
     #endregion
 
@@ -49,21 +49,26 @@ public class UIManager
 
     #region Scene
 
-    public T ShowScene<T>(GameObject sceneObject) where T : UIScene
+    public T ShowScene<T>(string sceneName = null) where T : UIScene
     {
-        GameObject scene = GameObject.Instantiate(sceneObject, UIRoot.transform);
-        T sceneUI = Utility.GetOrAddComponent<T>(scene);
-        SceneUI = sceneUI;
-        return sceneUI;
+        if (string.IsNullOrEmpty(sceneName)) sceneName = typeof(T).Name;
+
+        GameObject obj = Manager.Resource.InstantiatePrefab(sceneName, UIRoot.transform);
+        T scene = Utility.GetOrAddComponent<T>(obj);
+        Scene = scene;
+
+        return scene;
     }
 
     #endregion
 
     #region Popup
 
-    public T ShowPopup<T>(GameObject popupObject) where T : UIPopup
+    public T ShowPopup<T>(string popupName = null) where T : UIPopup
     {
-        GameObject obj = GameObject.Instantiate(popupObject, UIRoot.transform);
+        if (string.IsNullOrEmpty(popupName)) popupName = typeof(T).Name;
+
+        GameObject obj = Manager.Resource.InstantiatePrefab(popupName, UIRoot.transform);
         T popup = Utility.GetOrAddComponent<T>(obj);
         popupStack.Push(popup);
 
@@ -88,7 +93,7 @@ public class UIManager
         if (popupStack.Count == 0) return;
 
         UIPopup popup = popupStack.Pop();
-        GameObject.Destroy(popup.gameObject);
+        Manager.Resource.Destroy(popup.gameObject);
         order--;
     }
 

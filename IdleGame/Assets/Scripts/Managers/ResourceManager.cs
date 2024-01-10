@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ResourceManager
 {
-    private Dictionary<string, GameObject> models = new();
+    private Dictionary<string, GameObject> prefabs = new();
     private Dictionary<string, Sprite> sprites = new();
 
     /// <summary>
@@ -11,7 +11,7 @@ public class ResourceManager
     /// </summary>
     public void Initialize()
     {
-        LoadPrefabs("Prefabs/Models", models);
+        LoadPrefabs("Prefabs", prefabs);
         LoadSprites("Sprites", sprites);
     }
 
@@ -34,12 +34,21 @@ public class ResourceManager
     /// <summary>
     /// string key를 기반으로 오브젝트 가져오기
     /// </summary>
-    /// <param name="prefabName"></param>
+    /// <param name="key">프리팹 이름</param>
     /// <returns></returns>
-    public GameObject GetObject(string prefabName)
+    public GameObject InstantiatePrefab(string key, Transform parent = null)
     {
-        if (!models.TryGetValue(prefabName, out GameObject prefab)) return null;
-        return prefab;
+        if (!prefabs.TryGetValue(key, out GameObject prefab)) return null;
+        GameObject obj = GameObject.Instantiate(prefab, parent);
+        obj.name = prefab.name;
+        return obj;
+    }
+
+    // 해당 오브젝트를 파괴한다.
+    public void Destroy(GameObject obj)
+    {
+        if (obj == null) return;
+        UnityEngine.Object.Destroy(obj);
     }
 
     #endregion

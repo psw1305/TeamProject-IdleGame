@@ -17,8 +17,8 @@ public class BaseScene : MonoBehaviour
     {
         if (initialized) return false;
 
-        //Object obj = GameObject.FindObjectOfType<EventSystem>();
-        //if (obj == null) Manager.Resource.InstantiatePrefab("EventSystem.prefab").name = "@EventSystem";
+        Object obj = GameObject.FindObjectOfType<EventSystem>();
+        if (obj == null) Manager.Resource.InstantiatePrefab("EventSystem").name = "@EventSystem";
 
         initialized = true;
         return true;
