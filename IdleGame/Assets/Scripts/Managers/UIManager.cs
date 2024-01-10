@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +17,7 @@ public class UIManager
     {
         get
         {
-            GameObject root = GameObject.Find("@UI_Root") ?? new GameObject("@UI_Root");
+            GameObject root = GameObject.Find("@UIRoot") ?? new GameObject("@UIRoot");
             return root;
         }
     }
@@ -28,18 +28,18 @@ public class UIManager
     #region Init
 
     /// <summary>
-    /// Scene, Popup »ı¼º => Äµ¹ö½º ÃÊ±âÈ­
+    /// Scene, Popup ìƒì„± => ìº”ë²„ìŠ¤ ì´ˆê¸°í™”
     /// </summary>
-    /// <param name="uiObject">ÇØ´ç UI ¿ÀºêÁ§Æ®</param>
+    /// <param name="uiObject">í•´ë‹¹ UI ì˜¤ë¸Œì íŠ¸</param>
     public void SetCanvas(GameObject uiObject)
     {
-        // Canvas ÄÄÆ÷³ÍÆ® ¼¼ÆÃ
+        // Canvas ì»´í¬ë„ŒíŠ¸ ì„¸íŒ…
         var canvas = Utility.GetOrAddComponent<Canvas>(uiObject);
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
         canvas.sortingOrder = order++;
 
-        // Canvas Scaler ¼¼ÆÃ
+        // Canvas Scaler ì„¸íŒ…
         var canvasScaler = Utility.GetOrAddComponent<CanvasScaler>(uiObject);
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasScaler.referenceResolution = new Vector2(1080, 1920);

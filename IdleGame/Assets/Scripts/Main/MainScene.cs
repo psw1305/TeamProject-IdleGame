@@ -1,10 +1,10 @@
-public class MainScene : BaseScene
+ï»¿public class MainScene : BaseScene
 {
     protected override bool Initialize()
     {
         if (!base.Initialize()) return false;
 
-        // ¾À ÁøÀÔ ½Ã Ã³¸®
+        // ì”¬ ì§„ìž… ì‹œ ì²˜ë¦¬
 
         return true;
     }

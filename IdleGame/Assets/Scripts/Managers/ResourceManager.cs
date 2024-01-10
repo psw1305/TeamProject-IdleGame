@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager
@@ -7,7 +7,7 @@ public class ResourceManager
     private Dictionary<string, Sprite> sprites = new();
 
     /// <summary>
-    /// Resources Æú´õ ¾È ¾ÆÀÌÅÛ ºÒ·¯¿À±â
+    /// Resources í´ë” ì•ˆ ì•„ì´í…œ ë¶ˆëŸ¬ì˜¤ê¸°
     /// </summary>
     public void Initialize()
     {
@@ -18,10 +18,10 @@ public class ResourceManager
     #region Prefab
 
     /// <summary>
-    /// ÁöÁ¤µÈ °æ·Î ¾È¿¡ ¸ğµç ÇÁ¸®ÆÕµé ·Îµå
+    /// ì§€ì •ëœ ê²½ë¡œ ì•ˆì— ëª¨ë“  í”„ë¦¬íŒ¹ë“¤ ë¡œë“œ
     /// </summary>
-    /// <param name="path">Æú´õ °æ·Î</param>
-    /// <param name="prefabs">·ÎµåÇÒ ÇÁ¸®ÆÕ °ª</param>
+    /// <param name="path">í´ë” ê²½ë¡œ</param>
+    /// <param name="prefabs">ë¡œë“œí•  í”„ë¦¬íŒ¹ ê°’</param>
     private void LoadPrefabs(string path, Dictionary<string, GameObject> prefabs)
     {
         GameObject[] objs = Resources.LoadAll<GameObject>(path);
@@ -32,7 +32,7 @@ public class ResourceManager
     }
 
     /// <summary>
-    /// string key¸¦ ±â¹İÀ¸·Î ¿ÀºêÁ§Æ® °¡Á®¿À±â
+    /// string keyë¥¼ ê¸°ë°˜ìœ¼ë¡œ ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
     /// </summary>
     /// <param name="prefabName"></param>
     /// <returns></returns>
@@ -47,10 +47,10 @@ public class ResourceManager
     #region Sprite
 
     /// <summary>
-    /// ÁöÁ¤µÈ °æ·Î ¾È¿¡ ¸ğµç ½ºÇÁ¶óÀÌÆ® ·Îµå
+    /// ì§€ì •ëœ ê²½ë¡œ ì•ˆì— ëª¨ë“  ìŠ¤í”„ë¼ì´íŠ¸ ë¡œë“œ
     /// </summary>
-    /// <param name="path">Æú´õ °æ·Î</param>
-    /// <param name="sprites">·ÎµåÇÒ ½ºÇÁ¶óÀÌÆ® °ª</param>
+    /// <param name="path">í´ë” ê²½ë¡œ</param>
+    /// <param name="sprites">ë¡œë“œí•  ìŠ¤í”„ë¼ì´íŠ¸ ê°’</param>
     private void LoadSprites(string path, Dictionary<string, Sprite> sprites)
     {
         Sprite[] objs = Resources.LoadAll<Sprite>(path);
