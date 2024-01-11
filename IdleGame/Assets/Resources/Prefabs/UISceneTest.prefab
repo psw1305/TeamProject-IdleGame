@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 430902890676299222}
   - component: {fileID: 3642597749155406920}
   - component: {fileID: 7601784883461578768}
-  - component: {fileID: 51401696855358972}
+  - component: {fileID: 6900926302472475642}
   m_Layer: 5
   m_Name: UISceneTest
   m_TagString: Untagged
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &51401696855358972
+--- !u!114 &6900926302472475642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

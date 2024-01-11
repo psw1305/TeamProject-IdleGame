@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     public void SetEnemy(EnemyBlueprint blueprint)
     {
-        // TODO : Àû µ¥ÀÌÅÍ °¡Á®¿Í¼­ ÃÊ±âÈ­
+        // TODO : ì  ë°ì´í„° ê°€ì ¸ì™€ì„œ ì´ˆê¸°í™”
     }
 
     #endregion
