@@ -18,10 +18,14 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Init
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void SetEnemy(EnemyBlueprint blueprint)
     {
-        // TODO : 적 데이터 가져와서 초기화
+        spriteRenderer.sprite = blueprint.EnemySprite;
     }
 
     #endregion
