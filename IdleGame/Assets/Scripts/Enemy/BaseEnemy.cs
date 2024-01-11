@@ -32,9 +32,6 @@ public class BaseEnemy : MonoBehaviour
         _maxHp = enemyBlueprint.HP;
         ResetHealth();
 
-        _projectileVFX = enemyBlueprint.ProjectailVFX;
-        Debug.Log(_projectileVFX.name);
-        _damage = enemyBlueprint.Damage;
         _attackSpeed = enemyBlueprint.AttackSpeed;
         _range = enemyBlueprint.Range;
 
@@ -81,8 +78,8 @@ public class BaseEnemy : MonoBehaviour
         var go = Manager.Resource.InstantiatePrefab("EnemyProjectileFrame", gameObject.transform);
 
         //발사체 초기화를 위해 정보를 넘겨줌
-        go.GetComponent<ProjectileHandler>().ProjectileVFX = _projectileVFX;
-        go.GetComponent<ProjectileHandler>().Damage = _damage;
+        go.GetComponent<ProjectileHandler>().ProjectileVFX = enemyBlueprint.ProjectailVFX;
+        go.GetComponent<ProjectileHandler>().Damage = enemyBlueprint.Damage;
     }
 
     //발사체 생성 코루틴

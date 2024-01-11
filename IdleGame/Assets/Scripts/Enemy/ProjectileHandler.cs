@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ProjectileHandler : MonoBehaviour
 {
+    [HideInInspector]
     public int Damage;
     public GameObject ProjectileVFX;
 
