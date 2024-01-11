@@ -4,16 +4,21 @@ public class GameManager
 
     public Player Player { get; private set; }
 
+    public Stage Stage { get; private set; }
+
     #endregion
 
     #region Init
 
     public void Initialize()
     {
-        // TODO => Player ¸®¼Ò½º Æú´õ¿¡¼­ °¡Á®¿Í¼­ »ý¼º ÈÄ ÃÊ±âÈ­
-        // ½ºÅ×ÀÌÁö Á¤º¸¸¦ °¡Á®¿Í¼­ ÀüÅõ ±¸Çö
+        // TODO => Player ï¿½ï¿½ï¿½Ò½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var playerClone = Manager.Resource.InstantiatePrefab("PlayerModel");
         Player = playerClone.GetComponent<Player>();
+        var stageClone = Manager.Resource.InstantiatePrefab("StageController");
+        Stage = stageClone.GetComponent<Stage>();
+        Stage.InitStage();
     }
 
     #endregion
