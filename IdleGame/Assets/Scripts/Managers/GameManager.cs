@@ -10,10 +10,10 @@ public class GameManager
 
     public void Initialize()
     {
-        // TODO => Player ¸®¼Ò½º Æú´õ¿¡¼­ °¡Á®¿Í¼­ »ı¼º ÈÄ ÃÊ±âÈ­
-        // ½ºÅ×ÀÌÁö Á¤º¸¸¦ °¡Á®¿Í¼­ ÀüÅõ ±¸Çö
-        var playerClone = Manager.Resource.InstantiatePrefab("PlayerModel");
-        Player = playerClone.GetComponent<Player>();
+        // TODO => Player ë¦¬ì†ŒìŠ¤ í´ë”ì—ì„œ ê°€ì ¸ì™€ì„œ ìƒì„± í›„ ì´ˆê¸°í™”
+        // ìŠ¤í…Œì´ì§€ ì •ë³´ë¥¼ ê°€ì ¸ì™€ì„œ ì „íˆ¬ êµ¬í˜„
+        //var playerClone = Manager.Resource.InstantiatePrefab("PlayerModel");
+        //Player = playerClone.GetComponent<Player>();
     }
 
     #endregion
