@@ -12,7 +12,11 @@ public class Stage : MonoBehaviour
 
     public bool StageClear => StageProgress >= stageConfig.BattleCount;
 
+    public bool ProgressComplete => enemyList.Count == 0;
+
     [SerializeField] private List<Enemy> enemyList = new List<Enemy>();
+
+    private Coroutine coroutine;
 
     public void InitStage()
     {
@@ -21,27 +25,12 @@ public class Stage : MonoBehaviour
     }
     private void Start()
     {
-        StageProgress = 0;
-        MonsterSpawn();
-        StartCoroutine(TestAutoEnemyRemove());
-    }
-
-    private void Update()
-    {
-        if (enemyList.Count == 0)
+        StageProgress = -1;
+        if (ProgressComplete && coroutine == null)
         {
-            if (!StageClear)
-            {
-                StageProgress++;
-                Debug.Log(StageProgress);
-                MonsterSpawn();
-            }
-            else
-            {
-                MonsterSpawn();
-                ApplyStageCount();
-            }
+            coroutine = StartCoroutine(ProgressCompleted());
         }
+        StartCoroutine(TestAutoEnemyRemove());
     }
 
     private void MonsterSpawn()
@@ -65,6 +54,21 @@ public class Stage : MonoBehaviour
         Debug.Log("Stage Clear!");
     }
 
+    IEnumerator ProgressCompleted()
+    {
+        StageProgress++;
+        Debug.Log(StageProgress);
+        if (StageClear)
+        {
+            ApplyStageCount();
+        }
+
+        yield return new WaitForSeconds(1.0f);
+        MonsterSpawn();
+            
+        coroutine = null;
+    }
+
     IEnumerator TestAutoEnemyRemove()
     {
         while (true)
@@ -75,6 +79,12 @@ public class Stage : MonoBehaviour
                 enemyList.RemoveAt(0);
             }
             enemyList.RemoveAll(enemy => enemy == null);
+            
+            if (ProgressComplete && coroutine == null)
+            {
+                coroutine = StartCoroutine(ProgressCompleted());
+            }
+            
             yield return new WaitForSeconds(0.5f);
         }
     }
