@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
@@ -26,8 +26,8 @@ public class UISceneTest : UIScene
         SetButtons();
         SetEvents();
 
-        // ¾À ³»¿¡¼­ °­È­ ¹öÆ° ÃÊ±âÈ­
-        // ÇØ´ç ¹öÆ°À» ´©¸£¸é ÇÃ·¹ÀÌ¾î°¡ °­È­
+        // ì”¬ ë‚´ì—ì„œ ê°•í™” ë²„íŠ¼ ì´ˆê¸°í™”
+        // í•´ë‹¹ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ í”Œë ˆì´ì–´ê°€ ê°•í™”
     }
 
     private void SetObjects()
