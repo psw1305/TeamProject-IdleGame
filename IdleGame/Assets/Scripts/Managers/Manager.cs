@@ -34,10 +34,12 @@ public class Manager : MonoBehaviour
     private readonly ResourceManager resource = new();
     private readonly GameManager game = new();
     private readonly UIManager ui = new();
+    private readonly StageManager stage = new();
 
     public static ResourceManager Resource => Instance != null ? Instance.resource : null;
     public static GameManager Game => Instance != null ? Instance.game : null;
     public static UIManager UI => Instance != null ? Instance.ui : null;
+    public static StageManager Stage => Instance != null ? Instance.stage : null;
 
     #endregion
 }

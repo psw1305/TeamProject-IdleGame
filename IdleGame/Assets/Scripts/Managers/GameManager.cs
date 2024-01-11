@@ -1,10 +1,10 @@
+using UnityEngine;
+
 public class GameManager
 {
     #region
 
     public Player Player { get; private set; }
-
-    public Stage Stage { get; private set; }
 
     #endregion
 
@@ -12,11 +12,17 @@ public class GameManager
 
     public void Initialize()
     {
-        var playerClone = Manager.Resource.InstantiatePrefab("PlayerModel");
+        var playerClone = Manager.Resource.InstantiatePrefab("PlayerFrame");
         Player = playerClone.GetComponent<Player>();
-        var stageClone = Manager.Resource.InstantiatePrefab("StageController");
-        Stage = stageClone.GetComponent<Stage>();
-        Stage.InitStage();
+    }
+
+    #endregion
+
+    #region Set Player
+
+    public void SetPosition(Vector2 position)
+    {
+        Player.transform.position = position;
     }
 
     #endregion

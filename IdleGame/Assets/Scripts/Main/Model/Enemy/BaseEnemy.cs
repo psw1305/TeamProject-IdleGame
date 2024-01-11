@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class BaseEnemy : MonoBehaviour
 {
-    [SerializeField] EnemyBlueprint enemyBlueprint;
+    #region Fields
+
+    private EnemyBlueprint _enemyBlueprint;
 
     private string _enemyName;
-    private Sprite _enemySprite;
     private GameObject _projectileVFX;
 
     private Coroutine _attackCoroutine;
@@ -20,24 +20,43 @@ public class BaseEnemy : MonoBehaviour
 
     private int _currentHP;
 
+    private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
-    #region Unity Flow
-    private void Awake()
-    {
-        _enemyName = enemyBlueprint.EnemyName;
-        _enemySprite = enemyBlueprint.EnemySprite;
-        gameObject.name = _enemyName;
-        GetComponent<SpriteRenderer>().sprite = _enemySprite;
 
-        _maxHp = enemyBlueprint.HP;
+    #endregion
+
+    #region Init
+
+    public void SetEnemy(EnemyBlueprint blueprint)
+    {
+        _enemyBlueprint = blueprint;
+        _enemyName = blueprint.EnemyName;
+        _spriteRenderer.sprite = blueprint.EnemySprite;
+
+        _maxHp = blueprint.HP;
         ResetHealth();
 
-        _attackSpeed = enemyBlueprint.AttackSpeed;
-        _range = enemyBlueprint.Range;
+        _attackSpeed = blueprint.AttackSpeed;
+        _range = blueprint.Range;
 
-        _moveSpeed = enemyBlueprint.MoveSpeed;
-        _rewards = enemyBlueprint.Rewards;
+        _moveSpeed = blueprint.MoveSpeed;
+        _rewards = blueprint.Rewards;
 
+        gameObject.name = _enemyName;
+    }
+
+    public void SetPosition(Vector2 position)
+    {
+        transform.position = position;
+    }
+
+    #endregion
+
+    #region Unity Flow
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -45,6 +64,7 @@ public class BaseEnemy : MonoBehaviour
     {
         OnMove();
     }
+
     #endregion
 
     #region Method
@@ -78,8 +98,8 @@ public class BaseEnemy : MonoBehaviour
         var go = Manager.Resource.InstantiatePrefab("EnemyProjectileFrame", gameObject.transform);
 
         //발사체 초기화를 위해 정보를 넘겨줌
-        go.GetComponent<ProjectileHandler>().ProjectileVFX = enemyBlueprint.ProjectailVFX;
-        go.GetComponent<ProjectileHandler>().Damage = enemyBlueprint.Damage;
+        go.GetComponent<ProjectileHandler>().ProjectileVFX = _enemyBlueprint.ProjectailVFX;
+        go.GetComponent<ProjectileHandler>().Damage = _enemyBlueprint.Damage;
     }
 
     //발사체 생성 코루틴

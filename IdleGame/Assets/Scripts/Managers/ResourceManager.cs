@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager
 {
     private Dictionary<string, GameObject> prefabs = new();
+    private Dictionary<string, ScriptableObject> blueprints = new();
     private Dictionary<string, Sprite> sprites = new();
 
     /// <summary>
@@ -12,6 +13,7 @@ public class ResourceManager
     public void Initialize()
     {
         LoadPrefabs("Prefabs", prefabs);
+        LoadBlueprints("ScriptableObjects", blueprints);
         LoadSprites("Sprites", sprites);
     }
 
@@ -49,6 +51,30 @@ public class ResourceManager
     {
         if (obj == null) return;
         UnityEngine.Object.Destroy(obj);
+    }
+
+    #endregion
+
+    #region ScriptableObject
+
+    /// <summary>
+    /// 지정된 경로 안에 모든 프리팹들 로드
+    /// </summary>
+    /// <param name="path">폴더 경로</param>
+    /// <param name="blueprints">로드할 프리팹 값</param>
+    private void LoadBlueprints(string path, Dictionary<string, ScriptableObject> blueprints)
+    {
+        var objs = Resources.LoadAll<ScriptableObject>(path);
+        foreach (var obj in objs)
+        {
+            blueprints[obj.name] = obj;
+        }
+    }
+
+    public ScriptableObject GetBlueprint(string blueprintName)
+    {
+        if (!blueprints.TryGetValue(blueprintName, out ScriptableObject blueprint)) return null;
+        return blueprint;
     }
 
     #endregion

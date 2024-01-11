@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: StageConfig
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 4196395523401042170, guid: 808ce205db541154c8959639fea59d04, type: 3}
-  - {fileID: -3366740176328762414, guid: f1feed3596f319e49918b7d88c7ef1df, type: 3}
+  - Test_Enemy_1
+  - Test_Enemy_2
   battleCount: 5
