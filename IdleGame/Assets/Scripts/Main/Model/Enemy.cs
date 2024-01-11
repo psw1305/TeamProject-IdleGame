@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     public void SetEnemy(EnemyBlueprint blueprint)
     {
+
         spriteRenderer.sprite = blueprint.EnemySprite;
     }
 

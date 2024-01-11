@@ -25,6 +25,9 @@ public class UISceneTest : UIScene
         SetTexts();
         SetButtons();
         SetEvents();
+
+        // 씬 내에서 강화 버튼 초기화
+        // 해당 버튼을 누르면 플레이어가 강화
     }
 
     private void SetObjects()
