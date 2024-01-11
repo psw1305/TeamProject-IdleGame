@@ -48,8 +48,6 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    
-
     private void FixedUpdate()
     {
         //적이 범위 밖에 있으면
