@@ -9,6 +9,7 @@ public class BaseScene : MonoBehaviour
     private void Start()
     {
         Manager.Resource.Initialize();
+        Manager.Game.Initialize();
 
         Initialize();
     }

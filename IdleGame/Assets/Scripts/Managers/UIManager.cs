@@ -21,7 +21,7 @@ public class UIManager
             return root;
         }
     }
-    public UIScene Scene { get; private set; }
+    public UIScene CurrentScene { get; private set; }
 
     #endregion
 
@@ -55,7 +55,7 @@ public class UIManager
 
         GameObject obj = Manager.Resource.InstantiatePrefab(sceneName, UIRoot.transform);
         T scene = Utility.GetOrAddComponent<T>(obj);
-        Scene = scene;
+        CurrentScene = scene;
 
         return scene;
     }
