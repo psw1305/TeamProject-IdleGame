@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         AttackSpeed = 0.10f;
         CriticalPercent =  0.00f;
         CriticalDamage = 0;
+
         Range = 2;
         Speed = 100;
 
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
         // 공격 projectile 생성
         var testProjectile = Manager.Resource.InstantiatePrefab("IceProjectile", ProjectilePoint);
         testProjectile.transform.Translate(_enemyList[0].transform.position * Time.deltaTime); 
+
     }
 
     #endregion
