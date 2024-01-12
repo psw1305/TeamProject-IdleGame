@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     #region Fields
 
-    private List<GameObject> _enemyList;
+    private List<BaseEnemy> _enemyList;
     private Rigidbody2D _playerRigidbody;
     private GameObject _enemy;
 
@@ -39,32 +39,20 @@ public class Player : MonoBehaviour
         CriticalPercent =  0.00f;
         CriticalDamage = 0;
 
-        Range = 2;
+        Range = 5;
         Speed = 100;
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
-
-        // 임시로 리스트 안에 넣기 
-        _enemyList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Respawn"));
-        //_enemy = _enemyList[0];
-
+        _enemyList = Manager.Stage.GetEnemyList();
     }
 
     #endregion
 
     private void FixedUpdate()
     {
-        //적이 범위 밖에 있으면
-        //if (Range < Vector2.Distance(transform.position, _enemyList[0].transform.position))
-        //{
-        //    // 평소 달리기 상태로 변경
-        //    Idle();
-        //}
-        //else // 범위 안에 있으면 정지 후 공격
-        //{
-        //    _playerRigidbody.velocity = Vector2.zero;
-        //    Attack(); // TODO : 공격이 Update로 계속 실행되서 projectile이 반복 생성되어 수정 필요함
-        //}
+        // TODO : 범위 내에 도달 시 공격
+        //_playerRigidbody.velocity = Vector2.zero;
+        //Attack(); // TODO : 공격이 Update로 계속 실행되서 projectile이 반복 생성되어 수정 필요함
     }
 
     #region State
@@ -73,7 +61,6 @@ public class Player : MonoBehaviour
     {
         _playerRigidbody.velocity = Vector2.right * Speed * Time.deltaTime;
     }
-
 
     public void AttakingRepeat()
     {

@@ -84,10 +84,12 @@ public class BaseEnemy : MonoBehaviour
         else
         {
             _rigidbody.velocity = Vector2.zero;
-            if (_attackCoroutine == null)
-            {
-                _attackCoroutine = StartCoroutine(AttackRoutine());
-            }
+
+            _attackCoroutine ??= StartCoroutine(AttackRoutine());
+            //if (_attackCoroutine == null)
+            //{
+            //    _attackCoroutine = StartCoroutine(AttackRoutine());
+            //}
         }
     }
 

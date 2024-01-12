@@ -33,6 +33,11 @@ public class StageManager
         this.spawnPoint = spawnPoint;
     }
 
+    public List<BaseEnemy> GetEnemyList()
+    {
+        return enemyList;
+    }
+
     #endregion
 
     #region Stage Progress
@@ -47,19 +52,21 @@ public class StageManager
     {
         while (true)
         {
+            // #1. 적 웨이브 스폰
             EnemyWaveSpawn();
 
             yield return new WaitForSeconds(3.0f);
 
+            // #2. 적 라이프 타임 3초뒤 파괴
             for (int i = 0; i < enemyList.Count; i++)
             {
                 GameObject.Destroy(enemyList[i].gameObject);
             }
-
             enemyList.Clear();
 
             yield return new WaitForSeconds(1.0f);
 
+            // #3. 웨이브 클리어
             WaveCompleted();
         }
     }
@@ -94,6 +101,8 @@ public class StageManager
         if (StageClear)
         {
             StageProgress = 0;
+
+            // 추후 전투 클리어 작성
             Debug.Log("Stage Clear!");
         }
     }
