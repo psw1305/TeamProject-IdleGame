@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class StageManager
 {
     #region Fields
 
+    private int maxStage = 5;   // 임시 변수
     private StageBlueprint stageConfig;
     private List<BaseEnemy> enemyList = new();
     private Transform spawnPoint;
+    private StageBlueprint[] stageBlueprints;
 
     #endregion
 
     #region Properties
 
+    public int CurrentStage { get; private set; }
     public int StageProgress { get; private set; }
     public bool StageClear => StageProgress > stageConfig.BattleCount;
     public bool WaveClear => enemyList.Count == 0;
+    // 스테이지 클리어 시 임시 강화율
+    public float EnemyStatRate { get; private set; }
+    public float StageRewardRate { get; private set; }
 
     #endregion
 
@@ -24,7 +31,17 @@ public class StageManager
 
     public void Initialize()
     {
-        stageConfig = Manager.Resource.GetBlueprint("StageConfig") as StageBlueprint;
+        CurrentStage = 1;
+        stageBlueprints = new StageBlueprint[maxStage];
+
+        // 스테이지 블루 프린트 미리 로드해두기
+        for (int i = 0; i < maxStage; i++)
+        {
+            var stageConfig = string.Concat("StageConfig_", i+1);
+            Debug.Log(stageConfig);
+            stageBlueprints[i] = Manager.Resource.GetBlueprint(stageConfig) as StageBlueprint;
+        }
+        stageConfig = stageBlueprints[CurrentStage];
         StageProgress = 0;
     }
 
@@ -52,6 +69,7 @@ public class StageManager
     {
         while (true)
         {
+            yield return new WaitForSeconds(1.0f);
             // #1. 적 웨이브 스폰
             EnemyWaveSpawn();
 
@@ -64,7 +82,6 @@ public class StageManager
             }
             enemyList.Clear();
 
-            yield return new WaitForSeconds(1.0f);
 
             // #3. 웨이브 클리어
             WaveCompleted();
@@ -90,6 +107,8 @@ public class StageManager
             var enemy = enemyObject.GetComponent<BaseEnemy>();
             enemy.SetEnemy(enemyBlueprint);
             enemy.SetPosition(randomPos);
+            // enemy.SetStat(n);
+            // enemy.SetReward(n);
             enemyList.Add(enemy);
         }
     }
@@ -101,8 +120,9 @@ public class StageManager
         if (StageClear)
         {
             StageProgress = 0;
-
-            // 추후 전투 클리어 작성
+            // 현재 스테이지 값 변경해주고 블루 프린트 교체하기, 현재 스테이지가 최대면 1로 되돌아가기
+            CurrentStage = CurrentStage < maxStage ? CurrentStage++ : 1;
+            stageConfig = stageBlueprints[CurrentStage];
             Debug.Log("Stage Clear!");
         }
     }
