@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,6 +45,25 @@ public class Player : MonoBehaviour
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _enemyList = Manager.Stage.GetEnemyList();
+    }
+
+    #endregion
+
+    #region StatModifier
+
+    public void DamageUp(int modifier)
+    {
+        Damage += modifier;
+    }
+
+    public void HpUp(int modifier)
+    {
+        Hp += modifier;
+    }
+
+    public void AttackSpeedUp(float modifier)
+    {
+        AttackSpeed += modifier;
     }
 
     #endregion
