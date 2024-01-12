@@ -17,11 +17,28 @@ public class Player : MonoBehaviour, IDamageable
     private GameObject _enemy;
 
     #endregion
+    public struct UpgradeInfo
+    {
+        public int Level;
+        public int UpgradCost;
+
+        public UpgradeInfo(int Lv, int Cost)
+        {
+            this.Level = Lv;
+            this.UpgradCost = Cost;
+        }
+
+        public void SetModifier(int Lv, int Cost)
+        {
+            this.Level += Lv;
+            this.UpgradCost += Cost;
+        }
+    }
 
     #region Properties
 
-    public int Damage { get; private set; }
-    public int Hp { get; private set; }
+    public ulong Damage { get; private set; }
+    public ulong Hp { get; private set; }
     public float AttackSpeed { get; private set; }
     public float CriticalPercent { get; private set; }
     public float CriticalDamage { get; private set; }
@@ -29,6 +46,9 @@ public class Player : MonoBehaviour, IDamageable
     public int Speed { get; private set; }
 
     private Coroutine _attackCoroutine;
+    public UpgradeInfo DamageInfo ;
+    public UpgradeInfo HpInfo;
+    public UpgradeInfo AttackSpeedInfo;
 
     #endregion
 
@@ -45,8 +65,32 @@ public class Player : MonoBehaviour, IDamageable
         Range = 5;
         Speed = 100;
 
+        DamageInfo = new UpgradeInfo(1, 90);
+        HpInfo = new UpgradeInfo(1, 50);
+        AttackSpeedInfo = new UpgradeInfo(1, 200);
+
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _enemyList = Manager.Stage.GetEnemyList();
+    }
+
+    #endregion
+
+    #region StatModifier
+
+    public void DamageUp(int modifier)
+    {
+        Damage += modifier;
+    }
+
+    public void HpUp(int modifier)
+    {
+        Hp += modifier;
+    }
+
+    public void AttackSpeedUp(float modifier)
+    {
+        AttackSpeed += modifier;
+        AttackSpeed = Mathf.Round((float)AttackSpeed * 100) / 100;
     }
 
     #endregion
@@ -82,7 +126,7 @@ public class Player : MonoBehaviour, IDamageable
         _enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = _enemyList[0].transform.position;
-        testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage;
+        testProjectile.GetComponent<PlayerProjectileHandler>().Damage = (int)Damage;
     }
     IEnumerator AttackRoutine()
     {
