@@ -3,7 +3,7 @@ using UnityEngine;
 public class TestSceneKDH : BaseScene
 {
     [SerializeField] private Transform playerSpawnPoint;
-    [SerializeField] private Transform enemySpawnPoint;
+    [SerializeField] private Transform[] enemySpawnPoint;
     protected override bool Initialize()
     {
         if (!base.Initialize()) return false;
