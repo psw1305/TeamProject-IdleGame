@@ -76,8 +76,10 @@ public class StageManager
             yield return new WaitForSeconds(1.0f);
             EnemyWaveSpawn();
 
-            // #2. 적 파괴 테스트
-            for (int i = 0; i < 5; i++)
+            yield return new WaitForSeconds(3000.0f);
+
+            // #2. 적 라이프 타임 3초뒤 파괴
+            for (int i = 0; i < enemyList.Count; i++)
             {
                 var enemyIdx = Random.Range(0, enemyList.Count);
                 GameObject.Destroy(enemyList[enemyIdx].gameObject);

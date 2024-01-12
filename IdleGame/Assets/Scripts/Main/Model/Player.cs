@@ -1,7 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     #region Serialize Fields
 
@@ -11,7 +12,7 @@ public class Player : MonoBehaviour
 
     #region Fields
 
-    private List<BaseEnemy> _enemyList;
+    public List<BaseEnemy> _enemyList;
     private Rigidbody2D _playerRigidbody;
     private GameObject _enemy;
 
@@ -25,7 +26,9 @@ public class Player : MonoBehaviour
     public float CriticalPercent { get; private set; }
     public float CriticalDamage { get; private set; }
     public float Range { get; private set; }
-    public int Speed {  get; private set; }
+    public int Speed { get; private set; }
+
+    private Coroutine _attackCoroutine;
 
     #endregion
 
@@ -34,9 +37,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Damage = 10;
-        Hp = 10;
-        AttackSpeed = 0.10f;
-        CriticalPercent =  0.00f;
+        Hp = 1000;
+        AttackSpeed = 0.50f;
+        CriticalPercent = 0.00f;
         CriticalDamage = 0;
 
         Range = 5;
@@ -53,6 +56,15 @@ public class Player : MonoBehaviour
         // TODO : 범위 내에 도달 시 공격
         //_playerRigidbody.velocity = Vector2.zero;
         //Attack(); // TODO : 공격이 Update로 계속 실행되서 projectile이 반복 생성되어 수정 필요함
+        if (_attackCoroutine == null && _enemyList.Count > 0)
+        {
+            _attackCoroutine = StartCoroutine(AttackRoutine());
+        }
+        else if (_enemyList.Count == 0)
+        {
+            _attackCoroutine = null;
+            StopCoroutine(AttackRoutine());
+        }
     }
 
     #region State
@@ -62,17 +74,55 @@ public class Player : MonoBehaviour
         _playerRigidbody.velocity = Vector2.right * Speed * Time.deltaTime;
     }
 
-    public void AttakingRepeat()
-    {
-        InvokeRepeating(nameof(Attack), 0, 10);
-    }
-
     public void Attack()
     {
         // 공격 projectile 생성
-        var testProjectile = Manager.Resource.InstantiatePrefab("IceProjectile", ProjectilePoint);
-        testProjectile.transform.Translate(_enemyList[0].transform.position * Time.deltaTime);
+        var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame", ProjectilePoint);
+
+        _enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
+
+        testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = _enemyList[0].transform.position;
+        testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage;
+    }
+    IEnumerator AttackRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1 / AttackSpeed);
+            if (_enemyList.Count > 0)
+            {
+                Attack();
+            }
+            else
+            {
+                break;
+            }
+        }
+        _attackCoroutine = null;
     }
 
+
+    public void TakeDamage(int Damage)
+    {
+        AmountDamage(Damage);
+        Debug.Log($"{gameObject.name} : {Hp}");
+    }
+
+    private void AmountDamage(int Damage)
+    {
+        if (Hp - Damage <= 0)
+        {
+            Hp = 0;
+            Die();
+        }
+        else
+        {
+            Hp -= Damage;
+        }
+    }
+    private void Die()
+    {
+        //이전 스테이지로
+    }
     #endregion
 }
