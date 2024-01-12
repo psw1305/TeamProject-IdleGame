@@ -77,12 +77,12 @@ public class Player : MonoBehaviour, IDamageable
 
     #region StatModifier
 
-    public void DamageUp(int modifier)
+    public void DamageUp(ulong modifier)
     {
         Damage += modifier;
     }
 
-    public void HpUp(int modifier)
+    public void HpUp(ulong modifier)
     {
         Hp += modifier;
     }
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour, IDamageable
         _enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = _enemyList[0].transform.position;
-        testProjectile.GetComponent<PlayerProjectileHandler>().Damage = (int)Damage;
+        testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage;
     }
     IEnumerator AttackRoutine()
     {
@@ -146,13 +146,13 @@ public class Player : MonoBehaviour, IDamageable
     }
 
 
-    public void TakeDamage(int Damage)
+    public void TakeDamage(ulong Damage)
     {
         AmountDamage(Damage);
         Debug.Log($"{gameObject.name} : {Hp}");
     }
 
-    private void AmountDamage(int Damage)
+    private void AmountDamage(ulong Damage)
     {
         if (Hp - Damage <= 0)
         {

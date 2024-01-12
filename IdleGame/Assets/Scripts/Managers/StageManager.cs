@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class StageManager
@@ -76,17 +75,15 @@ public class StageManager
             yield return new WaitForSeconds(1.0f);
             EnemyWaveSpawn();
 
-            yield return new WaitForSeconds(3000.0f);
-
             // #2. 적 라이프 타임 3초뒤 파괴
-            for (int i = 0; i < enemyList.Count; i++)
-            {
-                var enemyIdx = Random.Range(0, enemyList.Count);
-                GameObject.Destroy(enemyList[enemyIdx].gameObject);
-                yield return new WaitForSeconds(0.2f);
-                enemyList.Remove(enemyList[enemyIdx]);
-                yield return new WaitForSeconds(0.2f);
-            }
+            //for (int i = 0; i < enemyList.Count; i++)
+            //{
+            //    var enemyIdx = Random.Range(0, enemyList.Count);
+            //    GameObject.Destroy(enemyList[enemyIdx].gameObject);
+            //    yield return new WaitForSeconds(0.2f);
+            //    enemyList.Remove(enemyList[enemyIdx]);
+            //    yield return new WaitForSeconds(0.2f);
+            //}
 
             // #3. 웨이브 클리어
             yield return new WaitUntil(()=> enemyList.Count == 0);

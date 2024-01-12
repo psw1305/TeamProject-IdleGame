@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProjectileHandlerBase : MonoBehaviour
 {
     [HideInInspector]
-    public int Damage;
+    public ulong Damage;
     [HideInInspector]
     public GameObject ProjectileVFX;
 
