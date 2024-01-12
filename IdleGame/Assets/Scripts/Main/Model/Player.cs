@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Player : MonoBehaviour
 {
     #region Serialize Fields
@@ -17,16 +19,36 @@ public class Player : MonoBehaviour
     private GameObject _enemy;
 
     #endregion
+    public struct UpgradeInfo
+    {
+        public int Level;
+        public int UpgradCost;
+
+        public UpgradeInfo(int Lv, int Cost)
+        {
+            this.Level = Lv;
+            this.UpgradCost = Cost;
+        }
+
+        public void SetModifier(int Lv, int Cost)
+        {
+            this.Level += Lv;
+            this.UpgradCost += Cost;
+        }
+    }
 
     #region Properties
 
-    public int Damage { get; private set; }
-    public int Hp { get; private set; }
+    public long Damage { get; private set; }
+    public long Hp { get; private set; }
     public double AttackSpeed { get; private set; }
     public float CriticalPercent { get; private set; }
     public float CriticalDamage { get; private set; }
     public float Range { get; private set; }
     public int Speed {  get; private set; }
+    public UpgradeInfo DamageInfo ;
+    public UpgradeInfo HpInfo;
+    public UpgradeInfo AttackSpeedInfo;
 
     #endregion
 
@@ -36,12 +58,16 @@ public class Player : MonoBehaviour
     {
         Damage = 10;
         Hp = 10;
-        AttackSpeed = 0.10d;
+        AttackSpeed = 0.10f;
         CriticalPercent =  0.00f;
         CriticalDamage = 0;
 
         Range = 5;
         Speed = 100;
+
+        DamageInfo = new UpgradeInfo(1, 90);
+        HpInfo = new UpgradeInfo(1, 50);
+        AttackSpeedInfo = new UpgradeInfo(1, 200);
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _enemyList = Manager.Stage.GetEnemyList();
@@ -61,10 +87,10 @@ public class Player : MonoBehaviour
         Hp += modifier;
     }
 
-    public void AttackSpeedUp(double modifier)
+    public void AttackSpeedUp(float modifier)
     {
         AttackSpeed += modifier;
-        AttackSpeed = Math.Round(AttackSpeed, 2);
+        AttackSpeed = Mathf.Round((float)AttackSpeed * 100) / 100;
     }
 
     #endregion

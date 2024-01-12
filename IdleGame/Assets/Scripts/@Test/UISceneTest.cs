@@ -20,7 +20,7 @@ public class UISceneTest : UIScene
     private TextMeshProUGUI _txtStatHp;
     private TextMeshProUGUI _txtLvHp;
 
-    private TextMeshProUGUI _txtsPayGoldAttackSpeed;
+    private TextMeshProUGUI _txtPayGoldAttackSpeed;
     private TextMeshProUGUI _txtStatAttackSpeed;
     private TextMeshProUGUI _txtLvAttackSpeed;
 
@@ -47,12 +47,15 @@ public class UISceneTest : UIScene
         SetUI<TextMeshProUGUI>();
         _txtPayGoldDamage = GetUI<TextMeshProUGUI>("Txt_PayGold_Damage");
         _txtStatDamage = GetUI<TextMeshProUGUI>("Txt_Stat_Damage");
+        _txtLvDamage = GetUI<TextMeshProUGUI>("Txt_Lv_Damage");
 
         _txtPayGoldHp = GetUI<TextMeshProUGUI>("Txt_PayGold_Hp");
         _txtStatHp = GetUI<TextMeshProUGUI>("Txt_Stat_Hp");
+        _txtLvHp = GetUI<TextMeshProUGUI>("Txt_Lv_Hp");
 
-        _txtsPayGoldAttackSpeed = GetUI<TextMeshProUGUI>("Txt_PayGold_AttackSpeed");
+        _txtPayGoldAttackSpeed = GetUI<TextMeshProUGUI>("Txt_PayGold_AttackSpeed");
         _txtStatAttackSpeed = GetUI<TextMeshProUGUI>("Txt_Stat_AttackSpeed");
+        _txtLvAttackSpeed = GetUI<TextMeshProUGUI>("Txt_Lv_AttackSpeed ");
     }
 
     private void SetButtons()
@@ -73,8 +76,16 @@ public class UISceneTest : UIScene
     private void SetStatData()
     {
         _txtStatDamage.text = _player.Damage.ToString();
+        _txtLvDamage.text = _player.DamageInfo.Level.ToString();
+        _txtPayGoldDamage.text = _player.DamageInfo.UpgradCost.ToString();
+
         _txtStatHp.text = _player.Hp.ToString();
+        //_txtLvHp.text = _player.HpInfo.Level.ToString();
+        //_txtPayGoldHp.text = _player.HpInfo.UpgradCost.ToString();
+
         _txtStatAttackSpeed.text = _player.AttackSpeed.ToString();
+        //_txtLvAttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
+        //_txtPayGoldAttackSpeed.text = _player.AttackSpeedInfo.UpgradCost.ToString();
     }
 
     #endregion
@@ -87,6 +98,10 @@ public class UISceneTest : UIScene
         //플레이어 공격력 증가
         _player.DamageUp(10);
         _txtStatDamage.text = _player.Damage.ToString();
+                
+        _player.DamageInfo.SetModifier(1, 50);
+        _txtLvDamage.text = _player.DamageInfo.Level.ToString();
+        _txtPayGoldDamage.text = _player.DamageInfo.UpgradCost.ToString();
     }
 
     private void OnHealthUp(PointerEventData eventData)
@@ -95,14 +110,22 @@ public class UISceneTest : UIScene
         //플레이어 체력 증가
         _player.HpUp(10);        
         _txtStatHp.text = _player.Hp.ToString();
+
+        //_player.HpInfo.SetModifier(1, 40);
+        //_txtLvHp.text = _player.HpInfo.Level.ToString();
+        //_txtPayGoldHp.text = _player.HpInfo.UpgradCost.ToString();
     }
 
     private void OnAttackSpeedUp(PointerEventData eventData)
     {
         Debug.Log("AttackSpeed");
         //플레이어 공격 속도 증가
-        _player.AttackSpeedUp(0.01d);
+        _player.AttackSpeedUp(0.01f);
         _txtStatAttackSpeed.text = _player.AttackSpeed.ToString();
+
+        //_player.AttackSpeedInfo.SetModifier(1, 60);
+        //_txtLvHp.text = _player.AttackSpeedInfo.Level.ToString();
+        //_txtPayGoldHp.text = _player.AttackSpeedInfo.UpgradCost.ToString();
     }
 
     #endregion
