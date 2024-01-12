@@ -55,7 +55,7 @@ public class StageManager
             // #1. 적 웨이브 스폰
             EnemyWaveSpawn();
 
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(3000.0f);
 
             // #2. 적 라이프 타임 3초뒤 파괴
             for (int i = 0; i < enemyList.Count; i++)

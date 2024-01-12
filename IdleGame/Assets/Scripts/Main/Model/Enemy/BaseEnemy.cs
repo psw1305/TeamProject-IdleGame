@@ -1,27 +1,33 @@
 using System.Collections;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy : MonoBehaviour, IDamageable
 {
     #region Fields
 
     private EnemyBlueprint _enemyBlueprint;
 
     private string _enemyName;
-    private GameObject _projectileVFX;
-
     private Coroutine _attackCoroutine;
-    private int _damage;
+
+    //체력
     private int _maxHp;
-    private float _range;
+    private int _currentHP;
+
+    //공격
+    private int _damage;
     private float _attackSpeed;
-    private int _rewards;
+    private float _range;
+
+    //속도
     private float _moveSpeed;
 
-    private int _currentHP;
+    public int _rewards;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
+
+    public int TestWeight;
 
     #endregion
 
@@ -34,8 +40,9 @@ public class BaseEnemy : MonoBehaviour
         _spriteRenderer.sprite = blueprint.EnemySprite;
 
         _maxHp = blueprint.HP;
-        ResetHealth();
 
+
+        _damage = blueprint.Damage;
         _attackSpeed = blueprint.AttackSpeed;
         _range = blueprint.Range;
 
@@ -43,6 +50,16 @@ public class BaseEnemy : MonoBehaviour
         _rewards = blueprint.Rewards;
 
         gameObject.name = _enemyName;
+        SetStatWeight(TestWeight);
+        ResetHealth();
+    }
+
+    public void SetStatWeight(int Weight)
+    {
+        int _weight = Weight - 1;
+        _maxHp = _maxHp + _maxHp * _weight;
+        _damage = _damage + _damage * _weight;
+        _rewards = _rewards + _rewards * _weight;
     }
 
     public void SetPosition(Vector2 position)
@@ -79,7 +96,10 @@ public class BaseEnemy : MonoBehaviour
     {
         if (_range < Vector2.Distance(Manager.Game.Player.gameObject.transform.position, transform.position))
         {
-            _rigidbody.velocity = (Manager.Game.Player.gameObject.transform.position - transform.position).normalized * _moveSpeed;
+            _rigidbody.velocity = new Vector2(
+                Manager.Game.Player.gameObject.transform.position.x - transform.position.x,
+                0f
+                ).normalized * _moveSpeed;
         }
         else
         {
@@ -100,8 +120,8 @@ public class BaseEnemy : MonoBehaviour
         var go = Manager.Resource.InstantiatePrefab("EnemyProjectileFrame", gameObject.transform);
 
         //발사체 초기화를 위해 정보를 넘겨줌
-        go.GetComponent<ProjectileHandler>().ProjectileVFX = _enemyBlueprint.ProjectailVFX;
-        go.GetComponent<ProjectileHandler>().Damage = _enemyBlueprint.Damage;
+        go.GetComponent<EnemyProjectileHandler>().ProjectileVFX = _enemyBlueprint.ProjectailVFX;
+        go.GetComponent<EnemyProjectileHandler>().Damage = _damage;
     }
 
     //발사체 생성 코루틴
@@ -114,17 +134,33 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    private void ReceiveDamage(int Damage)
+    public void TakeDamage(int Damage)
+    {
+        AmountDamage(Damage);
+        Debug.Log($"{gameObject.name} : {_currentHP}");
+    }
+    private void AmountDamage(int Damage)
     {
         if (_currentHP - Damage <= 0)
         {
             _currentHP = 0;
-            //보상이 구현되어야 함
+            Die();
         }
         else
         {
             _currentHP -= Damage;
+            
         }
+    }
+
+    private void Die()
+    {
+        Manager.Stage.GetEnemyList().Remove(gameObject.GetComponent<BaseEnemy>());
+
+        gameObject.layer = LayerMask.NameToLayer("Enemy");
+
+        Destroy(gameObject);
+        //플레이어 보상
     }
     #endregion
 }
