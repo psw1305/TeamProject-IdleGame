@@ -101,7 +101,7 @@ public class UISceneTest : UIScene
     {
         Debug.Log("AttackSpeed");
         //플레이어 공격 속도 증가
-        _player.AttackSpeedUp(0.01f);
+        _player.AttackSpeedUp(0.01d);
         _txtStatAttackSpeed.text = _player.AttackSpeed.ToString();
     }
 

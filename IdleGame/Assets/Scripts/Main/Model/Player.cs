@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     public int Damage { get; private set; }
     public int Hp { get; private set; }
-    public float AttackSpeed { get; private set; }
+    public double AttackSpeed { get; private set; }
     public float CriticalPercent { get; private set; }
     public float CriticalDamage { get; private set; }
     public float Range { get; private set; }
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     {
         Damage = 10;
         Hp = 10;
-        AttackSpeed = 0.10f;
+        AttackSpeed = 0.10d;
         CriticalPercent =  0.00f;
         CriticalDamage = 0;
 
@@ -61,9 +61,10 @@ public class Player : MonoBehaviour
         Hp += modifier;
     }
 
-    public void AttackSpeedUp(float modifier)
+    public void AttackSpeedUp(double modifier)
     {
         AttackSpeed += modifier;
+        AttackSpeed = Math.Round(AttackSpeed, 2);
     }
 
     #endregion
