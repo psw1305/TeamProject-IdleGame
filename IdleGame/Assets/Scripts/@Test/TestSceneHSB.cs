@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class TestSceneHSB : BaseScene
 {
+    [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private Transform[] enemySpawnPoint;
+    [SerializeField] private List<BaseEnemy> enemyList;
     protected override bool Initialize()
     {
         if (!base.Initialize()) return false;
 
-        // 씬 진입 시 처리
+        Manager.UI.ShowScene<UISceneTest>();
+        Manager.Game.SetPosition(playerSpawnPoint.position);
+
+        // 스테이지 전투 구성 & 시작
+        Manager.Stage.Initialize();
+        Manager.Stage.SetSpawnPoint(enemySpawnPoint);
+        Manager.Stage.BattleStart();
+        enemyList = Manager.Stage.GetEnemyList();
 
         return true;
     }
