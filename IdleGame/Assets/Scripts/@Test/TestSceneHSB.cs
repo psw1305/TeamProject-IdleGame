@@ -5,7 +5,8 @@ using UnityEngine;
 public class TestSceneHSB : BaseScene
 {
     [SerializeField] private Transform playerSpawnPoint;
-    [SerializeField] private Transform enemySpawnPoint;
+    [SerializeField] private Transform[] enemySpawnPoint;
+    [SerializeField] private List<BaseEnemy> enemyList;
     protected override bool Initialize()
     {
         if (!base.Initialize()) return false;
@@ -17,6 +18,7 @@ public class TestSceneHSB : BaseScene
         Manager.Stage.Initialize();
         Manager.Stage.SetSpawnPoint(enemySpawnPoint);
         Manager.Stage.BattleStart();
+        enemyList = Manager.Stage.GetEnemyList();
 
         return true;
     }
