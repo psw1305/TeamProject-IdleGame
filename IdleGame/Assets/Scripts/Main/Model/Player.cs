@@ -38,7 +38,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         Damage = 10;
         Hp = 1000;
-        AttackSpeed = 0.20f;
+        AttackSpeed = 0.50f;
         CriticalPercent = 0.00f;
         CriticalDamage = 0;
 
@@ -59,6 +59,11 @@ public class Player : MonoBehaviour, IDamageable
         if (_attackCoroutine == null && _enemyList.Count > 0)
         {
             _attackCoroutine = StartCoroutine(AttackRoutine());
+        }
+        else if (_enemyList.Count == 0)
+        {
+            _attackCoroutine = null;
+            StopCoroutine(AttackRoutine());
         }
     }
 
@@ -81,10 +86,17 @@ public class Player : MonoBehaviour, IDamageable
     }
     IEnumerator AttackRoutine()
     {
-        while (_enemyList.Count > 0)
+        while (true)
         {
-            yield return new WaitForSeconds(1/AttackSpeed);
-            Attack();
+            yield return new WaitForSeconds(1 / AttackSpeed);
+            if (_enemyList.Count > 0)
+            {
+                Attack();
+            }
+            else
+            {
+                break;
+            }
         }
         _attackCoroutine = null;
     }
