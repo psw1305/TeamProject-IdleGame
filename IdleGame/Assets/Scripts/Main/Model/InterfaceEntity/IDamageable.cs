@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void TakeDamage(ulong Damage);
+    void TakeDamage(long Damage);
 }

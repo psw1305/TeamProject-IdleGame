@@ -10,20 +10,20 @@ public class EnemyBlueprint : ScriptableObject
     [SerializeField] private GameObject projectailVFX;
 
     [Header("Enemy Stats")]
-    [SerializeField] private ulong damage;
-    [SerializeField] private ulong hp;
+    [SerializeField] private long damage;
+    [SerializeField] private long hp;
     [SerializeField] private float range;
     [SerializeField] private float attackSpeed;
-    [SerializeField] private ulong rewards;
+    [SerializeField] private long rewards;
     [SerializeField] private float moveSpeed;
 
     public string EnemyName => enemyName;
     public Sprite EnemySprite => enemySprite;
     public GameObject ProjectailVFX => projectailVFX;
-    public ulong Damage => damage;
-    public ulong HP => hp;
+    public long Damage => damage;
+    public long HP => hp;
     public float Range => range;
     public float AttackSpeed => attackSpeed;
-    public ulong Rewards => rewards;
+    public long Rewards => rewards;
     public float MoveSpeed => moveSpeed;
 }

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour, IDamageable
     private GameObject _enemy;
 
     #endregion
+
     public struct UpgradeInfo
     {
         public int Level;
@@ -37,8 +38,8 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Properties
 
-    public ulong Damage { get; private set; }
-    public ulong Hp { get; private set; }
+    public long Damage { get; private set; }
+    public long Hp { get; private set; }
     public float AttackSpeed { get; private set; }
     public float CriticalPercent { get; private set; }
     public float CriticalDamage { get; private set; }
@@ -77,12 +78,12 @@ public class Player : MonoBehaviour, IDamageable
 
     #region StatModifier
 
-    public void DamageUp(ulong modifier)
+    public void DamageUp(long modifier)
     {
         Damage += modifier;
     }
 
-    public void HpUp(ulong modifier)
+    public void HpUp(long modifier)
     {
         Hp += modifier;
     }
@@ -142,13 +143,13 @@ public class Player : MonoBehaviour, IDamageable
     }
 
 
-    public void TakeDamage(ulong Damage)
+    public void TakeDamage(long Damage)
     {
         AmountDamage(Damage);
         Debug.Log($"{gameObject.name} : {Hp}");
     }
 
-    private void AmountDamage(ulong Damage)
+    private void AmountDamage(long Damage)
     {
         if (Hp - Damage <= 0)
         {

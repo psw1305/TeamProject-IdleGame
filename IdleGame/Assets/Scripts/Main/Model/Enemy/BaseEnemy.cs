@@ -11,18 +11,18 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     private Coroutine _attackCoroutine;
 
     //체력
-    private ulong _maxHp;
-    private ulong _currentHP;
+    private long _maxHp;
+    private long _currentHP;
 
     //공격
-    private ulong _damage;
+    private long _damage;
     private float _attackSpeed;
     private float _range;
 
     //속도
     private float _moveSpeed;
 
-    public ulong _rewards;
+    public long _rewards;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
@@ -56,7 +56,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
     public void SetStatWeight(int Weight)
     {
-        ulong _weight = (ulong)(Weight - 1);
+        long _weight = (long)(Weight - 1);
         _maxHp = _maxHp + _maxHp * _weight;
         _damage = _damage + _damage * _weight;
         _rewards = _rewards + _rewards * _weight;
@@ -134,12 +134,12 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(ulong Damage)
+    public void TakeDamage(long Damage)
     {
         AmountDamage(Damage);
         Debug.Log($"{gameObject.name} : {_currentHP}");
     }
-    private void AmountDamage(ulong Damage)
+    private void AmountDamage(long Damage)
     {
         if (_currentHP - Damage <= 0)
         {
