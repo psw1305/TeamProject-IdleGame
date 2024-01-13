@@ -67,6 +67,11 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         transform.position = position;
     }
 
+    //추후 오브젝트 풀링 시 초기화 할 수 있게 메서드
+    private void ResetHealth()
+    {
+        _currentHP = _maxHp;
+    }
     #endregion
 
     #region Unity Flow
@@ -79,20 +84,14 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        OnMove();
+        EvaluateState();
     }
 
     #endregion
 
-    #region Method
-    //추후 오브젝트 풀링 시 초기화 할 수 있게 메서드
-    private void ResetHealth()
-    {
-        _currentHP = _maxHp;
-    }
-
+    #region StateMethod
     //플레이어 방향으로 이동
-    private void OnMove()
+    private void EvaluateState()
     {
         if (_range < Vector2.Distance(Manager.Game.Player.gameObject.transform.position, transform.position))
         {
@@ -112,7 +111,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
             //}
         }
     }
+    #endregion
 
+    #region Attack Method
     //발사체를 생성 및 초기화
     private void CreateProjectail()
     {
@@ -162,8 +163,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
         gameObject.layer = LayerMask.NameToLayer("Enemy");
 
+        Manager.Game.Player.AmountGold(_rewards);
+
         Destroy(gameObject);
-        //플레이어 보상
     }
     #endregion
 }
