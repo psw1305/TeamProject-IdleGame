@@ -55,7 +55,7 @@ public class UISceneTest : UIScene
 
         _txtPayGoldAttackSpeed = GetUI<TextMeshProUGUI>("Txt_PayGold_AttackSpeed");
         _txtStatAttackSpeed = GetUI<TextMeshProUGUI>("Txt_Stat_AttackSpeed");
-        _txtLvAttackSpeed = GetUI<TextMeshProUGUI>("Txt_Lv_AttackSpeed ");
+        _txtLvAttackSpeed = GetUI<TextMeshProUGUI>("Txt_Lv_AttackSpeed");
     }
 
     private void SetButtons()
@@ -78,14 +78,14 @@ public class UISceneTest : UIScene
         _txtStatDamage.text = _player.Damage.ToString();
         _txtLvDamage.text = _player.DamageInfo.Level.ToString();
         _txtPayGoldDamage.text = _player.DamageInfo.UpgradCost.ToString();
-
+                        
         _txtStatHp.text = _player.Hp.ToString();
-        //_txtLvHp.text = _player.HpInfo.Level.ToString();
-        //_txtPayGoldHp.text = _player.HpInfo.UpgradCost.ToString();
+        _txtLvHp.text = _player.HpInfo.Level.ToString();
+        _txtPayGoldHp.text = _player.HpInfo.UpgradCost.ToString();
 
         _txtStatAttackSpeed.text = _player.AttackSpeed.ToString();
-        //_txtLvAttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
-        //_txtPayGoldAttackSpeed.text = _player.AttackSpeedInfo.UpgradCost.ToString();
+        _txtLvAttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
+        _txtPayGoldAttackSpeed.text = _player.AttackSpeedInfo.UpgradCost.ToString();
     }
 
     #endregion
@@ -111,9 +111,9 @@ public class UISceneTest : UIScene
         _player.HpUp(10);        
         _txtStatHp.text = _player.Hp.ToString();
 
-        //_player.HpInfo.SetModifier(1, 40);
-        //_txtLvHp.text = _player.HpInfo.Level.ToString();
-        //_txtPayGoldHp.text = _player.HpInfo.UpgradCost.ToString();
+        _player.HpInfo.SetModifier(1, 40);
+        _txtLvHp.text = _player.HpInfo.Level.ToString();
+        _txtPayGoldHp.text = _player.HpInfo.UpgradCost.ToString();
     }
 
     private void OnAttackSpeedUp(PointerEventData eventData)
@@ -123,9 +123,9 @@ public class UISceneTest : UIScene
         _player.AttackSpeedUp(0.01f);
         _txtStatAttackSpeed.text = _player.AttackSpeed.ToString();
 
-        //_player.AttackSpeedInfo.SetModifier(1, 60);
-        //_txtLvHp.text = _player.AttackSpeedInfo.Level.ToString();
-        //_txtPayGoldHp.text = _player.AttackSpeedInfo.UpgradCost.ToString();
+        _player.AttackSpeedInfo.SetModifier(1, 60);
+        _txtLvAttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
+        _txtPayGoldAttackSpeed.text = _player.AttackSpeedInfo.UpgradCost.ToString();
     }
 
     #endregion
