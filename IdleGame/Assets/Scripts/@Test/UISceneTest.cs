@@ -9,7 +9,7 @@ public class UISceneTest : UIScene
     private Player _player;
 
     private Button _btnStatUpDamage;
-    private Button _btnStatUpHp;
+    private Button _btnStatUpHP;
     private Button _btnStatAttackSpeed;
     private Button _btnStatRecoverHP;
 
@@ -17,9 +17,9 @@ public class UISceneTest : UIScene
     private TextMeshProUGUI _txtStatDamage;
     private TextMeshProUGUI _txtLvDamage;
 
-    private TextMeshProUGUI _txtPayGoldHp;
-    private TextMeshProUGUI _txtStatHp;
-    private TextMeshProUGUI _txtLvHp;
+    private TextMeshProUGUI _txtPayGoldHP;
+    private TextMeshProUGUI _txtStatHP;
+    private TextMeshProUGUI _txtLvHP;
 
     private TextMeshProUGUI _txtPayGoldAttackSpeed;
     private TextMeshProUGUI _txtStatAttackSpeed;
@@ -56,9 +56,9 @@ public class UISceneTest : UIScene
         _txtStatDamage = GetUI<TextMeshProUGUI>("Txt_Stat_Damage");
         _txtLvDamage = GetUI<TextMeshProUGUI>("Txt_Lv_Damage");
 
-        _txtPayGoldHp = GetUI<TextMeshProUGUI>("Txt_PayGold_Hp");
-        _txtStatHp = GetUI<TextMeshProUGUI>("Txt_Stat_Hp");
-        _txtLvHp = GetUI<TextMeshProUGUI>("Txt_Lv_Hp");
+        _txtPayGoldHP = GetUI<TextMeshProUGUI>("Txt_PayGold_HP");
+        _txtStatHP = GetUI<TextMeshProUGUI>("Txt_Stat_HP");
+        _txtLvHP = GetUI<TextMeshProUGUI>("Txt_Lv_HP");
 
         _txtPayGoldAttackSpeed = GetUI<TextMeshProUGUI>("Txt_PayGold_AttackSpeed");
         _txtStatAttackSpeed = GetUI<TextMeshProUGUI>("Txt_Stat_AttackSpeed");
@@ -76,7 +76,7 @@ public class UISceneTest : UIScene
     {
         SetUI<Button>();
         _btnStatUpDamage = GetUI<Button>("Btn_StatUp_Damage");
-        _btnStatUpHp = GetUI<Button>("Btn_StatUp_Hp");
+        _btnStatUpHP = GetUI<Button>("Btn_StatUp_HP");
         _btnStatAttackSpeed = GetUI<Button>("Btn_StatUp_AttackSpeed");
         _btnStatRecoverHP = GetUI<Button>("Btn_StatUp_RecoverHP");
     }
@@ -84,7 +84,7 @@ public class UISceneTest : UIScene
     private void SetEvents()
     {
         _btnStatUpDamage.gameObject.SetEvent(UIEventType.Click, OnDamageUp);
-        _btnStatUpHp.gameObject.SetEvent(UIEventType.Click, OnHealthUp);
+        _btnStatUpHP.gameObject.SetEvent(UIEventType.Click, OnHealthUp);
         _btnStatAttackSpeed.gameObject.SetEvent(UIEventType.Click, OnAttackSpeedUp);
         _btnStatRecoverHP.gameObject.SetEvent(UIEventType.Click, OnRecoverHPUp);
     }
@@ -95,9 +95,9 @@ public class UISceneTest : UIScene
         _txtLvDamage.text = _player.DamageInfo.Level.ToString();
         _txtPayGoldDamage.text = _player.DamageInfo.UpgradCost.ToString();
                         
-        _txtStatHp.text = _player.Hp.ToString();
-        _txtLvHp.text = _player.HPInfo.Level.ToString();
-        _txtPayGoldHp.text = _player.HPInfo.UpgradCost.ToString();
+        _txtStatHP.text = _player.HP.ToString();
+        _txtLvHP.text = _player.HPInfo.Level.ToString();
+        _txtPayGoldHP.text = _player.HPInfo.UpgradCost.ToString();
 
         _txtStatAttackSpeed.text = _player.AttackSpeed.ToString();
         _txtLvAttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
@@ -144,16 +144,16 @@ public class UISceneTest : UIScene
         }
         else
         {
-            Debug.Log("HealthUp + 10 ");
+            Debug.Log("HealthUp + 10");
             //플레이어 체력 증가
             _player.HpUp(10);
-            _txtStatHp.text = _player.Hp.ToString();
+            _txtStatHP.text = _player.HP.ToString();
 
 
             UseGold(_player.HPInfo.UpgradCost);
             _player.HPInfo.SetModifier(1, 40);
-            _txtLvHp.text = _player.HPInfo.Level.ToString();
-            _txtPayGoldHp.text = _player.HPInfo.UpgradCost.ToString();
+            _txtLvHP.text = _player.HPInfo.Level.ToString();
+            _txtPayGoldHP.text = _player.HPInfo.UpgradCost.ToString();
         }
     }
 
@@ -165,7 +165,7 @@ public class UISceneTest : UIScene
         }
         else
         {
-            Debug.Log("AttackSpeed");
+            Debug.Log("AttackSpeed + 0.01f");
             //플레이어 공격 속도 증가
             _player.AttackSpeedUp(0.01f);
             _txtStatAttackSpeed.text = _player.AttackSpeed.ToString();
@@ -181,11 +181,11 @@ public class UISceneTest : UIScene
     {
         if (_player.Gold < _player.RecoverHPInfo.UpgradCost)
         {
-            Debug.Log("돈이 모자랍니다.");
+            Debug.Log("RecoverHP_돈이 모자랍니다.");
         }
         else
         {
-            Debug.Log("RecoverHP");
+            Debug.Log("RecoverHP + 10");
             //플레이어 회복 속도 증가
             _player.RecoverHPUp(10);
             _txtStatRecoverHP.text = _player.RecoverHP.ToString();

@@ -41,7 +41,7 @@ public class Player : MonoBehaviour, IDamageable
     #region Properties
 
     public long Damage { get; private set; }
-    public long Hp { get; private set; }
+    public long HP { get; private set; }
     private long _currentHP;
     public long RecoverHP { get; private set; }
     public float AttackSpeed { get; private set; }
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        Hp = 1000;
+        HP = 1000;
         RecoverHP = 30;
 
         Damage = 10;
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void PlayerHPReset()
     {
-        _currentHP = Hp;
+        _currentHP = HP;
     }
 
     #endregion
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void HpUp(long modifier)
     {
-        Hp += modifier;
+        HP += modifier;
     }
 
     public void AttackSpeedUp(float modifier)
@@ -192,14 +192,14 @@ public class Player : MonoBehaviour, IDamageable
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            _currentHP = (long)Mathf.Clamp(_currentHP + RecoverHP, 0, Hp);
+            _currentHP = (long)Mathf.Clamp(_currentHP + RecoverHP, 0, HP);
             SetHPUI();
         }
     }
 
     private void SetHPUI()
     {
-        float FillAmount = Mathf.Clamp((float)_currentHP / Hp, 0, 1);
+        float FillAmount = Mathf.Clamp((float)_currentHP / HP, 0, 1);
         HPGauge.fillAmount = FillAmount;
     }
 
