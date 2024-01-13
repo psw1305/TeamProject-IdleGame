@@ -104,11 +104,6 @@ public class Player : MonoBehaviour, IDamageable
         {
             _attackCoroutine = StartCoroutine(AttackRoutine());
         }
-        else if (_enemyList.Count == 0)
-        {
-            _attackCoroutine = null;
-            StopCoroutine(AttackRoutine());
-        }
     }
 
     #region State
@@ -139,6 +134,7 @@ public class Player : MonoBehaviour, IDamageable
             }
             else
             {
+                _attackCoroutine = null;
                 break;
             }
         }
