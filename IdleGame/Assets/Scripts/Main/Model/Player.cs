@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
     #region Serialize Fields
 
     [SerializeField] private Transform ProjectilePoint;
+    [SerializeField] private Image HPGauge;
 
     #endregion
 
@@ -40,14 +42,17 @@ public class Player : MonoBehaviour, IDamageable
 
     public long Damage { get; private set; }
     public long Hp { get; private set; }
+    private long _currentHP;
+    public long RecoverHP { get; private set; }
     public float AttackSpeed { get; private set; }
     public float CriticalPercent { get; private set; }
     public float CriticalDamage { get; private set; }
     public float Range { get; private set; }
     public int Speed { get; private set; }
+    public long Gold { get; private set; }
 
     private Coroutine _attackCoroutine;
-    public UpgradeInfo DamageInfo ;
+    public UpgradeInfo DamageInfo;
     public UpgradeInfo HpInfo;
     public UpgradeInfo AttackSpeedInfo;
 
@@ -57,11 +62,13 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        Damage = 10;
         Hp = 1000;
+        RecoverHP = 30;
+
+        Damage = 10;
         AttackSpeed = 0.50f;
-        CriticalPercent = 0.00f;
-        CriticalDamage = 0;
+        CriticalPercent = 50.00f;
+        CriticalDamage = 1000;
 
         Range = 5;
         Speed = 100;
@@ -72,6 +79,15 @@ public class Player : MonoBehaviour, IDamageable
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _enemyList = Manager.Stage.GetEnemyList();
+
+        PlayerHPReset();
+
+        StartCoroutine(RecoverHealthPoint());
+    }
+
+    public void PlayerHPReset()
+    {
+        _currentHP = Hp;
     }
 
     #endregion
@@ -108,11 +124,14 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     #region State
-
     public void Idle()
     {
         _playerRigidbody.velocity = Vector2.right * Speed * Time.deltaTime;
     }
+
+    #endregion
+
+    #region Attack Method
 
     public void Attack()
     {
@@ -122,48 +141,88 @@ public class Player : MonoBehaviour, IDamageable
         _enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = _enemyList[0].transform.position;
-        testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage;
+        if (Random.Range(1, 10001) < CriticalPercent * 100)
+        {
+            testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage + (long)(Damage * CriticalDamage);
+            Debug.Log("크리티컬 : " + testProjectile.GetComponent<PlayerProjectileHandler>().Damage);
+        }
+        else
+        {
+            testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage;
+            Debug.Log("일반 : " + testProjectile.GetComponent<PlayerProjectileHandler>().Damage);
+        }
     }
+
     IEnumerator AttackRoutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(1 / AttackSpeed);
-            if (_enemyList.Count > 0)
+            //대상이 없으면 break
+            if (_enemyList.Count == 0)
+            {
+                _attackCoroutine = null;
+                break ;
+            }
+            //
+            if (Vector2.Distance(transform.position, _enemyList[0].transform.position) <= Range)
             {
                 Attack();
             }
-            else
-            {
-                _attackCoroutine = null;
-                break;
-            }
         }
-        _attackCoroutine = null;
     }
 
+    #endregion
+
+    #region HP, DamageMethod
+    IEnumerator RecoverHealthPoint()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            _currentHP = (long)Mathf.Clamp(_currentHP + RecoverHP, 0, Hp);
+            SetHPUI();
+        }
+    }
+
+    private void SetHPUI()
+    {
+        float FillAmount = Mathf.Clamp((float)_currentHP / Hp, 0, 1);
+        HPGauge.fillAmount = FillAmount;
+    }
 
     public void TakeDamage(long Damage)
     {
         AmountDamage(Damage);
-        Debug.Log($"{gameObject.name} : {Hp}");
+        SetHPUI();
     }
 
     private void AmountDamage(long Damage)
     {
-        if (Hp - Damage <= 0)
+        if (_currentHP - Damage <= 0)
         {
-            Hp = 0;
+            _currentHP = 0;
             Die();
         }
         else
         {
-            Hp -= Damage;
+            _currentHP -= Damage;
         }
     }
     private void Die()
     {
         //이전 스테이지로
     }
+
+    #endregion
+
+    #region RewardMethod
+
+    public void AmountGold(long Amount)
+    {
+        Gold = (long)Mathf.Clamp(Gold + Amount, 0, 1_000_000_000_000_000_000);
+        Debug.Log(Gold);
+    }
+
     #endregion
 }

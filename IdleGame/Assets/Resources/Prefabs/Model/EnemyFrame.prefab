@@ -126,8 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b1da54c8f0bc440a7a9027e1e87eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 0
-  _damage: 0
   _rewards: 0
   TestWeight: 1
 --- !u!61 &682805531422664419
