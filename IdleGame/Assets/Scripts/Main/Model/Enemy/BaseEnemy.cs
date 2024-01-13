@@ -135,8 +135,11 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     }
 
     public void TakeDamage(long Damage)
-    {
+    {        
         AmountDamage(Damage);
+        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
+        DamageHUD.transform.position = this.gameObject.transform.position;
+        DamageHUD.GetComponentInChildren<UIFloatingText>().SetDamage(Damage);
         Debug.Log($"{gameObject.name} : {_currentHP}");
     }
     private void AmountDamage(long Damage)
