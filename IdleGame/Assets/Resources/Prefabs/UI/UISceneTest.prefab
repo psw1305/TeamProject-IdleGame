@@ -598,8 +598,8 @@ RectTransform:
   m_Children:
   - {fileID: 5805721206632768174}
   - {fileID: 406543453576297113}
-  - {fileID: 3539863879123231396}
   - {fileID: 992971298401847311}
+  - {fileID: 3539863879123231396}
   m_Father: {fileID: 1390734403589285266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1021,9 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867219708794647563, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_text
-      value: 'Health
-
-'
+      value: HP
       objectReference: {fileID: 0}
     - target: {fileID: 3514340134512288293, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
@@ -1169,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2634730333687371261, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Txt_PayGold_Recovery
+      value: Txt_PayGold_RecoverHP
       objectReference: {fileID: 0}
     - target: {fileID: 2761015470482673503, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Pivot.x
@@ -1253,13 +1251,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867219708794647563, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_text
-      value: 'Recovery
-
-'
+      value: RecoverHP
       objectReference: {fileID: 0}
     - target: {fileID: 3514340134512288293, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Icon_Recovery
+      value: Image_Icon_RecoverHP
       objectReference: {fileID: 0}
     - target: {fileID: 3817001169386902427, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1283,7 +1279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4781385024387580002, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Txt_Stat_Recovery
+      value: Txt_Stat_RecoverHP
       objectReference: {fileID: 0}
     - target: {fileID: 5547740247442758402, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_text
@@ -1307,15 +1303,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690466729055125287, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Btn_StatUp_Recovery
+      value: Btn_StatUp_RecoverHP
       objectReference: {fileID: 0}
     - target: {fileID: 7134629887234663414, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Txt_Lv_Recovery
+      value: Txt_Lv_RecoverHP
       objectReference: {fileID: 0}
     - target: {fileID: 7740265537761325319, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Btn_Stat_Recovery
+      value: Image_Btn_Stat_RecoverHP
       objectReference: {fileID: 0}
     - target: {fileID: 9142929859450289708, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y

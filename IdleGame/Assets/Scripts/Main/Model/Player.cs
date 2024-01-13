@@ -23,15 +23,15 @@ public class Player : MonoBehaviour, IDamageable
     public struct UpgradeInfo
     {
         public int Level;
-        public int UpgradCost;
+        public long UpgradCost;
 
-        public UpgradeInfo(int Lv, int Cost)
+        public UpgradeInfo(int Lv, long Cost)
         {
             this.Level = Lv;
             this.UpgradCost = Cost;
         }
 
-        public void SetModifier(int Lv, int Cost)
+        public void SetModifier(int Lv, long Cost)
         {
             this.Level += Lv;
             this.UpgradCost += Cost;
@@ -53,8 +53,9 @@ public class Player : MonoBehaviour, IDamageable
 
     private Coroutine _attackCoroutine;
     public UpgradeInfo DamageInfo;
-    public UpgradeInfo HpInfo;
+    public UpgradeInfo HPInfo;
     public UpgradeInfo AttackSpeedInfo;
+    public UpgradeInfo RecoverHPInfo;
 
     #endregion
 
@@ -74,8 +75,9 @@ public class Player : MonoBehaviour, IDamageable
         Speed = 100;
 
         DamageInfo = new UpgradeInfo(1, 90);
-        HpInfo = new UpgradeInfo(1, 50);
+        HPInfo = new UpgradeInfo(1, 50);
         AttackSpeedInfo = new UpgradeInfo(1, 200);
+        RecoverHPInfo = new UpgradeInfo(1, 50);
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _enemyList = Manager.Stage.GetEnemyList();
@@ -108,6 +110,16 @@ public class Player : MonoBehaviour, IDamageable
     {
         AttackSpeed += modifier;
         AttackSpeed = Mathf.Round((float)AttackSpeed * 100) / 100;
+    }
+
+    public void RecoverHPUp(long modifier)
+    {
+        RecoverHP += modifier;
+    }
+
+    public void UseGold(long amount)
+    {        
+        Gold -= amount;
     }
 
     #endregion
@@ -221,7 +233,11 @@ public class Player : MonoBehaviour, IDamageable
     public void AmountGold(long Amount)
     {
         Gold = (long)Mathf.Clamp(Gold + Amount, 0, 1_000_000_000_000_000_000);
-        Debug.Log(Gold);
+        
+        UISceneTest uISceneTest = Manager.UI.CurrentScene as UISceneTest; // 변수화 
+        uISceneTest.GetRewards();
+        
+        Debug.Log("골드: " + Gold);
     }
 
     #endregion
