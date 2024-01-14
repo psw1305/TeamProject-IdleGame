@@ -20,23 +20,27 @@ public class Player : MonoBehaviour, IDamageable
 
     #endregion
 
+    #region UpgradeInfoStrut
+
     public struct UpgradeInfo
     {
         public int Level;
-        public long UpgradCost;
+        public long UpgradeCost;
 
         public UpgradeInfo(int Lv, long Cost)
         {
             this.Level = Lv;
-            this.UpgradCost = Cost;
+            this.UpgradeCost = Cost;
         }
 
         public void SetModifier(int Lv, long Cost)
         {
             this.Level += Lv;
-            this.UpgradCost += Cost;
+            this.UpgradeCost += Cost;
         }
     }
+
+    #endregion
 
     #region Properties
 
@@ -56,6 +60,8 @@ public class Player : MonoBehaviour, IDamageable
     public UpgradeInfo HPInfo;
     public UpgradeInfo AttackSpeedInfo;
     public UpgradeInfo RecoverHPInfo;
+    public UpgradeInfo CriticalPercentInfo;
+    public UpgradeInfo CriticalDamageInfo;
 
     #endregion
 
@@ -78,6 +84,8 @@ public class Player : MonoBehaviour, IDamageable
         HPInfo = new UpgradeInfo(1, 50);
         AttackSpeedInfo = new UpgradeInfo(1, 200);
         RecoverHPInfo = new UpgradeInfo(1, 50);
+        CriticalPercentInfo = new UpgradeInfo(1, 100);
+        CriticalDamageInfo = new UpgradeInfo(1, 100);
 
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _enemyList = Manager.Stage.GetEnemyList();
@@ -115,6 +123,16 @@ public class Player : MonoBehaviour, IDamageable
     public void RecoverHPUp(long modifier)
     {
         RecoverHP += modifier;
+    }
+
+    public void CriticalPercentUp(float modifier)
+    {
+        CriticalPercent += modifier;
+    }
+    
+    public void CriticalDamageUp(float modifier)
+    {
+        CriticalDamage += modifier;
     }
 
     public void UseGold(long amount)
@@ -206,7 +224,15 @@ public class Player : MonoBehaviour, IDamageable
     public void TakeDamage(long Damage)
     {
         AmountDamage(Damage);
+        FloatingDamage(new Vector3(0, 0.25f, 0), Damage);
         SetHPUI();
+    }
+
+    public void FloatingDamage(Vector3 position, long Damage) 
+    {
+        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
+        DamageHUD.transform.position = this.gameObject.transform.position + position;
+        DamageHUD.GetComponentInChildren<UIFloatingText>().SetDamage(Damage);
     }
 
     private void AmountDamage(long Damage)
@@ -236,8 +262,6 @@ public class Player : MonoBehaviour, IDamageable
         
         UISceneMain uISceneTest = Manager.UI.CurrentScene as UISceneMain; // 변수화 
         uISceneTest.GetRewards();
-        
-        Debug.Log("골드: " + Gold);
     }
 
     #endregion
