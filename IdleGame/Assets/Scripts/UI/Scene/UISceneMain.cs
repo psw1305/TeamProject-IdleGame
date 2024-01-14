@@ -40,8 +40,8 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI _txtStat_CriticalDamage;
     private TextMeshProUGUI _txtLv_CriticalDamage;
 
-
     private TextMeshProUGUI _txtGold;
+    private TextMeshProUGUI _txtStage;
 
     #endregion
 
@@ -90,6 +90,7 @@ public class UISceneMain : UIScene
 
         // HUD UI
         _txtGold = GetUI<TextMeshProUGUI>("Txt_Gold");
+        _txtStage = GetUI<TextMeshProUGUI>("Txt_Stage");
     }
 
     private void SetButtons()
@@ -143,6 +144,7 @@ public class UISceneMain : UIScene
 
         //HUD UI
         _txtGold.text = _player.Gold.ToString();
+        //TODO : _txtStage.text = Display CurrentStage;
     }
 
     #endregion
@@ -205,7 +207,7 @@ public class UISceneMain : UIScene
             _txtStat_AttackSpeed.text = _player.AttackSpeed.ToString();
 
             UseGold(_player.AttackSpeedInfo.UpgradeCost);
-            _player.AttackSpeedInfo.SetModifier(1, 60);
+            _player.AttackSpeedInfo.SetModifier(1, 5);
             _txtLv_AttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
             _txtPayGold_AttackSpeed.text = _player.AttackSpeedInfo.UpgradeCost.ToString();
         }
@@ -280,7 +282,7 @@ public class UISceneMain : UIScene
 
     #region Gold
 
-    public void GetRewards()
+    public void DisplayGold()
     {
         _txtGold.text = _player.Gold.ToString();
     }
@@ -288,8 +290,13 @@ public class UISceneMain : UIScene
     private void UseGold(long amount)
     {
         _player.UseGold(amount);
-        GetRewards();
+        DisplayGold();
     }
 
     #endregion
+
+    public void DisplayCurrentStage(string currentStage)
+    {
+        _txtStage.text = currentStage;
+    }
 }

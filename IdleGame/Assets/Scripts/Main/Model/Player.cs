@@ -82,7 +82,7 @@ public class Player : MonoBehaviour, IDamageable
 
         DamageInfo = new UpgradeInfo(1, 90);
         HPInfo = new UpgradeInfo(1, 50);
-        AttackSpeedInfo = new UpgradeInfo(1, 200);
+        AttackSpeedInfo = new UpgradeInfo(1, 10);
         RecoverHPInfo = new UpgradeInfo(1, 50);
         CriticalPercentInfo = new UpgradeInfo(1, 100);
         CriticalDamageInfo = new UpgradeInfo(1, 100);
@@ -261,7 +261,7 @@ public class Player : MonoBehaviour, IDamageable
         Gold = (long)Mathf.Clamp(Gold + Amount, 0, 1_000_000_000_000_000_000);
         
         UISceneMain uISceneTest = Manager.UI.CurrentScene as UISceneMain; // 변수화 
-        uISceneTest.GetRewards();
+        uISceneTest.DisplayGold();
     }
 
     #endregion
