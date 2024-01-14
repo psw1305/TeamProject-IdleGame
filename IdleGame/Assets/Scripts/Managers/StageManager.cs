@@ -78,6 +78,7 @@ public class StageManager
     public void BattleStop()
     {
         CoroutineHelper.StopCoroutine(_stageCoroutine);
+        _stageCoroutine = null;
     }
 
     public void StageFailed()
@@ -93,12 +94,15 @@ public class StageManager
         else
         {
             // 스테이지 진행중 죽었으면 스테이지 뒤로 물리기, 맨 처음 스테이지면 난이도를 뒤로 무르고 마지막 스테이지로
+            EnemyStatRate -= 1 * Difficulty;
+            StageRewardRate -= 1 + (Difficulty / 2);
             CurrentStage--;
             if (CurrentStage < 0)
             {
                 CurrentStage = maxStage - 1;
                 Difficulty--;
             }
+            stageConfig = stageBlueprints[CurrentStage];
 
             StageProgress = 0;
         }
@@ -144,7 +148,7 @@ public class StageManager
                 var enemy = enemyObject.GetComponent<BaseEnemy>();
                 enemy.SetEnemy(enemyBlueprint);
                 enemy.SetPosition(randomPos);
-                //enemy.SetStatWeight(EnemyStatRate);
+                enemy.SetStatWeight(EnemyStatRate);
                 //enemy.SetReward(StageRewardRate);
                 enemyList.Add(enemy);
             }
@@ -188,7 +192,6 @@ public class StageManager
             stageConfig = stageBlueprints[CurrentStage];
             EnemyStatRate += 1 * Difficulty;
             StageRewardRate += 1 + (Difficulty / 2);
-            // Debug.Log($"EnemyStatRate : {EnemyStatRate}, StageRewardRate : {StageRewardRate}");
         }
     }
 
