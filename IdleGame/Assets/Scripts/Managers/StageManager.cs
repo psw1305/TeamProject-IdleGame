@@ -12,6 +12,7 @@ public class StageManager
     private Transform[] spawnPoint;
     private Transform bossSpawnPoint;
     private StageBlueprint[] stageBlueprints;
+    private Coroutine _stageCoroutine;
 
     #endregion
 
@@ -71,7 +72,38 @@ public class StageManager
 
     public void BattleStart()
     {
-        CoroutineHelper.StartCoroutine(TestBattleCycle());
+        _stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
+    }
+
+    public void BattleStop()
+    {
+        CoroutineHelper.StopCoroutine(_stageCoroutine);
+    }
+
+    public void StageFailed()
+    {
+        BattleStop();
+        EnemyReset();
+        // 보스 잡다 죽었으면 루프 켜주고 진행도만 하나 뒤로 물리기
+        if (BossAppearance)
+        {
+            CurrentStageLoop = true;
+            StageProgress--;
+        }
+        else
+        {
+            // 스테이지 진행중 죽었으면 스테이지 뒤로 물리기, 맨 처음 스테이지면 난이도를 뒤로 무르고 마지막 스테이지로
+            CurrentStage--;
+            if (CurrentStage < 0)
+            {
+                CurrentStage = maxStage - 1;
+                Difficulty--;
+            }
+
+            StageProgress = 0;
+        }
+
+        BattleStart();
     }
 
     // [임시] 코루틴 => 전투 무한 사이클
@@ -79,6 +111,7 @@ public class StageManager
     {
         while (true)
         {
+            Debug.Log($"Difficulty : {Difficulty}, CurrentStage : {CurrentStage}, StageProgress : {StageProgress}");
             // #1. 시작 후 1초 뒤 적 웨이브 스폰
             yield return new WaitForSeconds(1.0f);
             EnemyWaveSpawn();
@@ -155,7 +188,7 @@ public class StageManager
             stageConfig = stageBlueprints[CurrentStage];
             EnemyStatRate += 1 * Difficulty;
             StageRewardRate += 1 + (Difficulty / 2);
-            Debug.Log($"EnemyStatRate : {EnemyStatRate}, StageRewardRate : {StageRewardRate}");
+            // Debug.Log($"EnemyStatRate : {EnemyStatRate}, StageRewardRate : {StageRewardRate}");
         }
     }
 
