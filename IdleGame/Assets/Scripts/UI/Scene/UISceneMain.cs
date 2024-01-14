@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class UISceneTest : UIScene
+public class UISceneMain : UIScene
 {
     #region Fields
     private Player _player;
@@ -12,6 +12,7 @@ public class UISceneTest : UIScene
     private Button _btnStatUpHP;
     private Button _btnStatAttackSpeed;
     private Button _btnStatRecoverHP;
+    private Button _btnEquipment;
 
     private TextMeshProUGUI _txtPayGoldDamage;
     private TextMeshProUGUI _txtStatDamage;
@@ -79,6 +80,7 @@ public class UISceneTest : UIScene
         _btnStatUpHP = GetUI<Button>("Btn_StatUp_HP");
         _btnStatAttackSpeed = GetUI<Button>("Btn_StatUp_AttackSpeed");
         _btnStatRecoverHP = GetUI<Button>("Btn_StatUp_RecoverHP");
+        _btnEquipment = GetUI<Button>("Btn_Equipment");
     }
 
     private void SetEvents()
@@ -87,6 +89,7 @@ public class UISceneTest : UIScene
         _btnStatUpHP.gameObject.SetEvent(UIEventType.Click, OnHealthUp);
         _btnStatAttackSpeed.gameObject.SetEvent(UIEventType.Click, OnAttackSpeedUp);
         _btnStatRecoverHP.gameObject.SetEvent(UIEventType.Click, OnRecoverHPUp);
+        _btnEquipment.gameObject.SetEvent(UIEventType.Click, OnEquipment);
     }
 
     private void SetStatData()
@@ -195,6 +198,11 @@ public class UISceneTest : UIScene
             _txtLvRecoverHP.text = _player.RecoverHPInfo.Level.ToString();
             _txtPayGoldRecoverHP.text = _player.RecoverHPInfo.UpgradCost.ToString();
         }
+    }
+
+    private void OnEquipment(PointerEventData eventData)
+    {
+        Manager.UI.ShowPopup<UIPopupEquipment>();
     }
 
     #endregion

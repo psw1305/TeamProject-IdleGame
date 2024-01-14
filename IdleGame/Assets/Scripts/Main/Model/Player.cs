@@ -234,7 +234,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         Gold = (long)Mathf.Clamp(Gold + Amount, 0, 1_000_000_000_000_000_000);
         
-        UISceneTest uISceneTest = Manager.UI.CurrentScene as UISceneTest; // 변수화 
+        UISceneMain uISceneTest = Manager.UI.CurrentScene as UISceneMain; // 변수화 
         uISceneTest.GetRewards();
         
         Debug.Log("골드: " + Gold);
