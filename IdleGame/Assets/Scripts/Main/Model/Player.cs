@@ -156,7 +156,7 @@ public class Player : MonoBehaviour, IDamageable
         if (Random.Range(1, 10001) < CriticalPercent * 100)
         {
             testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage + (long)(Damage * CriticalDamage);
-            Debug.Log("크리티컬 : " + testProjectile.GetComponent<PlayerProjectileHandler>().Damage);
+            Debug.Log("크리티컬 : " + NumUnit.ConvertToString(testProjectile.GetComponent<PlayerProjectileHandler>().Damage));
         }
         else
         {
@@ -174,7 +174,7 @@ public class Player : MonoBehaviour, IDamageable
             if (_enemyList.Count == 0)
             {
                 _attackCoroutine = null;
-                break ;
+                break;
             }
             //
             if (Vector2.Distance(transform.position, _enemyList[0].transform.position) <= Range)
