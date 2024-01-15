@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ProjectileHandlerBase : MonoBehaviour
@@ -14,6 +15,7 @@ public class ProjectileHandlerBase : MonoBehaviour
         {
             Instantiate(ProjectileVFX, transform.position, Quaternion.identity, gameObject.transform);
         }
+        StartCoroutine(ProjectileLifeCycle());
     }
 
     protected virtual void TrackingTarget()
@@ -28,5 +30,11 @@ public class ProjectileHandlerBase : MonoBehaviour
             collision.gameObject.GetComponent<IDamageable>().TakeDamage(Damage);
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator ProjectileLifeCycle()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
 }
