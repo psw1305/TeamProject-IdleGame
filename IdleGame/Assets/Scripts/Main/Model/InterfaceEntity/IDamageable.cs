@@ -6,4 +6,6 @@ using UnityEngine;
 public interface IDamageable
 {
     void TakeDamage(long Damage);
+
+    void FloatingDamage(Vector3 position, long Damage);
 }

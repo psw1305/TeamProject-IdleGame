@@ -60,6 +60,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         _maxHp = _maxHp + _maxHp * _weight;
         _damage = _damage + _damage * _weight;
         _rewards = _rewards + _rewards * _weight;
+        ResetHealth();
     }
 
     public void SetPosition(Vector2 position)
@@ -138,11 +139,17 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     public void TakeDamage(long Damage)
     {        
         AmountDamage(Damage);
-        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
-        DamageHUD.transform.position = this.gameObject.transform.position;
-        DamageHUD.GetComponentInChildren<UIFloatingText>().SetDamage(Damage);
+        FloatingDamage(new Vector3(0, 0.05f, 0), Damage);
         Debug.Log($"{gameObject.name} : {_currentHP}");
     }
+
+    public void FloatingDamage(Vector3 position, long Damage)
+    {
+        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
+        DamageHUD.transform.position = this.gameObject.transform.position + position;
+        DamageHUD.GetComponentInChildren<UIFloatingText>().SetDamage(Damage);
+    }
+
     private void AmountDamage(long Damage)
     {
         if (_currentHP - Damage <= 0)
