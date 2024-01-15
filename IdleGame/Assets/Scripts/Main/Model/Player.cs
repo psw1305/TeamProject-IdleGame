@@ -224,6 +224,9 @@ public class Player : MonoBehaviour, IDamageable
     private void Die()
     {
         //이전 스테이지로
+        Manager.Stage.StageFailed();
+        PlayerHPReset();
+        Debug.Log("Player Die...");
     }
 
     #endregion

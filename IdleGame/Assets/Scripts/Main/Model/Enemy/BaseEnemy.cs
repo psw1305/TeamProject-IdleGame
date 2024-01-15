@@ -60,6 +60,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         _maxHp = _maxHp + _maxHp * _weight;
         _damage = _damage + _damage * _weight;
         _rewards = _rewards + _rewards * _weight;
+        ResetHealth();
     }
 
     public void SetPosition(Vector2 position)

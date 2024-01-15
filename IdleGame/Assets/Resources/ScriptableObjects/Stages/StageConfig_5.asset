@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4669ecba9a860249a11afa5e5da7932, type: 3}
   m_Name: StageConfig_5
   m_EditorClassIdentifier: 
+  boss: Test_Boss_1
   enemies:
   - Test_Enemy_1
   - Test_Enemy_2
