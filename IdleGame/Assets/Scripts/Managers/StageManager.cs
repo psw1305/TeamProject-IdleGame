@@ -172,18 +172,18 @@ public class StageManager
 
     private void WaveCompleted()
     {
-        // 스테이지 반복 진행이 아닐때만 진행도 상승
         if (!CurrentStageLoop)
             StageProgress++;
-        
+
         if (StageClear)
         {
             StageProgress = 0;
 
             // 다음 스테이지로 넘어가고, 스테이지가 최대치에 도달하면 난이도 올린뒤 처음으로 되돌아가기
             CurrentStage++;
+
             if (CurrentStage == maxStage)
-            {
+            {                
                 CurrentStage = 0;
                 Difficulty++;
             }
@@ -193,6 +193,10 @@ public class StageManager
             EnemyStatRate += 1 * Difficulty;
             StageRewardRate += 1 + (Difficulty / 2);
         }
+
+        // UI에 현재 Stage단계 Display
+        UISceneMain uISceneTest = Manager.UI.CurrentScene as UISceneMain; // 변수화 
+        uISceneTest.DisplayCurrentStage($"{CurrentStage} - {StageProgress}");
     }
 
     private void EnemyReset()
