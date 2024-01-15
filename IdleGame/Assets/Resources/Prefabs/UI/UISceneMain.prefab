@@ -646,10 +646,10 @@ RectTransform:
   - {fileID: 1390734403589285266}
   m_Father: {fileID: 6392317698976585765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 750}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -445}
+  m_SizeDelta: {x: 1060, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5890566505766793236
 CanvasRenderer:
@@ -996,7 +996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5180094017545136689, guid: f44a26e03e24aa64bba9e3b7dbee9cd9, type: 3}
       propertyPath: m_text
-      value: 0 - 0
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5180094017545136689, guid: f44a26e03e24aa64bba9e3b7dbee9cd9, type: 3}
       propertyPath: m_fontSize

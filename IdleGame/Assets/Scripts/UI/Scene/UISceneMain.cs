@@ -144,7 +144,7 @@ public class UISceneMain : UIScene
 
         //HUD UI
         _txtGold.text = _player.Gold.ToString();
-        //TODO : _txtStage.text = Display CurrentStage;
+        _txtStage.text = ($"{Manager.Stage.CurrentStage.ToString()} - {Manager.Stage.StageProgress.ToString()}");
     }
 
     #endregion
