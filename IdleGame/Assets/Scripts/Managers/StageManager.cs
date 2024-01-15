@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageManager
 {
@@ -13,6 +14,7 @@ public class StageManager
     private Transform bossSpawnPoint;
     private StageBlueprint[] stageBlueprints;
     private Coroutine _stageCoroutine;
+    private Button _bossButton;
 
     #endregion
 
@@ -39,6 +41,7 @@ public class StageManager
         Difficulty = 1;
         EnemyStatRate = 1;
         StageRewardRate = 1;
+        //BossAppearance = false;
         stageBlueprints = new StageBlueprint[maxStage];
 
         // 스테이지 블루 프린트 미리 로드해두기
@@ -59,6 +62,13 @@ public class StageManager
     public void SetBossPoint(Transform bossSpawnPoint)
     {
         this.bossSpawnPoint = bossSpawnPoint;
+    }
+
+    public void SetRetryBossButton(Button button)
+    {
+        _bossButton = button;
+        _bossButton.onClick.AddListener(() => RetryBossBattle());
+        _bossButton.gameObject.SetActive(false);
     }
 
     public List<BaseEnemy> GetEnemyList()
@@ -85,11 +95,12 @@ public class StageManager
     {
         BattleStop();
         EnemyReset();
-        // 보스 잡다 죽었으면 루프 켜주고 진행도만 하나 뒤로 물리기
+        // 보스 잡다 죽었으면 루프랑 버튼 켜주고 진행도만 하나 뒤로 물리기
         if (BossAppearance)
         {
             CurrentStageLoop = true;
             StageProgress--;
+            RetryBossButtonToggle();
         }
         else
         {
@@ -172,8 +183,11 @@ public class StageManager
 
     private void WaveCompleted()
     {
+        // 스테이지가 루프모드면 진행도가 증가하지 않음
         if (!CurrentStageLoop)
             StageProgress++;
+
+        // 마지막 진행은 보스를 등장시킴
 
         if (StageClear)
         {
@@ -206,6 +220,23 @@ public class StageManager
             GameObject.Destroy(enemyList[i].gameObject);
         }
         enemyList.Clear();
+    }
+
+    public void RetryBossButtonToggle()
+    {
+        _bossButton.gameObject.SetActive(!_bossButton.IsActive());
+    }
+
+    private void RetryBossBattle()
+    {
+        BattleStop();
+        EnemyReset();
+        RetryBossButtonToggle();
+
+        CurrentStageLoop = false;
+        StageProgress++;
+
+        BattleStart();
     }
 
     #endregion
