@@ -15,8 +15,7 @@ public class TestSceneHSB : BaseScene
         if (!base.Initialize()) return false;
         // 보스 임시 스폰 포인트 스크립트로 만들기
         TestBossSpawnPointAdd(out Transform bossSpawnPoint);
-        TestGetRetryBossButton(out Button button);
-
+        
         Manager.UI.ShowScene<UISceneMain>();
         Manager.Game.SetPosition(playerSpawnPoint.position);
 
@@ -24,7 +23,6 @@ public class TestSceneHSB : BaseScene
         Manager.Stage.Initialize();
         Manager.Stage.SetSpawnPoint(enemySpawnPoint);
         Manager.Stage.SetBossPoint(bossSpawnPoint);
-        Manager.Stage.SetRetryBossButton(button);
         Manager.Stage.BattleStart();
 
         return true;
@@ -37,12 +35,5 @@ public class TestSceneHSB : BaseScene
         bossSpawnPosition = bossSpawnPoint.transform;
         bossSpawnPoint.transform.position = new Vector2(3.5f, 1.5f);
         bossSpawnPoint.transform.parent = spawnPointTransform;
-    }
-
-    private void TestGetRetryBossButton(out Button button)
-    {
-        var canvas = GameObject.Find("Canvas");
-        Button retryButton = canvas.transform.Find("TempRetryBoss").GetComponent<Button>();
-        button = retryButton;
     }
 }

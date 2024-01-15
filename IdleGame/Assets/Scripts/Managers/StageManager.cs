@@ -67,7 +67,6 @@ public class StageManager
     public void SetRetryBossButton(Button button)
     {
         _bossButton = button;
-        _bossButton.onClick.AddListener(() => RetryBossBattle());
         _bossButton.gameObject.SetActive(false);
     }
 
@@ -227,7 +226,7 @@ public class StageManager
         _bossButton.gameObject.SetActive(!_bossButton.IsActive());
     }
 
-    private void RetryBossBattle()
+    public void RetryBossBattle()
     {
         BattleStop();
         EnemyReset();

@@ -150,6 +150,9 @@ public class UISceneMain : UIScene
         //HUD UI
         _txtGold.text = _player.Gold.ToString();
         _txtStage.text = ($"{Manager.Stage.CurrentStage.ToString()} - {Manager.Stage.StageProgress.ToString()}");
+
+        //Stage Button Init
+        Manager.Stage.SetRetryBossButton(_btnBoss);
     }
 
     #endregion
@@ -280,7 +283,7 @@ public class UISceneMain : UIScene
 
     private void OnBossStage(PointerEventData eventData)
     {
-        
+        Manager.Stage.RetryBossBattle();
     }
 
     private void OnEquipment(PointerEventData eventData)
