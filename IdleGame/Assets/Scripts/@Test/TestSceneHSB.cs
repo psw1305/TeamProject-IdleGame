@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestSceneHSB : BaseScene
 {
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private Transform[] enemySpawnPoint;
-    [SerializeField] private List<BaseEnemy> enemyList;
     protected override bool Initialize()
     {
         if (!base.Initialize()) return false;
         // 보스 임시 스폰 포인트 스크립트로 만들기
         TestBossSpawnPointAdd(out Transform bossSpawnPoint);
-
+        
         Manager.UI.ShowScene<UISceneMain>();
         Manager.Game.SetPosition(playerSpawnPoint.position);
 
@@ -24,7 +24,6 @@ public class TestSceneHSB : BaseScene
         Manager.Stage.SetSpawnPoint(enemySpawnPoint);
         Manager.Stage.SetBossPoint(bossSpawnPoint);
         Manager.Stage.BattleStart();
-        enemyList = Manager.Stage.GetEnemyList();
 
         return true;
     }

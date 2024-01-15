@@ -212,7 +212,6 @@ MonoBehaviour:
   - {fileID: 1047497109}
   - {fileID: 475518641}
   - {fileID: 1860359312}
-  enemyList: []
 --- !u!1 &475518640
 GameObject:
   m_ObjectHideFlags: 0
