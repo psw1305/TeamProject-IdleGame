@@ -14,6 +14,7 @@ public class UISceneMain : UIScene
     private Button _btnStat_RecoverHP;
     private Button _btnStat_CriticalPercent;
     private Button _btnStat_CriticalDamage;
+    private Button _btnBoss;
     private Button _btnEquipment;
 
     private TextMeshProUGUI _txtPayGold_Damage;
@@ -102,6 +103,8 @@ public class UISceneMain : UIScene
         _btnStat_RecoverHP = GetUI<Button>("Btn_StatUp_RecoverHP");
         _btnStat_CriticalPercent = GetUI<Button>("Btn_StatUp_CriticalPercent");
         _btnStat_CriticalDamage = GetUI<Button>("Btn_StatUp_CriticalDamage");
+
+        _btnBoss = GetUI<Button>("Btn_Boss");
         _btnEquipment = GetUI<Button>("Btn_Equipment");
     }
 
@@ -113,6 +116,8 @@ public class UISceneMain : UIScene
         _btnStat_RecoverHP.gameObject.SetEvent(UIEventType.Click, OnRecoverHPUp);
         _btnStat_CriticalPercent.gameObject.SetEvent(UIEventType.Click, OnCriticalPercentUp);
         _btnStat_CriticalDamage.gameObject.SetEvent(UIEventType.Click, OnCriticalDamageUp);
+
+        _btnBoss.gameObject.SetEvent(UIEventType.Click, OnBossStage);
         _btnEquipment.gameObject.SetEvent(UIEventType.Click, OnEquipment);
     }
 
@@ -271,6 +276,11 @@ public class UISceneMain : UIScene
             _txtLv_CriticalDamage.text = _player.CriticalDamageInfo.Level.ToString();
             _txtPayGold_CriticalDamage.text = _player.CriticalDamageInfo.UpgradeCost.ToString();
         }
+    }
+
+    private void OnBossStage(PointerEventData eventData)
+    {
+        
     }
 
     private void OnEquipment(PointerEventData eventData)
