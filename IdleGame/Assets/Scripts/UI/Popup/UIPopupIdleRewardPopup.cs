@@ -19,20 +19,16 @@ public class UIPopupIdleRewardPopup : UIPopup
     protected override void Init()
     {
         base.Init();
-        SetButtons();
-        SetEvents();
+        SetButtonEvents();
     }
 
 
-    private void SetButtons()
+    private void SetButtonEvents()
     {
         SetUI<Button>();
-        _checkBtn = GetUI<Button>("Common_Button_Check");
+        _checkBtn = SetButtonEvent("Option_Notice_Btn", UIEventType.Click, IdleRewardCheck);
     }
-    private void SetEvents()
-    {
-        _checkBtn.gameObject.SetEvent(UIEventType.Click, IdleRewardCheck);
-    }
+
     #endregion
 
 

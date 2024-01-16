@@ -25,33 +25,19 @@ public class UIPopupOptionDropdownPanel : UIPopup
     protected override void Init()
     {
         base.Init();
-        SetButtons();
-        SetEvents();
+        SetButtonEvents();
     }
 
-    private void SetButtons()
+    private void SetButtonEvents()
     {
         SetUI<Button>();
-        _optionBtn_Notice = GetUI<Button>("Option_Notice_Btn");
-        _optionBtn_Setting = GetUI<Button>("Option_Setting_Btn");
-        _optionBtn_MailBox = GetUI<Button>("Option_MailBox_Btn");
-        _optionBtn_Inventory = GetUI<Button>("Option_Inventory_Btn");
-        _optionBtn_GameInfo = GetUI<Button>("Option_GameInfo_Btn");
-        _optionBtn_Exit = GetUI<Button>("Option_CloseBtn");
-        _optionBtn_OutOfArea = GetUI<Button>("DimScreen");
-    }
-
-    private void SetEvents()
-    {
-        _optionBtn_Notice.gameObject.SetEvent(UIEventType.Click, OnNoticePopup);
-        _optionBtn_Setting.gameObject.SetEvent(UIEventType.Click, OnSettingPopup);
-        _optionBtn_MailBox.gameObject.SetEvent(UIEventType.Click, OnMailBoxPopup);
-        _optionBtn_Inventory.gameObject.SetEvent(UIEventType.Click, OnInventoryPopup);
-        _optionBtn_GameInfo.gameObject.SetEvent(UIEventType.Click, OnGameInfoPopup);
-
-        // 나가기
-        _optionBtn_Exit.gameObject.SetEvent(UIEventType.Click, ClosePopup);
-        _optionBtn_OutOfArea.gameObject.SetEvent(UIEventType.Click, ClosePopup);
+        _optionBtn_Notice = SetButtonEvent("Option_Notice_Btn", UIEventType.Click, OnNoticePopup);
+        _optionBtn_Setting = SetButtonEvent("Option_Setting_Btn", UIEventType.Click, OnSettingPopup);
+        _optionBtn_MailBox = SetButtonEvent("Option_MailBox_Btn", UIEventType.Click, OnMailBoxPopup);
+        _optionBtn_Inventory = SetButtonEvent("Option_Inventory_Btn", UIEventType.Click, OnInventoryPopup);
+        _optionBtn_GameInfo = SetButtonEvent("Option_GameInfo_Btn", UIEventType.Click, OnGameInfoPopup);
+        _optionBtn_Exit = SetButtonEvent("Option_CloseBtn", UIEventType.Click, ClosePopup);
+        _optionBtn_OutOfArea = SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
 
     #endregion
