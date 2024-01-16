@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -55,6 +56,8 @@ public class Player : MonoBehaviour, IDamageable
     public int Speed { get; private set; }
     public long Gold { get; private set; }
     public int Jewel { get; private set; }
+    public float equipStat { get; private set; }
+    public float retentionEffect {  get; private set; }
 
     private Coroutine _attackCoroutine;
     public UpgradeInfo DamageInfo;
@@ -92,7 +95,8 @@ public class Player : MonoBehaviour, IDamageable
         _enemyList = Manager.Stage.GetEnemyList();
 
         PlayerHPReset();
-
+        Manager.Inventory.InitItem();
+        EquipmentStatModifier();
         StartCoroutine(RecoverHealthPoint());
     }
 
@@ -141,6 +145,22 @@ public class Player : MonoBehaviour, IDamageable
         Gold -= amount;
     }
 
+    public void EquipmentStatModifier()
+    {
+        retentionEffect = 0;
+        equipStat = 0;
+        foreach (var item in Manager.Inventory.itemDataBase.ItemDB)
+        {
+            retentionEffect += item.retentionEffect + item.reinforceEffect * item.level;
+        }
+        var filteredEquipItem = Manager.Inventory.itemDataBase.ItemDB.Where(itemdata => itemdata.equipped == true).ToList();
+        foreach (var item in filteredEquipItem)
+        {
+            equipStat += item.equipStat + item.reinforceEquip *item.level;
+        }
+        Debug.Log($"retentionEffect : {retentionEffect}");
+        Debug.Log($"equipStat : {equipStat}");
+    }
     #endregion
 
     private void FixedUpdate()
@@ -174,12 +194,12 @@ public class Player : MonoBehaviour, IDamageable
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = _enemyList[0].transform.position;
         if (Random.Range(1, 10001) < CriticalPercent * 100)
         {
-            testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage + (long)(Damage * CriticalDamage);
+            testProjectile.GetComponent<PlayerProjectileHandler>().Damage = (long)(Damage + (Damage * CriticalDamage)*(1 + equipStat / 100) *(1 + retentionEffect / 100)) ;
             Debug.Log("크리티컬 : " + NumUnit.ConvertToString(testProjectile.GetComponent<PlayerProjectileHandler>().Damage));
         }
         else
         {
-            testProjectile.GetComponent<PlayerProjectileHandler>().Damage = Damage;
+            testProjectile.GetComponent<PlayerProjectileHandler>().Damage = (long)(Damage * (1 + equipStat / 100) * (1 + retentionEffect / 100));
             Debug.Log("일반 : " + testProjectile.GetComponent<PlayerProjectileHandler>().Damage);
         }
     }

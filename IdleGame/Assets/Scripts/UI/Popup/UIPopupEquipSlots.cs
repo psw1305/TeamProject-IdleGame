@@ -2,11 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-enum ButtonLockState
-{
-    UnLock,
-    Lock
-}
+
 public class UIPopupEquipSlots : MonoBehaviour
 {
     private int _itemID;
@@ -21,6 +17,8 @@ public class UIPopupEquipSlots : MonoBehaviour
     private float _reinforceEffect;
     private bool _equipped;
 
+    private bool _canEquip;
+
     public int ItemID => _itemID;
     public string ItemName => _itemName;
     public string Type => _type;
@@ -32,6 +30,7 @@ public class UIPopupEquipSlots : MonoBehaviour
     public bool Equipped => _equipped;
 
     [SerializeField] private TextMeshProUGUI _lvTxt;
+    [SerializeField] private GameObject _equippdText;
 
     [SerializeField] private Image reinforceProgress;
     [SerializeField] private TextMeshProUGUI reinforceText;
@@ -41,23 +40,37 @@ public class UIPopupEquipSlots : MonoBehaviour
     [SerializeField] private GameObject lockCover;
     [SerializeField] private GameObject lockIcon;
 
-    public SlotData _slotData;
+    private ItemData _itemData;
+
+    public ItemData ItemData => _itemData;
     //아이템 아이콘 세팅, 티어 세팅, 레벨 세팅,게이지 세팅, 언록 여부 
-    public void InitSlotInfo(SlotData data)
+    public void InitSlotInfo(ItemData data)
     {
-        _slotData = data;
-        _itemID = _slotData.itemID;
-        _itemName = _slotData.itemName;
-        _type = _slotData.type;
-        _rarity = _slotData.rarity;
-        _level = _slotData.level;
-        _hasCount = _slotData.hasCount;
-        _equipStat = _slotData.equipStat;
-        _reinforceEquip = _slotData.reinforceEquip * _level;
-        _retentionEffect = _slotData.retentionEffect;
-        _reinforceEffect = _slotData.reinforceEffect * _level;
+        _itemData = data;
+        _itemID = _itemData.itemID;
+        _itemName = _itemData.itemName;
+        _type = _itemData.type;
+        _rarity = _itemData.rarity;
+        _level = _itemData.level;
+        _hasCount = _itemData.hasCount;
+        _equipStat = _itemData.equipStat;
+        _reinforceEquip = _itemData.reinforceEquip * _level;
+        _retentionEffect = _itemData.retentionEffect;
+        _reinforceEffect = _itemData.reinforceEffect * _level;
+        _equipped = _itemData.equipped;
     }
 
+    public void CheckEquipState()
+    {
+        if(_equipped == false)
+        {
+            _equippdText.SetActive(false);
+        }
+        else
+        {
+            _equippdText.SetActive(true);
+        }
+    }
     public void InitSlotUI()
     {
         _lvTxt.text = $"Lv : {_level}";
@@ -76,17 +89,17 @@ public class UIPopupEquipSlots : MonoBehaviour
         {
             lockCover.SetActive(false);
             lockIcon.SetActive(false);
+            _canEquip = true;
             return;
         }
 
         lockCover.SetActive(true);
         lockIcon.SetActive(true);
+        _canEquip = false;
     }
 
     private void SendItemData(PointerEventData eventData)
     {
-        transform.parent.GetComponent<UIPopupEquipContainer>()
-            .itemInfoUI.GetComponent<UIPopupEquipItemInfo>()
-            .SetSelectItemInfo(_slotData);
+        FindObjectOfType<UIPopupEquipment>().SetSelectItemInfo(_itemData);
     }
 }

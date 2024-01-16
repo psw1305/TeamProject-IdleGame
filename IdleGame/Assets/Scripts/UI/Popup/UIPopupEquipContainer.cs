@@ -7,10 +7,7 @@ using UnityEngine.UI;
 
 public class UIPopupEquipContainer : MonoBehaviour
 {
-    private JsonParser invenJsonParser = new JsonParser();
     public List<GameObject> itemSlots = new List<GameObject>();
-    private List<Button> SlotButton = new List<Button>();
-
     public GameObject itemInfoUI;
 
     private void Awake()
@@ -18,16 +15,25 @@ public class UIPopupEquipContainer : MonoBehaviour
         InitSlot();
     }
 
+
+    //JSON에서 파싱한 아이템 개수 만큼 슬롯을 생성합니다.
     private void InitSlot()
     {
-        invenJsonParser.LoadItemDataBase();
-        Debug.Log(invenJsonParser.itemDataBase.ItemDB.Count);
-        foreach (var slots in invenJsonParser.itemDataBase.ItemDB)
+        foreach (ItemData itemData in Manager.Inventory.itemDataBase.ItemDB)
         {
             GameObject slot = Manager.Resource.InstantiatePrefab("Img_ItemSlot", gameObject.transform);
-            
-            slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(slots);
+            itemSlots.Add(slot);
+            slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
             slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();
+            slot.GetComponent<UIPopupEquipSlots>().CheckEquipState();
+        }
+    }
+    //슬롯에 장착 여부를 춫력하기 위한 메서드
+    public void SetSlotEquipUI()
+    {
+        foreach(var slot in itemSlots)
+        {
+            slot.GetComponent<UIPopupEquipSlots>().CheckEquipState();
         }
     }
 

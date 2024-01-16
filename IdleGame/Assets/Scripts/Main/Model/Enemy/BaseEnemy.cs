@@ -140,7 +140,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {        
         AmountDamage(Damage);
         FloatingDamage(new Vector3(0, 0.05f, 0), Damage);
-        Debug.Log($"{gameObject.name} : {_currentHP}");
+        //Debug.Log($"{gameObject.name} : {_currentHP}");
     }
 
     public void FloatingDamage(Vector3 position, long Damage)
