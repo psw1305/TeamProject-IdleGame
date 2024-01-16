@@ -14,6 +14,7 @@ public class GameManager
     {
         var playerClone = Manager.Resource.InstantiatePrefab("PlayerFrame");
         Player = playerClone.GetComponent<Player>();
+        Player.Initialize();
     }
 
     #endregion

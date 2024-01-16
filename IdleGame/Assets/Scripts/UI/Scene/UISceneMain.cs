@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
@@ -129,11 +130,11 @@ public class UISceneMain : UIScene
 
     private void SetEvents()
     {
-        _btnStatUp_Damage.gameObject.SetEvent(UIEventType.Click, OnDamageUp);
-        _btnStatUp_HP.gameObject.SetEvent(UIEventType.Click, OnHealthUp);
+        _btnStatUp_Damage.gameObject.SetEvent(UIEventType.Click, OnAttackDamageUp);
+        _btnStatUp_HP.gameObject.SetEvent(UIEventType.Click, OnHpUp);
         _btnStat_AttackSpeed.gameObject.SetEvent(UIEventType.Click, OnAttackSpeedUp);
-        _btnStat_RecoverHP.gameObject.SetEvent(UIEventType.Click, OnRecoverHPUp);
-        _btnStat_CriticalPercent.gameObject.SetEvent(UIEventType.Click, OnCriticalPercentUp);
+        _btnStat_RecoverHP.gameObject.SetEvent(UIEventType.Click, OnHpRecoverUp);
+        _btnStat_CriticalPercent.gameObject.SetEvent(UIEventType.Click, OnCriticalChanceUp);
         _btnStat_CriticalDamage.gameObject.SetEvent(UIEventType.Click, OnCriticalDamageUp);
 
         _btnGameSpeedUp.gameObject.SetEvent(UIEventType.Click, OnGameSpeedUp);
@@ -146,165 +147,52 @@ public class UISceneMain : UIScene
 
     private void SetStatData()
     {
-        _txtStat_Damage.text = _player.Damage.ToString();
-        _txtLv_Damage.text = _player.DamageInfo.Level.ToString();
-        _txtPayGold_Damage.text = _player.DamageInfo.UpgradeCost.ToString();
-                        
-        _txtStat_HP.text = _player.HP.ToString();
-        _txtLv_HP.text = _player.HPInfo.Level.ToString();
-        _txtPayGold_HP.text = _player.HPInfo.UpgradeCost.ToString();
+        SetStatText(_txtStat_Damage, _txtLv_Damage, _txtPayGold_Damage, _player.AttackDamage, _player.UpgradeAttackDamage);
+        SetStatText(_txtStat_HP, _txtLv_HP, _txtPayGold_HP, _player.Hp, _player.UpgradeHp);
+        SetStatText(_txtStat_AttackSpeed, _txtLv_AttackSpeed, _txtPayGold_AttackSpeed, _player.AttackSpeed, _player.UpgradeAttackSpeed);
+        SetStatText(_txtStat_RecoverHP, _txtLv_RecoverHP, _txtPayGold_RecoverHP, _player.HpRecovery, _player.UpgradeHpRecovery);
+        SetStatText(_txtStat_CriticalPercent, _txtLv_CriticalPercent, _txtPayGold_CriticalPercent, _player.CriticalChance, _player.UpgradeCriticalChance);
+        SetStatText(_txtStat_CriticalDamage, _txtLv_CriticalDamage, _txtPayGold_CriticalDamage, _player.CriticalDamage, _player.UpgradeCriticalDamage);
 
-        _txtStat_AttackSpeed.text = _player.AttackSpeed.ToString();
-        _txtLv_AttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
-        _txtPayGold_AttackSpeed.text = _player.AttackSpeedInfo.UpgradeCost.ToString();
-
-        _txtStat_RecoverHP.text = _player.RecoverHP.ToString();
-        _txtLv_RecoverHP.text = _player.RecoverHPInfo.Level.ToString();
-        _txtPayGold_RecoverHP.text = _player.RecoverHPInfo.UpgradeCost.ToString();
-
-        _txtStat_CriticalPercent.text = _player.CriticalPercent.ToString();
-        _txtLv_CriticalPercent.text = _player.CriticalPercentInfo.Level.ToString();
-        _txtPayGold_CriticalPercent.text = _player.CriticalPercentInfo.UpgradeCost.ToString();
-
-        _txtStat_CriticalDamage.text = _player.CriticalDamage.ToString();
-        _txtLv_CriticalDamage.text = _player.CriticalDamageInfo.Level.ToString();
-        _txtPayGold_CriticalDamage.text = _player.CriticalDamageInfo.UpgradeCost.ToString();
-
-        //HUD UI
+        // HUD UI
         _txtGold.text = _player.Gold.ToString();
-        _txtJewel.text = _player.Jewel.ToString();
+        _txtJewel.text = _player.Gems.ToString();
         _txtStage.text = ($"{Manager.Stage.CurrentStage} - {Manager.Stage.StageProgress}");
 
-        //TODO : 퀘스트 UI 텍스트 초기화 설정
-
-        //Stage Button Init
+        // Stage Button Init
         Manager.Stage.SetRetryBossButton(_btnBoss);
+    }
+
+    private void SetStatText(TextMeshProUGUI statText, TextMeshProUGUI levelText, TextMeshProUGUI costText, float statValue, UpgradeInfo upgradeInfo)
+    {
+        statText.text = statValue.ToString();
+        levelText.text = $"Lv {upgradeInfo.Level}";
+        costText.text = upgradeInfo.UpgradeCost.ToString();
     }
 
     #endregion
 
     #region Button Events
 
-    private void OnDamageUp(PointerEventData eventData)
+    private void OnHpUp(PointerEventData eventData) => UpgradeStat(_player.UpgradeHp, _player.Hp, _txtStat_HP, _txtLv_HP, _txtPayGold_HP, () => _player.HealthUp(10));
+    private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat(_player.UpgradeHpRecovery, _player.HpRecovery, _txtStat_RecoverHP, _txtLv_RecoverHP, _txtPayGold_RecoverHP, () => _player.HealthRecoveryUp(10));
+    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat(_player.UpgradeAttackDamage, _player.AttackDamage, _txtStat_Damage, _txtLv_Damage, _txtPayGold_Damage, () => _player.AttackDamageUp(10));
+    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat(_player.UpgradeAttackSpeed, _player.AttackSpeed, _txtStat_AttackSpeed, _txtLv_AttackSpeed, _txtPayGold_AttackSpeed, () => _player.AttackSpeedUp(0.01f));
+    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat(_player.UpgradeCriticalChance, _player.CriticalChance, _txtStat_CriticalPercent, _txtLv_CriticalPercent, _txtPayGold_CriticalPercent, () => _player.CriticalChanceUp(0.1f));
+    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat(_player.UpgradeCriticalDamage, _player.CriticalDamage, _txtStat_CriticalDamage, _txtLv_CriticalDamage, _txtPayGold_CriticalDamage, () => _player.CriticalDamageUp(0.1f));
+
+    private void UpgradeStat(UpgradeInfo upgradeInfo, float statValue, TextMeshProUGUI statText, TextMeshProUGUI levelText, TextMeshProUGUI costText, UnityAction upgrade)
     {
-        if (_player.Gold < _player.DamageInfo.UpgradeCost)
-        {
-            Debug.Log("Damage_돈이 모자랍니다.");
-        }
-        else
-        {
-            Debug.Log("DamageUp + 10");
-            //플레이어 공격력 증가
-            _player.DamageUp(10);
-            _txtStat_Damage.text = _player.Damage.ToString();
+        if (_player.Gold < upgradeInfo.UpgradeCost) return;
 
+        UseGold(upgradeInfo.UpgradeCost);
+        upgradeInfo.SetModifier(1, 40);
 
-            UseGold(_player.DamageInfo.UpgradeCost);
-            _player.DamageInfo.SetModifier(1, 50);
-            _txtLv_Damage.text = _player.DamageInfo.Level.ToString();
-            _txtPayGold_Damage.text = _player.DamageInfo.UpgradeCost.ToString();
-        }
-    }
+        statText.text = statValue.ToString();
+        levelText.text = $"Lv {upgradeInfo.Level}";
+        costText.text = upgradeInfo.UpgradeCost.ToString();
 
-    private void OnHealthUp(PointerEventData eventData)
-    {
-        if (_player.Gold < _player.HPInfo.UpgradeCost)
-        {
-            Debug.Log("HP_돈이 모자랍니다.");
-        }
-        else
-        {
-            Debug.Log("HealthUp + 10");
-            //플레이어 체력 증가
-            _player.HpUp(10);
-            _txtStat_HP.text = _player.HP.ToString();
-
-
-            UseGold(_player.HPInfo.UpgradeCost);
-            _player.HPInfo.SetModifier(1, 40);
-            _txtLv_HP.text = _player.HPInfo.Level.ToString();
-            _txtPayGold_HP.text = _player.HPInfo.UpgradeCost.ToString();
-        }
-    }
-
-    private void OnAttackSpeedUp(PointerEventData eventData)
-    {
-        if (_player.Gold < _player.AttackSpeedInfo.UpgradeCost)
-        {
-            Debug.Log("AttackSpeed_돈이 모자랍니다.");
-        }
-        else
-        {
-            Debug.Log("AttackSpeed + 0.01f");
-            //플레이어 공격 속도 증가
-            _player.AttackSpeedUp(0.01f);
-            _txtStat_AttackSpeed.text = _player.AttackSpeed.ToString();
-
-            UseGold(_player.AttackSpeedInfo.UpgradeCost);
-            _player.AttackSpeedInfo.SetModifier(1, 5);
-            _txtLv_AttackSpeed.text = _player.AttackSpeedInfo.Level.ToString();
-            _txtPayGold_AttackSpeed.text = _player.AttackSpeedInfo.UpgradeCost.ToString();
-        }
-    }
-
-    private void OnRecoverHPUp(PointerEventData eventData)
-    {
-        if (_player.Gold < _player.RecoverHPInfo.UpgradeCost)
-        {
-            Debug.Log("RecoverHP_돈이 모자랍니다.");
-        }
-        else
-        {
-            Debug.Log("RecoverHP + 10");
-            //플레이어 회복 속도 증가
-            _player.RecoverHPUp(10);
-            _txtStat_RecoverHP.text = _player.RecoverHP.ToString();
-
-            UseGold(_player.RecoverHPInfo.UpgradeCost);
-            _player.RecoverHPInfo.SetModifier(1, 40);
-            _txtLv_RecoverHP.text = _player.RecoverHPInfo.Level.ToString();
-            _txtPayGold_RecoverHP.text = _player.RecoverHPInfo.UpgradeCost.ToString();
-        }
-    }
-
-    private void OnCriticalPercentUp(PointerEventData eventData)
-    {
-        if (_player.Gold < _player.CriticalPercentInfo.UpgradeCost)
-        {
-            Debug.Log("CriticalPercent_돈이 모자랍니다.");
-        }
-        else
-        {
-            Debug.Log("CriticalPercent + 10");
-            //플레이어 회복 속도 증가
-            _player.CriticalPercentUp(0.1f);
-            _txtStat_CriticalPercent.text = _player.CriticalPercent.ToString();
-
-            UseGold(_player.CriticalPercentInfo.UpgradeCost);
-            _player.CriticalPercentInfo.SetModifier(1, 40);
-            _txtLv_CriticalPercent.text = _player.CriticalPercentInfo.Level.ToString();
-            _txtPayGold_CriticalPercent.text = _player.CriticalPercentInfo.UpgradeCost.ToString();
-        }
-    }
-    
-    private void OnCriticalDamageUp(PointerEventData eventData)
-    {
-        if (_player.Gold < _player.CriticalDamageInfo.UpgradeCost)
-        {
-            Debug.Log("CriticalDamage_돈이 모자랍니다.");
-        }
-        else
-        {
-            Debug.Log("CriticalDamage + 10");
-            //플레이어 회복 속도 증가
-            _player.CriticalDamageUp(0.1f);
-            _txtStat_CriticalDamage.text = _player.CriticalDamage.ToString();
-
-            UseGold(_player.CriticalDamageInfo.UpgradeCost);
-            _player.CriticalDamageInfo.SetModifier(1, 40);
-            _txtLv_CriticalDamage.text = _player.CriticalDamageInfo.Level.ToString();
-            _txtPayGold_CriticalDamage.text = _player.CriticalDamageInfo.UpgradeCost.ToString();
-        }
+        upgrade?.Invoke();
     }
 
     private void OnBossStage(PointerEventData eventData)
@@ -343,12 +231,12 @@ public class UISceneMain : UIScene
 
     public void DisplayJewel()
     {
-        _txtJewel.text = _player.Jewel.ToString();
+        _txtJewel.text = _player.Gems.ToString();
     }
 
     private void UseGold(long amount)
     {
-        _player.UseGold(amount);
+        _player.UsedGold(amount);
         DisplayGold();
     }
 

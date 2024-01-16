@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4821970069733305254}
   - component: {fileID: 8734074001223027978}
   m_Layer: 5
-  m_Name: HPBG
+  m_Name: Hp Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2934768811183561685}
   - component: {fileID: 4186754682190895459}
   m_Layer: 0
-  m_Name: undead_110
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,9 +169,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7439222623320363179}
-  - component: {fileID: 5395698594513558487}
   - component: {fileID: 1637531026307754313}
   - component: {fileID: 7121881572504259846}
+  - component: {fileID: 5395698594513558487}
+  - component: {fileID: 7920778997282225395}
   m_Layer: 6
   m_Name: PlayerFrame
   m_TagString: Player
@@ -197,21 +198,6 @@ Transform:
   - {fileID: 3200242588369661820}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5395698594513558487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5571000953013123022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3fd25ffeb1da804b89c048df19ea97a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProjectilePoint: {fileID: 8684619094005225937}
-  HPGauge: {fileID: 4923252188006877486}
-  _enemyList: []
 --- !u!50 &1637531026307754313
 Rigidbody2D:
   serializedVersion: 4
@@ -284,6 +270,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5395698594513558487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571000953013123022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fd25ffeb1da804b89c048df19ea97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectilePoint: {fileID: 8684619094005225937}
+  _enemyList: []
+--- !u!114 &7920778997282225395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571000953013123022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909b3092a00a8864c9a459ca474a01d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBar: {fileID: 4923252188006877486}
 --- !u!1 &6244003762879629884
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +340,7 @@ GameObject:
   - component: {fileID: 2256731545954676632}
   - component: {fileID: 4923252188006877486}
   m_Layer: 5
-  m_Name: HPGauge
+  m_Name: Hp Bar Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,7 +416,7 @@ GameObject:
   - component: {fileID: 6510271869109983165}
   - component: {fileID: 8739594109001366363}
   m_Layer: 5
-  m_Name: PlayerUICanv
+  m_Name: UI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
