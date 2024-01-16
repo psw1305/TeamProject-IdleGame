@@ -1,0 +1,56 @@
+{
+    "ItemDB": [
+      {
+        "itemID": 10001,
+        "itemName": "나무 검",
+        "type": "weapon",
+        "rarity": "common",
+        "level": 1,
+        "hasCount": 1,
+        "equipStat": 10.0,
+        "reinforceEquip": 0.5,
+        "retentionEffect": 2.0,
+        "reinforceEffect": 0.2,
+        "equipped": false
+      },
+      {
+        "itemID": 10002,
+        "itemName": "구리 검",
+        "type": "weapon",
+        "rarity": "rare",
+        "level": 7,
+        "hasCount": 1,
+        "equipStat": 20.0,
+        "reinforceEquip": 0.6,
+        "retentionEffect": 3.0,
+        "reinforceEffect": 0.3,
+        "equipped": false
+      },
+      {
+        "itemID": 10003,
+        "itemName": "강철 검",
+        "type": "weapon",
+        "rarity": "eqic",
+        "level": 1,
+        "hasCount": 0,
+        "equipStat": 40.0,
+        "reinforceEquip": 0.7,
+        "retentionEffect": 4.0,
+        "reinforceEffect": 0.4,
+        "equipped": false
+      },
+      {
+        "itemID": 10004,
+        "itemName": "다이아 검",
+        "type": "weapon",
+        "rarity": "legendary",
+        "level": 1,
+        "hasCount": 0,
+        "equipStat": 60,
+        "reinforceEquip": 0.8,
+        "retentionEffect": 5.0,
+        "reinforceEffect": 0.5,
+        "equipped": false
+      }
+    ]
+  }
