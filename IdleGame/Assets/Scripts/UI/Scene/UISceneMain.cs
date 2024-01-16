@@ -17,6 +17,7 @@ public class UISceneMain : UIScene
 
     private Button _btnGameSpeedUp;
     private Button _btnOption;
+    private Button _btnQuest;
 
     private Button _btnBoss;
     private Button _btnEquipment;
@@ -48,6 +49,10 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI _txtGold;
     private TextMeshProUGUI _txtJewel;
     private TextMeshProUGUI _txtStage;
+
+    private TextMeshProUGUI _txtQuestNum;
+    private TextMeshProUGUI _txtQuestObjective;
+    private TextMeshProUGUI _textQuestReward;
 
     #endregion
 
@@ -98,6 +103,10 @@ public class UISceneMain : UIScene
         _txtGold = GetUI<TextMeshProUGUI>("Txt_Gold");
         _txtJewel = GetUI<TextMeshProUGUI>("Txt_Jewel");
         _txtStage = GetUI<TextMeshProUGUI>("Txt_Stage");
+
+        _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
+        _txtQuestObjective = GetUI<TextMeshProUGUI>("Txt_QuestObjective");
+        _textQuestReward = GetUI<TextMeshProUGUI>("Txt_QuestReward");
     }
 
     private void SetButtons()
@@ -112,6 +121,7 @@ public class UISceneMain : UIScene
 
         _btnGameSpeedUp = GetUI<Button>("Btn_Plain_GameSpeedUP");
         _btnOption = GetUI<Button>("Btn_Plain_Option");
+        _btnQuest = GetUI<Button>("Image_HUD_Quest");
 
         _btnBoss = GetUI<Button>("Btn_Boss");
         _btnEquipment = GetUI<Button>("Btn_Equipment");
@@ -128,6 +138,7 @@ public class UISceneMain : UIScene
 
         _btnGameSpeedUp.gameObject.SetEvent(UIEventType.Click, OnGameSpeedUp);
         _btnOption.gameObject.SetEvent(UIEventType.Click, OnOption);
+        _btnQuest.gameObject.SetEvent(UIEventType.Click, OnQuest);
 
         _btnBoss.gameObject.SetEvent(UIEventType.Click, OnBossStage);
         _btnEquipment.gameObject.SetEvent(UIEventType.Click, OnEquipment);
@@ -162,7 +173,9 @@ public class UISceneMain : UIScene
         //HUD UI
         _txtGold.text = _player.Gold.ToString();
         _txtJewel.text = _player.Jewel.ToString();
-        _txtStage.text = ($"{Manager.Stage.CurrentStage.ToString()} - {Manager.Stage.StageProgress.ToString()}");
+        _txtStage.text = ($"{Manager.Stage.CurrentStage} - {Manager.Stage.StageProgress}");
+
+        //TODO : 퀘스트 UI 텍스트 초기화 설정
 
         //Stage Button Init
         Manager.Stage.SetRetryBossButton(_btnBoss);
@@ -312,6 +325,11 @@ public class UISceneMain : UIScene
     private void OnOption(PointerEventData eventData)
     {
         Debug.Log("옵션 버튼"); // 버튼 작동 테스트
+    }
+    
+    private void OnQuest(PointerEventData eventData)
+    {
+        Debug.Log("퀘스트 버튼"); // 버튼 작동 테스트
     }
 
     #endregion
