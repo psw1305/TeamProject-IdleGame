@@ -1,15 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum QuestType
-{
-    DamageUp,
-    HPUp,    
-    DefeatEnemy
-    //ItemGamble
-    //StageClear
-}
-
 public class Quest : MonoBehaviour
 {
     private QuestBlueprint _questBlueprint;
