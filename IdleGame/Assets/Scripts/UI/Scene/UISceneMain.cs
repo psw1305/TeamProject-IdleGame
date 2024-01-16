@@ -14,6 +14,10 @@ public class UISceneMain : UIScene
     private Button _btnStat_RecoverHP;
     private Button _btnStat_CriticalPercent;
     private Button _btnStat_CriticalDamage;
+
+    private Button _btnGameSpeedUp;
+    private Button _btnOption;
+
     private Button _btnBoss;
     private Button _btnEquipment;
 
@@ -42,6 +46,7 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI _txtLv_CriticalDamage;
 
     private TextMeshProUGUI _txtGold;
+    private TextMeshProUGUI _txtJewel;
     private TextMeshProUGUI _txtStage;
 
     #endregion
@@ -91,6 +96,7 @@ public class UISceneMain : UIScene
 
         // HUD UI
         _txtGold = GetUI<TextMeshProUGUI>("Txt_Gold");
+        _txtJewel = GetUI<TextMeshProUGUI>("Txt_Jewel");
         _txtStage = GetUI<TextMeshProUGUI>("Txt_Stage");
     }
 
@@ -104,6 +110,9 @@ public class UISceneMain : UIScene
         _btnStat_CriticalPercent = GetUI<Button>("Btn_StatUp_CriticalPercent");
         _btnStat_CriticalDamage = GetUI<Button>("Btn_StatUp_CriticalDamage");
 
+        _btnGameSpeedUp = GetUI<Button>("Btn_Plain_GameSpeedUP");
+        _btnOption = GetUI<Button>("Btn_Plain_Option");
+
         _btnBoss = GetUI<Button>("Btn_Boss");
         _btnEquipment = GetUI<Button>("Btn_Equipment");
     }
@@ -116,6 +125,9 @@ public class UISceneMain : UIScene
         _btnStat_RecoverHP.gameObject.SetEvent(UIEventType.Click, OnRecoverHPUp);
         _btnStat_CriticalPercent.gameObject.SetEvent(UIEventType.Click, OnCriticalPercentUp);
         _btnStat_CriticalDamage.gameObject.SetEvent(UIEventType.Click, OnCriticalDamageUp);
+
+        _btnGameSpeedUp.gameObject.SetEvent(UIEventType.Click, OnGameSpeedUp);
+        _btnOption.gameObject.SetEvent(UIEventType.Click, OnOption);
 
         _btnBoss.gameObject.SetEvent(UIEventType.Click, OnBossStage);
         _btnEquipment.gameObject.SetEvent(UIEventType.Click, OnEquipment);
@@ -149,6 +161,7 @@ public class UISceneMain : UIScene
 
         //HUD UI
         _txtGold.text = _player.Gold.ToString();
+        _txtJewel.text = _player.Jewel.ToString();
         _txtStage.text = ($"{Manager.Stage.CurrentStage.ToString()} - {Manager.Stage.StageProgress.ToString()}");
 
         //Stage Button Init
@@ -291,13 +304,28 @@ public class UISceneMain : UIScene
         Manager.UI.ShowPopup<UIPopupEquipment>();
     }
 
+    private void OnGameSpeedUp(PointerEventData eventData)
+    {
+        Debug.Log("게임 스피드 업"); // 버튼 작동 테스트
+    }
+
+    private void OnOption(PointerEventData eventData)
+    {
+        Debug.Log("옵션 버튼"); // 버튼 작동 테스트
+    }
+
     #endregion
 
-    #region Gold
+    #region Currency
 
     public void DisplayGold()
     {
         _txtGold.text = _player.Gold.ToString();
+    }
+
+    public void DisplayJewel()
+    {
+        _txtJewel.text = _player.Jewel.ToString();
     }
 
     private void UseGold(long amount)

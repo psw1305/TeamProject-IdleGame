@@ -54,6 +54,7 @@ public class Player : MonoBehaviour, IDamageable
     public float Range { get; private set; }
     public int Speed { get; private set; }
     public long Gold { get; private set; }
+    public int Jewel { get; private set; }
 
     private Coroutine _attackCoroutine;
     public UpgradeInfo DamageInfo;
