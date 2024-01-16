@@ -26,7 +26,7 @@ public class UIPopupIdleRewardPopup : UIPopup
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        _checkBtn = SetButtonEvent("Option_Notice_Btn", UIEventType.Click, IdleRewardCheck);
+        _checkBtn = SetButtonEvent("Common_Button_Check", UIEventType.Click, IdleRewardCheck);
     }
 
     #endregion
