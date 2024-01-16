@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIBase : MonoBehaviour
 {
@@ -32,15 +34,15 @@ public class UIBase : MonoBehaviour
     #region Binding
 
     /// <summary>
-    /// UnityEngine.Object Å¸ÀÔÀÇ ÄÄÆ÷³ÍÆ®µéÀ» ºÎ¸ğ ¿ÀºêÁ§Æ®ÀÇ ÀÚ½Äµé Áß¿¡¼­ Ã£¾Æ¼­ µñ¼Å³Ê¸®¿¡ ÀúÀå
+    /// UnityEngine.Object íƒ€ì…ì˜ ì»´í¬ë„ŒíŠ¸ë“¤ì„ ë¶€ëª¨ ì˜¤ë¸Œì íŠ¸ì˜ ìì‹ë“¤ ì¤‘ì—ì„œ ì°¾ì•„ì„œ ë”•ì…”ë„ˆë¦¬ì— ì €ì¥
     /// </summary>
-    /// <typeparam name="T">ÄÄÆ÷³ÍÆ®</typeparam>
+    /// <typeparam name="T">ì»´í¬ë„ŒíŠ¸</typeparam>
     public void Binding<T>(GameObject parent) where T : UnityEngine.Object
     {
         T[] objects = parent.GetComponentsInChildren<T>(true);
 
-        // Áßº¹µÈ ÀÌ¸§À» °¡Áø ÄÄÆ÷³ÍÆ®µéÀ» ÇÏ³ªÀÇ Å°·Î ¹­±â
-        // °¢ ±×·ì¿¡¼­ Ã¹ ¹øÂ°·Î µîÀåÇÏ´Â ÄÄÆ÷³ÍÆ®¸¦ ¼±ÅÃÇÏ¿© µñ¼Å³Ê¸®¿¡ ÀúÀå
+        // ì¤‘ë³µëœ ì´ë¦„ì„ ê°€ì§„ ì»´í¬ë„ŒíŠ¸ë“¤ì„ í•˜ë‚˜ì˜ í‚¤ë¡œ ë¬¶ê¸°
+        // ê° ê·¸ë£¹ì—ì„œ ì²« ë²ˆì§¸ë¡œ ë“±ì¥í•˜ëŠ” ì»´í¬ë„ŒíŠ¸ë¥¼ ì„ íƒí•˜ì—¬ ë”•ì…”ë„ˆë¦¬ì— ì €ì¥
         Dictionary<string, UnityEngine.Object> objectDict = objects
             .GroupBy(comp => comp.name)
             .ToDictionary(group => group.Key, group => group.First() as UnityEngine.Object);
@@ -50,26 +52,26 @@ public class UIBase : MonoBehaviour
     }
 
     /// <summary>
-    /// parent ³»¿¡¼­ ÄÄÆ÷³ÍÆ®ÀÇ ÀÌ¸§°ú ÀÏÄ¡ÇÏ´Â ÄÄÆ÷³ÍÆ®°¡ ¾ø´Â °æ¿ì, 
-    /// ÇØ´ç ÀÚ½ÄÀ» Ã£¾Æ¼­ _objects µñ¼Å³Ê¸®¿¡ ÀÖ´Â ÄÄÆ÷³ÍÆ®µéÀ» ÇÒ´ç
+    /// parent ë‚´ì—ì„œ ì»´í¬ë„ŒíŠ¸ì˜ ì´ë¦„ê³¼ ì¼ì¹˜í•˜ëŠ” ì»´í¬ë„ŒíŠ¸ê°€ ì—†ëŠ” ê²½ìš°, 
+    /// í•´ë‹¹ ìì‹ì„ ì°¾ì•„ì„œ _objects ë”•ì…”ë„ˆë¦¬ì— ìˆëŠ” ì»´í¬ë„ŒíŠ¸ë“¤ì„ í• ë‹¹
     /// </summary>
-    /// <typeparam name="T">ÄÄÆ÷³ÍÆ®</typeparam>
+    /// <typeparam name="T">ì»´í¬ë„ŒíŠ¸</typeparam>
     private void AssignComponentsDirectChild<T>(GameObject parent) where T : UnityEngine.Object
     {
         if (!_objects.TryGetValue(typeof(T), out var objects)) return;
 
-        // °¢ ÄÄÆ÷³ÍÆ®¿¡ ´ëÇØ ¹İº¹
+        // ê° ì»´í¬ë„ŒíŠ¸ì— ëŒ€í•´ ë°˜ë³µ
         foreach (var key in objects.Keys.ToList())
         {
-            // ÀÌ¹Ì ÇÒ´çµÈ °æ¿ì ½ºÅµ
+            // ì´ë¯¸ í• ë‹¹ëœ ê²½ìš° ìŠ¤í‚µ
             if (objects[key] != null) continue;
 
-            // GameObject Å¸ÀÔÀÎÁö È®ÀÎ ÈÄ, ÀûÀıÇÑ FindComponent ¸Ş¼­µå È£Ãâ
+            // GameObject íƒ€ì…ì¸ì§€ í™•ì¸ í›„, ì ì ˆí•œ FindComponent ë©”ì„œë“œ í˜¸ì¶œ
             UnityEngine.Object component = typeof(T) == typeof(GameObject)
                 ? FindComponentDirectChild<GameObject>(parent, key)
                 : FindComponentDirectChild<T>(parent, key);
 
-            // Ã£Àº ÄÄÆ÷³ÍÆ®°¡ nullÀÌ ¾Æ´Ï¶ó¸é ÇÒ´çÇÏ°í, ±×·¸Áö ¾Ê´Ù¸é ½ÇÆĞ ·Î±× Ãâ·Â
+            // ì°¾ì€ ì»´í¬ë„ŒíŠ¸ê°€ nullì´ ì•„ë‹ˆë¼ë©´ í• ë‹¹í•˜ê³ , ê·¸ë ‡ì§€ ì•Šë‹¤ë©´ ì‹¤íŒ¨ ë¡œê·¸ ì¶œë ¥
             if (component != null)
             {
                 objects[key] = component;
@@ -82,10 +84,10 @@ public class UIBase : MonoBehaviour
     }
 
     /// <summary>
-    /// Á÷°è ÀÚ½Äµé Áß¿¡¼­ ÀÌ¸§ÀÌ Æ¯Á¤ÇÑ Á¶°Ç°ú ÀÏÄ¡ÇÏ´Â ÄÄÆ÷³ÍÆ® ¹İÈ¯
+    /// ì§ê³„ ìì‹ë“¤ ì¤‘ì—ì„œ ì´ë¦„ì´ íŠ¹ì •í•œ ì¡°ê±´ê³¼ ì¼ì¹˜í•˜ëŠ” ì»´í¬ë„ŒíŠ¸ ë°˜í™˜
     /// </summary>
-    /// <typeparam name="T">ÄÄÆ÷³ÍÆ®</typeparam>
-    /// <param name="name">ÁÖ¾îÁø ÀÌ¸§°ú ÀÏÄ¡ÇÏ´Â Ã¹Â° ÀÚ½Ä ÀÌ¸§</param>
+    /// <typeparam name="T">ì»´í¬ë„ŒíŠ¸</typeparam>
+    /// <param name="name">ì£¼ì–´ì§„ ì´ë¦„ê³¼ ì¼ì¹˜í•˜ëŠ” ì²«ì§¸ ìì‹ ì´ë¦„</param>
     private T FindComponentDirectChild<T>(GameObject parent, string name) where T : UnityEngine.Object
     {
         return parent.transform
@@ -95,9 +97,9 @@ public class UIBase : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇÔ¼ö°¡ ÀúÀåµÈ µñ¼Å³Ê¸®¿¡¼­ Æ¯Á¤ Å¸ÀÔ°ú ÀÌ¸§¿¡ ÇØ´çÇÏ´Â ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿À´Â ¿ªÇÒ
+    /// í•¨ìˆ˜ê°€ ì €ì¥ëœ ë”•ì…”ë„ˆë¦¬ì—ì„œ íŠ¹ì • íƒ€ì…ê³¼ ì´ë¦„ì— í•´ë‹¹í•˜ëŠ” ì»´í¬ë„ŒíŠ¸ë¥¼ ê°€ì ¸ì˜¤ëŠ” ì—­í• 
     /// </summary>
-    /// <typeparam name="T">ÄÄÆ÷³ÍÆ®</typeparam>
+    /// <typeparam name="T">ì»´í¬ë„ŒíŠ¸</typeparam>
     public T GetComponent<T>(string componentName) where T : UnityEngine.Object
     {
         if (_objects.TryGetValue(typeof(T), out var components) && components.TryGetValue(componentName, out var component))
@@ -106,6 +108,21 @@ public class UIBase : MonoBehaviour
         }
 
         return null;
+    }
+
+    #endregion
+
+
+    #region Action Binding
+
+    /// <summary>
+    /// ë²„íŠ¼ì— í•¨ìˆ˜ ì—°ê²°í•˜ê¸°
+    /// </summary>
+    protected Button SetButtonEvent(string buttonName, UIEventType uIEventType, Action<PointerEventData> action)
+    {
+        Button button = GetUI<Button>(buttonName);
+        button.gameObject.SetEvent(uIEventType, action);
+        return button;
     }
 
     #endregion

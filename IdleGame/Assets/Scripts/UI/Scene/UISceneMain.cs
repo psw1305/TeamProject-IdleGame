@@ -324,7 +324,7 @@ public class UISceneMain : UIScene
 
     private void OnOption(PointerEventData eventData)
     {
-        Debug.Log("옵션 버튼"); // 버튼 작동 테스트
+        Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("Option_DropdownPanel");
     }
     
     private void OnQuest(PointerEventData eventData)
