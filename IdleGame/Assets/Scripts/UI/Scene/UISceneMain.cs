@@ -1,20 +1,28 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
 public class UISceneMain : UIScene
 {
-    #region Fields
-    private Player _player;
+    #region Player Fields
 
-    private Button _btnStat_AttackDamage;
-    private Button _btnStat_Hp;
-    private Button _btnStat_AttackSpeed;
-    private Button _btnStat_HpRecovery;
-    private Button _btnStat_CriticalChance;
-    private Button _btnStat_CriticalDamage;
+    private Player player;
+
+    private UIUpgradeStat UpgradeStat_Hp;
+    private UIUpgradeStat UpgradeStat_HpRecovery;
+    private UIUpgradeStat UpgradeStat_AttackDamage;
+    private UIUpgradeStat UpgradeStat_AttackSpeed;
+    private UIUpgradeStat UpgradeStat_CriticalChance;
+    private UIUpgradeStat UpgradeStat_CriticalDamage;
+
+    private TextMeshProUGUI txt_Gold;
+    private TextMeshProUGUI txt_Gems;
+    private TextMeshProUGUI txt_Stage;
+
+    #endregion
+
+    #region Fields
 
     private Button _btnGameSpeedUp;
     private Button _btnOption;
@@ -22,34 +30,6 @@ public class UISceneMain : UIScene
 
     private Button _btnBoss;
     private Button _btnEquipment;
-
-    private TextMeshProUGUI _txtPayGold_Damage;
-    private TextMeshProUGUI _txtStat_Damage;
-    private TextMeshProUGUI _txtLv_Damage;
-
-    private TextMeshProUGUI _txtPayGold_HP;
-    private TextMeshProUGUI _txtStat_HP;
-    private TextMeshProUGUI _txtLv_HP;
-
-    private TextMeshProUGUI _txtPayGold_AttackSpeed;
-    private TextMeshProUGUI _txtStat_AttackSpeed;
-    private TextMeshProUGUI _txtLv_AttackSpeed;
-
-    private TextMeshProUGUI _txtPayGold_RecoverHP;
-    private TextMeshProUGUI _txtStat_RecoverHP;
-    private TextMeshProUGUI _txtLv_RecoverHP;
-
-    private TextMeshProUGUI _txtPayGold_CriticalPercent;
-    private TextMeshProUGUI _txtStat_CriticalPercent;
-    private TextMeshProUGUI _txtLv_CriticalPercent;
-
-    private TextMeshProUGUI _txtPayGold_CriticalDamage;
-    private TextMeshProUGUI _txtStat_CriticalDamage;
-    private TextMeshProUGUI _txtLv_CriticalDamage;
-
-    private TextMeshProUGUI _txtGold;
-    private TextMeshProUGUI _txtJewel;
-    private TextMeshProUGUI _txtStage;
 
     private TextMeshProUGUI _txtQuestNum;
     private TextMeshProUGUI _txtQuestObjective;
@@ -64,44 +44,20 @@ public class UISceneMain : UIScene
         base.Init();
         
         // 여기에 플레이어를 가져와서 데이터를 사용해도 됩니다.
-        _player = Manager.Game.Player;
+        player = Manager.Game.Player;
 
         SetTexts();
         SetButtons();
-        SetStatData();
+        SetUpgradeStats();
+        SetUI();
     }
 
     private void SetTexts()
     {
         SetUI<TextMeshProUGUI>();
-        _txtPayGold_Damage = GetUI<TextMeshProUGUI>("Txt_PayGold_Damage");
-        _txtStat_Damage = GetUI<TextMeshProUGUI>("Txt_Stat_Damage");
-        _txtLv_Damage = GetUI<TextMeshProUGUI>("Txt_Lv_Damage");
-
-        _txtPayGold_HP = GetUI<TextMeshProUGUI>("Txt_PayGold_HP");
-        _txtStat_HP = GetUI<TextMeshProUGUI>("Txt_Stat_HP");
-        _txtLv_HP = GetUI<TextMeshProUGUI>("Txt_Lv_HP");
-
-        _txtPayGold_AttackSpeed = GetUI<TextMeshProUGUI>("Txt_PayGold_AttackSpeed");
-        _txtStat_AttackSpeed = GetUI<TextMeshProUGUI>("Txt_Stat_AttackSpeed");
-        _txtLv_AttackSpeed = GetUI<TextMeshProUGUI>("Txt_Lv_AttackSpeed");
-
-        _txtPayGold_RecoverHP = GetUI<TextMeshProUGUI>("Txt_PayGold_RecoverHP");
-        _txtStat_RecoverHP = GetUI<TextMeshProUGUI>("Txt_Stat_RecoverHP");
-        _txtLv_RecoverHP = GetUI<TextMeshProUGUI>("Txt_Lv_RecoverHP");
-
-        _txtPayGold_CriticalPercent = GetUI<TextMeshProUGUI>("Txt_PayGold_CriticalPercent");
-        _txtStat_CriticalPercent = GetUI<TextMeshProUGUI>("Txt_Stat_CriticalPercent");
-        _txtLv_CriticalPercent = GetUI<TextMeshProUGUI>("Txt_Lv_CriticalPercent");
-
-        _txtPayGold_CriticalDamage = GetUI<TextMeshProUGUI>("Txt_PayGold_CriticalDamage");
-        _txtStat_CriticalDamage = GetUI<TextMeshProUGUI>("Txt_Stat_CriticalDamage");
-        _txtLv_CriticalDamage = GetUI<TextMeshProUGUI>("Txt_Lv_CriticalDamage");
-
-        // HUD UI
-        _txtGold = GetUI<TextMeshProUGUI>("Txt_Gold");
-        _txtJewel = GetUI<TextMeshProUGUI>("Txt_Jewel");
-        _txtStage = GetUI<TextMeshProUGUI>("Txt_Stage");
+        txt_Gold = GetUI<TextMeshProUGUI>("Txt_Gold");
+        txt_Gems = GetUI<TextMeshProUGUI>("Txt_Jewel");
+        txt_Stage = GetUI<TextMeshProUGUI>("Txt_Stage");
 
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
         _txtQuestObjective = GetUI<TextMeshProUGUI>("Txt_QuestObjective");
@@ -111,13 +67,6 @@ public class UISceneMain : UIScene
     private void SetButtons()
     {
         SetUI<Button>();
-        _btnStat_Hp = SetButtonEvent("Btn_StatUp_HP", UIEventType.Click, OnHpUp);
-        _btnStat_HpRecovery = SetButtonEvent("Btn_StatUp_RecoverHP", UIEventType.Click, OnHpRecoverUp);
-        _btnStat_AttackDamage = SetButtonEvent("Btn_StatUp_Damage", UIEventType.Click, OnAttackDamageUp);  
-        _btnStat_AttackSpeed = SetButtonEvent("Btn_StatUp_AttackSpeed", UIEventType.Click, OnAttackSpeedUp);
-        _btnStat_CriticalChance = SetButtonEvent("Btn_StatUp_CriticalPercent", UIEventType.Click, OnCriticalChanceUp);
-        _btnStat_CriticalDamage = SetButtonEvent("Btn_StatUp_CriticalDamage", UIEventType.Click, OnCriticalDamageUp);
-
         _btnGameSpeedUp = SetButtonEvent("Btn_Plain_GameSpeedUP", UIEventType.Click, OnGameSpeedUp);
         _btnOption = SetButtonEvent("Btn_Plain_Option", UIEventType.Click, OnOption);
         _btnQuest = SetButtonEvent("Image_HUD_Quest", UIEventType.Click, OnQuest);
@@ -126,50 +75,45 @@ public class UISceneMain : UIScene
         _btnEquipment = SetButtonEvent("Btn_Equipment", UIEventType.Click, OnEquipment);
     }
 
-    private void SetStatData()
+    private void SetUpgradeStats()
     {
-        SetStatText(_txtStat_Damage, _txtLv_Damage, _txtPayGold_Damage, _player.AttackDamage, _player.AttackDamageInfo);
-        SetStatText(_txtStat_HP, _txtLv_HP, _txtPayGold_HP, _player.Hp, _player.HpInfo);
-        SetStatText(_txtStat_AttackSpeed, _txtLv_AttackSpeed, _txtPayGold_AttackSpeed, _player.AttackSpeed, _player.AttackSpeedInfo);
-        SetStatText(_txtStat_RecoverHP, _txtLv_RecoverHP, _txtPayGold_RecoverHP, _player.HpRecovery, _player.HpRecoveryInfo);
-        SetStatText(_txtStat_CriticalPercent, _txtLv_CriticalPercent, _txtPayGold_CriticalPercent, _player.CriticalChance, _player.CriticalChanceInfo);
-        SetStatText(_txtStat_CriticalDamage, _txtLv_CriticalDamage, _txtPayGold_CriticalDamage, _player.CriticalDamage, _player.CriticalDamageInfo);
+        SetUI<UIUpgradeStat>();
+        UpgradeStat_Hp = GetUI<UIUpgradeStat>("Upgrade_Stat_Hp");
+        UpgradeStat_HpRecovery = GetUI<UIUpgradeStat>("Upgrade_Stat_HpRecovery");
+        UpgradeStat_AttackDamage = GetUI<UIUpgradeStat>("Upgrade_Stat_AttackDamage");
+        UpgradeStat_AttackSpeed = GetUI<UIUpgradeStat>("Upgrade_Stat_AttackSpeed");
+        UpgradeStat_CriticalChance = GetUI<UIUpgradeStat>("Upgrade_Stat_CriticalChance");
+        UpgradeStat_CriticalDamage = GetUI<UIUpgradeStat>("Upgrade_Stat_CriticalDamage");
 
+        UpgradeStat_Hp.SetUpgradeStat(player, player.Hp, OnHpUp);
+        UpgradeStat_HpRecovery.SetUpgradeStat(player, player.HpRecovery, OnHpRecoverUp);
+        UpgradeStat_AttackDamage.SetUpgradeStat(player, player.AttackDamage, OnAttackDamageUp);
+        UpgradeStat_AttackSpeed.SetUpgradeStat(player, player.AttackSpeed, OnAttackSpeedUp);
+        UpgradeStat_CriticalChance.SetUpgradeStat(player, player.CriticalChance, OnCriticalChanceUp);
+        UpgradeStat_CriticalDamage.SetUpgradeStat(player, player.CriticalDamage, OnCriticalDamageUp);
+    }
+
+    private void SetUI()
+    {
         // HUD UI
-        _txtGold.text = _player.Gold.ToString();
-        _txtJewel.text = _player.Gems.ToString();
-        _txtStage.text = ($"{Manager.Stage.CurrentStage} - {Manager.Stage.StageProgress}");
+        txt_Gold.text = player.Gold.ToString();
+        txt_Gems.text = player.Gems.ToString();
+        txt_Stage.text = ($"{Manager.Stage.CurrentStage} - {Manager.Stage.StageProgress}");
 
         // Stage Button Init
         Manager.Stage.SetRetryBossButton(_btnBoss);
-    }
-
-    private void SetStatText(TextMeshProUGUI statText, TextMeshProUGUI levelText, TextMeshProUGUI costText, float statValue, StatInfo upgradeInfo)
-    {
-        statText.text = statValue.ToString();
-        levelText.text = $"Lv {upgradeInfo.Level}";
-        costText.text = upgradeInfo.UpgradeCost.ToString();
     }
 
     #endregion
 
     #region Button Events
 
-    private void OnHpUp(PointerEventData eventData) => UpgradeStat(_player.HpInfo, _player.Hp, _txtStat_HP, _txtLv_HP, _txtPayGold_HP);
-    private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat(_player.HpRecoveryInfo, _player.HpRecovery, _txtStat_RecoverHP, _txtLv_RecoverHP, _txtPayGold_RecoverHP);
-    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat(_player.AttackDamageInfo, _player.AttackDamage, _txtStat_Damage, _txtLv_Damage, _txtPayGold_Damage);
-    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat(_player.AttackSpeedInfo, _player.AttackSpeed, _txtStat_AttackSpeed, _txtLv_AttackSpeed, _txtPayGold_AttackSpeed);
-    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat(_player.CriticalChanceInfo, _player.CriticalChance, _txtStat_CriticalPercent, _txtLv_CriticalPercent, _txtPayGold_CriticalPercent);
-    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat(_player.CriticalDamageInfo, _player.CriticalDamage, _txtStat_CriticalDamage, _txtLv_CriticalDamage, _txtPayGold_CriticalDamage);
-
-    private void UpgradeStat(StatInfo upgradeInfo, float statValue, TextMeshProUGUI statText, TextMeshProUGUI levelText, TextMeshProUGUI costText)
-    {
-        _player.UpgradeStat(upgradeInfo);
-
-        statText.text = statValue.ToString();
-        levelText.text = $"Lv {upgradeInfo.Level}";
-        costText.text = upgradeInfo.UpgradeCost.ToString();
-    }
+    private void OnHpUp(PointerEventData eventData) => UpgradeStat_Hp.UpdateUpgradeStat(player.Hp);
+    private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat_HpRecovery.UpdateUpgradeStat(player.HpRecovery);
+    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat_AttackDamage.UpdateUpgradeStat(player.AttackDamage);
+    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat_AttackSpeed.UpdateUpgradeStat(player.AttackSpeed);
+    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat_CriticalChance.UpdateUpgradeStat(player.CriticalChance);
+    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat_CriticalDamage.UpdateUpgradeStat(player.CriticalDamage);
 
     private void OnBossStage(PointerEventData eventData)
     {
@@ -198,28 +142,27 @@ public class UISceneMain : UIScene
 
     #endregion
 
-    #region Currency
+    #region Update UI
 
-    public void DisplayGold()
+    public void UpdateGold()
     {
-        _txtGold.text = _player.Gold.ToString();
+        txt_Gold.text = player.Gold.ToString();
     }
 
-    public void DisplayJewel()
+    public void UpdateGems()
     {
-        _txtJewel.text = _player.Gems.ToString();
+        txt_Gems.text = player.Gems.ToString();
     }
 
-    private void UseGold(long amount)
+    public void UpdateCurrentStage(string currentStage)
     {
-        _player.UsedGold(amount);
-        DisplayGold();
+        txt_Stage.text = currentStage;
+    }
+
+    public void UpdateButtonEnable()
+    {
+
     }
 
     #endregion
-
-    public void DisplayCurrentStage(string currentStage)
-    {
-        _txtStage.text = currentStage;
-    }
 }

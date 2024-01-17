@@ -1504,11 +1504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867219708794647563, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_text
-      value: CriticalPercent
+      value: CriticalChance
       objectReference: {fileID: 0}
     - target: {fileID: 3514340134512288293, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Icon_CriticalPercent
+      value: Image_Icon_CriticalChance
       objectReference: {fileID: 0}
     - target: {fileID: 3817001169386902427, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1556,7 +1556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690466729055125287, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Btn_StatUp_CriticalPercent
+      value: Btn_StatUp_CriticalChance
       objectReference: {fileID: 0}
     - target: {fileID: 7134629887234663414, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
@@ -1564,7 +1564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740265537761325319, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Btn_Stat_CriticalPercent
+      value: Upgrade_Stat_CriticalChance
       objectReference: {fileID: 0}
     - target: {fileID: 9142929859450289708, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1796,7 +1796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740265537761325319, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Btn_Stat_AttackSpeed
+      value: Upgrade_Stat_AttackSpeed
       objectReference: {fileID: 0}
     - target: {fileID: 9142929859450289708, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2026,7 +2026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740265537761325319, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Btn_Stat_HP
+      value: Upgrade_Stat_Hp
       objectReference: {fileID: 0}
     - target: {fileID: 9142929859450289708, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2256,7 +2256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740265537761325319, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Btn_Stat_RecoverHP
+      value: Upgrade_Stat_HpRecovery
       objectReference: {fileID: 0}
     - target: {fileID: 9142929859450289708, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2812,7 +2812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740265537761325319, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Btn_Stat_CriticalDamage
+      value: Upgrade_Stat_CriticalDamage
       objectReference: {fileID: 0}
     - target: {fileID: 9142929859450289708, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3038,7 +3038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7740265537761325319, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_Name
-      value: Image_Btn_Stat_Damage
+      value: Upgrade_Stat_AttackDamage
       objectReference: {fileID: 0}
     - target: {fileID: 9142929859450289708, guid: ca35ae99d805dd441bf83a9c70a8c1d2, type: 3}
       propertyPath: m_AnchorMax.y
