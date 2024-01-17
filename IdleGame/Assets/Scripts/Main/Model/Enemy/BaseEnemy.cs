@@ -170,7 +170,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
         gameObject.layer = LayerMask.NameToLayer("Enemy");
 
-        Manager.Game.Player.AmountGold(_rewards);
+        Manager.Game.Player.RewardGold(_rewards);
 
         Destroy(gameObject);
     }

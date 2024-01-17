@@ -209,7 +209,7 @@ public class StageManager
 
         // UI에 현재 Stage단계 Display
         UISceneMain uISceneTest = Manager.UI.CurrentScene as UISceneMain; // 변수화 
-        uISceneTest.DisplayCurrentStage($"{CurrentStage} - {StageProgress}");
+        uISceneTest.UpdateCurrentStage($"{CurrentStage} - {StageProgress}");
     }
 
     private void EnemyReset()
