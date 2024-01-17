@@ -51,28 +51,28 @@ public class UIPopupOptionDropdownPanel : UIPopup
         // 임시로 방치 보상 연결
         Manager.UI.ShowPopup<UIPopupIdleRewardPopup>("IdleRewardPopup");
     }
-    private void OnGameInfoPopup(PointerEventData eventData)
-    {
-        // 추후 게임 정보 연결
-        Debug.Log("GameInfo Open");
-    }
 
+    private void OnSettingPopup(PointerEventData eventData)
+    {
+        // 추후 설정 연결
+        // 임시로 상점 - 소환 창 연결
+        Manager.UI.ShowPopup<UIPopupShopSummon>("Shop_Summon");
+    }
+    private void OnMailBoxPopup(PointerEventData eventData)
+    {
+        // 추후 우편함 연결
+        Debug.Log("MailBox Open");
+    }
     private void OnInventoryPopup(PointerEventData eventData)
     {
         // 추후 인벤토리 연결
         Debug.Log("Inventory Open");
     }
 
-    private void OnMailBoxPopup(PointerEventData eventData)
+    private void OnGameInfoPopup(PointerEventData eventData)
     {
-        // 추후 우편함 연결
-        Debug.Log("MailBox Open");
-    }
-
-    private void OnSettingPopup(PointerEventData eventData)
-    {
-        // 추후 설정 연결
-        Debug.Log("Setting Open");
+        // 추후 게임 정보 연결
+        Debug.Log("OnGameInfo Open");
     }
 
     private void ClosePopup(PointerEventData eventData)
