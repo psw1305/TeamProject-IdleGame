@@ -112,7 +112,6 @@ public class UIBase : MonoBehaviour
 
     #endregion
 
-
     #region Action Binding
 
     /// <summary>

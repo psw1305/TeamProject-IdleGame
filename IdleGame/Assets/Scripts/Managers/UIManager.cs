@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +22,7 @@ public class UIManager
         }
     }
     public UIScene CurrentScene { get; private set; }
+    public UIPopup CurrentPopup { get; private set; }
 
     #endregion
 
@@ -70,6 +71,7 @@ public class UIManager
 
         GameObject obj = Manager.Resource.InstantiatePrefab(popupName, UIRoot.transform);
         T popup = Utility.GetOrAddComponent<T>(obj);
+        CurrentPopup = popup;
         popupStack.Push(popup);
 
         return popup;

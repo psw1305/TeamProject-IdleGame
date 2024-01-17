@@ -13,12 +13,19 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Fields
 
-    public UpgradeInfo UpgradeHp;
-    public UpgradeInfo UpgradeHpRecovery;
-    public UpgradeInfo UpgradeAttackDamage;
-    public UpgradeInfo UpgradeAttackSpeed;
-    public UpgradeInfo UpgradeCriticalChance;
-    public UpgradeInfo UpgradeCriticalDamage;
+    //public UpgradeInfo UpgradeHp;
+    //public UpgradeInfo UpgradeHpRecovery;
+    //public UpgradeInfo UpgradeAttackDamage;
+    //public UpgradeInfo UpgradeAttackSpeed;
+    //public UpgradeInfo UpgradeCriticalChance;
+    //public UpgradeInfo UpgradeCriticalDamage;
+
+    public StatInfo HpInfo;
+    public StatInfo HpRecoveryInfo;
+    public StatInfo AttackDamageInfo;
+    public StatInfo AttackSpeedInfo;
+    public StatInfo CriticalChanceInfo;
+    public StatInfo CriticalDamageInfo;
 
     private PlayerView playerView;
     public List<BaseEnemy> enemyList;
@@ -63,12 +70,12 @@ public class Player : MonoBehaviour, IDamageable
         AttackRange = 5;
         MoveSpeed = 100;
 
-        UpgradeHp = new UpgradeInfo(1, 50);
-        UpgradeHpRecovery = new UpgradeInfo(1, 50);
-        UpgradeAttackDamage = new UpgradeInfo(1, 90);
-        UpgradeAttackSpeed = new UpgradeInfo(1, 10);
-        UpgradeCriticalChance = new UpgradeInfo(1, 100);
-        UpgradeCriticalDamage = new UpgradeInfo(1, 100);
+        HpInfo = new StatInfo(1, 50);
+        HpRecoveryInfo = new StatInfo(1, 50);
+        AttackDamageInfo = new StatInfo(1, 90);
+        AttackSpeedInfo = new StatInfo(1, 10);
+        CriticalChanceInfo = new StatInfo(1, 100);
+        CriticalDamageInfo = new StatInfo(1, 100);
 
         SetCurrentHp(Hp);
 
@@ -127,6 +134,28 @@ public class Player : MonoBehaviour, IDamageable
     public void UsedGold(long amount)
     {
         Gold -= amount;
+    }
+
+    public void UpgradeStat(StatInfo stat)
+    {
+        if (Gold < stat.UpgradeCost) return;
+
+        UsedGold(stat.UpgradeCost);
+
+        stat.Level++;
+        stat.UpgradeCost += 50;
+
+        CalculateStats();
+    }
+
+    private void CalculateStats()
+    {
+        Hp += 100;
+        HpRecovery += 10;
+        AttackDamage += 10;
+        AttackSpeed += 0.01f;
+        CriticalChance += 0.1f;
+        CriticalDamage += 10f;
     }
 
     public void EquipmentStatModifier()
