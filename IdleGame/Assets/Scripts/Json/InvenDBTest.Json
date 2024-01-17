@@ -6,12 +6,12 @@
             "type": "weapon",
             "rarity": "common",
             "level": 1,
-            "hasCount": 1,
+            "hasCount": 4,
             "equipStat": 10.0,
             "reinforceEquip": 0.5,
             "retentionEffect": 2.0,
             "reinforceEffect": 0.20000000298023225,
-            "equipped": true
+            "equipped": false
         },
         {
             "itemID": 10002,
@@ -19,12 +19,12 @@
             "type": "weapon",
             "rarity": "rare",
             "level": 7,
-            "hasCount": 1,
+            "hasCount": 8,
             "equipStat": 20.0,
             "reinforceEquip": 0.6000000238418579,
             "retentionEffect": 3.0,
             "reinforceEffect": 0.30000001192092898,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": 10003,
@@ -92,9 +92,35 @@
             "equipped": false
         },
         {
-            "itemID": 10009,
+            "itemID": 20001,
             "itemName": "다이아 검",
-            "type": "weapon",
+            "type": "armor",
+            "rarity": "legendary",
+            "level": 1,
+            "hasCount": 0,
+            "equipStat": 60.0,
+            "reinforceEquip": 0.800000011920929,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5,
+            "equipped": false
+        },
+        {
+            "itemID": 20002,
+            "itemName": "다이아 검",
+            "type": "armor",
+            "rarity": "legendary",
+            "level": 1,
+            "hasCount": 0,
+            "equipStat": 60.0,
+            "reinforceEquip": 0.800000011920929,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5,
+            "equipped": false
+        },
+        {
+            "itemID": 20003,
+            "itemName": "다이아 검",
+            "type": "armor",
             "rarity": "legendary",
             "level": 1,
             "hasCount": 0,

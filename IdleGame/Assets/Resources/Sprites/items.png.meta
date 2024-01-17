@@ -12043,7 +12043,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_567
+      name: armor
       rect:
         serializedVersion: 2
         x: 80
@@ -13198,7 +13198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_622
+      name: weapon
       rect:
         serializedVersion: 2
         x: 144
@@ -18826,7 +18826,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_890
+      name: 10005
       rect:
         serializedVersion: 2
         x: 0
@@ -19225,7 +19225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_909
+      name: 10006
       rect:
         serializedVersion: 2
         x: 0
@@ -20821,7 +20821,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_985
+      name: 10007
       rect:
         serializedVersion: 2
         x: 0
@@ -21157,7 +21157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1001
+      name: 10008
       rect:
         serializedVersion: 2
         x: 0
@@ -21367,7 +21367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1011
+      name: 10009
       rect:
         serializedVersion: 2
         x: 0
@@ -22165,7 +22165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1049
+      name: 10010
       rect:
         serializedVersion: 2
         x: 0
@@ -26190,12 +26190,17 @@ TextureImporter:
       10002: -228674563
       10003: -1799060869
       10004: 1139293032
+      10005: 1970691703
+      10006: -420967544
+      10007: -887327037
+      10008: -1519588927
+      10009: 1704789817
+      10010: -387681499
       Item_0: -1863106525
       Item_1: -948447716
       Item_10: -1603941009
       Item_100: -1294801631
       Item_1000: -566489026
-      Item_1001: -1519588927
       Item_1002: -1212527496
       Item_1003: 97214568
       Item_1004: 2002793979
@@ -26206,7 +26211,6 @@ TextureImporter:
       Item_1009: 330566130
       Item_101: -332244280
       Item_1010: -2013291874
-      Item_1011: 1704789817
       Item_1012: 673440115
       Item_1013: 1672701338
       Item_1014: 682649363
@@ -26247,7 +26251,6 @@ TextureImporter:
       Item_1046: 425372281
       Item_1047: -824397647
       Item_1048: 1421946198
-      Item_1049: -387681499
       Item_105: -839385715
       Item_1050: -1014829310
       Item_1051: -1569583686
@@ -26950,7 +26953,6 @@ TextureImporter:
       Item_564: 1978334363
       Item_565: -1054816035
       Item_566: -1445559525
-      Item_567: -1850893956
       Item_568: 1330943068
       Item_569: 1125257828
       Item_57: -128754077
@@ -27012,7 +27014,6 @@ TextureImporter:
       Item_62: -1866312311
       Item_620: -815103190
       Item_621: 2006750237
-      Item_622: -257652649
       Item_623: 328913695
       Item_624: -773331125
       Item_625: -939403637
@@ -27305,7 +27306,6 @@ TextureImporter:
       Item_888: -12288263
       Item_889: -1577321258
       Item_89: 1948015073
-      Item_890: 1970691703
       Item_891: 915384981
       Item_892: 1479172210
       Item_893: 1682968872
@@ -27326,7 +27326,6 @@ TextureImporter:
       Item_906: -2017375522
       Item_907: 1416934043
       Item_908: -1550154930
-      Item_909: -420967544
       Item_91: -1617507950
       Item_910: -482231638
       Item_911: -501750531
@@ -27410,7 +27409,6 @@ TextureImporter:
       Item_982: 914234432
       Item_983: -1062845740
       Item_984: 16277911
-      Item_985: -887327037
       Item_986: -1067801181
       Item_987: -1227277726
       Item_988: -407514908
@@ -27426,6 +27424,8 @@ TextureImporter:
       Item_997: 1022296564
       Item_998: -1270291355
       Item_999: 1805274819
+      armor: -1850893956
+      weapon: -257652649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

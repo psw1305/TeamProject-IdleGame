@@ -1,4 +1,7 @@
+using System;
+using System.Linq;
 using TMPro;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -44,9 +47,9 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     public ItemData ItemData => _itemData;
     //아이템 아이콘 세팅, 티어 세팅, 레벨 세팅,게이지 세팅, 언록 여부 
-    public void InitSlotInfo(ItemData data)
+    public void InitSlotInfo(ItemData itemData)
     {
-        _itemData = data;
+        _itemData = Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.itemID == itemData.itemID).ToList()[0];
         _itemID = _itemData.itemID;
         _itemName = _itemData.itemName;
         _type = _itemData.type;
@@ -62,7 +65,9 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     public void CheckEquipState()
     {
-        if(_equipped == false)
+
+        _equipped = _itemData.equipped;
+        if (_equipped == false)
         {
             _equippdText.SetActive(false);
         }
@@ -71,18 +76,20 @@ public class UIPopupEquipSlots : MonoBehaviour
             _equippdText.SetActive(true);
         }
     }
+
     public void InitSlotUI()
     {
         _lvTxt.text = $"Lv : {_level}";
 
-        itemSprite.sprite = Resources.Load<Sprite>($"Item.10001");
+        itemSprite.sprite = Manager.Resource.GetSprite(ItemID.ToString());
 
-        reinforceProgress.fillAmount = _hasCount / 15;
+        reinforceProgress.fillAmount = (float)_hasCount / 15;
         reinforceText.text = $"{_hasCount}/{15}";
 
         SetLockState();
         gameObject.SetEvent(UIEventType.Click, SendItemData);
     }
+
     public void SetLockState()
     {
         if (_level > 1 || _hasCount >= 1)

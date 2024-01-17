@@ -21,3 +21,9 @@ public enum QuestType
     //ItemGamble
     //StageClear
 }
+
+public enum EquipFillterType
+{
+    Weapon,
+    Armor
+}

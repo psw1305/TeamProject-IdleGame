@@ -1,20 +1,23 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
+using System;
+using System.Linq;
+using System.Collections.Generic;
 
 public class UIPopupEquipment : UIPopup
 {
-
+    #region fleids
     private Image _itemImage;
     private Image _typeIcon;
 
-    private TextMeshProUGUI _itemNameText;
+    private TextMeshProUGUI _PopupTitle;
 
+    private TextMeshProUGUI _itemNameText;
     private TextMeshProUGUI _rarityText;
     private TextMeshProUGUI _itemLevelText;
 
+    private Image _reinforceProgress;
     private TextMeshProUGUI _itemHasCount;
 
     private TextMeshProUGUI _equipEffect;
@@ -27,8 +30,21 @@ public class UIPopupEquipment : UIPopup
 
     private ItemData _selectItemData;
 
-    private Image _slotMask;
-    private Image _slotContainer;
+    private List<ItemData> _fillterItems;
+
+    #endregion
+
+    #region Properties
+
+    public event Action refreshEvent;
+
+    public EquipFillterType equipFillterType;
+
+    public List<ItemData> FillterItems => _fillterItems;
+
+    #endregion
+
+    #region UIBindMethod
 
     protected override void Init()
     {
@@ -37,6 +53,10 @@ public class UIPopupEquipment : UIPopup
         SetImage();
         SetButtons();
         SetEvents();
+        equipFillterType = EquipFillterType.Weapon;
+        SetPopupTitle();
+        FillterCurrentPopupUseItemData();
+        SetFirstVisibleItem();
     }
 
     private void SetImage()
@@ -44,13 +64,14 @@ public class UIPopupEquipment : UIPopup
         SetUI<Image>();
         _itemImage = GetUI<Image>("Img_EquipSlot");
         _typeIcon = GetUI<Image>("Img_ETypeIcon");
-        _slotMask = GetUI<Image>("Viewport");
-        _slotContainer = GetUI<Image>("Itemcontainer");
+        _reinforceProgress = GetUI<Image>("Img_ReinforceProgress");
+
     }
 
     private void SetText()
     {
         SetUI<TextMeshProUGUI>();
+        _PopupTitle = GetUI<TextMeshProUGUI>("TitleTxt");
         _itemNameText = GetUI<TextMeshProUGUI>("Text_EquipName");
         _itemLevelText = GetUI<TextMeshProUGUI>("Text_Lv");
         _rarityText = GetUI<TextMeshProUGUI>("Text_Rarity");
@@ -73,6 +94,10 @@ public class UIPopupEquipment : UIPopup
         _equipBtn.gameObject.SetEvent(UIEventType.Click, EquipmentSelectItem);
     }
 
+    #endregion
+
+    #region OtherMethod
+
     // 선택한 아이템의 정보를 상단 UI에 설정하는 메서드입니다.
     public void SetSelectItemInfo(ItemData selectItemData)
     {
@@ -81,7 +106,11 @@ public class UIPopupEquipment : UIPopup
         _itemNameText.text = _selectItemData.itemName;
         _rarityText.text = _selectItemData.rarity;
         _itemLevelText.text = _selectItemData.level.ToString();
-        _itemHasCount.text = _selectItemData.hasCount.ToString();
+        _itemHasCount.text = $"{_selectItemData.hasCount} / 15";
+        _itemImage.sprite = Manager.Resource.GetSprite(_selectItemData.itemID.ToString());
+        _typeIcon.sprite = Manager.Resource.GetSprite(_selectItemData.type);
+
+        _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / 15;
 
         if (selectItemData.type == "weapon")
         {
@@ -90,19 +119,85 @@ public class UIPopupEquipment : UIPopup
         }
         else
         {
-            _equipEffect.text = $"방어력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
-            _retentionEffect.text = $"방어력 :  {_selectItemData.retentionEffect + _selectItemData.reinforceEffect * _selectItemData.level}%";
+            _equipEffect.text = $"체력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
+            _retentionEffect.text = $"체력 :  {_selectItemData.retentionEffect + _selectItemData.reinforceEffect * _selectItemData.level}%";
+        }
+
+        if (_selectItemData.level == 1 && _selectItemData.hasCount == 0)
+        {
+            _equipBtn.interactable = false;
+            _reinforceBtn.interactable= false;
+        }
+        else
+        {
+            _equipBtn.interactable = true;
+            _reinforceBtn.interactable = true;
         }
     }
-    //선택한 아이템 장착
+
+    //선택한 아이템을 착용합니다.
     private void EquipmentSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ChangeItem(_selectItemData);
+        CallRefreshEvent();
     }
+
+    private void CallRefreshEvent()
+    {
+        refreshEvent?.Invoke();
+    }
+
+    //EquipFillterType 상태에 맞춰 보여주는 무기류를 필터합니다.
+    private void FillterCurrentPopupUseItemData()
+    {
+        if (equipFillterType == EquipFillterType.Weapon)
+        {
+            _fillterItems = Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.type == "weapon").ToList();
+        }
+        else if(equipFillterType == EquipFillterType.Armor)
+         {
+            _fillterItems = Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.type == "armor").ToList();
+        }
+    }
+    private void SetFirstVisibleItem()
+    {
+        if (_fillterItems.Where(item => item.equipped == true).ToList().Count == 0)
+        {
+            SetSelectItemInfo(_fillterItems[0]);
+        }
+        else
+        {
+            SetSelectItemInfo(_fillterItems.Where(item => item.equipped == true).ToList()[0]);
+        }
+    }
+
+    private void SetPopupTitle()
+    {
+        if (equipFillterType == EquipFillterType.Weapon)
+        {
+            _PopupTitle.text = "무기";
+        }
+        else if (equipFillterType == EquipFillterType.Armor)
+        {
+            _PopupTitle.text = "방어구";
+        }
+    }
+
 
     // 팝업 닫기
     private void ExitPopup(PointerEventData eventData)
     {
         Manager.UI.ClosePopup();
     }
+
+    #endregion
+
+    #region Unity Flow
+
+    private void OnDestroy()
+    {
+        refreshEvent = null;
+    }
+
+    #endregion
 }
