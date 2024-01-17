@@ -163,12 +163,12 @@ public class Player : MonoBehaviour, IDamageable
         RetentionEffect = 0;
         EquipStat = 0;
 
-        foreach (var item in Manager.Inventory.itemDataBase.ItemDB)
+        foreach (var item in Manager.Inventory.ItemDataBase.ItemDB)
         {
             RetentionEffect += item.retentionEffect + item.reinforceEffect * item.level;
         }
 
-        var filteredEquipItem = Manager.Inventory.itemDataBase.ItemDB.Where(itemdata => itemdata.equipped == true).ToList();
+        var filteredEquipItem = Manager.Inventory.ItemDataBase.ItemDB.Where(itemdata => itemdata.equipped == true).ToList();
 
         foreach (var item in filteredEquipItem)
         {
