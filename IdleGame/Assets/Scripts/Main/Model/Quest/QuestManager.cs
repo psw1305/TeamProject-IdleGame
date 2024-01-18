@@ -4,28 +4,14 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager
 {
     private string QuestjsonPath = Application.dataPath + "/Scripts/Json/QuestDBTest.json";
     private string QuestjsonText;
 
     private QuestData _cuurntQuest;
 
-    public QuestDataBase questDataBase;    
-
-    private void Start()
-    {
-        //QuestData data = new QuestData() { questType = QuestType.DamageUp,  questObjective = "Damage Upgrade", objectValue = 15 };
-        //QuestData data2 = new QuestData() { questType = QuestType.HPUp,  questObjective = "HP Upgrade", objectValue = 15 };
-        //QuestData data3 = new QuestData() { questType = QuestType.DefeatEnemy,  questObjective = "Defeat Enemy ", objectValue = 50 };
-                
-        //questDataBase.QuestDB.Add(data);
-        //questDataBase.QuestDB.Add(data2);
-        //questDataBase.QuestDB.Add(data3);
-
-        string questJson = JsonUtility.ToJson(questDataBase, true);
-        File.WriteAllText(QuestjsonPath, questJson);
-    }
+    public QuestDataBase questDataBase;
 
     public void SaveQuestDataBase()
     {
