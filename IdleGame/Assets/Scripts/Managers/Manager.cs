@@ -32,15 +32,21 @@ public class Manager : MonoBehaviour
     #region Manage
 
     private readonly ResourceManager resource = new();
+    private readonly DataManager data = new();
+    private readonly SessionManager session = new();
     private readonly GameManager game = new();
     private readonly UIManager ui = new();
     private readonly StageManager stage = new();
     private readonly InventoryManager inventory = new();
+    private readonly QuestManager quest = new();
 
     public static ResourceManager Resource => Instance != null ? Instance.resource : null;
+    public static DataManager Data => Instance != null ? Instance.data : null;
+    public static SessionManager Session => Instance != null ? Instance.session : null;
     public static GameManager Game => Instance != null ? Instance.game : null;
     public static UIManager UI => Instance != null ? Instance.ui : null;
     public static StageManager Stage => Instance != null ? Instance.stage : null;
     public static InventoryManager Inventory => Instance != null ? Instance.inventory : null;
+    public static QuestManager Quest => Instance != null ? Instance.quest : null;
     #endregion
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class UIFloatingText : MonoBehaviour
 {
-    [SerializeField] private float _floatingSpeed;
-    [SerializeField] private float _alphaSpeed;
-    [SerializeField] private float _destroyTime;
+    private float _floatingSpeed;
+    private float _alphaSpeed;
+    private float _destroyTime;
     
     private TextMeshProUGUI _txtDamage;
     private Color alpha;
@@ -29,7 +29,7 @@ public class UIFloatingText : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(new Vector3(0, _floatingSpeed * Time.deltaTime, 0));
+        transform.Translate(Vector2.up * _floatingSpeed * Time.deltaTime );
         alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * _alphaSpeed);
         _txtDamage.color = alpha;
     }

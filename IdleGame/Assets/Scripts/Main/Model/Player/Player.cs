@@ -63,6 +63,7 @@ public class Player : MonoBehaviour, IDamageable
         enemyList = Manager.Stage.GetEnemyList();
 
         Manager.Inventory.InitItem();
+        Manager.Quest.InitQuest();
         EquipmentStatModifier();
         StartCoroutine(RecoverHealthPoint());
     }
@@ -261,7 +262,7 @@ public class Player : MonoBehaviour, IDamageable
         RetentionEffect = 0;
         EquipStat = 0;
 
-        foreach (var item in Manager.Inventory.ItemDataBase.ItemDB)
+        foreach (var item in Manager.Inventory.ItemDataBase.ItemDB.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
         {
             RetentionEffect += item.retentionEffect + item.reinforceEffect * item.level;
         }
@@ -272,6 +273,9 @@ public class Player : MonoBehaviour, IDamageable
         {
             EquipStat += item.equipStat + item.reinforceEquip * item.level;
         }
+
+        Debug.Log($"EffectStat : {RetentionEffect}");
+        Debug.Log($"EquipStat : {EquipStat}");
     }
 
     #endregion

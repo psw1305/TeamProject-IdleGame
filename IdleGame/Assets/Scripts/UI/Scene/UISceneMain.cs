@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using System.Diagnostics.Contracts;
 
 public class UISceneMain : UIScene
 {
@@ -102,6 +103,9 @@ public class UISceneMain : UIScene
 
         // Stage Button Init
         Manager.Stage.SetRetryBossButton(_btnBoss);
+
+        // Quest
+        _txtQuestObjective.text = QuestObjective();
     }
 
     #endregion
@@ -137,7 +141,11 @@ public class UISceneMain : UIScene
     
     private void OnQuest(PointerEventData eventData)
     {
+        Manager.Quest.CheckQuestCompletion();
+        UpdateQuestObjective();
         Debug.Log("퀘스트 버튼"); // 버튼 작동 테스트
+
+        Debug.Log(Manager.Quest.CuurntQuest.questObjective);
     }
 
     #endregion
@@ -164,5 +172,16 @@ public class UISceneMain : UIScene
 
     }
 
+    public void UpdateQuestObjective()
+    {
+        _txtQuestObjective.text = QuestObjective();
+    }
+
     #endregion
+
+    // 임시. 퀘스트 목표 TEXT 내용 반환
+    public string QuestObjective()
+    {
+        return ($"{Manager.Quest.CuurntQuest.questObjective} {Manager.Quest.CuurntQuest.currentValue} / {Manager.Quest.CuurntQuest.objectValue}");
+    }
 }

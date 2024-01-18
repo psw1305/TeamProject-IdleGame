@@ -140,7 +140,6 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {        
         AmountDamage(Damage);
         FloatingDamage(new Vector3(0, 0.05f, 0), Damage);
-        //Debug.Log($"{gameObject.name} : {_currentHP}");
     }
 
     public void FloatingDamage(Vector3 position, long Damage)
@@ -171,6 +170,13 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         Manager.Game.Player.RewardGold(_rewards);
+
+        if(Manager.Quest.CuurntQuest.questType == QuestType.DefeatEnemy)
+        {
+            Manager.Quest.QuestObjectiveValueUp();
+            UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
+            uiSceneMain.UpdateQuestObjective();
+        }
 
         Destroy(gameObject);
     }
