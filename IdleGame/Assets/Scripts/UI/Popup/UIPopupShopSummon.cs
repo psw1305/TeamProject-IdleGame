@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Linq;
 using Unity.VisualScripting;
+using DG.Tweening.Plugins;
 
 public class UIPopupShopSummon : UIPopup
 {
     #region Fields
 
     private Player _player;
+    private InventoryManager _inventoryManager;
 
     private Button _checkBtn;
     private Button _summonTryBtn_11;
@@ -18,10 +20,13 @@ public class UIPopupShopSummon : UIPopup
     private Button _closeBtn;
 
     private int[] probability = new int[] { 5000, 2500, 1500, 700, 250, 50 };
-    private int[] index;
+    private int[] itemIndex = new int[] { 10001, 10002, 10003, 10005, 10006, 10007 };
     private Dictionary<int, int> probabilityTable = new Dictionary<int, int>();
     private List<int> summonResurt = new List<int>(1000);
-    private int[] testResurt;
+
+    // 확인용
+    private int[] testResult;
+    private Dictionary<int, int> indexResult = new Dictionary<int, int>();
 
     #endregion
 
@@ -35,6 +40,7 @@ public class UIPopupShopSummon : UIPopup
         ProbabilityInit();
 
         _player = Manager.Game.Player;
+        _inventoryManager = Manager.Inventory;
     }
 
 
@@ -64,18 +70,17 @@ public class UIPopupShopSummon : UIPopup
     private void ProbabilityInit()
     {
         int sum = 0;
-        index = new int[probability.Length];
-        testResurt = new int[probability.Length];
 
-        for (int i = 0; i < probability.Length; i++)
-        {
-            index[i] = i;
-        }
+        // 확인용 배열
+        testResult = new int[probability.Length];
 
+        // 확률 누계 딕셔너리 만들기
         for (int i = 0; i < probability.Length; i++)
         {
             sum += probability[i];
-            probabilityTable.Add(sum, index[i]);
+            probabilityTable.Add(sum, itemIndex[i]);
+            // 확인용 배열 연결
+            indexResult.Add(itemIndex[i], i);
         }
     }
 
@@ -91,6 +96,7 @@ public class UIPopupShopSummon : UIPopup
 
     private void Summon()
     {
+        // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기
         for (int i = 0; i < 35; i++)
         {
             summonResurt.Add(Random.Range(0, 10000));
@@ -98,6 +104,7 @@ public class UIPopupShopSummon : UIPopup
         int[] summonResultValue = summonResurt.ToArray();
         summonResurt.Clear();
 
+        // 딕셔너리 키만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
         int[] summonValueKey = probabilityTable.Select(x => x.Key).ToArray();
 
         for (int i = 0; i < summonResultValue.Length; i++)
@@ -105,17 +112,36 @@ public class UIPopupShopSummon : UIPopup
             int getResultKey = summonValueKey.OrderBy(x => (summonResultValue[i] - x > 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
             probabilityTable.TryGetValue(getResultKey, out int index);
             summonResurt.Add(index);
-            testResurt[index]++;
+            // 확인용 획득 수 카운트 증가
+            indexResult.TryGetValue(index, out int result);
+            testResult[result]++;
         }
-        Debug.Log($"0 : {testResurt[0]}, 1 : {testResurt[1]}, 2 : {testResurt[2]}, 3 : {testResurt[3]}, 4 : {testResurt[4]}, 5 : {testResurt[5]}");
+        TestDebugLog();
+
         int[] finalResult = summonResurt.ToArray();
+        EquipmentAdd(finalResult);
         summonResurt.Clear();
-        for (int i = 0; i < testResurt.Length; i++)
-        {
-            testResurt[i] = 0;
-        }
     }
 
+    private void EquipmentAdd(int[] summonResult)
+    {
+
+        for (int i = 0; i < summonResult.Length; i++)
+        {
+            ItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
+            itemData.hasCount++;
+        }
+        //_inventoryManager.SaveItemDataBase();
+    }
+
+    private void TestDebugLog()
+    {
+        Debug.Log($"{itemIndex[0]} : {testResult[0]}, {itemIndex[1]} : {testResult[1]}, {itemIndex[2]} : {testResult[2]}, {itemIndex[3]} : {testResult[3]}, {itemIndex[4]} : {testResult[4]}, {itemIndex[5]} : {testResult[5]}");
+        for (int i = 0; i < testResult.Length; i++)
+        {
+            testResult[i] = 0;
+        }
+    }
 
     #endregion
 }
