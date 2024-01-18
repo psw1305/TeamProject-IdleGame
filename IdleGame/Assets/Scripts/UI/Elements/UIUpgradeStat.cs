@@ -33,9 +33,27 @@ public class UIUpgradeStat : MonoBehaviour
             statInfo.Level += 1;
             statInfo.UpgradeCost += 10;
 
+            UpdateQuestObjective();
+
             textStatLevel.text = statInfo.Level.ToString();
             textStatValue.text = statInfo.GetString();
             textUpdateCost.text = statInfo.UpgradeCost.ToString();
+        }
+    }
+
+    private void UpdateQuestObjective()
+    {
+        if (Manager.Quest.CuurntQuest.questType == QuestType.DamageUp)
+        {
+            Manager.Quest.QuestObjectiveValueUp();
+            UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
+            uiSceneMain.UpdateQuestObjective();
+        }
+        else if (Manager.Quest.CuurntQuest.questType == QuestType.HPUp)
+        {
+            Manager.Quest.QuestObjectiveValueUp();
+            UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
+            uiSceneMain.UpdateQuestObjective();
         }
     }
 
