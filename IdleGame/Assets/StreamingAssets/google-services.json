@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "63711996831-cmd0dfbst02927afhh0qhgq0laosuls6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.kkhp.pixelidlegame",
-            "certificate_hash": "39fcb6b2c145f28d9aa760d8767a7c9589e4aa42"
-          }
-        },
-        {
           "client_id": "63711996831-51h1oa135lu5eop464eb9vt2hhg2jhj0.apps.googleusercontent.com",
           "client_type": 3
         }
