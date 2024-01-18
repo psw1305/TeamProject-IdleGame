@@ -23,20 +23,29 @@ public class UIPopupEquipment : UIPopup
     private TextMeshProUGUI _equipEffect;
     private TextMeshProUGUI _retentionEffect;
 
-    private Button _equipBtn;
-    private Button _reinforceBtn;
+    private Button _BtnSelectEquip;
+    private Button _btnSelectReinforce;
 
     private Button _btnExit;
+    private Button _btnSameTypeReinforce;
+
+    private Button _btnTestWeapon;
+    private Button _btnTestArmor;
+
+    private Image _itemContainer;
 
     private ItemData _selectItemData;
 
     private List<ItemData> _fillterItems;
 
+    private int _needCount;
     #endregion
 
     #region Properties
 
-    public event Action refreshEvent;
+    public event Action refreshEquipEvent;
+
+    public event Action refreshReinforecEvent;
 
     public EquipFillterType equipFillterType;
 
@@ -65,7 +74,7 @@ public class UIPopupEquipment : UIPopup
         _itemImage = GetUI<Image>("Img_EquipSlot");
         _typeIcon = GetUI<Image>("Img_ETypeIcon");
         _reinforceProgress = GetUI<Image>("Img_ReinforceProgress");
-
+        _itemContainer = GetUI<Image>("ItemContainer");
     }
 
     private void SetText()
@@ -84,20 +93,38 @@ public class UIPopupEquipment : UIPopup
     {
         SetUI<Button>();
         _btnExit = GetUI<Button>("Btn_PopClose");
-        _equipBtn = GetUI<Button>("Btn_Equip");
-        _reinforceBtn = GetUI<Button>("Btn_Reinforce");
+        _BtnSelectEquip = GetUI<Button>("Btn_Equip");
+        _btnSelectReinforce = GetUI<Button>("Btn_Reinforce");
+        _btnSameTypeReinforce = GetUI<Button>("Btn_ReinforceAll");
+        _btnTestWeapon = GetUI<Button>("Btn_TestWeapon");
+        _btnTestArmor = GetUI<Button>("Btn_TestArmor");
     }
 
     private void SetEvents()
     {
         _btnExit.gameObject.SetEvent(UIEventType.Click, ExitPopup);
-        _equipBtn.gameObject.SetEvent(UIEventType.Click, EquipmentSelectItem);
+        _BtnSelectEquip.gameObject.SetEvent(UIEventType.Click, EquipmentSelectItem);
+        _btnSelectReinforce.gameObject.SetEvent(UIEventType.Click, ReinforceSelectItem);
+        _btnSameTypeReinforce.gameObject.SetEvent(UIEventType.Click, ReinforceTypeItem);
+        _btnTestWeapon.gameObject.SetEvent(UIEventType.Click, ChangePopWeapon);
+        _btnTestArmor.gameObject.SetEvent(UIEventType.Click, ChangePopArmor);
     }
 
     #endregion
 
     #region OtherMethod
 
+    private void OperNeedItemCount()
+    {
+        if(_selectItemData.level < 15)
+        {
+            _needCount = _selectItemData.level + 1;
+        }
+        else
+        {
+            _needCount = 15;
+        }
+    }
     // 선택한 아이템의 정보를 상단 UI에 설정하는 메서드입니다.
     public void SetSelectItemInfo(ItemData selectItemData)
     {
@@ -106,11 +133,14 @@ public class UIPopupEquipment : UIPopup
         _itemNameText.text = _selectItemData.itemName;
         _rarityText.text = _selectItemData.rarity;
         _itemLevelText.text = _selectItemData.level.ToString();
-        _itemHasCount.text = $"{_selectItemData.hasCount} / 15";
+
         _itemImage.sprite = Manager.Resource.GetSprite(_selectItemData.itemID.ToString());
         _typeIcon.sprite = Manager.Resource.GetSprite(_selectItemData.type);
 
-        _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / 15;
+        OperNeedItemCount();
+        _itemHasCount.text = $"{_selectItemData.hasCount} / {_needCount}";
+        _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / _needCount;
+
 
         if (selectItemData.type == "weapon")
         {
@@ -125,13 +155,13 @@ public class UIPopupEquipment : UIPopup
 
         if (_selectItemData.level == 1 && _selectItemData.hasCount == 0)
         {
-            _equipBtn.interactable = false;
-            _reinforceBtn.interactable= false;
+            _BtnSelectEquip.interactable = false;
+            _btnSelectReinforce.interactable= false;
         }
         else
         {
-            _equipBtn.interactable = true;
-            _reinforceBtn.interactable = true;
+            _BtnSelectEquip.interactable = true;
+            _btnSelectReinforce.interactable = true;
         }
     }
 
@@ -139,13 +169,31 @@ public class UIPopupEquipment : UIPopup
     private void EquipmentSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ChangeItem(_selectItemData);
-        CallRefreshEvent();
+        CallEquipRefreshEvent();
+    }
+    private void CallEquipRefreshEvent()
+    {
+        refreshReinforecEvent?.Invoke();
     }
 
-    private void CallRefreshEvent()
+    private void ReinforceSelectItem(PointerEventData enterEvent)
     {
-        refreshEvent?.Invoke();
+        Manager.Inventory.ReinforceSelectItem(_selectItemData);
+        SetSelectItemInfo(_selectItemData);
+        CallReinforceRefreshEvent();
     }
+    private void ReinforceTypeItem(PointerEventData enterEvent)
+    {
+        Manager.Inventory.ReinforceSelectTypeItem(_selectItemData);
+        SetSelectItemInfo(_selectItemData);
+        CallReinforceRefreshEvent();
+    }
+
+    private void CallReinforceRefreshEvent()
+    {
+        refreshReinforecEvent?.Invoke();
+    }
+
 
     //EquipFillterType 상태에 맞춰 보여주는 무기류를 필터합니다.
     private void FillterCurrentPopupUseItemData()
@@ -182,6 +230,22 @@ public class UIPopupEquipment : UIPopup
             _PopupTitle.text = "방어구";
         }
     }
+    private void ChangePopWeapon(PointerEventData enterEvent)
+    {
+        equipFillterType = EquipFillterType.Weapon;
+        FillterCurrentPopupUseItemData();
+        SetPopupTitle();
+        SetFirstVisibleItem();
+        _itemContainer.gameObject.GetComponent<UIPopupEquipContainer>().InitSlot();
+    }
+    private void ChangePopArmor(PointerEventData enterEvent)
+    {
+        equipFillterType = EquipFillterType.Armor;
+        FillterCurrentPopupUseItemData();
+        SetPopupTitle();
+        SetFirstVisibleItem();
+        _itemContainer.gameObject.GetComponent<UIPopupEquipContainer>().InitSlot();
+    }
 
 
     // 팝업 닫기
@@ -196,7 +260,7 @@ public class UIPopupEquipment : UIPopup
 
     private void OnDestroy()
     {
-        refreshEvent = null;
+        refreshReinforecEvent = null;
     }
 
     #endregion

@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public class InventoryManager
@@ -21,9 +19,9 @@ public class InventoryManager
 
     public void SaveItemDataBase()
     {
-            string inventoryJson = JsonUtility.ToJson(_itemDataBase, true);
-            File.WriteAllText(jsonPath, inventoryJson);
-            Debug.Log("저장 완료");
+        string inventoryJson = JsonUtility.ToJson(_itemDataBase, true);
+        File.WriteAllText(jsonPath, inventoryJson);
+        Debug.Log("저장 완료");
     }
 
     public void LoadItemDataBase()
@@ -59,6 +57,58 @@ public class InventoryManager
         // 새로운 아이템 장착
         equipItem.equipped = true;
 
+        SaveItemDataBase();
+
+        Manager.Game.Player.EquipmentStatModifier();
+    }
+
+    private void ReinforceItem(ItemData itemdata)
+    {
+        while (true)
+        {
+            //업그레이드를 위해 필요한 아이템 수  == 15레벨 미만 = 레벨 + 1 / 15레벨 이상 15개 고정 
+            if (itemdata.level < 15)
+            {
+                if (itemdata.hasCount <= itemdata.level)
+                {
+                    Debug.Log("강화 조건 미충족");
+                    break;
+                }
+            }
+            else if (itemdata.hasCount < 15)
+            {
+                Debug.Log("강화 조건 미충족");
+                break;
+            }
+
+            if (itemdata.level < 15)
+            {
+                itemdata.hasCount -= itemdata.level + 1;
+                itemdata.level += 1;
+            }
+            else
+            {
+                itemdata.hasCount -= 15;
+                itemdata.level += 1;
+            }
+        }
+    }
+    public void ReinforceSelectItem(ItemData itemdata)
+    {
+        ReinforceItem(itemdata);
+
+        SaveItemDataBase();
+
+        Manager.Game.Player.EquipmentStatModifier();
+    }
+
+    public void ReinforceSelectTypeItem(ItemData itemData)
+    {
+        List<ItemData> targetItemlist = _itemDataBase.ItemDB.Where(_itemData => _itemData.type == itemData.type).ToList();
+        foreach (var item in targetItemlist)
+        {
+            ReinforceItem(item);
+        }
         SaveItemDataBase();
 
         Manager.Game.Player.EquipmentStatModifier();
