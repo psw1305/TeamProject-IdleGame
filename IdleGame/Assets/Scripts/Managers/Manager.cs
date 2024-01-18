@@ -36,11 +36,13 @@ public class Manager : MonoBehaviour
     private readonly UIManager ui = new();
     private readonly StageManager stage = new();
     private readonly InventoryManager inventory = new();
+    private readonly QuestManager quest = new();
 
     public static ResourceManager Resource => Instance != null ? Instance.resource : null;
     public static GameManager Game => Instance != null ? Instance.game : null;
     public static UIManager UI => Instance != null ? Instance.ui : null;
     public static StageManager Stage => Instance != null ? Instance.stage : null;
     public static InventoryManager Inventory => Instance != null ? Instance.inventory : null;
+    public static QuestManager Quest => Instance != null ? Instance.quest : null;
     #endregion
 }

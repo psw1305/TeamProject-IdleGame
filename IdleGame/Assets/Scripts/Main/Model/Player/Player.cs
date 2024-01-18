@@ -63,6 +63,7 @@ public class Player : MonoBehaviour, IDamageable
         enemyList = Manager.Stage.GetEnemyList();
 
         Manager.Inventory.InitItem();
+        Manager.Quest.InitQuest();
         EquipmentStatModifier();
         StartCoroutine(RecoverHealthPoint());
     }
