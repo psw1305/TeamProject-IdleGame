@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 3064966361239858402}
   - component: {fileID: 4449992615184596175}
   m_Layer: 5
-  m_Name: Shop_Summon
+  m_Name: UIPopupShopSummon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
