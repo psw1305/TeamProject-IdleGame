@@ -18,8 +18,10 @@ public class TestScenePSW : BaseScene
         Manager.Stage.SetSpawnPoint(enemySpawnPoint);
         Manager.Stage.SetBossPoint(bossSpawnPoint);
 
+        Manager.Summon.Initialize();
+
         // 세션 생성 후 => 전투 시작
-        Manager.Session.Initialize("test-1");
+        Manager.Session.Initialize("test-psw");
 
         return true;
     }

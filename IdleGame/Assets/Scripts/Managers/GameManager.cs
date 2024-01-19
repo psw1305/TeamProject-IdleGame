@@ -29,6 +29,7 @@ public class GameManager
         Player.Initialize();
 
         Manager.UI.ShowScene<UISceneMain>();
+        Manager.Summon.SetSummon();
         Manager.Stage.SetStage();
         Manager.Stage.BattleStart();
     }

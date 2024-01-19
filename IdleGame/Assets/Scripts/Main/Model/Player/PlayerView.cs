@@ -22,6 +22,7 @@ public class PlayerView : MonoBehaviour
 
     public void SetGemAmout()
     {
+        var mainUI = Manager.UI.CurrentScene as UISceneMain;
         mainUI.UpdateGems();
     }
 

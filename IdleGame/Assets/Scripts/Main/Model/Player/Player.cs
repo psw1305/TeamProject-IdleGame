@@ -215,11 +215,11 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (IsCritical())
         {
-            return (long)(AttackDamage.Value + (AttackDamage.Value * CriticalDamage.GetFloat()) * (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            return (long)(AtkDamage.Value + (AtkDamage.Value * CritDamage.GetFloat()) * (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
         }
         else
         {
-            return (long)(AttackDamage.Value + (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            return (long)(AtkDamage.Value + (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
         }
     }
 

@@ -32,7 +32,7 @@ public class QuestManager
         CurrentQuest = QuestDataBase.QuestDB[QuestDataBase.QuestIndex];
 
         // Player의 
-        QuestDataBase.QuestDB[0].currentValue = Manager.Game.Player.AttackDamage.Level;
+        QuestDataBase.QuestDB[0].currentValue = Manager.Game.Player.AtkDamage.Level;
         QuestDataBase.QuestDB[1].currentValue = Manager.Game.Player.Hp.Level;
     }
 

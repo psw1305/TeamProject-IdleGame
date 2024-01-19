@@ -26,7 +26,7 @@
             "reinforceEquip": 2.0,
             "retentionEffect": 3.0,
             "reinforceEffect": 0.30000001192092898,
-            "equipped": true
+            "equipped": false
         },
         {
             "itemID": 10003,
@@ -40,7 +40,7 @@
             "reinforceEquip": 3.0,
             "retentionEffect": 4.0,
             "reinforceEffect": 0.4000000059604645,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": 10005,

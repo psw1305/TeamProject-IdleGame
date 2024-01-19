@@ -1,26 +1,28 @@
-﻿[
-  {
-    "ItemId": 10001,
-    "Probability": 5000
-  },
-  {
-    "ItemId": 10002,
-    "Probability": 2500
-  },
-  {
-    "ItemId": 10003,
-    "Probability": 1500
-  },
-  {
-    "ItemId": 10005,
-    "Probability": 700
-  },
-  {
-    "ItemId": 10006,
-    "Probability": 250
-  },
-  {
-    "ItemId": 10007,
-    "Probability": 50
-  }
-]
+{
+  "ProbabilityData": [
+    {
+      "ItemId": 10001,
+      "Probability": 5000
+    },
+    {
+      "ItemId": 10002,
+      "Probability": 2500
+    },
+    {
+      "ItemId": 10003,
+      "Probability": 1500
+    },
+    {
+      "ItemId": 10005,
+      "Probability": 700
+    },
+    {
+      "ItemId": 10006,
+      "Probability": 250
+    },
+    {
+      "ItemId": 10007,
+      "Probability": 50
+    }
+  ]
+}

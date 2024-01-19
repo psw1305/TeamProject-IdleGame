@@ -1,18 +1,14 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SummonManager
 {
     #region Fields
 
-    private string _jsonPath = $"{Application.dataPath}/Resources/Data/SummonTable/EquipmentSummonTable.json";
-    //private string _jsonPath = Application.dataPath + "/Resources/Data/SummonTable/EquipmentSummonTable.json";
+    //private string _jsonPath = $"{Application.dataPath}/Resources/Data/SummonTable/EquipmentSummonTable.json";
+    private string _jsonPath = Application.dataPath + "/Resources/Data/SummonTable/EquipmentSummonTable.json";
     private string _tableText;
     private Player _player;
     private InventoryManager _inventoryManager;
@@ -31,11 +27,15 @@ public class SummonManager
 
     #region Initialize
 
+    public void SetSummon()
+    {
+        _player = Manager.Game.Player;
+        _inventoryManager = Manager.Inventory;
+    }
+
     public void Initialize()
     {
         ProbabilityInit();
-        _player = Manager.Game.Player;
-        _inventoryManager = Manager.Inventory;
     }
 
     private void ProbabilityInit()
@@ -61,7 +61,6 @@ public class SummonManager
     }
 
     #endregion
-
 
     #region Summon Test
 
