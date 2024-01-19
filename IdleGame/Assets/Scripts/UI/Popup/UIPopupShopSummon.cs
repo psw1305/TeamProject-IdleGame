@@ -12,6 +12,7 @@ public class UIPopupShopSummon : UIPopup
     private InventoryManager _inventoryManager;
 
     private Button _checkBtn;
+    private Button _summonTryBtn_Ad;
     private Button _summonTryBtn_11;
     private Button _summonTryBtn_35;
     private Button _closeBtn;
@@ -44,15 +45,31 @@ public class UIPopupShopSummon : UIPopup
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        _checkBtn = SetButtonEvent("CloseButton", UIEventType.Click, CloseSummonPopup);
-        _summonTryBtn_11 = SetButtonEvent("Btn_Summon_35Repeat", UIEventType.Click, SummonTry);
-        _summonTryBtn_35 = SetButtonEvent("Btn_Summon_35Repeat", UIEventType.Click, SummonTry);
+        _summonTryBtn_Ad = SetButtonEvent("Btn_Summon_AdRepeat", UIEventType.Click, SummonRepeat_Ad);
+        _summonTryBtn_11 = SetButtonEvent("Btn_Summon_11Repeat", UIEventType.Click, SummonRepeat_1);
+        _summonTryBtn_35 = SetButtonEvent("Btn_Summon_35Repeat", UIEventType.Click, SummonRepeat_2);
         _closeBtn = SetButtonEvent("CloseButton", UIEventType.Click, CloseSummonPopup);
     }
 
     #endregion
 
     #region Button Events
+
+    private void SummonRepeat_Ad(PointerEventData eventData)
+    {
+        SummonTry(0, 11);
+    }
+
+    private void SummonRepeat_1(PointerEventData eventData)
+    {
+        SummonTry(500, 11);
+    }
+
+    private void SummonRepeat_2(PointerEventData eventData)
+    {
+        SummonTry(1500, 35);
+    }
+
 
     private void CloseSummonPopup(PointerEventData eventData)
     {
@@ -80,20 +97,20 @@ public class UIPopupShopSummon : UIPopup
         }
     }
 
-    private void SummonTry(PointerEventData eventData)
+    private void SummonTry(int price, int count)
     {
-        if (_player.Gems < 0)
+        if (_player.Gems < price)
         {
             Debug.Log("Not enough Gems");
             return;
         }
-        Summon();
+        Summon(count);
     }
 
-    private void Summon()
+    private void Summon(int count)
     {
         // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기
-        for (int i = 0; i < 35; i++)
+        for (int i = 0; i < count; i++)
         {
             summonResurt.Add(Random.Range(0, 10000));
         }
