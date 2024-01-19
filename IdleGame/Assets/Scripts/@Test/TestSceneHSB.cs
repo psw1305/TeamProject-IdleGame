@@ -24,6 +24,7 @@ public class TestSceneHSB : BaseScene
         Manager.Stage.SetSpawnPoint(enemySpawnPoint);
         Manager.Stage.SetBossPoint(bossSpawnPoint);
         Manager.Stage.BattleStart();
+        Manager.Summon.Initialize();
 
         return true;
     }
