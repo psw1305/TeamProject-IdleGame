@@ -18,9 +18,9 @@ public enum QuestType
     DamageUp,
     HPUp,
     DefeatEnemy,
+    StageClear,
     None,
-    //ItemGamble
-    //StageClear
+    //ItemGamble    
 }
 
 public enum EquipFillterType
