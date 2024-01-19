@@ -1,16 +1,22 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class UIPopupEquipContainer : UIBase
 {
+    #region Fields
+
     public List<GameObject> itemSlots = new List<GameObject>();
     public GameObject itemInfoUI;
     private ScrollRect scrollRect;
 
     [SerializeField] private UIPopupEquipment MainPopupUI;
+
+    #endregion
+
+    #region Unity Flow
+
     private void Awake()
     {
         scrollRect = GetComponent<ScrollRect>();
@@ -22,6 +28,11 @@ public class UIPopupEquipContainer : UIBase
         MainPopupUI.refreshReinforecEvent += SetSlotEquipUI;
         MainPopupUI.refreshReinforecEvent += SetSlotReinforceUI;
     }
+
+    #endregion
+
+    #region Initial Method
+
     private void ResetOnScrollTop()
     {
         scrollRect.verticalNormalizedPosition = 1;
@@ -64,4 +75,6 @@ public class UIPopupEquipContainer : UIBase
             slot.GetComponent<UIPopupEquipSlots>().SetReinforceUI();
         }
     }
+
+    #endregion
 }
