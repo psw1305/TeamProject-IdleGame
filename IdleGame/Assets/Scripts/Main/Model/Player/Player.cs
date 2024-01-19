@@ -13,24 +13,24 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Fields
 
+    private GameUserProfile profile;
     private PlayerView playerView;
     public List<BaseEnemy> enemyList;
     private Rigidbody2D playerRigidbody;
     private Coroutine attackCoroutine;
 
-    private StatInfo CurrentStat;
     private bool isClick = false;
 
     #endregion
 
     #region Properties
 
+    public StatInfo AtkDamage { get; private set; }
+    public StatInfo AtkSpeed { get; private set; }
+    public StatInfo CritChance { get; private set; }
+    public StatInfo CritDamage { get; private set; }
     public StatInfo Hp { get; private set; }
     public StatInfo HpRecovery { get; private set; }
-    public StatInfo AttackDamage { get; private set; }
-    public StatInfo AttackSpeed { get; private set; }
-    public StatInfo CriticalChance { get; private set; }
-    public StatInfo CriticalDamage { get; private set; }
 
     public long CurrentHp { get; private set; }
     public float AttackRange { get; private set; }
@@ -53,12 +53,14 @@ public class Player : MonoBehaviour, IDamageable
         AttackRange = 5;
         MoveSpeed = 100;
 
-        Hp = new StatInfo(1, 1000, 50, 100, StatModType.Integer);
-        HpRecovery = new StatInfo(1, 30, 50, 10, StatModType.Integer);
-        AttackDamage = new StatInfo(1, 10, 50, 10, StatModType.Integer);
-        AttackSpeed = new StatInfo(1, 500, 50, 10, StatModType.DecimalPoint);
-        CriticalChance = new StatInfo(1, 500, 50, 1, StatModType.Percent);
-        CriticalDamage = new StatInfo(1, 1000, 50, 10, StatModType.Percent);
+        profile = Manager.Data.Profile;
+
+        AtkDamage   = new StatInfo(profile.Stat_Level_AtkDamage, BaseStat.AtkDamage, 10, StatModType.Integer);
+        AtkSpeed    = new StatInfo(profile.Stat_Level_AtkSpeed, BaseStat.AtkSpeed, 10, StatModType.DecimalPoint);
+        CritChance  = new StatInfo(profile.Stat_Level_CritChance, BaseStat.CritChance, 1, StatModType.Percent);
+        CritDamage  = new StatInfo(profile.Stat_Level_CritDamage, BaseStat.CritDamage, 10, StatModType.Percent);
+        Hp          = new StatInfo(profile.Stat_Level_Hp, BaseStat.Hp, 100, StatModType.Integer);
+        HpRecovery  = new StatInfo(profile.Stat_Level_HpRecovery, BaseStat.HpRecovery, 10, StatModType.Integer);
 
         SetCurrentHp(Hp.Value);
 
@@ -68,11 +70,6 @@ public class Player : MonoBehaviour, IDamageable
         Manager.Quest.InitQuest();
         EquipmentStatModifier();
         StartCoroutine(RecoverHealthPoint());
-    }
-
-    public void SetCurrentStat(StatInfo statInfo)
-    {
-        CurrentStat = statInfo;
     }
 
     public void CheckClick(bool isClick)
@@ -204,7 +201,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         int chance = Random.Range(1, 1001);
 
-        if (chance < CriticalChance.Value)
+        if (chance < CritChance.Value)
         {
             return true;
         }
@@ -228,7 +225,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private float AttakSpeedToTime()
     {
-        return 1.0f / AttackSpeed.GetFloat();
+        return 1.0f / AtkSpeed.GetFloat();
     }
 
     #endregion

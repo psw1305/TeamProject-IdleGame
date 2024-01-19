@@ -43,12 +43,12 @@ public class UISceneMain : UIScene
     protected override void Init()
     {
         base.Init();
-        
-        // 여기에 플레이어를 가져와서 데이터를 사용해도 됩니다.
-        player = Manager.Game.Player;
 
         SetTexts();
         SetButtons();
+
+        // 데이터 초기화
+        player = Manager.Game.Player;
         SetUpgradeStats();
         SetUI();
     }
@@ -89,10 +89,10 @@ public class UISceneMain : UIScene
 
         UpgradeStat_Hp.SetUpgradeStat(player, player.Hp, OnHpUp);
         UpgradeStat_HpRecovery.SetUpgradeStat(player, player.HpRecovery, OnHpRecoverUp);
-        UpgradeStat_AttackDamage.SetUpgradeStat(player, player.AttackDamage, OnAttackDamageUp);
-        UpgradeStat_AttackSpeed.SetUpgradeStat(player, player.AttackSpeed, OnAttackSpeedUp);
-        UpgradeStat_CriticalChance.SetUpgradeStat(player, player.CriticalChance, OnCriticalChanceUp);
-        UpgradeStat_CriticalDamage.SetUpgradeStat(player, player.CriticalDamage, OnCriticalDamageUp);
+        UpgradeStat_AttackDamage.SetUpgradeStat(player, player.AtkDamage, OnAttackDamageUp);
+        UpgradeStat_AttackSpeed.SetUpgradeStat(player, player.AtkSpeed, OnAttackSpeedUp);
+        UpgradeStat_CriticalChance.SetUpgradeStat(player, player.CritChance, OnCriticalChanceUp);
+        UpgradeStat_CriticalDamage.SetUpgradeStat(player, player.CritDamage, OnCriticalDamageUp);
     }
 
     private void SetUI()
@@ -116,10 +116,10 @@ public class UISceneMain : UIScene
 
     private void OnHpUp(PointerEventData eventData) => UpgradeStat_Hp.UpdateUpgradeStat(player.Hp);
     private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat_HpRecovery.UpdateUpgradeStat(player.HpRecovery);
-    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat_AttackDamage.UpdateUpgradeStat(player.AttackDamage);
-    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat_AttackSpeed.UpdateUpgradeStat(player.AttackSpeed);
-    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat_CriticalChance.UpdateUpgradeStat(player.CriticalChance);
-    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat_CriticalDamage.UpdateUpgradeStat(player.CriticalDamage);
+    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat_AttackDamage.UpdateUpgradeStat(player.AtkDamage);
+    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat_AttackSpeed.UpdateUpgradeStat(player.AtkSpeed);
+    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat_CriticalChance.UpdateUpgradeStat(player.CritChance);
+    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat_CriticalDamage.UpdateUpgradeStat(player.CritDamage);
 
     private void OnBossStage(PointerEventData eventData)
     {

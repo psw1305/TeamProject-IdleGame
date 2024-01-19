@@ -1,19 +1,19 @@
 {
-    "QuestIndex": 2,
+    "QuestIndex": 1,
     "QuestDB": [
         {
             "questType": 0,
             "questObjective": "Damage Upgrade",
             "objectValue": 15,
-            "currentValue": 43,
+            "currentValue": 15,
             "isClear": true
         },
         {
             "questType": 1,
             "questObjective": "HP Upgrade",
             "objectValue": 15,
-            "currentValue": 15,
-            "isClear": true
+            "currentValue": 3,
+            "isClear": false
         },
         {
             "questType": 2,

@@ -37,7 +37,6 @@ public class StageManager
 
     public void Initialize()
     {
-        CurrentStage = 0;
         Difficulty = 1;
         EnemyStatRate = 1;
         StageRewardRate = 1;
@@ -51,7 +50,12 @@ public class StageManager
             stageBlueprints[i] = Manager.Resource.GetBlueprint(stageConfig) as StageBlueprint;
         }
         stageConfig = stageBlueprints[CurrentStage];
-        StageProgress = 0;
+    }
+
+    public void SetStage()
+    {
+        CurrentStage = Manager.Data.Profile.Stage;
+        StageProgress = Manager.Data.Profile.Stage_Level;
     }
 
     public void SetSpawnPoint(Transform[] spawnPoint)
@@ -86,6 +90,8 @@ public class StageManager
 
     public void BattleStop()
     {
+        Debug.Log("battle stop");
+
         CoroutineHelper.StopCoroutine(_stageCoroutine);
         _stageCoroutine = null;
     }
@@ -94,6 +100,7 @@ public class StageManager
     {
         BattleStop();
         EnemyReset();
+        
         // 보스 잡다 죽었으면 루프랑 버튼 켜주고 진행도만 하나 뒤로 물리기
         if (BossAppearance)
         {
@@ -138,8 +145,6 @@ public class StageManager
 
     private void EnemyWaveSpawn()
     {
-        //Debug.Log(StageProgress);
-
         // 웨이브 진행 횟수가 StageConfig에 도달하지 못하면 잡몹 소환
         if (!BossAppearance)
         {
@@ -209,8 +214,8 @@ public class StageManager
         }
 
         // UI에 현재 Stage단계 Display
-        UISceneMain uISceneTest = Manager.UI.CurrentScene as UISceneMain; // 변수화 
-        uISceneTest.UpdateCurrentStage($"{CurrentStage} - {StageProgress}");
+        UISceneMain mainUI = Manager.UI.CurrentScene as UISceneMain; // 변수화 
+        mainUI.UpdateCurrentStage($"{CurrentStage} - {StageProgress}");
         Manager.Quest.QuestDataBase.QuestDB[3].currentValue = CurrentStage; // 스테이지 퀘스트 달성 값 변경
     }
 

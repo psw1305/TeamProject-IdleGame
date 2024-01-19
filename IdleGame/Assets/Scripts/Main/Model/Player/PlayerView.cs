@@ -6,15 +6,8 @@ public class PlayerView : MonoBehaviour
     #region Serialize Fields
 
     [SerializeField] private Image hpBar;
-    private UISceneMain mainUI;
 
     #endregion
-
-    private void Start()
-    {
-        mainUI = Manager.UI.CurrentScene as UISceneMain;
-    }
-
 
     public void SetHealthBar(float currentHpPercent)
     {
@@ -23,6 +16,7 @@ public class PlayerView : MonoBehaviour
 
     public void SetGoldAmount()
     {
+        var mainUI = Manager.UI.CurrentScene as UISceneMain;
         mainUI.UpdateGold();
     }
 
