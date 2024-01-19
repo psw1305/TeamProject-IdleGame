@@ -1,11 +1,8 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Linq;
-using Unity.VisualScripting;
-using DG.Tweening.Plugins;
 
 public class UIPopupShopSummon : UIPopup
 {
@@ -54,7 +51,6 @@ public class UIPopupShopSummon : UIPopup
     }
 
     #endregion
-
 
     #region Button Events
 

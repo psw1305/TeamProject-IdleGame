@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using System.Diagnostics.Contracts;
 
 public class UISceneMain : UIScene
 {
@@ -31,6 +30,7 @@ public class UISceneMain : UIScene
 
     private Button _btnBoss;
     private Button _btnEquipment;
+    private Button _btnShop;
 
     private TextMeshProUGUI _txtQuestNum;
     private TextMeshProUGUI _txtQuestObjective;
@@ -74,6 +74,7 @@ public class UISceneMain : UIScene
 
         _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
         _btnEquipment = SetButtonEvent("Btn_Equipment", UIEventType.Click, OnEquipment);
+        _btnShop = SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
     }
 
     private void SetUpgradeStats()
@@ -127,6 +128,11 @@ public class UISceneMain : UIScene
     private void OnEquipment(PointerEventData eventData)
     {
         Manager.UI.ShowPopup<UIPopupEquipment>();
+    }
+
+    private void OnShop(PointerEventData eventData)
+    {
+        Manager.UI.ShowPopup<UIPopupShopSummon>();
     }
 
     private void OnGameSpeedUp(PointerEventData eventData)

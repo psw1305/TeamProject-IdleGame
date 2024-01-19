@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UIPopupOptionDropdownPanel : UIPopup
 {
@@ -42,7 +38,6 @@ public class UIPopupOptionDropdownPanel : UIPopup
 
     #endregion
 
-
     #region Button Events
 
     private void OnNoticePopup(PointerEventData eventData)
@@ -55,8 +50,6 @@ public class UIPopupOptionDropdownPanel : UIPopup
     private void OnSettingPopup(PointerEventData eventData)
     {
         // 추후 설정 연결
-        // 임시로 상점 - 소환 창 연결
-        Manager.UI.ShowPopup<UIPopupShopSummon>("Shop_Summon");
     }
     private void OnMailBoxPopup(PointerEventData eventData)
     {
