@@ -183,8 +183,9 @@ public class StageManager
     private void WaveCompleted()
     {
         // 스테이지가 루프모드면 진행도가 증가하지 않음
-        if (!CurrentStageLoop)
+        if (!CurrentStageLoop)        
             StageProgress++;
+        
 
         // 마지막 진행은 보스를 등장시킴
 
@@ -210,6 +211,7 @@ public class StageManager
         // UI에 현재 Stage단계 Display
         UISceneMain uISceneTest = Manager.UI.CurrentScene as UISceneMain; // 변수화 
         uISceneTest.UpdateCurrentStage($"{CurrentStage} - {StageProgress}");
+        Manager.Quest.QuestDataBase.QuestDB[3].currentValue = CurrentStage; // 스테이지 퀘스트 달성 값 변경
     }
 
     private void EnemyReset()

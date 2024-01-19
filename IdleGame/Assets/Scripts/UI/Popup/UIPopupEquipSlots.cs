@@ -1,11 +1,13 @@
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIPopupEquipSlots : MonoBehaviour
 {
+
+    #region Value Fields
+
     private int _itemID;
     private string _itemName;
     private string _type;
@@ -19,6 +21,10 @@ public class UIPopupEquipSlots : MonoBehaviour
     private float _reinforceEffect;
     private bool _equipped;
 
+    #endregion
+
+    #region Properties
+
     public int ItemID => _itemID;
     public string ItemName => _itemName;
     public string Type => _type;
@@ -29,7 +35,9 @@ public class UIPopupEquipSlots : MonoBehaviour
     public float RetentionEffect => _retentionEffect + _reinforceEffect;
     public bool Equipped => _equipped;
 
+    #endregion
 
+    #region Object Fields
     //타 클래스에서 여러 메서드를 실행할때 콜백으로 하거나 여러번 GetCompornent 처리하는게 마음에 들지 않아 일단 Action으로 묶어두었음 
     public Action SetReinforceUI;
 
@@ -47,17 +55,22 @@ public class UIPopupEquipSlots : MonoBehaviour
     [SerializeField] private GameObject ReinforceIcon;
 
     private ItemData _itemData;
-
     public ItemData ItemData => _itemData;
+
+    #endregion
+
+    #region Unity Flow
 
     private void Awake()
     {
         SetReinforceUI += SetReinforceData;
         SetReinforceUI += SetReinforceProgress;
         SetReinforceUI += SetReinforceIcon;
-        Debug.Log("액션 추가 완료");
     }
 
+    #endregion
+
+    #region Other Method
 
     //아이템 아이콘 세팅, 티어 세팅, 레벨 세팅,게이지 세팅, 언록 여부 
     public void InitSlotInfo(ItemData itemData)
@@ -115,13 +128,11 @@ public class UIPopupEquipSlots : MonoBehaviour
         }
     }
 
-
     private void SetReinforceProgress()
     {
         reinforceProgress.fillAmount = (float)_hasCount / _needCount;
         reinforceText.text = $"{_hasCount}/{_needCount}";
     }
-
 
     private void SetReinforceIcon()
     {
@@ -134,8 +145,6 @@ public class UIPopupEquipSlots : MonoBehaviour
             ReinforceIcon.SetActive(false);
         }
     }
-
-
 
     public void SetLockState()
     {
@@ -154,4 +163,6 @@ public class UIPopupEquipSlots : MonoBehaviour
     {
         FindObjectOfType<UIPopupEquipment>().SetSelectItemInfo(_itemData);
     }
+
+    #endregion
 }
