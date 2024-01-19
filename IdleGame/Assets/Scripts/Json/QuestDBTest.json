@@ -1,25 +1,33 @@
 {
-    "QuestIndex": 2,
+    "QuestNum": 5,
+    "QuestIndex": 0,
     "QuestDB": [
         {
             "questType": 0,
             "questObjective": "Damage Upgrade",
-            "objectValue": 15,
-            "currentValue": 43,
-            "isClear": true
+            "objectiveValue": 35,
+            "currentValue": 20,
+            "isClear": false
         },
         {
             "questType": 1,
             "questObjective": "HP Upgrade",
-            "objectValue": 15,
-            "currentValue": 15,
-            "isClear": true
+            "objectiveValue": 35,
+            "currentValue": 14,
+            "isClear": false
         },
         {
             "questType": 2,
             "questObjective": "Defeat Enemy",
-            "objectValue": 10,
-            "currentValue": 5,
+            "objectiveValue": 5,
+            "currentValue": 0,
+            "isClear": false
+        },
+        {
+            "questType": 3,
+            "questObjective": "Reach Stage",
+            "objectiveValue": 4,
+            "currentValue": 2,
             "isClear": false
         }
     ]

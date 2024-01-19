@@ -253,6 +253,12 @@ public class Player : MonoBehaviour, IDamageable
         playerView.SetGoldAmount();
     }
 
+    public void RewardGem(int Amount)
+    {
+        Gems = Gems + Amount;
+        playerView.SetGemAmout();
+    }
+
     #endregion
 
     #region Equipment Methods
