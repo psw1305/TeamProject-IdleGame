@@ -5,13 +5,13 @@
             "itemName": "나무 검",
             "type": "weapon",
             "rarity": "common",
-            "level": 40,
-            "hasCount": 700,
+            "level": 86,
+            "hasCount": 10,
             "equipStat": 10.0,
             "reinforceEquip": 1.0,
             "retentionEffect": 2.0,
             "reinforceEffect": 0.20000000298023225,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": 10002,
@@ -31,8 +31,8 @@
             "itemName": "강철 검",
             "type": "weapon",
             "rarity": "eqic",
-            "level": 16,
-            "hasCount": 350,
+            "level": 39,
+            "hasCount": 5,
             "equipStat": 40.0,
             "reinforceEquip": 3.0,
             "retentionEffect": 4.0,
@@ -44,13 +44,13 @@
             "itemName": "다이아 검",
             "type": "weapon",
             "rarity": "legendary",
-            "level": 2,
-            "hasCount": 550,
+            "level": 43,
+            "hasCount": 13,
             "equipStat": 60.0,
             "reinforceEquip": 4.0,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5,
-            "equipped": true
+            "equipped": false
         },
         {
             "itemID": 10006,
