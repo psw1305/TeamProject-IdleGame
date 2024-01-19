@@ -20,6 +20,11 @@ public class PlayerView : MonoBehaviour
         mainUI.UpdateGold();
     }
 
+    public void SetGemAmout()
+    {
+        mainUI.UpdateGems();
+    }
+
     public void SetDamageFloating(Vector3 position, long Damage)
     {
         GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");

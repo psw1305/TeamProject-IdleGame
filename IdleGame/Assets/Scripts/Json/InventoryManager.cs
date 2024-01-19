@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.IO;
 using UnityEngine;
 
 public class InventoryManager
@@ -127,6 +127,7 @@ public class ItemData
     public int itemID;
     public string itemName;
     public string type;
+    public string statType;
     public string rarity;
     public int level;
     public int hasCount;

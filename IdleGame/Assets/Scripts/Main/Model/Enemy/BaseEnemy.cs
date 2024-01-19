@@ -171,9 +171,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
         Manager.Game.Player.RewardGold(_rewards);
 
-        if(Manager.Quest.CuurntQuest.questType == QuestType.DefeatEnemy)
+        if(Manager.Quest.CurrentQuest.questType == QuestType.DefeatEnemy)
         {
-            Manager.Quest.QuestObjectiveValueUp();
+            Manager.Quest.QuestCurrentValueUp();
             UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
             uiSceneMain.UpdateQuestObjective();
         }

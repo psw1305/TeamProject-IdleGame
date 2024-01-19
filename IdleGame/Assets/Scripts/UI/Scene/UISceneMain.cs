@@ -106,6 +106,7 @@ public class UISceneMain : UIScene
         Manager.Stage.SetRetryBossButton(_btnBoss);
 
         // Quest
+        UpdateQuestNum();
         _txtQuestObjective.text = QuestObjective();
     }
 
@@ -147,11 +148,13 @@ public class UISceneMain : UIScene
     
     private void OnQuest(PointerEventData eventData)
     {
+        // 클릭시 퀘스트가 최신화가 됨. 작동에는 문제 없음. 퀘스트 완료시로 바꾸면 좋을 것 같습니다.
         Manager.Quest.CheckQuestCompletion();
+        UpdateQuestNum();
         UpdateQuestObjective();
         Debug.Log("퀘스트 버튼"); // 버튼 작동 테스트
 
-        Debug.Log(Manager.Quest.CuurntQuest.questObjective);
+        Debug.Log(Manager.Quest.CurrentQuest.questObjective);
     }
 
     #endregion
@@ -178,6 +181,11 @@ public class UISceneMain : UIScene
 
     }
 
+    public void UpdateQuestNum()
+    {
+        _txtQuestNum.text = ($"Quest No.{Manager.Quest.QuestDataBase.QuestNum}");
+    }
+
     public void UpdateQuestObjective()
     {
         _txtQuestObjective.text = QuestObjective();
@@ -188,6 +196,10 @@ public class UISceneMain : UIScene
     // 임시. 퀘스트 목표 TEXT 내용 반환
     public string QuestObjective()
     {
-        return ($"{Manager.Quest.CuurntQuest.questObjective} {Manager.Quest.CuurntQuest.currentValue} / {Manager.Quest.CuurntQuest.objectValue}");
+        if(Manager.Quest.CurrentQuest.questType == QuestType.StageClear)        
+            return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.objectiveValue} - 0");
+
+        else
+            return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.currentValue} / {Manager.Quest.CurrentQuest.objectiveValue}");
     }
 }
