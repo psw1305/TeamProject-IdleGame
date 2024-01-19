@@ -17,7 +17,8 @@ public enum QuestType
 {
     DamageUp,
     HPUp,
-    DefeatEnemy
+    DefeatEnemy,
+    None,
     //ItemGamble
     //StageClear
 }

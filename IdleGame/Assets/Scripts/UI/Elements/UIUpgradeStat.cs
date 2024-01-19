@@ -10,6 +10,7 @@ public class UIUpgradeStat : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textStatValue;
     [SerializeField] private TextMeshProUGUI textUpdateCost;
     [SerializeField] private Button btnUpgradeStat;
+    [SerializeField] private QuestType questType;
     private Player player;
 
     public void SetUpgradeStat(Player player, StatInfo statInfo, Action<PointerEventData> action)
@@ -43,13 +44,13 @@ public class UIUpgradeStat : MonoBehaviour
 
     private void UpdateQuestObjective()
     {
-        if (Manager.Quest.CuurntQuest.questType == QuestType.DamageUp)
+        if (Manager.Quest.CuurntQuest.questType == questType)
         {
             Manager.Quest.QuestObjectiveValueUp();
             UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
             uiSceneMain.UpdateQuestObjective();
         }
-        else if (Manager.Quest.CuurntQuest.questType == QuestType.HPUp)
+        else if (Manager.Quest.CuurntQuest.questType == questType)
         {
             Manager.Quest.QuestObjectiveValueUp();
             UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;

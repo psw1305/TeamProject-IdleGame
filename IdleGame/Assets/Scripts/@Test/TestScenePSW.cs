@@ -10,7 +10,7 @@ public class TestScenePSW : BaseScene
         if (!base.Initialize()) return false;
 
         // 데이터 초기화
-        Manager.Data.Initialize("test-user-HSB");
+        Manager.Data.Initialize("test-user-kdh");
 
         // 보스 임시 스폰 포인트 스크립트로 만들기
         TestBossSpawnPointAdd(out Transform bossSpawnPoint);
