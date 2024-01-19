@@ -4,18 +4,24 @@ using UnityEngine;
 public class StatInfo
 {
     public int Level;
+    public long BaseValue;
+    public long BaseUpgradeCost;
+
     public long Value;
     public long UpgradeCost;
     public long Modifier;
+    
     public StatModType ModType;
 
-    public StatInfo(int level, long value, long upgradeCost, long modifier, StatModType modType)
+    public StatInfo(int level, long baseValue, long modifier, StatModType modType)
     {
         Level = level;
-        Value = value;
-        UpgradeCost = upgradeCost;
+        BaseValue = baseValue;
+        BaseUpgradeCost = 50;
         Modifier = modifier;
         ModType = modType;
+
+        StatLevelCalculate();
     }
 
     public void AddModifier()
@@ -45,4 +51,14 @@ public class StatInfo
             return Value.ToString(); 
         }
     }
+
+    #region Calculate
+
+    public void StatLevelCalculate()
+    {
+        Value = BaseValue + Modifier * (Level - 1);
+        UpgradeCost = BaseUpgradeCost + 10 * (Level - 1);
+    }
+
+    #endregion
 }

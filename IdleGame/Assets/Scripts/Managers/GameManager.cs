@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class GameManager
 {
-    #region
+    #region Fields
+
+    private Vector2 playerPosition;
+
+    #endregion
+
+    #region Properties
 
     public Player Player { get; private set; }
 
@@ -14,7 +20,17 @@ public class GameManager
     {
         var playerClone = Manager.Resource.InstantiatePrefab("PlayerFrame");
         Player = playerClone.GetComponent<Player>();
+    }
+
+    public void GameStart()
+    {
+        // 플레이어 데이터가 초기화 되는 부분
+        Player.transform.position = playerPosition;
         Player.Initialize();
+
+        Manager.UI.ShowScene<UISceneMain>();
+        Manager.Stage.SetStage();
+        Manager.Stage.BattleStart();
     }
 
     #endregion
@@ -23,7 +39,7 @@ public class GameManager
 
     public void SetPosition(Vector2 position)
     {
-        Player.transform.position = position;
+        playerPosition = position;
     }
 
     #endregion
