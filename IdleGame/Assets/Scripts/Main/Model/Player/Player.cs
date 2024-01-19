@@ -39,8 +39,10 @@ public class Player : MonoBehaviour, IDamageable
     public int Gems { get; private set; }
 
     // 장비 관련 프로퍼티
-    public float EquipStat { get; private set; }
-    public float RetentionEffect {  get; private set; }
+    public float EquipAttackStat { get; private set; }
+    public float RetentionAttackEffect {  get; private set; }
+    public float EquipHPStat { get; private set; }
+    public float RetentionHPEffect { get; private set; }
 
     #endregion
 
@@ -216,11 +218,11 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (IsCritical())
         {
-            return (long)(AttackDamage.Value + (AttackDamage.Value * CriticalDamage.GetFloat()) * (1 + EquipStat / 100) * (1 + RetentionEffect / 100));
+            return (long)(AttackDamage.Value + (AttackDamage.Value * CriticalDamage.GetFloat()) * (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
         }
         else
         {
-            return (long)(AttackDamage.Value + (1 + EquipStat / 100) * (1 + RetentionEffect / 100));
+            return (long)(AttackDamage.Value + (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
         }
     }
 
@@ -259,23 +261,36 @@ public class Player : MonoBehaviour, IDamageable
 
     public void EquipmentStatModifier()
     {
-        RetentionEffect = 0;
-        EquipStat = 0;
+        RetentionAttackEffect = 0;
+        EquipAttackStat = 0;
+        RetentionHPEffect = 0;
+        EquipHPStat = 0;
 
         foreach (var item in Manager.Inventory.ItemDataBase.ItemDB.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
         {
-            RetentionEffect += item.retentionEffect + item.reinforceEffect * item.level;
+            if (item.statType == "attack")
+            {
+                RetentionAttackEffect += item.retentionEffect + item.reinforceEffect * item.level;
+            }
+            else if (item.statType == "hp")
+            {
+                RetentionHPEffect += item.retentionEffect + item.reinforceEffect * item.level;
+            }
         }
 
         var filteredEquipItem = Manager.Inventory.ItemDataBase.ItemDB.Where(itemdata => itemdata.equipped == true).ToList();
 
         foreach (var item in filteredEquipItem)
         {
-            EquipStat += item.equipStat + item.reinforceEquip * item.level;
+            if (item.statType == "attack" && item.equipped == true)
+            {
+                EquipAttackStat += item.equipStat + item.reinforceEquip * item.level;
+            }
+            else if (item.statType == "hp" && item.equipped == true)
+            {
+                EquipHPStat += item.equipStat + item.reinforceEquip * item.level;
+            }
         }
-
-        Debug.Log($"EffectStat : {RetentionEffect}");
-        Debug.Log($"EquipStat : {EquipStat}");
     }
 
     #endregion

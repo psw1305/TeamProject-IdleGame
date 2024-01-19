@@ -1,9 +1,10 @@
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using TMPro;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine;
 
 public class UIPopupEquipment : UIPopup
 {
@@ -58,12 +59,14 @@ public class UIPopupEquipment : UIPopup
     protected override void Init()
     {
         base.Init();
+
         SetText();
         SetImage();
         SetButtons();
         SetEvents();
         equipFillterType = EquipFillterType.Weapon;
         SetPopupTitle();
+  
         FillterCurrentPopupUseItemData();
         SetFirstVisibleItem();
     }
@@ -95,7 +98,9 @@ public class UIPopupEquipment : UIPopup
         _btnExit = GetUI<Button>("Btn_PopClose");
         _BtnSelectEquip = GetUI<Button>("Btn_Equip");
         _btnSelectReinforce = GetUI<Button>("Btn_Reinforce");
+        Manager.NotificateDot.AddAllReinforceNotificateObject(_btnSelectReinforce.transform);
         _btnSameTypeReinforce = GetUI<Button>("Btn_ReinforceAll");
+        Manager.NotificateDot.AddAllReinforceNotificateObject(_btnSameTypeReinforce.transform);
         _btnTestWeapon = GetUI<Button>("Btn_TestWeapon");
         _btnTestArmor = GetUI<Button>("Btn_TestArmor");
     }
@@ -142,12 +147,12 @@ public class UIPopupEquipment : UIPopup
         _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / _needCount;
 
 
-        if (selectItemData.type == "weapon")
+        if (selectItemData.statType == "attack")
         {
             _equipEffect.text = $"공격력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
             _retentionEffect.text = $"공격력 : {_selectItemData.retentionEffect + _selectItemData.reinforceEffect * _selectItemData.level}%";
         }
-        else
+        else if(selectItemData.statType == "hp")
         {
             _equipEffect.text = $"체력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
             _retentionEffect.text = $"체력 :  {_selectItemData.retentionEffect + _selectItemData.reinforceEffect * _selectItemData.level}%";
@@ -257,6 +262,18 @@ public class UIPopupEquipment : UIPopup
     #endregion
 
     #region Unity Flow
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.T)) 
+        {
+            Manager.NotificateDot.ActiveNotiMarker();
+        }
+        else if (Input.GetKeyUp(KeyCode.Y))
+        {
+            Manager.NotificateDot.InactiveNotiMarker();
+        }
+    }
 
     private void OnDestroy()
     {

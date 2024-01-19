@@ -31,7 +31,6 @@ public class UIPopupIdleRewardPopup : UIPopup
 
     #endregion
 
-
     #region Button Events
 
     private void IdleRewardCheck(PointerEventData eventData)
