@@ -116,6 +116,9 @@ public class UIPopupShopSummon : UIPopup
 
         int[] finalResult = summonResurt.ToArray();
         EquipmentAdd(finalResult);
+        var popup = Manager.UI.ShowPopup<UIPopupDynamicRewardPopup>("DynamicRewardPopup");
+        popup.DataInit(finalResult);
+        popup.PlayStart();
         summonResurt.Clear();
     }
 
