@@ -17,9 +17,9 @@ public class QuestManager
     
     public void SaveQuestDataBase()
     {
-        string questJson = JsonUtility.ToJson(QuestDataBase, true);
-        File.WriteAllText(QuestjsonPath, questJson);
-        Debug.Log("퀘스트 데이터 베이스 저장 완료");
+        //string questJson = JsonUtility.ToJson(QuestDataBase, true);
+        //File.WriteAllText(QuestjsonPath, questJson);
+        //Debug.Log("퀘스트 데이터 베이스 저장 완료");
     }
 
     public void LoadQuestdataBase()
