@@ -523,6 +523,7 @@ GameObject:
   - component: {fileID: 3583848641833352243}
   - component: {fileID: 8241657855484505506}
   - component: {fileID: 1585883643302467986}
+  - component: {fileID: 6842235650433257183}
   m_Layer: 5
   m_Name: Btn_Equipment
   m_TagString: Untagged
@@ -632,6 +633,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6842235650433257183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110622669696076733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c5182b6ee30884a83aa1a06614db5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChildNotiDot: {fileID: 0}
 --- !u!1 &4793080724289981330
 GameObject:
   m_ObjectHideFlags: 0

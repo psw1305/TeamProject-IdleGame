@@ -6,7 +6,7 @@
             "type": "weapon",
             "statType": "attack",
             "rarity": "common",
-            "level": 86,
+            "level": 92,
             "hasCount": 10,
             "equipStat": 10.0,
             "reinforceEquip": 1.0,
@@ -20,13 +20,13 @@
             "type": "weapon",
             "statType": "attack",
             "rarity": "rare",
-            "level": 8,
-            "hasCount": 0,
+            "level": 29,
+            "hasCount": 6,
             "equipStat": 20.0,
             "reinforceEquip": 2.0,
             "retentionEffect": 3.0,
             "reinforceEffect": 0.30000001192092898,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": 10003,
@@ -40,7 +40,7 @@
             "reinforceEquip": 3.0,
             "retentionEffect": 4.0,
             "reinforceEffect": 0.4000000059604645,
-            "equipped": true
+            "equipped": false
         },
         {
             "itemID": 10005,
@@ -342,13 +342,13 @@
             "type": "armor",
             "statType": "hp",
             "rarity": "legendary",
-            "level": 1,
-            "hasCount": 333,
+            "level": 55,
+            "hasCount": 10,
             "equipStat": 60.0,
             "reinforceEquip": 0.800000011920929,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": 20002,
@@ -356,13 +356,13 @@
             "type": "armor",
             "statType": "hp",
             "rarity": "legendary",
-            "level": 1,
-            "hasCount": 200,
+            "level": 20,
+            "hasCount": 6,
             "equipStat": 60.0,
             "reinforceEquip": 0.800000011920929,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5,
-            "equipped": true
+            "equipped": false
         },
         {
             "itemID": 20003,

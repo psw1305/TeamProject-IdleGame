@@ -10,6 +10,9 @@ public class InventoryManager
 
     private ItemDataBase _itemDataBase;
     public ItemDataBase ItemDataBase => _itemDataBase;
+    public List<ItemData> WeaponItemList => _itemDataBase.ItemDB.Where(ItemData => ItemData.type == "weapon").ToList();
+    public List<ItemData> ArmorItemList => _itemDataBase.ItemDB.Where(ItemData => ItemData.type == "armor").ToList();
+
 
     public ItemData SearchItem(int itemID)
     {
@@ -62,7 +65,7 @@ public class InventoryManager
         Manager.Game.Player.EquipmentStatModifier();
     }
 
-    private void ReinforceItem(ItemData itemdata)
+    private void ReinforceTypeItem(ItemData itemdata)
     {
         while (true)
         {
@@ -93,23 +96,24 @@ public class InventoryManager
             }
         }
     }
+    
     public void ReinforceSelectItem(ItemData itemdata)
     {
-        ReinforceItem(itemdata);
+        ReinforceTypeItem(itemdata);
 
-        SaveItemDataBase();
+        //SaveItemDataBase();
 
         Manager.Game.Player.EquipmentStatModifier();
     }
 
-    public void ReinforceSelectTypeItem(ItemData itemData)
+    public void ReinforceSelectTypeItem(List<ItemData> itemList)
     {
-        List<ItemData> targetItemlist = _itemDataBase.ItemDB.Where(_itemData => _itemData.type == itemData.type).ToList();
+        List<ItemData> targetItemlist = itemList;
         foreach (var item in targetItemlist)
         {
-            ReinforceItem(item);
+            ReinforceTypeItem(item);
         }
-        SaveItemDataBase();
+        //SaveItemDataBase();
 
         Manager.Game.Player.EquipmentStatModifier();
     }

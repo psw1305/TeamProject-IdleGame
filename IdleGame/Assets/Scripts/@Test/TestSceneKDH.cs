@@ -4,20 +4,24 @@ public class TestSceneKDH : BaseScene
 {
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private Transform[] enemySpawnPoint;
+
     protected override bool Initialize()
     {
         if (!base.Initialize()) return false;
+
         // 보스 임시 스폰 포인트 스크립트로 만들기
         TestBossSpawnPointAdd(out Transform bossSpawnPoint);
-
-        Manager.UI.ShowScene<UISceneMain>();
         Manager.Game.SetPosition(playerSpawnPoint.position);
 
         // 스테이지 전투 구성 & 시작
         Manager.Stage.Initialize();
         Manager.Stage.SetSpawnPoint(enemySpawnPoint);
         Manager.Stage.SetBossPoint(bossSpawnPoint);
-        Manager.Stage.BattleStart();
+
+        Manager.Summon.Initialize();
+
+        // 세션 생성 후 => 전투 시작
+        Manager.Session.Initialize("test-kdh");
 
         return true;
     }
