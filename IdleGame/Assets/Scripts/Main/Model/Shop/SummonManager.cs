@@ -7,8 +7,7 @@ public class SummonManager
 {
     #region Fields
 
-    //private string _jsonPath = $"{Application.dataPath}/Resources/Data/SummonTable/EquipmentSummonTable.json";
-    private string _jsonPath = Application.dataPath + "/Resources/Data/SummonTable/EquipmentSummonTable.json";
+    private string _jsonPath = $"{Application.dataPath}/Resources/Data/SummonTable/EquipmentSummonTable.json";
     private string _tableText;
     private Player _player;
     private InventoryManager _inventoryManager;
@@ -16,12 +15,18 @@ public class SummonManager
     private int[] probability;
     private int[] itemIndex;
     private ProbabilityDataTable _probabilityDataTable;
-    private Dictionary<int, int> probabilityTable = new Dictionary<int, int>();
+    private Dictionary<int, int> probabilityTable = new();
     private List<int> summonResurt = new List<int>(1000);
 
     // 확인용
     private int[] testResult;
-    private Dictionary<int, int> indexResult = new Dictionary<int, int>();
+    private Dictionary<int, int> indexResult = new();
+
+    #endregion
+
+    #region Properties
+
+    public int SummonCounts { get; private set; }
 
     #endregion
 
@@ -41,10 +46,10 @@ public class SummonManager
     private void ProbabilityInit()
     {
         _tableText = File.ReadAllText(_jsonPath);
-        _probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>(_tableText);
+        _probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
 
-        probability = _probabilityDataTable.Probabilities.Select(x => x.Probability).ToArray();
-        itemIndex = _probabilityDataTable.Probabilities.Select(x => x.ItemId).ToArray();
+        probability = _probabilityDataTable.probabilityDataTable.Select(x => x.Probability).ToArray();
+        itemIndex = _probabilityDataTable.probabilityDataTable.Select(x => x.ItemId).ToArray();
 
         int sum = 0;
 
@@ -62,7 +67,7 @@ public class SummonManager
 
     #endregion
 
-    #region Summon Test
+        #region Summon Test
 
     public void SummonTry(int price, int count)
     {
@@ -132,12 +137,13 @@ public class SummonManager
 [System.Serializable]
 public class ProbabilityDataTable
 {
-    public List<ProbabilityData> Probabilities;
+    public List<ProbabilityData> probabilityDataTable;
 }
 
 [System.Serializable]
 public class ProbabilityData
 {
+    public int SummonGrade;
     public int ItemId;
     public int Probability;
 }
