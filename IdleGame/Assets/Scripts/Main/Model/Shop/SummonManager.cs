@@ -15,7 +15,7 @@ public class SummonManager
     private int[] probability;
     private int[] itemIndex;
     private ProbabilityDataTable _probabilityDataTable;
-    private Dictionary<int, int> probabilityTable = new();
+    private Dictionary<int, Dictionary<int, int>> probabilityTable = new();
     private List<int> summonResurt = new List<int>(1000);
 
     // 확인용
@@ -26,6 +26,7 @@ public class SummonManager
 
     #region Properties
 
+    public int SummonLevel { get; private set; }
     public int SummonCounts { get; private set; }
 
     #endregion
@@ -40,6 +41,8 @@ public class SummonManager
 
     public void Initialize()
     {
+        SummonLevel = 2;
+
         ProbabilityInit();
     }
 
@@ -48,21 +51,28 @@ public class SummonManager
         _tableText = File.ReadAllText(_jsonPath);
         _probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
 
-        probability = _probabilityDataTable.probabilityDataTable.Select(x => x.Probability).ToArray();
-        itemIndex = _probabilityDataTable.probabilityDataTable.Select(x => x.ItemId).ToArray();
+        // 불러온 테이블을 레벨 그룹별로 1차 가공
+        var gradeValue = _probabilityDataTable.probabilityDataTable
+            .GroupBy(data => data.SummonGrade)
+            .ToDictionary(grade => grade.Key, group => group.ToDictionary(x => x.Probability, x => x.ItemId));
+        
+        // 1차 가공된 그룹을 <확률 누적, 아이템> 그룹으로 2차 가공
+        probabilityTable = gradeValue
+            .ToDictionary(gradeGroup => gradeGroup.Key, gradeGroup =>
+                {
+                    var cumulativeDict = new Dictionary<int, int>();
+                    int sum = 0;
 
-        int sum = 0;
+                    // 들어온 gradeGroup은 딕셔너리므로 foreach를 쓰는것이 좋다
+                    foreach (var probData in gradeGroup.Value)
+                    {
+                        sum += probData.Key; // 확률 누적
+                        cumulativeDict[sum] = probData.Value; // 확률 누적값을 키로, 아이템 ID를 값으로 설정
+                    }
 
-        // 확률 누계 딕셔너리 만들기
-        for (int i = 0; i < probability.Length; i++)
-        {
-            sum += probability[i];
-            probabilityTable.Add(sum, itemIndex[i]);
-            // 확인용 배열 연결
-            indexResult.Add(itemIndex[i], i);
-        }
-
-        testResult = new int[probabilityTable.Count];
+                    return cumulativeDict;
+                }
+            );
     }
 
     #endregion
@@ -89,13 +99,22 @@ public class SummonManager
         int[] summonResultValue = summonResurt.ToArray();
         summonResurt.Clear();
 
-        // 딕셔너리 키만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
-        int[] summonValueKey = probabilityTable.Select(x => x.Key).ToArray();
+        // 소환 레벨에서 딕셔너리 키(누적 확률)만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
+        probabilityTable.TryGetValue(SummonLevel, out var summonProbability);
+        var probability = summonProbability.Select(x => x.Key).ToArray();
+
+        // 테스트 결과 확인용 배열 세팅
+        testResult = new int[summonProbability.Count];
+        itemIndex = summonProbability.Select(x => x.Value).ToArray();
+        for (int i = 0; i < itemIndex.Length; i++)
+        {
+            indexResult[itemIndex[i]] = i;
+        }
 
         for (int i = 0; i < summonResultValue.Length; i++)
         {
-            int getResultKey = summonValueKey.OrderBy(x => (summonResultValue[i] - x > 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
-            probabilityTable.TryGetValue(getResultKey, out int index);
+            int getResultKey = probability.OrderBy(x => (summonResultValue[i] - x > 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
+            summonProbability.TryGetValue(getResultKey, out int index);
             summonResurt.Add(index);
             // 확인용 획득 수 카운트 증가
             indexResult.TryGetValue(index, out int result);
@@ -106,8 +125,8 @@ public class SummonManager
         int[] finalResult = summonResurt.ToArray();
         EquipmentAdd(finalResult);
         var popup = Manager.UI.ShowPopup<UIPopupDynamicRewardPopup>("DynamicRewardPopup");
-        popup.DataInit(finalResult);
-        popup.PlayStart();
+        //popup.DataInit(finalResult);
+        //popup.PlayStart();
         summonResurt.Clear();
     }
 
