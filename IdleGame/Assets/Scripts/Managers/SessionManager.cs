@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using Firebase;
@@ -170,7 +171,7 @@ public class SessionManager
         {
             if (task.IsFaulted || task.IsCanceled)
             {
-                DebugNotice.Instance.Notice("Failed to create player data: " + task.Exception);
+                DebugNotice.Instance.Notice("Failed to create user data: " + task.Exception);
             }
             else
             {
@@ -180,6 +181,12 @@ public class SessionManager
                 Manager.Game.GameStart();
             }
         });
+    }
+
+    public void UpdateUserData(Dictionary<string, object> updateFields)
+    {
+        //db.Collection("users").Document(GuestID).UpdateAsync(updates);
+        db.Collection("users").Document(GuestID).SetAsync(updateFields, SetOptions.MergeAll);
     }
 
     #endregion

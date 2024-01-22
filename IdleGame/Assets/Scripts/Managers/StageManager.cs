@@ -20,13 +20,16 @@ public class StageManager
 
     #region Properties
 
+    // 플레이 데이터 프로퍼티
     public int Difficulty {  get; private set; }
-    public int CurrentStage { get; private set; }
-    public int StageProgress { get; private set; }
-    public bool StageClear => StageProgress > stageConfig.BattleCount;
+    public int Chapter { get; private set; }
+    public int StageLevel { get; private set; }
+    public bool WaveLoop { get; private set; }
+
+    // 관리용 프로퍼티
+    public bool BossAppearance => StageLevel == stageConfig.BattleCount;
+    public bool StageClear => StageLevel > stageConfig.BattleCount;
     public bool WaveClear => enemyList.Count == 0;
-    public bool BossAppearance => StageProgress == stageConfig.BattleCount;
-    public bool CurrentStageLoop { get; private set; }
     // 스테이지 클리어 시 임시 강화율
     public int EnemyStatRate { get; private set; }
     public int StageRewardRate { get; private set; }
@@ -37,25 +40,26 @@ public class StageManager
 
     public void Initialize()
     {
-        Difficulty = 1;
         EnemyStatRate = 1;
         StageRewardRate = 1;
         //BossAppearance = false;
         stageBlueprints = new StageBlueprint[maxStage];
 
-        // 스테이지 블루 프린트 미리 로드해두기
+        // 스테이지 설계도 미리 로드해두기
         for (int i = 0; i < maxStage; i++)
         {
             var stageConfig = string.Concat("StageConfig_", i+1);
             stageBlueprints[i] = Manager.Resource.GetBlueprint(stageConfig) as StageBlueprint;
         }
-        stageConfig = stageBlueprints[CurrentStage];
+        stageConfig = stageBlueprints[Chapter];
     }
 
-    public void SetStage()
+    public void SetStage(GameUserProfile profile)
     {
-        CurrentStage = Manager.Data.Profile.Stage;
-        StageProgress = Manager.Data.Profile.Stage_Level;
+        Difficulty = profile.Stage_Difficulty;
+        Chapter = profile.Stage_Chapter;
+        StageLevel = profile.Stage_Level;
+        WaveLoop = profile.Stage_WaveLoop;
     }
 
     public void SetSpawnPoint(Transform[] spawnPoint)
@@ -90,8 +94,6 @@ public class StageManager
 
     public void BattleStop()
     {
-        Debug.Log("battle stop");
-
         CoroutineHelper.StopCoroutine(_stageCoroutine);
         _stageCoroutine = null;
     }
@@ -104,8 +106,8 @@ public class StageManager
         // 보스 잡다 죽었으면 루프랑 버튼 켜주고 진행도만 하나 뒤로 물리기
         if (BossAppearance)
         {
-            CurrentStageLoop = true;
-            StageProgress--;
+            WaveLoop = true;
+            StageLevel--;
             RetryBossButtonToggle();
         }
         else
@@ -113,15 +115,15 @@ public class StageManager
             // 스테이지 진행중 죽었으면 스테이지 뒤로 물리기, 맨 처음 스테이지면 난이도를 뒤로 무르고 마지막 스테이지로
             EnemyStatRate -= 1 * Difficulty;
             StageRewardRate -= 1 + (Difficulty / 2);
-            CurrentStage--;
-            if (CurrentStage < 0)
+            Chapter--;
+            if (Chapter < 0)
             {
-                CurrentStage = maxStage - 1;
+                Chapter = maxStage - 1;
                 Difficulty--;
             }
-            stageConfig = stageBlueprints[CurrentStage];
+            stageConfig = stageBlueprints[Chapter];
 
-            StageProgress = 0;
+            StageLevel = 0;
         }
 
         BattleStart();
@@ -132,7 +134,8 @@ public class StageManager
     {
         while (true)
         {
-            Debug.Log($"Difficulty : {Difficulty}, CurrentStage : {CurrentStage}, StageProgress : {StageProgress}");
+            //Debug.Log($"Difficulty : {Difficulty}, CurrentStage : {StageChapter}, StageProgress : {StageLevel}");
+            
             // #1. 시작 후 1초 뒤 적 웨이브 스폰
             yield return new WaitForSeconds(1.0f);
             EnemyWaveSpawn();
@@ -188,35 +191,32 @@ public class StageManager
     private void WaveCompleted()
     {
         // 스테이지가 루프모드면 진행도가 증가하지 않음
-        if (!CurrentStageLoop)        
-            StageProgress++;
+        if (!WaveLoop)        
+            StageLevel++;
         
-
         // 마지막 진행은 보스를 등장시킴
-
         if (StageClear)
         {
-            StageProgress = 0;
+            StageLevel = 1;
 
-            // 다음 스테이지로 넘어가고, 스테이지가 최대치에 도달하면 난이도 올린뒤 처음으로 되돌아가기
-            CurrentStage++;
+            // 다음 챕터로 넘어가고, 스테이지가 최대치에 도달하면 난이도 올린뒤 처음으로 되돌아가기
+            Chapter++;
 
-            if (CurrentStage == maxStage)
+            if (Chapter == maxStage)
             {                
-                CurrentStage = 0;
+                Chapter = 1;
                 Difficulty++;
             }
                 
             // 스테이지 정보를 다시 현재 스테이지값에 맞춰 변경해주고 스텟 상승량 변경
-            stageConfig = stageBlueprints[CurrentStage];
+            stageConfig = stageBlueprints[Chapter];
             EnemyStatRate += 1 * Difficulty;
             StageRewardRate += 1 + (Difficulty / 2);
         }
 
-        // UI에 현재 Stage단계 Display
-        UISceneMain mainUI = Manager.UI.CurrentScene as UISceneMain; // 변수화 
-        mainUI.UpdateCurrentStage($"{CurrentStage} - {StageProgress}");
-        Manager.Quest.QuestDataBase.QuestDB[3].currentValue = CurrentStage; // 스테이지 퀘스트 달성 값 변경
+        SaveStage();
+
+        Manager.Quest.QuestDataBase.QuestDB[3].currentValue = Chapter; // 스테이지 퀘스트 달성 값 변경
     }
 
     private void EnemyReset()
@@ -239,10 +239,18 @@ public class StageManager
         EnemyReset();
         RetryBossButtonToggle();
 
-        CurrentStageLoop = false;
-        StageProgress++;
+        WaveLoop = false;
+        StageLevel++;
 
         BattleStart();
+    }
+
+    private void SaveStage()
+    {
+        UISceneMain mainUI = Manager.UI.CurrentScene as UISceneMain; // 변수화 
+        mainUI.UpdateCurrentStage();
+
+        // 데이터 저장
     }
 
     #endregion

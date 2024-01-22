@@ -55,15 +55,19 @@ public class Player : MonoBehaviour, IDamageable
 
         profile = Manager.Data.Profile;
 
-        AtkDamage   = new StatInfo(profile.Stat_Level_AtkDamage, BaseStat.AtkDamage, 10, StatModType.Integer);
-        AtkSpeed    = new StatInfo(profile.Stat_Level_AtkSpeed, BaseStat.AtkSpeed, 10, StatModType.DecimalPoint);
-        CritChance  = new StatInfo(profile.Stat_Level_CritChance, BaseStat.CritChance, 1, StatModType.Percent);
-        CritDamage  = new StatInfo(profile.Stat_Level_CritDamage, BaseStat.CritDamage, 10, StatModType.Percent);
-        Hp          = new StatInfo(profile.Stat_Level_Hp, BaseStat.Hp, 100, StatModType.Integer);
-        HpRecovery  = new StatInfo(profile.Stat_Level_HpRecovery, BaseStat.HpRecovery, 10, StatModType.Integer);
+        // 골드, 보석 데이터 적용
+        Gold = profile.Gold;
+        Gems = profile.Gems;
+
+        // 스탯 데이터 적용
+        AtkDamage   = new StatInfo("Stat_Level_AtkDamage", profile.Stat_Level_AtkDamage, BaseStat.AtkDamage, 10, StatModType.Integer);
+        AtkSpeed    = new StatInfo("Stat_Level_AtkSpeed", profile.Stat_Level_AtkSpeed, BaseStat.AtkSpeed, 10, StatModType.DecimalPoint);
+        CritChance  = new StatInfo("Stat_Level_CritChance", profile.Stat_Level_CritChance, BaseStat.CritChance, 1, StatModType.Percent);
+        CritDamage  = new StatInfo("Stat_Level_CritDamage", profile.Stat_Level_CritDamage, BaseStat.CritDamage, 10, StatModType.Percent);
+        Hp          = new StatInfo("Stat_Level_Hp", profile.Stat_Level_Hp, BaseStat.Hp, 100, StatModType.Integer);
+        HpRecovery  = new StatInfo("Stat_Level_HpRecovery", profile.Stat_Level_HpRecovery, BaseStat.HpRecovery, 10, StatModType.Integer);
 
         SetCurrentHp(Hp.Value);
-
         enemyList = Manager.Stage.GetEnemyList();
 
         Manager.Inventory.InitItem();
@@ -230,7 +234,7 @@ public class Player : MonoBehaviour, IDamageable
 
     #endregion
 
-    #region Currenct Methods
+    #region Currency Methods
 
     public bool IsTrade(long amount)
     {
@@ -254,7 +258,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void RewardGem(int Amount)
     {
-        Gems = Gems + Amount;
+        Gems += Amount;
         playerView.SetGemAmout();
     }
 

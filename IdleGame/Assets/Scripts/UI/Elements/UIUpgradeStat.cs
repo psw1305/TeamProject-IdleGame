@@ -31,8 +31,6 @@ public class UIUpgradeStat : MonoBehaviour
         if (player.IsTrade(statInfo.UpgradeCost))
         {
             statInfo.AddModifier();
-            statInfo.Level += 1;
-            statInfo.UpgradeCost += 10;
 
             UpdateQuestObjective();
 

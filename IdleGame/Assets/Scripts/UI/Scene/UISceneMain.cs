@@ -97,17 +97,17 @@ public class UISceneMain : UIScene
 
     private void SetUI()
     {
-        // HUD UI
-        txt_Gold.text = player.Gold.ToString();
-        txt_Gems.text = player.Gems.ToString();
-        txt_Stage.text = ($"{Manager.Stage.CurrentStage} - {Manager.Stage.StageProgress}");
-
-        // Stage Button Init
-        Manager.Stage.SetRetryBossButton(_btnBoss);
+        // Update Top UI
+        UpdateGold();
+        UpdateGems();
+        UpdateCurrentStage();
 
         // Quest
         UpdateQuestNum();
         _txtQuestObjective.text = QuestObjective();
+
+        // Stage Button Init
+        Manager.Stage.SetRetryBossButton(_btnBoss);
     }
 
     #endregion
@@ -171,9 +171,9 @@ public class UISceneMain : UIScene
         txt_Gems.text = player.Gems.ToString();
     }
 
-    public void UpdateCurrentStage(string currentStage)
+    public void UpdateCurrentStage()
     {
-        txt_Stage.text = currentStage;
+        txt_Stage.text = ($"{Manager.Stage.Chapter} - {Manager.Stage.StageLevel}");
     }
 
     public void UpdateButtonEnable()
