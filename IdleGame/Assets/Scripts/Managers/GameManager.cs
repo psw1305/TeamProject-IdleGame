@@ -22,16 +22,18 @@ public class GameManager
         Player = playerClone.GetComponent<Player>();
     }
 
+    // TODO => 서순을 교체하니 실행이 가능함
     public void GameStart()
     {
-        // 플레이어 데이터가 초기화 되는 부분
-        Player.transform.position = playerPosition;
-        Player.Initialize();
-
         Manager.UI.ShowScene<UISceneMain>();
+
         Manager.Summon.SetSummon();
         Manager.Stage.SetStage(Manager.Data.Profile);
         Manager.Stage.BattleStart();
+
+        // 플레이어 데이터가 초기화 되는 부분
+        Player.transform.position = playerPosition;
+        Player.Initialize();
     }
 
     #endregion

@@ -73,7 +73,6 @@ public class Player : MonoBehaviour, IDamageable
         Manager.Inventory.InitItem();
         Manager.Quest.InitQuest();
         EquipmentStatModifier();
-        StartCoroutine(RecoverHealthPoint());
     }
 
     public void CheckClick(bool isClick)
@@ -89,6 +88,8 @@ public class Player : MonoBehaviour, IDamageable
     {
         playerView = GetComponent<PlayerView>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+
+        StartCoroutine(RecoverHealthPoint());
     }
 
     private void FixedUpdate()

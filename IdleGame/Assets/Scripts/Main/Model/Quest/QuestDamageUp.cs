@@ -7,7 +7,7 @@ public class QuestDamageUp : Quest, IQuestActive
         data.questType = QuestType.DamageUp;
         data.questObjective = "Damage Up";
         //data.objectiveValue
-        data.currentValue = Manager.Game.Player.AttackDamage.Level; // 플레이어 저장 데이터
+        data.currentValue = Manager.Game.Player.AtkDamage.Level; // 플레이어 저장 데이터
 
     }
 
