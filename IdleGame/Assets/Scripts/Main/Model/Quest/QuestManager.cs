@@ -1,25 +1,65 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class QuestManager
 {
+    #region Fields
+
+    //private IQuestStractegy questStrategy;
+
+    public Quest Quest;
+
+    // json 저장
     private string QuestjsonPath = Application.dataPath + "/Scripts/Json/QuestDBTest.json";
     private string QuestjsonText;
 
+    // Quest DB
+    public QuestData CurrentQuest;
+    public QuestDataBase QuestDataBase;
+
     private int ValueUpRate = 5; // 퀘스트 사이클 올라갈 때마다 곱해지는 값
 
-    public QuestData CurrentQuest;
+    #endregion
 
-    public QuestDataBase QuestDataBase;
-    
+    #region constructor 
+
+    public QuestManager() { }
+
+    //public QuestManager(IQuestStractegy strategy)
+    //{
+    //    this.questStrategy = strategy;
+    //}
+
+    //public void SetQuestStrategy(IQuestStractegy strategy)
+    //{
+
+    //}
+
+    public void Achieve()
+    {
+        //this.questStrategy.QuestAchive();
+    }
+
+    #endregion 
+
+    #region Init
+
+    public void InitQuest()
+    {
+        LoadQuestdataBase();
+        Quest.Init();
+    }
+
+    #endregion
+
+    #region Save Load Json
+
     public void SaveQuestDataBase()
     {
-        //string questJson = JsonUtility.ToJson(QuestDataBase, true);
-        //File.WriteAllText(QuestjsonPath, questJson);
-        //Debug.Log("퀘스트 데이터 베이스 저장 완료");
+        string questJson = JsonUtility.ToJson(QuestDataBase, true);
+        File.WriteAllText(QuestjsonPath, questJson);
+        Debug.Log("퀘스트 데이터 베이스 저장 완료");
     }
 
     public void LoadQuestdataBase()
@@ -31,21 +71,19 @@ public class QuestManager
         //현재 퀘스트를 Index에 저장한 값으로 불러오기
         CurrentQuest = QuestDataBase.QuestDB[QuestDataBase.QuestIndex];
 
-        // Player의 
+        // Player의 업그레이드 값 가져오기 
         QuestDataBase.QuestDB[0].currentValue = Manager.Game.Player.AttackDamage.Level;
         QuestDataBase.QuestDB[1].currentValue = Manager.Game.Player.Hp.Level;
     }
 
-    public void InitQuest()
-    {
-        LoadQuestdataBase();
-    }
+    #endregion
+
 
     // 퀘스트 클리어 여부 확인
     public void CheckQuestCompletion()
     {
         // 목표 Value < 현재 Value 일 때
-        if(CurrentQuest.objectiveValue <= CurrentQuest.currentValue)
+        if (CurrentQuest.objectiveValue <= CurrentQuest.currentValue)
         {
             // isClear는 필요한 변수인가? UI상으로 표시할때 사용하는 것인가? 
             CurrentQuest.isClear = true;
@@ -67,7 +105,7 @@ public class QuestManager
         if (QuestDataBase.QuestIndex >= QuestDataBase.QuestDB.Count)
         {
             QuestDataBase.QuestIndex = 0;
-            
+
             QuestObjectiveValueUp();
             foreach (var quest in QuestDataBase.QuestDB)
             {
@@ -108,6 +146,8 @@ public class QuestManager
     }
 }
 
+# region Quest DataBase
+
 [System.Serializable]
 public class QuestDataBase
 {
@@ -125,3 +165,5 @@ public class QuestData
     public int currentValue;
     public bool isClear;
 }
+
+#endregion
