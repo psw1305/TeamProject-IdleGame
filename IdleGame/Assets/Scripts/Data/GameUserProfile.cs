@@ -10,16 +10,18 @@ public class GameUserProfile
     [FirestoreProperty] public int Gems { get; set; }
 
     // Stats
-    [FirestoreProperty] public int Stat_Level_Hp { get; set; }
-    [FirestoreProperty] public int Stat_Level_HpRecovery { get; set; }
     [FirestoreProperty] public int Stat_Level_AtkDamage { get; set; }
     [FirestoreProperty] public int Stat_Level_AtkSpeed { get; set; }
     [FirestoreProperty] public int Stat_Level_CritChance { get; set; }
     [FirestoreProperty] public int Stat_Level_CritDamage { get; set; }
+    [FirestoreProperty] public int Stat_Level_Hp { get; set; }
+    [FirestoreProperty] public int Stat_Level_HpRecovery { get; set; }
 
     // Stages
-    [FirestoreProperty] public int Stage { get; set; }
+    [FirestoreProperty] public int Stage_Difficulty { get; set; }
+    [FirestoreProperty] public int Stage_Chapter { get; set; }
     [FirestoreProperty] public int Stage_Level { get; set; }
+    [FirestoreProperty] public bool Stage_WaveLoop { get; set; }
 
     // Quest
     [FirestoreProperty] public int Quest_Complete { get; set; }

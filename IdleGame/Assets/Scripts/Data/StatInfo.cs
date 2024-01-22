@@ -1,8 +1,7 @@
-using UnityEngine;
-
 // 유저 인게임 스텟 정보
 public class StatInfo
 {
+    public string Id;
     public int Level;
     public long BaseValue;
     public long BaseUpgradeCost;
@@ -13,8 +12,9 @@ public class StatInfo
     
     public StatModType ModType;
 
-    public StatInfo(int level, long baseValue, long modifier, StatModType modType)
+    public StatInfo(string id, int level, long baseValue, long modifier, StatModType modType)
     {
+        Id = id;
         Level = level;
         BaseValue = baseValue;
         BaseUpgradeCost = 50;
@@ -26,7 +26,8 @@ public class StatInfo
 
     public void AddModifier()
     {
-        Value += Modifier;
+        Level += 1;
+        StatLevelCalculate();
     }
 
     public float GetFloat()

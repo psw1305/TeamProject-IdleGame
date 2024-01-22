@@ -30,7 +30,7 @@ public class GameManager
 
         Manager.UI.ShowScene<UISceneMain>();
         Manager.Summon.SetSummon();
-        Manager.Stage.SetStage();
+        Manager.Stage.SetStage(Manager.Data.Profile);
         Manager.Stage.BattleStart();
     }
 
