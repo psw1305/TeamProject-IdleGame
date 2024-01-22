@@ -12,14 +12,14 @@ public class SummonManager
     private Player _player;
     private InventoryManager _inventoryManager;
 
-    private int[] probability;
-    private int[] itemIndex;
-    private ProbabilityDataTable _probabilityDataTable;
     private Dictionary<int, Dictionary<int, int>> probabilityTable = new();
     private List<int> summonResurt = new List<int>(1000);
 
+    private int[] levelUpCount = new int[] { 0, 2000, 4000, 6000, 8000, -1 };
+
     // 확인용
     private int[] testResult;
+    private int[] itemIndex;
     private Dictionary<int, int> indexResult = new();
 
     #endregion
@@ -41,22 +41,25 @@ public class SummonManager
 
     public void Initialize()
     {
-        SummonLevel = 2;
+        SummonLevel = 1;
 
+        SummonLevelInitialize();
         ProbabilityInit();
     }
 
     private void ProbabilityInit()
     {
         _tableText = File.ReadAllText(_jsonPath);
-        _probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
+        var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
 
         // 불러온 테이블을 레벨 그룹별로 1차 가공
-        var gradeValue = _probabilityDataTable.probabilityDataTable
+        // <등급(그룹), <아이템, 확률>>
+        var gradeValue = probabilityDataTable.probabilityDataTable
             .GroupBy(data => data.SummonGrade)
-            .ToDictionary(grade => grade.Key, group => group.ToDictionary(x => x.Probability, x => x.ItemId));
-        
+            .ToDictionary(grade => grade.Key, group => group.ToDictionary(x => x.ItemId, x => x.Probability));
+
         // 1차 가공된 그룹을 <확률 누적, 아이템> 그룹으로 2차 가공
+        // <등급(그룹), <확률 누계, 아이템>>
         probabilityTable = gradeValue
             .ToDictionary(gradeGroup => gradeGroup.Key, gradeGroup =>
                 {
@@ -66,8 +69,8 @@ public class SummonManager
                     // 들어온 gradeGroup은 딕셔너리므로 foreach를 쓰는것이 좋다
                     foreach (var probData in gradeGroup.Value)
                     {
-                        sum += probData.Key; // 확률 누적
-                        cumulativeDict[sum] = probData.Value; // 확률 누적값을 키로, 아이템 ID를 값으로 설정
+                        sum += probData.Value; // 확률 누적
+                        cumulativeDict[sum] = probData.Key; // 확률 누적값을 키로, 아이템 ID를 값으로 설정
                     }
 
                     return cumulativeDict;
@@ -75,9 +78,14 @@ public class SummonManager
             );
     }
 
+    private void SummonLevelInitialize()
+    {
+
+    }
+
     #endregion
 
-        #region Summon Test
+    #region Summon Test
 
     public void SummonTry(int price, int count)
     {
@@ -91,7 +99,7 @@ public class SummonManager
 
     private void Summon(int count)
     {
-        // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기
+        // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기, 소환 횟수 증가
         for (int i = 0; i < count; i++)
         {
             summonResurt.Add(Random.Range(0, 10000));
@@ -101,27 +109,43 @@ public class SummonManager
 
         // 소환 레벨에서 딕셔너리 키(누적 확률)만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
         probabilityTable.TryGetValue(SummonLevel, out var summonProbability);
-        var probability = summonProbability.Select(x => x.Key).ToArray();
+        var curLevelTable = summonProbability;
+        var curprobability = curLevelTable.Select(x => x.Key).ToArray();
 
         // 테스트 결과 확인용 배열 세팅
         testResult = new int[summonProbability.Count];
         itemIndex = summonProbability.Select(x => x.Value).ToArray();
+
         for (int i = 0; i < itemIndex.Length; i++)
         {
+            Debug.Log($"{itemIndex[i]}");
             indexResult[itemIndex[i]] = i;
         }
 
-        for (int i = 0; i < summonResultValue.Length; i++)
+        int idx = 0;
+
+        while (count > 0)
         {
-            int getResultKey = probability.OrderBy(x => (summonResultValue[i] - x > 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
+            int getResultKey = curprobability.OrderBy(x => (summonResultValue[idx] - x > 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
             summonProbability.TryGetValue(getResultKey, out int index);
             summonResurt.Add(index);
             // 확인용 획득 수 카운트 증가
             indexResult.TryGetValue(index, out int result);
             testResult[result]++;
+            count--;
+            idx++;
+            SummonCounts++;
+            if (SummonCounts > levelUpCount[SummonLevel] && levelUpCount[SummonLevel] > 0)
+            {
+                SummonLevel++;
+                probabilityTable.TryGetValue(SummonLevel, out var newSummonProbability);
+                curLevelTable = newSummonProbability;
+                curprobability = curLevelTable.Select(x => x.Key).ToArray();
+            }
         }
         TestDebugLog();
 
+        // 최종 획득한 아이템 목록 배열 출력 후 인벤토리에 넣고 팝업 실행
         int[] finalResult = summonResurt.ToArray();
         EquipmentAdd(finalResult);
         var popup = Manager.UI.ShowPopup<UIPopupDynamicRewardPopup>("DynamicRewardPopup");
@@ -143,6 +167,7 @@ public class SummonManager
 
     private void TestDebugLog()
     {
+        Debug.Log($"{itemIndex.Length}, {testResult.Length}");
         Debug.Log($"{itemIndex[0]} : {testResult[0]}, {itemIndex[1]} : {testResult[1]}, {itemIndex[2]} : {testResult[2]}, {itemIndex[3]} : {testResult[3]}, {itemIndex[4]} : {testResult[4]}, {itemIndex[5]} : {testResult[5]}");
         for (int i = 0; i < testResult.Length; i++)
         {
