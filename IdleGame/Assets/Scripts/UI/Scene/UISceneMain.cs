@@ -31,6 +31,7 @@ public class UISceneMain : UIScene
     private Button _btnBoss;
     private Button _btnEquipment;
     private Button _btnShop;
+    private Button _btnSave;
 
     private TextMeshProUGUI _txtQuestNum;
     private TextMeshProUGUI _txtQuestObjective;
@@ -75,6 +76,7 @@ public class UISceneMain : UIScene
         _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
         _btnEquipment = SetButtonEvent("Btn_Equipment", UIEventType.Click, OnEquipment);
         _btnShop = SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
+        _btnSave = SetButtonEvent("Btn_Save", UIEventType.Click, OnSave);
     }
 
     private void SetUpgradeStats()
@@ -134,6 +136,11 @@ public class UISceneMain : UIScene
     private void OnShop(PointerEventData eventData)
     {
         Manager.UI.ShowPopup<UIPopupShopSummon>();
+    }
+
+    private void OnSave(PointerEventData eventData)
+    {
+        Manager.Data.SaveData();
     }
 
     private void OnGameSpeedUp(PointerEventData eventData)
