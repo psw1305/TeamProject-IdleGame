@@ -29,7 +29,9 @@ public class DataManager
             Stage_Difficulty = 1,
             Stage_Chapter = 1,
             Stage_Level = 1,
-            Stage_WaveLoop = false
+            Stage_WaveLoop = false,
+            Quest_Complete = 1,
+            Quest_Current_Progress = 1
         };
 
         return Profile;
@@ -55,7 +57,7 @@ public class DataManager
             { "Stage_Difficulty", Manager.Stage.Difficulty },
             { "Stage_Chapter", Manager.Stage.Chapter },
             { "Stage_Level", Manager.Stage.StageLevel },
-            { "Stage_WaveLoop", Manager.Stage.WaveLoop }
+            { "Stage_WaveLoop", Manager.Stage.WaveLoop },
         };
 
         Manager.Session.UpdateUserData(updates);

@@ -20,6 +20,9 @@ public class TestSceneKHK : BaseScene
 
         Manager.Summon.Initialize();
 
+        // 아이템 DB json 파일 경로 설정
+        Manager.Inventory.SetDataPath("/Scripts/Json/Tester/KHK/InvenDB_KHK.json");
+
         // 세션 생성 후 => 전투 시작
         Manager.Session.Initialize("test-khk");
 
