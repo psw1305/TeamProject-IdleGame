@@ -7,6 +7,7 @@ using Firebase.Database;
 using Firebase.Firestore;
 using Firebase.Extensions;
 using Google;
+using UnityEditor.VersionControl;
 
 public class SessionManager
 {
@@ -185,6 +186,7 @@ public class SessionManager
 
     public void UpdateUserData(Dictionary<string, object> updateFields)
     {
+        DebugNotice.Instance.Notice("Data Save");
         //db.Collection("users").Document(GuestID).UpdateAsync(updates);
         db.Collection("users").Document(GuestID).SetAsync(updateFields, SetOptions.MergeAll);
     }

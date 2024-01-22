@@ -13,6 +13,10 @@ public class InventoryManager
     public List<ItemData> WeaponItemList => _itemDataBase.ItemDB.Where(ItemData => ItemData.type == "weapon").ToList();
     public List<ItemData> ArmorItemList => _itemDataBase.ItemDB.Where(ItemData => ItemData.type == "armor").ToList();
 
+    public void SetDataPath(string jsonPath)
+    {
+        this.jsonPath = Application.dataPath + jsonPath;
+    }
 
     public ItemData SearchItem(int itemID)
     {
