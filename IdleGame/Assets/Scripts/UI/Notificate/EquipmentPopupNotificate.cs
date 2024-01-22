@@ -13,7 +13,10 @@ public class EquipmentPopupNotificate : BaseNotiDot
 
     private void OnDestroy()
     {
-        Manager.NotificateDot.ActiveEquipmentBtnNoti -= ActiveNotiDot;
-        Manager.NotificateDot.InactiveEquipmentBtnNoti -= InactiveNotiDot;
+        if(Manager.NotificateDot != null)
+        {
+            Manager.NotificateDot.ActiveEquipmentBtnNoti -= ActiveNotiDot;
+            Manager.NotificateDot.InactiveEquipmentBtnNoti -= InactiveNotiDot;
+        }
     }
 }

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ReinforceWeaponTypeItemNotificate : BaseNotiDot
 {
     protected override void Start()
@@ -15,7 +11,10 @@ public class ReinforceWeaponTypeItemNotificate : BaseNotiDot
 
     private void OnDestroy()
     {
-        Manager.NotificateDot.ActiveReinforceWeaponItemNoti -= ActiveNotiDot;
-        Manager.NotificateDot.InactiveReinforceWeaponItemNoti -= InactiveNotiDot;
+        if (Manager.NotificateDot != null)
+        {
+            Manager.NotificateDot.ActiveReinforceWeaponItemNoti -= ActiveNotiDot;
+            Manager.NotificateDot.InactiveReinforceWeaponItemNoti -= InactiveNotiDot;
+        }
     }
 }
