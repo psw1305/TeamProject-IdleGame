@@ -28,7 +28,8 @@ public class UIPopupEquipment : UIPopup
     private Button _btnSelectReinforce;
 
     private Button _btnExit;
-    private Button _btnSameTypeReinforce;
+    private Button _btnWeaponTypeReinforce;
+    private Button _btnArmorTypeReinforce;
 
     private Button _btnTestWeapon;
     private Button _btnTestArmor;
@@ -65,8 +66,8 @@ public class UIPopupEquipment : UIPopup
         SetButtons();
         SetEvents();
         equipFillterType = EquipFillterType.Weapon;
-        SetPopupTitle();
-  
+        SetItemTypeUI();
+
         FillterCurrentPopupUseItemData();
         SetFirstVisibleItem();
     }
@@ -98,9 +99,8 @@ public class UIPopupEquipment : UIPopup
         _btnExit = GetUI<Button>("Btn_PopClose");
         _BtnSelectEquip = GetUI<Button>("Btn_Equip");
         _btnSelectReinforce = GetUI<Button>("Btn_Reinforce");
-        Manager.NotificateDot.AddAllReinforceNotificateObject(_btnSelectReinforce.transform);
-        _btnSameTypeReinforce = GetUI<Button>("Btn_ReinforceAll");
-        Manager.NotificateDot.AddAllReinforceNotificateObject(_btnSameTypeReinforce.transform);
+        _btnWeaponTypeReinforce = GetUI<Button>("Btn_ReinforceWeaponType");
+        _btnArmorTypeReinforce = GetUI<Button>("Btn_ReinforceArmorType");
         _btnTestWeapon = GetUI<Button>("Btn_TestWeapon");
         _btnTestArmor = GetUI<Button>("Btn_TestArmor");
     }
@@ -108,11 +108,12 @@ public class UIPopupEquipment : UIPopup
     private void SetEvents()
     {
         _btnExit.gameObject.SetEvent(UIEventType.Click, ExitPopup);
+        _btnTestArmor.gameObject.SetEvent(UIEventType.Click, ChangePopArmor);
+        _btnTestWeapon.gameObject.SetEvent(UIEventType.Click, ChangePopWeapon);
         _BtnSelectEquip.gameObject.SetEvent(UIEventType.Click, EquipmentSelectItem);
         _btnSelectReinforce.gameObject.SetEvent(UIEventType.Click, ReinforceSelectItem);
-        _btnSameTypeReinforce.gameObject.SetEvent(UIEventType.Click, ReinforceTypeItem);
-        _btnTestWeapon.gameObject.SetEvent(UIEventType.Click, ChangePopWeapon);
-        _btnTestArmor.gameObject.SetEvent(UIEventType.Click, ChangePopArmor);
+        _btnWeaponTypeReinforce.gameObject.SetEvent(UIEventType.Click, ReinforceWeaponTypeItem);
+        _btnArmorTypeReinforce.gameObject.SetEvent(UIEventType.Click, ReinforceArmorTypeItem);
     }
 
     #endregion
@@ -187,9 +188,19 @@ public class UIPopupEquipment : UIPopup
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }
-    private void ReinforceTypeItem(PointerEventData enterEvent)
+    private void ReinforceWeaponTypeItem(PointerEventData enterEvent)
     {
-        Manager.Inventory.ReinforceSelectTypeItem(_selectItemData);
+        Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.WeaponItemList);
+        Manager.NotificateDot.SetEquipmentNoti();
+        Manager.NotificateDot.SetReinforceWeaponNoti();
+        SetSelectItemInfo(_selectItemData);
+        CallReinforceRefreshEvent();
+    }
+    private void ReinforceArmorTypeItem(PointerEventData enterEvent)
+    {
+        Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.ArmorItemList);
+        Manager.NotificateDot.SetEquipmentNoti();
+        Manager.NotificateDot.SetReinforceArmorNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }
@@ -205,11 +216,11 @@ public class UIPopupEquipment : UIPopup
     {
         if (equipFillterType == EquipFillterType.Weapon)
         {
-            _fillterItems = Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.type == "weapon").ToList();
+            _fillterItems = Manager.Inventory.WeaponItemList;
         }
         else if(equipFillterType == EquipFillterType.Armor)
          {
-            _fillterItems = Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.type == "armor").ToList();
+            _fillterItems = Manager.Inventory.ArmorItemList;
         }
     }
     private void SetFirstVisibleItem()
@@ -224,31 +235,38 @@ public class UIPopupEquipment : UIPopup
         }
     }
 
-    private void SetPopupTitle()
+    private void SetItemTypeUI()
     {
         if (equipFillterType == EquipFillterType.Weapon)
         {
             _PopupTitle.text = "무기";
+            _btnWeaponTypeReinforce.gameObject.SetActive(true);
+            _btnArmorTypeReinforce.gameObject.SetActive(false);
         }
         else if (equipFillterType == EquipFillterType.Armor)
         {
             _PopupTitle.text = "방어구";
+            _btnWeaponTypeReinforce.gameObject.SetActive(false);
+            _btnArmorTypeReinforce.gameObject.SetActive(true);
         }
     }
+
     private void ChangePopWeapon(PointerEventData enterEvent)
     {
         equipFillterType = EquipFillterType.Weapon;
         FillterCurrentPopupUseItemData();
-        SetPopupTitle();
+        SetItemTypeUI();
         SetFirstVisibleItem();
+
         _itemContainer.gameObject.GetComponent<UIPopupEquipContainer>().InitSlot();
     }
     private void ChangePopArmor(PointerEventData enterEvent)
     {
         equipFillterType = EquipFillterType.Armor;
         FillterCurrentPopupUseItemData();
-        SetPopupTitle();
+        SetItemTypeUI();
         SetFirstVisibleItem();
+
         _itemContainer.gameObject.GetComponent<UIPopupEquipContainer>().InitSlot();
     }
 
@@ -262,18 +280,6 @@ public class UIPopupEquipment : UIPopup
     #endregion
 
     #region Unity Flow
-
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.T)) 
-        {
-            Manager.NotificateDot.ActiveNotiMarker();
-        }
-        else if (Input.GetKeyUp(KeyCode.Y))
-        {
-            Manager.NotificateDot.InactiveNotiMarker();
-        }
-    }
 
     private void OnDestroy()
     {

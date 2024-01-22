@@ -40,7 +40,7 @@ public class Manager : MonoBehaviour
     private readonly InventoryManager inventory = new();
     private readonly QuestManager quest = new();
     private readonly SummonManager summon = new();
-    private readonly NotiDotManager notificateDot = new();
+    private readonly NotificateManager notificateDot = new();
 
     public static ResourceManager Resource => Instance != null ? Instance.resource : null;
     public static SessionManager Session => Instance != null ? Instance.session : null;
@@ -51,6 +51,6 @@ public class Manager : MonoBehaviour
     public static InventoryManager Inventory => Instance != null ? Instance.inventory : null;
     public static QuestManager Quest => Instance != null ? Instance.quest : null;
     public static SummonManager Summon => Instance != null ? Instance.summon : null;
-    public static NotiDotManager NotificateDot => Instance != null ? Instance.notificateDot : null;
+    public static NotificateManager NotificateDot => Instance != null ? Instance.notificateDot : null;
     #endregion
 }
