@@ -51,8 +51,6 @@ public class QuestManager
 
         questIndex = QuestNum % QuestDB.Length;
         CurrentQuest = QuestDB[questIndex];
-
-        Debug.Log($"CurrentQuest : {CurrentQuest.questObjective}, index : {questIndex}");
     }
 
     #endregion
@@ -61,10 +59,8 @@ public class QuestManager
     // 퀘스트 클리어 여부 확인
     public void CheckQuestCompletion()
     {
-        // 목표 Value < 현재 Value 일 때
         if (CurrentQuest.objectiveValue <= CurrentQuest.currentValue)
         {
-            // isClear는 필요한 변수인가? UI상으로 표시할때 사용하는 것인가? 
             CurrentQuest.isClear = true;
             EarnQuestReward();
             NextQuest();
@@ -103,14 +99,6 @@ public class QuestManager
     {
         Manager.Game.Player.RewardGem(500);
     }
-
-    //public void QuestObjectiveValueUp()
-    //{
-    //    // TODO: 일단 올라가야 되는 값들만 올라갔습니다.index접근이 아닌, QuestType별로 들어가야합니다.
-    //    QuestDB[0].objectiveValue += QuestDataBase.QuestNum * ValueUpRate;
-    //    QuestDB[1].objectiveValue += QuestDataBase.QuestNum * ValueUpRate;
-    //    QuestDB[3].objectiveValue *= 2;
-    //}
 }
 
 # region Quest DataBase
