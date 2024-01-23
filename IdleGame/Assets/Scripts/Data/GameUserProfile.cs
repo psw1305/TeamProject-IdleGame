@@ -6,6 +6,8 @@ public class GameUserProfile
     // Info
     [FirestoreProperty] public string Uid { get; set; }
     [FirestoreProperty] public string Nickname { get; set; }
+    [FirestoreProperty] public string Date_Login { get; set; }
+    [FirestoreProperty] public string Date_Logout { get; set; }
     [FirestoreProperty] public long Gold { get; set; }
     [FirestoreProperty] public int Gems { get; set; }
 

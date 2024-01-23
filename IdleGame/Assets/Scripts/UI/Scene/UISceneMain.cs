@@ -37,10 +37,6 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI _txtQuestObjective;
     private TextMeshProUGUI _textQuestReward;
 
-    private string _questText;
-    private int _questObjectiveValue;
-    private int _questcurrentValue;
-
     #endregion
 
     #region Initialize
@@ -54,10 +50,6 @@ public class UISceneMain : UIScene
 
         // 데이터 초기화
         player = Manager.Game.Player;
-
-        _questText = "일단 임시";
-        _questObjectiveValue = 10;
-        _questcurrentValue = 1;
 
         SetUpgradeStats();
         SetUI();
@@ -80,7 +72,7 @@ public class UISceneMain : UIScene
         SetUI<Button>();
         _btnGameSpeedUp = SetButtonEvent("Btn_Plain_GameSpeedUP", UIEventType.Click, OnGameSpeedUp);
         _btnOption = SetButtonEvent("Btn_Plain_Option", UIEventType.Click, OnOption);
-        _btnQuest = SetButtonEvent("Image_HUD_Quest", UIEventType.Click, OnQuest);
+        _btnQuest = SetButtonEvent("Image_HUD_Quest", UIEventType.Click, OnQuestComplete);
 
         _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
         _btnEquipment = SetButtonEvent("Btn_Equipment", UIEventType.Click, OnEquipment);
@@ -162,14 +154,13 @@ public class UISceneMain : UIScene
         Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("Option_DropdownPanel");
     }
     
-    private void OnQuest(PointerEventData eventData)
+    private void OnQuestComplete(PointerEventData eventData)
     {
-        // 클릭시 퀘스트가 최신화가 됨. 작동에는 문제 없음. 퀘스트 완료시로 바꾸면 좋을 것 같습니다.
-        Manager.Quest.CheckQuestCompletion();
-        UpdateQuestNum();
-        UpdateQuestObjective();
-
-        Debug.Log(Manager.Quest.CurrentQuest.questObjective);
+        if (Manager.Quest.IsQuestComplete())
+        {
+            UpdateQuestNum();
+            UpdateQuestObjective();
+        }
     }
 
     #endregion

@@ -1,11 +1,23 @@
+using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIPopupIdleReward : UIPopup
 {
     #region Fields
 
+    [SerializeField] private int days;
+    [SerializeField] private int hours;
+    [SerializeField] private int minutes;
+    [SerializeField] private int seconds;
+
+    [SerializeField] private TextMeshProUGUI timeText;
+
     private Button checkBtn;
+    private DateTime timerStart;
+    private DateTime timerEnd;
 
     #endregion
 
@@ -16,6 +28,8 @@ public class UIPopupIdleReward : UIPopup
     {
         base.Init();
         SetButtonEvents();
+
+        StartTimer();
     }
 
 
@@ -33,6 +47,18 @@ public class UIPopupIdleReward : UIPopup
     {
         // TODO : 방치 보상 확인 시 보상 획득 추가
         Manager.UI.ClosePopup();
+    }
+
+    #endregion
+
+    #region Time Events
+
+    private void StartTimer()
+    {
+        timerStart = DateTime.Now;
+        TimeSpan time = new TimeSpan(days, hours, minutes, seconds);
+        timerEnd = timerStart.Add(time);
+        timeText.text = $"{timerStart} => {timerEnd}";
     }
 
     #endregion

@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -45,7 +42,7 @@ public class UIPopupShopSummon : UIPopup
 
     private void SummonRepeat_Ad(PointerEventData eventData)
     {
-        _summon.SummonTry(0, 10000);
+        _summon.SummonTry(0, 11);
     }
 
     private void SummonRepeat_1(PointerEventData eventData)

@@ -25,6 +25,9 @@ public class BaseNotiDot : MonoBehaviour
 
     protected void InactiveNotiDot()
     {
+        // 초기 플레이 시 => 작동 정상
+        // Error => 상점에서 아이템 뽑은 후 => 장비 버튼 누르면 itemContainer 안에 오브젝트들이 오류
+
         ChildNotiDot.SetActive(false);
     }
 }

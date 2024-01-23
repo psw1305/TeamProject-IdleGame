@@ -28,14 +28,12 @@ public class InventoryManager
     {
         string inventoryJson = JsonUtility.ToJson(_itemDataBase, true);
         File.WriteAllText(jsonPath, inventoryJson);
-        Debug.Log("저장 완료");
     }
 
     public void LoadItemDataBase()
     {
         jsonText = File.ReadAllText(jsonPath);
         _itemDataBase = JsonUtility.FromJson<ItemDataBase>(jsonText);
-        Debug.Log("불러오기 완료");
     }
 
     public void InitItem()

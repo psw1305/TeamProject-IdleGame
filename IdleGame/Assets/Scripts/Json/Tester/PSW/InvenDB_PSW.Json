@@ -2,8 +2,8 @@
     "ItemDB": [
         {
             "itemID": 10001,
-            "level": 1,
-            "hasCount": 1,
+            "level": 13,
+            "hasCount": 71,
             "equipStat": 10.0,
             "itemName": "나무 검",
             "type": "weapon",

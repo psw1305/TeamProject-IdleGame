@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public class DataManager
@@ -20,6 +21,8 @@ public class DataManager
         {
             Uid = Utility.GenerateID(),
             Nickname = $"Guest-{guestId}",
+            Date_Login = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
+            Date_Logout = string.Empty,
             Stat_Level_AtkDamage = 1,
             Stat_Level_AtkSpeed = 1,
             Stat_Level_CritChance = 1,
@@ -46,6 +49,7 @@ public class DataManager
     {
         Dictionary<string, object> updates = new()
         {
+            { "Date_Logout", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") },
             { "Gold", Manager.Game.Player.Gold },
             { "Gems", Manager.Game.Player.Gems },
             { "Stat_Level_AtkDamage", Manager.Game.Player.AtkDamage.Level },
