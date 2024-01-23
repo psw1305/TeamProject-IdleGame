@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IQuestActive
 {
-    void ObjectiveValueUp();
+    void Init(int QuestLevel, int QuestCount);
 
-    void CurrentValueUp();
+    void ObjectiveValueUp(int QuestLevel, int QuestCount);
 }

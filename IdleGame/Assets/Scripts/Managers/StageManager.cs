@@ -216,7 +216,7 @@ public class StageManager
 
         SaveStage();
 
-        Manager.Quest.QuestDataBase.QuestDB[3].currentValue = Chapter; // 스테이지 퀘스트 달성 값 변경
+        Manager.Quest.QuestDB[3].currentValue = Chapter; // 스테이지 퀘스트 달성 값 변경
     }
 
     private void EnemyReset()

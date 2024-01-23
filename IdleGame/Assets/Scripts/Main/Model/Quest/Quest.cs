@@ -26,8 +26,6 @@ public abstract class Quest
 
     public virtual void NextQuest()
     {
-        QuestDataBase.QuestNum++;
-        QuestDataBase.QuestIndex++;
     }
 
     public void EarnQuestReward()

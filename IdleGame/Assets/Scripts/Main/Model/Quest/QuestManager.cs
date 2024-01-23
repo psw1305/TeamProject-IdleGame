@@ -6,49 +6,36 @@ public class QuestManager
 {
     #region Fields
 
-    //private IQuestStractegy questStrategy;
-
-    public Quest Quest;
-
     // json 저장
-    private string QuestjsonPath = Application.dataPath + "/Scripts/Json/QuestDBTest.json";
-    private string QuestjsonText;
+    private string questjsonPath = Application.dataPath + "/Scripts/Json/QuestDBTest.json";
+    private string questjsonText;
 
+    
     // Quest DB
     public QuestData CurrentQuest;
     public QuestDataBase QuestDataBase;
 
-    private int ValueUpRate = 5; // 퀘스트 사이클 올라갈 때마다 곱해지는 값
+    public int questNum;
+    public int QuestIndex;
+    public QuestData[] QuestDB = new QuestData[4] ;
+
+    public QuestDamageUp DamageUp = new QuestDamageUp();
+    public QuestHPUp HPUp = new QuestHPUp();
+    public QuestDefeatEnemy DefeatEnemy = new QuestDefeatEnemy();
+    public QuestReachStage ReachStage = new QuestReachStage();
 
     #endregion
 
-    #region constructor 
-
-    public QuestManager() { }
-
-    //public QuestManager(IQuestStractegy strategy)
-    //{
-    //    this.questStrategy = strategy;
-    //}
-
-    //public void SetQuestStrategy(IQuestStractegy strategy)
-    //{
-
-    //}
-
-    public void Achieve()
+    public void SetDataPath(string jsonPath)
     {
-        //this.questStrategy.QuestAchive();
+        this.questjsonPath = Application.dataPath + jsonPath;
     }
-
-    #endregion 
 
     #region Init
 
     public void InitQuest()
     {
         LoadQuestdataBase();
-        Quest.Init();
     }
 
     #endregion
@@ -58,21 +45,31 @@ public class QuestManager
     public void SaveQuestDataBase()
     {
         string questJson = JsonUtility.ToJson(QuestDataBase, true);
-        File.WriteAllText(QuestjsonPath, questJson);
+        File.WriteAllText(questjsonPath, questJson);
         Debug.Log("퀘스트 데이터 베이스 저장 완료");
     }
 
     public void LoadQuestdataBase()
     {
-        QuestjsonText = File.ReadAllText(QuestjsonPath);
-        QuestDataBase = JsonUtility.FromJson<QuestDataBase>(QuestjsonText);
+        questjsonText = File.ReadAllText(questjsonPath);
+        QuestDataBase = JsonUtility.FromJson<QuestDataBase>(questjsonText);
         Debug.Log("퀘스트 데이터 베이스 불러오기 완료");
 
-        //현재 퀘스트를 Index에 저장한 값으로 불러오기
-        CurrentQuest = QuestDataBase.QuestDB[QuestDataBase.QuestIndex];
+        DamageUp.Init(QuestDataBase.QuestNum, QuestDB.Length);
+        HPUp.Init(QuestDataBase.QuestNum, QuestDB.Length);
+        DefeatEnemy.Init(QuestDataBase.QuestNum, QuestDB.Length);
+        ReachStage.Init(QuestDataBase.QuestNum, QuestDB.Length);
 
-        QuestDataBase.QuestDB[0].currentValue = Manager.Game.Player.AtkDamage.Level;
-        QuestDataBase.QuestDB[1].currentValue = Manager.Game.Player.Hp.Level;
+        QuestDB[0] = DamageUp;
+        QuestDB[1] = HPUp;
+        QuestDB[2] = DefeatEnemy;
+        QuestDB[3] = ReachStage;
+
+        questNum = QuestDataBase.QuestNum;
+        QuestIndex = QuestDataBase.QuestNum % QuestDB.Length;
+        CurrentQuest = QuestDB[QuestIndex];
+
+        Debug.Log($"CurrentQuest : {CurrentQuest.questObjective}, index : {QuestIndex}");
     }
 
     #endregion
@@ -98,22 +95,18 @@ public class QuestManager
     // 다음 퀘스트로 넘어가기
     public void NextQuest()
     {
+        CurrentQuest.ObjectiveValueUp();
+        CurrentQuest.isClear = false;
         QuestDataBase.QuestNum++;
-        QuestDataBase.QuestIndex++;
+        QuestIndex++;
 
-        if (QuestDataBase.QuestIndex >= QuestDataBase.QuestDB.Count)
+        if (QuestIndex >= QuestDB.Length)
         {
-            QuestDataBase.QuestIndex = 0;
-
-            QuestObjectiveValueUp();
-            foreach (var quest in QuestDataBase.QuestDB)
-            {
-                quest.isClear = false;
-            }
-            QuestDataBase.QuestDB[2].currentValue = 0; // 몬스터 사냥 횟수 초기화
+            QuestIndex = 0;
+            QuestDB[2].currentValue = 0; // 몬스터 사냥 횟수 초기화
         }
 
-        CurrentQuest = QuestDataBase.QuestDB[QuestDataBase.QuestIndex];
+        CurrentQuest = QuestDB[QuestIndex];
 
         SaveQuestDataBase();
     }
@@ -122,12 +115,6 @@ public class QuestManager
     public void QuestCurrentValueUp()
     {
         CurrentQuest.currentValue++;
-
-        // 값이 올라갈 때 마다 체크하는 것이 아니라, 퀘스트를 클릭할 때 완료됐는지 체크
-        // 하지만 UI는 클릭하지 않아도 완료되었다는 이펙트가 표시되는데 매번 체크하는 것인가?
-        // CheckQuestCompletion();
-
-        // 값이 올라갈 때 마다 Save를 해야하는가?
         SaveQuestDataBase();
     }
 
@@ -136,13 +123,13 @@ public class QuestManager
         Manager.Game.Player.RewardGem(500);
     }
 
-    public void QuestObjectiveValueUp()
-    {
-        // TODO: 일단 올라가야 되는 값들만 올라갔습니다.index접근이 아닌, QuestType별로 들어가야합니다.
-        QuestDataBase.QuestDB[0].objectiveValue += QuestDataBase.QuestNum * ValueUpRate;
-        QuestDataBase.QuestDB[1].objectiveValue += QuestDataBase.QuestNum * ValueUpRate;
-        QuestDataBase.QuestDB[3].objectiveValue *= 2;
-    }
+    //public void QuestObjectiveValueUp()
+    //{
+    //    // TODO: 일단 올라가야 되는 값들만 올라갔습니다.index접근이 아닌, QuestType별로 들어가야합니다.
+    //    QuestDB[0].objectiveValue += QuestDataBase.QuestNum * ValueUpRate;
+    //    QuestDB[1].objectiveValue += QuestDataBase.QuestNum * ValueUpRate;
+    //    QuestDB[3].objectiveValue *= 2;
+    //}
 }
 
 # region Quest DataBase
@@ -151,8 +138,6 @@ public class QuestManager
 public class QuestDataBase
 {
     public int QuestNum;
-    public int QuestIndex;
-    public List<QuestData> QuestDB;
 }
 
 [System.Serializable]
@@ -160,9 +145,17 @@ public class QuestData
 {
     public QuestType questType;
     public string questObjective;
+    public int ValueUpRate;
     public int objectiveValue;
     public int currentValue;
     public bool isClear;
-}
 
+    // 추상클래스에서 변경...
+    public virtual void Init(int questLevel, int questCount) { }
+
+    public void ObjectiveValueUp()
+    {
+        objectiveValue *= ValueUpRate;
+    }
+}
 #endregion

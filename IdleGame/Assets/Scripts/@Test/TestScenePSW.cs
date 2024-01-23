@@ -23,6 +23,9 @@ public class TestScenePSW : BaseScene
         // 아이템 DB json 파일 경로 설정
         Manager.Inventory.SetDataPath("/Scripts/Json/Tester/PSW/InvenDB_PSW.json");
 
+        // 퀘스트 json 파일 경로 설정
+        Manager.Quest.SetDataPath("/Scripts/Json/Tester/PSW/QuestDB_PSW.json");
+
         // 세션 생성 후 => 전투 시작
         Manager.Session.Initialize("test-psw");
 

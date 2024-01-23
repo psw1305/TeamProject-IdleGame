@@ -45,13 +45,13 @@ public class UIUpgradeStat : MonoBehaviour
         if (questType == QuestType.DamageUp)
         {
             //Manager.Quest.QuestCurrentValueUp();
-            Manager.Quest.QuestDataBase.QuestDB[0].currentValue++;
+            Manager.Quest.QuestDB[0].currentValue++;
             UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
             uiSceneMain.UpdateQuestObjective();
         }
         else if(questType == QuestType.HPUp)
         {
-            Manager.Quest.QuestDataBase.QuestDB[1].currentValue++;
+            Manager.Quest.QuestDB[1].currentValue++;
             UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
             uiSceneMain.UpdateQuestObjective();
         }

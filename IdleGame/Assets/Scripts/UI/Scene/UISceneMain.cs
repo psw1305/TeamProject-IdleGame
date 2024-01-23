@@ -37,6 +37,10 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI _txtQuestObjective;
     private TextMeshProUGUI _textQuestReward;
 
+    private string _questText;
+    private int _questObjectiveValue;
+    private int _questcurrentValue;
+
     #endregion
 
     #region Initialize
@@ -50,6 +54,11 @@ public class UISceneMain : UIScene
 
         // 데이터 초기화
         player = Manager.Game.Player;
+
+        _questText = "일단 임시";
+        _questObjectiveValue = 10;
+        _questcurrentValue = 1;
+
         SetUpgradeStats();
         SetUI();
     }
@@ -190,7 +199,7 @@ public class UISceneMain : UIScene
 
     public void UpdateQuestNum()
     {
-        _txtQuestNum.text = ($"Quest No.{Manager.Quest.QuestDataBase.QuestNum}");
+        _txtQuestNum.text = ($"Quest No.{Manager.Quest.QuestDataBase.QuestNum + 1}");
     }
 
     public void UpdateQuestObjective()
