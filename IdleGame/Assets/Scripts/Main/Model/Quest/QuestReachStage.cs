@@ -9,7 +9,7 @@ public class QuestReachStage : QuestData
         questType = QuestType.StageClear;
         questObjective = "Reach Staege";
         ValueUpRate = 2;
-        objectiveValue = (questLevel / questCount) * ValueUpRate + 2;
+        objectiveValue = ((questLevel / questCount) + 1)  * ValueUpRate;
         currentValue = Manager.Data.Profile.Stage_Level;
         isClear = currentValue > objectiveValue;
     }

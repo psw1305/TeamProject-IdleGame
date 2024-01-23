@@ -7,7 +7,7 @@ public class QuestDamageUp : QuestData
         questType = QuestType.DamageUp;
         questObjective = "Damage Upgrade";
         ValueUpRate = 2;
-        objectiveValue = (questLevel / questCount) * ValueUpRate + 10;
+        objectiveValue = (questLevel / questCount) < 1 ? 10 : (questLevel / questCount) * ValueUpRate * 10;
         currentValue = Manager.Data.Profile.Stat_Level_AtkDamage;
         isClear = currentValue > objectiveValue;
     }
