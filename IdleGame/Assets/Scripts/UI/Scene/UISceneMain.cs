@@ -168,7 +168,6 @@ public class UISceneMain : UIScene
         Manager.Quest.CheckQuestCompletion();
         UpdateQuestNum();
         UpdateQuestObjective();
-        Debug.Log("퀘스트 버튼"); // 버튼 작동 테스트
 
         Debug.Log(Manager.Quest.CurrentQuest.questObjective);
     }
@@ -199,7 +198,7 @@ public class UISceneMain : UIScene
 
     public void UpdateQuestNum()
     {
-        _txtQuestNum.text = ($"Quest No.{Manager.Quest.QuestDataBase.QuestNum + 1}");
+        _txtQuestNum.text = ($"Quest No.{Manager.Quest.QuestNum + 1}");
     }
 
     public void UpdateQuestObjective()
