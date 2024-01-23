@@ -1,9 +1,10 @@
 using System.Linq;
+using UnityEngine;
 
 public class NotificateManager
 {
 
-    #region EquipmentBtn Method
+    #region 장비 버튼 알림 관련 Method
 
     public delegate void EquipmentNotificate();
     public EquipmentNotificate ActiveEquipmentBtnNoti;
@@ -11,7 +12,7 @@ public class NotificateManager
 
     public bool CheckEquipmentBtnNotiState()
     {
-        if (Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0)
+        if (Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0 || !CheckRecommendWeaponItem().equipped || !CheckRecommendArmorItem().equipped)
         {
             return true;
         }
@@ -27,6 +28,59 @@ public class NotificateManager
         else
         {
             InactiveEquipmentBtnNoti?.Invoke();
+        }
+    }
+
+    #endregion
+
+    #region 장비 타입 버튼 알림 관련 Method
+
+    public delegate void EquipmentTypeNotificate();
+    public EquipmentTypeNotificate ActiveWeaponEquipmentBtnNoti;
+    public EquipmentTypeNotificate InactiveWeaponEquipmentBtnNoti;
+
+    public bool CheckEquipmentWeaponBtnNotiState()
+    {
+        if (Manager.Inventory.WeaponItemList.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0 || !CheckRecommendWeaponItem().equipped)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetWeaponEquipmentNoti()
+    {
+        if (CheckEquipmentWeaponBtnNotiState())
+        {
+            ActiveWeaponEquipmentBtnNoti?.Invoke();
+        }
+        else
+        {
+            InactiveWeaponEquipmentBtnNoti?.Invoke();
+        }
+    }
+
+    public EquipmentTypeNotificate ActiveArmorEquipmentBtnNoti;
+    public EquipmentTypeNotificate InactiveArmorEquipmentBtnNoti;
+
+    public bool CheckEquipmentArmorBtnNotiState()
+    {
+        if (Manager.Inventory.ArmorItemList.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0 || !CheckRecommendArmorItem().equipped)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetArmorEquipmentNoti()
+    {
+        if (CheckEquipmentArmorBtnNotiState())
+        {
+            ActiveArmorEquipmentBtnNoti?.Invoke();
+        }
+        else
+        {
+            InactiveArmorEquipmentBtnNoti?.Invoke();
         }
     }
 
@@ -63,6 +117,7 @@ public class NotificateManager
             InactiveReinforceWeaponItemNoti?.Invoke();
         }
     }
+
     public bool CheckReinforceArmorNotiState()
     {
         if (Manager.Inventory.ArmorItemList.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0)
@@ -86,30 +141,62 @@ public class NotificateManager
 
     #endregion
 
+    #region
+
     public delegate void RecommendEquipItemNotificate();
     public RecommendEquipItemNotificate ActiveEquipWeaponItemNoti;
     public RecommendEquipItemNotificate InactiveEquipWeaponItemNoti;
-    public RecommendEquipItemNotificate ActiveEquipArmorItemNoti;
-    public RecommendEquipItemNotificate InactiveEquipArmorItemNoti;
+    public RecommendEquipItemNotificate EquipWeaponItemSubscribed;
 
-    public void SetRecommendWeaponNoti(ItemData itemData)
+    public void SetRecommendWeaponNoti()
     {
-        if (itemData != notifyBestStatItem())
+        if (!CheckRecommendWeaponItem().equipped)
         {
-            return;
-        }
-        if (notifyBestStatItem().equipped)
-        {
-            ActiveReinforceWeaponItemNoti?.Invoke();
+            InactiveEquipWeaponItemNoti?.Invoke();
+            ActiveEquipWeaponItemNoti?.Invoke();
         }
         else
         {
-            InactiveReinforceWeaponItemNoti?.Invoke();
+            InactiveEquipWeaponItemNoti?.Invoke();
         }
     }
 
-    public ItemData notifyBestStatItem()
+    public void SetEquipWeaponItemSubscribed()
     {
-        return Manager.Inventory.WeaponItemList.OrderBy(item => item.equipStat + item.level * item.reinforceEquip).ToList()[0];
+        EquipWeaponItemSubscribed?.Invoke();
     }
+
+    public ItemData CheckRecommendWeaponItem()
+    {
+        return Manager.Inventory.WeaponItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => item.equipStat + item.level * item.reinforceEquip).ToList().Last();
+    }
+
+    public RecommendEquipItemNotificate ActiveEquipArmorItemNoti;
+    public RecommendEquipItemNotificate InactiveEquipArmorItemNoti;
+    public RecommendEquipItemNotificate EquipArmorItemSubscribed;
+
+    public void SetRecommendArmorNoti()
+    {
+        if (!CheckRecommendArmorItem().equipped)
+        {
+            InactiveEquipArmorItemNoti?.Invoke();
+            ActiveEquipArmorItemNoti?.Invoke();
+        }
+        else
+        {
+            InactiveEquipArmorItemNoti?.Invoke();
+        }
+    }
+
+    public void SetEquipArmorItemSubscribed()
+    {
+        EquipArmorItemSubscribed?.Invoke();
+    }
+
+    public ItemData CheckRecommendArmorItem()
+    {
+        return Manager.Inventory.ArmorItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => item.equipStat + item.level * item.reinforceEquip).ToList().Last();
+    }
+
+    #endregion
 }

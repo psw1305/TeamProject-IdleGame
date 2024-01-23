@@ -110,6 +110,7 @@ public class InventoryManager
         Manager.Game.Player.EquipmentStatModifier();
     }
 
+    // 선택한 아이템 강화
     public void ReinforceSelectTypeItem(List<ItemData> itemList)
     {
         List<ItemData> targetItemlist = itemList;
@@ -133,13 +134,13 @@ public class ItemDataBase
 public class ItemData
 {
     public int itemID;
+    public int level;
+    public int hasCount;
+    public float equipStat;
     public string itemName;
     public string type;
     public string statType;
     public string rarity;
-    public int level;
-    public int hasCount;
-    public float equipStat;
     public float reinforceEquip;
     public float retentionEffect;
     public float reinforceEffect;

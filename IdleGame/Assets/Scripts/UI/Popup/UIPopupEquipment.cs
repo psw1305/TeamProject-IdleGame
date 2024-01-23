@@ -120,6 +120,7 @@ public class UIPopupEquipment : UIPopup
 
     #region OtherMethod
 
+    //강화에 필요한아이템 개수를 계산합니다.
     private void OperNeedItemCount()
     {
         if(_selectItemData.level < 15)
@@ -153,6 +154,7 @@ public class UIPopupEquipment : UIPopup
             _equipEffect.text = $"공격력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
             _retentionEffect.text = $"공격력 : {_selectItemData.retentionEffect + _selectItemData.reinforceEffect * _selectItemData.level}%";
         }
+
         else if(selectItemData.statType == "hp")
         {
             _equipEffect.text = $"체력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
@@ -175,6 +177,11 @@ public class UIPopupEquipment : UIPopup
     private void EquipmentSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ChangeItem(_selectItemData);
+        Manager.NotificateDot.SetEquipmentNoti();
+        Manager.NotificateDot.SetRecommendWeaponNoti();
+        Manager.NotificateDot.SetWeaponEquipmentNoti();
+        Manager.NotificateDot.SetRecommendArmorNoti();
+        Manager.NotificateDot.SetArmorEquipmentNoti();
         CallEquipRefreshEvent();
     }
     private void CallEquipRefreshEvent()
@@ -182,25 +189,54 @@ public class UIPopupEquipment : UIPopup
         refreshReinforecEvent?.Invoke();
     }
 
+    //선택한 아이템을 강화합니다.
     private void ReinforceSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceSelectItem(_selectItemData);
+        //강화 후 능력치 변동이 일어나기에 새로 추천 아이템을 찾고 이벤트 구독을 변경합니다.
+        Manager.NotificateDot.SetEquipWeaponItemSubscribed();
+        Manager.NotificateDot.SetEquipArmorItemSubscribed();
+        //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
+        Manager.NotificateDot.SetReinforceWeaponNoti();
+        Manager.NotificateDot.SetReinforceArmorNoti();
+
+        Manager.NotificateDot.SetRecommendWeaponNoti();
+        Manager.NotificateDot.SetRecommendArmorNoti();
+
+        Manager.NotificateDot.SetWeaponEquipmentNoti();
+        Manager.NotificateDot.SetArmorEquipmentNoti();
+
+        Manager.NotificateDot.SetEquipmentNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }
+
+    //무기 종류 일괄 강화
     private void ReinforceWeaponTypeItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.WeaponItemList);
-        Manager.NotificateDot.SetEquipmentNoti();
+        //강화 후 능력치 변동이 일어나기에 새로 추천 아이템을 찾고 이벤트 구독을 변경합니다.
+        Manager.NotificateDot.SetEquipWeaponItemSubscribed();
+        //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
+        Manager.NotificateDot.SetRecommendWeaponNoti();
+        Manager.NotificateDot.SetWeaponEquipmentNoti();
         Manager.NotificateDot.SetReinforceWeaponNoti();
+        Manager.NotificateDot.SetEquipmentNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }
+
+    //방어구 종류 일괄 강화
     private void ReinforceArmorTypeItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.ArmorItemList);
-        Manager.NotificateDot.SetEquipmentNoti();
+        //강화 후 능력치 변동이 일어나기에 새로 추천 아이템을 찾고 이벤트 구독을 변경합니다.
+        Manager.NotificateDot.SetEquipArmorItemSubscribed();
+        //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
+        Manager.NotificateDot.SetRecommendArmorNoti();
+        Manager.NotificateDot.SetArmorEquipmentNoti();
         Manager.NotificateDot.SetReinforceArmorNoti();
+        Manager.NotificateDot.SetEquipmentNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }
@@ -211,7 +247,7 @@ public class UIPopupEquipment : UIPopup
     }
 
 
-    //EquipFillterType 상태에 맞춰 보여주는 무기류를 필터합니다.
+    //EquipFillterType 상태에 맞춰 보여주는 장비류 필터를 Inventory Manager로부터 가져옵니다.
     private void FillterCurrentPopupUseItemData()
     {
         if (equipFillterType == EquipFillterType.Weapon)
@@ -223,18 +259,23 @@ public class UIPopupEquipment : UIPopup
             _fillterItems = Manager.Inventory.ArmorItemList;
         }
     }
+
+    //팝업 첫 진입 시 조건에 따라 처음 아이템을 설정해줍니다.
     private void SetFirstVisibleItem()
     {
+        //아무것도 착용하지 않은 경우 제일 첫 아이템
         if (_fillterItems.Where(item => item.equipped == true).ToList().Count == 0)
         {
             SetSelectItemInfo(_fillterItems[0]);
         }
+        //착용한 경우 착용한 아이템
         else
         {
             SetSelectItemInfo(_fillterItems.Where(item => item.equipped == true).ToList()[0]);
         }
     }
 
+    //아이템 타입에 따라 UI가 세팅되는 메서드
     private void SetItemTypeUI()
     {
         if (equipFillterType == EquipFillterType.Weapon)
@@ -251,6 +292,7 @@ public class UIPopupEquipment : UIPopup
         }
     }
 
+    //무기 팝업으로 변경
     private void ChangePopWeapon(PointerEventData enterEvent)
     {
         equipFillterType = EquipFillterType.Weapon;
@@ -260,6 +302,8 @@ public class UIPopupEquipment : UIPopup
 
         _itemContainer.gameObject.GetComponent<UIPopupEquipContainer>().InitSlot();
     }
+
+    //방어구 팝업으로 변경
     private void ChangePopArmor(PointerEventData enterEvent)
     {
         equipFillterType = EquipFillterType.Armor;
