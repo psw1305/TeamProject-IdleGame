@@ -47,15 +47,29 @@ public class UIPopupEquipContainer : UIBase
         }
 
         itemSlots.Clear();
-
-        foreach (var itemData in MainPopupUI.FillterItems)
+        if (MainPopupUI.equipFillterType == EquipFillterType.Weapon)
         {
-            GameObject slot = Manager.Resource.InstantiatePrefab("Img_ItemSlot", gameObject.transform);
-            itemSlots.Add(slot);
-            slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
-            slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();
-            slot.GetComponent<UIPopupEquipSlots>().CheckEquipState();
-            slot.GetComponent<UIPopupEquipSlots>().SetReinforceUI();
+            foreach (var itemData in Manager.Inventory.WeaponItemList)
+            {
+                GameObject slot = Manager.Resource.InstantiatePrefab("Img_WeaponItemSlot", gameObject.transform);
+                itemSlots.Add(slot);
+                slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
+                slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();
+                slot.GetComponent<UIPopupEquipSlots>().CheckEquipState();
+                slot.GetComponent<UIPopupEquipSlots>().SetReinforceUI();
+            }
+        }
+        else if (MainPopupUI.equipFillterType == EquipFillterType.Armor)
+        {
+            foreach (var itemData in Manager.Inventory.ArmorItemList)
+            {
+                GameObject slot = Manager.Resource.InstantiatePrefab("Img_ArmorItemSlot", gameObject.transform);
+                itemSlots.Add(slot);
+                slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
+                slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();
+                slot.GetComponent<UIPopupEquipSlots>().CheckEquipState();
+                slot.GetComponent<UIPopupEquipSlots>().SetReinforceUI();
+            }
         }
         ResetOnScrollTop();
     }
