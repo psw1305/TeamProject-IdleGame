@@ -15,7 +15,7 @@ public class NumUnit
         {
             return number.ToString();
         }
-        string[] numSymbol = { "", "k ", "M ", "G ", "T ", "P " };
+        string[] numSymbol = { "", "A ", "B ", "C ", "D ", "E " };
         int magnitudeIndex = (int)Mathf.Log10(number) / 3;
 
         StringBuilder sb = new StringBuilder()

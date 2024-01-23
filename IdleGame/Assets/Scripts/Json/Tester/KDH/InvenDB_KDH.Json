@@ -338,8 +338,8 @@
         },
         {
             "itemID": 20001,
-            "level": 1,
-            "hasCount": 1000,
+            "level": 73,
+            "hasCount": 11,
             "equipStat": 60.0,
             "itemName": "나무 방패",
             "type": "armor",
@@ -348,7 +348,7 @@
             "reinforceEquip": 0.800000011920929,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": 20002,
@@ -376,7 +376,7 @@
             "reinforceEquip": 0.800000011920929,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5,
-            "equipped": true
+            "equipped": false
         },
         {
             "itemID": 20004,

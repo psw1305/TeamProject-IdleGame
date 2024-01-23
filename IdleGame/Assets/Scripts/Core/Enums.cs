@@ -28,3 +28,9 @@ public enum EquipFillterType
     Weapon,
     Armor
 }
+
+public enum DamageType
+{
+    Normal,
+    Critical
+}

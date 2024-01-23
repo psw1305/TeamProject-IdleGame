@@ -1,6 +1,6 @@
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -15,10 +15,10 @@ public class Player : MonoBehaviour, IDamageable
 
     private GameUserProfile profile;
     private PlayerView playerView;
-    public List<BaseEnemy> enemyList;
+    [HideInInspector] public List<BaseEnemy> enemyList;
     private Rigidbody2D playerRigidbody;
     private Coroutine attackCoroutine;
-
+    private PlayerAnimController _playerAnimController;
     private bool isClick = false;
 
     #endregion
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour, IDamageable
 
     // 장비 관련 프로퍼티
     public float EquipAttackStat { get; private set; }
-    public float RetentionAttackEffect {  get; private set; }
+    public float RetentionAttackEffect { get; private set; }
     public float EquipHPStat { get; private set; }
     public float RetentionHPEffect { get; private set; }
 
@@ -60,12 +60,12 @@ public class Player : MonoBehaviour, IDamageable
         Gems = profile.Gems;
 
         // 스탯 데이터 적용
-        AtkDamage   = new StatInfo("Stat_Level_AtkDamage", profile.Stat_Level_AtkDamage, BaseStat.AtkDamage, 10, StatModType.Integer);
-        AtkSpeed    = new StatInfo("Stat_Level_AtkSpeed", profile.Stat_Level_AtkSpeed, BaseStat.AtkSpeed, 10, StatModType.DecimalPoint);
-        CritChance  = new StatInfo("Stat_Level_CritChance", profile.Stat_Level_CritChance, BaseStat.CritChance, 1, StatModType.Percent);
-        CritDamage  = new StatInfo("Stat_Level_CritDamage", profile.Stat_Level_CritDamage, BaseStat.CritDamage, 10, StatModType.Percent);
-        Hp          = new StatInfo("Stat_Level_Hp", profile.Stat_Level_Hp, BaseStat.Hp, 100, StatModType.Integer);
-        HpRecovery  = new StatInfo("Stat_Level_HpRecovery", profile.Stat_Level_HpRecovery, BaseStat.HpRecovery, 10, StatModType.Integer);
+        AtkDamage = new StatInfo("Stat_Level_AtkDamage", profile.Stat_Level_AtkDamage, BaseStat.AtkDamage, 10, StatModType.Integer);
+        AtkSpeed = new StatInfo("Stat_Level_AtkSpeed", profile.Stat_Level_AtkSpeed, BaseStat.AtkSpeed, 10, StatModType.DecimalPoint);
+        CritChance = new StatInfo("Stat_Level_CritChance", profile.Stat_Level_CritChance, BaseStat.CritChance, 1, StatModType.Percent);
+        CritDamage = new StatInfo("Stat_Level_CritDamage", profile.Stat_Level_CritDamage, BaseStat.CritDamage, 10, StatModType.Percent);
+        Hp = new StatInfo("Stat_Level_Hp", profile.Stat_Level_Hp, BaseStat.Hp, 100, StatModType.Integer);
+        HpRecovery = new StatInfo("Stat_Level_HpRecovery", profile.Stat_Level_HpRecovery, BaseStat.HpRecovery, 10, StatModType.Integer);
 
         SetCurrentHp(Hp.Value);
         enemyList = Manager.Stage.GetEnemyList();
@@ -88,14 +88,19 @@ public class Player : MonoBehaviour, IDamageable
     {
         playerView = GetComponent<PlayerView>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-
+        _playerAnimController = GetComponent<PlayerAnimController>();
         StartCoroutine(RecoverHealthPoint());
     }
 
     private void FixedUpdate()
     {
-        if (attackCoroutine == null && enemyList.Count > 0)
+        if (attackCoroutine == null && enemyList.Count <= 0)
         {
+            _playerAnimController.OnWalk();
+        }
+        else if (attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
+        {
+            _playerAnimController.OnIdle();
             attackCoroutine = StartCoroutine(AttackRoutine());
         }
 
@@ -111,6 +116,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Idle()
     {
+        _playerAnimController.OnIdle();
         playerRigidbody.velocity = MoveSpeed * Time.deltaTime * Vector2.right;
     }
 
@@ -145,10 +151,10 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(long Damage)
+    public void TakeDamage(long Damage, DamageType damageTypeValue)
     {
         PlayerDamaged(Damage);
-        FloatingDamage(new Vector3(0, 0.25f, 0), Damage);
+        FloatingDamage(new Vector3(0, 0.25f, 0), Damage, damageTypeValue);
         playerView.SetHealthBar(GetCurrentHpPercent());
     }
 
@@ -157,15 +163,18 @@ public class Player : MonoBehaviour, IDamageable
         if (CurrentHp - damage <= 0)
         {
             CurrentHp = 0;
+            _playerAnimController.OnDead();
+            _playerAnimController.OnRevive();
             Dead();
         }
         else
         {
+            _playerAnimController.OnHit();
             CurrentHp -= damage;
         }
     }
 
-    public void FloatingDamage(Vector3 position, long Damage)
+    public void FloatingDamage(Vector3 position, long Damage, DamageType damageTypeValue)
     {
         playerView.SetDamageFloating(position, Damage);
     }
@@ -176,12 +185,19 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Attack()
     {
+        _playerAnimController.OnRangeAtk();
+        MakeRangeProjectail();
+    }
+
+    //OnRangeAtk에 의해 동작하는 애니메이션에 Event로 동작하는 메서드 입니다.
+    public void MakeRangeProjectail()
+    {
         // 공격 projectile 생성
         var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame", ProjectilePoint);
         enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = enemyList[0].transform.position;
-        testProjectile.GetComponent<PlayerProjectileHandler>().Damage = FinalAttackDamage();
+        FinalAttackDamage(out testProjectile.GetComponent<PlayerProjectileHandler>().Damage, out testProjectile.GetComponent<PlayerProjectileHandler>().DamageTypeValue);
     }
 
     IEnumerator AttackRoutine()
@@ -189,12 +205,13 @@ public class Player : MonoBehaviour, IDamageable
         while (true)
         {
             yield return new WaitForSeconds(AttakSpeedToTime());
-
             if (enemyList.Count == 0)
             {
                 attackCoroutine = null;
+                _playerAnimController.OnWalk();
                 break;
             }
+
             if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
             {
                 Attack();
@@ -216,15 +233,17 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private long FinalAttackDamage()
+    private void FinalAttackDamage(out long damage, out DamageType damageTypeValue)
     {
         if (IsCritical())
         {
-            return (long)(AtkDamage.Value + (AtkDamage.Value * CritDamage.GetFloat()) * (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            damage = (long)(AtkDamage.Value + (AtkDamage.Value * CritDamage.GetFloat()) * (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            damageTypeValue = DamageType.Critical;
         }
         else
         {
-            return (long)(AtkDamage.Value + (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            damage = (long)(AtkDamage.Value + (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            damageTypeValue = DamageType.Normal;
         }
     }
 

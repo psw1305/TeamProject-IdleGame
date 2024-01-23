@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour, IDamageable
@@ -136,15 +137,16 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(long Damage)
+    public void TakeDamage(long Damage, DamageType damageTypeValue)
     {        
         AmountDamage(Damage);
-        FloatingDamage(new Vector3(0, 0.05f, 0), Damage);
+        FloatingDamage(new Vector3(0, 0.05f, 0), Damage, damageTypeValue);
     }
 
-    public void FloatingDamage(Vector3 position, long Damage)
+    public void FloatingDamage(Vector3 position, long Damage, DamageType damageTypeValue)
     {
         GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
+        DamageHUD.GetComponentInChildren<TextMeshProUGUI>().color = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
         DamageHUD.transform.position = this.gameObject.transform.position + position;
         DamageHUD.GetComponentInChildren<UIFloatingText>().SetDamage(Damage);
     }
@@ -154,6 +156,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         if (_currentHP - Damage <= 0)
         {
             _currentHP = 0;
+            Manager.Stage.GetEnemyList().Remove(gameObject.GetComponent<BaseEnemy>());
             Die();
         }
         else
@@ -165,8 +168,6 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Manager.Stage.GetEnemyList().Remove(gameObject.GetComponent<BaseEnemy>());
-
         gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         Manager.Game.Player.RewardGold(_rewards);
