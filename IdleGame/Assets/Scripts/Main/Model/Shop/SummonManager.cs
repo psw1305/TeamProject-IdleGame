@@ -15,7 +15,7 @@ public class SummonManager
     private Dictionary<int, Dictionary<int, int>> probabilityTable = new();
     private List<int> summonResurt = new List<int>(1000);
 
-    private int[] levelUpCount = new int[] { 0, 2000, 4000, 6000, 8000, -1 };
+    private int[] levelUpCount = new int[] { 0, 1000, 2000, 3000, 4000, -1 };
 
     // 확인용
     private int[] testResult;
@@ -76,6 +76,9 @@ public class SummonManager
                     return cumulativeDict;
                 }
             );
+        
+        // 확률 확인
+        DebugTableData();
     }
 
     private void SummonLevelInitialize()
@@ -118,7 +121,6 @@ public class SummonManager
 
         for (int i = 0; i < itemIndex.Length; i++)
         {
-            Debug.Log($"{itemIndex[i]}");
             indexResult[itemIndex[i]] = i;
         }
 
@@ -126,8 +128,10 @@ public class SummonManager
 
         while (count > 0)
         {
-            int getResultKey = curprobability.OrderBy(x => (summonResultValue[idx] - x > 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
-            summonProbability.TryGetValue(getResultKey, out int index);
+            int getResultKey = curprobability.OrderBy(x => (summonResultValue[idx] - x >= 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
+            curLevelTable.TryGetValue(getResultKey, out int index);
+            //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");
+            if (index == 0) { break; }
             summonResurt.Add(index);
             // 확인용 획득 수 카운트 증가
             indexResult.TryGetValue(index, out int result);
@@ -143,6 +147,16 @@ public class SummonManager
                 curprobability = curLevelTable.Select(x => x.Key).ToArray();
             }
         }
+        // 디버그용 테이블 체크하기
+        //int[] getResultKeyArr = curLevelTable.Select(x => x.Key).ToArray();
+        //string txtsum = string.Empty;
+        //foreach (var item in getResultKeyArr)
+        //{
+        //    curLevelTable.TryGetValue(item, out int index);
+        //    txtsum += $"{index}, ";
+        //}
+        //Debug.Log(txtsum);
+
         TestDebugLog();
 
         // 최종 획득한 아이템 목록 배열 출력 후 인벤토리에 넣고 팝업 실행
@@ -156,13 +170,33 @@ public class SummonManager
 
     private void EquipmentAdd(int[] summonResult)
     {
-
         for (int i = 0; i < summonResult.Length; i++)
         {
             ItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
             itemData.hasCount++;
         }
-        //_inventoryManager.SaveItemDataBase();
+        _inventoryManager.SaveItemDataBase();
+    }
+
+
+
+    #endregion
+
+    #region Debug Method
+
+    private void DebugTableData()
+    {
+        foreach (var item in probabilityTable)
+        {
+            Debug.Log($"Level : {item.Key}");
+
+            var cumulative = item.Value.Keys.ToArray();
+            var itemId = item.Value.Values.ToArray();
+            for (int i = 0; i < cumulative.Length; i++)
+            {
+                Debug.Log($"cumulative : {cumulative[i]}, itemId : {itemId[i]}");
+            }
+        }
     }
 
     private void TestDebugLog()
