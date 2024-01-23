@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InventoryManager
 {
-    private string jsonPath = Application.dataPath + "/Scripts/Json/InvenDBTest.json";
+    private string jsonPath = Application.dataPath + "/Scripts/Json/Tester/HSB/InvenDB_HSB.json";
     private string jsonText;
 
     private ItemDataBase _itemDataBase;
