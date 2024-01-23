@@ -7,6 +7,8 @@ public class ProjectileHandlerBase : MonoBehaviour
     public long Damage;
     [HideInInspector]
     public GameObject ProjectileVFX;
+    [HideInInspector]
+    public DamageType DamageTypeValue = DamageType.Normal;
 
     public LayerMask TargetLayerMask;
     protected virtual void Start()
@@ -27,7 +29,7 @@ public class ProjectileHandlerBase : MonoBehaviour
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage(Damage);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(Damage, DamageTypeValue);
             Destroy(gameObject);
         }
     }
