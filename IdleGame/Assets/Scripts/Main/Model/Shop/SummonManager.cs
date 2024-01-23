@@ -78,7 +78,7 @@ public class SummonManager
             );
         
         // 확률 확인
-        DebugTableData();
+        //DebugTableData();
     }
 
     private void SummonLevelInitialize()
