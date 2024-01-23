@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestReachStage : MonoBehaviour
+public class QuestReachStage : QuestData
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Init(int questLevel, int questCount)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        questType = QuestType.StageClear;
+        questObjective = "Reach Staege";
+        ValueUpRate = 2;
+        objectiveValue = (questLevel / questCount) * ValueUpRate + 2;
+        currentValue = Manager.Data.Profile.Stage_Level;
+        isClear = currentValue > objectiveValue;
     }
 }

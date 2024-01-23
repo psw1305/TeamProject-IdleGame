@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestDefeatEnemy : MonoBehaviour
+public class QuestDefeatEnemy : QuestData
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Init(int questLevel, int questCount)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        questType = QuestType.DefeatEnemy;
+        questObjective = "Defeat Enemy";
+        ValueUpRate = 1;
+        objectiveValue = 5;
+        currentValue = 0;
+        isClear = currentValue > objectiveValue;
     }
 }

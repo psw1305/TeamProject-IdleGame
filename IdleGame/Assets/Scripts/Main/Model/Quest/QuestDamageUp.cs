@@ -1,23 +1,14 @@
 using Unity.VisualScripting;
 
-public class QuestDamageUp : Quest, IQuestActive
+public class QuestDamageUp : QuestData
 {
-    public override void Init()
+    public override void Init(int questLevel, int questCount)
     {
-        data.questType = QuestType.DamageUp;
-        data.questObjective = "Damage Up";
-        //data.objectiveValue
-        data.currentValue = Manager.Game.Player.AtkDamage.Level; // 플레이어 저장 데이터
-
-    }
-
-    public void ObjectiveValueUp()
-    {
-
-    }
-
-    public void CurrentValueUp()
-    {
-        //데이터 값 증가 
+        questType = QuestType.DamageUp;
+        questObjective = "Damage Upgrade";
+        ValueUpRate = 2;
+        objectiveValue = (questLevel / questCount) * ValueUpRate + 10;
+        currentValue = Manager.Data.Profile.Stat_Level_AtkDamage;
+        isClear = currentValue > objectiveValue;
     }
 }
