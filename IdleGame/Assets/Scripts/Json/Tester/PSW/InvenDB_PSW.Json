@@ -2,8 +2,8 @@
     "ItemDB": [
         {
             "itemID": 10001,
-            "level": 232,
-            "hasCount": 1015,
+            "level": 1,
+            "hasCount": 1,
             "equipStat": 10.0,
             "itemName": "나무 검",
             "type": "weapon",
@@ -12,12 +12,12 @@
             "reinforceEquip": 1.0,
             "retentionEffect": 2.0,
             "reinforceEffect": 0.20000000298023225,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": 10002,
-            "level": 216,
-            "hasCount": 1005,
+            "level": 1,
+            "hasCount": 0,
             "equipStat": 20.0,
             "itemName": "구리 검",
             "type": "weapon",
@@ -30,8 +30,8 @@
         },
         {
             "itemID": 10003,
-            "level": 139,
-            "hasCount": 1002,
+            "level": 1,
+            "hasCount": 0,
             "equipStat": 40.0,
             "itemName": "강철 검",
             "type": "weapon",
@@ -40,12 +40,12 @@
             "reinforceEquip": 3.0,
             "retentionEffect": 4.0,
             "reinforceEffect": 0.4000000059604645,
-            "equipped": true
+            "equipped": false
         },
         {
             "itemID": 10005,
-            "level": 72,
-            "hasCount": 1001,
+            "level": 1,
+            "hasCount": 0,
             "equipStat": 60.0,
             "itemName": "다이아 검",
             "type": "weapon",
@@ -58,8 +58,8 @@
         },
         {
             "itemID": 10006,
-            "level": 34,
-            "hasCount": 16005,
+            "level": 1,
+            "hasCount": 0,
             "equipStat": 60.0,
             "itemName": "다이아 검",
             "type": "weapon",
@@ -72,8 +72,8 @@
         },
         {
             "itemID": 10007,
-            "level": 14,
-            "hasCount": 3,
+            "level": 1,
+            "hasCount": 0,
             "equipStat": 60.0,
             "itemName": "다이아 검",
             "type": "weapon",
