@@ -1,0 +1,1034 @@
+fileFormatVersion: 2
+guid: 7adeddc1f3112434a983799e85655561
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 36
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 840
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f1914d900efdc74e869b95f645d9dfa
+      internalID: 809699732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 840
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c59c961bac87742b1a8ea70d9729e2
+      internalID: 559707206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_2
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 776
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0dd1bb9e03f3304da5cbfbb4246fef7
+      internalID: 1338554069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 776
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9160e45e1d1174290ca0a89567a991
+      internalID: -1662178551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_4
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 712
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 550098300c5995546a2f62df1976cef9
+      internalID: 2042536110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_5
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 712
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3598434990ecaf49b36a6aa742c90ff
+      internalID: 161933548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_6
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 712
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820da6b57db0f924eb02bb8e40dac101
+      internalID: -82119155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_7
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 712
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac7bab7af8fae954e861cde6197ce8b5
+      internalID: 1127355946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 648
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d5319c20b4d69b40bdcfd76e6711225
+      internalID: -1206775106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_9
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 647
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb78970d592da441848cf6461fecaf1
+      internalID: -603418672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_10
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 648
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d2e24784b622043ac925d17af2fb2f
+      internalID: 1339098122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_11
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 647
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c837d7b54837b47ba067447a20ed37
+      internalID: 1234804450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_12
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 583
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8319321123d7ad4787c9056eca65688
+      internalID: -487116046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_13
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 583
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c152e46fd8f519e488397d74c3a907a0
+      internalID: -1391130979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_14
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 520
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baf9f5773d1790c4d9195e598a9ac17e
+      internalID: 806496821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_15
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 520
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2e283f1d823734c974d6f963f66b6e
+      internalID: 1760796129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_16
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 520
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad5fa8bc59a044b46b21d3f52054e85f
+      internalID: -822987125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_17
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 456
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b21cd18e9e3e449bd9b34a65df9aa6
+      internalID: -2136199424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_18
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 456
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a6c67f930968e43881b40173131ceb
+      internalID: -1410856831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_19
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 456
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32955f7629c5d724587bdf709c7cb6ec
+      internalID: 999593229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_20
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 392
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88da8a8f1ab197b4291f9a010def710c
+      internalID: 1670347819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_21
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 392
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c45ca87baea71d4e8fdd5a64a2c2be8
+      internalID: 1489831172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_22
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 392
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e8d0ecf0a9dbb8419a5f2cb464d4c53
+      internalID: -711455713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_23
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 328
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d3cb614b5f3c54cb33c3ad1a1212b8
+      internalID: 139340023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_24
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 328
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b7912cf88704104f9a6a5fa37a9ca27
+      internalID: 614000094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_25
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 328
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a466e8a2c279824ba3b346893f01d37
+      internalID: 502935186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_27
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 328
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab032bbd6bf6ba0428191e68604c9def
+      internalID: -2036397576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_28
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 264
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d049fa3f24fb64585d1c9d8cf166c9
+      internalID: -630175422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_29
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 264
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3280cd27139d1e342af74625b3dc7677
+      internalID: -1235310185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_30
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 264
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a681c47d66557542a9c71bdb2ee9511
+      internalID: -159157039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_31
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 264
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 141670cdec63ed0448b15cd704cc221b
+      internalID: 1911997959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_32
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 200
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 084f13ef8e0445248a4dae6d7ff8720c
+      internalID: 1031424407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_33
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 198
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a1a28478b27de848be812c80104ef9e
+      internalID: -331798205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_34
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 136
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d6d5dada16af64ebe026556dd1ff76
+      internalID: -341467395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_35
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 136
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46b135cc6219f246a4dfc8928eea188
+      internalID: -1039329169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_36
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 72
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6404c11f1895934da8c3608fbf9553b
+      internalID: -35457082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_37
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 72
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25d40a8ed4f7b34da85ac4432db2b2b
+      internalID: 587150370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_38
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 8
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9037eafa208e04d48ba4cbbda4610a0b
+      internalID: 1867195613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_39
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 8
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eaed849691a28743a32e498fbacdc78
+      internalID: 2049573376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FollowerSprite_Dragon_40
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 7
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 989da55aa166dd348a0598a5d1405524
+      internalID: -1074782574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FollowerSprite_Dragon_0: 809699732
+      FollowerSprite_Dragon_1: 559707206
+      FollowerSprite_Dragon_10: 1339098122
+      FollowerSprite_Dragon_11: 1234804450
+      FollowerSprite_Dragon_12: -487116046
+      FollowerSprite_Dragon_13: -1391130979
+      FollowerSprite_Dragon_14: 806496821
+      FollowerSprite_Dragon_15: 1760796129
+      FollowerSprite_Dragon_16: -822987125
+      FollowerSprite_Dragon_17: -2136199424
+      FollowerSprite_Dragon_18: -1410856831
+      FollowerSprite_Dragon_19: 999593229
+      FollowerSprite_Dragon_2: 1338554069
+      FollowerSprite_Dragon_20: 1670347819
+      FollowerSprite_Dragon_21: 1489831172
+      FollowerSprite_Dragon_22: -711455713
+      FollowerSprite_Dragon_23: 139340023
+      FollowerSprite_Dragon_24: 614000094
+      FollowerSprite_Dragon_25: 502935186
+      FollowerSprite_Dragon_26: 1181727624
+      FollowerSprite_Dragon_27: -2036397576
+      FollowerSprite_Dragon_28: -630175422
+      FollowerSprite_Dragon_29: -1235310185
+      FollowerSprite_Dragon_3: -1662178551
+      FollowerSprite_Dragon_30: -159157039
+      FollowerSprite_Dragon_31: 1911997959
+      FollowerSprite_Dragon_32: 1031424407
+      FollowerSprite_Dragon_33: -331798205
+      FollowerSprite_Dragon_34: -341467395
+      FollowerSprite_Dragon_35: -1039329169
+      FollowerSprite_Dragon_36: -35457082
+      FollowerSprite_Dragon_37: 587150370
+      FollowerSprite_Dragon_38: 1867195613
+      FollowerSprite_Dragon_39: 2049573376
+      FollowerSprite_Dragon_4: 2042536110
+      FollowerSprite_Dragon_40: -1074782574
+      FollowerSprite_Dragon_5: 161933548
+      FollowerSprite_Dragon_6: -82119155
+      FollowerSprite_Dragon_7: 1127355946
+      FollowerSprite_Dragon_8: -1206775106
+      FollowerSprite_Dragon_9: -603418672
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
