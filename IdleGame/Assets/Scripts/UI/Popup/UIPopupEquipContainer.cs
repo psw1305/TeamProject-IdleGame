@@ -28,7 +28,6 @@ public class UIPopupEquipContainer : UIBase
         MainPopupUI.refreshReinforecEvent += SetSlotEquipUI;
         MainPopupUI.refreshReinforecEvent += SetSlotReinforceUI;
     }
-
     #endregion
 
     #region Initial Method
