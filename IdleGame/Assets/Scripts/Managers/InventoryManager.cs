@@ -99,7 +99,7 @@ public class InventoryManager
     {
         ReinforceTypeItem(itemdata);
 
-        //SaveItemDataBase();
+        SaveItemDataBase();
 
         Manager.Game.Player.EquipmentStatModifier();
     }
@@ -112,7 +112,7 @@ public class InventoryManager
         {
             ReinforceTypeItem(item);
         }
-        //SaveItemDataBase();
+        SaveItemDataBase();
 
         Manager.Game.Player.EquipmentStatModifier();
     }
