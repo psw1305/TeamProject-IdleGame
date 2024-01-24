@@ -8,6 +8,7 @@ public class DataManager
     public void SetUserProfile(GameUserProfile profile)
     {
         Profile = profile;
+        Profile.Date_Login = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
     }
 
     /// <summary>
@@ -23,6 +24,10 @@ public class DataManager
             Nickname = $"Guest-{guestId}",
             Date_Login = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
             Date_Logout = string.Empty,
+            Date_Bonus_Check = false,
+            Date_Bonus_ClickTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
+            Gold = 0,
+            Gems = 0,
             Stat_Level_AtkDamage = 1,
             Stat_Level_AtkSpeed = 1,
             Stat_Level_CritChance = 1,
@@ -49,7 +54,10 @@ public class DataManager
     {
         Dictionary<string, object> updates = new()
         {
+            { "Date_Login", Profile.Date_Login },
             { "Date_Logout", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") },
+            { "Date_Bonus_Check", Manager.Game.Player.IsBonusCheck },
+            { "Date_Bonus_ClickTime", Manager.Game.Player.BonusCheckTime.ToString("yyyy/MM/dd HH:mm:ss") },
             { "Gold", Manager.Game.Player.Gold },
             { "Gems", Manager.Game.Player.Gems },
             { "Stat_Level_AtkDamage", Manager.Game.Player.AtkDamage.Level },

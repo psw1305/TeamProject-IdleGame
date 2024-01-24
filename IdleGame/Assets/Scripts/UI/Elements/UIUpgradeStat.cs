@@ -28,7 +28,7 @@ public class UIUpgradeStat : MonoBehaviour
 
     public void UpdateUpgradeStat(StatInfo statInfo)
     {
-        if (player.IsTrade(statInfo.UpgradeCost))
+        if (player.IsTradeGold(statInfo.UpgradeCost))
         {
             statInfo.AddModifier();
 

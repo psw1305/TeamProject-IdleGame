@@ -6,10 +6,14 @@ public class GameUserProfile
     // Info
     [FirestoreProperty] public string Uid { get; set; }
     [FirestoreProperty] public string Nickname { get; set; }
-    [FirestoreProperty] public string Date_Login { get; set; }
-    [FirestoreProperty] public string Date_Logout { get; set; }
     [FirestoreProperty] public long Gold { get; set; }
     [FirestoreProperty] public int Gems { get; set; }
+
+    // Time Date
+    [FirestoreProperty] public string Date_Login { get; set; }
+    [FirestoreProperty] public string Date_Logout { get; set; }
+    [FirestoreProperty] public bool Date_Bonus_Check { get; set; }
+    [FirestoreProperty] public string Date_Bonus_ClickTime { get; set; }
 
     // Stats
     [FirestoreProperty] public int Stat_Level_AtkDamage { get; set; }
