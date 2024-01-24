@@ -12,15 +12,16 @@ public class SummonManager
     private Player _player;
     private InventoryManager _inventoryManager;
 
-    private Dictionary<int, Dictionary<int, int>> probabilityTable = new();
-    private List<int> summonResurt = new List<int>(1000);
+    private Dictionary<int, Dictionary<int, string>> probabilityTable = new();
+    private List<int> summonResurt = new List<int>(500);
+    private List<string> resultIdList = new List<string>(500);
 
     private int[] levelUpCount = new int[] { 0, 1000, 2000, 3000, 4000, -1 };
 
     // 확인용
     private int[] testResult;
-    private int[] itemIndex;
-    private Dictionary<int, int> indexResult = new();
+    private string[] itemIndex;
+    private Dictionary<string, int> indexResult = new();
 
     #endregion
 
@@ -63,7 +64,7 @@ public class SummonManager
         probabilityTable = gradeValue
             .ToDictionary(gradeGroup => gradeGroup.Key, gradeGroup =>
                 {
-                    var cumulativeDict = new Dictionary<int, int>();
+                    var cumulativeDict = new Dictionary<int, string>();
                     int sum = 0;
 
                     // 들어온 gradeGroup은 딕셔너리므로 foreach를 쓰는것이 좋다
@@ -88,7 +89,7 @@ public class SummonManager
 
     #endregion
 
-    #region Summon Test
+    #region Summon
 
     public void SummonTry(int price, int count)
     {
@@ -127,10 +128,9 @@ public class SummonManager
         while (count > 0)
         {
             int getResultKey = curprobability.OrderBy(x => (summonResultValue[idx] - x >= 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
-            curLevelTable.TryGetValue(getResultKey, out int index);
+            curLevelTable.TryGetValue(getResultKey, out string index);
             //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");
-            if (index == 0) { break; }
-            summonResurt.Add(index);
+            resultIdList.Add(index);
             // 확인용 획득 수 카운트 증가
             indexResult.TryGetValue(index, out int result);
             testResult[result]++;
@@ -158,20 +158,20 @@ public class SummonManager
         //TestDebugLog();
 
         // 최종 획득한 아이템 목록 배열 출력 후 인벤토리에 넣고 팝업 실행
-        int[] finalResult = summonResurt.ToArray();
+        string[] finalResult = resultIdList.ToArray();
         EquipmentAdd(finalResult);
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
-        popup.DataInit(finalResult);
-        popup.PlayStart();
+        //popup.DataInit(finalResult);
+        //popup.PlayStart();
         summonResurt.Clear();
     }
 
-    private void EquipmentAdd(int[] summonResult)
+    private void EquipmentAdd(string[] summonResult)
     {
         for (int i = 0; i < summonResult.Length; i++)
         {
-            //InventorySlotData itemData = _inventoryManager.SearchItem(summonResult[i]);
-            //itemData.hasCount++;
+            InventorySlotData itemData = _inventoryManager.SearchItem(summonResult[i]);
+            itemData.hasCount++;
         }
         _inventoryManager.SaveSlotsData();
     }
@@ -218,6 +218,6 @@ public class ProbabilityDataTable
 public class ProbabilityData
 {
     public int SummonGrade;
-    public int ItemId;
+    public string ItemId;
     public int Probability;
 }

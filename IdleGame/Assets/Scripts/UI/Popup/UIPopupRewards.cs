@@ -63,6 +63,11 @@ public class UIPopupRewards : UIPopup
         itemData = itemDatas;
     }
 
+    public void DataInit(string[] itemDatas)
+    {
+
+    }
+
     #endregion
 
     #region Popup Actions
