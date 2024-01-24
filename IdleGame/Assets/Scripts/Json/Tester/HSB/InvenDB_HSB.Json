@@ -3,7 +3,7 @@
         {
             "itemID": "W0001",
             "level": 32,
-            "hasCount": 1,
+            "hasCount": 6,
             "equipped": false
         },
         {
@@ -153,7 +153,7 @@
         {
             "itemID": "A0001",
             "level": 73,
-            "hasCount": 11,
+            "hasCount": 17,
             "equipped": true
         },
         {
