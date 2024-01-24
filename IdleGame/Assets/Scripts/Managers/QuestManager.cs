@@ -55,8 +55,6 @@ public class QuestManager
 
     #endregion
 
-
-    // 퀘스트 클리어 여부 확인
     public bool IsQuestComplete()
     {
         if (CurrentQuest.objectiveValue > CurrentQuest.currentValue)
@@ -91,7 +89,6 @@ public class QuestManager
         CurrentQuest = QuestDB[questIndex];
     }
 
-    // 퀘스트 값 증가 
     public void QuestCurrentValueUp()
     {
         CurrentQuest.currentValue++;
@@ -103,16 +100,9 @@ public class QuestManager
     }
 }
 
-# region Quest DataBase
+# region Quest Data
 
-[System.Serializable]
-public class QuestDataBase
-{
-    public int QuestNum;
-}
-
-[System.Serializable]
-public class QuestData
+public abstract class QuestData
 {
     public QuestType questType;
     public string questObjective;
@@ -121,8 +111,7 @@ public class QuestData
     public int currentValue;
     public bool isClear;
 
-    // 추상클래스에서 변경...
-    public virtual void Init(int questLevel, int questCount) { }
+    public abstract void Init(int questLevel, int questCount);
 
     public void ObjectiveValueUp()
     {
