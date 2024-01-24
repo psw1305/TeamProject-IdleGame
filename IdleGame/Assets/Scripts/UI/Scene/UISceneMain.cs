@@ -18,7 +18,11 @@ public class UISceneMain : UIScene
 
     private TextMeshProUGUI txt_Gold;
     private TextMeshProUGUI txt_Gems;
+    private TextMeshProUGUI txt_Difficult;
     private TextMeshProUGUI txt_Stage;
+
+    private Image Image_WaveLoop;
+    private Image Image_LevelGauge;
 
     #endregion
 
@@ -45,6 +49,7 @@ public class UISceneMain : UIScene
     {
         base.Init();
 
+        SetImages();
         SetTexts();
         SetButtons();
 
@@ -55,11 +60,19 @@ public class UISceneMain : UIScene
         SetUI();
     }
 
+    private void SetImages()
+    {
+        SetUI<Image>();
+        Image_WaveLoop = GetUI<Image>("LoopImage");
+        Image_LevelGauge = GetUI<Image>("ProgressGauge");
+    }
+
     private void SetTexts()
     {
         SetUI<TextMeshProUGUI>();
         txt_Gold = GetUI<TextMeshProUGUI>("Txt_Gold");
         txt_Gems = GetUI<TextMeshProUGUI>("Txt_Jewel");
+        txt_Difficult = GetUI<TextMeshProUGUI>("Txt_Difficult");
         txt_Stage = GetUI<TextMeshProUGUI>("Txt_Stage");
 
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
@@ -109,8 +122,9 @@ public class UISceneMain : UIScene
         UpdateQuestNum();
         _txtQuestObjective.text = QuestObjective();
 
-        // Stage Button Init
-        Manager.Stage.SetRetryBossButton(_btnBoss);
+        // Stage Button Off
+        _btnBoss.gameObject.SetActive(false);
+        Image_WaveLoop.gameObject.SetActive(false);
     }
 
     #endregion
@@ -179,7 +193,8 @@ public class UISceneMain : UIScene
 
     public void UpdateCurrentStage()
     {
-        txt_Stage.text = ($"{Manager.Stage.Chapter} - {Manager.Stage.StageLevel}");
+        txt_Difficult.text = ($"{Manager.Stage.DifficultyStr}");
+        txt_Stage.text = ($"{Manager.Stage.ChapterStr}");
     }
 
     public void UpdateButtonEnable()
@@ -195,6 +210,22 @@ public class UISceneMain : UIScene
     public void UpdateQuestObjective()
     {
         _txtQuestObjective.text = QuestObjective();
+    }
+
+    public void RetryBossButtonToggle()
+    {
+        _btnBoss.gameObject.SetActive(!_btnBoss.IsActive());
+    }
+
+    public void WaveLoopImageToggle()
+    {
+        Image_WaveLoop.gameObject.SetActive(!Image_WaveLoop.IsActive());
+    }
+
+    public void StageLevelGaugeToggle()
+    {
+        var gauge = Image_LevelGauge.transform.parent.gameObject;
+        gauge.SetActive(!gauge.activeSelf);
     }
 
     #endregion
