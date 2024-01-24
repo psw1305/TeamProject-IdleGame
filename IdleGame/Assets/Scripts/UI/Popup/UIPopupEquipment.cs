@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class UIPopupEquipment : UIPopup
 {
@@ -36,9 +37,9 @@ public class UIPopupEquipment : UIPopup
 
     private Image _itemContainer;
 
-    private ItemData _selectItemData;
+    private InventorySlotData _selectItemData;
 
-    private List<ItemData> _fillterItems;
+    private List<InventorySlotData> _fillterItems;
 
     private int _needCount;
     #endregion
@@ -49,7 +50,7 @@ public class UIPopupEquipment : UIPopup
 
     public EquipFillterType equipFillterType;
 
-    public List<ItemData> FillterItems => _fillterItems;
+    public List<InventorySlotData> FillterItems => _fillterItems;
 
     #endregion
 
@@ -131,32 +132,32 @@ public class UIPopupEquipment : UIPopup
         }
     }
     // 선택한 아이템의 정보를 상단 UI에 설정하는 메서드입니다.
-    public void SetSelectItemInfo(ItemData selectItemData)
+    public void SetSelectItemInfo(InventorySlotData selectItemData)
     {
         //UI 정보를 세팅합니다.
         _selectItemData = selectItemData;
-        _itemNameText.text = _selectItemData.itemName;
-        _rarityText.text = _selectItemData.rarity;
+        _itemNameText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].itemName;
+        _rarityText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].rarity;
         _itemLevelText.text = _selectItemData.level.ToString();
 
         _itemImage.sprite = Manager.Resource.GetSprite(_selectItemData.itemID.ToString());
-        _typeIcon.sprite = Manager.Resource.GetSprite(_selectItemData.type);
+        _typeIcon.sprite = Manager.Resource.GetSprite(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].type);
 
         OperNeedItemCount();
         _itemHasCount.text = $"{_selectItemData.hasCount} / {_needCount}";
         _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / _needCount;
 
 
-        if (selectItemData.statType == "attack")
+        if (Manager.Inventory.ItemDataDictionary[selectItemData.itemID].statType == "attack")
         {
-            _equipEffect.text = $"공격력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
-            _retentionEffect.text = $"공격력 : {_selectItemData.retentionEffect + _selectItemData.reinforceEffect * _selectItemData.level}%";
+            _equipEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].equipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEquip * _selectItemData.level}%";
+            _retentionEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEffect * _selectItemData.level}%";
         }
 
-        else if(selectItemData.statType == "hp")
+        else if(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].statType == "hp")
         {
-            _equipEffect.text = $"체력 : {_selectItemData.equipStat + _selectItemData.reinforceEquip * _selectItemData.level}%";
-            _retentionEffect.text = $"체력 :  {_selectItemData.retentionEffect + _selectItemData.reinforceEffect * _selectItemData.level}%";
+            _equipEffect.text = $"체력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].equipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEquip * _selectItemData.level}%";
+            _retentionEffect.text = $"체력 :  {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEffect * _selectItemData.level}%";
         }
 
         if (_selectItemData.level == 1 && _selectItemData.hasCount == 0)
@@ -174,7 +175,7 @@ public class UIPopupEquipment : UIPopup
     //선택한 아이템을 착용합니다.
     private void EquipmentSelectItem(PointerEventData enterEvent)
     {
-        Manager.Inventory.ChangeItem(_selectItemData);
+        Manager.Inventory.ChangeEquipmentItem(_selectItemData);
         Manager.NotificateDot.SetEquipmentNoti();
 
         Manager.NotificateDot.SetRecommendWeaponNoti();

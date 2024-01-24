@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NotificateRecommendWeaponItemSlot : BaseNotiDot
 {
-    ItemData currentItemData;
+    InventorySlotData currentItemData;
 
     protected override void Start()
     {

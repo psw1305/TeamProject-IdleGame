@@ -2,13 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class UIPopupEquipSlots : MonoBehaviour
 {
 
     #region Value Fields
 
-    private int _itemID;
+    private string _itemID;
     private string _itemName;
     private string _type;
     private string _rarity;
@@ -25,7 +26,7 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     #region Properties
 
-    public int ItemID => _itemID;
+    public string ItemID => _itemID;
     public string ItemName => _itemName;
     public string Type => _type;
     public string Rarity => _rarity;
@@ -54,8 +55,8 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     [SerializeField] private GameObject ReinforceIcon;
 
-    private ItemData _itemData;
-    public ItemData ItemData => _itemData;
+    private InventorySlotData _itemData;
+    public InventorySlotData ItemData => _itemData;
 
     #endregion
 
@@ -73,20 +74,20 @@ public class UIPopupEquipSlots : MonoBehaviour
     #region Other Method
 
     //아이템 아이콘 세팅, 티어 세팅, 레벨 세팅,게이지 세팅, 언록 여부 
-    public void InitSlotInfo(ItemData itemData)
+    public void InitSlotInfo(InventorySlotData itemData)
     {
         _itemData = itemData;
         _itemID = _itemData.itemID;
-        _itemName = _itemData.itemName;
+        _itemName = Manager.Inventory.ItemDataDictionary[itemData.itemID].itemName;
         _level = _itemData.level;
-        _type = _itemData.type;
-        _rarity = _itemData.rarity;
+        _type = Manager.Inventory.ItemDataDictionary[itemData.itemID].type;
+        _rarity = Manager.Inventory.ItemDataDictionary[itemData.itemID].rarity;
         _lvTxt.text = $"Lv. {_level}";
         _hasCount = _itemData.hasCount;
-        _equipStat = _itemData.equipStat;
-        _reinforceEquip = _itemData.reinforceEquip * _level;
-        _retentionEffect = _itemData.retentionEffect;
-        _reinforceEffect = _itemData.reinforceEffect * _level;
+        _equipStat = Manager.Inventory.ItemDataDictionary[itemData.itemID].equipStat;
+        _reinforceEquip = Manager.Inventory.ItemDataDictionary[itemData.itemID].reinforceEquip * _level;
+        _retentionEffect = Manager.Inventory.ItemDataDictionary[itemData.itemID].retentionEffect;
+        _reinforceEffect = Manager.Inventory.ItemDataDictionary[itemData.itemID].reinforceEffect * _level;
         _equipped = _itemData.equipped;
     }
 
@@ -97,7 +98,6 @@ public class UIPopupEquipSlots : MonoBehaviour
         itemSprite.sprite = Manager.Resource.GetSprite(ItemID.ToString());
 
         SetLockState();
-        //gameObject.SetEvent(UIEventType.Click, SendItemData);
         gameObject.GetComponent<Button>().onClick.AddListener(SendItemData);
     }
 
