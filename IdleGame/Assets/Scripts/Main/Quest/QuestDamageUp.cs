@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-
 public class QuestDamageUp : QuestData
 {
     public override void Init(int questLevel, int questCount)
