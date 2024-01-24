@@ -11,7 +11,7 @@ public class NotificateManager
 
     public bool CheckEquipmentBtnNotiState()
     {
-        if (Manager.Inventory.ItemDataBase.ItemDB.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0 || !CheckRecommendWeaponItem().equipped || !CheckRecommendArmorItem().equipped)
+        if (Manager.Inventory.PlayerInventoryDB.InventorySlotData.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0 || !CheckRecommendWeaponItem().equipped || !CheckRecommendArmorItem().equipped)
         {
             return true;
         }
@@ -150,9 +150,9 @@ public class NotificateManager
         SetRecommendWeaponItemNoti?.Invoke();
     }
 
-    public ItemData CheckRecommendWeaponItem()
+    public InventorySlotData CheckRecommendWeaponItem()
     {
-        return Manager.Inventory.WeaponItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => item.equipStat + item.level * item.reinforceEquip).ToList().Last();
+        return Manager.Inventory.WeaponItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + item.level * Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip).ToList().Last();
     }
 
     public RecommendEquipItemNotificate SetRecommendArmorItemNoti;
@@ -162,9 +162,9 @@ public class NotificateManager
         SetRecommendArmorItemNoti?.Invoke();
     }
 
-    public ItemData CheckRecommendArmorItem()
+    public InventorySlotData CheckRecommendArmorItem()
     {
-        return Manager.Inventory.ArmorItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => item.equipStat + item.level * item.reinforceEquip).ToList().Last();
+        return Manager.Inventory.ArmorItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + item.level * Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip).ToList().Last();
     }
 
     public void ResetRecommendDelegateSubscribed()

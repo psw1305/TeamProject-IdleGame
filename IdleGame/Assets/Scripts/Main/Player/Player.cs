@@ -33,6 +33,7 @@ public class Player : MonoBehaviour, IDamageable
     public StatInfo Hp { get; private set; }
     public StatInfo HpRecovery { get; private set; }
 
+    public long ModifierHp { get; private set; }
     public long CurrentHp { get; private set; }
     public float AttackRange { get; private set; }
     public int MoveSpeed { get; private set; }
@@ -72,14 +73,15 @@ public class Player : MonoBehaviour, IDamageable
         Hp = new StatInfo("Stat_Level_Hp", profile.Stat_Level_Hp, BaseStat.Hp, 100, StatModType.Integer);
         HpRecovery = new StatInfo("Stat_Level_HpRecovery", profile.Stat_Level_HpRecovery, BaseStat.HpRecovery, 10, StatModType.Integer);
 
-        SetCurrentHp(Hp.Value);
         enemyList = Manager.Stage.GetEnemyList();
 
         Manager.Inventory.InitItem();
         Manager.Quest.InitQuest();
         EquipmentStatModifier();
 
-        // 방치 보상 보너스 필드값 초기화
+        ModifierHp = (long)(Hp.Value + Hp.Value * (EquipHPStat / 100) + Hp.Value * (RetentionHPEffect / 100));
+        SetCurrentHp(ModifierHp);
+
         IsBonusCheck = profile.Date_Bonus_Check;
         BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
     }
@@ -133,7 +135,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         //이전 스테이지로, Hp 리셋
         Manager.Stage.StageFailed();
-        SetCurrentHp(Hp.Value);
+        SetCurrentHp(ModifierHp);
     }
 
     #endregion
@@ -147,7 +149,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private float GetCurrentHpPercent()
     {
-        return (float)CurrentHp / Hp.Value;
+        return (float)CurrentHp / ModifierHp;
     }
 
     private IEnumerator RecoverHealthPoint()
@@ -155,7 +157,7 @@ public class Player : MonoBehaviour, IDamageable
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, Hp.Value);
+            CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, ModifierHp);
             playerView.SetHealthBar(GetCurrentHpPercent());
         }
     }
@@ -246,12 +248,16 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (IsCritical())
         {
-            damage = (long)(AtkDamage.Value + (AtkDamage.Value * CritDamage.GetFloat()) * (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            damage = (long)((AtkDamage.Value
+                + AtkDamage.Value * EquipAttackStat / 100
+                + AtkDamage.Value * RetentionAttackEffect / 100) * (1 + CritDamage.GetFloat()));
             damageTypeValue = DamageType.Critical;
         }
         else
         {
-            damage = (long)(AtkDamage.Value + (1 + EquipAttackStat / 100) * (1 + RetentionAttackEffect / 100));
+            damage = (long)(AtkDamage.Value
+                + AtkDamage.Value * EquipAttackStat / 100
+                + AtkDamage.Value * RetentionAttackEffect / 100);
             damageTypeValue = DamageType.Normal;
         }
     }
@@ -316,29 +322,29 @@ public class Player : MonoBehaviour, IDamageable
         RetentionHPEffect = 0;
         EquipHPStat = 0;
 
-        foreach (var item in Manager.Inventory.ItemDataBase.ItemDB.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
+        foreach (var item in Manager.Inventory.PlayerInventoryDB.InventorySlotData.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
         {
-            if (item.statType == "attack")
+            if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "attack")
             {
-                RetentionAttackEffect += item.retentionEffect + item.reinforceEffect * item.level;
+                RetentionAttackEffect += Manager.Inventory.ItemDataDictionary[item.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEffect * item.level;
             }
-            else if (item.statType == "hp")
+            else if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "hp")
             {
-                RetentionHPEffect += item.retentionEffect + item.reinforceEffect * item.level;
+                RetentionHPEffect += Manager.Inventory.ItemDataDictionary[item.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEffect * item.level;
             }
         }
 
-        var filteredEquipItem = Manager.Inventory.ItemDataBase.ItemDB.Where(itemdata => itemdata.equipped == true).ToList();
+        var filteredEquipItem = Manager.Inventory.PlayerInventoryDB.InventorySlotData.Where(itemdata => itemdata.equipped == true).ToList();
 
         foreach (var item in filteredEquipItem)
         {
-            if (item.statType == "attack" && item.equipped == true)
+            if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "attack" && item.equipped == true)
             {
-                EquipAttackStat += item.equipStat + item.reinforceEquip * item.level;
+                EquipAttackStat += Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip * item.level;
             }
-            else if (item.statType == "hp" && item.equipped == true)
+            else if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "hp" && item.equipped == true)
             {
-                EquipHPStat += item.equipStat + item.reinforceEquip * item.level;
+                EquipHPStat += Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip * item.level;
             }
         }
     }

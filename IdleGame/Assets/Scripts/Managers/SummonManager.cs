@@ -170,10 +170,10 @@ public class SummonManager
     {
         for (int i = 0; i < summonResult.Length; i++)
         {
-            ItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
-            itemData.hasCount++;
+            //InventorySlotData itemData = _inventoryManager.SearchItem(summonResult[i]);
+            //itemData.hasCount++;
         }
-        _inventoryManager.SaveItemDataBase();
+        _inventoryManager.SaveSlotsData();
     }
 
     #endregion

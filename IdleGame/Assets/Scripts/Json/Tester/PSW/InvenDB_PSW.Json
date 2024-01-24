@@ -1,690 +1,304 @@
 {
-    "ItemDB": [
-        {
-            "itemID": 10001,
-            "level": 29,
-            "hasCount": 7,
-            "equipStat": 10.0,
-            "itemName": "나무 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "common",
-            "reinforceEquip": 1.0,
-            "retentionEffect": 2.0,
-            "reinforceEffect": 0.20000000298023225,
-            "equipped": true
-        },
-        {
-            "itemID": 10002,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 20.0,
-            "itemName": "구리 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "rare",
-            "reinforceEquip": 2.0,
-            "retentionEffect": 3.0,
-            "reinforceEffect": 0.30000001192092898,
-            "equipped": false
-        },
-        {
-            "itemID": 10003,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 40.0,
-            "itemName": "강철 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "eqic",
-            "reinforceEquip": 3.0,
-            "retentionEffect": 4.0,
-            "reinforceEffect": 0.4000000059604645,
-            "equipped": false
-        },
-        {
-            "itemID": 10005,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 4.0,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10006,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10007,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10008,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10009,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10010,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10011,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10012,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10013,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10014,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10015,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10016,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10017,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10018,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10019,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10020,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10021,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10022,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10023,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10024,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 10025,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "다이아 검",
-            "type": "weapon",
-            "statType": "attack",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20001,
-            "level": 17,
-            "hasCount": 1,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": true
-        },
-        {
-            "itemID": 20002,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20003,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20004,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20005,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20006,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20007,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20008,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20009,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20010,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20011,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20012,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20013,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20014,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20015,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20016,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20017,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20018,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20019,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20020,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20021,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20022,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20023,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20024,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        },
-        {
-            "itemID": 20025,
-            "level": 1,
-            "hasCount": 0,
-            "equipStat": 60.0,
-            "itemName": "나무 방패",
-            "type": "armor",
-            "statType": "hp",
-            "rarity": "legendary",
-            "reinforceEquip": 0.800000011920929,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5,
-            "equipped": false
-        }
-    ]
+  "InventorySlotData": [
+    {
+      "itemID": "W0001",
+      "level": 32,
+      "hasCount": 1,
+      "equipped": false
+    },
+    {
+      "itemID": "W0002",
+      "level": 1,
+      "hasCount": 1,
+      "equipped": false
+    },
+    {
+      "itemID": "W0003",
+      "level": 1,
+      "hasCount": 1,
+      "equipped": true
+    },
+    {
+      "itemID": "W0004",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0005",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0006",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0007",
+      "level": 1,
+      "hasCount": 1,
+      "equipped": false
+    },
+    {
+      "itemID": "W0008",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0009",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0010",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0011",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0012",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0013",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0014",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0015",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0016",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0017",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0018",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0019",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0020",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0021",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0022",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0023",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0024",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "W0025",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0001",
+      "level": 73,
+      "hasCount": 11,
+      "equipped": true
+    },
+    {
+      "itemID": "A0002",
+      "level": 20,
+      "hasCount": 6,
+      "equipped": false
+    },
+    {
+      "itemID": "A0003",
+      "level": 1,
+      "hasCount": 1,
+      "equipped": false
+    },
+    {
+      "itemID": "A0004",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0005",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0006",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0007",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0008",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0009",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0010",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0011",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0012",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0013",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0014",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0015",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0016",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0017",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0018",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0019",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0020",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0021",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0022",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0023",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0024",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "A0025",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    }
+  ]
 }

@@ -13009,7 +13009,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20001
+      name: A0001
       rect:
         serializedVersion: 2
         x: 416
@@ -13513,7 +13513,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20002
+      name: A0002
       rect:
         serializedVersion: 2
         x: 416
@@ -13534,7 +13534,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20005
+      name: A0005
       rect:
         serializedVersion: 2
         x: 432
@@ -13555,7 +13555,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_639
+      name: A0013
       rect:
         serializedVersion: 2
         x: 448
@@ -14185,7 +14185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20003
+      name: A0003
       rect:
         serializedVersion: 2
         x: 416
@@ -14206,7 +14206,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20006
+      name: A0006
       rect:
         serializedVersion: 2
         x: 432
@@ -14857,7 +14857,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20004
+      name: A0004
       rect:
         serializedVersion: 2
         x: 416
@@ -14878,7 +14878,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20007
+      name: A0007
       rect:
         serializedVersion: 2
         x: 432
@@ -15550,7 +15550,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20025
+      name: A0025
       rect:
         serializedVersion: 2
         x: 416
@@ -15571,7 +15571,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20008
+      name: A0008
       rect:
         serializedVersion: 2
         x: 432
@@ -15592,7 +15592,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20013
+      name: A0014
       rect:
         serializedVersion: 2
         x: 448
@@ -16075,7 +16075,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20009
+      name: A0009
       rect:
         serializedVersion: 2
         x: 432
@@ -16096,7 +16096,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20014
+      name: A0015
       rect:
         serializedVersion: 2
         x: 448
@@ -16558,7 +16558,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20023
+      name: A0024
       rect:
         serializedVersion: 2
         x: 416
@@ -16579,7 +16579,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20010
+      name: A0010
       rect:
         serializedVersion: 2
         x: 432
@@ -16600,7 +16600,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20015
+      name: A0016
       rect:
         serializedVersion: 2
         x: 448
@@ -17020,7 +17020,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20022
+      name: A0023
       rect:
         serializedVersion: 2
         x: 416
@@ -17041,7 +17041,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20011
+      name: A0011
       rect:
         serializedVersion: 2
         x: 432
@@ -17062,7 +17062,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20016
+      name: A0017
       rect:
         serializedVersion: 2
         x: 448
@@ -17146,7 +17146,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10001
+      name: W0001
       rect:
         serializedVersion: 2
         x: 0
@@ -17482,7 +17482,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20021
+      name: A0022
       rect:
         serializedVersion: 2
         x: 416
@@ -17503,7 +17503,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20012
+      name: A0012
       rect:
         serializedVersion: 2
         x: 432
@@ -17524,7 +17524,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20017
+      name: A0018
       rect:
         serializedVersion: 2
         x: 448
@@ -17545,7 +17545,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10002
+      name: W0002
       rect:
         serializedVersion: 2
         x: 0
@@ -17902,7 +17902,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20020
+      name: A0021
       rect:
         serializedVersion: 2
         x: 416
@@ -17923,7 +17923,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20019
+      name: A0020
       rect:
         serializedVersion: 2
         x: 432
@@ -17944,7 +17944,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 20018
+      name: A0019
       rect:
         serializedVersion: 2
         x: 448
@@ -17965,7 +17965,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10003
+      name: W0003
       rect:
         serializedVersion: 2
         x: 0
@@ -18280,7 +18280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10004
+      name: W0004
       rect:
         serializedVersion: 2
         x: 0
@@ -18826,7 +18826,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10005
+      name: W0005
       rect:
         serializedVersion: 2
         x: 0
@@ -19225,7 +19225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10006
+      name: W0006
       rect:
         serializedVersion: 2
         x: 0
@@ -19351,7 +19351,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_915
+      name: W0007
       rect:
         serializedVersion: 2
         x: 96
@@ -20821,7 +20821,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10007
+      name: W0008
       rect:
         serializedVersion: 2
         x: 0
@@ -20863,7 +20863,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_987
+      name: W0009
       rect:
         serializedVersion: 2
         x: 32
@@ -21157,7 +21157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10008
+      name: W0010
       rect:
         serializedVersion: 2
         x: 0
@@ -21199,7 +21199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1003
+      name: W0012
       rect:
         serializedVersion: 2
         x: 32
@@ -21262,7 +21262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1006
+      name: W0011
       rect:
         serializedVersion: 2
         x: 80
@@ -21367,7 +21367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10009
+      name: W0013
       rect:
         serializedVersion: 2
         x: 0
@@ -21409,7 +21409,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1013
+      name: W0014
       rect:
         serializedVersion: 2
         x: 32
@@ -21472,7 +21472,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10014
+      name: W0015
       rect:
         serializedVersion: 2
         x: 80
@@ -21535,7 +21535,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10017
+      name: W0016
       rect:
         serializedVersion: 2
         x: 129
@@ -21808,7 +21808,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1032
+      name: W0017
       rect:
         serializedVersion: 2
         x: 32
@@ -22165,7 +22165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10019
+      name: W0018
       rect:
         serializedVersion: 2
         x: 0
@@ -22207,7 +22207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10021
+      name: W0019
       rect:
         serializedVersion: 2
         x: 32
@@ -22270,7 +22270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10024
+      name: W0020
       rect:
         serializedVersion: 2
         x: 80
@@ -22543,7 +22543,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1067
+      name: W0021
       rect:
         serializedVersion: 2
         x: 96
@@ -22564,7 +22564,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 10025
+      name: W0022
       rect:
         serializedVersion: 2
         x: 112
@@ -22585,7 +22585,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1069
+      name: W0023
       rect:
         serializedVersion: 2
         x: 144
@@ -23026,7 +23026,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1090
+      name: W0024
       rect:
         serializedVersion: 2
         x: 32
@@ -23068,7 +23068,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1092
+      name: W0025
       rect:
         serializedVersion: 2
         x: 64
@@ -26186,71 +26186,54 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      10001: 1773745777
-      10002: -228674563
-      10003: -1799060869
-      10004: 1139293032
-      10005: 1970691703
-      10006: -420967544
-      10007: -887327037
-      10008: -1519588927
-      10009: 1704789817
       10012: 682649363
       10013: -731447115
-      10014: 1389215711
       10015: -1281829611
       10016: 198920945
-      10017: 620303185
       10018: 169009225
-      10019: -387681499
       10020: -1014829310
-      10021: -1569583686
       10022: -1087868021
       10023: 708467837
-      10024: -1926022557
-      10025: 1695658101
-      20001: -2078314833
-      20002: -1111854076
-      20003: -873253725
-      20004: -855137963
-      20005: 664212963
-      20006: 1786460681
-      20007: 1456394923
-      20008: 1350875991
-      20009: 648026016
-      20010: -254794787
-      20011: 449488711
-      20012: 208519102
-      20013: 957023120
-      20014: 1410791795
-      20015: 160122874
-      20016: -475490551
-      20017: -232863849
-      20018: -1411451948
-      20019: 17694516
-      20020: -1662376579
-      20021: 213450800
-      20022: -1304879416
-      20023: -596035579
       20024: 1164671984
-      20025: 1679796072
+      A0001: -2078314833
+      A0002: -1111854076
+      A0003: -873253725
+      A0004: -855137963
+      A0005: 664212963
+      A0006: 1786460681
+      A0007: 1456394923
+      A0008: 1350875991
+      A0009: 648026016
+      A0010: -254794787
+      A0011: 449488711
+      A0012: 208519102
+      A0013: -1248366103
+      A0014: 957023120
+      A0015: 1410791795
+      A0016: 160122874
+      A0017: -475490551
+      A0018: -232863849
+      A0019: -1411451948
+      A0020: 17694516
+      A0021: -1662376579
+      A0022: 213450800
+      A0023: -1304879416
+      A0024: -596035579
+      A0025: 1679796072
       Item_0: -1863106525
       Item_1: -948447716
       Item_10: -1603941009
       Item_100: -1294801631
       Item_1000: -566489026
       Item_1002: -1212527496
-      Item_1003: 97214568
       Item_1004: 2002793979
       Item_1005: 326924765
-      Item_1006: -713061474
       Item_1007: 1302870345
       Item_1008: -70611813
       Item_1009: 330566130
       Item_101: -332244280
       Item_1010: -2013291874
       Item_1012: 673440115
-      Item_1013: 1672701338
       Item_102: -2143385164
       Item_1021: 879271584
       Item_1022: 69444672
@@ -26264,7 +26247,6 @@ TextureImporter:
       Item_103: -1520691610
       Item_1030: -2119832252
       Item_1031: -933150597
-      Item_1032: 172351525
       Item_1033: -2080331635
       Item_1034: 1581360872
       Item_1035: -1028788530
@@ -26296,8 +26278,6 @@ TextureImporter:
       Item_1064: -1210391817
       Item_1065: -1559174495
       Item_1066: 703391038
-      Item_1067: 2120850029
-      Item_1069: -2098509070
       Item_107: 1834178379
       Item_1070: 600961021
       Item_1071: 1713304028
@@ -26321,9 +26301,7 @@ TextureImporter:
       Item_1088: -1716258250
       Item_1089: -395072320
       Item_109: -1294699105
-      Item_1090: 1643253633
       Item_1091: 1330113301
-      Item_1092: -1063883134
       Item_1093: 1769669251
       Item_1094: -405009692
       Item_1095: 726203996
@@ -27053,7 +27031,6 @@ TextureImporter:
       Item_634: -1631034427
       Item_635: 487805954
       Item_636: 2075717195
-      Item_639: -1248366103
       Item_64: 1039143543
       Item_640: -1797146996
       Item_641: -2010910649
@@ -27332,7 +27309,6 @@ TextureImporter:
       Item_912: 736513892
       Item_913: 969532011
       Item_914: -851913407
-      Item_915: -1600079528
       Item_916: 123380195
       Item_917: -819996350
       Item_918: 1946075482
@@ -27410,7 +27386,6 @@ TextureImporter:
       Item_983: -1062845740
       Item_984: 16277911
       Item_986: -1067801181
-      Item_987: -1227277726
       Item_988: -407514908
       Item_989: 2029124645
       Item_99: 333164780
@@ -27424,6 +27399,31 @@ TextureImporter:
       Item_997: 1022296564
       Item_998: -1270291355
       Item_999: 1805274819
+      W0001: 1773745777
+      W0002: -228674563
+      W0003: -1799060869
+      W0004: 1139293032
+      W0005: 1970691703
+      W0006: -420967544
+      W0007: -1600079528
+      W0008: -887327037
+      W0009: -1227277726
+      W0010: -1519588927
+      W0011: -713061474
+      W0012: 97214568
+      W0013: 1704789817
+      W0014: 1672701338
+      W0015: 1389215711
+      W0016: 620303185
+      W0017: 172351525
+      W0018: -387681499
+      W0019: -1569583686
+      W0020: -1926022557
+      W0021: 2120850029
+      W0022: 1695658101
+      W0023: -2098509070
+      W0024: 1643253633
+      W0025: -1063883134
       armor: -1850893956
       weapon: -257652649
   mipmapLimitGroupName: 
