@@ -7,3 +7,4 @@ public static class BaseStat
     public const int Hp = 1000;
     public const int HpRecovery = 30;
 }
+

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,10 @@ public class Player : MonoBehaviour, IDamageable
     public float EquipHPStat { get; private set; }
     public float RetentionHPEffect { get; private set; }
 
+    // 시간 관련 프로퍼티
+    public bool IsBonusCheck { get; private set; }
+    public DateTime BonusCheckTime { get; private set; }
+
     #endregion
 
     #region Init
@@ -73,6 +78,10 @@ public class Player : MonoBehaviour, IDamageable
         Manager.Inventory.InitItem();
         Manager.Quest.InitQuest();
         EquipmentStatModifier();
+
+        // 방치 보상 보너스 필드값 초기화
+        IsBonusCheck = profile.Date_Bonus_Check;
+        BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
     }
 
     public void CheckClick(bool isClick)
@@ -221,7 +230,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool IsCritical()
     {
-        int chance = Random.Range(1, 1001);
+        int chance = UnityEngine.Random.Range(1, 1001);
 
         if (chance < CritChance.Value)
         {
@@ -256,7 +265,7 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Currency Methods
 
-    public bool IsTrade(long amount)
+    public bool IsTradeGold(long amount)
     {
         if (Gold - amount < 0)
         {
@@ -270,6 +279,20 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    public bool IsTradeGems(int amount)
+    {
+        if (Gems - amount < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Gems -= amount;
+            playerView.SetGemsAmout();
+            return true;
+        }
+    }
+
     public void RewardGold(long Amount)
     {
         Gold = (long)Mathf.Clamp(Gold + Amount, 0, 1_000_000_000_000_000_000);
@@ -279,7 +302,7 @@ public class Player : MonoBehaviour, IDamageable
     public void RewardGem(int Amount)
     {
         Gems += Amount;
-        playerView.SetGemAmout();
+        playerView.SetGemsAmout();
     }
 
     #endregion
@@ -318,6 +341,20 @@ public class Player : MonoBehaviour, IDamageable
                 EquipHPStat += item.equipStat + item.reinforceEquip * item.level;
             }
         }
+    }
+
+    #endregion
+
+    #region Time Methods
+
+    public void SetBonusCheck(bool isBonusCheck)
+    {
+        IsBonusCheck = isBonusCheck;
+    }
+
+    public void SetBonusTime(DateTime bonusDateTime)
+    {
+        BonusCheckTime = bonusDateTime;
     }
 
     #endregion

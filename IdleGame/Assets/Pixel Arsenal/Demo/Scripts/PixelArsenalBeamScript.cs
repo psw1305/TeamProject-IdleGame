@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -23,7 +23,6 @@ namespace PixelArsenal
         private GameObject beamEnd;
         private GameObject beam;
         private LineRenderer line;
-        private Transform transform;
         private float textureScrollOffset;
 
         [Header("Adjustable Variables")]
@@ -43,7 +42,6 @@ namespace PixelArsenal
         // Use this for initialization
         void Start()
         {
-            transform = gameObject.transform;
             if (textBeamName)
                 textBeamName.text = beamLineRendererPrefab[(int)currentBeam].name;
             if (endOffSetSlider)

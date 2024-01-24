@@ -92,12 +92,10 @@ public class SummonManager
 
     public void SummonTry(int price, int count)
     {
-        if (_player.Gems < price)
+        if (_player.IsTradeGems(price))
         {
-            Debug.Log("Not enough Gems");
-            return;
+            Summon(count);
         }
-        Summon(count);
     }
 
     private void Summon(int count)
