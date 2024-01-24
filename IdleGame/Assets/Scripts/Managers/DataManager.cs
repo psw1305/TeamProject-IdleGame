@@ -58,7 +58,6 @@ public class DataManager
             { "Stat_Level_CritDamage", Manager.Game.Player.CritDamage.Level },
             { "Stat_Level_Hp", Manager.Game.Player.Hp.Level },
             { "Stat_Level_HpRecovery", Manager.Game.Player.HpRecovery.Level },
-            { "Stage_Difficulty", Manager.Stage.Difficulty },
             { "Stage_Chapter", Manager.Stage.Chapter },
             { "Stage_Level", Manager.Stage.StageLevel },
             { "Stage_WaveLoop", Manager.Stage.WaveLoop },
