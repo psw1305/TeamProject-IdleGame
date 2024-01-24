@@ -111,8 +111,7 @@ public class QuestDataBase
     public int QuestNum;
 }
 
-[System.Serializable]
-public class QuestData
+public abstract class QuestData
 {
     public QuestType questType;
     public string questObjective;
@@ -121,8 +120,7 @@ public class QuestData
     public int currentValue;
     public bool isClear;
 
-    // 추상클래스에서 변경...
-    public virtual void Init(int questLevel, int questCount) { }
+    public abstract void Init(int questLevel, int questCount);
 
     public void ObjectiveValueUp()
     {
