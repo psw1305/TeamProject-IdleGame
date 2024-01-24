@@ -43,16 +43,19 @@ public class UIPopupShopSummon : UIPopup
     private void SummonRepeat_Ad(PointerEventData eventData)
     {
         _summon.SummonTry(0, 11);
+        Manager.NotificateDot.SetEquipmentNoti();
     }
 
     private void SummonRepeat_1(PointerEventData eventData)
     {
         _summon.SummonTry(500, 11);
+        Manager.NotificateDot.SetEquipmentNoti();
     }
 
     private void SummonRepeat_2(PointerEventData eventData)
     {
         _summon.SummonTry(1500, 35);
+        Manager.NotificateDot.SetEquipmentNoti();
     }
 
 

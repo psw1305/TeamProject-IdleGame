@@ -1,5 +1,4 @@
 using System.Linq;
-using UnityEngine;
 
 public class NotificateManager
 {
@@ -141,29 +140,14 @@ public class NotificateManager
 
     #endregion
 
-    #region
+    #region 추천 장비 알림 관련 Method
 
     public delegate void RecommendEquipItemNotificate();
-    public RecommendEquipItemNotificate ActiveEquipWeaponItemNoti;
-    public RecommendEquipItemNotificate InactiveEquipWeaponItemNoti;
-    public RecommendEquipItemNotificate EquipWeaponItemSubscribed;
+    public RecommendEquipItemNotificate SetRecommendWeaponItemNoti;
 
     public void SetRecommendWeaponNoti()
     {
-        if (!CheckRecommendWeaponItem().equipped)
-        {
-            InactiveEquipWeaponItemNoti?.Invoke();
-            ActiveEquipWeaponItemNoti?.Invoke();
-        }
-        else
-        {
-            InactiveEquipWeaponItemNoti?.Invoke();
-        }
-    }
-
-    public void SetEquipWeaponItemSubscribed()
-    {
-        EquipWeaponItemSubscribed?.Invoke();
+        SetRecommendWeaponItemNoti?.Invoke();
     }
 
     public ItemData CheckRecommendWeaponItem()
@@ -171,26 +155,11 @@ public class NotificateManager
         return Manager.Inventory.WeaponItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => item.equipStat + item.level * item.reinforceEquip).ToList().Last();
     }
 
-    public RecommendEquipItemNotificate ActiveEquipArmorItemNoti;
-    public RecommendEquipItemNotificate InactiveEquipArmorItemNoti;
-    public RecommendEquipItemNotificate EquipArmorItemSubscribed;
+    public RecommendEquipItemNotificate SetRecommendArmorItemNoti;
 
     public void SetRecommendArmorNoti()
     {
-        if (!CheckRecommendArmorItem().equipped)
-        {
-            InactiveEquipArmorItemNoti?.Invoke();
-            ActiveEquipArmorItemNoti?.Invoke();
-        }
-        else
-        {
-            InactiveEquipArmorItemNoti?.Invoke();
-        }
-    }
-
-    public void SetEquipArmorItemSubscribed()
-    {
-        EquipArmorItemSubscribed?.Invoke();
+        SetRecommendArmorItemNoti?.Invoke();
     }
 
     public ItemData CheckRecommendArmorItem()
@@ -198,5 +167,10 @@ public class NotificateManager
         return Manager.Inventory.ArmorItemList.Where(item => item.level > 1 || item.hasCount > 0).OrderBy(item => item.equipStat + item.level * item.reinforceEquip).ToList().Last();
     }
 
+    public void ResetRecommendDelegateSubscribed()
+    {
+        SetRecommendWeaponItemNoti=null;
+        SetRecommendArmorItemNoti = null;
+    }
     #endregion
 }

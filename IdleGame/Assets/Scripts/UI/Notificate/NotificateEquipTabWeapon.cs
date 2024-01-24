@@ -1,4 +1,4 @@
-public class EquipWeaponPopupNotificate : BaseNotiDot
+public class NotificateEquipTabWeapon : BaseNotiDot
 {
     protected override void Start()
     {

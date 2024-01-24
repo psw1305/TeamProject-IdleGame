@@ -44,10 +44,8 @@ public class InventoryManager
 
     public void ChangeItem(ItemData equipItem)
     {
-        Debug.Log(equipItem.itemName);
         if ((equipItem.hasCount == 0 && equipItem.level == 1))
         {
-            Debug.Log("조건 미충족");
             return;
         }
 
@@ -76,13 +74,11 @@ public class InventoryManager
             {
                 if (itemdata.hasCount <= itemdata.level)
                 {
-                    Debug.Log("강화 조건 미충족");
                     break;
                 }
             }
             else if (itemdata.hasCount < 15)
             {
-                Debug.Log("강화 조건 미충족");
                 break;
             }
 

@@ -1,4 +1,4 @@
-public class ReinforceWeaponTypeItemNotificate : BaseNotiDot
+public class NotificateReinforceWeapon : BaseNotiDot
 {
     protected override void Start()
     {

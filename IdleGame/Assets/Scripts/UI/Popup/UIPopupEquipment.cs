@@ -45,8 +45,6 @@ public class UIPopupEquipment : UIPopup
 
     #region Properties
 
-    public event Action refreshEquipEvent;
-
     public event Action refreshReinforecEvent;
 
     public EquipFillterType equipFillterType;
@@ -178,10 +176,13 @@ public class UIPopupEquipment : UIPopup
     {
         Manager.Inventory.ChangeItem(_selectItemData);
         Manager.NotificateDot.SetEquipmentNoti();
+
         Manager.NotificateDot.SetRecommendWeaponNoti();
-        Manager.NotificateDot.SetWeaponEquipmentNoti();
         Manager.NotificateDot.SetRecommendArmorNoti();
+
+        Manager.NotificateDot.SetWeaponEquipmentNoti();
         Manager.NotificateDot.SetArmorEquipmentNoti();
+
         CallEquipRefreshEvent();
     }
     private void CallEquipRefreshEvent()
@@ -193,10 +194,7 @@ public class UIPopupEquipment : UIPopup
     private void ReinforceSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceSelectItem(_selectItemData);
-        //강화 후 능력치 변동이 일어나기에 새로 추천 아이템을 찾고 이벤트 구독을 변경합니다.
-        Manager.NotificateDot.SetEquipWeaponItemSubscribed();
-        Manager.NotificateDot.SetEquipArmorItemSubscribed();
-        //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
+
         Manager.NotificateDot.SetReinforceWeaponNoti();
         Manager.NotificateDot.SetReinforceArmorNoti();
 
@@ -215,8 +213,6 @@ public class UIPopupEquipment : UIPopup
     private void ReinforceWeaponTypeItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.WeaponItemList);
-        //강화 후 능력치 변동이 일어나기에 새로 추천 아이템을 찾고 이벤트 구독을 변경합니다.
-        Manager.NotificateDot.SetEquipWeaponItemSubscribed();
         //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
         Manager.NotificateDot.SetRecommendWeaponNoti();
         Manager.NotificateDot.SetWeaponEquipmentNoti();
@@ -230,8 +226,6 @@ public class UIPopupEquipment : UIPopup
     private void ReinforceArmorTypeItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.ArmorItemList);
-        //강화 후 능력치 변동이 일어나기에 새로 추천 아이템을 찾고 이벤트 구독을 변경합니다.
-        Manager.NotificateDot.SetEquipArmorItemSubscribed();
         //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
         Manager.NotificateDot.SetRecommendArmorNoti();
         Manager.NotificateDot.SetArmorEquipmentNoti();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EquipmentPopupNotificate : BaseNotiDot
+public class NotificateEquipMainPopup : BaseNotiDot
 {
     protected override void Start()
     {
