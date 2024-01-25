@@ -7,8 +7,9 @@ public class PlayerProjectileHandler : ProjectileHandlerBase
     public Vector2 TargetPosition;
     private Vector2 direction;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         direction = (TargetPosition - (Vector2)transform.position);
     }
 
