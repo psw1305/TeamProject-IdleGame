@@ -60,8 +60,13 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         long _weight = (long)(Weight - 1);
         _maxHp = _maxHp + _maxHp * _weight;
         _damage = _damage + _damage * _weight;
-        _rewards = _rewards + _rewards * _weight;
         ResetHealth();
+    }
+
+    public void SetGoldWeight(int Weight)
+    {
+        long _weight = (long)(Weight - 1);
+        _rewards = _rewards + _rewards * _weight;
     }
 
     public void SetPosition(Vector2 position)
