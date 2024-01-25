@@ -1,17 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProjectileHandler : ProjectileHandlerBase
 {
-    public Vector2 TargetPosition;
+    [SerializeField] private float _speed = 1.0f;
 
+    public Vector2 TargetPosition;
+    private Vector2 direction;
+
+    private void Awake()
+    {
+        direction = (TargetPosition - (Vector2)transform.position);
+    }
     private void FixedUpdate()
     {
-        TrackingTarget();
+        TrackingTarget();        
     }
     protected override void TrackingTarget()
     {
-        transform.position = Vector2.MoveTowards(transform.position, TargetPosition, 0.1f);
+        transform.Translate(direction.normalized * Time.deltaTime * _speed);
+        //transform.position = Vector2.MoveTowards(transform.position, TargetPosition, _speed);       
     }
 }

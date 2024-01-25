@@ -17,7 +17,8 @@ public class ProjectileHandlerBase : MonoBehaviour
         {
             Instantiate(ProjectileVFX, transform.position, Quaternion.identity, gameObject.transform);
         }
-        StartCoroutine(ProjectileLifeCycle());
+        //StartCoroutine(ProjectileLifeCycle());
+        Destroy(gameObject, 1f);
     }
 
     protected virtual void TrackingTarget()
@@ -34,9 +35,9 @@ public class ProjectileHandlerBase : MonoBehaviour
         }
     }
 
-    IEnumerator ProjectileLifeCycle()
-    {
-        yield return new WaitForSeconds(1.5f);
-        Destroy(gameObject);
-    }
+    //IEnumerator ProjectileLifeCycle()
+    //{
+    //    yield return new WaitForSeconds(1.5f);
+    //    Destroy(gameObject);
+    //}
 }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamageable
     #region Serialize Fields
 
     [SerializeField] private Transform ProjectilePoint;
+    [SerializeField] private Transform FollowerPosition;
 
     #endregion
 
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour, IDamageable
     public bool IsBonusCheck { get; private set; }
     public DateTime BonusCheckTime { get; private set; }
 
+    // 동료 관련 프로퍼티
+    public Follower Follower { get; private set; }
     #endregion
 
     #region Init
@@ -84,6 +87,12 @@ public class Player : MonoBehaviour, IDamageable
 
         IsBonusCheck = profile.Date_Bonus_Check;
         BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
+
+        var FollowerClone = Manager.Resource.InstantiatePrefab("FollowerFrame");
+        Follower = FollowerClone.GetComponent<Follower>();
+
+        Follower.transform.position = FollowerPosition.position;
+        Follower.Initialize();
     }
 
     public void CheckClick(bool isClick)

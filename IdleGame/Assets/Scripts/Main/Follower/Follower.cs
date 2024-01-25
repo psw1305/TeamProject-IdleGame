@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
 public class Follower : MonoBehaviour
 {
@@ -14,22 +15,58 @@ public class Follower : MonoBehaviour
 
     private Coroutine _attackCoroutine;
     private FollowerAnimController _followerAnimController;
+    [HideInInspector] public List<BaseEnemy> enemyList;
 
 
     #endregion
 
+    #region Properties
+    // TODO: 플레이어의 데이터를 가져와서 가공하고 장착 시 보일 수 있도록
+
+    public long AtkDamage { get; private set; }
+    public float AtkSpeed { get; private set; }
+    public float AttackRange { get; private set; } // TODO : 공격범위 상관없이 플레이어 공격하면 공격가능하게
+    public float CriticalChance { get; private set; }
+    public long RetentionEffect { get; private set; }
+
+    #endregion
+
+    #region Init
+
+    public void Initialize()
+    {
+        AttackRange = 7;
+
+        AtkDamage = 1;
+        AtkSpeed = 0.6f;
+        
+        enemyList = Manager.Stage.GetEnemyList();
+    }
+
+    #endregion
+
+    #region Unity Flow
     private void Start()
     {
         _followerAnimController = GetComponent<FollowerAnimController>();
     }
 
-    #region Properties
-
-    public long AtkDamage { get; private set; }
-    public float AtkSpeed { get; private set; }
-    public long RetentionEffect {  get; private set; }
+    private void FixedUpdate()
+    {
+        if (_attackCoroutine == null && enemyList.Count <= 0)
+        {
+            _followerAnimController.OnWalk();
+        }
+        else if (_attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
+        {
+            _followerAnimController.OnIdle();
+            _attackCoroutine = StartCoroutine(AttackRoutine());
+        }
+    }
 
     #endregion
+
+   
 
     public void Idle()
     {
@@ -38,24 +75,49 @@ public class Follower : MonoBehaviour
     }
 
     // 플레이어의 어택 코루틴이 들어가면 동료들도 공격 코루틴에 들어간다
-    public void Attack(List<BaseEnemy> enemyList)
+    public void Attack()
     {
         _followerAnimController.OnRangeAtk();
-        MakeRangeProjectile(enemyList);
+        MakeRangeProjectile();
     }
 
-    public void MakeRangeProjectile(List<BaseEnemy> enemyList)
+    public void MakeRangeProjectile()
     {
-        var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame", ProjectilePoint);
+        var testProjectile = Manager.Resource.InstantiatePrefab("FollowerProjectileFrame", ProjectilePoint);
         enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = enemyList[0].transform.position;
         FinalAttackDamage(out testProjectile.GetComponent<PlayerProjectileHandler>().Damage, out testProjectile.GetComponent<PlayerProjectileHandler>().DamageTypeValue);
     }
 
+    IEnumerator AttackRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(AttakSpeedToTime());
+            if (enemyList.Count == 0)
+            {
+                _attackCoroutine = null;
+                _followerAnimController.OnWalk();
+                break;
+            }
+
+            if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
+            {
+                Attack();
+            }
+        }
+    }
+
+    // TODO : 크리티컬 확률 추가, 캐릭터 데미지 가져와서 계산식 사요하기
     private void FinalAttackDamage(out long damage, out DamageType damageTypeValue)
     {
         damage = AtkDamage;
         damageTypeValue = DamageType.Normal;
+    }
+
+    private float AttakSpeedToTime()
+    {
+        return 1.0f / AtkSpeed;
     }
 }
