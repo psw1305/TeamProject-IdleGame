@@ -15,12 +15,13 @@ public class PlayerProjectileHandler : ProjectileHandlerBase
 
     private void FixedUpdate()
     {
-        TrackingTarget();        
+        TrackingTarget(TargetPosition);        
     }
 
-    protected override void TrackingTarget()
-    {
-        //transform.Translate(direction.normalized * Time.deltaTime * _speed);
-        transform.position = Vector2.MoveTowards(transform.position, TargetPosition, _speed);       
-    }
+    //protected override void TrackingTarget()
+    //{
+    //    //transform.Translate(direction.normalized * Time.deltaTime * _speed);
+    //    transform.position = Vector2.MoveTowards(transform.position, TargetPosition, _speed);       
+    //    TrackingTarget(TargetPosition);
+    //}
 }
