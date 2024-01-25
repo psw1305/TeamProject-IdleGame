@@ -131,8 +131,8 @@ public class UISceneMain : UIScene
             RetryBossButtonToggle();
             WaveLoopImageToggle();
             StageLevelGaugeToggle(false);
-            UpdateStageLevel(Manager.Stage.StageLevel);
         }
+        UpdateStageLevel(Manager.Stage.StageLevel);
     }
 
     #endregion

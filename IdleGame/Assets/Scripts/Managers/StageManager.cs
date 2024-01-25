@@ -136,7 +136,7 @@ public class StageManager
             Chapter--;
             StageDataChange(Chapter);
 
-            StageLevel = 0;
+            StageLevel = 3;
         }
 
         _uISceneMain.UpdateCurrentStage();
