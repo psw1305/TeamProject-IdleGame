@@ -151,11 +151,32 @@ public class StageManager
         {
             //Debug.Log($"Difficulty : {Difficulty}, CurrentStage : {StageChapter}, StageProgress : {StageLevel}");
             
-            // #1. 시작 후 1초 뒤 적 웨이브 스폰
-            yield return new WaitForSeconds(1.0f);
-            EnemyWaveSpawn();
+            // #1. 스폰 전 스테이지를 클리어하고 넘어왔으면 체력 리셋
+            if (PlayerReset)
+            {
+                var Player = Manager.Game.Player;
+                Player.SetCurrentHp(Player.ModifierHp);
+                PlayerReset = false;
+            }
 
-            // #2. 웨이브 클리어
+            // #2. 시작 후 0.5초 뒤 적 웨이브 스폰
+            yield return new WaitForSeconds(0.5f);
+            if (!BossAppearance)
+            {
+                // 총 3초동안 몬스터 나오도록 하기. 테이블로 빼는것도 생각해봐야
+                var delay = 3.0f / EnemySpawnCount;
+                for (int i = 0; i < 50; i++)
+                {
+                    yield return new WaitForSeconds(delay);
+                    EnemyWaveSpawn();
+                }
+            }
+            else
+            {
+                BossWaveSpawn();
+            }
+
+            // #3. 웨이브 클리어
             yield return new WaitUntil(()=> enemyList.Count == 0);
             WaveCompleted();
         }
@@ -163,54 +184,45 @@ public class StageManager
 
     private void EnemyWaveSpawn()
     {
-        if (PlayerReset)
-        {
-            var Player = Manager.Game.Player;
-            Player.SetCurrentHp(Player.ModifierHp);
-            PlayerReset = false;
-        }
+        // 랜덤으로 Enemy 설계도 선정
+        var randomEnemyName = StageConfig.Enemies[Random.Range(0, StageConfig.Enemies.Length)];
+        var enemyBlueprint = Manager.Resource.GetBlueprint(randomEnemyName) as EnemyBlueprint;
 
-        // 웨이브 진행 횟수가 StageConfig에 도달하지 못하면 잡몹 소환
-        if (!BossAppearance)
-        {
-            for (int i = 0; i < EnemySpawnCount; i++)
-            {
-                // 랜덤으로 Enemy 설계도 선정
-                var randomEnemyName = StageConfig.Enemies[Random.Range(0, StageConfig.Enemies.Length)];
-                var enemyBlueprint = Manager.Resource.GetBlueprint(randomEnemyName) as EnemyBlueprint;
+        // BaseEnemy 랜덤 Y축 위치 선정
+        var randomYPos = Random.Range(spawnPoint[0].position.y, spawnPoint[1].position.y);
+        var randomPos = new Vector2(spawnPoint[0].position.x, Mathf.Round(randomYPos * 10.0f) * 0.1f);
 
-                // BaseEnemy 랜덤 Y축 위치 선정
-                var randomIdx = Random.Range(0, spawnPoint.Length);
-                var randomPos = new Vector2(spawnPoint[randomIdx].position.x, spawnPoint[randomIdx].position.y);
+        // BaseEnemy 오브젝트 생성
+        var enemyObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
+        // 레이어 조정
+        var enemySprite = enemyObject.GetComponent<SpriteRenderer>();
+        enemySprite.sortingOrder = (int)Mathf.Ceil(spawnPoint[0].position.y * 10.0f - (randomPos.y * 10.0f));
+        var enemy = enemyObject.GetComponent<BaseEnemy>();
+        // 적 설정
+        enemy.SetEnemy(enemyBlueprint);
+        enemy.SetPosition(randomPos);
+        enemy.SetStatWeight(EnemyStatRate);
+        enemy.SetGoldWeight(EnemyGoldRate);
+        enemyList.Add(enemy);
+    }
 
-                // BaseEnemy 오브젝트 생성
-                var enemyObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
-                var enemy = enemyObject.GetComponent<BaseEnemy>();
-                enemy.SetEnemy(enemyBlueprint);
-                enemy.SetPosition(randomPos);
-                enemy.SetStatWeight(EnemyStatRate);
-                enemy.SetGoldWeight(EnemyGoldRate);
-                enemyList.Add(enemy);
-            }
-        }
-        else
-        {
-            _uISceneMain.StageLevelGaugeToggle(false);
+    private void BossWaveSpawn()
+    {
+        _uISceneMain.StageLevelGaugeToggle(false);
 
-            // Boss 설계도 가져오기
-            var enemyBlueprint = Manager.Resource.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
+        // Boss 설계도 가져오기
+        var enemyBlueprint = Manager.Resource.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
 
-            var bossObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
-            var enemy = bossObject.GetComponent<BaseEnemy>();
-            enemy.SetEnemy(enemyBlueprint);
-            enemy.SetPosition(bossSpawnPoint.position);
-            enemyList.Add(enemy);
+        var bossObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
+        var enemy = bossObject.GetComponent<BaseEnemy>();
+        enemy.SetEnemy(enemyBlueprint);
+        enemy.SetPosition(bossSpawnPoint.position);
+        enemyList.Add(enemy);
 
-            // 보스 설정 임시 변경
-            enemy.SetStatWeight(EnemyStatRate);
-            enemy.SetGoldWeight(EnemyGoldRate);
-            bossObject.transform.localScale = new Vector2(3, 3);
-        }
+        // 보스 설정 임시 변경
+        enemy.SetStatWeight(EnemyStatRate);
+        enemy.SetGoldWeight(EnemyGoldRate);
+        bossObject.transform.localScale = new Vector2(3, 3);
     }
 
     private void WaveCompleted()
