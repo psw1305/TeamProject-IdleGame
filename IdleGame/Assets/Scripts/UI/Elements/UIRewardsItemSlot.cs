@@ -16,9 +16,9 @@ public class UIRewardsItemSlot : MonoBehaviour
         _icon = transform.Find("ItemIcon").GetComponent<Image>();
     }
 
-    public void UpdateSlot(int index)
+    public void UpdateSlot(string index)
     {
-        _icon.sprite = Manager.Resource.GetSprite(index.ToString());
+        _icon.sprite = Manager.Resource.GetSprite(index);
     }
 
     public void SlotClear()
