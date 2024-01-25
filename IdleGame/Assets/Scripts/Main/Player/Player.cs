@@ -206,11 +206,11 @@ public class Player : MonoBehaviour, IDamageable
     public void Attack()
     {
         _playerAnimController.OnRangeAtk();
-        MakeRangeProjectail();
+        MakeRangeProjectile();
     }
 
     //OnRangeAtk에 의해 동작하는 애니메이션에 Event로 동작하는 메서드 입니다.
-    public void MakeRangeProjectail()
+    public void MakeRangeProjectile()
     {
         // 공격 projectile 생성
         var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame", ProjectilePoint);
