@@ -10,6 +10,7 @@ public class BaseScene : MonoBehaviour
     {
         Manager.Resource.Initialize();
         Manager.Game.Initialize();
+        Manager.ObjectPool.Initialize();
 
         Initialize();
     }

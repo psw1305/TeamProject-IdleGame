@@ -1,5 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class ProjectileHandlerBase : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class ProjectileHandlerBase : MonoBehaviour
     [HideInInspector]
     public DamageType DamageTypeValue = DamageType.Normal;
 
+    public IObjectPool<GameObject> ManagedPool { get; private set; }
+
     public LayerMask TargetLayerMask;
     protected virtual void Start()
     {
@@ -17,15 +21,17 @@ public class ProjectileHandlerBase : MonoBehaviour
         {
             Instantiate(ProjectileVFX, transform.position, Quaternion.identity, gameObject.transform);
         }
-        StartCoroutine(ProjectileLifeCycle());
+        //StartCoroutine(ProjectileLifeCycle());
+        Destroy(gameObject, 1f);
+        //Invoke("DestroyBullet", 1.5f);
     }
 
-    protected virtual void TrackingTarget()
+    protected void TrackingTarget(Vector2 targetPosition)
     {
-        transform.position = Vector2.MoveTowards(transform.position, Manager.Game.Player.transform.position, 0.1f);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, 0.1f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {
@@ -34,9 +40,19 @@ public class ProjectileHandlerBase : MonoBehaviour
         }
     }
 
-    IEnumerator ProjectileLifeCycle()
+    public void SetManagedPool(IObjectPool<GameObject> pool)
     {
-        yield return new WaitForSeconds(1.5f);
-        Destroy(gameObject);
+        ManagedPool = pool;
     }
+
+    public void DestroyBullet()
+    {
+        ManagedPool.Release(this.gameObject);
+    }
+
+    //IEnumerator ProjectileLifeCycle()
+    //{
+    //    yield return new WaitForSeconds(1.5f);
+    //    Destroy(gameObject);
+    //}
 }

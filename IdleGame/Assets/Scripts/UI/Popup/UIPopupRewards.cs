@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class UIPopupRewards : UIPopup
     private GameObject _content;
     private GameObject _outbox;
     private Button _closeBtn;
-    private int[] itemData;
+    private string[] itemData;
 
     #endregion
 
@@ -58,14 +59,9 @@ public class UIPopupRewards : UIPopup
         }
     }
 
-    public void DataInit(int[] itemDatas)
-    {
-        itemData = itemDatas;
-    }
-
     public void DataInit(string[] itemDatas)
     {
-
+        itemData = itemDatas;
     }
 
     #endregion

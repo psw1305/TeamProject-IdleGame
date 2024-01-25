@@ -161,8 +161,8 @@ public class SummonManager
         string[] finalResult = resultIdList.ToArray();
         EquipmentAdd(finalResult);
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
-        //popup.DataInit(finalResult);
-        //popup.PlayStart();
+        popup.DataInit(finalResult);
+        popup.PlayStart();
         summonResurt.Clear();
     }
 

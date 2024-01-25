@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamageable
     #region Serialize Fields
 
     [SerializeField] private Transform ProjectilePoint;
+    [SerializeField] private Transform FollowerPosition;
 
     #endregion
 
@@ -51,6 +52,8 @@ public class Player : MonoBehaviour, IDamageable
     public DateTime BonusCheckTime { get; private set; }
     public bool IsBonusCheck { get; private set; }
 
+    // 동료 관련 프로퍼티
+    public Follower Follower { get; private set; }
     #endregion
 
     #region Init
@@ -86,6 +89,12 @@ public class Player : MonoBehaviour, IDamageable
         IdleCheckTime = DateTime.ParseExact(profile.Date_Idle_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
         BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
         IsBonusCheck = profile.Date_Bonus_Check;
+
+        var FollowerClone = Manager.Resource.InstantiatePrefab("FollowerFrame");
+        Follower = FollowerClone.GetComponent<Follower>();
+
+        Follower.transform.position = FollowerPosition.position;
+        Follower.Initialize();
     }
 
     public void CheckClick(bool isClick)
@@ -144,11 +153,6 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Health Methods
 
-    private void SetCurrentHp(long amount)
-    {
-        CurrentHp = amount;
-    }
-
     private float GetCurrentHpPercent()
     {
         return (float)CurrentHp / ModifierHp;
@@ -162,6 +166,11 @@ public class Player : MonoBehaviour, IDamageable
             CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, ModifierHp);
             playerView.SetHealthBar(GetCurrentHpPercent());
         }
+    }
+
+    public void SetCurrentHp(long amount)
+    {
+        CurrentHp = amount;
     }
 
     public void TakeDamage(long Damage, DamageType damageTypeValue)
@@ -199,11 +208,11 @@ public class Player : MonoBehaviour, IDamageable
     public void Attack()
     {
         _playerAnimController.OnRangeAtk();
-        MakeRangeProjectail();
+        MakeRangeProjectile();
     }
 
     //OnRangeAtk에 의해 동작하는 애니메이션에 Event로 동작하는 메서드 입니다.
-    public void MakeRangeProjectail()
+    public void MakeRangeProjectile()
     {
         // 공격 projectile 생성
         var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame", ProjectilePoint);
