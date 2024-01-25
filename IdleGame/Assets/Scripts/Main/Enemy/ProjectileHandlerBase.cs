@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -25,12 +26,12 @@ public class ProjectileHandlerBase : MonoBehaviour
         //Invoke("DestroyBullet", 1.5f);
     }
 
-    protected virtual void TrackingTarget()
+    protected void TrackingTarget(Vector2 targetPosition)
     {
-        transform.position = Vector2.MoveTowards(transform.position, Manager.Game.Player.transform.position, 0.1f);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, 0.1f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {

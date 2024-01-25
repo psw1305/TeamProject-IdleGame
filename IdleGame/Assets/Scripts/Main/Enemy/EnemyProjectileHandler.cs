@@ -11,11 +11,6 @@ public class EnemyProjectileHandler : ProjectileHandlerBase
 
     private void FixedUpdate()
     {
-        TrackingTarget();
-    }
-
-    protected override void TrackingTarget()
-    {
-        base.TrackingTarget();
+        TrackingTarget(Manager.Game.Player.transform.position);
     }
 }
