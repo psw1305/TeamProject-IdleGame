@@ -142,11 +142,6 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Health Methods
 
-    private void SetCurrentHp(long amount)
-    {
-        CurrentHp = amount;
-    }
-
     private float GetCurrentHpPercent()
     {
         return (float)CurrentHp / ModifierHp;
@@ -160,6 +155,11 @@ public class Player : MonoBehaviour, IDamageable
             CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, ModifierHp);
             playerView.SetHealthBar(GetCurrentHpPercent());
         }
+    }
+
+    public void SetCurrentHp(long amount)
+    {
+        CurrentHp = amount;
     }
 
     public void TakeDamage(long Damage, DamageType damageTypeValue)

@@ -125,6 +125,14 @@ public class UISceneMain : UIScene
         // Stage Button Off
         _btnBoss.gameObject.SetActive(false);
         Image_WaveLoop.gameObject.SetActive(false);
+
+        if (Manager.Stage.WaveLoop)
+        {
+            RetryBossButtonToggle();
+            WaveLoopImageToggle();
+            StageLevelGaugeToggle(false);
+            UpdateStageLevel(Manager.Stage.StageLevel);
+        }
     }
 
     #endregion
@@ -212,6 +220,11 @@ public class UISceneMain : UIScene
         _txtQuestObjective.text = QuestObjective();
     }
 
+    public void UpdateStageLevel(int level)
+    {
+        Image_LevelGauge.fillAmount = level / 4.0f;
+    }
+
     public void RetryBossButtonToggle()
     {
         _btnBoss.gameObject.SetActive(!_btnBoss.IsActive());
@@ -226,6 +239,12 @@ public class UISceneMain : UIScene
     {
         var gauge = Image_LevelGauge.transform.parent.gameObject;
         gauge.SetActive(!gauge.activeSelf);
+    }
+
+    public void StageLevelGaugeToggle(bool active)
+    {
+        var gauge = Image_LevelGauge.transform.parent.gameObject;
+        gauge.SetActive(active);
     }
 
     #endregion

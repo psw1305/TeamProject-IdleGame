@@ -4,7 +4,7 @@
     "Difficulty": "보통",
     "Chapter": "1-1",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRage": 10,
+    "EnemyStatRate": 10,
     "EnemyGoldRate": 8,
     "EnemySpawnCount": 10
   },
@@ -13,7 +13,7 @@
     "Difficulty": "보통",
     "Chapter": "1-2",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRage": 15,
+    "EnemyStatRate": 15,
     "EnemyGoldRate": 12,
     "EnemySpawnCount": 10
   },
@@ -22,7 +22,7 @@
     "Difficulty": "보통",
     "Chapter": "1-3",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRage": 20,
+    "EnemyStatRate": 20,
     "EnemyGoldRate": 16,
     "EnemySpawnCount": 10
   },
@@ -31,7 +31,7 @@
     "Difficulty": "보통",
     "Chapter": "1-4",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRage": 25,
+    "EnemyStatRate": 25,
     "EnemyGoldRate": 20,
     "EnemySpawnCount": 10
   },
@@ -40,7 +40,7 @@
     "Difficulty": "보통",
     "Chapter": "1-5",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRage": 40,
+    "EnemyStatRate": 40,
     "EnemyGoldRate": 32,
     "EnemySpawnCount": 10
   },
@@ -49,7 +49,7 @@
     "Difficulty": "보통",
     "Chapter": "1-6",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRage": 45,
+    "EnemyStatRate": 45,
     "EnemyGoldRate": 36,
     "EnemySpawnCount": 10
   },
@@ -58,7 +58,7 @@
     "Difficulty": "보통",
     "Chapter": "1-7",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRage": 50,
+    "EnemyStatRate": 50,
     "EnemyGoldRate": 40,
     "EnemySpawnCount": 10
   },
@@ -67,7 +67,7 @@
     "Difficulty": "보통",
     "Chapter": "1-8",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRage": 55,
+    "EnemyStatRate": 55,
     "EnemyGoldRate": 44,
     "EnemySpawnCount": 10
   },
@@ -76,7 +76,7 @@
     "Difficulty": "보통",
     "Chapter": "1-9",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRage": 60,
+    "EnemyStatRate": 60,
     "EnemyGoldRate": 48,
     "EnemySpawnCount": 10
   },
@@ -85,7 +85,7 @@
     "Difficulty": "보통",
     "Chapter": "1-10",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRage": 80,
+    "EnemyStatRate": 80,
     "EnemyGoldRate": 64,
     "EnemySpawnCount": 10
   },
@@ -94,7 +94,7 @@
     "Difficulty": "보통",
     "Chapter": "2-1",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRage": 90,
+    "EnemyStatRate": 90,
     "EnemyGoldRate": 72,
     "EnemySpawnCount": 10
   },
@@ -103,7 +103,7 @@
     "Difficulty": "보통",
     "Chapter": "2-2",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRage": 100,
+    "EnemyStatRate": 100,
     "EnemyGoldRate": 80,
     "EnemySpawnCount": 10
   },
@@ -112,7 +112,7 @@
     "Difficulty": "보통",
     "Chapter": "2-3",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRage": 110,
+    "EnemyStatRate": 110,
     "EnemyGoldRate": 88,
     "EnemySpawnCount": 10
   },
@@ -121,7 +121,7 @@
     "Difficulty": "보통",
     "Chapter": "2-4",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRage": 120,
+    "EnemyStatRate": 120,
     "EnemyGoldRate": 96,
     "EnemySpawnCount": 10
   },
@@ -130,7 +130,7 @@
     "Difficulty": "보통",
     "Chapter": "2-5",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRage": 150,
+    "EnemyStatRate": 150,
     "EnemyGoldRate": 120,
     "EnemySpawnCount": 10
   },
@@ -139,7 +139,7 @@
     "Difficulty": "보통",
     "Chapter": "2-6",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRage": 160,
+    "EnemyStatRate": 160,
     "EnemyGoldRate": 128,
     "EnemySpawnCount": 10
   },
@@ -148,7 +148,7 @@
     "Difficulty": "보통",
     "Chapter": "2-7",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRage": 170,
+    "EnemyStatRate": 170,
     "EnemyGoldRate": 136,
     "EnemySpawnCount": 10
   },
@@ -157,7 +157,7 @@
     "Difficulty": "보통",
     "Chapter": "2-8",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRage": 185,
+    "EnemyStatRate": 185,
     "EnemyGoldRate": 148,
     "EnemySpawnCount": 10
   },
@@ -166,7 +166,7 @@
     "Difficulty": "보통",
     "Chapter": "2-9",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRage": 200,
+    "EnemyStatRate": 200,
     "EnemyGoldRate": 160,
     "EnemySpawnCount": 10
   },
@@ -175,7 +175,7 @@
     "Difficulty": "보통",
     "Chapter": "2-10",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRage": 250,
+    "EnemyStatRate": 250,
     "EnemyGoldRate": 200,
     "EnemySpawnCount": 10
   }

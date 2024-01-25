@@ -16,4 +16,4 @@ MonoBehaviour:
   enemies:
   - Test_Enemy_1
   - Test_Enemy_2
-  battleCount: 3
+  battleCount: 4

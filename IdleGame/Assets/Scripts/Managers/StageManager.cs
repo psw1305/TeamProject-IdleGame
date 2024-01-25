@@ -19,6 +19,7 @@ public class StageManager
     private Transform[] spawnPoint;
     private Transform bossSpawnPoint;
     private Coroutine _stageCoroutine;
+    private UISceneMain _uISceneMain;
 
     #endregion
 
@@ -33,6 +34,7 @@ public class StageManager
     public bool BossAppearance => StageLevel == StageConfig.BattleCount;
     public bool StageClear => StageLevel > StageConfig.BattleCount;
     public bool WaveClear => enemyList.Count == 0;
+    public bool PlayerReset { get; private set; }
 
     // 스테이지 정보 로드용 프로퍼티
     public string DifficultyStr => _stageData.Difficulty;
@@ -73,15 +75,12 @@ public class StageManager
         StageLevel = profile.Stage_Level;
         WaveLoop = profile.Stage_WaveLoop;
 
+        // 씬 -> 세션 생성 -> 게임 시작 순서. 여기서 스테이지 정보 및 UI 갱신
         StageDataChange(Chapter);
-        if (WaveLoop)
-        {
-            var main = Manager.UI.CurrentScene as UISceneMain;
-            main.RetryBossButtonToggle();
-            main.WaveLoopImageToggle();
-            main.StageLevelGaugeToggle();
-        }
+        _uISceneMain = Manager.UI.CurrentScene as UISceneMain;
     }
+
+    
 
     public void SetSpawnPoint(Transform[] spawnPoint)
     {
@@ -123,10 +122,8 @@ public class StageManager
         {
             WaveLoop = true;
             StageLevel--;
-            var main = Manager.UI.CurrentScene as UISceneMain;
-            main.RetryBossButtonToggle();
-            main.WaveLoopImageToggle();
-            main.StageLevelGaugeToggle();
+            _uISceneMain.RetryBossButtonToggle();
+            _uISceneMain.WaveLoopImageToggle();
         }
         else if (StageLevel > 0)
         {
@@ -142,6 +139,8 @@ public class StageManager
             StageLevel = 0;
         }
 
+        _uISceneMain.UpdateCurrentStage();
+        _uISceneMain.UpdateStageLevel(StageLevel);
         BattleStart();
     }
 
@@ -164,6 +163,13 @@ public class StageManager
 
     private void EnemyWaveSpawn()
     {
+        if (PlayerReset)
+        {
+            var Player = Manager.Game.Player;
+            Player.SetCurrentHp(Player.ModifierHp);
+            PlayerReset = false;
+        }
+
         // 웨이브 진행 횟수가 StageConfig에 도달하지 못하면 잡몹 소환
         if (!BossAppearance)
         {
@@ -183,12 +189,14 @@ public class StageManager
                 enemy.SetEnemy(enemyBlueprint);
                 enemy.SetPosition(randomPos);
                 enemy.SetStatWeight(EnemyStatRate);
-                //enemy.SetReward(EnemyGoldRate);
+                enemy.SetGoldWeight(EnemyGoldRate);
                 enemyList.Add(enemy);
             }
         }
         else
         {
+            _uISceneMain.StageLevelGaugeToggle(false);
+
             // Boss 설계도 가져오기
             var enemyBlueprint = Manager.Resource.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
 
@@ -199,8 +207,8 @@ public class StageManager
             enemyList.Add(enemy);
 
             // 보스 설정 임시 변경
-            enemy.SetStatWeight(EnemyStatRate * 5);
-            //enemy.SetStatWeight(EnemyGoldRate * 5);
+            enemy.SetStatWeight(EnemyStatRate);
+            enemy.SetGoldWeight(EnemyGoldRate);
             bossObject.transform.localScale = new Vector2(3, 3);
         }
     }
@@ -215,11 +223,14 @@ public class StageManager
         if (StageClear)
         {
             StageLevel = 0;
+            PlayerReset = true;
 
             Chapter++;
             StageDataChange(Chapter);
+            _uISceneMain.StageLevelGaugeToggle();
         }
 
+        _uISceneMain.UpdateStageLevel(StageLevel);
         SaveStage();
 
         Manager.Quest.QuestDB[3].currentValue = Chapter; // 스테이지 퀘스트 달성 값 변경
@@ -238,10 +249,8 @@ public class StageManager
     {
         BattleStop();
         EnemyReset();
-        var main = Manager.UI.CurrentScene as UISceneMain;
-        main.RetryBossButtonToggle();
-        main.WaveLoopImageToggle();
-        main.StageLevelGaugeToggle();
+        _uISceneMain.RetryBossButtonToggle();
+        _uISceneMain.WaveLoopImageToggle();
 
         WaveLoop = false;
         StageLevel++;
@@ -251,8 +260,7 @@ public class StageManager
 
     private void SaveStage()
     {
-        var main = Manager.UI.CurrentScene as UISceneMain;
-        main.UpdateCurrentStage();
+        _uISceneMain.UpdateCurrentStage();
 
         // 데이터 저장
     }
