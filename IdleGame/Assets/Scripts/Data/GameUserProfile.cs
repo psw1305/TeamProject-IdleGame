@@ -12,8 +12,9 @@ public class GameUserProfile
     // Time Date
     [FirestoreProperty] public string Date_Login { get; set; }
     [FirestoreProperty] public string Date_Logout { get; set; }
-    [FirestoreProperty] public bool Date_Bonus_Check { get; set; }
+    [FirestoreProperty] public string Date_Idle_ClickTime { get; set; }
     [FirestoreProperty] public string Date_Bonus_ClickTime { get; set; }
+    [FirestoreProperty] public bool Date_Bonus_Check { get; set; }
 
     // Stats
     [FirestoreProperty] public int Stat_Level_AtkDamage { get; set; }

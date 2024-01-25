@@ -43,8 +43,6 @@ public class UIPopupOptionDropdownPanel : UIPopup
     private void OnNoticePopup(PointerEventData eventData)
     {
         // 추후 공지 연결
-        // 임시로 방치 보상 연결
-        Manager.UI.ShowPopup<UIPopupRewardsIdle>("UIPopupRewardsIdle");
     }
 
     private void OnSettingPopup(PointerEventData eventData)

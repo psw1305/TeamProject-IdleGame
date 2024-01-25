@@ -5,9 +5,9 @@ using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Firestore;
+using Firebase.Messaging;
 using Firebase.Extensions;
 using Google;
-using UnityEditor.VersionControl;
 
 public class SessionManager
 {
@@ -18,6 +18,7 @@ public class SessionManager
     private DatabaseReference databaseRef;
 
     #endregion
+
     #region Fields - Google Signin
 
     private readonly string googleWebAPI = "63711996831-51h1oa135lu5eop464eb9vt2hhg2jhj0.apps.googleusercontent.com";
@@ -59,6 +60,9 @@ public class SessionManager
 
             ReadUserDataFromFirestore();
 
+            FirebaseMessaging.TokenReceived += OnTokenReceived;
+            FirebaseMessaging.MessageReceived += OnMessageReceived;
+
             //databaseRef = FirebaseDatabase.DefaultInstance.RootReference;
 
             // 모바일 
@@ -71,29 +75,28 @@ public class SessionManager
     }
 
     // TODO => 추후 로비 씬에서 로그인 버튼으로 옮길 예정
-    private void OnSignIn()
-    {
-#if UNITY_EDITOR
-        DebugNotice.Instance.Notice("SignIn Button Click");
-#elif UNITY_ANDROID
-        bool isSignin = false;
+//    private void OnSignIn()
+//    {
+//#if UNITY_EDITOR
+//        DebugNotice.Instance.Notice("SignIn Button Click");
+//#elif UNITY_ANDROID
+//        bool isSignin = false;
 
-        if (!isSignin)
-        {
-            GoogleSignIn.Configuration = configuration;
-            GoogleSignIn.Configuration.UseGameSignIn = false;
-            GoogleSignIn.Configuration.RequestIdToken = true;
-            GoogleSignIn.DefaultInstance.SignIn().ContinueWith(SignInWithGoogle);
-        }
-        else
-        {
-            GoogleSignIn.DefaultInstance.SignOut();
-            loginText.text = "GOOGLE LOGIN";
-        }
+//        if (!isSignin)
+//        {
+//            GoogleSignIn.Configuration = configuration;
+//            GoogleSignIn.Configuration.UseGameSignIn = false;
+//            GoogleSignIn.Configuration.RequestIdToken = true;
+//            GoogleSignIn.DefaultInstance.SignIn().ContinueWith(SignInWithGoogle);
+//        }
+//        else
+//        {
+//            GoogleSignIn.DefaultInstance.SignOut();
+//        }
 
-        isSignin = !isSignin;
-#endif
-    }
+//        isSignin = !isSignin;
+//#endif
+//    }
 
     #endregion
 
@@ -238,6 +241,26 @@ public class SessionManager
                 });
             }
         });
+    }
+
+    #endregion
+
+    #region Message
+
+    private void OnTokenReceived(object sender, TokenReceivedEventArgs e)
+    {
+        if (e != null)
+        {
+            DebugNotice.Instance.Notice($"Token received: {e.Token}");
+        }
+    }
+
+    private void OnMessageReceived(object sender, MessageReceivedEventArgs e)
+    {
+        if (e != null && e.Message != null && e.Message.Notification != null)
+        {
+            DebugNotice.Instance.Notice($"From : {e.Message.From}, Title : {e.Message.Notification.Title}, Text : {e.Message.Notification.Body}");
+        }
     }
 
     #endregion

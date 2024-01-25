@@ -1,3 +1,5 @@
+using System;
+
 public static class BaseStat
 {
     public const int AtkDamage = 10;
@@ -8,3 +10,8 @@ public static class BaseStat
     public const int HpRecovery = 30;
 }
 
+public static class Delay
+{
+    public static readonly TimeSpan IdleClick = new(0, 1, 0);
+    public static readonly TimeSpan BonusClick = new(0, 10, 0);
+}
