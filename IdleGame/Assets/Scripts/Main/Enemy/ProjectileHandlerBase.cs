@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class ProjectileHandlerBase : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ProjectileHandlerBase : MonoBehaviour
     [HideInInspector]
     public DamageType DamageTypeValue = DamageType.Normal;
 
+    public IObjectPool<GameObject> ManagedPool { get; private set; }
+
     public LayerMask TargetLayerMask;
     protected virtual void Start()
     {
@@ -19,6 +22,7 @@ public class ProjectileHandlerBase : MonoBehaviour
         }
         //StartCoroutine(ProjectileLifeCycle());
         Destroy(gameObject, 1f);
+        //Invoke("DestroyBullet", 1.5f);
     }
 
     protected virtual void TrackingTarget()
@@ -33,6 +37,16 @@ public class ProjectileHandlerBase : MonoBehaviour
             collision.gameObject.GetComponent<IDamageable>().TakeDamage(Damage, DamageTypeValue);
             Destroy(gameObject);
         }
+    }
+
+    public void SetManagedPool(IObjectPool<GameObject> pool)
+    {
+        ManagedPool = pool;
+    }
+
+    public void DestroyBullet()
+    {
+        ManagedPool.Release(this.gameObject);
     }
 
     //IEnumerator ProjectileLifeCycle()

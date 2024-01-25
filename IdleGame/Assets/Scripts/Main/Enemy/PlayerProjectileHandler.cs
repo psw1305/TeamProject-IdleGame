@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerProjectileHandler : ProjectileHandlerBase
 {
-    [SerializeField] private float _speed = 1.0f;
+    [SerializeField] private float _speed = 0.1f;
     
     public Vector2 TargetPosition;
     private Vector2 direction;
@@ -20,7 +20,7 @@ public class PlayerProjectileHandler : ProjectileHandlerBase
 
     protected override void TrackingTarget()
     {
-        transform.Translate(direction.normalized * Time.deltaTime * _speed);
-        //transform.position = Vector2.MoveTowards(transform.position, TargetPosition, _speed);       
+        //transform.Translate(direction.normalized * Time.deltaTime * _speed);
+        transform.position = Vector2.MoveTowards(transform.position, TargetPosition, _speed);       
     }
 }

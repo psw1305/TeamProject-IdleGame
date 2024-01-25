@@ -83,7 +83,8 @@ public class Follower : MonoBehaviour
 
     public void MakeRangeProjectile()
     {
-        var testProjectile = Manager.Resource.InstantiatePrefab("FollowerProjectileFrame", ProjectilePoint);
+        var testProjectile = Manager.ObjectPool.Pool.Get();
+        //var testProjectile = Manager.Resource.InstantiatePrefab("FollowerProjectileFrame", ProjectilePoint);
         enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = enemyList[0].transform.position;
