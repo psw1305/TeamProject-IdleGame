@@ -165,7 +165,7 @@ public class StageManager
             {
                 // 총 3초동안 몬스터 나오도록 하기. 테이블로 빼는것도 생각해봐야
                 var delay = 3.0f / EnemySpawnCount;
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < EnemySpawnCount; i++)
                 {
                     yield return new WaitForSeconds(delay);
                     EnemyWaveSpawn();
