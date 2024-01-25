@@ -14,7 +14,7 @@ public class Utility : MonoBehaviour
     {
         StringBuilder builder = new();
         Enumerable
-           .Range(65, 26)
+            .Range(65, 26)
             .Select(e => ((char)e).ToString())
             .Concat(Enumerable.Range(97, 26).Select(e => ((char)e).ToString()))
             .Concat(Enumerable.Range(0, 10).Select(e => e.ToString()))
@@ -23,5 +23,13 @@ public class Utility : MonoBehaviour
             .ToList().ForEach(e => builder.Append(e));
 
         return builder.ToString();
+    }
+
+    public static TimeSpan DelayTime()
+    {
+
+
+
+        return new TimeSpan(0, 0, 0);
     }
 }

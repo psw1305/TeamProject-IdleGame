@@ -47,8 +47,9 @@ public class Player : MonoBehaviour, IDamageable
     public float RetentionHPEffect { get; private set; }
 
     // 시간 관련 프로퍼티
-    public bool IsBonusCheck { get; private set; }
+    public DateTime IdleCheckTime { get; private set; }
     public DateTime BonusCheckTime { get; private set; }
+    public bool IsBonusCheck { get; private set; }
 
     #endregion
 
@@ -82,8 +83,9 @@ public class Player : MonoBehaviour, IDamageable
         ModifierHp = (long)(Hp.Value + Hp.Value * (EquipHPStat / 100) + Hp.Value * (RetentionHPEffect / 100));
         SetCurrentHp(ModifierHp);
 
-        IsBonusCheck = profile.Date_Bonus_Check;
+        IdleCheckTime = DateTime.ParseExact(profile.Date_Idle_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
         BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
+        IsBonusCheck = profile.Date_Bonus_Check;
     }
 
     public void CheckClick(bool isClick)
@@ -353,14 +355,29 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Time Methods
 
+    public DateTime GetLoginTime()
+    {
+        return DateTime.ParseExact(profile.Date_Login, "yyyy/MM/dd HH:mm:ss", null);
+    }
+
+    public DateTime GetLogoutTime()
+    {
+        return DateTime.ParseExact(profile.Date_Logout, "yyyy/MM/dd HH:mm:ss", null);
+    }
+
     public void SetBonusCheck(bool isBonusCheck)
     {
         IsBonusCheck = isBonusCheck;
     }
 
-    public void SetBonusTime(DateTime bonusDateTime)
+    public void SetIdleCheckTime(DateTime idleCheckTime)
     {
-        BonusCheckTime = bonusDateTime;
+        IdleCheckTime = idleCheckTime;
+    }
+
+    public void SetBonusCheckTime(DateTime bonusCheckTime)
+    {
+        BonusCheckTime = bonusCheckTime;
     }
 
     #endregion

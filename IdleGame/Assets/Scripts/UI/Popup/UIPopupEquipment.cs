@@ -1,11 +1,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine;
-using static UnityEditor.Progress;
+using TMPro;
 
 public class UIPopupEquipment : UIPopup
 {

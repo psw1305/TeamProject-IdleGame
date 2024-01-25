@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -36,10 +38,12 @@ public class UISceneMain : UIScene
     private Button _btnEquipment;
     private Button _btnShop;
     private Button _btnSave;
+    private Button _btnIdleRewards;
 
     private TextMeshProUGUI _txtQuestNum;
     private TextMeshProUGUI _txtQuestObjective;
     private TextMeshProUGUI _textQuestReward;
+    private TextMeshProUGUI _textIdleNotice;
 
     #endregion
 
@@ -58,6 +62,8 @@ public class UISceneMain : UIScene
 
         SetUpgradeStats();
         SetUI();
+
+        IdleRewardsTimeCheck();
     }
 
     private void SetImages()
@@ -78,6 +84,8 @@ public class UISceneMain : UIScene
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
         _txtQuestObjective = GetUI<TextMeshProUGUI>("Txt_QuestObjective");
         _textQuestReward = GetUI<TextMeshProUGUI>("Txt_QuestReward");
+
+        _textIdleNotice = GetUI<TextMeshProUGUI>("Text_IdleRewards_Notice");
     }
 
     private void SetButtons()
@@ -91,6 +99,7 @@ public class UISceneMain : UIScene
         _btnEquipment = SetButtonEvent("Btn_Equipment", UIEventType.Click, OnEquipment);
         _btnShop = SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
         _btnSave = SetButtonEvent("Btn_Save", UIEventType.Click, OnSave);
+        _btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);
     }
 
     private void SetUpgradeStats()
@@ -127,45 +136,73 @@ public class UISceneMain : UIScene
         Image_WaveLoop.gameObject.SetActive(false);
     }
 
+    public void IdleRewardsTimeCheck()
+    {
+        TimeSpan timeLeft = DateTime.Now.Subtract(player.IdleCheckTime);
+
+        if (timeLeft.TotalMinutes < 3)
+        {
+            _btnIdleRewards.interactable = false;
+            StartCoroutine(DelayEnableButton(timeLeft));
+        }
+        else
+        {
+            _btnIdleRewards.interactable = true;
+            _textIdleNotice.text = "";
+        }
+    }
+
+    private IEnumerator DelayEnableButton(TimeSpan timeLeft)
+    {
+        TimeSpan remainTime = Delay.IdleClick - timeLeft;
+        double totalSecondsLeft = remainTime.TotalSeconds;
+
+        while (true)
+        {
+            if (totalSecondsLeft > 1)
+            {
+                if (totalSecondsLeft >= 60)
+                {
+                    TimeSpan ts = TimeSpan.FromSeconds(totalSecondsLeft);
+                    _textIdleNotice.text = $"{ts.Minutes}분 {ts.Seconds}초";
+                }
+                else
+                {
+                    _textIdleNotice.text = Mathf.FloorToInt((float)totalSecondsLeft) + "초";
+                }
+
+                totalSecondsLeft -= Time.deltaTime;
+                yield return null;
+            }
+            else
+            {
+                _btnIdleRewards.interactable = true;
+                _textIdleNotice.text = "";
+                break;
+            }
+        }
+
+        yield return null;
+    }
+
     #endregion
 
     #region Button Events
 
-    private void OnHpUp(PointerEventData eventData) => UpgradeStat_Hp.UpdateUpgradeStat(player.Hp);
-    private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat_HpRecovery.UpdateUpgradeStat(player.HpRecovery);
-    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat_AttackDamage.UpdateUpgradeStat(player.AtkDamage);
-    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat_AttackSpeed.UpdateUpgradeStat(player.AtkSpeed);
-    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat_CriticalChance.UpdateUpgradeStat(player.CritChance);
-    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat_CriticalDamage.UpdateUpgradeStat(player.CritDamage);
-
-    private void OnBossStage(PointerEventData eventData)
+    // 기능성 버튼 이벤트
+    private void OnIdleRewards(PointerEventData eventData)
     {
-        Manager.Stage.RetryBossBattle();
+        if (_btnIdleRewards.interactable) Manager.UI.ShowPopup<UIPopupRewardsIdle>("UIPopupRewardsIdle");
     }
-
-    private void OnEquipment(PointerEventData eventData)
-    {
-        Manager.UI.ShowPopup<UIPopupEquipment>();
-    }
-
-    private void OnShop(PointerEventData eventData)
-    {
-        Manager.UI.ShowPopup<UIPopupShopSummon>();
-    }
-
-    private void OnSave(PointerEventData eventData)
-    {
-        Manager.Data.SaveData();
-    }
+    private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("Option_DropdownPanel");
+    private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
+    private void OnEquipment(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupEquipment>();
+    private void OnShop(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupShopSummon>();
+    private void OnSave(PointerEventData eventData) => Manager.Data.SaveData();
 
     private void OnGameSpeedUp(PointerEventData eventData)
     {
         Debug.Log("게임 스피드 업"); // 버튼 작동 테스트
-    }
-
-    private void OnOption(PointerEventData eventData)
-    {
-        Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("Option_DropdownPanel");
     }
     
     private void OnQuestComplete(PointerEventData eventData)
@@ -176,6 +213,14 @@ public class UISceneMain : UIScene
             UpdateQuestObjective();
         }
     }
+
+    // 스탯 증가 버튼 이벤트
+    private void OnHpUp(PointerEventData eventData) => UpgradeStat_Hp.UpdateUpgradeStat(player.Hp);
+    private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat_HpRecovery.UpdateUpgradeStat(player.HpRecovery);
+    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat_AttackDamage.UpdateUpgradeStat(player.AtkDamage);
+    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat_AttackSpeed.UpdateUpgradeStat(player.AtkSpeed);
+    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat_CriticalChance.UpdateUpgradeStat(player.CritChance);
+    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat_CriticalDamage.UpdateUpgradeStat(player.CritDamage);
 
     #endregion
 
