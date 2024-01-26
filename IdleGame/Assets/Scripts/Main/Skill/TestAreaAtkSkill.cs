@@ -11,14 +11,21 @@ public class TestAreaAtkSkill : BaseSkill, ISkillUsingEffect
     [SerializeField] Vector2 maxDestinationPosition;
 
     [SerializeField] int AtkCount;
-    public void UsingSkillEffect()
+
+    private Coroutine AtkCor;
+    public void ApplySkillEffect()
     {
-        StartCoroutine(AtkLoop());
+        AtkCor = StartCoroutine(AtkLoop());
+    }
+    public void RemoveSkillEffect()
+    {
+        StopCoroutine(AtkCor);
+        AtkCor = null;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             if (Manager.Game.Player.enemyList.Count > 0)
             {
@@ -26,15 +33,18 @@ public class TestAreaAtkSkill : BaseSkill, ISkillUsingEffect
             }
         }
     }
+
     IEnumerator AtkLoop()
     {
-        for (int i = 1; i <= AtkCount; i++)
+        while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.4f);
             projectile = Manager.Resource.InstantiatePrefab("TestProjectile");
             projectile.transform.position = new Vector2(0, 5);
             projectile.GetComponent<TestAreaAtkSkillProjectile>().Damage = 1;
             projectile.GetComponent<TestAreaAtkSkillProjectile>().TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
         }
     }
+
+
 }

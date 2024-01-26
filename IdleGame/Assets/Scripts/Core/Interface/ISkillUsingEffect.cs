@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface ISkillUsingEffect
 {
-    public void UsingSkillEffect();
+    public void ApplySkillEffect();
+    public void RemoveSkillEffect();
 }
