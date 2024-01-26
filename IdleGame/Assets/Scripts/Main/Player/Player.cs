@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamageable
     private Coroutine attackCoroutine;
     private PlayerAnimController _playerAnimController;
     private bool isClick = false;
-    private float _damageBuff;
+    private float _damageBuff = 1;
 
     #endregion
 
