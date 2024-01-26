@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ResourceManager
@@ -6,6 +7,7 @@ public class ResourceManager
     private Dictionary<string, GameObject> prefabs = new();
     private Dictionary<string, ScriptableObject> blueprints = new();
     private Dictionary<string, Sprite> sprites = new();
+    private Dictionary<string, TextAsset> textAssets = new();
 
     /// <summary>
     /// Resources 폴더 안 아이템 불러오기
@@ -15,6 +17,7 @@ public class ResourceManager
         LoadPrefabs("Prefabs", prefabs);
         LoadBlueprints("ScriptableObjects", blueprints);
         LoadSprites("Sprites", sprites);
+        LoadTexts("Texts", textAssets);
     }
 
     #region Prefab
@@ -99,6 +102,31 @@ public class ResourceManager
     {
         if (!sprites.TryGetValue(spriteName, out Sprite sprite)) return null;
         return sprite;
+    }
+
+    #endregion
+
+    #region Texts
+
+    private void LoadTexts(string path, Dictionary<string, TextAsset> texts)
+    {
+        TextAsset[] objs = Resources.LoadAll<TextAsset>(path);
+        foreach (TextAsset obj in objs)
+        {
+            texts[obj.name] = obj;
+        }
+    }
+
+    public void SetFileText(string textFileName, string jsonText)
+    {
+        if (!textAssets.TryGetValue(textFileName, out TextAsset textAsset)) return;
+        //File.WriteAllText(textAsset.text, jsonText);
+    }
+
+    public string GetFileText(string textFileName)
+    {
+        if (!textAssets.TryGetValue(textFileName, out TextAsset textAsset)) return null;
+        return textAsset.text;
     }
 
     #endregion

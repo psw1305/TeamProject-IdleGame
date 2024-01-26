@@ -250,11 +250,6 @@ public class UISceneMain : UIScene
         txt_Stage.text = ($"{Manager.Stage.ChapterStr}");
     }
 
-    public void UpdateButtonEnable()
-    {
-
-    }
-
     public void UpdateQuestNum()
     {
         _txtQuestNum.text = ($"Quest No.{Manager.Quest.QuestNum + 1}");

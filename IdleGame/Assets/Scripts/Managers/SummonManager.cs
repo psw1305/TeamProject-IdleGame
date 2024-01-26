@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public class SummonManager
 {
     #region Fields
 
-    private string _jsonPath = $"{Application.dataPath}/Resources/Data/SummonTable/EquipmentSummonTable.json";
+    private string _jsonPath = $"{Application.dataPath}/Resources/Texts/SummonTable/EquipmentSummonTable.json";
     private string _tableText;
     private Player _player;
     private InventoryManager _inventoryManager;
@@ -50,7 +49,8 @@ public class SummonManager
 
     private void ProbabilityInit()
     {
-        _tableText = File.ReadAllText(_jsonPath);
+        //_tableText = File.ReadAllText(_jsonPath);
+        _tableText = Manager.Resource.GetFileText("EquipmentSummonTable");
         var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
 
         // 불러온 테이블을 레벨 그룹별로 1차 가공
