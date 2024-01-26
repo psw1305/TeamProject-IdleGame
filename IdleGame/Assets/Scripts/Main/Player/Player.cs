@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, IDamageable
     private Coroutine attackCoroutine;
     private PlayerAnimController _playerAnimController;
     private bool isClick = false;
+    private float _damageBuff;
 
     #endregion
 
@@ -54,6 +55,19 @@ public class Player : MonoBehaviour, IDamageable
 
     // 동료 관련 프로퍼티
     public Follower Follower { get; private set; }
+
+
+    //버프 능력치 관련 프로퍼티
+    public float DamageBuff
+    {
+        get => _damageBuff;
+        set
+        {
+            if (value < 1) _damageBuff = 1;
+            else _damageBuff = value;
+        }
+    }
+
     #endregion
 
     #region Init
@@ -264,14 +278,15 @@ public class Player : MonoBehaviour, IDamageable
         {
             damage = (long)((AtkDamage.Value
                 + AtkDamage.Value * EquipAttackStat / 100
-                + AtkDamage.Value * RetentionAttackEffect / 100) * (1 + CritDamage.GetFloat()));
+                + AtkDamage.Value * RetentionAttackEffect / 100) * (1 + CritDamage.GetFloat()) * _damageBuff);
             damageTypeValue = DamageType.Critical;
         }
         else
         {
-            damage = (long)(AtkDamage.Value
+            damage = (long)((AtkDamage.Value
                 + AtkDamage.Value * EquipAttackStat / 100
-                + AtkDamage.Value * RetentionAttackEffect / 100);
+                + AtkDamage.Value * RetentionAttackEffect / 100)
+                * _damageBuff);
             damageTypeValue = DamageType.Normal;
         }
     }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
 {
+    [SerializeField] private GameObject DestroyVFX;
 
     private void FixedUpdate()
     {
@@ -24,4 +25,8 @@ public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
         }
     }
 
+    private void OnDestroy()
+    {
+        Instantiate(DestroyVFX, gameObject.transform.position, DestroyVFX.transform.rotation);
+    }
 }
