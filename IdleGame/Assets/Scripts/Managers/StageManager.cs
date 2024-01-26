@@ -78,8 +78,6 @@ public class StageManager
         _uISceneMain = Manager.UI.CurrentScene as UISceneMain;
     }
 
-    
-
     public void SetSpawnPoint(Transform[] spawnPoint)
     {
         this.spawnPoint = spawnPoint;

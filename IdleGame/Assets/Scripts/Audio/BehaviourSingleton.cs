@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// MonoBehavior ø° Singleton Class √ﬂ∞°
+/// MonoBehavior Ïóê Singleton Class Ï∂îÍ∞Ä
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public abstract class BehaviourSingleton<T> : MonoBehaviour where T : BehaviourSingleton<T>
@@ -16,7 +16,7 @@ public abstract class BehaviourSingleton<T> : MonoBehaviour where T : BehaviourS
     {
         if (instance != null)
         {
-            Debug.LogError(string.Format("«„øÎµ«¡ˆ æ ¿∫ ¡ﬂ∫π ¿ŒΩ∫≈œΩ∫ => {0}", typeof(T)));
+            Debug.LogError(string.Format("ÌóàÏö©ÎêòÏßÄ ÏïäÏùÄ Ï§ëÎ≥µ Ïù∏Ïä§ÌÑ¥Ïä§ => {0}", typeof(T)));
             Destroy(this);
             return;
         }
