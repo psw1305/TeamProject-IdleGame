@@ -212,7 +212,7 @@ public class UISceneMain : UIScene
     {
         Debug.Log("게임 스피드 업"); // 버튼 작동 테스트
     }
-    
+
     private void OnQuestComplete(PointerEventData eventData)
     {
         if (Manager.Quest.IsQuestComplete())
@@ -223,7 +223,12 @@ public class UISceneMain : UIScene
     }
 
     // 스탯 증가 버튼 이벤트
-    private void OnHpUp(PointerEventData eventData) => UpgradeStat_Hp.UpdateUpgradeStat(player.Hp);
+    private void OnHpUp(PointerEventData eventData)
+    {
+        AudioSFX.Instance.PlayOneShot(Manager.Resource.GetAudio("14_item2"));
+        UpgradeStat_Hp.UpdateUpgradeStat(player.Hp);
+    }
+
     private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat_HpRecovery.UpdateUpgradeStat(player.HpRecovery);
     private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat_AttackDamage.UpdateUpgradeStat(player.AtkDamage);
     private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat_AttackSpeed.UpdateUpgradeStat(player.AtkSpeed);
