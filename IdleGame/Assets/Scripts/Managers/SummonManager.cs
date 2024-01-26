@@ -164,6 +164,7 @@ public class SummonManager
         popup.DataInit(finalResult);
         popup.PlayStart();
         summonResurt.Clear();
+        resultIdList.Clear();
     }
 
     private void EquipmentAdd(string[] summonResult)
