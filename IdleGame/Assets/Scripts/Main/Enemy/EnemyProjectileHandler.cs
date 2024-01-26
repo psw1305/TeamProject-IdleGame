@@ -11,6 +11,6 @@ public class EnemyProjectileHandler : ProjectileHandlerBase
 
     private void FixedUpdate()
     {
-        TrackingTarget(Manager.Game.Player.transform.position);
+        TrackingTarget(Manager.Game.Player.transform.position, Speed);
     }
 }
