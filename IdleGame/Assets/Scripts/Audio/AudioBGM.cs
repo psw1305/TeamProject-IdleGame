@@ -37,8 +37,7 @@ public class AudioBGM : AudioSystem<AudioBGM>
 
     protected override void SetVolume(float volumeScale)
     {
-        //SetVolume("BGM", volumeScale);
-        this.AudioSource.volume = volumeScale;
+        SetVolume("BGM", volumeScale);
     }
 
     public void Play(AudioClip clip)
