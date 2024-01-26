@@ -5,8 +5,6 @@ public class ObjectPoolManager
 {
     public IObjectPool<GameObject> Pool { get; private set; }
 
-    // public Init()으로 변경
-
     public void Initialize()
     {
         Pool = new ObjectPool<GameObject>(CreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, maxSize: 20);
