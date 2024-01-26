@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
 {
-    public Vector2 TargetPosition;
-
+    [SerializeField] private GameObject DestroyVFX;
 
     private void FixedUpdate()
     {
-        TrackingTarget(TargetPosition);
+        TrackingTarget(TargetPosition, Speed);
         if(Vector2.Distance(transform.position, TargetPosition) < Mathf.Epsilon)
         {
             Destroy(gameObject);
@@ -18,7 +17,7 @@ public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
         
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected override void OnTriggerExit2D(Collider2D collision)
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {
@@ -26,4 +25,8 @@ public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
         }
     }
 
+    private void OnDestroy()
+    {
+        Instantiate(DestroyVFX, gameObject.transform.position, DestroyVFX.transform.rotation);
+    }
 }

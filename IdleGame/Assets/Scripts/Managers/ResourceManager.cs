@@ -8,6 +8,7 @@ public class ResourceManager
     private Dictionary<string, ScriptableObject> blueprints = new();
     private Dictionary<string, Sprite> sprites = new();
     private Dictionary<string, TextAsset> textAssets = new();
+    private Dictionary<string, AudioClip> audios = new();
 
     /// <summary>
     /// Resources 폴더 안 아이템 불러오기
@@ -18,6 +19,7 @@ public class ResourceManager
         LoadBlueprints("ScriptableObjects", blueprints);
         LoadSprites("Sprites", sprites);
         LoadTexts("Texts", textAssets);
+        LoadAudios("Audios", audios);
     }
 
     #region Prefab
@@ -127,6 +129,30 @@ public class ResourceManager
     {
         if (!textAssets.TryGetValue(textFileName, out TextAsset textAsset)) return null;
         return textAsset.text;
+    }
+  
+    #endregion
+  
+    #region Audio
+
+    /// <summary>
+    /// 지정된 경로 안에 모든 오디오 클립 로드
+    /// </summary>
+    /// <param name="path">폴더 경로</param>
+    /// <param name="sprites">로드할 오디오 클립 값</param>
+    private void LoadAudios(string path, Dictionary<string, AudioClip> audios)
+    {
+        AudioClip[] objs = Resources.LoadAll<AudioClip>(path);
+        foreach (AudioClip obj in objs)
+        {
+            audios[obj.name] = obj;
+        }
+    }
+
+    public AudioClip GetAudio(string audioName)
+    {
+        if (!audios.TryGetValue(audioName, out AudioClip audio)) return null;
+        return audio;
     }
 
     #endregion
