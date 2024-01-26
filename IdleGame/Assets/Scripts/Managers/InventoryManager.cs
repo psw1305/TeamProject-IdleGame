@@ -7,10 +7,9 @@ public class InventoryManager
 {
     #region ItemData Fields & Properties
 
-    private string JsonItemDataBasePath = Application.dataPath + "/Scripts/Json/Tester/ItemDB.json";
-    private string JsonItemDataBaseText;
+    private string _itemDataBaseText;
 
-    private ItemDataBase _ItemDataBase;
+    private ItemDataBase _itemDataBase;
     private Dictionary<string, ItemData> _itemDataDictionary = new Dictionary<string, ItemData>();
     public Dictionary<string, ItemData> ItemDataDictionary => _itemDataDictionary;
 
@@ -20,9 +19,9 @@ public class InventoryManager
 
     public void ParseItemData()
     {
-        JsonItemDataBaseText = File.ReadAllText(JsonItemDataBasePath);
-        _ItemDataBase = JsonUtility.FromJson<ItemDataBase>(JsonItemDataBaseText);
-        foreach (var itemData in _ItemDataBase.ItemDB)
+        _itemDataBaseText = Manager.Resource.GetFileText("ItemDB");
+        _itemDataBase = JsonUtility.FromJson<ItemDataBase>(_itemDataBaseText);
+        foreach (var itemData in _itemDataBase.ItemDB)
         {
             _itemDataDictionary.Add(itemData.itemID, itemData);
         }
@@ -31,38 +30,49 @@ public class InventoryManager
 
     #region InventoryData Fields & Properties
 
-    private string JsonPlayerSlotDataPath = Application.dataPath + "/Scripts/Json/Tester/HSB/InvenDB_HSB.json";
-    private string JsonSlotsText;
-    private InventoryDataBase _PlayerInventoryDB;
-    public InventoryDataBase PlayerInventoryDB => _PlayerInventoryDB;
-    public List<InventorySlotData> WeaponItemList => _PlayerInventoryDB.InventorySlotData.Where(ItemData => ItemData.itemID[0] == 'W').ToList();
-    public List<InventorySlotData> ArmorItemList => _PlayerInventoryDB.InventorySlotData.Where(ItemData => ItemData.itemID[0] == 'A').ToList();
+    private string _userJsonText;
+    private string _userItemFile;
+    private InventoryDataBase _userInventoryDB;
+    public InventoryDataBase PlayerInventoryDB => _userInventoryDB;
+    public List<InventorySlotData> WeaponItemList => _userInventoryDB.InventorySlotData.Where(ItemData => ItemData.itemID[0] == 'W').ToList();
+    public List<InventorySlotData> ArmorItemList => _userInventoryDB.InventorySlotData.Where(ItemData => ItemData.itemID[0] == 'A').ToList();
 
     #endregion
 
     #region Inventory Data Methods
 
-    public void SetDataPath(string jsonPath)
+    public void Initialize(string fileName)
     {
-        this.JsonPlayerSlotDataPath = Application.dataPath + jsonPath;
+        _userItemFile = fileName;
+        _userJsonText = Manager.Resource.GetFileText(fileName);
+        _userInventoryDB = JsonUtility.FromJson<InventoryDataBase>(_userJsonText);
     }
 
     public InventorySlotData SearchItem(string itemID)
     {
-        List<InventorySlotData> pickItem = _PlayerInventoryDB.InventorySlotData.Where(itemData => itemData.itemID == itemID).ToList();
+        List<InventorySlotData> pickItem = _userInventoryDB.InventorySlotData.Where(itemData => itemData.itemID == itemID).ToList();
         return pickItem[0];
     }
 
     public void SaveSlotsData()
     {
-        string inventoryJson = JsonUtility.ToJson(_PlayerInventoryDB, true);
-        File.WriteAllText(JsonPlayerSlotDataPath, inventoryJson);
-    }
+        string inventoryJson = JsonUtility.ToJson(_userInventoryDB, true);
+        //string filePath = $"/Resources/Texts/Item/{_userItemFile}.json";
 
-    public void LoadSlotsData()
-    {
-        JsonSlotsText = File.ReadAllText(JsonPlayerSlotDataPath);
-        _PlayerInventoryDB = JsonUtility.FromJson<InventoryDataBase>(JsonSlotsText);
+        //try
+        //{
+        //    StreamWriter writer = new(filePath, false);
+        //    writer.Write(inventoryJson);
+        //    writer.Close();
+
+        //    Debug.Log("Text written to file: " + filePath);
+        //}
+        //catch (System.Exception e)
+        //{
+        //    Debug.LogError("Error writing text to file: " + filePath + "\n" + e.Message);
+        //}
+
+        //File.WriteAllText(jsonPlayerSlotDataText, inventoryJson);
     }
 
     #endregion
@@ -72,7 +82,6 @@ public class InventoryManager
     public void InitItem()
     {
         ParseItemData();
-        LoadSlotsData();
         CheckToInventoryDataInit();
         Manager.Game.Player.EquipmentStatModifier();
     }
@@ -80,11 +89,11 @@ public class InventoryManager
     private void CheckToInventoryDataInit()
     {
         int index = 0;
-        foreach (var item in _ItemDataBase.ItemDB)
+        foreach (var item in _itemDataBase.ItemDB)
         {
-            if (item.itemID != _PlayerInventoryDB.InventorySlotData[index].itemID)
+            if (item.itemID != _userInventoryDB.InventorySlotData[index].itemID)
             {
-                _PlayerInventoryDB.InventorySlotData.Insert(index, new InventorySlotData(item.itemID, 1, 1, false));
+                _userInventoryDB.InventorySlotData.Insert(index, new InventorySlotData(item.itemID, 1, 1, false));
             }
             index++;
         }

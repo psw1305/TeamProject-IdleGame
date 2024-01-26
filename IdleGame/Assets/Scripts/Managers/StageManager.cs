@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StageManager
 {
     #region Fields
 
     // json 경로 관련
-    private string _jsonPath = $"{Application.dataPath}/Resources/Data/Stage/StageData.json";
     private string _tableText;
 
     private Dictionary<int, StageData> stageTable;
@@ -62,7 +60,7 @@ public class StageManager
     public void Initialize()
     {
         // json 파일 로딩, 딕셔너리에 인덱스 그룹 넣기
-        _tableText = File.ReadAllText(_jsonPath);
+        _tableText = Manager.Resource.GetFileText("StageData");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
         stageTable = stageDataTable.stageDataTable

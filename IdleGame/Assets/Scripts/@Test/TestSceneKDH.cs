@@ -21,7 +21,7 @@ public class TestSceneKDH : BaseScene
         Manager.Summon.Initialize();
 
         // 아이템 DB json 파일 경로 설정
-        Manager.Inventory.SetDataPath("/Scripts/Json/Tester/KDH/InvenDB_KDH.json");
+        Manager.Inventory.Initialize("InvenDB_KDH");
 
         // 세션 생성 후 => 전투 시작
         Manager.Session.Initialize("test-kdh");

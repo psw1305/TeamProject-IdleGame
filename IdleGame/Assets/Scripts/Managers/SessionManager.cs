@@ -60,8 +60,8 @@ public class SessionManager
 
             ReadUserDataFromFirestore();
 
-            FirebaseMessaging.TokenReceived += OnTokenReceived;
-            FirebaseMessaging.MessageReceived += OnMessageReceived;
+            //FirebaseMessaging.TokenReceived += OnTokenReceived;
+            //FirebaseMessaging.MessageReceived += OnMessageReceived;
 
             //databaseRef = FirebaseDatabase.DefaultInstance.RootReference;
 

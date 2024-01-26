@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ResourceManager
@@ -6,6 +7,7 @@ public class ResourceManager
     private Dictionary<string, GameObject> prefabs = new();
     private Dictionary<string, ScriptableObject> blueprints = new();
     private Dictionary<string, Sprite> sprites = new();
+    private Dictionary<string, TextAsset> textAssets = new();
     private Dictionary<string, AudioClip> audios = new();
 
     /// <summary>
@@ -16,6 +18,7 @@ public class ResourceManager
         LoadPrefabs("Prefabs", prefabs);
         LoadBlueprints("ScriptableObjects", blueprints);
         LoadSprites("Sprites", sprites);
+        LoadTexts("Texts", textAssets);
         LoadAudios("Audios", audios);
     }
 
@@ -105,7 +108,32 @@ public class ResourceManager
 
     #endregion
 
-    #region Sprite
+    #region Texts
+
+    private void LoadTexts(string path, Dictionary<string, TextAsset> texts)
+    {
+        TextAsset[] objs = Resources.LoadAll<TextAsset>(path);
+        foreach (TextAsset obj in objs)
+        {
+            texts[obj.name] = obj;
+        }
+    }
+
+    public void SetFileText(string textFileName, string jsonText)
+    {
+        if (!textAssets.TryGetValue(textFileName, out TextAsset textAsset)) return;
+        //File.WriteAllText(textAsset.text, jsonText);
+    }
+
+    public string GetFileText(string textFileName)
+    {
+        if (!textAssets.TryGetValue(textFileName, out TextAsset textAsset)) return null;
+        return textAsset.text;
+    }
+  
+    #endregion
+  
+    #region Audio
 
     /// <summary>
     /// 지정된 경로 안에 모든 오디오 클립 로드

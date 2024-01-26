@@ -28,6 +28,9 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Properties
 
+    // 테스트 용 플레이 제어
+    public bool IsPlay = false;
+
     public StatInfo AtkDamage { get; private set; }
     public StatInfo AtkSpeed { get; private set; }
     public StatInfo CritChance { get; private set; }
@@ -109,6 +112,8 @@ public class Player : MonoBehaviour, IDamageable
 
         Follower.transform.position = FollowerPosition.position;
         Follower.Initialize();
+
+        StartCoroutine(RecoverHealthPoint());
     }
 
     public void CheckClick(bool isClick)
@@ -125,7 +130,6 @@ public class Player : MonoBehaviour, IDamageable
         playerView = GetComponent<PlayerView>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         _playerAnimController = GetComponent<PlayerAnimController>();
-        StartCoroutine(RecoverHealthPoint());
     }
 
     private void FixedUpdate()
