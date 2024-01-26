@@ -31,6 +31,9 @@ public class TestSceneHSB : BaseScene
         // 세션 생성 후 => 전투 시작
         Manager.Session.Initialize("test-hsb");
 
+        // BGM 테스트 예시
+        //AudioBGM.Instance.Play(AudioBGM.Instance.stage);
+
         return true;
     }
 
