@@ -429,8 +429,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774331687}
-  - component: {fileID: 774331688}
   - component: {fileID: 774331689}
+  - component: {fileID: 774331688}
   m_Layer: 0
   m_Name: SFX - UI
   m_TagString: Untagged
