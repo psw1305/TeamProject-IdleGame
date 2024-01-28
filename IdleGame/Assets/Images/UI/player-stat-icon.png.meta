@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 00f5fbdc3faf9404380a1b507a25a3c9
+guid: 398c4811d6478f849b063d1b9d380dd7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 5-colors-btn_0
+      name: player-stat-icon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -144,20 +144,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 6, z: 6, w: 6}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3353a60e78de564c8426f08521a57ea
-      internalID: -143335051
+      spriteID: 19d7852876f141e4a93e31411ae8052c
+      internalID: -1213596055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5-colors-btn_1
+      name: player-stat-icon_1
       rect:
         serializedVersion: 2
         x: 16
@@ -165,20 +165,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 6, z: 6, w: 6}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e529fa0acffc054a99359b6d091fce1
-      internalID: 1225689848
+      spriteID: 7730b8cc4badfbe4fa82829281362a6e
+      internalID: 1392856692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5-colors-btn_2
+      name: player-stat-icon_2
       rect:
         serializedVersion: 2
         x: 32
@@ -186,20 +186,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 6, z: 6, w: 6}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 764b7ef98cb500540b91391ebb37c6a6
-      internalID: -1835479424
+      spriteID: 42d5f0daf634a0d47acc86d6ab58b1a6
+      internalID: 1619552706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5-colors-btn_3
+      name: player-stat-icon_3
       rect:
         serializedVersion: 2
         x: 48
@@ -207,35 +207,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 6, z: 6, w: 6}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be366e1b9021abd4487a15913a8d8cfc
-      internalID: -1744069887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5-colors-btn_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 6, z: 6, w: 6}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fdad0a0b9ad5b1546862918ae27109e9
-      internalID: 557991690
+      spriteID: cc8b5d0ffbe84c9418c13cb557ab10bb
+      internalID: -1569972293
       vertices: []
       indices: 
       edges: []
@@ -251,11 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      5-colors-btn_0: -143335051
-      5-colors-btn_1: 1225689848
-      5-colors-btn_2: -1835479424
-      5-colors-btn_3: -1744069887
-      5-colors-btn_4: 557991690
+      player-stat-icon_0: -1213596055
+      player-stat-icon_1: 1392856692
+      player-stat-icon_2: 1619552706
+      player-stat-icon_3: -1569972293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

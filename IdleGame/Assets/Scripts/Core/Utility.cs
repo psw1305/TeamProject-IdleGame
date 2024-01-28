@@ -24,12 +24,4 @@ public class Utility : MonoBehaviour
 
         return builder.ToString();
     }
-
-    public static TimeSpan DelayTime()
-    {
-
-
-
-        return new TimeSpan(0, 0, 0);
-    }
 }

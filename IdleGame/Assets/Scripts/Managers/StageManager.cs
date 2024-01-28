@@ -60,7 +60,7 @@ public class StageManager
     public void Initialize()
     {
         // json 파일 로딩, 딕셔너리에 인덱스 그룹 넣기
-        _tableText = Manager.Resource.GetFileText("StageData");
+        _tableText = Manager.Resource.GetFileText("StageTable");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
         stageTable = stageDataTable.stageDataTable

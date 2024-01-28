@@ -24,12 +24,9 @@ public class TestSceneHSB : BaseScene
         Manager.Stage.SetBossPoint(bossSpawnPoint);
 
         Manager.Summon.Initialize();
+        Manager.Inventory.Initialize();
 
-        // 아이템 DB json 파일 경로 설정
-        Manager.Inventory.Initialize("InvenDB_HSB");
-
-        // 세션 생성 후 => 전투 시작
-        Manager.Session.Initialize("test-hsb");
+        Manager.Game.GameStart();
 
         // BGM 테스트 예시
         //AudioBGM.Instance.Play(AudioBGM.Instance.stage);

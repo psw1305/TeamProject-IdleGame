@@ -54,8 +54,8 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     [SerializeField] private GameObject ReinforceIcon;
 
-    private InventorySlotData _itemData;
-    public InventorySlotData ItemData => _itemData;
+    private UserItemData _itemData;
+    public UserItemData ItemData => _itemData;
 
     #endregion
 
@@ -73,7 +73,7 @@ public class UIPopupEquipSlots : MonoBehaviour
     #region Other Method
 
     //아이템 아이콘 세팅, 티어 세팅, 레벨 세팅,게이지 세팅, 언록 여부 
-    public void InitSlotInfo(InventorySlotData itemData)
+    public void InitSlotInfo(UserItemData itemData)
     {
         _itemData = itemData;
         _itemID = _itemData.itemID;

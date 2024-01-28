@@ -355,7 +355,7 @@ public class Player : MonoBehaviour, IDamageable
         RetentionHPEffect = 0;
         EquipHPStat = 0;
 
-        foreach (var item in Manager.Inventory.PlayerInventoryDB.InventorySlotData.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
+        foreach (var item in Manager.Inventory.UserInventory.UserItemData.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
         {
             if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "attack")
             {
@@ -367,7 +367,7 @@ public class Player : MonoBehaviour, IDamageable
             }
         }
 
-        var filteredEquipItem = Manager.Inventory.PlayerInventoryDB.InventorySlotData.Where(itemdata => itemdata.equipped == true).ToList();
+        var filteredEquipItem = Manager.Inventory.UserInventory.UserItemData.Where(itemdata => itemdata.equipped == true).ToList();
 
         foreach (var item in filteredEquipItem)
         {

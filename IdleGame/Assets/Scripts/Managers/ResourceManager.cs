@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class ResourceManager
@@ -117,12 +116,6 @@ public class ResourceManager
         {
             texts[obj.name] = obj;
         }
-    }
-
-    public void SetFileText(string textFileName, string jsonText)
-    {
-        if (!textAssets.TryGetValue(textFileName, out TextAsset textAsset)) return;
-        //File.WriteAllText(textAsset.text, jsonText);
     }
 
     public string GetFileText(string textFileName)

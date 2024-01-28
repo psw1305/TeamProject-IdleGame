@@ -1,22 +1,22 @@
 {
-    "InventorySlotData": [
+    "UserItemData": [
         {
             "itemID": "W0001",
-            "level": 32,
+            "level": 1,
             "hasCount": 1,
-            "equipped": false
+            "equipped": true
         },
         {
             "itemID": "W0002",
             "level": 1,
-            "hasCount": 1,
+            "hasCount": 0,
             "equipped": false
         },
         {
             "itemID": "W0003",
             "level": 1,
-            "hasCount": 1,
-            "equipped": true
+            "hasCount": 0,
+            "equipped": false
         },
         {
             "itemID": "W0004",
@@ -39,7 +39,7 @@
         {
             "itemID": "W0007",
             "level": 1,
-            "hasCount": 1,
+            "hasCount": 0,
             "equipped": false
         },
         {
@@ -152,20 +152,20 @@
         },
         {
             "itemID": "A0001",
-            "level": 73,
-            "hasCount": 11,
+            "level": 1,
+            "hasCount": 1,
             "equipped": true
         },
         {
             "itemID": "A0002",
-            "level": 20,
-            "hasCount": 6,
+            "level": 1,
+            "hasCount": 0,
             "equipped": false
         },
         {
             "itemID": "A0003",
             "level": 1,
-            "hasCount": 1,
+            "hasCount": 0,
             "equipped": false
         },
         {
