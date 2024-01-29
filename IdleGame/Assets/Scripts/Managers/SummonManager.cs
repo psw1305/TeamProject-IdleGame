@@ -173,7 +173,6 @@ public class SummonManager
             UserItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
             itemData.hasCount++;
         }
-        _inventoryManager.SaveUserItemData();
     }
 
     #endregion

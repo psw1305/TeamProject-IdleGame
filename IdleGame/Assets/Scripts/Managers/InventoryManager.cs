@@ -44,10 +44,6 @@ public class InventoryManager
         ArmorItemList = Manager.Data.Inventory.UserItemData.Where(ItemData => ItemData.itemID[0] == 'A').ToList();
     }
 
-    public void SaveUserItemData()
-    {
-    }
-
     public UserItemData SearchItem(string itemID)
     {
         List<UserItemData> pickItem = UserInventory.UserItemData.Where(itemData => itemData.itemID == itemID).ToList();
@@ -76,7 +72,6 @@ public class InventoryManager
             }
             index++;
         }
-        SaveUserItemData();
     }
 
     #endregion
@@ -108,8 +103,6 @@ public class InventoryManager
         // 새로운 아이템 장착
         equipItem.equipped = true;
 
-        SaveUserItemData();
-
         Manager.Game.Player.EquipmentStatModifier();
     }
 
@@ -117,8 +110,6 @@ public class InventoryManager
     public void ReinforceSelectItem(UserItemData itemdata)
     {
         ReinforceItem(itemdata);
-
-        SaveUserItemData();
 
         Manager.Game.Player.EquipmentStatModifier();
     }
@@ -131,7 +122,6 @@ public class InventoryManager
         {
             ReinforceItem(item);
         }
-        SaveUserItemData();
 
         Manager.Game.Player.EquipmentStatModifier();
     }
