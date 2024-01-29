@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 7121881572504259846}
   - component: {fileID: 5395698594513558487}
   - component: {fileID: 7920778997282225395}
+  - component: {fileID: 6689143209383149431}
   - component: {fileID: 2376948602761534169}
   m_Layer: 6
   m_Name: PlayerFrame
@@ -340,6 +341,7 @@ MonoBehaviour:
   ProjectilePoint: {fileID: 8684619094005225937}
   FollowerPosition: {fileID: 8102918701023010677}
   enemyList: []
+  IsPlay: 0
 --- !u!114 &7920778997282225395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +355,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 4923252188006877486}
+--- !u!114 &6689143209383149431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571000953013123022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce63ef39147fc964a9b3214832e8ae6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillObjectList:
+  - {fileID: 11400000, guid: eb39d3fe184104a4f9ab8821e2255cf7, type: 2}
+  - {fileID: 11400000, guid: 78ba7c1d96f09174d8ed8d373e6a873d, type: 2}
+  baseSkills: []
 --- !u!114 &2376948602761534169
 MonoBehaviour:
   m_ObjectHideFlags: 0
