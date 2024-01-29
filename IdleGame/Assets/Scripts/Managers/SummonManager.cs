@@ -5,7 +5,6 @@ using UnityEngine;
 public partial class SummonManager
 {
     #region Fields
-
     private Player _player;
     private InventoryManager _inventoryManager;
 

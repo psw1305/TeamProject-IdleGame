@@ -29,9 +29,9 @@ public class UISummonBanner : UIBase
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        _summonTryBtn_1 = SetButtonEvent("Btn_Summon_1", UIEventType.Click, SummonBtn_1);
-        _summonTryBtn_2 = SetButtonEvent("Btn_Summon_2", UIEventType.Click, SummonBtn_2);
-        _summonTryBtn_3 = SetButtonEvent("Btn_Summon_3", UIEventType.Click, SummonBtn_3);
+        _summonTryBtn_1 = SetButtonEvent(_summonList.BtnPrefab_1, UIEventType.Click, SummonBtn_1);
+        _summonTryBtn_2 = SetButtonEvent(_summonList.BtnPrefab_2, UIEventType.Click, SummonBtn_2);
+        _summonTryBtn_3 = SetButtonEvent(_summonList.BtnPrefab_3, UIEventType.Click, SummonBtn_3);
     }
 
     #endregion

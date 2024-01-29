@@ -2,12 +2,12 @@
   {
     "SummonGrade": 1,
     "ItemId": "W0001",
-    "Probability": 4995
+    "Probability": 3000
   },
   {
     "SummonGrade": 1,
     "ItemId": "W0002",
-    "Probability": 1
+    "Probability": 1996
   },
   {
     "SummonGrade": 1,
@@ -32,12 +32,12 @@
   {
     "SummonGrade": 1,
     "ItemId": "A0001",
-    "Probability": 4995
+    "Probability": 3000
   },
   {
     "SummonGrade": 1,
     "ItemId": "A0002",
-    "Probability": 1
+    "Probability": 1996
   },
   {
     "SummonGrade": 1,
