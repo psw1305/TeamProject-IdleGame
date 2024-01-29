@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d65f1808da324048b7228c02d81d711, type: 3}
   m_Name: SummonConfig
   m_EditorClassIdentifier: 
-  summonLists: []
+  summonLists:
+  - {fileID: 11400000, guid: 9a7f75eaf34d83a458f27c96a7cdf3ee, type: 2}
+  - {fileID: 11400000, guid: 5a4921da88e7fe44bbabde4c96929bd3, type: 2}
+  - {fileID: 11400000, guid: f696efc0aa65577429e3126f6def66b0, type: 2}

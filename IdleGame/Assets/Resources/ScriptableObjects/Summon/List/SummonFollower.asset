@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0900ce843cac3a44f8f1a08124113da7, type: 3}
   m_Name: SummonFollower
   m_EditorClassIdentifier: 
-  summonName: 
-  banner: {fileID: 0}
-  tableLink: 
-  btnPrefab_1: 
+  summonName: Follower
+  banner: {fileID: 6489463966578483684, guid: 1f0c7c44213b1f048aa5e4316bede5a0, type: 3}
+  tableLink: SummonTableFollower
+  btnPrefab_1: Btn_Summon_1
   paymentType_1: 0
   amount_1: 0
-  btnPrefab_2: 
-  paymentType_2: 0
-  amount_2: 0
-  btnPrefab_3: 
-  paymentType_3: 0
-  amount_3: 0
+  summonCount_1: 11
+  btnPrefab_2: Btn_Summon_2
+  paymentType_2: 1
+  amount_2: 500
+  summonCount_2: 11
+  btnPrefab_3: Btn_Summon_3
+  paymentType_3: 1
+  amount_3: 1500
+  summonCount_3: 35

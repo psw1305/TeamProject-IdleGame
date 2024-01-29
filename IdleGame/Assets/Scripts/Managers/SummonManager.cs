@@ -6,8 +6,6 @@ public partial class SummonManager
 {
     #region Fields
 
-    private string _jsonPath = $"{Application.dataPath}/Resources/Texts/SummonTable/EquipmentSummonTable.json";
-    private string _tableText;
     private Player _player;
     private InventoryManager _inventoryManager;
 
@@ -53,11 +51,18 @@ public partial class SummonManager
 
     #region Summon
 
-    public void SummonTry(int price, int count, string tableLink)
+    public void SummonTry(ResourceType type,int price, int count, string tableLink)
     {
-        if (_player.IsTradeGems(price))
+        switch (type)
         {
-            Summon(count, tableLink);
+            case ResourceType.Gold:
+                if (_player.IsTradeGold(price))
+                    Summon(count, tableLink);
+                break;
+            case ResourceType.Gems:
+                if (_player.IsTradeGems(price))
+                    Summon(count, tableLink);
+                break;
         }
     }
 
