@@ -5,19 +5,24 @@ using UnityEngine.Pool;
 
 public class ObjectPoolManager
 {
-    public IObjectPool<GameObject> pool { get; private set; }
+    //public IObjectPool<GameObject> pool { get; private set; }
 
     private string objectName;
 
+    private string[] _poolStringArray = new string[3] { "PlayerProjectileFrame", "EnemyProjectileFrame", "FollowerProjectileFrame"};
+
+    private Dictionary<string, IObjectPool<GameObject>> poolDict = new Dictionary<string, IObjectPool<GameObject>>();
+
     public void Initialize()
     {
-        pool = new ObjectPool<GameObject>(CreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, maxSize: 20);
+        //pool = new ObjectPool<GameObject>(CreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, maxSize: 20);
 
-        //for(int i=0; i< 10; i++)
-        //{
-        //    ProjectileHandlerBase project = CreateProjectile().GetComponent<ProjectileHandlerBase>();
-        //    project.Poolable.Release(project.gameObject);
-        //}
+        for (int i = 0; i < _poolStringArray.Length; i++)
+        {
+            IObjectPool<GameObject> pool = new ObjectPool<GameObject>(CreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, maxSize: 20);
+
+            poolDict.Add(_poolStringArray[i], pool);
+        }
     }
 
     private GameObject CreateProjectile()
@@ -27,7 +32,7 @@ public class ObjectPoolManager
         //return projectile;
 
         GameObject poolGo = Manager.Resource.InstantiatePrefab(objectName);
-        poolGo.GetComponent<ObjectPoolable>().SetManagedPool(pool);
+        poolGo.GetComponent<ObjectPoolable>().SetManagedPool(poolDict[objectName]);
         return poolGo;
     }
 
@@ -50,6 +55,6 @@ public class ObjectPoolManager
     {
         objectName = goName;
 
-        return pool.Get();
+        return poolDict[goName].Get();
     }
 }
