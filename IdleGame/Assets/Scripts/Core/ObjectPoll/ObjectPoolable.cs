@@ -3,10 +3,15 @@ using UnityEngine.Pool;
 
 public class ObjectPoolable : MonoBehaviour
 {
-    public IObjectPool<GameObject> Pool { get; set; }
+    public IObjectPool<GameObject> Poolable { get; private set; }
+
+    public void SetManagedPool(IObjectPool<GameObject> pool)
+    {
+        Poolable = pool;
+    }
 
     public void ReleaseObject()
     {
-        Pool.Release(gameObject);
+        Poolable.Release(gameObject);
     }
 }

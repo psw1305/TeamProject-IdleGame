@@ -125,7 +125,10 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     private void CreateProjectail()
     {
         //Resources 폴더에서 EnemyProjectileFrame(발사체 틀)을 생성하고 go로 할당받음
-        var go = Manager.Resource.InstantiatePrefab("EnemyProjectileFrame", gameObject.transform);
+        //var go = Manager.Resource.InstantiatePrefab("EnemyProjectileFrame", gameObject.transform);
+        var go = Manager.ObjectPool.GetGo("EnemyProjectileFrame");
+        go.transform.position = gameObject.transform.position;
+
 
         //발사체 초기화를 위해 정보를 넘겨줌
         go.GetComponent<EnemyProjectileHandler>().ProjectileVFX = _enemyBlueprint.ProjectailVFX;

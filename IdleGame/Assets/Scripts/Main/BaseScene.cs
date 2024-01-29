@@ -8,9 +8,9 @@ public class BaseScene : MonoBehaviour
 
     private void Start()
     {
+        Manager.ObjectPool.Initialize();
         Manager.Resource.Initialize();
         Manager.Game.Initialize();
-        Manager.ObjectPool.Initialize();
 
         Initialize();
     }

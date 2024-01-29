@@ -236,7 +236,9 @@ public class Player : MonoBehaviour, IDamageable
     public void MakeRangeProjectile()
     {
         // 공격 projectile 생성
-        var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame", ProjectilePoint);
+        //var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame", ProjectilePoint);
+        var testProjectile = Manager.ObjectPool.GetGo("PlayerProjectileFrame");
+        testProjectile.transform.position = ProjectilePoint.position;
         enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = enemyList[0].transform.position;
