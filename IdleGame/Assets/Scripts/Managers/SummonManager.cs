@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SummonManager
+public partial class SummonManager
 {
     #region Fields
 
@@ -11,23 +11,12 @@ public class SummonManager
     private Player _player;
     private InventoryManager _inventoryManager;
 
-    private Dictionary<int, Dictionary<int, string>> probabilityTable = new();
-    private List<int> summonResurt = new List<int>(500);
-    private List<string> resultIdList = new List<string>(500);
-
     private int[] levelUpCount = new int[] { 0, 1000, 2000, 3000, 4000, -1 };
 
     // 확인용
     private int[] testResult;
     private string[] itemIndex;
     private Dictionary<string, int> indexResult = new();
-
-    #endregion
-
-    #region Properties
-
-    public int SummonLevel { get; private set; }
-    public int SummonCounts { get; private set; }
 
     #endregion
 
@@ -47,44 +36,12 @@ public class SummonManager
         ProbabilityInit();
     }
 
-    private void ProbabilityInit()
-    {
-        _tableText = Manager.Resource.GetFileText("SummonTableEquipment");
-        var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
+    #endregion
 
-        // 불러온 테이블을 레벨 그룹별로 1차 가공
-        // <등급(그룹), <아이템, 확률>>
-        var gradeValue = probabilityDataTable.probabilityDataTable
-            .GroupBy(data => data.SummonGrade)
-            .ToDictionary(grade => grade.Key, group => group.ToDictionary(x => x.ItemId, x => x.Probability));
+    #region Properties
 
-        // 1차 가공된 그룹을 <확률 누적, 아이템> 그룹으로 2차 가공
-        // <등급(그룹), <확률 누계, 아이템>>
-        probabilityTable = gradeValue
-            .ToDictionary(gradeGroup => gradeGroup.Key, gradeGroup =>
-                {
-                    var cumulativeDict = new Dictionary<int, string>();
-                    int sum = 0;
-
-                    // 들어온 gradeGroup은 딕셔너리므로 foreach를 쓰는것이 좋다
-                    foreach (var probData in gradeGroup.Value)
-                    {
-                        sum += probData.Value; // 확률 누적
-                        cumulativeDict[sum] = probData.Key; // 확률 누적값을 키로, 아이템 ID를 값으로 설정
-                    }
-
-                    return cumulativeDict;
-                }
-            );
-        
-        // 확률 확인
-        //DebugTableData();
-    }
-
-    private void SummonLevelInitialize()
-    {
-
-    }
+    public int SummonLevel { get; private set; }
+    public int SummonCounts { get; private set; }
 
     #endregion
 
@@ -208,16 +165,4 @@ public class SummonManager
     #endregion
 }
 
-[System.Serializable]
-public class ProbabilityDataTable
-{
-    public List<ProbabilityData> probabilityDataTable;
-}
 
-[System.Serializable]
-public class ProbabilityData
-{
-    public int SummonGrade;
-    public string ItemId;
-    public int Probability;
-}
