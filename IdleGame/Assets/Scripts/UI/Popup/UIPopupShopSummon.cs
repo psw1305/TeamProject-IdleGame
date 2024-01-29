@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class UIPopupShopSummon : UIPopup
 {
@@ -13,6 +14,8 @@ public class UIPopupShopSummon : UIPopup
     private Button _summonTryBtn_35;
     private Button _closeBtn;
 
+    private SummonBlueprint _summonBlueprint;
+
     #endregion
 
     #region Initialize
@@ -24,6 +27,7 @@ public class UIPopupShopSummon : UIPopup
         SetButtonEvents();
 
         _summon = Manager.Summon;
+        _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
     }
 
 
@@ -42,19 +46,19 @@ public class UIPopupShopSummon : UIPopup
 
     private void SummonRepeat_Ad(PointerEventData eventData)
     {
-        _summon.SummonTry(0, 11);
+        _summon.SummonTry(0, 11, _summonBlueprint.SummonLists[0].TableLink);
         Manager.NotificateDot.SetEquipmentNoti();
     }
 
     private void SummonRepeat_1(PointerEventData eventData)
     {
-        _summon.SummonTry(500, 11);
+        _summon.SummonTry(500, 11, _summonBlueprint.SummonLists[0].TableLink);
         Manager.NotificateDot.SetEquipmentNoti();
     }
 
     private void SummonRepeat_2(PointerEventData eventData)
     {
-        _summon.SummonTry(1500, 35);
+        _summon.SummonTry(1500, 35, _summonBlueprint.SummonLists[0].TableLink);
         Manager.NotificateDot.SetEquipmentNoti();
     }
 

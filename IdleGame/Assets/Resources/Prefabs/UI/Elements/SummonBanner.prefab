@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 8823379736830752410}
   - component: {fileID: 8586516151900464498}
   - component: {fileID: 664732714202428602}
+  - component: {fileID: -8075124117348002650}
   m_Layer: 5
   m_Name: SummonBanner
   m_TagString: Untagged
@@ -567,6 +568,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-8075124117348002650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6489463966578483684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c16c0ddb04e88f45bbb235fd6082070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9154968227034783291
 GameObject:
   m_ObjectHideFlags: 0

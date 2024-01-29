@@ -5,21 +5,41 @@ using UnityEngine;
 
 public partial class SummonManager
 {
+    private Dictionary<string, SummonTable> _table = new Dictionary<string, SummonTable>();
+    private SummonBlueprint _summonBlueprint;
+
+    public void TableInitalize(string tableLInk)
+    {
+        SummonTable table = new SummonTable(tableLInk);
+        _table[tableLInk] = table;
+    }
+}
+
+public class SummonTable
+{
     #region Fields
 
-    private List<Dictionary<int, Dictionary<int, string>>> tableList = new();
     private Dictionary<int, Dictionary<int, string>> probabilityTable = new();
-    private List<int> summonResurt = new List<int>(500);
-    private List<string> resultIdList = new List<string>(500);
 
     #endregion
 
+    #region Properties
+
+    public Dictionary<int, Dictionary<int, string>> ProbabilityTable => probabilityTable;
+
+    #endregion
+
+    public SummonTable(string tableLink)
+    {
+        ProbabilityInit(tableLink);
+    }
+
     #region Initialize
 
-    private void ProbabilityInit()
+    private void ProbabilityInit(string tableLink)
     {
-        _tableText = Manager.Resource.GetFileText("SummonTableEquipment");
-        var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
+        string _tabletext = Manager.Resource.GetFileText(tableLink);
+        var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tabletext}}}");
 
         // 불러온 테이블을 레벨 그룹별로 1차 가공
         // <등급(그룹), <아이템, 확률>>
@@ -53,6 +73,25 @@ public partial class SummonManager
     private void SummonLevelInitialize()
     {
 
+    }
+
+    #endregion
+
+    #region Debug Method
+
+    private void DebugTableData()
+    {
+        foreach (var item in probabilityTable)
+        {
+            Debug.Log($"Level : {item.Key}");
+
+            var cumulative = item.Value.Keys.ToArray();
+            var itemId = item.Value.Values.ToArray();
+            for (int i = 0; i < cumulative.Length; i++)
+            {
+                Debug.Log($"cumulative : {cumulative[i]}, itemId : {itemId[i]}");
+            }
+        }
     }
 
     #endregion

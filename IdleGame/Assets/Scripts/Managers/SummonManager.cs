@@ -11,6 +11,9 @@ public partial class SummonManager
     private Player _player;
     private InventoryManager _inventoryManager;
 
+    private List<int> summonResurt = new List<int>(500);
+    private List<string> resultIdList = new List<string>(500);
+
     private int[] levelUpCount = new int[] { 0, 1000, 2000, 3000, 4000, -1 };
 
     // 확인용
@@ -30,10 +33,13 @@ public partial class SummonManager
 
     public void Initialize()
     {
+        _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
         SummonLevel = 1;
 
-        SummonLevelInitialize();
-        ProbabilityInit();
+        foreach (var i in _summonBlueprint.SummonLists)
+        {
+            TableInitalize(i.TableLink);
+        }
     }
 
     #endregion
@@ -47,15 +53,15 @@ public partial class SummonManager
 
     #region Summon
 
-    public void SummonTry(int price, int count)
+    public void SummonTry(int price, int count, string tableLink)
     {
         if (_player.IsTradeGems(price))
         {
-            Summon(count);
+            Summon(count, tableLink);
         }
     }
 
-    private void Summon(int count)
+    private void Summon(int count, string tableLink)
     {
         // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기, 소환 횟수 증가
         for (int i = 0; i < count; i++)
@@ -66,7 +72,8 @@ public partial class SummonManager
         summonResurt.Clear();
 
         // 소환 레벨에서 딕셔너리 키(누적 확률)만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
-        probabilityTable.TryGetValue(SummonLevel, out var summonProbability);
+        _table.TryGetValue(tableLink, out var summonTable);
+        summonTable.ProbabilityTable.TryGetValue(SummonLevel, out var summonProbability);
         var curLevelTable = summonProbability;
         var curprobability = curLevelTable.Select(x => x.Key).ToArray();
 
@@ -96,7 +103,8 @@ public partial class SummonManager
             if (SummonCounts > levelUpCount[SummonLevel] && levelUpCount[SummonLevel] > 0)
             {
                 SummonLevel++;
-                probabilityTable.TryGetValue(SummonLevel, out var newSummonProbability);
+                _table.TryGetValue(tableLink, out var newSummonTable);
+                newSummonTable.ProbabilityTable.TryGetValue(SummonLevel, out var newSummonProbability);
                 curLevelTable = newSummonProbability;
                 curprobability = curLevelTable.Select(x => x.Key).ToArray();
             }
@@ -136,21 +144,6 @@ public partial class SummonManager
     #endregion
 
     #region Debug Method
-
-    private void DebugTableData()
-    {
-        foreach (var item in probabilityTable)
-        {
-            Debug.Log($"Level : {item.Key}");
-
-            var cumulative = item.Value.Keys.ToArray();
-            var itemId = item.Value.Values.ToArray();
-            for (int i = 0; i < cumulative.Length; i++)
-            {
-                Debug.Log($"cumulative : {cumulative[i]}, itemId : {itemId[i]}");
-            }
-        }
-    }
 
     private void TestDebugLog()
     {
