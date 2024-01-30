@@ -108,4 +108,18 @@ public class UIManager
     }
 
     #endregion
+
+    #region Elements
+
+    public T AddElement<T>(string elementName = null) where T : UIBase
+    {
+        if (string.IsNullOrEmpty(elementName)) elementName = typeof(T).Name;
+
+        GameObject obj = Manager.Resource.InstantiatePrefab(elementName, UIRoot.transform);
+        T element = Utility.GetOrAddComponent<T>(obj);
+
+        return element;
+    }
+
+    #endregion
 }

@@ -34,3 +34,9 @@ public enum DamageType
     Normal,
     Critical
 }
+
+public enum ResourceType
+{
+    Gold,
+    Gems
+}
