@@ -4,33 +4,67 @@ using UnityEngine.Pool;
 
 public class ObjectPoolManager
 {
-    private string objectName;
+    #region Field
 
-    private string[] _poolStringArray = new string[5] { "PlayerProjectileFrame", "EnemyProjectileFrame", "FollowerProjectileFrame", "Canvas_FloatingDamage", "EnemyFrame" };
+    private class ObjectInfo
+    {
+        public string ObjectName;
+        public int Size;
 
-    private Dictionary<string, IObjectPool<GameObject>> poolDict = new Dictionary<string, IObjectPool<GameObject>>();
+        public ObjectInfo(string name, int size)
+        {
+            ObjectName = name;
+            Size = size;
+        }
+    }
+
+    private ObjectInfo[] _poolList = new ObjectInfo[] {
+        new ObjectInfo("PlayerProjectileFrame", 20),
+        new ObjectInfo("EnemyProjectileFrame", 20),
+        new ObjectInfo("FollowerProjectileFrame", 20),
+        new ObjectInfo("Canvas_FloatingDamage", 20),
+        new ObjectInfo("EnemyFrame", 10)
+    };
+
+    private string _objectName;
+
+    private int _maxSize = 20;
+
+    private string[] _poolStringArray = new string[5] 
+    { "PlayerProjectileFrame", "EnemyProjectileFrame", "FollowerProjectileFrame", "Canvas_FloatingDamage" , "EnemyFrame"};
+        
+    private Dictionary<string, IObjectPool<GameObject>> _poolDict = new Dictionary<string, IObjectPool<GameObject>>();
+    
+    #endregion
+
+    #region Init
 
     public void Initialize()
     {
-        for (int i = 0; i < _poolStringArray.Length; i++)
+        for (int i = 0; i < _poolList.Length; i++)
         {
-            IObjectPool<GameObject> pool = new ObjectPool<GameObject>(CreateProjectile, OnGetProjectile, OnReleaseProjectile, OnDestroyProjectile, maxSize: 20);
+            IObjectPool<GameObject> pool = new ObjectPool<GameObject>(CreateProjectile, OnGetProjectile,
+                OnReleaseProjectile, OnDestroyProjectile, maxSize: _poolList[i].Size);
 
-            poolDict.Add(_poolStringArray[i], pool);
+            _poolDict.Add(_poolList[i].ObjectName, pool);
 
-            for (int j = 0; j < 50; j++)
+            for (int j = 0; j < _poolList[i].Size; j++)
             {
-                objectName = _poolStringArray[i];
+                _objectName = _poolList[i].ObjectName;
                 ObjectPoolable poolGo = CreateProjectile().GetComponent<ObjectPoolable>();
                 poolGo.Poolable.Release(poolGo.gameObject);
             }
         }
     }
 
+    #endregion
+
+    #region PoolMethod
+
     private GameObject CreateProjectile()
     {
-        GameObject poolGo = Manager.Resource.InstantiatePrefab(objectName);
-        poolGo.GetComponent<ObjectPoolable>().SetManagedPool(poolDict[objectName]);
+        GameObject poolGo = Manager.Resource.InstantiatePrefab(_objectName);
+        poolGo.GetComponent<ObjectPoolable>().SetManagedPool(_poolDict[_objectName]);
         return poolGo;
     }
 
@@ -51,8 +85,10 @@ public class ObjectPoolManager
 
     public GameObject GetGo(string goName)
     {
-        objectName = goName;
+        _objectName = goName;
 
-        return poolDict[goName].Get();
+        return _poolDict[goName].Get();
     }
+
+    #endregion
 }
