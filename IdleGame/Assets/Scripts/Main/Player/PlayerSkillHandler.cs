@@ -7,12 +7,11 @@ public class PlayerSkillHandler : MonoBehaviour
     private bool _autoSkill;
     private Coroutine _autoSkillCoroutine;
 
-    public List<SkillBlueprint> SkillObjectList = new List<SkillBlueprint>();
-    public List<BaseSkill> baseSkills = new List<BaseSkill>();
+    private Dictionary<SkillSlots, SkillObject> _userEquipSkillSlot = new Dictionary<SkillSlots, SkillObject>();
 
     private void Start()
     {
-        SetSkillObj();
+        InitSkillSlot();
     }
 
     private void Update()
@@ -23,12 +22,23 @@ public class PlayerSkillHandler : MonoBehaviour
         }
     }
 
-    private void SetSkillObj()
+    private void InitSkillSlot()
     {
-        foreach (var skill in SkillObjectList)
+        int slotIndex = 0;
+        foreach (var item in Manager.Data.UserSkillData.UserEquipSkill)
         {
-            baseSkills.Add(Instantiate(skill.SkillObject, gameObject.transform).GetComponent<BaseSkill>());
+            if (item.itemID != "Empty")
+            {
+                SetSkillObj((SkillSlots)slotIndex, new SkillObject(item.itemID));
+            }
+            slotIndex++;
         }
+    }
+
+
+    private void SetSkillObj(SkillSlots enumSkillSlots, SkillObject skillObject)
+    {
+        _userEquipSkillSlot.Add(enumSkillSlots, skillObject);
     }
 
     private void ToggleAutoSkill()
@@ -52,11 +62,24 @@ public class PlayerSkillHandler : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            foreach (var skill in baseSkills)
+            foreach (var skill in _userEquipSkillSlot)
             {
-                skill.UseSkill();
+                skill.Value._baseSkill.UseSkill();
+                Debug.Log("@");
             }
             Debug.Log("루프중");
         }
+    }
+}
+
+public class SkillObject
+{
+    public GameObject _skillObject { get; private set; }
+    public BaseSkill _baseSkill { get; private set; }
+    public SkillObject(string itemID)
+    {
+        _skillObject = Manager.Resource.InstantiatePrefab((Manager.Resource.GetBlueprint(itemID) as SkillBlueprint).SkillObject.name
+            , Manager.Game.Player.transform);
+        _baseSkill = _skillObject.GetComponent<BaseSkill>();
     }
 }

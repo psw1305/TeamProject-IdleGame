@@ -21,31 +21,29 @@ public class SkillDataManager
     {
         ParseSkillData();
     }
-    public UserSkill UserSkill { get; private set; }
-}
-
-
-[System.Serializable]
-public class UserSkill
-{
-    public List<UserSkillData> UserSkillData;
 }
 
 [System.Serializable]
 public class UserSkillData
 {
+    public List<UserEquipSkillData> UserEquipSkill;
+    public List<UserInvenSkillData> UserInvenSkill;
+}
+
+[System.Serializable]
+public class UserEquipSkillData
+{
+    public string itemID;
+}
+
+[System.Serializable]
+public class UserInvenSkillData
+{
     public string itemID;
     public int level;
     public int hasCount;
-    public bool equipped;
-
-    public UserSkillData(string ItemID, int Level, int HasCount)
-    {
-        itemID = ItemID;
-        level = Level;
-        hasCount = HasCount;
-    }
 }
+
 
 [System.Serializable]
 public class SkillDataBase

@@ -368,9 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillObjectList:
-  - {fileID: 11400000, guid: eb39d3fe184104a4f9ab8821e2255cf7, type: 2}
-  - {fileID: 11400000, guid: 78ba7c1d96f09174d8ed8d373e6a873d, type: 2}
-  baseSkills: []
+  - {fileID: 202507690137476521, guid: 2c7fa817d0855414db0f2f3b37a25787, type: 3}
+  - {fileID: 6870505122484580750, guid: 03e0d915358ba124db9f299a501801bf, type: 3}
 --- !u!114 &2376948602761534169
 MonoBehaviour:
   m_ObjectHideFlags: 0

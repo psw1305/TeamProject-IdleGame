@@ -1,22 +1,22 @@
 {
-  "UserEquipData": [
+  "UserEquipSkill": [
     {
-      "itemID": ""
+      "itemID": "Empty"
     },
     {
-      "itemID": ""
+      "itemID": "Empty"
     },
     {
-      "itemID": ""
-      },
+      "itemID": "Empty"
+    },
     {
-      "itemID": ""
-     },
+      "itemID": "Empty"
+    },
     {
-      "itemID": ""
+      "itemID": "Empty"
     }
   ],
-  "UserSkillData": [
+  "UserInvenSkill": [
     {
       "itemID": "S0001",
       "level": 1,

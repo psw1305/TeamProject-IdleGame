@@ -34,3 +34,12 @@ public enum DamageType
     Normal,
     Critical
 }
+
+public enum SkillSlots
+{
+    Slot1,
+    Slot2,
+    Slot3,
+    Slot4,
+    Slot5
+}
