@@ -2,32 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SummonManager
+public partial class SummonManager
 {
     #region Fields
-
-    private string _jsonPath = $"{Application.dataPath}/Resources/Texts/SummonTable/EquipmentSummonTable.json";
-    private string _tableText;
     private Player _player;
     private InventoryManager _inventoryManager;
+    private UIPopupShopSummon _shopSummon;
 
-    private Dictionary<int, Dictionary<int, string>> probabilityTable = new();
-    private List<int> summonResurt = new List<int>(500);
-    private List<string> resultIdList = new List<string>(500);
-
-    private int[] levelUpCount = new int[] { 0, 1000, 2000, 3000, 4000, -1 };
+    private List<int> summonResurt = new List<int>(200);
+    private List<string> resultIdList = new List<string>(200);
 
     // 확인용
     private int[] testResult;
     private string[] itemIndex;
     private Dictionary<string, int> indexResult = new();
-
-    #endregion
-
-    #region Properties
-
-    public int SummonLevel { get; private set; }
-    public int SummonCounts { get; private set; }
 
     #endregion
 
@@ -41,64 +29,39 @@ public class SummonManager
 
     public void Initialize()
     {
-        SummonLevel = 1;
+        _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
 
-        SummonLevelInitialize();
-        ProbabilityInit();
+        foreach (var i in _summonBlueprint.SummonLists)
+        {
+            TableInitalize(i.TypeLink);
+        }
     }
 
-    private void ProbabilityInit()
+    public void SetShopPopup(UIPopupShopSummon uIPopupShopSummon)
     {
-        _tableText = Manager.Resource.GetFileText("SummonTableEquipment");
-        var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
-
-        // 불러온 테이블을 레벨 그룹별로 1차 가공
-        // <등급(그룹), <아이템, 확률>>
-        var gradeValue = probabilityDataTable.probabilityDataTable
-            .GroupBy(data => data.SummonGrade)
-            .ToDictionary(grade => grade.Key, group => group.ToDictionary(x => x.ItemId, x => x.Probability));
-
-        // 1차 가공된 그룹을 <확률 누적, 아이템> 그룹으로 2차 가공
-        // <등급(그룹), <확률 누계, 아이템>>
-        probabilityTable = gradeValue
-            .ToDictionary(gradeGroup => gradeGroup.Key, gradeGroup =>
-                {
-                    var cumulativeDict = new Dictionary<int, string>();
-                    int sum = 0;
-
-                    // 들어온 gradeGroup은 딕셔너리므로 foreach를 쓰는것이 좋다
-                    foreach (var probData in gradeGroup.Value)
-                    {
-                        sum += probData.Value; // 확률 누적
-                        cumulativeDict[sum] = probData.Key; // 확률 누적값을 키로, 아이템 ID를 값으로 설정
-                    }
-
-                    return cumulativeDict;
-                }
-            );
-        
-        // 확률 확인
-        //DebugTableData();
-    }
-
-    private void SummonLevelInitialize()
-    {
-
+        _shopSummon = uIPopupShopSummon;
     }
 
     #endregion
 
     #region Summon
 
-    public void SummonTry(int price, int count)
+    public void SummonTry(ResourceType type,int price, int count, string tableLink)
     {
-        if (_player.IsTradeGems(price))
+        switch (type)
         {
-            Summon(count);
+            case ResourceType.Gold:
+                if (_player.IsTradeGold(price))
+                    Summon(count, tableLink);
+                break;
+            case ResourceType.Gems:
+                if (_player.IsTradeGems(price))
+                    Summon(count, tableLink);
+                break;
         }
     }
 
-    private void Summon(int count)
+    private void Summon(int count, string typeLink)
     {
         // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기, 소환 횟수 증가
         for (int i = 0; i < count; i++)
@@ -109,13 +72,13 @@ public class SummonManager
         summonResurt.Clear();
 
         // 소환 레벨에서 딕셔너리 키(누적 확률)만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
-        probabilityTable.TryGetValue(SummonLevel, out var summonProbability);
-        var curLevelTable = summonProbability;
+        _table.TryGetValue(typeLink, out var summonTable);
+        var curLevelTable = summonTable.GetProbabilityTable();
         var curprobability = curLevelTable.Select(x => x.Key).ToArray();
 
         // 테스트 결과 확인용 배열 세팅
-        testResult = new int[summonProbability.Count];
-        itemIndex = summonProbability.Select(x => x.Value).ToArray();
+        testResult = new int[curLevelTable.Count];
+        itemIndex = curLevelTable.Select(x => x.Value).ToArray();
 
         for (int i = 0; i < itemIndex.Length; i++)
         {
@@ -135,12 +98,10 @@ public class SummonManager
             testResult[result]++;
             count--;
             idx++;
-            SummonCounts++;
-            if (SummonCounts > levelUpCount[SummonLevel] && levelUpCount[SummonLevel] > 0)
+            if (summonTable.ApplySummonCount())
             {
-                SummonLevel++;
-                probabilityTable.TryGetValue(SummonLevel, out var newSummonProbability);
-                curLevelTable = newSummonProbability;
+                _table.TryGetValue(typeLink, out var newSummonTable);
+                curLevelTable = newSummonTable.GetProbabilityTable();
                 curprobability = curLevelTable.Select(x => x.Key).ToArray();
             }
         }
@@ -162,6 +123,7 @@ public class SummonManager
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
         popup.DataInit(finalResult);
         popup.PlayStart();
+        _shopSummon.BannerUpdate(typeLink);
         summonResurt.Clear();
         resultIdList.Clear();
     }
@@ -179,21 +141,6 @@ public class SummonManager
 
     #region Debug Method
 
-    private void DebugTableData()
-    {
-        foreach (var item in probabilityTable)
-        {
-            Debug.Log($"Level : {item.Key}");
-
-            var cumulative = item.Value.Keys.ToArray();
-            var itemId = item.Value.Values.ToArray();
-            for (int i = 0; i < cumulative.Length; i++)
-            {
-                Debug.Log($"cumulative : {cumulative[i]}, itemId : {itemId[i]}");
-            }
-        }
-    }
-
     private void TestDebugLog()
     {
         Debug.Log($"{itemIndex.Length}, {testResult.Length}");
@@ -207,16 +154,4 @@ public class SummonManager
     #endregion
 }
 
-[System.Serializable]
-public class ProbabilityDataTable
-{
-    public List<ProbabilityData> probabilityDataTable;
-}
 
-[System.Serializable]
-public class ProbabilityData
-{
-    public int SummonGrade;
-    public string ItemId;
-    public int Probability;
-}

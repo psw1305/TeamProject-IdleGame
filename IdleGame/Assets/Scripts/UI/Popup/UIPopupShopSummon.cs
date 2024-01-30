@@ -1,68 +1,85 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
+using UnityEngine;
+using System.Collections.Generic;
 
 public class UIPopupShopSummon : UIPopup
 {
     #region Fields
 
     private SummonManager _summon;
+    private Dictionary<string, UISummonBanner> _banners = new Dictionary<string, UISummonBanner>();
 
-    private Button _checkBtn;
-    private Button _summonTryBtn_Ad;
-    private Button _summonTryBtn_11;
-    private Button _summonTryBtn_35;
     private Button _closeBtn;
+    private GameObject _content;
+
+    private SummonBlueprint _summonBlueprint;
+
+    #endregion
+
+    #region Properties
+
+    public SummonBlueprint SummonBlueprint => _summonBlueprint;
 
     #endregion
 
     #region Initialize
 
-    // Start is called before the first frame update
     protected override void Init()
     {
         base.Init();
-        SetButtonEvents();
-
         _summon = Manager.Summon;
+        _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
+        _content = transform.GetComponentInChildren<VerticalLayoutGroup>().gameObject;
+        _summon.SetShopPopup(this);
+
+        SetButtonEvents();
+        SummonBannerInit();
     }
 
 
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        _summonTryBtn_Ad = SetButtonEvent("Btn_Summon_AdRepeat", UIEventType.Click, SummonRepeat_Ad);
-        _summonTryBtn_11 = SetButtonEvent("Btn_Summon_11Repeat", UIEventType.Click, SummonRepeat_1);
-        _summonTryBtn_35 = SetButtonEvent("Btn_Summon_35Repeat", UIEventType.Click, SummonRepeat_2);
         _closeBtn = SetButtonEvent("CloseButton", UIEventType.Click, CloseSummonPopup);
+    }
+
+    private void SummonBannerInit()
+    {
+        foreach (var list in _summonBlueprint.SummonLists)
+        {
+            var banner = Manager.UI.AddElement<UISummonBanner>(list.Banner.name);
+            _banners[list.TypeLink] = banner;
+            banner.ListInit(list, this);
+            banner.transform.SetParent(_content.transform, false);
+            banner.UpdateUI();
+        }
     }
 
     #endregion
 
     #region Button Events
 
-    private void SummonRepeat_Ad(PointerEventData eventData)
+    public void SummonTry(ResourceType type,int price, int count, string typeLink)
     {
-        _summon.SummonTry(0, 11);
-        Manager.NotificateDot.SetEquipmentNoti();
+        _summon.SummonTry(type, price, count, typeLink);
     }
-
-    private void SummonRepeat_1(PointerEventData eventData)
-    {
-        _summon.SummonTry(500, 11);
-        Manager.NotificateDot.SetEquipmentNoti();
-    }
-
-    private void SummonRepeat_2(PointerEventData eventData)
-    {
-        _summon.SummonTry(1500, 35);
-        Manager.NotificateDot.SetEquipmentNoti();
-    }
-
 
     private void CloseSummonPopup(PointerEventData eventData)
     {
-        // TODO : 방치 보상 확인 시 보상 획득 추가
+        _summon.SetShopPopup(null);
         Manager.UI.ClosePopup();
     }
+    #endregion
+
+    #region UIUpdate Method
+
+    public void BannerUpdate(string typeLink)
+    {
+        _banners.TryGetValue(typeLink, out var banner);
+        banner.UpdateUI();
+    }
+
     #endregion
 }

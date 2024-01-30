@@ -8,6 +8,7 @@ public partial class DataManager
 {
     public GameUserProfile Profile { get; private set; }
     public InventoryData Inventory { get; private set; }
+    public UserSkillData UserSkillData { get; private set; }
 
     #region Create
 
@@ -49,6 +50,15 @@ public partial class DataManager
         SaveToUserInventory();
     }
 
+    public void CreateUserSkill()
+    {
+        var jsonData = Manager.Resource.GetFileText("SkillUserTable");
+        UserSkillData = JsonUtility.FromJson<UserSkillData>(jsonData);
+
+        SaveToUserSkill();
+    }
+
+
     #endregion
 
     #region Load
@@ -57,6 +67,7 @@ public partial class DataManager
     {
         LoadFromUserProfile();
         LoadFromUserInventory();
+        LoadFromUserSkill();
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")
@@ -75,6 +86,14 @@ public partial class DataManager
         Inventory = JsonConvert.DeserializeObject<InventoryData>(jsonRaw);
     }
 
+    public void LoadFromUserSkill(string fileName = "game_skill_inventory.dat")
+    {
+        string filePath = $"{Application.persistentDataPath}/{fileName}";
+        if (!File.Exists(filePath)) { CreateUserSkill(); return; }
+        string jsonRaw = File.ReadAllText(filePath);
+        UserSkillData = JsonConvert.DeserializeObject<UserSkillData>(jsonRaw);
+    }
+
     #endregion
 
     #region Save
@@ -85,6 +104,7 @@ public partial class DataManager
 
         SaveToUserProfile();
         SaveToUserInventory();
+        SaveToUserSkill();
 
         Debug.Log($"Save To {Application.persistentDataPath}");
     }
@@ -120,6 +140,13 @@ public partial class DataManager
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
         string json = JsonConvert.SerializeObject(Inventory, Formatting.Indented);
+        File.WriteAllText(filePath, json);
+    }
+
+    public void SaveToUserSkill(string fileName = "game_skill_inventory.dat")
+    {
+        string filePath = $"{Application.persistentDataPath}/{fileName}";
+        string json = JsonConvert.SerializeObject(UserSkillData, Formatting.Indented);
         File.WriteAllText(filePath, json);
     }
 
