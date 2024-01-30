@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +29,9 @@ public class PlayerView : MonoBehaviour
 
     public void SetDamageFloating(Vector3 position, long Damage)
     {
-        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
+        GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
+        DamageHUD.GetComponent<UIFloatingText>().Initialize();
         DamageHUD.transform.position = gameObject.transform.position + position;
-        DamageHUD.GetComponentInChildren<UIFloatingText>().SetDamage(Damage);
+        DamageHUD.GetComponent<UIFloatingText>().SetDamage(Damage);
     }
 }
