@@ -97,6 +97,7 @@ public class Player : MonoBehaviour, IDamageable
         enemyList = Manager.Stage.GetEnemyList();
 
         Manager.Inventory.InitItem();
+        Manager.SkillData.InitSkill();
         Manager.Quest.InitQuest();
         EquipmentStatModifier();
 
@@ -276,7 +277,7 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private void FinalAttackDamage(out long damage, out DamageType damageTypeValue)
+    public void FinalAttackDamage(out long damage, out DamageType damageTypeValue)
     {
         if (IsCritical())
         {

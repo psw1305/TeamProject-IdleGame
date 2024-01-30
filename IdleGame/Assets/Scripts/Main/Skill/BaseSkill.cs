@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 public class BaseSkill : MonoBehaviour
@@ -14,22 +13,31 @@ public class BaseSkill : MonoBehaviour
     Coroutine _skillDurateTimeCoroutine;
     Coroutine _coolDownCoroutine;
 
+    protected virtual void ApplySkillEffect()
+    {
+        //스킬 효과 적용
+    }
 
-    protected void UseSkill(ISkillUsingEffect usingEffect)
+    protected virtual void RemoveSkillEffect()
+    {
+        //스킬 효과 초기화
+    }
+
+    public void UseSkill()
     {
         if (!_canUse)
         {
             return;
         }
         _canUse = false;
-        StartCoroutine(CountDurateTime(usingEffect));
+        StartCoroutine(CountDurateTime());
     }
 
-    private IEnumerator CountDurateTime(ISkillUsingEffect usingEffect)
+    private IEnumerator CountDurateTime()
     {
         if (_skillDurateTimeCoroutine == null)
         {
-            usingEffect.ApplySkillEffect();
+            gameObject.GetComponent<BaseSkill>().ApplySkillEffect();
             Debug.LogWarning("스킬 유지 시작");
             _currentDurateTime = effectDurateTime;
             while (_currentDurateTime >= 0)
@@ -40,16 +48,16 @@ public class BaseSkill : MonoBehaviour
             Debug.LogWarning("스킬 유지 종료");
             _skillDurateTimeCoroutine = null;
 
-            StartCoroutine(CountSkillCooldown(usingEffect));
+            StartCoroutine(CountSkillCooldown());
         }
     }
 
 
-    private IEnumerator CountSkillCooldown(ISkillUsingEffect usingEffect)
+    private IEnumerator CountSkillCooldown()
     {
         if (_coolDownCoroutine == null)
         {
-            usingEffect.RemoveSkillEffect();
+            gameObject.GetComponent<BaseSkill>().RemoveSkillEffect();
             Debug.LogWarning("스킬 쿨타임 시작");
             _currentCoolDown = coolDown;
             while (_currentCoolDown >= 0)

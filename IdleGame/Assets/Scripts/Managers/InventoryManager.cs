@@ -68,7 +68,7 @@ public class InventoryManager
         {
             if (item.itemID != UserInventory.UserItemData[index].itemID)
             {
-                UserInventory.UserItemData.Insert(index, new UserItemData(item.itemID, 1, 1, false));
+                UserInventory.UserItemData.Insert(index, new UserItemData(item.itemID, 1, 0, false));
             }
             index++;
         }
