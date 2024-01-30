@@ -35,9 +35,9 @@ public class Follower : MonoBehaviour
 
     public void Initialize()
     {
-        AttackRange = 7;
+        AttackRange = 6;
 
-        AtkDamage = 10000;
+        AtkDamage = 150;
         AtkSpeed = 0.6f;
         
         enemyList = Manager.Stage.GetEnemyList();
