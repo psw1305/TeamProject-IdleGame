@@ -2,17 +2,25 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class UIPopupShopSummon : UIPopup
 {
     #region Fields
 
     private SummonManager _summon;
+    private Dictionary<string, UISummonBanner> _banners;
 
     private Button _closeBtn;
     private GameObject _content;
 
     private SummonBlueprint _summonBlueprint;
+
+    #endregion
+
+    #region Properties
+
+    public SummonBlueprint SummonBlueprint => _summonBlueprint;
 
     #endregion
 
@@ -24,6 +32,7 @@ public class UIPopupShopSummon : UIPopup
         _summon = Manager.Summon;
         _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
         _content = transform.GetComponentInChildren<VerticalLayoutGroup>().gameObject;
+        _summon.SetShopPopup(this);
 
         SetButtonEvents();
         SummonBannerInit();
@@ -43,6 +52,8 @@ public class UIPopupShopSummon : UIPopup
             var banner = Manager.UI.AddElement<UISummonBanner>(list.Banner.name);
             banner.ListInit(list, this);
             banner.transform.SetParent(_content.transform, false);
+            banner.UpdateUI();
+            //_banners[list.TypeLink] = banner;
         }
     }
 
@@ -50,14 +61,25 @@ public class UIPopupShopSummon : UIPopup
 
     #region Button Events
 
-    public void SummonTry(ResourceType type,int price, int count, string tableLink)
+    public void SummonTry(ResourceType type,int price, int count, string typeLink)
     {
-        _summon.SummonTry(type, price, count, tableLink);
+        _summon.SummonTry(type, price, count, typeLink);
     }
 
     private void CloseSummonPopup(PointerEventData eventData)
     {
+        _summon.SetShopPopup(null);
         Manager.UI.ClosePopup();
     }
+    #endregion
+
+    #region UIUpdate Method
+
+    public void BannerUpdate(string typeLink)
+    {
+        _banners.TryGetValue(typeLink, out var banner);
+        banner.UpdateUI();
+    }
+
     #endregion
 }

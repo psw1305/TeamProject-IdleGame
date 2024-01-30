@@ -7,11 +7,10 @@ public partial class SummonManager
     #region Fields
     private Player _player;
     private InventoryManager _inventoryManager;
+    private UIPopupShopSummon _shopSummon;
 
-    private List<int> summonResurt = new List<int>(500);
-    private List<string> resultIdList = new List<string>(500);
-
-    private int[] levelUpCount = new int[] { 0, 1000, 2000, 3000, 4000, -1 };
+    private List<int> summonResurt = new List<int>(200);
+    private List<string> resultIdList = new List<string>(200);
 
     // 확인용
     private int[] testResult;
@@ -31,20 +30,17 @@ public partial class SummonManager
     public void Initialize()
     {
         _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
-        SummonLevel = 1;
 
         foreach (var i in _summonBlueprint.SummonLists)
         {
-            TableInitalize(i.TableLink);
+            TableInitalize(i.TypeLink);
         }
     }
 
-    #endregion
-
-    #region Properties
-
-    public int SummonLevel { get; private set; }
-    public int SummonCounts { get; private set; }
+    public void SetShopPopup(UIPopupShopSummon uIPopupShopSummon)
+    {
+        _shopSummon = uIPopupShopSummon;
+    }
 
     #endregion
 
@@ -65,7 +61,7 @@ public partial class SummonManager
         }
     }
 
-    private void Summon(int count, string tableLink)
+    private void Summon(int count, string typeLink)
     {
         // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기, 소환 횟수 증가
         for (int i = 0; i < count; i++)
@@ -76,14 +72,13 @@ public partial class SummonManager
         summonResurt.Clear();
 
         // 소환 레벨에서 딕셔너리 키(누적 확률)만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
-        _table.TryGetValue(tableLink, out var summonTable);
-        summonTable.ProbabilityTable.TryGetValue(SummonLevel, out var summonProbability);
-        var curLevelTable = summonProbability;
+        _table.TryGetValue(typeLink, out var summonTable);
+        var curLevelTable = summonTable.GetProbabilityTable();
         var curprobability = curLevelTable.Select(x => x.Key).ToArray();
 
         // 테스트 결과 확인용 배열 세팅
-        testResult = new int[summonProbability.Count];
-        itemIndex = summonProbability.Select(x => x.Value).ToArray();
+        testResult = new int[curLevelTable.Count];
+        itemIndex = curLevelTable.Select(x => x.Value).ToArray();
 
         for (int i = 0; i < itemIndex.Length; i++)
         {
@@ -103,13 +98,10 @@ public partial class SummonManager
             testResult[result]++;
             count--;
             idx++;
-            SummonCounts++;
-            if (SummonCounts > levelUpCount[SummonLevel] && levelUpCount[SummonLevel] > 0)
+            if (summonTable.ApplySummonCount())
             {
-                SummonLevel++;
-                _table.TryGetValue(tableLink, out var newSummonTable);
-                newSummonTable.ProbabilityTable.TryGetValue(SummonLevel, out var newSummonProbability);
-                curLevelTable = newSummonProbability;
+                _table.TryGetValue(typeLink, out var newSummonTable);
+                curLevelTable = newSummonTable.GetProbabilityTable();
                 curprobability = curLevelTable.Select(x => x.Key).ToArray();
             }
         }
@@ -131,6 +123,7 @@ public partial class SummonManager
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
         popup.DataInit(finalResult);
         popup.PlayStart();
+        _shopSummon.BannerUpdate(typeLink);
         summonResurt.Clear();
         resultIdList.Clear();
     }

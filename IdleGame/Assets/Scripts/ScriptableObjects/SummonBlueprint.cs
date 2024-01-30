@@ -10,7 +10,7 @@ public class SummonList : ScriptableObject
     [Header("Info")]
     [SerializeField] private string summonName;
     [SerializeField] private GameObject banner;
-    [SerializeField] private string tableLink;
+    [SerializeField] private string typeLink;
 
     [Header("Button Info")]
     [Header("Button 1")]
@@ -38,7 +38,7 @@ public class SummonList : ScriptableObject
 
     public string SummonName => summonName;
     public GameObject Banner => banner;
-    public string TableLink => tableLink;
+    public string TypeLink => typeLink;
 
     public string BtnPrefab_1 => btnPrefab_1;
     public ResourceType PaymentType_1 => paymentType_1;
