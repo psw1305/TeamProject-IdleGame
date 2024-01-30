@@ -43,3 +43,9 @@ public enum SkillSlots
     Slot4,
     Slot5
 }
+
+public enum ResourceType
+{
+    Gold,
+    Gems
+}
