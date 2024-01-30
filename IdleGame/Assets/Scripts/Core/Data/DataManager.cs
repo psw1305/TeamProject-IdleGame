@@ -68,7 +68,6 @@ public partial class DataManager
         LoadFromUserProfile();
         LoadFromUserInventory();
         LoadFromUserSkill();
-        DebugNotice.Instance.Notice($"Load from {Application.persistentDataPath}");
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")
