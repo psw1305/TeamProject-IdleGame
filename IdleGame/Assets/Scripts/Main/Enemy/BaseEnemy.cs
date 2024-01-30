@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour, IDamageable
+public class BaseEnemy : ObjectPoolable, IDamageable
 {
     #region Fields
 
@@ -125,7 +125,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     private void CreateProjectail()
     {
         //Resources 폴더에서 EnemyProjectileFrame(발사체 틀)을 생성하고 go로 할당받음
-        var go = Manager.Resource.InstantiatePrefab("EnemyProjectileFrame", gameObject.transform);
+        var go = Manager.ObjectPool.GetGo("EnemyProjectileFrame");
+        go.transform.position = gameObject.transform.position;
+
 
         //발사체 초기화를 위해 정보를 넘겨줌
         go.GetComponent<EnemyProjectileHandler>().ProjectileVFX = _enemyBlueprint.ProjectailVFX;
@@ -150,10 +152,11 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
     public void FloatingDamage(Vector3 position, long Damage, DamageType damageTypeValue)
     {
-        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
+        GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
+        DamageHUD.GetComponent<UIFloatingText>().Initialize();
         DamageHUD.GetComponentInChildren<TextMeshProUGUI>().color = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
         DamageHUD.transform.position = this.gameObject.transform.position + position;
-        DamageHUD.GetComponentInChildren<UIFloatingText>().SetDamage(Damage);
+        DamageHUD.GetComponent<UIFloatingText>().SetDamage(Damage);
     }
 
     private void AmountDamage(long Damage)
@@ -166,8 +169,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         }
         else
         {
-            _currentHP -= Damage;
-            
+            _currentHP -= Damage;            
         }
     }
 
@@ -184,7 +186,8 @@ public class BaseEnemy : MonoBehaviour, IDamageable
             uiSceneMain.UpdateQuestObjective();
         }
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        ReleaseObject();
     }
     #endregion
 }

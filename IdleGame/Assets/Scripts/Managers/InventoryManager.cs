@@ -18,7 +18,7 @@ public class InventoryManager
 
     public void ParseItemData()
     {
-        _itemDataBaseText = Manager.Resource.GetFileText("ItemTable");
+        _itemDataBaseText = Manager.Resource.GetFileText("DataTableEquipment");
         _itemDataBase = JsonUtility.FromJson<ItemDataBase>(_itemDataBaseText);
         foreach (var itemData in _itemDataBase.ItemDB)
         {
@@ -68,7 +68,7 @@ public class InventoryManager
         {
             if (item.itemID != UserInventory.UserItemData[index].itemID)
             {
-                UserInventory.UserItemData.Insert(index, new UserItemData(item.itemID, 1, 1, false));
+                UserInventory.UserItemData.Insert(index, new UserItemData(item.itemID, 1, 0, false));
             }
             index++;
         }

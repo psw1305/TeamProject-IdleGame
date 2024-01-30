@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
-public class ProjectileHandlerBase : MonoBehaviour
+public class ProjectileHandlerBase : ObjectPoolable
 {
     [HideInInspector]
     public long Damage;
@@ -14,8 +13,6 @@ public class ProjectileHandlerBase : MonoBehaviour
 
     public Vector2 TargetPosition;
 
-    public IObjectPool<GameObject> ManagedPool { get; private set; }
-
     public LayerMask TargetLayerMask;
 
     protected virtual void Start()
@@ -24,8 +21,6 @@ public class ProjectileHandlerBase : MonoBehaviour
         {
             Instantiate(ProjectileVFX, transform.position, Quaternion.identity, gameObject.transform);
         }
-        Destroy(gameObject, 1f);
-        //Invoke("DestroyBullet", 1.5f);
     }
 
     protected void TrackingTarget(Vector2 targetPosition, float speed)
@@ -37,7 +32,7 @@ public class ProjectileHandlerBase : MonoBehaviour
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {
-            gameObject.SetActive(false);
+            ReleaseObject();
         }
     }
 
@@ -47,15 +42,5 @@ public class ProjectileHandlerBase : MonoBehaviour
         {
             collision.gameObject.GetComponent<IDamageable>().TakeDamage(Damage, DamageTypeValue);
         }
-    }
-
-    public void SetManagedPool(IObjectPool<GameObject> pool)
-    {
-        ManagedPool = pool;
-    }
-
-    public void DestroyBullet()
-    {
-        ManagedPool.Release(this.gameObject);
     }
 }

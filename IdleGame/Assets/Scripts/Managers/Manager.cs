@@ -42,6 +42,7 @@ public class Manager : MonoBehaviour
     private readonly SummonManager summon = new();
     private readonly NotificateManager notificateDot = new();
     private readonly ObjectPoolManager objectPool = new();
+    private readonly SkillDataManager skillData = new();
 
     public static ResourceManager Resource => Instance != null ? Instance.resource : null;
     public static SessionManager Session => Instance != null ? Instance.session : null;
@@ -54,6 +55,6 @@ public class Manager : MonoBehaviour
     public static SummonManager Summon => Instance != null ? Instance.summon : null;
     public static NotificateManager NotificateDot => Instance != null ? Instance.notificateDot : null;
     public static ObjectPoolManager ObjectPool => Instance != null ? Instance.objectPool : null;
-
+    public static SkillDataManager SkillData => Instance != null ? Instance.skillData : null;
     #endregion
 }

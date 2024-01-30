@@ -35,9 +35,9 @@ public class Follower : MonoBehaviour
 
     public void Initialize()
     {
-        AttackRange = 7;
+        AttackRange = 6;
 
-        AtkDamage = 1;
+        AtkDamage = 150;
         AtkSpeed = 0.6f;
         
         enemyList = Manager.Stage.GetEnemyList();
@@ -83,7 +83,7 @@ public class Follower : MonoBehaviour
 
     public void MakeRangeProjectile()
     {
-        var testProjectile = Manager.ObjectPool.Pool.Get();
+        var testProjectile = Manager.ObjectPool.GetGo("FollowerProjectileFrame");
         testProjectile.transform.position = ProjectilePoint.position;
         enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 

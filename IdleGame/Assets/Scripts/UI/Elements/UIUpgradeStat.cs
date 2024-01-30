@@ -17,7 +17,7 @@ public class UIUpgradeStat : MonoBehaviour
     {
         this.player = player;
 
-        textStatLevel.text = statInfo.Level.ToString();
+        textStatLevel.text = $"Lv. {statInfo.Level}";
         textStatValue.text = statInfo.GetString();
         textUpdateCost.text = statInfo.UpgradeCost.ToString();
 
@@ -34,7 +34,7 @@ public class UIUpgradeStat : MonoBehaviour
 
             UpdateQuestObjective();
 
-            textStatLevel.text = statInfo.Level.ToString();
+            textStatLevel.text = $"Lv. {statInfo.Level}";
             textStatValue.text = statInfo.GetString();
             textUpdateCost.text = statInfo.UpgradeCost.ToString();
         }

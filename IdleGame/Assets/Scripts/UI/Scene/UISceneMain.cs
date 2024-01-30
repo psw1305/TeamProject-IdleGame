@@ -35,8 +35,6 @@ public class UISceneMain : UIScene
     private Button _btnQuest;
 
     private Button _btnBoss;
-    private Button _btnEquipment;
-    private Button _btnShop;
     private Button _btnIdleRewards;
 
     private TextMeshProUGUI _txtQuestNum;
@@ -95,9 +93,10 @@ public class UISceneMain : UIScene
         _btnQuest = SetButtonEvent("Btn_Quest", UIEventType.Click, OnQuestComplete);
 
         _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
-        _btnEquipment = SetButtonEvent("Btn_Equipment", UIEventType.Click, OnEquipment);
-        _btnShop = SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
         _btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);
+
+        SetButtonEvent("Btn_PlayerSystem", UIEventType.Click, OnPlayerSystem);
+        SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
     }
 
     private void SetUpgradeStats()
@@ -203,7 +202,7 @@ public class UISceneMain : UIScene
     }
     private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("UIDropDownOptions");
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
-    private void OnEquipment(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupEquipment>();
+    private void OnPlayerSystem(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupPlayerSystem>();
     private void OnShop(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupShopSummon>();
 
     private void OnGameSpeed(PointerEventData eventData)
