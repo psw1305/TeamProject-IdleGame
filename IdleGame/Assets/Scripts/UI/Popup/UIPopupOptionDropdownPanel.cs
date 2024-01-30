@@ -4,18 +4,6 @@ using UnityEngine.UI;
 
 public class UIPopupOptionDropdownPanel : UIPopup
 {
-    #region Fields
-
-    private Button _optionBtn_Notice;
-    private Button _optionBtn_Setting;
-    private Button _optionBtn_MailBox;
-    private Button _optionBtn_Inventory;
-    private Button _optionBtn_GameQuit;
-    private Button _optionBtn_Exit;
-    private Button _optionBtn_OutOfArea;
-
-    #endregion
-
     #region Initialize
 
     protected override void Init()
@@ -27,13 +15,14 @@ public class UIPopupOptionDropdownPanel : UIPopup
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        _optionBtn_Notice = SetButtonEvent("Option_Notice_Btn", UIEventType.Click, OnNoticePopup);
-        _optionBtn_Setting = SetButtonEvent("Option_Setting_Btn", UIEventType.Click, OnSettingPopup);
-        _optionBtn_MailBox = SetButtonEvent("Option_MailBox_Btn", UIEventType.Click, OnMailBoxPopup);
-        _optionBtn_Inventory = SetButtonEvent("Option_Inventory_Btn", UIEventType.Click, OnInventoryPopup);
-        _optionBtn_GameQuit = SetButtonEvent("Option_Quit_Btn", UIEventType.Click, GameQuit);
-        _optionBtn_Exit = SetButtonEvent("Option_CloseBtn", UIEventType.Click, ClosePopup);
-        _optionBtn_OutOfArea = SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
+        SetButtonEvent("Option_Notice_Btn", UIEventType.Click, OnNoticePopup);
+        SetButtonEvent("Option_Setting_Btn", UIEventType.Click, OnSettingPopup);
+        SetButtonEvent("Option_MailBox_Btn", UIEventType.Click, OnMailBoxPopup);
+        SetButtonEvent("Option_Inventory_Btn", UIEventType.Click, OnInventoryPopup);
+        SetButtonEvent("Option_Quit_Btn", UIEventType.Click, GameQuit);
+
+        SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
+        SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
 
     #endregion

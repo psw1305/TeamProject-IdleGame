@@ -57,8 +57,6 @@ public partial class DataManager
     {
         LoadFromUserProfile();
         LoadFromUserInventory();
-
-        DebugNotice.Instance.Notice($"Load from {Application.persistentDataPath}");
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")
