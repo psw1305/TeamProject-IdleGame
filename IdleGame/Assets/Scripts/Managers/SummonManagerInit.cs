@@ -89,15 +89,15 @@ public class SummonTable
     private void SummonGradeInit()
     {
         //TODO = 플레이어의 소환 타입별 카운트 불러오기
-        SummonCounts = 10;
+        SummonCounts = 0;
 
-        int CurCount = _gradeUpCount.OrderBy(x => (x - SummonCounts >= 0)).First();
+        int CurCount = _gradeUpCount.OrderBy(x => (SummonCounts - x >= 0)).First();
 
         for (int i = 0; i < _gradeUpCount.Count; i++)
         {
             if (_gradeUpCount[i] == CurCount)
             {
-                SummonGrade = i + 1;
+                SummonGrade = i;
             }
         }
     }

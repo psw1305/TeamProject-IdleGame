@@ -9,7 +9,7 @@ public class UIPopupShopSummon : UIPopup
     #region Fields
 
     private SummonManager _summon;
-    private Dictionary<string, UISummonBanner> _banners;
+    private Dictionary<string, UISummonBanner> _banners = new Dictionary<string, UISummonBanner>();
 
     private Button _closeBtn;
     private GameObject _content;
@@ -50,10 +50,10 @@ public class UIPopupShopSummon : UIPopup
         foreach (var list in _summonBlueprint.SummonLists)
         {
             var banner = Manager.UI.AddElement<UISummonBanner>(list.Banner.name);
+            _banners[list.TypeLink] = banner;
             banner.ListInit(list, this);
             banner.transform.SetParent(_content.transform, false);
             banner.UpdateUI();
-            //_banners[list.TypeLink] = banner;
         }
     }
 
