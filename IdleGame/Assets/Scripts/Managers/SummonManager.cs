@@ -89,7 +89,7 @@ public partial class SummonManager
 
         while (count > 0)
         {
-            int getResultKey = curprobability.OrderBy(x => (summonResultValue[idx] - x >= 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
+            int getResultKey = BinarySearch(curprobability, summonResultValue[idx]);
             curLevelTable.TryGetValue(getResultKey, out string index);
             //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");
             resultIdList.Add(index);
@@ -110,7 +110,7 @@ public partial class SummonManager
         //string txtsum = string.Empty;
         //foreach (var item in getResultKeyArr)
         //{
-        //    curLevelTable.TryGetValue(item, out int index);
+        //    curLevelTable.TryGetValue(item, out string index);
         //    txtsum += $"{index}, ";
         //}
         //Debug.Log(txtsum);
@@ -135,6 +135,42 @@ public partial class SummonManager
             UserItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
             itemData.hasCount++;
         }
+    }
+
+    private int BinarySearch(int[] curprobability, int index)
+    {
+        int left = 0;
+        int right = curprobability.Length - 1;
+        int mid;
+
+        if (index <= curprobability[0])
+        {
+            return curprobability[0];
+        }
+        if (index >= curprobability[right])
+        {
+            return curprobability[right];
+        }
+
+        while (left < right)
+        {
+            mid = (left + right) / 2;
+
+            if (curprobability[mid] == index)
+            {
+                return curprobability[mid];
+            }
+            else if (curprobability[mid] < index)
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }
+        }
+
+        return curprobability[left];
     }
 
     #endregion
