@@ -6,7 +6,7 @@ public class ObjectPoolManager
 {
     private string objectName;
 
-    private string[] _poolStringArray = new string[4] { "PlayerProjectileFrame", "EnemyProjectileFrame", "FollowerProjectileFrame", "Canvas_FloatingDamage" };
+    private string[] _poolStringArray = new string[5] { "PlayerProjectileFrame", "EnemyProjectileFrame", "FollowerProjectileFrame", "Canvas_FloatingDamage", "EnemyFrame" };
 
     private Dictionary<string, IObjectPool<GameObject>> poolDict = new Dictionary<string, IObjectPool<GameObject>>();
 
@@ -18,12 +18,12 @@ public class ObjectPoolManager
 
             poolDict.Add(_poolStringArray[i], pool);
 
-            //for (int j = 0; j < 50; j++)
-            //{
-            //    objectName = _poolStringArray[i];
-            //    ObjectPoolable poolGo = CreateProjectile().GetComponent<ObjectPoolable>();
-            //    poolGo.Poolable.Release(poolGo.gameObject);
-            //}
+            for (int j = 0; j < 50; j++)
+            {
+                objectName = _poolStringArray[i];
+                ObjectPoolable poolGo = CreateProjectile().GetComponent<ObjectPoolable>();
+                poolGo.Poolable.Release(poolGo.gameObject);
+            }
         }
     }
 

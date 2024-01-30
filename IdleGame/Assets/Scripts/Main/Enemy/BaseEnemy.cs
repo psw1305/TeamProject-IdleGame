@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour, IDamageable
+public class BaseEnemy : ObjectPoolable, IDamageable
 {
     #region Fields
 
@@ -186,7 +186,8 @@ public class BaseEnemy : MonoBehaviour, IDamageable
             uiSceneMain.UpdateQuestObjective();
         }
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        ReleaseObject();
     }
     #endregion
 }
