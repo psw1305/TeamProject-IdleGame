@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0900ce843cac3a44f8f1a08124113da7, type: 3}
   m_Name: SummonEquipment
   m_EditorClassIdentifier: 
-  summonName: Equipment
+  summonName: "\uC7A5\uBE44"
   banner: {fileID: 6489463966578483684, guid: 1f0c7c44213b1f048aa5e4316bede5a0, type: 3}
-  tableLink: SummonTableEquipment
+  typeLink: Equipment
   btnPrefab_1: Btn_Summon_1
   paymentType_1: 0
   amount_1: 0
