@@ -1,4 +1,13 @@
+using System;
+using System.Collections.Generic;
 using Firebase.Firestore;
+
+[Serializable]
+public class Serialization<T>
+{
+    public Serialization(List<T> _target) => target = _target;
+    public List<T> target;
+}
 
 [FirestoreData]
 public class GameUserProfile

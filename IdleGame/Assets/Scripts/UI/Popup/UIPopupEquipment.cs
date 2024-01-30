@@ -35,9 +35,9 @@ public class UIPopupEquipment : UIPopup
 
     private Image _itemContainer;
 
-    private InventorySlotData _selectItemData;
+    private UserItemData _selectItemData;
 
-    private List<InventorySlotData> _fillterItems;
+    private List<UserItemData> _fillterItems;
 
     private int _needCount;
     #endregion
@@ -48,7 +48,7 @@ public class UIPopupEquipment : UIPopup
 
     public EquipFillterType equipFillterType;
 
-    public List<InventorySlotData> FillterItems => _fillterItems;
+    public List<UserItemData> FillterItems => _fillterItems;
 
     #endregion
 
@@ -130,7 +130,7 @@ public class UIPopupEquipment : UIPopup
         }
     }
     // 선택한 아이템의 정보를 상단 UI에 설정하는 메서드입니다.
-    public void SetSelectItemInfo(InventorySlotData selectItemData)
+    public void SetSelectItemInfo(UserItemData selectItemData)
     {
         //UI 정보를 세팅합니다.
         _selectItemData = selectItemData;

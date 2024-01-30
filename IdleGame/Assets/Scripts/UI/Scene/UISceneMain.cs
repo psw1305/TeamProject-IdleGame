@@ -30,14 +30,13 @@ public class UISceneMain : UIScene
 
     #region Fields
 
-    private Button _btnGameSpeedUp;
+    private Button _btnGameSpeed;
     private Button _btnOption;
     private Button _btnQuest;
 
     private Button _btnBoss;
     private Button _btnEquipment;
     private Button _btnShop;
-    private Button _btnSave;
     private Button _btnIdleRewards;
 
     private TextMeshProUGUI _txtQuestNum;
@@ -91,14 +90,13 @@ public class UISceneMain : UIScene
     private void SetButtons()
     {
         SetUI<Button>();
-        _btnGameSpeedUp = SetButtonEvent("Btn_Plain_GameSpeedUP", UIEventType.Click, OnGameSpeedUp);
+        _btnGameSpeed = SetButtonEvent("Btn_Plain_GameSpeed", UIEventType.Click, OnGameSpeed);
         _btnOption = SetButtonEvent("Btn_Plain_Option", UIEventType.Click, OnOption);
-        _btnQuest = SetButtonEvent("Image_HUD_Quest", UIEventType.Click, OnQuestComplete);
+        _btnQuest = SetButtonEvent("Btn_Quest", UIEventType.Click, OnQuestComplete);
 
         _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
         _btnEquipment = SetButtonEvent("Btn_Equipment", UIEventType.Click, OnEquipment);
         _btnShop = SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
-        _btnSave = SetButtonEvent("Btn_Save", UIEventType.Click, OnSave);
         _btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);
     }
 
@@ -141,6 +139,7 @@ public class UISceneMain : UIScene
             WaveLoopImageToggle();
             StageLevelGaugeToggle(false);
         }
+
         UpdateStageLevel(Manager.Stage.StageLevel);
     }
 
@@ -148,7 +147,7 @@ public class UISceneMain : UIScene
     {
         TimeSpan timeLeft = DateTime.Now.Subtract(player.IdleCheckTime);
 
-        if (timeLeft.TotalMinutes < 3)
+        if (timeLeft.TotalMinutes < 1)
         {
             _btnIdleRewards.interactable = false;
             StartCoroutine(DelayEnableButton(timeLeft));
@@ -202,13 +201,12 @@ public class UISceneMain : UIScene
     {
         if (_btnIdleRewards.interactable) Manager.UI.ShowPopup<UIPopupRewardsIdle>("UIPopupRewardsIdle");
     }
-    private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("Option_DropdownPanel");
+    private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("UIDropDownOptions");
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
     private void OnEquipment(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupEquipment>();
     private void OnShop(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupShopSummon>();
-    private void OnSave(PointerEventData eventData) => Manager.Data.SaveData();
 
-    private void OnGameSpeedUp(PointerEventData eventData)
+    private void OnGameSpeed(PointerEventData eventData)
     {
         Debug.Log("게임 스피드 업"); // 버튼 작동 테스트
     }
@@ -297,10 +295,13 @@ public class UISceneMain : UIScene
     // 임시. 퀘스트 목표 TEXT 내용 반환
     public string QuestObjective()
     {
-        if(Manager.Quest.CurrentQuest.questType == QuestType.StageClear)        
+        if(Manager.Quest.CurrentQuest.questType == QuestType.StageClear)
+        {
             return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.objectiveValue} - 0");
-
+        }
         else
+        {
             return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.currentValue} / {Manager.Quest.CurrentQuest.objectiveValue}");
+        }
     }
 }

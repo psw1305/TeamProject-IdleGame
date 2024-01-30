@@ -19,12 +19,9 @@ public class TestSceneKDH : BaseScene
         Manager.Stage.SetBossPoint(bossSpawnPoint);
 
         Manager.Summon.Initialize();
+        Manager.Inventory.Initialize();
 
-        // 아이템 DB json 파일 경로 설정
-        Manager.Inventory.Initialize("InvenDB_KDH");
-
-        // 세션 생성 후 => 전투 시작
-        Manager.Session.Initialize("test-kdh");
+        Manager.Game.GameStart();
 
         return true;
     }

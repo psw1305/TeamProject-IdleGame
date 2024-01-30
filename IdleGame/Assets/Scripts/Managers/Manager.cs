@@ -54,5 +54,6 @@ public class Manager : MonoBehaviour
     public static SummonManager Summon => Instance != null ? Instance.summon : null;
     public static NotificateManager NotificateDot => Instance != null ? Instance.notificateDot : null;
     public static ObjectPoolManager ObjectPool => Instance != null ? Instance.objectPool : null;
+
     #endregion
 }

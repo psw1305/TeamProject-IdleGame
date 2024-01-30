@@ -1,0 +1,304 @@
+{
+    "UserItemData": [
+        {
+            "itemID": "W0001",
+            "level": 1,
+            "hasCount": 1,
+            "equipped": true
+        },
+        {
+            "itemID": "W0002",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0003",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0004",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0005",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0006",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0007",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0008",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0009",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0010",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0011",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0012",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0013",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0014",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0015",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0016",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0017",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0018",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0019",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0020",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0021",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0022",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0023",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0024",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "W0025",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0001",
+            "level": 1,
+            "hasCount": 1,
+            "equipped": true
+        },
+        {
+            "itemID": "A0002",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0003",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0004",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0005",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0006",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0007",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0008",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0009",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0010",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0011",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0012",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0013",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0014",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0015",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0016",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0017",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0018",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0019",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0020",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0021",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0022",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0023",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0024",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        },
+        {
+            "itemID": "A0025",
+            "level": 1,
+            "hasCount": 0,
+            "equipped": false
+        }
+    ]
+}

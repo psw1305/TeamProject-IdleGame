@@ -49,8 +49,7 @@ public class SummonManager
 
     private void ProbabilityInit()
     {
-        //_tableText = File.ReadAllText(_jsonPath);
-        _tableText = Manager.Resource.GetFileText("EquipmentSummonTable");
+        _tableText = Manager.Resource.GetFileText("SummonTableEquipment");
         var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tableText}}}");
 
         // 불러온 테이블을 레벨 그룹별로 1차 가공
@@ -171,10 +170,9 @@ public class SummonManager
     {
         for (int i = 0; i < summonResult.Length; i++)
         {
-            InventorySlotData itemData = _inventoryManager.SearchItem(summonResult[i]);
+            UserItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
             itemData.hasCount++;
         }
-        _inventoryManager.SaveSlotsData();
     }
 
     #endregion

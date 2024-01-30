@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -8,9 +7,9 @@ public class InventoryManager
     #region ItemData Fields & Properties
 
     private string _itemDataBaseText;
-
     private ItemDataBase _itemDataBase;
-    private Dictionary<string, ItemData> _itemDataDictionary = new Dictionary<string, ItemData>();
+    private Dictionary<string, ItemData> _itemDataDictionary = new();
+
     public Dictionary<string, ItemData> ItemDataDictionary => _itemDataDictionary;
 
     #endregion
@@ -19,7 +18,7 @@ public class InventoryManager
 
     public void ParseItemData()
     {
-        _itemDataBaseText = Manager.Resource.GetFileText("ItemDB");
+        _itemDataBaseText = Manager.Resource.GetFileText("ItemTable");
         _itemDataBase = JsonUtility.FromJson<ItemDataBase>(_itemDataBaseText);
         foreach (var itemData in _itemDataBase.ItemDB)
         {
@@ -30,49 +29,25 @@ public class InventoryManager
 
     #region InventoryData Fields & Properties
 
-    private string _userJsonText;
-    private string _userItemFile;
-    private InventoryDataBase _userInventoryDB;
-    public InventoryDataBase PlayerInventoryDB => _userInventoryDB;
-    public List<InventorySlotData> WeaponItemList => _userInventoryDB.InventorySlotData.Where(ItemData => ItemData.itemID[0] == 'W').ToList();
-    public List<InventorySlotData> ArmorItemList => _userInventoryDB.InventorySlotData.Where(ItemData => ItemData.itemID[0] == 'A').ToList();
+    public InventoryData UserInventory { get; private set; }
+    public List<UserItemData> WeaponItemList { get; private set; }
+    public List<UserItemData> ArmorItemList { get; private set; }
 
     #endregion
 
     #region Inventory Data Methods
 
-    public void Initialize(string fileName)
+    public void Initialize()
     {
-        _userItemFile = fileName;
-        _userJsonText = Manager.Resource.GetFileText(fileName);
-        _userInventoryDB = JsonUtility.FromJson<InventoryDataBase>(_userJsonText);
+        UserInventory = Manager.Data.Inventory;
+        WeaponItemList = Manager.Data.Inventory.UserItemData.Where(ItemData => ItemData.itemID[0] == 'W').ToList();
+        ArmorItemList = Manager.Data.Inventory.UserItemData.Where(ItemData => ItemData.itemID[0] == 'A').ToList();
     }
 
-    public InventorySlotData SearchItem(string itemID)
+    public UserItemData SearchItem(string itemID)
     {
-        List<InventorySlotData> pickItem = _userInventoryDB.InventorySlotData.Where(itemData => itemData.itemID == itemID).ToList();
+        List<UserItemData> pickItem = UserInventory.UserItemData.Where(itemData => itemData.itemID == itemID).ToList();
         return pickItem[0];
-    }
-
-    public void SaveSlotsData()
-    {
-        string inventoryJson = JsonUtility.ToJson(_userInventoryDB, true);
-        //string filePath = $"/Resources/Texts/Item/{_userItemFile}.json";
-
-        //try
-        //{
-        //    StreamWriter writer = new(filePath, false);
-        //    writer.Write(inventoryJson);
-        //    writer.Close();
-
-        //    Debug.Log("Text written to file: " + filePath);
-        //}
-        //catch (System.Exception e)
-        //{
-        //    Debug.LogError("Error writing text to file: " + filePath + "\n" + e.Message);
-        //}
-
-        //File.WriteAllText(jsonPlayerSlotDataText, inventoryJson);
     }
 
     #endregion
@@ -91,20 +66,19 @@ public class InventoryManager
         int index = 0;
         foreach (var item in _itemDataBase.ItemDB)
         {
-            if (item.itemID != _userInventoryDB.InventorySlotData[index].itemID)
+            if (item.itemID != UserInventory.UserItemData[index].itemID)
             {
-                _userInventoryDB.InventorySlotData.Insert(index, new InventorySlotData(item.itemID, 1, 1, false));
+                UserInventory.UserItemData.Insert(index, new UserItemData(item.itemID, 1, 1, false));
             }
             index++;
         }
-        SaveSlotsData();
     }
 
     #endregion
 
     #region ItemData Control Method
 
-    public void ChangeEquipmentItem(InventorySlotData equipItem)
+    public void ChangeEquipmentItem(UserItemData equipItem)
     {
         if ((equipItem.hasCount == 0 && equipItem.level == 1))
         {
@@ -129,35 +103,30 @@ public class InventoryManager
         // 새로운 아이템 장착
         equipItem.equipped = true;
 
-        SaveSlotsData();
-
         Manager.Game.Player.EquipmentStatModifier();
     }
 
     //일괄 강화
-    public void ReinforceSelectItem(InventorySlotData itemdata)
+    public void ReinforceSelectItem(UserItemData itemdata)
     {
         ReinforceItem(itemdata);
-
-        SaveSlotsData();
 
         Manager.Game.Player.EquipmentStatModifier();
     }
 
     // 선택한 아이템 강화
-    public void ReinforceSelectTypeItem(List<InventorySlotData> itemList)
+    public void ReinforceSelectTypeItem(List<UserItemData> itemList)
     {
-        List<InventorySlotData> targetItemlist = itemList;
+        List<UserItemData> targetItemlist = itemList;
         foreach (var item in targetItemlist)
         {
             ReinforceItem(item);
         }
-        SaveSlotsData();
 
         Manager.Game.Player.EquipmentStatModifier();
     }
 
-    private void ReinforceItem(InventorySlotData itemdata)
+    private void ReinforceItem(UserItemData itemdata)
     {
         while (true)
         {
@@ -191,20 +160,20 @@ public class InventoryManager
 }
 
 [System.Serializable]
-public class InventoryDataBase
+public class InventoryData
 {
-    public List<InventorySlotData> InventorySlotData;
+    public List<UserItemData> UserItemData;
 }
 
 [System.Serializable]
-public class InventorySlotData
+public class UserItemData
 {
     public string itemID;
     public int level;
     public int hasCount;
     public bool equipped;
 
-    public InventorySlotData(string ItemID, int Level, int HasCount, bool Equiped)
+    public UserItemData(string ItemID, int Level, int HasCount, bool Equiped)
     {
         itemID = ItemID;
         level = Level;

@@ -10,7 +10,7 @@ public class UIPopupOptionDropdownPanel : UIPopup
     private Button _optionBtn_Setting;
     private Button _optionBtn_MailBox;
     private Button _optionBtn_Inventory;
-    private Button _optionBtn_GameInfo;
+    private Button _optionBtn_GameQuit;
     private Button _optionBtn_Exit;
     private Button _optionBtn_OutOfArea;
 
@@ -31,7 +31,7 @@ public class UIPopupOptionDropdownPanel : UIPopup
         _optionBtn_Setting = SetButtonEvent("Option_Setting_Btn", UIEventType.Click, OnSettingPopup);
         _optionBtn_MailBox = SetButtonEvent("Option_MailBox_Btn", UIEventType.Click, OnMailBoxPopup);
         _optionBtn_Inventory = SetButtonEvent("Option_Inventory_Btn", UIEventType.Click, OnInventoryPopup);
-        _optionBtn_GameInfo = SetButtonEvent("Option_GameInfo_Btn", UIEventType.Click, OnGameInfoPopup);
+        _optionBtn_GameQuit = SetButtonEvent("Option_Quit_Btn", UIEventType.Click, GameQuit);
         _optionBtn_Exit = SetButtonEvent("Option_CloseBtn", UIEventType.Click, ClosePopup);
         _optionBtn_OutOfArea = SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
@@ -60,10 +60,13 @@ public class UIPopupOptionDropdownPanel : UIPopup
         Debug.Log("Inventory Open");
     }
 
-    private void OnGameInfoPopup(PointerEventData eventData)
+    private void GameQuit(PointerEventData eventData)
     {
-        // 추후 게임 정보 연결
-        Debug.Log("OnGameInfo Open");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_ANDROID
+        Application.Quit();
+#endif
     }
 
     private void ClosePopup(PointerEventData eventData)
@@ -71,5 +74,5 @@ public class UIPopupOptionDropdownPanel : UIPopup
         Manager.UI.ClosePopup();
     }
 
-    #endregion
+#endregion
 }
