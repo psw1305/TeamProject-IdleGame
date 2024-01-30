@@ -8,11 +8,12 @@ public class BaseScene : MonoBehaviour
 
     private void Start()
     {
-        Manager.ObjectPool.Initialize();
         Manager.Resource.Initialize();
+        Manager.ObjectPool.Initialize();
         Manager.Game.Initialize();
 
         Initialize();
+        //Manager.ObjectPool.SetObjectPool();
     }
 
     protected virtual bool Initialize()
