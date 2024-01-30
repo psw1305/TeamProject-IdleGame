@@ -42,17 +42,17 @@ public partial class DataManager
         SaveToUserProfile();
     }
 
-    public void CreateUserInventory()
+    public void CreateUserEquipment()
     {
-        var jsonData = Manager.Resource.GetFileText("InventoryTable");
+        var jsonData = Manager.Resource.GetFileText("UserTableEquipment");
         Inventory = JsonUtility.FromJson<InventoryData>(jsonData);
 
-        SaveToUserInventory();
+        SaveToUserEquipment();
     }
 
     public void CreateUserSkill()
     {
-        var jsonData = Manager.Resource.GetFileText("SkillUserTable");
+        var jsonData = Manager.Resource.GetFileText("UserTableSkill");
         UserSkillData = JsonUtility.FromJson<UserSkillData>(jsonData);
 
         SaveToUserSkill();
@@ -66,7 +66,7 @@ public partial class DataManager
     public void Load()
     {
         LoadFromUserProfile();
-        LoadFromUserInventory();
+        LoadFromUserEquipment();
         LoadFromUserSkill();
     }
 
@@ -78,15 +78,15 @@ public partial class DataManager
         Profile = JsonConvert.DeserializeObject<GameUserProfile>(jsonRaw);
     }
 
-    public void LoadFromUserInventory(string fileName = "game_inventory.dat")
+    public void LoadFromUserEquipment(string fileName = "game_equipment.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
-        if (!File.Exists(filePath)) { CreateUserInventory(); return; }
+        if (!File.Exists(filePath)) { CreateUserEquipment(); return; }
         string jsonRaw = File.ReadAllText(filePath);
         Inventory = JsonConvert.DeserializeObject<InventoryData>(jsonRaw);
     }
 
-    public void LoadFromUserSkill(string fileName = "game_skill_inventory.dat")
+    public void LoadFromUserSkill(string fileName = "game_skill.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
         if (!File.Exists(filePath)) { CreateUserSkill(); return; }
@@ -103,7 +103,7 @@ public partial class DataManager
         SaveProfile();
 
         SaveToUserProfile();
-        SaveToUserInventory();
+        SaveToUserEquipment();
         SaveToUserSkill();
 
         Debug.Log($"Save To {Application.persistentDataPath}");
@@ -136,14 +136,14 @@ public partial class DataManager
         File.WriteAllText(filePath, json);
     }
 
-    public void SaveToUserInventory(string fileName = "game_inventory.dat")
+    public void SaveToUserEquipment(string fileName = "game_equipment.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
         string json = JsonConvert.SerializeObject(Inventory, Formatting.Indented);
         File.WriteAllText(filePath, json);
     }
 
-    public void SaveToUserSkill(string fileName = "game_skill_inventory.dat")
+    public void SaveToUserSkill(string fileName = "game_skill.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
         string json = JsonConvert.SerializeObject(UserSkillData, Formatting.Indented);

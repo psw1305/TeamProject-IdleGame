@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -60,7 +59,7 @@ public class StageManager
     public void Initialize()
     {
         // json 파일 로딩, 딕셔너리에 인덱스 그룹 넣기
-        _tableText = Manager.Resource.GetFileText("StageTable");
+        _tableText = Manager.Resource.GetFileText("DataTableStage");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
         stageTable = stageDataTable.stageDataTable

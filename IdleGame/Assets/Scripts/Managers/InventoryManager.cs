@@ -18,7 +18,7 @@ public class InventoryManager
 
     public void ParseItemData()
     {
-        _itemDataBaseText = Manager.Resource.GetFileText("ItemTable");
+        _itemDataBaseText = Manager.Resource.GetFileText("DataTableEquipment");
         _itemDataBase = JsonUtility.FromJson<ItemDataBase>(_itemDataBaseText);
         foreach (var itemData in _itemDataBase.ItemDB)
         {

@@ -12,7 +12,6 @@ public class UIPopupEquipment : UIPopup
     private Image _itemImage;
     private Image _typeIcon;
     private Image _reinforceProgress;
-    private Image _itemContainer;
 
     private TextMeshProUGUI titleText;
 
@@ -67,7 +66,6 @@ public class UIPopupEquipment : UIPopup
         _itemImage = GetUI<Image>("Img_EquipSlot");
         _typeIcon = GetUI<Image>("Img_ETypeIcon");
         _reinforceProgress = GetUI<Image>("Img_ReinforceProgress");
-        _itemContainer = GetUI<Image>("ItemContainer");
     }
 
     private void SetText()
@@ -94,36 +92,6 @@ public class UIPopupEquipment : UIPopup
 
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
-    }
-
-    #endregion
-
-    #region Change Popup
-
-    /// <summary>
-    /// 무기 관리 설정으로 변경
-    /// </summary>
-    public void ChangeToWeaponSettings()
-    {
-        EquipFillterType = EquipFillterType.Weapon;
-        FillterCurrentPopupUseItemData();
-        SetItemTypeUI();
-        SetFirstVisibleItem();
-
-        _itemContainer.gameObject.GetComponent<UIPopupEquipContainer>().InitSlot();
-    }
-
-    /// <summary>
-    /// 방어구 관리 설정으로 변경
-    /// </summary>
-    public void ChangeToArmorSettings()
-    {
-        EquipFillterType = EquipFillterType.Armor;
-        FillterCurrentPopupUseItemData();
-        SetItemTypeUI();
-        SetFirstVisibleItem();
-
-        _itemContainer.gameObject.GetComponent<UIPopupEquipContainer>().InitSlot();
     }
 
     #endregion
