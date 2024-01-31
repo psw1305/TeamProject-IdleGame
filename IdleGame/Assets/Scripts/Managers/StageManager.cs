@@ -269,6 +269,7 @@ public class StageManager
         _uISceneMain.UpdateCurrentStage();
 
         // 데이터 저장
+        Manager.Data.Save();
     }
 
     #endregion

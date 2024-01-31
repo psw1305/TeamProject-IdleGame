@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 
-public partial class DataManager
+public class DataManager
 {
     public GameUserProfile Profile { get; private set; }
     public InventoryData Inventory { get; private set; }
@@ -37,7 +37,10 @@ public partial class DataManager
             Stage_Level = 1,
             Stage_WaveLoop = false,
             Quest_Complete = 0,
-            Quest_Current_Progress = 0
+            Quest_Current_Progress = 0,
+            Summon_Progress_Equipment = 0,
+            Summon_Progress_Skills = 0,
+            Summon_Progress_Follower = 0
         };
 
         SaveToUserProfile();
@@ -78,6 +81,7 @@ public partial class DataManager
         LoadFromUserEquipment();
         LoadFromUserSkill();
         LoadFromUserFollower();
+        Debug.Log($"Load From {Application.persistentDataPath}");
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")
@@ -124,8 +128,6 @@ public partial class DataManager
         SaveToUserEquipment();
         SaveToUserSkill();
         SaveToUserFollower();
-
-        Debug.Log($"Save To {Application.persistentDataPath}");
     }
 
     private void SaveProfile()
@@ -146,6 +148,9 @@ public partial class DataManager
         Profile.Stage_Level = Manager.Stage.StageLevel;
         Profile.Stage_WaveLoop = Manager.Stage.WaveLoop;
         Profile.Quest_Complete = Manager.Quest.QuestNum;
+        Profile.Summon_Progress_Equipment = Manager.Summon.GetSummonCounts("Equipment");
+        Profile.Summon_Progress_Skills = Manager.Summon.GetSummonCounts("Skills");
+        Profile.Summon_Progress_Follower = Manager.Summon.GetSummonCounts("Follower");
     }
 
     public void SaveToUserProfile(string fileName = "game_user.dat")
