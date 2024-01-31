@@ -55,7 +55,8 @@ public class UIPopupRewardsIdle : UIPopup
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        idleCheckBtn = SetButtonEvent("Btn_IdleReward_Check", UIEventType.Click, CheckIdleReward);
+        SetButtonEvent("Btn_IdleReward_Check", UIEventType.Click, CheckIdleReward);
+        SetButtonEvent("DimScreen", UIEventType.Click, CheckIdleReward);
         idleBonusBtn = SetButtonEvent("Btn_IdleReward_Bonus", UIEventType.Click, BonusIdleReward);
     }
 
@@ -90,6 +91,7 @@ public class UIPopupRewardsIdle : UIPopup
         UISceneMain mainUI = Manager.UI.CurrentScene as UISceneMain;
         mainUI.IdleRewardsTimeCheck();
 
+        Manager.Data.Save();
         Manager.UI.ClosePopup();
     }
 

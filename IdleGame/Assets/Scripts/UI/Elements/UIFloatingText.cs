@@ -27,6 +27,7 @@ public class UIFloatingText : ObjectPoolable
         _txtDamage = GetComponentInChildren<TextMeshProUGUI>();
         //_txtDamage = GetComponent<TextMeshProUGUI>();
         Alpha = _txtDamage.color;
+        Alpha = Color.white;
         Alpha.a = 1;
         _txtDamage.text = damage.ToString();
     }

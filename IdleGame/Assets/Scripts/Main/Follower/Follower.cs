@@ -17,15 +17,15 @@ public class Follower : MonoBehaviour
     private FollowerAnimController _followerAnimController;
     [HideInInspector] public List<BaseEnemy> enemyList;
 
-
     #endregion
 
     #region Properties
     // TODO: 플레이어의 데이터를 가져와서 가공하고 장착 시 보일 수 있도록
 
     public long AtkDamage { get; private set; }
+    public float AtkCorrection {  get; private set; }
     public float AtkSpeed { get; private set; }
-    public float AttackRange { get; private set; } // TODO : 공격범위 상관없이 플레이어 공격하면 공격가능하게
+    public float AttackRange { get; private set; } 
     public float CriticalChance { get; private set; }
     public long RetentionEffect { get; private set; }
 
@@ -33,11 +33,13 @@ public class Follower : MonoBehaviour
 
     #region Init
 
-    public void Initialize()
+    public void Initialize(long playerDamage)
     {
-        AttackRange = 6;
+        //Manager.FollowerData.
 
-        AtkDamage = 150;
+        AttackRange = 6;
+        AtkDamage = playerDamage;
+        AtkCorrection = 0.2f;
         AtkSpeed = 0.6f;
         
         enemyList = Manager.Stage.GetEnemyList();
@@ -110,11 +112,34 @@ public class Follower : MonoBehaviour
         }
     }
 
+    private bool IsCritical()
+    {
+        int chance = Random.Range(1, 1001);
+
+        if (chance < Manager.Game.Player.CritChance.Value)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     // TODO : 크리티컬 확률 추가, 캐릭터 데미지 가져와서 계산식 사요하기
     private void FinalAttackDamage(out long damage, out DamageType damageTypeValue)
     {
-        damage = AtkDamage;
-        damageTypeValue = DamageType.Normal;
+        if (IsCritical())
+        {
+            damage = (long)((Manager.Game.Player.AtkDamage.Value * AtkCorrection)
+                * (1 + Manager.Game.Player.CritDamage.GetFloat()));
+            damageTypeValue = DamageType.Critical;
+        }
+        else
+        {
+            damage = (long)(Manager.Game.Player.AtkDamage.Value * AtkCorrection);
+            damageTypeValue = DamageType.Normal;
+        }
     }
 
     private float AttakSpeedToTime()

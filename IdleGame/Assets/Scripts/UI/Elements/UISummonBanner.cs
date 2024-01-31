@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
 using TMPro;
 
 public class UISummonBanner : UIBase
@@ -15,9 +14,6 @@ public class UISummonBanner : UIBase
     private TextMeshProUGUI _summonTypeText;
     private TextMeshProUGUI _summonLevel;
     private TextMeshProUGUI _summonCount;
-    private Button _summonTryBtn_1;
-    private Button _summonTryBtn_2;
-    private Button _summonTryBtn_3;
     private Slider _summonGauge;
 
     #endregion
@@ -28,7 +24,7 @@ public class UISummonBanner : UIBase
     {
         _summonList = summonList;
         _shopSummon = shopSummon;
-        Manager.Summon.SummonTable.TryGetValue(_summonList.TypeLink, out var summonTable);
+        Manager.Summon.SummonTables.TryGetValue(_summonList.TypeLink, out var summonTable);
         _summonTable = summonTable;
 
         SetButtonEvents();
@@ -41,9 +37,9 @@ public class UISummonBanner : UIBase
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        _summonTryBtn_1 = SetButtonEvent(_summonList.BtnPrefab_1, UIEventType.Click, SummonBtn_1);
-        _summonTryBtn_2 = SetButtonEvent(_summonList.BtnPrefab_2, UIEventType.Click, SummonBtn_2);
-        _summonTryBtn_3 = SetButtonEvent(_summonList.BtnPrefab_3, UIEventType.Click, SummonBtn_3);
+        SetButtonEvent(_summonList.BtnPrefab_1, UIEventType.Click, SummonBtn_1);
+        SetButtonEvent(_summonList.BtnPrefab_2, UIEventType.Click, SummonBtn_2);
+        SetButtonEvent(_summonList.BtnPrefab_3, UIEventType.Click, SummonBtn_3);
     }
 
     private void SetTexts()

@@ -4,11 +4,12 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 
-public partial class DataManager
+public class DataManager
 {
     public GameUserProfile Profile { get; private set; }
     public InventoryData Inventory { get; private set; }
     public UserSkillData UserSkillData { get; private set; }
+    public UserFollowerData FollowerData { get; private set; }
 
     #region Create
 
@@ -36,7 +37,10 @@ public partial class DataManager
             Stage_Level = 1,
             Stage_WaveLoop = false,
             Quest_Complete = 0,
-            Quest_Current_Progress = 0
+            Quest_Current_Progress = 0,
+            Summon_Progress_Equipment = 0,
+            Summon_Progress_Skills = 0,
+            Summon_Progress_Follower = 0
         };
 
         SaveToUserProfile();
@@ -58,6 +62,14 @@ public partial class DataManager
         SaveToUserSkill();
     }
 
+    public void CreateUserFollower()
+    {
+        var jsonData = Manager.Resource.GetFileText("DataTableFollower");
+        FollowerData = JsonUtility.FromJson<UserFollowerData>(jsonData);
+
+        SaveToUserFollower();
+    }
+
 
     #endregion
 
@@ -68,6 +80,8 @@ public partial class DataManager
         LoadFromUserProfile();
         LoadFromUserEquipment();
         LoadFromUserSkill();
+        LoadFromUserFollower();
+        Debug.Log($"Load From {Application.persistentDataPath}");
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")
@@ -93,6 +107,14 @@ public partial class DataManager
         string jsonRaw = File.ReadAllText(filePath);
         UserSkillData = JsonConvert.DeserializeObject<UserSkillData>(jsonRaw);
     }
+    
+    public void LoadFromUserFollower(string fileName = "game_follower.dat")
+    {
+        string filePath = $"{Application.persistentDataPath}/{fileName}";
+        if (!File.Exists(filePath)) { CreateUserFollower(); return; }
+        string jsonRaw = File.ReadAllText(filePath);
+        FollowerData = JsonConvert.DeserializeObject<UserFollowerData>(jsonRaw);
+    }
 
     #endregion
 
@@ -105,8 +127,7 @@ public partial class DataManager
         SaveToUserProfile();
         SaveToUserEquipment();
         SaveToUserSkill();
-
-        Debug.Log($"Save To {Application.persistentDataPath}");
+        SaveToUserFollower();
     }
 
     private void SaveProfile()
@@ -127,6 +148,9 @@ public partial class DataManager
         Profile.Stage_Level = Manager.Stage.StageLevel;
         Profile.Stage_WaveLoop = Manager.Stage.WaveLoop;
         Profile.Quest_Complete = Manager.Quest.QuestNum;
+        Profile.Summon_Progress_Equipment = Manager.Summon.GetSummonCounts("Equipment");
+        Profile.Summon_Progress_Skills = Manager.Summon.GetSummonCounts("Skills");
+        Profile.Summon_Progress_Follower = Manager.Summon.GetSummonCounts("Follower");
     }
 
     public void SaveToUserProfile(string fileName = "game_user.dat")
@@ -147,6 +171,13 @@ public partial class DataManager
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
         string json = JsonConvert.SerializeObject(UserSkillData, Formatting.Indented);
+        File.WriteAllText(filePath, json);
+    }
+    
+    public void SaveToUserFollower(string fileName = "game_follower.dat")
+    {
+        string filePath = $"{Application.persistentDataPath}/{fileName}";
+        string json = JsonConvert.SerializeObject(FollowerData, Formatting.Indented);
         File.WriteAllText(filePath, json);
     }
 

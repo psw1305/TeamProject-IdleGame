@@ -5,6 +5,7 @@ using UnityEngine;
 public partial class SummonManager
 {
     #region Fields
+
     private Player _player;
     private InventoryManager _inventoryManager;
     private UIPopupShopSummon _shopSummon;
@@ -72,7 +73,7 @@ public partial class SummonManager
         summonResurt.Clear();
 
         // 소환 레벨에서 딕셔너리 키(누적 확률)만 뽑은 후 랜덤값보다 높은 숫자 중 가장 가까운 키를 찾아 인덱스 반환
-        _table.TryGetValue(typeLink, out var summonTable);
+        SummonTables.TryGetValue(typeLink, out var summonTable);
         var curLevelTable = summonTable.GetProbabilityTable();
         var curprobability = curLevelTable.Select(x => x.Key).ToArray();
 
@@ -100,7 +101,7 @@ public partial class SummonManager
             idx++;
             if (summonTable.ApplySummonCount())
             {
-                _table.TryGetValue(typeLink, out var newSummonTable);
+                SummonTables.TryGetValue(typeLink, out var newSummonTable);
                 curLevelTable = newSummonTable.GetProbabilityTable();
                 curprobability = curLevelTable.Select(x => x.Key).ToArray();
             }
@@ -126,6 +127,9 @@ public partial class SummonManager
         _shopSummon.BannerUpdate(typeLink);
         summonResurt.Clear();
         resultIdList.Clear();
+
+        // Data Save
+        Manager.Data.Save();
     }
 
     private void EquipmentAdd(string[] summonResult)
