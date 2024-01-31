@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NotificateRecommendWeaponItemSlot : BaseNotiDot
 {
-    UserItemData currentItemData;
+    private UserItemData _currentItemData;
 
     protected override void Start()
     {
@@ -15,7 +15,7 @@ public class NotificateRecommendWeaponItemSlot : BaseNotiDot
 
     private void GetItemData()
     {
-        currentItemData = GetComponent<UIPopupEquipSlots>().ItemData;
+        _currentItemData = GetComponent<UIPopupEquipSlots>().ItemData;
     }
 
     private void SetRecommendItemNoti()
@@ -25,11 +25,11 @@ public class NotificateRecommendWeaponItemSlot : BaseNotiDot
             InactiveNotiDot();
             return;
         }
-         if (currentItemData == Manager.NotificateDot.CheckRecommendWeaponItem())
+         if (_currentItemData == Manager.NotificateDot.CheckRecommendWeaponItem())
         {
             ActiveNotiDot();
         }
-        else if (currentItemData != Manager.NotificateDot.CheckRecommendWeaponItem())
+        else if (_currentItemData != Manager.NotificateDot.CheckRecommendWeaponItem())
         {
             InactiveNotiDot();
         }

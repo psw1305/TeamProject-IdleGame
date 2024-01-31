@@ -7,6 +7,7 @@ public class BaseSkill : MonoBehaviour
     protected float _currentCoolDown;
 
     private bool _canUse = true;
+
     [SerializeField] private float effectDurateTime;
     [SerializeField] private float coolDown;
 

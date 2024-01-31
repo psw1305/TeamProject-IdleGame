@@ -586,6 +586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas_Debug
       objectReference: {fileID: 0}
+    - target: {fileID: 8930162123879927481, guid: 99e6a82cda8bdf341a50de4d2b235565, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
