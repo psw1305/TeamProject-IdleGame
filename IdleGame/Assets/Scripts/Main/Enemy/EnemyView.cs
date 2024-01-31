@@ -26,6 +26,7 @@ public class EnemyView : UIBase
     private Coroutine _onHpBarCoroutine;
 
     private bool _takeDamage = false;
+    private bool _isDead = false;
 
     #endregion
 
@@ -51,6 +52,8 @@ public class EnemyView : UIBase
             UICanvas.enabled = true;
             _hpBarText.enabled = true;
         }
+
+        _isDead = false;
     }
 
     #endregion
@@ -82,7 +85,7 @@ public class EnemyView : UIBase
         if (!UICanvas.enabled)
             UICanvas.enabled = true;
 
-        if (this.gameObject.activeSelf)
+        if (!_isDead)
         {
             if (_damageEffectCoroutine != null)
             {
@@ -107,9 +110,18 @@ public class EnemyView : UIBase
         _hpBarDamage.fillAmount = 1;
 
         if (_damageEffectCoroutine != null)
+        {
+            StopCoroutine(_damageEffectCoroutine);
             _damageEffectCoroutine = null;
+        }
+            
         if (_onHpBarCoroutine != null)
+        {
+            StopCoroutine(_onHpBarCoroutine);
             _onHpBarCoroutine = null;
+        }
+
+        _isDead = true;
     }
 
     #endregion
