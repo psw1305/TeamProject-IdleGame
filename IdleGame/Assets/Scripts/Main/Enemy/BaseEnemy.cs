@@ -9,6 +9,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     #region Fields
 
     private EnemyBlueprint _enemyBlueprint;
+    private EnemyView _enemyView;
 
     private string _enemyName;
     private Coroutine _attackCoroutine;
@@ -36,7 +37,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
     #region Init
 
-    public void SetEnemy(EnemyBlueprint blueprint)
+    public void SetEnemy(EnemyBlueprint blueprint, Vector2 position, int statWeight, int goldWeight)
     {
         _enemyBlueprint = blueprint;
         _enemyName = blueprint.EnemyName;
@@ -53,8 +54,12 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         _rewards = blueprint.Rewards;
 
         gameObject.name = _enemyName;
-        SetStatWeight(TestWeight);
+
+        SetPosition(position);
+        SetStatWeight(statWeight);
+        SetGoldWeight(goldWeight);
         ResetHealth();
+        SetHpBar();
     }
 
     public void SetStatWeight(int Weight)
@@ -76,6 +81,12 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         transform.position = position;
     }
 
+    public void SetHpBar()
+    {
+        _enemyView.SetHpBar(_enemyBlueprint.EnemyType);
+        _enemyView.SetHealthBar(GetCurrentHpPercent(), _currentHP, true);
+    }
+
     //추후 오브젝트 풀링 시 초기화 할 수 있게 메서드
     private void ResetHealth()
     {
@@ -89,6 +100,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _enemyView = GetComponent<EnemyView>();
     }
 
     private void FixedUpdate()
@@ -146,12 +158,6 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         }
     }
 
-    public void TakeDamage(long damage, DamageType damageTypeValue)
-    {        
-        AmountDamage(damage);
-        FloatingDamage(new Vector3(0, 0.05f, 0), damage, damageTypeValue);
-    }
-
     public void FloatingDamage(Vector3 position, long damage, DamageType damageTypeValue)
     {
         GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
@@ -161,6 +167,22 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         DamageHUD.GetComponentInChildren<TextMeshProUGUI>().color = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
         DamageHUD.transform.position = this.gameObject.transform.position + position;
         DamageHUD.GetComponent<UIFloatingText>().SetDamage(damage);
+    }
+
+    #endregion
+
+    #region Health Method
+
+    public void TakeDamage(long damage, DamageType damageTypeValue)
+    {        
+        AmountDamage(damage);
+        FloatingDamage(new Vector3(0, 0.05f, 0), damage, damageTypeValue);
+        _enemyView.SetHealthBar(GetCurrentHpPercent(), _currentHP);
+    }
+
+    private float GetCurrentHpPercent()
+    {
+        return (float)_currentHP / _maxHp;
     }
 
     private void AmountDamage(long damage)
@@ -192,7 +214,9 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
         _attackCoroutine = null;
         //Destroy(gameObject);
+        _enemyView.ClearHpBar();
         ReleaseObject();
     }
+
     #endregion
 }

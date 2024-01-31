@@ -8,6 +8,7 @@ public class EnemyBlueprint : ScriptableObject
     [SerializeField] private string enemyName;
     [SerializeField] private Sprite enemySprite;
     [SerializeField] private GameObject projectailVFX;
+    [SerializeField] private EnemyType enemyType;
 
     [Header("Enemy Stats")]
     [SerializeField] private long damage;
@@ -20,6 +21,8 @@ public class EnemyBlueprint : ScriptableObject
     public string EnemyName => enemyName;
     public Sprite EnemySprite => enemySprite;
     public GameObject ProjectailVFX => projectailVFX;
+
+    public EnemyType EnemyType => enemyType;
     public long Damage => damage;
     public long HP => hp;
     public float Range => range;
