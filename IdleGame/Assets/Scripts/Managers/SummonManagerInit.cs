@@ -1,18 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public partial class SummonManager
 {
-    private Dictionary<string, SummonTable> _table = new Dictionary<string, SummonTable>();
+    private Dictionary<string, SummonTable> _tables = new Dictionary<string, SummonTable>();
     private SummonBlueprint _summonBlueprint;
-    public Dictionary<string, SummonTable> SummonTable => _table;
+    public Dictionary<string, SummonTable> SummonTables => _tables;
 
     public void TableInitalize(string typeLink)
     {
-        SummonTable table = new SummonTable(typeLink);
-        _table[typeLink] = table;
+        SummonTable table;
+
+        if (typeLink == "Equipment")
+            table = new(typeLink, Manager.Data.Profile.Summon_Progress_Equipment);
+        else if (typeLink == "Skills")
+            table = new(typeLink, Manager.Data.Profile.Summon_Progress_Skills);
+        else
+            table = new(typeLink, Manager.Data.Profile.Summon_Progress_Follower);
+
+        _tables[typeLink] = table;
+    }
+
+    public int GetSummonCounts(string key)
+    {
+        if (!_tables.TryGetValue(key, out SummonTable summonTable)) return 0;
+
+        return summonTable.SummonCounts;
     }
 }
 
@@ -34,8 +48,10 @@ public class SummonTable
 
     #endregion
 
-    public SummonTable(string tableLink)
+    public SummonTable(string tableLink, int summonCounts)
     {
+        SummonCounts = summonCounts;
+
         ProbabilityInit(tableLink);
         GradeCountInit(tableLink);
         SummonGradeInit();
@@ -88,9 +104,6 @@ public class SummonTable
     
     private void SummonGradeInit()
     {
-        //TODO = 플레이어의 소환 타입별 카운트 불러오기
-        SummonCounts = 0;
-
         int CurCount = _gradeUpCount.OrderBy(x => (SummonCounts - x >= 0)).First();
 
         for (int i = 0; i < _gradeUpCount.Count; i++)
@@ -103,7 +116,6 @@ public class SummonTable
     }
 
     #endregion
-
 
     #region Control Method
 

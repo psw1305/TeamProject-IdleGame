@@ -41,12 +41,10 @@ public class UIPopupOptionDropdownPanel : UIPopup
     private void OnMailBoxPopup(PointerEventData eventData)
     {
         // 추후 우편함 연결
-        Debug.Log("MailBox Open");
     }
     private void OnInventoryPopup(PointerEventData eventData)
     {
         // 추후 인벤토리 연결
-        Debug.Log("Inventory Open");
     }
 
     private void GameQuit(PointerEventData eventData)

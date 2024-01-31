@@ -30,16 +30,11 @@ public class UISceneMain : UIScene
 
     #region Fields
 
-    private Button _btnGameSpeed;
-    private Button _btnOption;
-    private Button _btnQuest;
-
     private Button _btnBoss;
     private Button _btnIdleRewards;
 
     private TextMeshProUGUI _txtQuestNum;
     private TextMeshProUGUI _txtQuestObjective;
-    private TextMeshProUGUI _textQuestReward;
     private TextMeshProUGUI _textIdleNotice;
 
     #endregion
@@ -73,6 +68,7 @@ public class UISceneMain : UIScene
     private void SetTexts()
     {
         SetUI<TextMeshProUGUI>();
+        
         txt_Gold = GetUI<TextMeshProUGUI>("Txt_Gold");
         txt_Gems = GetUI<TextMeshProUGUI>("Txt_Jewel");
         txt_Difficult = GetUI<TextMeshProUGUI>("Txt_Difficult");
@@ -80,7 +76,6 @@ public class UISceneMain : UIScene
 
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
         _txtQuestObjective = GetUI<TextMeshProUGUI>("Txt_QuestObjective");
-        _textQuestReward = GetUI<TextMeshProUGUI>("Txt_QuestReward");
 
         _textIdleNotice = GetUI<TextMeshProUGUI>("Text_IdleRewards_Notice");
     }
@@ -88,9 +83,9 @@ public class UISceneMain : UIScene
     private void SetButtons()
     {
         SetUI<Button>();
-        _btnGameSpeed = SetButtonEvent("Btn_Plain_GameSpeed", UIEventType.Click, OnGameSpeed);
-        _btnOption = SetButtonEvent("Btn_Plain_Option", UIEventType.Click, OnOption);
-        _btnQuest = SetButtonEvent("Btn_Quest", UIEventType.Click, OnQuestComplete);
+        SetButtonEvent("Btn_Plain_GameSpeed", UIEventType.Click, OnGameSpeed);
+        SetButtonEvent("Btn_Plain_Option", UIEventType.Click, OnOption);
+        SetButtonEvent("Btn_Quest", UIEventType.Click, OnQuestComplete);
 
         _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
         _btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);

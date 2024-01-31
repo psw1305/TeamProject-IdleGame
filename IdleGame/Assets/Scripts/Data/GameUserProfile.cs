@@ -42,4 +42,9 @@ public class GameUserProfile
     // Quest
     [FirestoreProperty] public int Quest_Complete { get; set; }
     [FirestoreProperty] public int Quest_Current_Progress { get; set; }
+
+    // Summon
+    [FirestoreProperty] public int Summon_Progress_Equipment { get; set; }
+    [FirestoreProperty] public int Summon_Progress_Skills { get; set; }
+    [FirestoreProperty] public int Summon_Progress_Follower { get; set; }
 }

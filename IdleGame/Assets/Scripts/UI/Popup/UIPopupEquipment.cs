@@ -218,6 +218,9 @@ public class UIPopupEquipment : UIPopup
     private void CallReinforceRefreshEvent()
     {
         RefreshReinforecEvent?.Invoke();
+
+        // Data 저장
+        Manager.Data.Save();
     }
 
     //EquipFillterType 상태에 맞춰 보여주는 장비류 필터를 Inventory Manager로부터 가져옵니다.
