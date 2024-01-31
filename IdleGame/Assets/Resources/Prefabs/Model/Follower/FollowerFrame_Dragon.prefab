@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 174719850722533242}
   - component: {fileID: 4032827204767613756}
   m_Layer: 0
-  m_Name: FollowerFrame
+  m_Name: FollowerFrame_Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

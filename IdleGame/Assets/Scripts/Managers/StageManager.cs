@@ -195,10 +195,7 @@ public class StageManager
         enemySprite.sortingOrder = (int)Mathf.Ceil(spawnPoint[0].position.y * 10.0f - (randomPos.y * 10.0f));
         var enemy = enemyObject.GetComponent<BaseEnemy>();
         // 적 설정
-        enemy.SetEnemy(enemyBlueprint);
-        enemy.SetPosition(randomPos);
-        enemy.SetStatWeight(EnemyStatRate);
-        enemy.SetGoldWeight(EnemyGoldRate);
+        enemy.SetEnemy(enemyBlueprint, randomPos, EnemyStatRate, EnemyGoldRate);
         enemyList.Add(enemy);
 
         // 보스->몬스터 임시 변경
@@ -215,13 +212,10 @@ public class StageManager
         //var bossObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
         var bossObject = Manager.ObjectPool.GetGo("EnemyFrame");
         var enemy = bossObject.GetComponent<BaseEnemy>();
-        enemy.SetEnemy(enemyBlueprint);
-        enemy.SetPosition(bossSpawnPoint.position);
+        enemy.SetEnemy(enemyBlueprint, bossSpawnPoint.position, EnemyStatRate, EnemyGoldRate);
         enemyList.Add(enemy);
 
         // 보스 설정 임시 변경
-        enemy.SetStatWeight(EnemyStatRate);
-        enemy.SetGoldWeight(EnemyGoldRate);
         bossObject.transform.localScale = new Vector2(3, 3);
     }
 

@@ -9,6 +9,7 @@ public class DataManager
     public GameUserProfile Profile { get; private set; }
     public InventoryData Inventory { get; private set; }
     public UserSkillData UserSkillData { get; private set; }
+    public UserFollowerData FollowerData { get; private set; }
 
     #region Create
 
@@ -61,6 +62,14 @@ public class DataManager
         SaveToUserSkill();
     }
 
+    public void CreateUserFollower()
+    {
+        var jsonData = Manager.Resource.GetFileText("DataTableFollower");
+        FollowerData = JsonUtility.FromJson<UserFollowerData>(jsonData);
+
+        SaveToUserFollower();
+    }
+
 
     #endregion
 
@@ -71,7 +80,7 @@ public class DataManager
         LoadFromUserProfile();
         LoadFromUserEquipment();
         LoadFromUserSkill();
-
+        LoadFromUserFollower();
         Debug.Log($"Load From {Application.persistentDataPath}");
     }
 
@@ -98,6 +107,14 @@ public class DataManager
         string jsonRaw = File.ReadAllText(filePath);
         UserSkillData = JsonConvert.DeserializeObject<UserSkillData>(jsonRaw);
     }
+    
+    public void LoadFromUserFollower(string fileName = "game_follower.dat")
+    {
+        string filePath = $"{Application.persistentDataPath}/{fileName}";
+        if (!File.Exists(filePath)) { CreateUserFollower(); return; }
+        string jsonRaw = File.ReadAllText(filePath);
+        FollowerData = JsonConvert.DeserializeObject<UserFollowerData>(jsonRaw);
+    }
 
     #endregion
 
@@ -110,6 +127,7 @@ public class DataManager
         SaveToUserProfile();
         SaveToUserEquipment();
         SaveToUserSkill();
+        SaveToUserFollower();
     }
 
     private void SaveProfile()
@@ -153,6 +171,13 @@ public class DataManager
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
         string json = JsonConvert.SerializeObject(UserSkillData, Formatting.Indented);
+        File.WriteAllText(filePath, json);
+    }
+    
+    public void SaveToUserFollower(string fileName = "game_follower.dat")
+    {
+        string filePath = $"{Application.persistentDataPath}/{fileName}";
+        string json = JsonConvert.SerializeObject(FollowerData, Formatting.Indented);
         File.WriteAllText(filePath, json);
     }
 

@@ -15,6 +15,8 @@ public class UIPopupRewards : UIPopup
     private Button _closeBtn;
     private string[] itemData;
 
+    private bool _isSkip = false;
+
     #endregion
 
     #region Initialize
@@ -78,10 +80,12 @@ public class UIPopupRewards : UIPopup
     {
         for (int i = 0; i < itemData.Length; i++)
         {
-            yield return new WaitForSeconds(0.05f);
+            if (!_isSkip)
+                yield return new WaitForSeconds(0.05f);
             _itemSlots[i].gameObject.SetActive(true);
             _itemSlots[i].UpdateSlot(itemData[i]);
         }
+        _isSkip = true;
     }
 
     #endregion
@@ -90,8 +94,15 @@ public class UIPopupRewards : UIPopup
 
     private void ClosePopup(PointerEventData eventData)
     {
-        SlotClear();
-        Manager.UI.ClosePopup();
+        if (!_isSkip)
+        {
+            _isSkip = true;
+        }
+        else
+        {
+            SlotClear();
+            Manager.UI.ClosePopup();  
+        }
     }
 
     #endregion

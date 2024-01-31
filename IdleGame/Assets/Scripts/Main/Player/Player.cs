@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, IDamageable
     #region Serialize Fields
 
     [SerializeField] private Transform ProjectilePoint;
-    [SerializeField] private Transform FollowerPosition;
+    [SerializeField] private Transform[] FollowerPosition;
 
     #endregion
 
@@ -23,6 +23,10 @@ public class Player : MonoBehaviour, IDamageable
     private PlayerAnimController _playerAnimController;
     private bool isClick = false;
     private float _damageBuff = 1;
+
+    // 동료 관련 프로퍼티
+    private GameObject[] _followerPrefab = new GameObject[5];
+    private Follower[] Follower = new Follower[5];
 
     #endregion
 
@@ -55,10 +59,6 @@ public class Player : MonoBehaviour, IDamageable
     public DateTime IdleCheckTime { get; private set; }
     public DateTime BonusCheckTime { get; private set; }
     public bool IsBonusCheck { get; private set; }
-
-    // 동료 관련 프로퍼티
-    public Follower Follower { get; private set; }
-
 
     //버프 능력치 관련 프로퍼티
     public float DamageBuff
@@ -98,6 +98,7 @@ public class Player : MonoBehaviour, IDamageable
 
         Manager.Inventory.InitItem();
         Manager.SkillData.InitSkill();
+        Manager.FollowerData.InitFollower();
         Manager.Quest.InitQuest();
         EquipmentStatModifier();
 
@@ -108,13 +109,27 @@ public class Player : MonoBehaviour, IDamageable
         BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
         IsBonusCheck = profile.Date_Bonus_Check;
 
-        var FollowerClone = Manager.Resource.InstantiatePrefab("FollowerFrame");
-        Follower = FollowerClone.GetComponent<Follower>();
-
-        Follower.transform.position = FollowerPosition.position;
-        Follower.Initialize();
+        FollowerInit(AtkDamage.Value);
 
         StartCoroutine(RecoverHealthPoint());
+    }
+
+    private void FollowerInit(long playerDamage)
+    {
+        // 임시로 5개 동료를 입력
+        _followerPrefab[0] = Manager.Resource.InstantiatePrefab("FollowerFrame_Dragon");
+        _followerPrefab[1] = Manager.Resource.InstantiatePrefab("FollowerFrame_Cat");
+        _followerPrefab[2] = Manager.Resource.InstantiatePrefab("FollowerFrame_WereWolf");
+        _followerPrefab[3] = Manager.Resource.InstantiatePrefab("FollowerFrame_MerMan");
+        _followerPrefab[4] = Manager.Resource.InstantiatePrefab("FollowerFrame_Lizard");
+
+        for (int i = 0; i < 5; i++)
+        {
+            Follower[i] = _followerPrefab[i].GetComponent<Follower>();
+
+            Follower[i].transform.position = FollowerPosition[i].position;
+            Follower[i].Initialize(playerDamage);
+        }
     }
 
     public void CheckClick(bool isClick)
