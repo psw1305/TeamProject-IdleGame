@@ -27,6 +27,8 @@ public class EnemyView : UIBase
 
     private bool _takeDamage = false;
     private bool _isDead = false;
+    private float _decreasePerFrame;
+    private float _timer;
 
     #endregion
 
@@ -87,19 +89,20 @@ public class EnemyView : UIBase
 
         if (!_isDead)
         {
-            if (_damageEffectCoroutine != null)
-            {
-                StopCoroutine(_damageEffectCoroutine);
-                _damageEffectCoroutine = null;
-            }
-            _damageEffectCoroutine = StartCoroutine(DamageEffect());
+            if (FillAmountDifference > _decreasePerFrame)
+                _decreasePerFrame = FillAmountDifference;
 
-            if (_onHpBarCoroutine != null)
+            _timer = 4.0f;
+
+            if (_damageEffectCoroutine == null)
             {
-                StopCoroutine(_onHpBarCoroutine);
-                _onHpBarCoroutine = null;
+                _damageEffectCoroutine = StartCoroutine(DamageEffect());
             }
-            _onHpBarCoroutine = StartCoroutine(OnHpBar());
+
+            if (_onHpBarCoroutine == null)
+            {
+                _onHpBarCoroutine = StartCoroutine(OnHpBar());
+            }
         }
     }
 
@@ -130,18 +133,22 @@ public class EnemyView : UIBase
 
     IEnumerator OnHpBar()
     {
-        yield return new WaitForSeconds(4.0f);
+        while (_timer > 0.0f)
+        {
+            _timer -= Time.deltaTime;
+            yield return null;
+        }
+        
         UICanvas.enabled = false;
         _onHpBarCoroutine = null;
+        yield break;
     }
 
     IEnumerator DamageEffect()
     {
-        float decreasePerFrame = FillAmountDifference;
-
-        while (_hpBar.fillAmount + decreasePerFrame < _hpBarDamage.fillAmount)
+        while (_hpBar.fillAmount + _decreasePerFrame < _hpBarDamage.fillAmount)
         {
-            _hpBarDamage.fillAmount -= decreasePerFrame;
+            _hpBarDamage.fillAmount -= _decreasePerFrame;
             yield return null;
         }
 
@@ -150,6 +157,7 @@ public class EnemyView : UIBase
             _hpBarDamage.fillAmount = _hpBar.fillAmount;
         }
         _damageEffectCoroutine = null;
+        yield break;
     }
 
     #endregion
