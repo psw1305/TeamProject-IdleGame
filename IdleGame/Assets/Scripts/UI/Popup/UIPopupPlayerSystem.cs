@@ -56,6 +56,7 @@ public class UIPopupPlayerSystem : UIPopup
 
     private void ShowPopupSkill(PointerEventData eventData)
     {
+        Manager.UI.ShowPopup<UIPopupSkill>();
     }
 
     private void ShowPopupFollower(PointerEventData eventData)

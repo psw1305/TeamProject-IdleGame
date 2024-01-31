@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -7738,7 +7738,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_362
+      name: S0002
       rect:
         serializedVersion: 2
         x: 64
@@ -7822,7 +7822,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_366
+      name: S0001
       rect:
         serializedVersion: 2
         x: 128
@@ -21577,7 +21577,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1021
+      name: 0
       rect:
         serializedVersion: 2
         x: 336
@@ -21598,7 +21598,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1022
+      name: 1
       rect:
         serializedVersion: 2
         x: 352
@@ -21619,7 +21619,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1023
+      name: S0003
       rect:
         serializedVersion: 2
         x: 368
@@ -21640,7 +21640,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1024
+      name: S0004
       rect:
         serializedVersion: 2
         x: 384
@@ -21661,7 +21661,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1025
+      name: S0005
       rect:
         serializedVersion: 2
         x: 400
@@ -21682,7 +21682,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1026
+      name: S0006
       rect:
         serializedVersion: 2
         x: 416
@@ -21703,7 +21703,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1027
+      name: S0007
       rect:
         serializedVersion: 2
         x: 432
@@ -21724,7 +21724,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1028
+      name: S0008
       rect:
         serializedVersion: 2
         x: 448
@@ -21976,7 +21976,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1040
+      name: S0009
       rect:
         serializedVersion: 2
         x: 352
@@ -25714,7 +25714,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_1218
+      name: Empty
       rect:
         serializedVersion: 2
         x: 400
@@ -26186,6 +26186,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      0: 879271584
+      1: 69444672
       10012: 682649363
       10013: -731447115
       10015: -1281829611
@@ -26220,6 +26222,7 @@ TextureImporter:
       A0023: -1304879416
       A0024: -596035579
       A0025: 1679796072
+      Empty: -1314394097
       Item_0: -1863106525
       Item_1: -948447716
       Item_10: -1603941009
@@ -26235,14 +26238,6 @@ TextureImporter:
       Item_1010: -2013291874
       Item_1012: 673440115
       Item_102: -2143385164
-      Item_1021: 879271584
-      Item_1022: 69444672
-      Item_1023: -1104532689
-      Item_1024: 1321928635
-      Item_1025: 1951222134
-      Item_1026: 735163675
-      Item_1027: -415653458
-      Item_1028: -1243877515
       Item_1029: -1290579897
       Item_103: -1520691610
       Item_1030: -2119832252
@@ -26255,7 +26250,6 @@ TextureImporter:
       Item_1038: -318004937
       Item_1039: 1298497472
       Item_104: -1545680837
-      Item_1040: -1305750430
       Item_1041: -2141211310
       Item_1042: -795933329
       Item_1043: -1611441453
@@ -26441,7 +26435,6 @@ TextureImporter:
       Item_1215: 440690294
       Item_1216: 2089827911
       Item_1217: 1160335598
-      Item_1218: -1314394097
       Item_1219: 1683350575
       Item_122: 1918650362
       Item_1220: -719804366
@@ -26729,11 +26722,9 @@ TextureImporter:
       Item_36: -1435145885
       Item_360: 1781641923
       Item_361: 718815637
-      Item_362: 6834806
       Item_363: 279822046
       Item_364: 1628670260
       Item_365: 427063287
-      Item_366: -1040113210
       Item_367: -6029542
       Item_368: 593460373
       Item_369: -1901177293
@@ -27399,6 +27390,15 @@ TextureImporter:
       Item_997: 1022296564
       Item_998: -1270291355
       Item_999: 1805274819
+      S0001: -1040113210
+      S0002: 6834806
+      S0003: -1104532689
+      S0004: 1321928635
+      S0005: 1951222134
+      S0006: 735163675
+      S0007: -415653458
+      S0008: -1243877515
+      S0009: -1305750430
       W0001: 1773745777
       W0002: -228674563
       W0003: -1799060869

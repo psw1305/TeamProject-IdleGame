@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIPopupEquipSlots : MonoBehaviour
+public class UIPopupSkillSlots : MonoBehaviour
 {
 
     #region Value Fields
@@ -38,8 +38,9 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     [SerializeField] private GameObject ReinforceIcon;
 
-    private UserItemData _itemData;
-    public UserItemData ItemData => _itemData;
+
+    private UserInvenSkillData _skillData;
+    public UserInvenSkillData SkillData => _skillData;
 
     #endregion
 
@@ -64,14 +65,14 @@ public class UIPopupEquipSlots : MonoBehaviour
     #region Other Method
 
     //아이템 아이콘 세팅, 티어 세팅, 레벨 세팅,게이지 세팅, 언록 여부 
-    public void InitSlotInfo(UserItemData itemData)
+    public void InitSlotInfo(UserInvenSkillData skillData)
     {
-        _itemData = itemData;
-        _itemID = _itemData.itemID;
-        _level = _itemData.level;
-        _rarity = Manager.Inventory.ItemDataDictionary[itemData.itemID].rarity;
+        _skillData = skillData;
+        _itemID = _skillData.itemID;
+        _level = _skillData.level;
+        _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].rarity;
         _lvTxt.text = $"Lv. {_level}";
-        _hasCount = _itemData.hasCount;
+        _hasCount = _skillData.hasCount;
     }
 
     public void InitSlotUI()
@@ -81,12 +82,12 @@ public class UIPopupEquipSlots : MonoBehaviour
         itemSprite.sprite = Manager.Resource.GetSprite(ItemID.ToString());
 
         SetLockState();
-        gameObject.GetComponent<Button>().onClick.AddListener(SendItemData);
+        gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupSkillDetailInfo);
     }
 
     public void CheckEquipState()
     {
-        if (_itemData.equipped == false)
+        if (_skillData.equipped == false)
         {
             _equippdText.SetActive(false);
         }
@@ -98,12 +99,12 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     private void SetReinforceData()
     {
-        _level = _itemData.level;
+        _level = _skillData.level;
         _lvTxt.text = $"Lv. {_level}";
-        _hasCount = _itemData.hasCount;
-        if (_itemData.level < 15)
+        _hasCount = _skillData.hasCount;
+        if (_skillData.level < 15)
         {
-            _needCount = _itemData.level + 1;
+            _needCount = _skillData.level + 1;
         }
         else
         {
@@ -119,7 +120,7 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     private void SetReinforceIcon()
     {
-        if (ItemData.hasCount >= _needCount)
+        if (SkillData.hasCount >= _needCount)
         {
             ReinforceIcon.SetActive(true);
         }
@@ -142,9 +143,10 @@ public class UIPopupEquipSlots : MonoBehaviour
         lockIcon.SetActive(true);
     }
 
-    private void SendItemData()
+    private void ShowPopupSkillDetailInfo()
     {
-        FindObjectOfType<UIPopupEquipment>().SetSelectItemInfo(_itemData);
+        var instancePopup =  Manager.UI.ShowPopup<UIPopupSkillDetail>();
+        instancePopup.SetSkillData(_skillData);
     }
 
     #endregion
