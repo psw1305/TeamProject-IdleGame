@@ -42,6 +42,7 @@ public class UserInvenSkillData
     public string itemID;
     public int level;
     public int hasCount;
+    public bool equipped;
 }
 
 

@@ -2,7 +2,7 @@
     "SkillDataList": [
         {
             "itemID": "S0001",
-            "skillName": "나무 검",
+            "skillName": "테스트 범위 스킬",
             "rarity": "common",
             "skillDamage": 10.0,
             "reinforceDamage": 1.0,
@@ -11,7 +11,7 @@
         },
         {
             "itemID": "S0002",
-            "skillName": "구리 검",
+            "skillName": "테스트 버프 스킬",
             "rarity": "rare",
             "skillDamage": 20.0,
             "reinforceDamage": 2.0,
@@ -20,7 +20,7 @@
         },
         {
             "itemID": "S0003",
-            "skillName": "강철 검",
+            "skillName": "더미 스킬",
             "rarity": "eqic",
             "skillDamage": 40.0,
             "reinforceDamage": 3.0,
@@ -29,7 +29,7 @@
         },
         {
             "itemID": "S0004",
-            "skillName": "다이아 검",
+            "skillName": "더미 스킬",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 4.0,
@@ -38,7 +38,7 @@
         },
         {
             "itemID": "S0005",
-            "skillName": "다이아 검",
+            "skillName": "더미 스킬",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -47,8 +47,7 @@
         },
         {
             "itemID": "S0006",
-            "skillName": "다이아 검",
-            "statType": "attack",
+            "skillName": "더미 스킬",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -57,8 +56,7 @@
         },
         {
             "itemID": "S0007",
-            "skillName": "다이아 검",
-            "statType": "attack",
+            "skillName": "더미 스킬",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -67,8 +65,7 @@
         },
         {
             "itemID": "S0008",
-            "skillName": "다이아 검",
-            "statType": "attack",
+            "skillName": "더미 스킬",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -77,8 +74,7 @@
         },
         {
             "itemID": "S0009",
-            "skillName": "다이아 검",
-            "statType": "attack",
+            "skillName": "더미 스킬",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,

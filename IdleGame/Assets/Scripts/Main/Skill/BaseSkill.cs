@@ -16,12 +16,12 @@ public class BaseSkill : MonoBehaviour
 
     protected virtual void ApplySkillEffect()
     {
-        //스킬 효과 적용
+        Debug.LogWarning("이 스킬의 'ApplySkillEffect' 메서드가 구현 및 오버라이드되지 않았습니다.");
     }
 
     protected virtual void RemoveSkillEffect()
     {
-        //스킬 효과 초기화
+        Debug.LogWarning("이 스킬의 'RemoveSkillEffect' 메서드가 구현 및 오버라이드되지 않았습니다.");
     }
 
     public void UseSkill()
