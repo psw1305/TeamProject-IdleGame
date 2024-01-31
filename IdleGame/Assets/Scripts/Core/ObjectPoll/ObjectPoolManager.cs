@@ -27,12 +27,7 @@ public class ObjectPoolManager
     };
 
     private string _objectName;
-
-    private int _maxSize = 20;
-
-    private string[] _poolStringArray = new string[5] 
-    { "PlayerProjectileFrame", "EnemyProjectileFrame", "FollowerProjectileFrame", "Canvas_FloatingDamage" , "EnemyFrame"};
-        
+    
     private Dictionary<string, IObjectPool<GameObject>> _poolDict = new Dictionary<string, IObjectPool<GameObject>>();
     
     #endregion
