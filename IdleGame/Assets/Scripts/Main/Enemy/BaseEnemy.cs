@@ -158,7 +158,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         //GameObject DamageHUD = Manager.ObjectPool.GetGo("FloatingText");
         //DamageHUD.transform.SetParent(UICanvas.transform, true);
         DamageHUD.GetComponent<UIFloatingText>().Initialize();
-        DamageHUD.GetComponentInChildren<TextMeshProUGUI>().color = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
+        DamageHUD.GetComponent<UIFloatingText>().Alpha = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
         DamageHUD.transform.position = this.gameObject.transform.position + position;
         DamageHUD.GetComponent<UIFloatingText>().SetDamage(damage);
     }

@@ -60,6 +60,7 @@ public class UIPopupPlayerSystem : UIPopup
 
     private void ShowPopupFollower(PointerEventData eventData)
     {
+        var followerPopup = Manager.UI.ShowPopup<UIPopupFollower>();
     }
 
     private void ClosePopup(PointerEventData eventData) => Manager.UI.ClosePopup();

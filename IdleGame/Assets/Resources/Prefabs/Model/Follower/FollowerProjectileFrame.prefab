@@ -49,11 +49,11 @@ MonoBehaviour:
   Damage: 0
   ProjectileVFX: {fileID: 0}
   DamageTypeValue: 0
+  Speed: 0.1
+  TargetPosition: {x: 0, y: 0}
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _speed: 0.1
-  TargetPosition: {x: 0, y: 0}
 --- !u!58 &6936363193717904438
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -83,7 +83,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

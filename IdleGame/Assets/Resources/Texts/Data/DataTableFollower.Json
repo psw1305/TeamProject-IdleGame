@@ -1,0 +1,85 @@
+{
+    "FollowerDataList": [
+        {
+            "itemID": "F0001",
+            "followerName": "고양이",
+            "rarity": "common",
+            "damageCorrection": 10.0,
+            "reinforceDamage": 1.0,
+            "retentionEffect": 2.0,
+            "reinforceEffect": 0.2
+        },
+        {
+            "itemID": "F0002",
+            "followerName": "데몬",
+            "rarity": "rare",
+            "damageCorrection": 20.0,
+            "reinforceDamage": 2.0,
+            "retentionEffect": 3.0,
+            "reinforceEffect": 0.3
+        },
+        {
+            "itemID": "F0003",
+            "followerName": "드래곤",
+            "rarity": "eqic",
+            "damageCorrection": 40.0,
+            "reinforceDamage": 3.0,
+            "retentionEffect": 4.0,
+            "reinforceEffect": 0.4
+        },
+        {
+            "itemID": "F0004",
+            "followerName": "리자드",
+            "rarity": "legendary",
+            "damageCorrection": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "F0005",
+            "followerName": "인어",
+            "rarity": "legendary",
+            "damageCorrection": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "F0006",
+            "followerName": "웨어울프",
+            "rarity": "legendary",
+            "damageCorrection": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "F0007",
+            "followerName": "고양이",
+            "rarity": "legendary",
+            "damageCorrection": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "F0008",
+            "followerName": "데몬",
+            "rarity": "legendary",
+            "damageCorrection": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "F0009",
+            "followerName": "드래곤",
+            "rarity": "legendary",
+            "damageCorrection": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        }
+    ]
+}
