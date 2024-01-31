@@ -10,5 +10,9 @@ public class PlayerProjectileHandler : ProjectileHandlerBase
     private void FixedUpdate()
     {
         TrackingTarget(TargetPosition, Speed);
+        if (Vector2.Distance(transform.position, TargetPosition) < Mathf.Epsilon)
+        {
+            ReleaseObject();
+        }
     }
 }
