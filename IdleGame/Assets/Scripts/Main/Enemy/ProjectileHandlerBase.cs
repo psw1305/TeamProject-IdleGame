@@ -30,7 +30,7 @@ public class ProjectileHandlerBase : ObjectPoolable
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
+        if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)) || Vector2.Distance(transform.position, TargetPosition) < Mathf.Epsilon)
         {
             ReleaseObject();
         }

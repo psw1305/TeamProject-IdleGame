@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BaseEnemy : ObjectPoolable, IDamageable
 {
+    [SerializeField] private Canvas UICanvas;
+
     #region Fields
 
     private EnemyBlueprint _enemyBlueprint;
@@ -153,6 +155,8 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     public void FloatingDamage(Vector3 position, long Damage, DamageType damageTypeValue)
     {
         GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
+        //GameObject DamageHUD = Manager.ObjectPool.GetGo("FloatingText");
+        //DamageHUD.transform.SetParent(UICanvas.transform, true);
         DamageHUD.GetComponent<UIFloatingText>().Initialize();
         DamageHUD.GetComponentInChildren<TextMeshProUGUI>().color = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
         DamageHUD.transform.position = this.gameObject.transform.position + position;
@@ -186,6 +190,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
             uiSceneMain.UpdateQuestObjective();
         }
 
+        _attackCoroutine = null;
         //Destroy(gameObject);
         ReleaseObject();
     }
