@@ -144,24 +144,24 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         }
     }
 
-    public void TakeDamage(long Damage, DamageType damageTypeValue)
+    public void TakeDamage(long damage, DamageType damageTypeValue)
     {        
-        AmountDamage(Damage);
-        FloatingDamage(new Vector3(0, 0.05f, 0), Damage, damageTypeValue);
+        AmountDamage(damage);
+        FloatingDamage(new Vector3(0, 0.05f, 0), damage, damageTypeValue);
     }
 
-    public void FloatingDamage(Vector3 position, long Damage, DamageType damageTypeValue)
+    public void FloatingDamage(Vector3 position, long damage, DamageType damageTypeValue)
     {
         GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
         DamageHUD.GetComponent<UIFloatingText>().Initialize();
         DamageHUD.GetComponentInChildren<TextMeshProUGUI>().color = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
         DamageHUD.transform.position = this.gameObject.transform.position + position;
-        DamageHUD.GetComponent<UIFloatingText>().SetDamage(Damage);
+        DamageHUD.GetComponent<UIFloatingText>().SetDamage(damage);
     }
 
-    private void AmountDamage(long Damage)
+    private void AmountDamage(long damage)
     {
-        if (_currentHP - Damage <= 0)
+        if (_currentHP - damage <= 0)
         {
             _currentHP = 0;
             Manager.Stage.GetEnemyList().Remove(gameObject.GetComponent<BaseEnemy>());
@@ -169,7 +169,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         }
         else
         {
-            _currentHP -= Damage;            
+            _currentHP -= damage;            
         }
     }
 
