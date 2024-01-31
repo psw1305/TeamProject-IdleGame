@@ -3,24 +3,37 @@ using UnityEngine;
 
 public class UIFloatingText : ObjectPoolable
 {
+    #region Fields
+
     private float _floatingSpeed = 0.25f;
     private float _alphaSpeed = 7.5f;
-    private float _destroyTime = 1.0f;
-
     private bool _isReleased = false;
     
     private TextMeshProUGUI _txtDamage;
     public Color Alpha;
 
+    #endregion
+
+    #region Properties
+
     public long damage { get; private set; }
+
+    #endregion
+
+    #region Init
 
     public void Initialize()
     {
         _txtDamage = GetComponentInChildren<TextMeshProUGUI>();
+        //_txtDamage = GetComponent<TextMeshProUGUI>();
         Alpha = _txtDamage.color;
         Alpha.a = 1;
         _txtDamage.text = damage.ToString();
     }
+
+    #endregion
+
+    #region Unity Flow
 
     private void Update()
     {
@@ -38,10 +51,16 @@ public class UIFloatingText : ObjectPoolable
         }
     }
 
+    #endregion
+
+    #region SetDamage
+
     public void SetDamage(long value)
     {
         _isReleased = false;
         damage = value;
         _txtDamage.text = damage.ToString();
     }
+
+    #endregion
 }

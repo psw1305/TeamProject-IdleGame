@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1741,7 +1741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db72535973583a94892163c952aa38ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipFillterType: 0
+  EquipFillterType: 0
 --- !u!1 &3483689331786247516
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,7 +4063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2666880031299438918, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2666880031299438918, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_AnchorMin.x
@@ -4071,7 +4071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2666880031299438918, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2666880031299438918, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4115,7 +4115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2666880031299438918, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 150
+      value: -800
       objectReference: {fileID: 0}
     - target: {fileID: 2666880031299438918, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -200,6 +200,9 @@ public class StageManager
         enemy.SetStatWeight(EnemyStatRate);
         enemy.SetGoldWeight(EnemyGoldRate);
         enemyList.Add(enemy);
+
+        // 보스->몬스터 임시 변경
+        enemyObject.transform.localScale = new Vector2(1, 1);
     }
 
     private void BossWaveSpawn()

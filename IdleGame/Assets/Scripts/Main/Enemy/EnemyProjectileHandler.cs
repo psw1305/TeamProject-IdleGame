@@ -12,5 +12,9 @@ public class EnemyProjectileHandler : ProjectileHandlerBase
     private void FixedUpdate()
     {
         TrackingTarget(Manager.Game.Player.transform.position, Speed);
+        if (Vector2.Distance(transform.position, Manager.Game.Player.transform.position) < Mathf.Epsilon)
+        {
+            ReleaseObject();
+        }
     }
 }
