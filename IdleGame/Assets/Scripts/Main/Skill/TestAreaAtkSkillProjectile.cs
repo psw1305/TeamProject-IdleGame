@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
 {
-    [SerializeField] private GameObject DestroyVFX;
+    [SerializeField] private GameObject destroyVFX;
 
     private void FixedUpdate()
     {
@@ -12,6 +12,7 @@ public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
             Destroy(gameObject);
         }
     }
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -27,6 +28,6 @@ public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
 
     private void OnDestroy()
     {
-        Instantiate(DestroyVFX, gameObject.transform.position, DestroyVFX.transform.rotation);
+        Instantiate(destroyVFX, gameObject.transform.position, destroyVFX.transform.rotation);
     }
 }

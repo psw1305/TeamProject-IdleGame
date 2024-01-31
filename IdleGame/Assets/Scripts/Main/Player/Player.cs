@@ -19,7 +19,7 @@ public class Player : MonoBehaviour, IDamageable
     private PlayerView playerView;
     [HideInInspector] public List<BaseEnemy> enemyList;
     private Rigidbody2D playerRigidbody;
-    private Coroutine attackCoroutine;
+    private Coroutine _attackCoroutine;
     private PlayerAnimController _playerAnimController;
     private bool isClick = false;
     private float _damageBuff = 1;
@@ -135,14 +135,14 @@ public class Player : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        if (attackCoroutine == null && enemyList.Count <= 0)
+        if (_attackCoroutine == null && enemyList.Count <= 0)
         {
             _playerAnimController.OnWalk();
         }
-        else if (attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
+        else if (_attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
         {
             _playerAnimController.OnIdle();
-            attackCoroutine = StartCoroutine(AttackRoutine());
+            _attackCoroutine = StartCoroutine(AttackRoutine());
         }
 
         if (isClick)
@@ -252,7 +252,7 @@ public class Player : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(AttakSpeedToTime());
             if (enemyList.Count == 0)
             {
-                attackCoroutine = null;
+                _attackCoroutine = null;
                 _playerAnimController.OnWalk();
                 break;
             }
