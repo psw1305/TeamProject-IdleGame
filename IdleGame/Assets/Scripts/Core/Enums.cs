@@ -49,3 +49,9 @@ public enum ResourceType
     Gold,
     Gems
 }
+
+public enum EnemyType
+{
+    Normal,
+    Boss
+}
