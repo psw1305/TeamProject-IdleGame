@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIPopupSkillSlots : MonoBehaviour
+public class UIPopupSkillSlotsInven : MonoBehaviour
 {
 
     #region Value Fields
@@ -22,21 +22,22 @@ public class UIPopupSkillSlots : MonoBehaviour
     #endregion
 
     #region Object Fields
+
     //타 클래스에서 여러 메서드를 실행할때 콜백으로 하거나 여러번 GetCompornent 처리하는게 마음에 들지 않아 일단 Action으로 묶어두었음 
     public Action SetReinforceUI;
 
-    [SerializeField] private TextMeshProUGUI _lvTxt;
-    [SerializeField] private GameObject _equippdText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private GameObject equippdText;
 
-    [SerializeField] private Image reinforceProgress;
-    [SerializeField] private TextMeshProUGUI reinforceText;
+    [SerializeField] private Image reinforceProgressSprite;
+    [SerializeField] private TextMeshProUGUI reinforceProgressText;
 
     [SerializeField] private Image itemSprite;
 
     [SerializeField] private GameObject lockCover;
     [SerializeField] private GameObject lockIcon;
 
-    [SerializeField] private GameObject ReinforceIcon;
+    [SerializeField] private GameObject reinforceIcon;
 
 
     private UserInvenSkillData _skillData;
@@ -49,15 +50,13 @@ public class UIPopupSkillSlots : MonoBehaviour
     private void Awake()
     {
         SetReinforceUI += SetReinforceData;
-        SetReinforceUI += SetReinforceProgress;
-        SetReinforceUI += SetReinforceIcon;
+        SetReinforceUI += SetUIReinforceIcon;
     }
 
     private void OnDestroy()
     {
         SetReinforceUI -= SetReinforceData;
-        SetReinforceUI -= SetReinforceProgress;
-        SetReinforceUI -= SetReinforceIcon;
+        SetReinforceUI -= SetUIReinforceIcon;
     }
 
     #endregion
@@ -70,67 +69,51 @@ public class UIPopupSkillSlots : MonoBehaviour
         _skillData = skillData;
         _itemID = _skillData.itemID;
         _level = _skillData.level;
-        _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].rarity;
-        _lvTxt.text = $"Lv. {_level}";
         _hasCount = _skillData.hasCount;
+        _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].rarity;
     }
 
     public void InitSlotUI()
     {
-        _lvTxt.text = $"Lv : {_level}";
-
         itemSprite.sprite = Manager.Resource.GetSprite(ItemID.ToString());
-
-        SetLockState();
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupSkillDetailInfo);
+
+        SetUILockState();
     }
 
-    public void CheckEquipState()
+    public void SetReinforceData()
+    {
+        levelText.text = $"Lv. {_skillData.level}";
+        _needCount = _skillData.level < 15 ? _skillData.level + 1 : 15;
+        reinforceProgressText.text = $"{_skillData.hasCount} / {_needCount}";
+        reinforceProgressSprite.fillAmount = (float)_skillData.hasCount / _needCount;
+    }
+
+    public void SetUIEquipState()
     {
         if (_skillData.equipped == false)
         {
-            _equippdText.SetActive(false);
+            equippdText.SetActive(false);
         }
         else
         {
-            _equippdText.SetActive(true);
+            equippdText.SetActive(true);
         }
     }
 
-    private void SetReinforceData()
-    {
-        _level = _skillData.level;
-        _lvTxt.text = $"Lv. {_level}";
-        _hasCount = _skillData.hasCount;
-        if (_skillData.level < 15)
-        {
-            _needCount = _skillData.level + 1;
-        }
-        else
-        {
-            _needCount = 15;
-        }
-    }
-
-    private void SetReinforceProgress()
-    {
-        reinforceProgress.fillAmount = (float)_hasCount / _needCount;
-        reinforceText.text = $"{_hasCount}/{_needCount}";
-    }
-
-    private void SetReinforceIcon()
+    private void SetUIReinforceIcon()
     {
         if (SkillData.hasCount >= _needCount)
         {
-            ReinforceIcon.SetActive(true);
+            reinforceIcon.SetActive(true);
         }
         else
         {
-            ReinforceIcon.SetActive(false);
+            reinforceIcon.SetActive(false);
         }
     }
 
-    public void SetLockState()
+    public void SetUILockState()
     {
         if (_level > 1 || _hasCount > 0)
         {

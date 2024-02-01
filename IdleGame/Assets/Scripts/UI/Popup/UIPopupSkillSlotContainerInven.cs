@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPopupSkillContainer : MonoBehaviour
+public class UIPopupSkillSlotContainerInven : MonoBehaviour
 {
     #region Fields
 
@@ -46,10 +46,10 @@ public class UIPopupSkillContainer : MonoBehaviour
         {
             GameObject slot = Manager.Resource.InstantiatePrefab("Img_SkillSlot", gameObject.transform);
             SkillSlots.Add(slot);
-            slot.GetComponent<UIPopupSkillSlots>().InitSlotInfo(itemData);
-            slot.GetComponent<UIPopupSkillSlots>().InitSlotUI();
-            slot.GetComponent<UIPopupSkillSlots>().CheckEquipState();
-            slot.GetComponent<UIPopupSkillSlots>().SetReinforceUI();
+            slot.GetComponent<UIPopupSkillSlotsInven>().InitSlotInfo(itemData);
+            slot.GetComponent<UIPopupSkillSlotsInven>().InitSlotUI();
+            slot.GetComponent<UIPopupSkillSlotsInven>().SetUIEquipState();
+            slot.GetComponent<UIPopupSkillSlotsInven>().SetReinforceUI();
         }
 
         ResetOnScrollTop();
@@ -60,14 +60,14 @@ public class UIPopupSkillContainer : MonoBehaviour
     {
         foreach (var slot in SkillSlots)
         {
-            slot.GetComponent<UIPopupSkillSlots>().CheckEquipState();
+            slot.GetComponent<UIPopupSkillSlotsInven>().SetUIEquipState();
         }
     }
     public void SetSkillSlotReinforceUI()
     {
         foreach (var slot in SkillSlots)
         {
-            slot.GetComponent<UIPopupSkillSlots>().SetReinforceUI();
+            slot.GetComponent<UIPopupSkillSlotsInven>().SetReinforceUI();
         }
     }
 

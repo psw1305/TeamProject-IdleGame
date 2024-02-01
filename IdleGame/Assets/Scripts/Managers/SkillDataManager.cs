@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,42 @@ public class SkillDataManager
     public void InitSkill()
     {
         ParseSkillData();
+    }
+
+    public event Action SetUISkillEquip;
+    public void InvokeActionUISkillEquip()
+    {
+        SetUISkillEquip?.Invoke();
+    }
+
+
+    public bool CheckEquipSkill(UserInvenSkillData userInvenSkillData)
+    {
+        return Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty") > -1 ? true : false;
+    }
+
+    public int? EquipSkill(UserInvenSkillData userInvenSkillData)
+    {
+        int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty");
+        if (index > -1)
+        {
+            Manager.Data.UserSkillData.UserEquipSkill[index].itemID = userInvenSkillData.itemID;
+            userInvenSkillData.equipped = true;
+            return index;
+        }
+        return null;
+    }
+
+    public int UnEquipSkill(UserInvenSkillData userInvenSkillData)
+    {
+        int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == userInvenSkillData.itemID);
+        Manager.Data.UserSkillData.UserEquipSkill[index].itemID = "Empty";
+        return index;
+    }
+
+    public void ChangeSkill()
+    {
+
     }
 }
 
