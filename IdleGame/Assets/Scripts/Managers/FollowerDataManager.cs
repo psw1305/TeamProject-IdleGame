@@ -26,8 +26,8 @@ public class FollowerDataManager
 [System.Serializable]
 public class UserFollowerData
 {
-    public List<UserEquipFollowerData> UserEquipSkill;
-    public List<UserInvenFollowerData> UserInvenFollowerData;
+    public List<UserEquipFollowerData> UserEquipFollower;
+    public List<UserInvenFollowerData> UserInvenFollower;
 }
 
 [System.Serializable]

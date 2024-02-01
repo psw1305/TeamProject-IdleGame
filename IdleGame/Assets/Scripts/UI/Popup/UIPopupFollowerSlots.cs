@@ -8,32 +8,16 @@ public class UIPopupFollowerSlots : MonoBehaviour
     #region Value Fields
 
     private string _itemID;
-    private string _followerName;
-    private string _rarity;
     private int _level;
     private int _hasCount;
     private int _needCount;
-    private int _damageCorrection;
-    //private float _equipStat;
-    private float _reinforceEquip;
-    private float _reinforceDamage;
-    private float _retentionEffect;
-    private float _reinforceEffect;
-    private bool _equipped;
+    private string _rarity;
 
     #endregion
 
     #region Properties
 
     public string ItemID => _itemID;
-    public string FollowerName => _followerName;
-    public string Rarity => _rarity;
-    public int Level => _level;
-    public int HasCount => _hasCount;
-    public int DamageCorrection => _damageCorrection;
-    //public float EquipStat => _equipStat + _reinforceEquip;
-    public float RetentionEffect => _retentionEffect + _reinforceEffect;
-    public bool Equipped => _equipped;
 
     #endregion
 
@@ -55,7 +39,7 @@ public class UIPopupFollowerSlots : MonoBehaviour
     [SerializeField] private GameObject ReinforceIcon;
 
     private UserInvenFollowerData _followerData;
-    public UserInvenFollowerData ItemData => _followerData;
+    public UserInvenFollowerData FollowerData => _followerData;
 
     #endregion
 
@@ -63,9 +47,16 @@ public class UIPopupFollowerSlots : MonoBehaviour
 
     private void Awake()
     {
-        //SetReinforceUI += SetReinforceData;
-        //SetReinforceUI += SetReinforceProgress;
-        //SetReinforceUI += SetReinforceIcon;
+        SetReinforceUI += SetReinforceData;
+        SetReinforceUI += SetReinforceProgress;
+        SetReinforceUI += SetReinforceIcon;
+    }
+
+    private void OnDestroy()
+    {
+        SetReinforceUI -= SetReinforceData;
+        SetReinforceUI -= SetReinforceProgress;
+        SetReinforceUI -= SetReinforceIcon;
     }
 
     #endregion
@@ -75,16 +66,10 @@ public class UIPopupFollowerSlots : MonoBehaviour
     {
         _followerData = itemData;
         _itemID = _followerData.itemID;
-        _followerName = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].followerName;
         _level = _followerData.level;
         _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].rarity;
         _lvTxt.text = $"Lv. {_level}";
         _hasCount = _followerData.hasCount;
-        //_equipStat = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].equipStat;
-        //_reinforceEquip = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].reinforceEquip * _level;
-        _retentionEffect = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].retentionEffect;
-        _reinforceEffect = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].reinforceEffect * _level;
-        _equipped = _followerData.equipped;
     }
 
     public void InitSlotUI()
@@ -93,9 +78,73 @@ public class UIPopupFollowerSlots : MonoBehaviour
 
         itemSprite.sprite = Manager.Resource.GetSprite(ItemID.ToString());
 
-        //SetLockState();
-        //gameObject.GetComponent<Button>().onClick.AddListener(SendItemData);
+        SetLockState();
+        gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupFollowerDetailInfo);
     }
 
     #endregion
+
+    public void CheckEquipState()
+    {
+        if (_followerData.equipped == false)
+        {
+            _equippdText.SetActive(false);
+        }
+        else
+        {
+            _equippdText.SetActive(true);
+        }
+    }
+
+    private void SetReinforceData()
+    {
+        _level = _followerData.level;
+        _lvTxt.text = $"Lv. {_level}";
+        _hasCount = _followerData.hasCount;
+        if (_followerData.level < 15)
+        {
+            _needCount = _followerData.level + 1;
+        }
+        else
+        {
+            _needCount = 15;
+        }
+    }
+
+    private void SetReinforceProgress()
+    {
+        reinforceProgress.fillAmount = (float)_hasCount / _needCount;
+        reinforceText.text = $"{_hasCount}/{_needCount}";
+    }
+
+    private void SetReinforceIcon()
+    {
+        if (FollowerData.hasCount >= _needCount)
+        {
+            ReinforceIcon.SetActive(true);
+        }
+        else
+        {
+            ReinforceIcon.SetActive(false);
+        }
+    }
+
+    public void SetLockState()
+    {
+        if (_level > 1 || _hasCount > 0)
+        {
+            lockCover.SetActive(false);
+            lockIcon.SetActive(false);
+            return;
+        }
+
+        lockCover.SetActive(true);
+        lockIcon.SetActive(true);
+    }
+
+    private void ShowPopupFollowerDetailInfo()
+    {
+        var instancePopup = Manager.UI.ShowPopup<UIPopupFollowerDetail>();
+        instancePopup.SetFollowerData(_followerData);
+    }
 }

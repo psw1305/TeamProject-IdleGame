@@ -847,7 +847,6 @@ GameObject:
   - component: {fileID: 7137216215933988840}
   - component: {fileID: 4141886943370258209}
   - component: {fileID: 8485636086461046620}
-  - component: {fileID: 5190959704092665409}
   - component: {fileID: 5924140055800072326}
   - component: {fileID: 1653268513652637766}
   - component: {fileID: 1671243901940324585}
@@ -916,21 +915,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
---- !u!114 &5190959704092665409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4997733489982060782}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7fc7c3f71224e44ba0a269f8df0e74a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemSlots: []
-  itemInfoUI: {fileID: 8068159074077120773}
-  MainPopupUI: {fileID: 0}
 --- !u!114 &5924140055800072326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f17bc29600819429b71af1afe056ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlots: []
+  FollowerSlots: []
   itemInfoUI: {fileID: 0}
   MainPopupUI: {fileID: 0}
 --- !u!222 &1653268513652637766

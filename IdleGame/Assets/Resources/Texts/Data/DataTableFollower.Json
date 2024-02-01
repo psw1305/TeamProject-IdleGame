@@ -22,7 +22,7 @@
             "itemID": "F0003",
             "followerName": "드래곤",
             "rarity": "eqic",
-            "damageCorrection": 40.0,
+            "damageCorrection": 30.0,
             "reinforceDamage": 3.0,
             "retentionEffect": 4.0,
             "reinforceEffect": 0.4
@@ -31,7 +31,7 @@
             "itemID": "F0004",
             "followerName": "리자드",
             "rarity": "legendary",
-            "damageCorrection": 60.0,
+            "damageCorrection": 40.0,
             "reinforceDamage": 4.0,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5
@@ -40,46 +40,19 @@
             "itemID": "F0005",
             "followerName": "인어",
             "rarity": "legendary",
-            "damageCorrection": 60.0,
-            "reinforceDamage": 0.8,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5
+            "damageCorrection": 50.0,
+            "reinforceDamage": 5.0,
+            "retentionEffect": 6.0,
+            "reinforceEffect": 0.6
         },
         {
             "itemID": "F0006",
             "followerName": "웨어울프",
             "rarity": "legendary",
             "damageCorrection": 60.0,
-            "reinforceDamage": 0.8,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5
-        },
-        {
-            "itemID": "F0007",
-            "followerName": "고양이",
-            "rarity": "legendary",
-            "damageCorrection": 60.0,
-            "reinforceDamage": 0.8,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5
-        },
-        {
-            "itemID": "F0008",
-            "followerName": "데몬",
-            "rarity": "legendary",
-            "damageCorrection": 60.0,
-            "reinforceDamage": 0.8,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5
-        },
-        {
-            "itemID": "F0009",
-            "followerName": "드래곤",
-            "rarity": "legendary",
-            "damageCorrection": 60.0,
-            "reinforceDamage": 0.8,
-            "retentionEffect": 5.0,
-            "reinforceEffect": 0.5
+            "reinforceDamage": 6.0,
+            "retentionEffect": 7.0,
+            "reinforceEffect": 0.7
         }
     ]
 }

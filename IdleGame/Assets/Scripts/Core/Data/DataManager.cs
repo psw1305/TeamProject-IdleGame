@@ -64,7 +64,7 @@ public class DataManager
 
     public void CreateUserFollower()
     {
-        var jsonData = Manager.Resource.GetFileText("DataTableFollower");
+        var jsonData = Manager.Resource.GetFileText("UserTableFollower");
         FollowerData = JsonUtility.FromJson<UserFollowerData>(jsonData);
 
         SaveToUserFollower();

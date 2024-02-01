@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UIPopupFollowerContainer : UIBase
 {
-    public List<GameObject> itemSlots = new List<GameObject>();
+    public List<GameObject> FollowerSlots = new List<GameObject>();
     public GameObject itemInfoUI;
     private ScrollRect scrollRect;
     [SerializeField] private UIPopupFollower MainPopupUI;
@@ -16,9 +16,9 @@ public class UIPopupFollowerContainer : UIBase
     private void Start()
     {
         MainPopupUI = Manager.UI.CurrentPopup as UIPopupFollower;
-        //InitSlot();
-        //MainPopupUI.RefreshReinforecEvent += SetSlotEquipUI;
-        //MainPopupUI.RefreshReinforecEvent += SetSlotReinforceUI;
+        InitSlot();
+        MainPopupUI.RefreshReinforecEvent += SetFollowerSlotUI;
+        MainPopupUI.RefreshReinforecEvent += SetFollowerSlotReinforceUI;
     }
 
     private void ResetOnScrollTop()
@@ -28,17 +28,34 @@ public class UIPopupFollowerContainer : UIBase
 
     public void InitSlot()
     {
-        foreach (GameObject item in itemSlots)
-        {
-            Destroy(item);
-        }
+        FollowerSlots.Clear();
 
-        itemSlots.Clear();
-        foreach(var followerData in Manager.FollowerData.FollowerDataDictionary)
+        foreach(var followerData in Manager.Data.FollowerData.UserInvenFollower)
         {
             GameObject slot = Manager.Resource.InstantiatePrefab("Img_FollowerSlot", gameObject.transform);
-            itemSlots.Add(slot);
-            //slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(followerData);
+            FollowerSlots.Add(slot);
+            slot.GetComponent<UIPopupFollowerSlots>().InitSlotInfo(followerData);
+            slot.GetComponent<UIPopupFollowerSlots>().InitSlotUI();
+            slot.GetComponent<UIPopupFollowerSlots>().CheckEquipState();
+            slot.GetComponent<UIPopupFollowerSlots>().SetReinforceUI();
+        }
+
+        ResetOnScrollTop();
+    }
+
+    //슬롯에 장착 여부를 출력하기 위한 메서드
+    public void SetFollowerSlotUI()
+    {
+        foreach (var slot in FollowerSlots)
+        {
+            slot.GetComponent<UIPopupFollowerSlots>().CheckEquipState();
+        }
+    }
+    public void SetFollowerSlotReinforceUI()
+    {
+        foreach (var slot in FollowerSlots)
+        {
+            slot.GetComponent<UIPopupFollowerSlots>().SetReinforceUI();
         }
     }
 }

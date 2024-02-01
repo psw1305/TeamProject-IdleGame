@@ -1,0 +1,57 @@
+{
+  "UserEquipFollower": [
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    }
+  ],
+  "UserInvenFollower": [
+    {
+      "itemID": "F0001",
+      "level": 1,
+      "hasCount": 1,
+      "equipped": false
+    },
+    {
+      "itemID": "F0002",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0003",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0004",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0005",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0006",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    }
+  ]
+}
