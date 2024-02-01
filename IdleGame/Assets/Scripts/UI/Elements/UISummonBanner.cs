@@ -37,9 +37,11 @@ public class UISummonBanner : UIBase
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        SetButtonEvent(_summonList.BtnPrefab_1, UIEventType.Click, SummonBtn_1);
-        SetButtonEvent(_summonList.BtnPrefab_2, UIEventType.Click, SummonBtn_2);
-        SetButtonEvent(_summonList.BtnPrefab_3, UIEventType.Click, SummonBtn_3);
+        for (int i = 0; i < _summonList.ButtonInfo.Count; i++)
+        {
+            var buttonInfo = _summonList.ButtonInfo[i];
+            SetButtonEvent(_summonList.ButtonInfo[i].BtnPrefab, UIEventType.Click, (eventData) => SummonBtn(eventData, buttonInfo));
+        }
     }
 
     private void SetTexts()
@@ -59,22 +61,12 @@ public class UISummonBanner : UIBase
     #endregion
 
     #region Button Events
-    private void SummonBtn_1(PointerEventData eventData)
+    private void SummonBtn(PointerEventData eventData, ButtonInfo buttonInfo)
     {
-        _shopSummon.SummonTry(_summonList.PaymentType_1 ,_summonList.Amount_1, _summonList.SummonCount_1, _summonList.TypeLink);
-        Manager.NotificateDot.SetEquipmentNoti();
-    }
-
-    private void SummonBtn_2(PointerEventData eventData)
-    {
-        _shopSummon.SummonTry(_summonList.PaymentType_2, _summonList.Amount_2, _summonList.SummonCount_2, _summonList.TypeLink);
-        Manager.NotificateDot.SetEquipmentNoti();
-    }
-
-    private void SummonBtn_3(PointerEventData eventData)
-    {
-        _shopSummon.SummonTry(_summonList.PaymentType_3, _summonList.Amount_3, _summonList.SummonCount_3, _summonList.TypeLink);
-        Manager.NotificateDot.SetEquipmentNoti();
+        if (buttonInfo.PaymentType == PaymentType.Resource)
+        {
+            _shopSummon.SummonTry(buttonInfo.ResourceType, buttonInfo.Amount, buttonInfo.SummonCount, _summonList.TypeLink);
+        }
     }
 
     #endregion

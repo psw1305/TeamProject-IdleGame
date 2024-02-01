@@ -44,6 +44,12 @@ public enum SkillSlots
     Slot5
 }
 
+public enum PaymentType
+{
+    Resource,
+    advert
+}
+
 public enum ResourceType
 {
     Gold,
