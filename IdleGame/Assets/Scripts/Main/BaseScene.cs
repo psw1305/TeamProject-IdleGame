@@ -31,7 +31,10 @@ public class BaseScene : MonoBehaviour
         Manager.Game.Initialize();
         Manager.ObjectPool.Initialize();
 
+        // 플레이어 데이터 로드, 이후 플레이어 관련 데이터 불러오기 가능
         Manager.Data.Load();
+
+        Manager.Ranking.Initialize();
 
         Initialize();
     }

@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 using Firebase;
 using Firebase.Auth;
-using Firebase.Database;
 using Firebase.Firestore;
 using Firebase.Messaging;
 using Firebase.Extensions;
@@ -15,7 +13,6 @@ public class SessionManager
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-    private DatabaseReference databaseRef;
 
     #endregion
 
@@ -120,7 +117,7 @@ public class SessionManager
             //로그인 성공 후 Realtime Database에 데이터 생성
             if (user != null)
             {
-                CreateUserInDatabase(user.UserId);
+                //CreateUserInDatabase(user.UserId);
             }
         });
     }
@@ -192,55 +189,6 @@ public class SessionManager
         DebugNotice.Instance.Notice("Data Save");
         //db.Collection("users").Document(GuestID).UpdateAsync(updates);
         db.Collection("users").Document(GuestID).SetAsync(updateFields, SetOptions.MergeAll);
-    }
-
-    #endregion
-
-    #region Realtime Database
-
-    // TODO => 아직 미사용, 나중 랭킹 시스템으로 개선
-    private void CreateUserInDatabase(string userId)
-    {
-        DatabaseReference userRef = databaseRef.Child("users").Child(userId);
-
-        // 해당 UserID의 노드가 이미 존재하는지 확인
-        userRef.GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                DebugNotice.Instance.Notice("Failed to check user data in database.");
-                return;
-            }
-
-            DataSnapshot snapshot = task.Result;
-
-            // UserID의 노드가 이미 존재하는 경우
-            if (snapshot.Exists)
-            {
-                // 이미 존재하는 데이터를 불러와서 사용할 수 있음
-                GameUserProfile existingData = JsonUtility.FromJson<GameUserProfile>(snapshot.GetRawJsonValue());
-                DebugNotice.Instance.Notice("Load User Data");
-            }
-            else
-            {
-                // 새로운 데이터 생성
-                GameUserProfile newData = new(); // 혹은 사용자가 원하는 초기값을 설정
-                string json = JsonUtility.ToJson(newData);
-
-                // 데이터 생성
-                userRef.SetRawJsonValueAsync(json).ContinueWithOnMainThread(createTask =>
-                {
-                    if (createTask.IsFaulted || createTask.IsCanceled)
-                    {
-                        DebugNotice.Instance.Notice("Failed to create user data in database.");
-                    }
-                    else
-                    {
-                        DebugNotice.Instance.Notice("Create User Data");
-                    }
-                });
-            }
-        });
     }
 
     #endregion
