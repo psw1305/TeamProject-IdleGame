@@ -164,6 +164,14 @@ public partial class SummonManager
         }
     }
 
+    private void SkillAdd(string[] summonResult)
+    {
+        for (int i = 0; i < summonResult.Length; i++)
+        {
+            UserInvenSkillData skillData = Manager.SkillData.SearchSkill(summonResult[i]);
+            skillData.hasCount++;
+        }
+    }
     #endregion
 
     #region Summon Repeat

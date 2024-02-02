@@ -6,13 +6,19 @@ public class BaseSkill : MonoBehaviour
     protected float _currentDurateTime;
     protected float _currentCoolDown;
 
-    private bool _canUse = true;
+    private bool _canUse;
 
     [SerializeField] private float effectDurateTime;
     [SerializeField] private float coolDown;
 
     Coroutine _skillDurateTimeCoroutine;
     Coroutine _coolDownCoroutine;
+
+    private void Start()
+    {
+        _canUse = false;
+        StartCoroutine(CountSkillCooldown());
+    }
 
     protected virtual void ApplySkillEffect()
     {
@@ -49,6 +55,7 @@ public class BaseSkill : MonoBehaviour
             Debug.LogWarning("스킬 유지 종료");
             _skillDurateTimeCoroutine = null;
 
+            gameObject.GetComponent<BaseSkill>().RemoveSkillEffect();
             StartCoroutine(CountSkillCooldown());
         }
     }
@@ -58,7 +65,6 @@ public class BaseSkill : MonoBehaviour
     {
         if (_coolDownCoroutine == null)
         {
-            gameObject.GetComponent<BaseSkill>().RemoveSkillEffect();
             Debug.LogWarning("스킬 쿨타임 시작");
             _currentCoolDown = coolDown;
             while (_currentCoolDown >= 0)

@@ -2,7 +2,8 @@
     "SkillDataList": [
         {
             "itemID": "S0001",
-            "skillName": "테스트 범위 스킬",
+           "skillName": "테스트 범위 스킬",
+            "description": "의 데미지로 여러차례 공격합니다.",
             "rarity": "common",
             "skillDamage": 10.0,
             "reinforceDamage": 1.0,
@@ -12,6 +13,7 @@
         {
             "itemID": "S0002",
             "skillName": "테스트 버프 스킬",
+            "description": "의 데미지가 증가합니다.",
             "rarity": "rare",
             "skillDamage": 20.0,
             "reinforceDamage": 2.0,
@@ -21,6 +23,7 @@
         {
             "itemID": "S0003",
             "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
             "rarity": "eqic",
             "skillDamage": 40.0,
             "reinforceDamage": 3.0,
@@ -30,6 +33,7 @@
         {
             "itemID": "S0004",
             "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 4.0,
@@ -38,7 +42,8 @@
         },
         {
             "itemID": "S0005",
-            "skillName": "더미 스킬",
+           "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -47,7 +52,8 @@
         },
         {
             "itemID": "S0006",
-            "skillName": "더미 스킬",
+           "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -57,6 +63,7 @@
         {
             "itemID": "S0007",
             "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -66,6 +73,7 @@
         {
             "itemID": "S0008",
             "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
@@ -75,6 +83,7 @@
         {
             "itemID": "S0009",
             "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
             "rarity": "legendary",
             "skillDamage": 60.0,
             "reinforceDamage": 0.8,
