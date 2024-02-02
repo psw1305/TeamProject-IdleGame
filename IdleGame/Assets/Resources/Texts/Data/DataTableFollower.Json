@@ -5,7 +5,7 @@
             "followerName": "고양이",
             "rarity": "common",
             "damageCorrection": 10.0,
-            "atkSpeed":  0.5,
+            "atkSpeed":  0.4,
             "reinforceDamage": 1.0,
             "retentionEffect": 2.0,
             "reinforceEffect": 0.2
@@ -25,7 +25,7 @@
             "followerName": "드래곤",
             "rarity": "eqic",
             "damageCorrection": 30.0,
-            "atkSpeed": 0.5,
+            "atkSpeed": 0.6,
             "reinforceDamage": 3.0,
             "retentionEffect": 4.0,
             "reinforceEffect": 0.4
@@ -35,7 +35,7 @@
             "followerName": "리자드",
             "rarity": "legendary",
             "damageCorrection": 40.0,
-            "atkSpeed": 0.5,
+            "atkSpeed": 0.4,
             "reinforceDamage": 4.0,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5
@@ -55,7 +55,7 @@
             "followerName": "웨어울프",
             "rarity": "legendary",
             "damageCorrection": 60.0,
-            "atkSpeed": 0.5,
+            "atkSpeed": 0.6,
             "reinforceDamage": 6.0,
             "retentionEffect": 7.0,
             "reinforceEffect": 0.7
