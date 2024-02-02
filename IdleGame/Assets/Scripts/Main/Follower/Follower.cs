@@ -16,6 +16,7 @@ public class Follower : MonoBehaviour
     private Coroutine _attackCoroutine;
     private FollowerAnimController _followerAnimController;
     [HideInInspector] public List<BaseEnemy> enemyList;
+    private Player _player;
 
     #endregion
 
@@ -35,10 +36,11 @@ public class Follower : MonoBehaviour
 
     public void Initialize(long playerDamage)
     {
+        _player = Manager.Game.Player;
         //Manager.FollowerData.
 
         AttackRange = 6;
-        AtkDamage = playerDamage;
+        AtkDamage = _player.AtkDamage.Value;
         AtkCorrection = 0.2f;
         AtkSpeed = 0.6f;
         
@@ -116,7 +118,7 @@ public class Follower : MonoBehaviour
     {
         int chance = Random.Range(1, 1001);
 
-        if (chance < Manager.Game.Player.CritChance.Value)
+        if (chance < _player.CritChance.Value)
         {
             return true;
         }
@@ -131,13 +133,13 @@ public class Follower : MonoBehaviour
     {
         if (IsCritical())
         {
-            damage = (long)((Manager.Game.Player.AtkDamage.Value * AtkCorrection)
-                * (1 + Manager.Game.Player.CritDamage.GetFloat()));
+            damage = (long)((_player.AtkDamage.Value * AtkCorrection)
+                * (1 + _player.CritDamage.GetFloat()));
             damageTypeValue = DamageType.Critical;
         }
         else
         {
-            damage = (long)(Manager.Game.Player.AtkDamage.Value * AtkCorrection);
+            damage = (long)(_player.AtkDamage.Value * AtkCorrection);
             damageTypeValue = DamageType.Normal;
         }
     }

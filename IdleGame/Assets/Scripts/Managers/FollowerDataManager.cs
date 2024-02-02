@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowerDataManager
@@ -21,6 +23,28 @@ public class FollowerDataManager
     {
         ParseFollowerData();
     }
+
+    #region FollowerData Fields & properties
+
+    public UserFollowerData UserFollowerData { get; private set; }
+    public List<UserEquipFollowerData> EquipFollowerList { get; private set; }
+    public List<UserInvenFollowerData> InvenFollowerList { get; private set; }
+
+    #endregion
+
+    public void Initialize()
+    {
+        UserFollowerData = Manager.Data.FollowerData;
+        InvenFollowerList = Manager.Data.FollowerData.UserInvenFollower.Where(followerData => followerData.itemID[0] == 'F').ToList();
+        //EquipFollowerList = Manager.Data.FollowerData.UserInvenFollower.Where(followerData => followerData.equipped == true).ToList();
+    }
+
+    public UserInvenFollowerData SearchFollower(string itemID)
+    {
+        List<UserInvenFollowerData> pickFollower = UserFollowerData.UserInvenFollower.Where(followerData => followerData.itemID == itemID).ToList();
+        return pickFollower[0];
+    }
+
 }
 
 [System.Serializable]
@@ -58,6 +82,7 @@ public class FollowerData
     public string followerName;
     public string rarity;
     public float damageCorrection;
+    public float atkSpeed;
     public float reinforceDamage;
     public float retentionEffect;
     public float reinforceEffect;

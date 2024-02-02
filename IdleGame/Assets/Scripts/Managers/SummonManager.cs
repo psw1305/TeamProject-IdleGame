@@ -8,6 +8,7 @@ public partial class SummonManager
 
     private Player _player;
     private InventoryManager _inventoryManager;
+    private FollowerDataManager _followerDataManager;
     private UIPopupShopSummon _shopSummon;
 
     private List<int> summonResurt = new List<int>(200);
@@ -138,6 +139,15 @@ public partial class SummonManager
         {
             UserItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
             itemData.hasCount++;
+        }
+    }
+
+    private void FollowerAdd(string[] summonResult)
+    {
+        for(int i = 0; i< summonResult.Length;i++)
+        {
+            UserInvenFollowerData followerData = _followerDataManager.SearchFollower(summonResult[i]);
+            followerData.hasCount++;
         }
     }
 
