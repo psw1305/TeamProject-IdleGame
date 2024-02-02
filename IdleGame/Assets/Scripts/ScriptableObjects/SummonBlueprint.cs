@@ -18,6 +18,7 @@ public class SummonList : ScriptableObject
     [SerializeField] private string summonName;
     [SerializeField] private GameObject banner;
     [SerializeField] private string typeLink;
+    [SerializeField] private int countAddLimit;
 
     #endregion
 
@@ -32,6 +33,7 @@ public class SummonList : ScriptableObject
     public string SummonName => summonName;
     public GameObject Banner => banner;
     public string TypeLink => typeLink;
+    public int CountAddLimit => countAddLimit;
 
     #endregion
 }
@@ -49,22 +51,31 @@ public class ButtonInfo
     [SerializeField] private ResourceType resourceType;
     [SerializeField] private int amount;
     [SerializeField] private int summonCount;
+    [Tooltip("해당 버튼에서 별도로 실행할 동작이 있는 경우")]
+    [SerializeField] private bool onEvent;
     [Space(20)]
     [SerializeField] private bool isLimit;
     [SerializeField] private int limitCount;
     [Space(20)]
     [SerializeField] private bool isCoolDown;
-    [SerializeField] private int coolTime;
+    [Tooltip("string 형식입니다. HH:mm:ss")]
+    [SerializeField] private string coolTime;
 
     #endregion
 
     #region Properties
 
     public string BtnPrefab => btnPrefab;
+    public string BtnText => btnText;
     public PaymentType PaymentType => paymentType;
     public ResourceType ResourceType => resourceType;
     public int Amount => amount;
     public int SummonCount => summonCount;
+    public bool OnEvent => onEvent;
+    public bool IsLimit => isLimit;
+    public int LimitCount => limitCount;
+    public bool IsCoolDown => isCoolDown;
+    public string CoolTime => coolTime;
 
     #endregion
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   summonName: "\uC2A4\uD0AC"
   banner: {fileID: 6489463966578483684, guid: 1f0c7c44213b1f048aa5e4316bede5a0, type: 3}
   typeLink: Skills
+  countAddLimit: 24
   _buttonInfo:
   - btnPrefab: Btn_Summon_1
     btnText: "{}\uD68C \uC18C\uD658"
@@ -22,16 +23,18 @@ MonoBehaviour:
     resourceType: 0
     amount: 0
     summonCount: 11
+    onEvent: 1
     isLimit: 0
     limitCount: 0
-    isCoolDown: 0
-    coolTime: 0
+    isCoolDown: 1
+    coolTime: 00:02:30
   - btnPrefab: Btn_Summon_2
     btnText: "11\uD68C \uC18C\uD658"
     paymentType: 0
     resourceType: 1
     amount: 500
     summonCount: 11
+    onEvent: 0
     isLimit: 0
     limitCount: 0
     isCoolDown: 0
@@ -42,6 +45,7 @@ MonoBehaviour:
     resourceType: 1
     amount: 1500
     summonCount: 35
+    onEvent: 0
     isLimit: 0
     limitCount: 0
     isCoolDown: 0

@@ -32,9 +32,9 @@ public partial class SummonManager
     {
         _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
 
-        foreach (var i in _summonBlueprint.SummonLists)
+        foreach (var list in _summonBlueprint.SummonLists)
         {
-            TableInitalize(i.TypeLink);
+            TableInitalize(list);
         }
     }
 
@@ -78,15 +78,15 @@ public partial class SummonManager
         var curprobability = curLevelTable.Select(x => x.Key).ToArray();
 
         // 테스트 결과 확인용 배열 세팅
-        testResult = new int[curLevelTable.Count];
-        itemIndex = curLevelTable.Select(x => x.Value).ToArray();
+        //testResult = new int[curLevelTable.Count];
+        //itemIndex = curLevelTable.Select(x => x.Value).ToArray();
 
-        for (int i = 0; i < itemIndex.Length; i++)
-        {
-            indexResult[itemIndex[i]] = i;
-        }
+        //for (int i = 0; i < itemIndex.Length; i++)
+        //{
+        //    indexResult[itemIndex[i]] = i;
+        //}
 
-        int idx = 0;
+        int idx = 0; // 배열 인덱스
 
         while (count > 0)
         {
@@ -95,12 +95,13 @@ public partial class SummonManager
             //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");
             resultIdList.Add(index);
             // 확인용 획득 수 카운트 증가
-            indexResult.TryGetValue(index, out int result);
-            testResult[result]++;
+            //indexResult.TryGetValue(index, out int result);
+            //testResult[result]++;
             count--;
             idx++;
             if (summonTable.ApplySummonCount())
             {
+                // 이거 trygetvalue 다시 안해도 될듯 나중에 확인
                 SummonTables.TryGetValue(typeLink, out var newSummonTable);
                 curLevelTable = newSummonTable.GetProbabilityTable();
                 curprobability = curLevelTable.Select(x => x.Key).ToArray();
@@ -125,6 +126,7 @@ public partial class SummonManager
         popup.DataInit(finalResult);
         popup.PlayStart();
         _shopSummon.BannerUpdate(typeLink);
+        summonTable.ApplySummonCountAdd();
         summonResurt.Clear();
         resultIdList.Clear();
 

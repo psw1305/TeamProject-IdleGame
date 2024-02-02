@@ -8,18 +8,18 @@ public partial class SummonManager
     private SummonBlueprint _summonBlueprint;
     public Dictionary<string, SummonTable> SummonTables => _tables;
 
-    public void TableInitalize(string typeLink)
+    public void TableInitalize(SummonList summonList)
     {
         SummonTable table;
 
-        if (typeLink == "Equipment")
-            table = new(typeLink, Manager.Data.Profile.Summon_Progress_Equipment);
-        else if (typeLink == "Skills")
-            table = new(typeLink, Manager.Data.Profile.Summon_Progress_Skills);
+        if (summonList.TypeLink == "Equipment")
+            table = new(summonList, Manager.Data.Profile.Summon_Progress_Equipment);
+        else if (summonList.TypeLink == "Skills")
+            table = new(summonList, Manager.Data.Profile.Summon_Progress_Skills);
         else
-            table = new(typeLink, Manager.Data.Profile.Summon_Progress_Follower);
+            table = new(summonList, Manager.Data.Profile.Summon_Progress_Follower);
 
-        _tables[typeLink] = table;
+        _tables[summonList.TypeLink] = table;
     }
 
     public int GetSummonCounts(string key)
@@ -36,24 +36,30 @@ public class SummonTable
 
     private Dictionary<int, Dictionary<int, string>> probabilityTable = new();
     private List<int> _gradeUpCount;
+    private SummonList _summonList;
 
     #endregion
 
     #region Properties
 
+    // 유저 데이터 프로퍼티
     public int SummonGrade { get; private set; }
     public int SummonCounts { get; private set; }
+    public int SummonCountsAdd { get; private set; }
+
+    // 카운트 계산 프로퍼티
     public int GetCurCount => SummonCounts - _gradeUpCount[SummonGrade - 1];
     public int GetNextCount => _gradeUpCount[SummonGrade] - _gradeUpCount[SummonGrade - 1];
 
     #endregion
 
-    public SummonTable(string tableLink, int summonCounts)
+    public SummonTable(SummonList summonList, int summonCounts)
     {
         SummonCounts = summonCounts;
+        _summonList = summonList;
 
-        ProbabilityInit(tableLink);
-        GradeCountInit(tableLink);
+        ProbabilityInit(_summonList.TypeLink);
+        GradeCountInit(_summonList.TypeLink);
         SummonGradeInit();
     }
 
@@ -137,6 +143,14 @@ public class SummonTable
             return true;
         }
         return false;
+    }
+
+    public void ApplySummonCountAdd()
+    {
+        if (SummonCountsAdd < _summonList.CountAddLimit)
+        {
+            SummonCountsAdd++;
+        }
     }
 
     #endregion

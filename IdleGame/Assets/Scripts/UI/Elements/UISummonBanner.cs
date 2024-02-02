@@ -37,10 +37,13 @@ public class UISummonBanner : UIBase
     private void SetButtonEvents()
     {
         SetUI<Button>();
+        SetUI<UIBtn_Check_Gems>();
         for (int i = 0; i < _summonList.ButtonInfo.Count; i++)
         {
             var buttonInfo = _summonList.ButtonInfo[i];
-            SetButtonEvent(_summonList.ButtonInfo[i].BtnPrefab, UIEventType.Click, (eventData) => SummonBtn(eventData, buttonInfo));
+            var btnUI = GetUI<UIBtn_Check_Gems>(_summonList.ButtonInfo[i].BtnPrefab);
+            var button = SetButtonEvent(_summonList.ButtonInfo[i].BtnPrefab, UIEventType.Click, (eventData) => SummonBtn(eventData, buttonInfo));
+            btnUI.SetButtonUI(buttonInfo, button);
         }
     }
 
@@ -63,10 +66,14 @@ public class UISummonBanner : UIBase
     #region Button Events
     private void SummonBtn(PointerEventData eventData, ButtonInfo buttonInfo)
     {
-        if (buttonInfo.PaymentType == PaymentType.Resource)
+        int addcount = 0;
+
+        if (buttonInfo.OnEvent)
         {
-            _shopSummon.SummonTry(buttonInfo.ResourceType, buttonInfo.Amount, buttonInfo.SummonCount, _summonList.TypeLink);
+            addcount = _summonTable.SummonCountsAdd;
         }
+
+        _shopSummon.SummonTry(buttonInfo.ResourceType, buttonInfo.Amount, buttonInfo.SummonCount + addcount, _summonList.TypeLink);
     }
 
     #endregion
