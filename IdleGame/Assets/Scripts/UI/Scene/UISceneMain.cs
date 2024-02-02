@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class UISceneMain : UIScene
 {
@@ -20,7 +21,6 @@ public class UISceneMain : UIScene
 
     private TextMeshProUGUI txt_Gold;
     private TextMeshProUGUI txt_Gems;
-    private TextMeshProUGUI txt_Difficult;
     private TextMeshProUGUI txt_Stage;
 
     private Image Image_WaveLoop;
@@ -71,7 +71,6 @@ public class UISceneMain : UIScene
         
         txt_Gold = GetUI<TextMeshProUGUI>("Txt_Gold");
         txt_Gems = GetUI<TextMeshProUGUI>("Txt_Jewel");
-        txt_Difficult = GetUI<TextMeshProUGUI>("Txt_Difficult");
         txt_Stage = GetUI<TextMeshProUGUI>("Txt_Stage");
 
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
@@ -91,6 +90,7 @@ public class UISceneMain : UIScene
         _btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);
 
         SetButtonEvent("Btn_PlayerSystem", UIEventType.Click, OnPlayerSystem);
+        SetButtonEvent("Btn_Ranking", UIEventType.Click, OnRanking);
         SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
     }
 
@@ -104,12 +104,12 @@ public class UISceneMain : UIScene
         UpgradeStat_CriticalChance = GetUI<UIUpgradeStat>("Upgrade_Stat_CriticalChance");
         UpgradeStat_CriticalDamage = GetUI<UIUpgradeStat>("Upgrade_Stat_CriticalDamage");
 
-        UpgradeStat_Hp.SetUpgradeStat(player, player.Hp, OnHpUp);
-        UpgradeStat_HpRecovery.SetUpgradeStat(player, player.HpRecovery, OnHpRecoverUp);
-        UpgradeStat_AttackDamage.SetUpgradeStat(player, player.AtkDamage, OnAttackDamageUp);
-        UpgradeStat_AttackSpeed.SetUpgradeStat(player, player.AtkSpeed, OnAttackSpeedUp);
-        UpgradeStat_CriticalChance.SetUpgradeStat(player, player.CritChance, OnCriticalChanceUp);
-        UpgradeStat_CriticalDamage.SetUpgradeStat(player, player.CritDamage, OnCriticalDamageUp);
+        UpgradeStat_Hp.SetUpgradeStat(player.Hp);
+        UpgradeStat_HpRecovery.SetUpgradeStat(player.HpRecovery);
+        UpgradeStat_AttackDamage.SetUpgradeStat(player.AtkDamage);
+        UpgradeStat_AttackSpeed.SetUpgradeStat(player.AtkSpeed);
+        UpgradeStat_CriticalChance.SetUpgradeStat(player.CritChance);
+        UpgradeStat_CriticalDamage.SetUpgradeStat(player.CritDamage);
     }
 
     private void SetUI()
@@ -198,6 +198,7 @@ public class UISceneMain : UIScene
     private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("UIDropDownOptions");
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
     private void OnPlayerSystem(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupPlayerSystem>();
+    private void OnRanking(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupRanking>();
     private void OnShop(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupShopSummon>();
 
     private void OnGameSpeed(PointerEventData eventData)
@@ -213,19 +214,6 @@ public class UISceneMain : UIScene
             UpdateQuestObjective();
         }
     }
-
-    // 스탯 증가 버튼 이벤트
-    private void OnHpUp(PointerEventData eventData)
-    {
-        AudioSFX.Instance.PlayOneShot(Manager.Resource.GetAudio("14_item2"));
-        UpgradeStat_Hp.UpdateUpgradeStat(player.Hp);
-    }
-
-    private void OnHpRecoverUp(PointerEventData eventData) => UpgradeStat_HpRecovery.UpdateUpgradeStat(player.HpRecovery);
-    private void OnAttackDamageUp(PointerEventData eventData) => UpgradeStat_AttackDamage.UpdateUpgradeStat(player.AtkDamage);
-    private void OnAttackSpeedUp(PointerEventData eventData) => UpgradeStat_AttackSpeed.UpdateUpgradeStat(player.AtkSpeed);
-    private void OnCriticalChanceUp(PointerEventData eventData) => UpgradeStat_CriticalChance.UpdateUpgradeStat(player.CritChance);
-    private void OnCriticalDamageUp(PointerEventData eventData) => UpgradeStat_CriticalDamage.UpdateUpgradeStat(player.CritDamage);
 
     #endregion
 
@@ -243,13 +231,12 @@ public class UISceneMain : UIScene
 
     public void UpdateCurrentStage()
     {
-        txt_Difficult.text = ($"{Manager.Stage.DifficultyStr}");
-        txt_Stage.text = ($"{Manager.Stage.ChapterStr}");
+        txt_Stage.text = ($"{Manager.Stage.DifficultyStr} {Manager.Stage.Chapter}");
     }
 
     public void UpdateQuestNum()
     {
-        _txtQuestNum.text = ($"Quest No.{Manager.Quest.QuestNum + 1}");
+        _txtQuestNum.text = ($"퀘스트 {Manager.Quest.QuestNum + 1}");
     }
 
     public void UpdateQuestObjective()
@@ -291,7 +278,7 @@ public class UISceneMain : UIScene
     {
         if(Manager.Quest.CurrentQuest.questType == QuestType.StageClear)
         {
-            return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.objectiveValue} - 0");
+            return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.objectiveValue}");
         }
         else
         {

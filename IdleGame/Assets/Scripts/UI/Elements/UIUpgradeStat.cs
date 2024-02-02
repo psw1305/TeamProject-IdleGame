@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -6,30 +7,56 @@ using TMPro;
 
 public class UIUpgradeStat : MonoBehaviour
 {
+    #region Serialize Field
+
     [SerializeField] private TextMeshProUGUI textStatLevel;
     [SerializeField] private TextMeshProUGUI textStatValue;
     [SerializeField] private TextMeshProUGUI textUpdateCost;
     [SerializeField] private Button btnUpgradeStat;
     [SerializeField] private QuestType questType;
-    private Player player;
 
-    public void SetUpgradeStat(Player player, StatInfo statInfo, Action<PointerEventData> action)
+    #endregion
+
+    #region Field
+
+    private Player player;
+    private StatInfo statInfo;
+
+    private bool isPointerDown = false;
+    private bool isHoldPressed = false;
+    private bool isUpgradeRoutine = false;
+    private DateTime pressTime;
+    private float upgradeDelay = 0.05f;
+
+    #endregion
+
+    public void SetUpgradeStat(StatInfo statInfo)
     {
-        this.player = player;
+        this.player = Manager.Game.Player;
+        this.statInfo = statInfo;
 
         textStatLevel.text = $"Lv. {statInfo.Level}";
         textStatValue.text = statInfo.GetString();
         textUpdateCost.text = statInfo.UpgradeCost.ToString();
 
-        btnUpgradeStat.gameObject.SetEvent(UIEventType.Click, action);
-        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerDown, PointerDown);
-        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerUp, PointerUp);
+        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerDown, OnPointerDown);
+        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerUp, OnPointerUp);
     }
 
-    public void UpdateUpgradeStat(StatInfo statInfo)
+    private void Update()
+    {
+        if (isHoldPressed && !isUpgradeRoutine)
+        {
+            StartCoroutine(UpgradeRoutine());
+        }
+    }
+
+    public void UpdateUpgradeStat()
     {
         if (player.IsTradeGold(statInfo.UpgradeCost))
         {
+            AudioSFX.Instance.PlayOneShot(Manager.Resource.GetAudio("14_item2"));
+
             statInfo.AddModifier();
 
             UpdateQuestObjective();
@@ -56,13 +83,49 @@ public class UIUpgradeStat : MonoBehaviour
         }
     }
 
-    private void PointerDown(PointerEventData eventData)
+    private IEnumerator HoldPressListener()
     {
-        player.CheckClick(true);
+        while (isPointerDown)
+        {
+            double elapsedSeconds = (DateTime.Now - pressTime).TotalSeconds;
+
+            if (elapsedSeconds >= 0.25f && !isHoldPressed)
+            {
+                isHoldPressed = true;
+            }
+            else if (elapsedSeconds >= 2.5f && isHoldPressed)
+            {
+                upgradeDelay = 0.01f;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
-    private void PointerUp(PointerEventData eventData)
+    private IEnumerator UpgradeRoutine()
     {
-        player.CheckClick(false);
+        isUpgradeRoutine = true;
+
+        UpdateUpgradeStat();
+        yield return new WaitForSeconds(upgradeDelay);
+
+        isUpgradeRoutine = false;
+    }
+
+    private void OnPointerDown(PointerEventData eventData)
+    {
+        isPointerDown = true;
+        pressTime = DateTime.Now;
+        StartCoroutine(HoldPressListener());
+    }
+
+    private void OnPointerUp(PointerEventData eventData)
+    {
+        if (!isHoldPressed) UpdateUpgradeStat();
+
+        isPointerDown = false;
+        isHoldPressed = false;
+        upgradeDelay = 0.05f;
     }
 }

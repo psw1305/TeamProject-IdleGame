@@ -23,9 +23,6 @@ public class TestScenePSW : BaseScene
 
         Manager.Game.GameStart();
 
-        // 세션 생성 후 => 전투 시작
-        //Manager.Session.Initialize("test-psw");
-
         return true;
     }
 

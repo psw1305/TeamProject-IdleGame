@@ -35,7 +35,6 @@ public class StageManager
 
     // 스테이지 정보 로드용 프로퍼티
     public string DifficultyStr => _stageData.Difficulty;
-    public string ChapterStr => _stageData.Chapter;
     public StageBlueprint StageConfig => Manager.Resource.GetBlueprint(_stageData.StageConfig) as StageBlueprint;
     public string StageBackground => string.Empty;
     public int EnemyStatRate => _stageData.EnemyStatRate;

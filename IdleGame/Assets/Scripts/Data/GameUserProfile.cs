@@ -34,7 +34,6 @@ public class GameUserProfile
     [FirestoreProperty] public int Stat_Level_HpRecovery { get; set; }
 
     // Stages
-    [FirestoreProperty] public int Stage_Difficulty { get; set; }
     [FirestoreProperty] public int Stage_Chapter { get; set; }
     [FirestoreProperty] public int Stage_Level { get; set; }
     [FirestoreProperty] public bool Stage_WaveLoop { get; set; }

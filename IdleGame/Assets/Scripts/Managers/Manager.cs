@@ -44,6 +44,7 @@ public class Manager : MonoBehaviour
     private readonly ObjectPoolManager objectPool = new();
     private readonly SkillDataManager skillData = new();
     private readonly FollowerDataManager followerData = new();
+    private readonly RankingManager ranking = new();
 
     public static ResourceManager Resource => Instance != null ? Instance.resource : null;
     public static SessionManager Session => Instance != null ? Instance.session : null;
@@ -58,5 +59,6 @@ public class Manager : MonoBehaviour
     public static ObjectPoolManager ObjectPool => Instance != null ? Instance.objectPool : null;
     public static SkillDataManager SkillData => Instance != null ? Instance.skillData : null;
     public static FollowerDataManager FollowerData => Instance != null ? Instance.followerData : null;
+    public static RankingManager Ranking => Instance != null ? Instance.ranking : null;
     #endregion
 }
