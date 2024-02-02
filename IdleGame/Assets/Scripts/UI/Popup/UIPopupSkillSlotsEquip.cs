@@ -18,16 +18,15 @@ public class UIPopupSkillSlotsEquip : MonoBehaviour
     {
         _userInvenSkillData = userInvenSkillData;
         levelText.text = $"Lv.{userInvenSkillData.level}";
-        if (Manager.Resource.GetSprite(userInvenSkillData.itemID) == null)
-        {
-            skillIcon.gameObject.SetActive(false);
-        }
-        else
-        {
+
             skillIcon.gameObject.SetActive(true);
             skillIcon.sprite = Manager.Resource.GetSprite(userInvenSkillData.itemID);
-        }
-        
+    }
+
+    public void SetSlotEmpty()
+    {
+        levelText.text = string.Empty;
+        skillIcon.gameObject.SetActive(false);
     }
 
     private void ShowPopupSkillDetailInfo()

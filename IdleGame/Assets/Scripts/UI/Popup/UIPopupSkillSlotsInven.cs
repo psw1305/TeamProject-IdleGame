@@ -101,7 +101,7 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
         }
     }
 
-    private void SetUIReinforceIcon()
+    public void SetUIReinforceIcon()
     {
         if (SkillData.hasCount >= _needCount)
         {

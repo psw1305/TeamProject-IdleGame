@@ -12,31 +12,39 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
             slots.Add(slot);
         }
         InitChildSlot();
-        Manager.SkillData.SetUISkillEquip += InitChildSlot;
+        Manager.SkillData.SetSkillUIEquipSlot += SetChildSlot;
     }
 
     private void InitChildSlot()
     {
-        for (int i = 0; i <Manager.Data.UserSkillData.UserEquipSkill.Count; i++)
+        for (int i = 0; i < Manager.Data.UserSkillData.UserEquipSkill.Count; i++)
         {
             if (Manager.Data.UserSkillData.UserEquipSkill[i].itemID == "Empty")
-            {
-                continue;
-            }
-            slots[i].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[i].itemID]);
+                slots[i].SetSlotEmpty();
+            else
+                slots[i].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[i].itemID]);
         }
     }
-
-    private void SetChildSlot(int index)
+    /// <summary>
+    /// 특정 인덱스의 스킬 장착 슬롯 정보를 세팅합니다.
+    /// </summary>
+    /// <param name="index"></param>
+    private void SetChildSlot(int? index)
     {
-
+        if (index == null)
+            return;
+        if (Manager.Data.UserSkillData.UserEquipSkill[index.Value].itemID == "Empty")
+            slots[index.Value].SetSlotEmpty();
+        else
+            slots[index.Value].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[index.Value].itemID]);
+        Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index.Value);
     }
 
     private void OnDestroy()
     {
-          if (Manager.SkillData != null)
+        if (Manager.SkillData != null)
         {
-            Manager.SkillData.SetUISkillEquip -= InitChildSlot;
+            Manager.SkillData.SetSkillUIEquipSlot -= SetChildSlot;
         }
     }
 }

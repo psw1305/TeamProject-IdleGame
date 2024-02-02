@@ -23,10 +23,16 @@ public class SkillDataManager
         ParseSkillData();
     }
 
-    public event Action SetUISkillEquip;
-    public void InvokeActionUISkillEquip()
+    public event Action<int?> SetSkillUIEquipSlot;
+    public event Action<string> SetSkillUIInvenSlot;
+
+    public void CallSetUISkillEquipSlot(int? index)
     {
-        SetUISkillEquip?.Invoke();
+        SetSkillUIEquipSlot?.Invoke(index);
+    }
+    public void CallSetUISkillInvenSlot(string id)
+    {
+        SetSkillUIInvenSlot.Invoke(id);
     }
 
 
@@ -37,6 +43,10 @@ public class SkillDataManager
 
     public int? EquipSkill(UserInvenSkillData userInvenSkillData)
     {
+        if (userInvenSkillData.level == 1 && userInvenSkillData.hasCount == 0)
+        {
+            return null;
+        }
         int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty");
         if (index > -1)
         {
@@ -51,13 +61,30 @@ public class SkillDataManager
     {
         int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == userInvenSkillData.itemID);
         Manager.Data.UserSkillData.UserEquipSkill[index].itemID = "Empty";
+        userInvenSkillData.equipped = false;
         return index;
     }
 
-    public void ChangeSkill()
+    public void ReinforceSkill(UserInvenSkillData userInvenSkillData)
     {
-
+        if (userInvenSkillData.hasCount < Mathf.Min(userInvenSkillData.level + 1, 15))
+        {
+            return;
+        }
+        while (userInvenSkillData.hasCount >= Mathf.Min(userInvenSkillData.level + 1, 15))
+        {
+            userInvenSkillData.hasCount -= Mathf.Min(userInvenSkillData.level + 1, 15);
+            userInvenSkillData.level += 1;
+        }
     }
+    public void ReinforceAllSkill()
+    {
+        foreach (var item in Manager.Data.UserSkillData.UserInvenSkill)
+        {
+            ReinforceSkill(item);
+        }
+    }
+
 }
 
 [System.Serializable]

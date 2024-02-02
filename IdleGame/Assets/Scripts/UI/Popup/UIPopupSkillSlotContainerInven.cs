@@ -6,7 +6,7 @@ public class UIPopupSkillSlotContainerInven : MonoBehaviour
 {
     #region Fields
 
-    public List<GameObject> SkillSlots = new List<GameObject>();
+    public Dictionary<string, UIPopupSkillSlotsInven> SkillSlots = new Dictionary<string, UIPopupSkillSlotsInven>();
     public GameObject itemInfoUI;
     private ScrollRect scrollRect;
 
@@ -25,8 +25,9 @@ public class UIPopupSkillSlotContainerInven : MonoBehaviour
     {
         MainPopupUI = Manager.UI.CurrentPopup as UIPopupSkill;
         InitSlot();
-        MainPopupUI.RefreshReinforecEvent += SetSkillSlotUI;
-        MainPopupUI.RefreshReinforecEvent += SetSkillSlotReinforceUI;
+
+        Manager.SkillData.SetSkillUIInvenSlot += SetUISlotEquipState;
+        Manager.SkillData.SetSkillUIInvenSlot += SetUISlotReinforceState;
     }
     #endregion
 
@@ -44,30 +45,49 @@ public class UIPopupSkillSlotContainerInven : MonoBehaviour
 
         foreach (var itemData in Manager.Data.UserSkillData.UserInvenSkill)
         {
-            GameObject slot = Manager.Resource.InstantiatePrefab("Img_SkillSlot", gameObject.transform);
-            SkillSlots.Add(slot);
-            slot.GetComponent<UIPopupSkillSlotsInven>().InitSlotInfo(itemData);
-            slot.GetComponent<UIPopupSkillSlotsInven>().InitSlotUI();
-            slot.GetComponent<UIPopupSkillSlotsInven>().SetUIEquipState();
-            slot.GetComponent<UIPopupSkillSlotsInven>().SetReinforceUI();
+            UIPopupSkillSlotsInven slot = Manager.Resource.InstantiatePrefab("Img_SkillSlot", gameObject.transform).GetComponent<UIPopupSkillSlotsInven>();
+            SkillSlots.Add(itemData.itemID, slot);
+            slot.InitSlotInfo(itemData);
+            slot.InitSlotUI();
+            slot.SetUIEquipState();
+            slot.SetReinforceUI();
         }
 
         ResetOnScrollTop();
     }
 
     //슬롯에 장착 여부를 춫력하기 위한 메서드
-    public void SetSkillSlotUI()
+    public void SetUISlotEquipState()
     {
         foreach (var slot in SkillSlots)
         {
-            slot.GetComponent<UIPopupSkillSlotsInven>().SetUIEquipState();
+            slot.Value.SetUIEquipState();
         }
     }
-    public void SetSkillSlotReinforceUI()
+    public void SetUISlotEquipState(string id)
+    {
+        SkillSlots[id].SetUIEquipState();
+    }
+
+    public void SetUISlotReinforceState()
     {
         foreach (var slot in SkillSlots)
         {
-            slot.GetComponent<UIPopupSkillSlotsInven>().SetReinforceUI();
+            slot.Value.SetReinforceUI();
+        }
+    }
+    public void SetUISlotReinforceState(string id)
+    {
+        SkillSlots[id].SetReinforceData();
+        SkillSlots[id].SetUIReinforceIcon();
+    }
+
+    private void OnDestroy()
+    {
+        if (Manager.SkillData != null)
+        {
+            Manager.SkillData.SetSkillUIInvenSlot -= SetUISlotEquipState;
+            Manager.SkillData.SetSkillUIInvenSlot -= SetUISlotReinforceState;
         }
     }
 

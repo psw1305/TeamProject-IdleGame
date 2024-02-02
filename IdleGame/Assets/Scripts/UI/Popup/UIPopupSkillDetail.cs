@@ -127,20 +127,26 @@ public class UIPopupSkillDetail : UIPopup
     private void EquipSkill(PointerEventData eventData)
     {
         SetEquipBtn();
-        Manager.SkillData.EquipSkill(_data);
-        Manager.SkillData.InvokeActionUISkillEquip();
+
+        Manager.SkillData.CallSetUISkillEquipSlot(Manager.SkillData.EquipSkill(_data));
+        Manager.SkillData.CallSetUISkillInvenSlot(_data.itemID);
         Manager.UI.ClosePopup();
     }
     private void UnequipSkill(PointerEventData eventData)
     {
         SetEquipBtn();
-        Manager.SkillData.UnEquipSkill(_data);
-        Manager.SkillData.InvokeActionUISkillEquip();
+
+        Manager.SkillData.CallSetUISkillEquipSlot(Manager.SkillData.UnEquipSkill(_data));
+        Manager.SkillData.CallSetUISkillInvenSlot(_data.itemID);
         Manager.UI.ClosePopup();
     }
     private void ReinforceSkill(PointerEventData eventData)
     {
+        Manager.SkillData.ReinforceSkill(_data);
+        Manager.SkillData.CallSetUISkillInvenSlot(_data.itemID);
+
         SetReinforceBtn();
+        SetUIReinforce();
     }
 
     private void ClosePopup(PointerEventData eventData)
