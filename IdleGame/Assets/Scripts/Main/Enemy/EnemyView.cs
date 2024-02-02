@@ -124,6 +124,9 @@ public class EnemyView : UIBase
             _onHpBarCoroutine = null;
         }
 
+        _decreasePerFrame = 0f;
+        _timer = 0f;
+
         _isDead = true;
     }
 
@@ -156,6 +159,7 @@ public class EnemyView : UIBase
         {
             _hpBarDamage.fillAmount = _hpBar.fillAmount;
         }
+        _decreasePerFrame = 0f;
         _damageEffectCoroutine = null;
         yield break;
     }

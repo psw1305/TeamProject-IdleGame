@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 7689737339143370588}
   - component: {fileID: 8700287385564247101}
   - component: {fileID: 2684770413831807956}
+  - component: {fileID: -258345665483881943}
   m_Layer: 5
   m_Name: Btn_Check_Gems
   m_TagString: Untagged
@@ -331,6 +332,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-258345665483881943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859887435918762461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f775b4a7b73e9444c97a6277ca181ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5983515633994279577
 GameObject:
   m_ObjectHideFlags: 0

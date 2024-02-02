@@ -5,8 +5,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SummonConfig", menuName = "Blueprints/SummonConfig")]
 public class SummonBlueprint : ScriptableObject
 {
+    #region Serialize Fields
+
     [SerializeField] private List<SummonList> summonLists = new List<SummonList>();
 
+    #endregion
+
+    #region Properties
+
     public List<SummonList> SummonLists => summonLists;
+
+    #endregion
 }
 
