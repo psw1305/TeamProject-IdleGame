@@ -39,14 +39,3 @@ MonoBehaviour:
     limitCount: 0
     isCoolDown: 0
     coolTime: 00:01:00
-  - btnPrefab: Btn_Summon_Repeat
-    btnText: "35\uD68C \uC5F0\uC18D\uC18C\uD658"
-    paymentType: 0
-    resourceType: 1
-    amount: 1500
-    summonCount: 35
-    onEvent: 1
-    isLimit: 0
-    limitCount: 0
-    isCoolDown: 0
-    coolTime: 0

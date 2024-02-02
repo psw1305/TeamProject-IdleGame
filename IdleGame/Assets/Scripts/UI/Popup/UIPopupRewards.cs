@@ -76,7 +76,7 @@ public class UIPopupRewards : UIPopup
         {
             var buttonInfo = _summonList.ButtonInfo[i];
             var sourceButtonInfo = summonList.ButtonInfo.Find(x => x.BtnPrefab == buttonInfo.BtnPrefab);
-            // 원래 있던 summonList를 받아올 경우
+            // 이름이 같은 buttoninfo가 있으면 그걸로 적용
             if (summonList.ButtonInfo.Contains(sourceButtonInfo))
             {
                 buttonInfo = sourceButtonInfo;
@@ -86,9 +86,12 @@ public class UIPopupRewards : UIPopup
             Manager.Summon.SummonTables.TryGetValue(summonList.TypeLink, out var summonTable);
             // TODO : 창 닫히는것 까지 연결하기
             var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, ClosePopup);
-            button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, eventdata => Manager.Summon.SummonTry(0, summonList.TypeLink, btnUI));
+            button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, (eventdata) => Manager.Summon.SummonTry(0, summonList.TypeLink, btnUI));
             btnUI.SetButtonUI(buttonInfo, button, summonTable.SummonCountsAdd);
         }
+
+        // 반복 버튼 연결
+        SetButtonEvent("Btn_Summon_Repeat", UIEventType.Click, ClosePopup);
     }
 
     #endregion

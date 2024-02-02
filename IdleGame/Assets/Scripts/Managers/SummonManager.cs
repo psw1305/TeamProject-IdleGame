@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -47,7 +48,7 @@ public partial class SummonManager
 
     #region Summon
 
-    public void SummonTry(int addcount, string tableLink, UIBtn_Check_Gems btnUI)
+    public bool SummonTry(int addcount, string tableLink, UIBtn_Check_Gems btnUI)
     {
         switch (btnUI.ButtonInfo.ResourceType)
         {
@@ -61,6 +62,7 @@ public partial class SummonManager
                         summonTable.ApplySummonCountAdd();
                     }
                     Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
+                    return true;
                 }
                 break;
             case ResourceType.Gems:
@@ -73,9 +75,11 @@ public partial class SummonManager
                         summonTable.ApplySummonCountAdd();
                     }
                     Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
+                    return true;
                 }
                 break;
         }
+        return false;
     }
 
     private void Summon(int count, string typeLink)
@@ -157,6 +161,19 @@ public partial class SummonManager
         {
             UserItemData itemData = _inventoryManager.SearchItem(summonResult[i]);
             itemData.hasCount++;
+        }
+    }
+
+    #endregion
+
+    #region Summon Repeat
+
+    private IEnumerator SummonRepeat(string tableLink, UIBtn_Check_Gems btnUI)
+    {
+        yield return new WaitForSeconds(1.0f);
+        if (!SummonTry(0, tableLink, btnUI))
+        {
+            yield break;
         }
     }
 
