@@ -14,6 +14,7 @@ public class UIPopupRewards : UIPopup
     private GameObject _outbox;
     private Button _closeBtn;
     private string[] itemData;
+    private SummonList _summonList;
 
     private bool _isSkip = false;
 
@@ -64,6 +65,30 @@ public class UIPopupRewards : UIPopup
     public void DataInit(string[] itemDatas)
     {
         itemData = itemDatas;
+    }
+
+    public void SummonButtonInit(SummonList summonList)
+    {
+        _summonList = Manager.Resource.GetBlueprint("SummonRewards") as SummonList;
+        SetUI<Button>();
+        SetUI<UIBtn_Check_Gems>();
+        for (int i = 0; i < _summonList.ButtonInfo.Count; i++)
+        {
+            var buttonInfo = _summonList.ButtonInfo[i];
+            var sourceButtonInfo = summonList.ButtonInfo.Find(x => x.BtnPrefab == buttonInfo.BtnPrefab);
+            // 원래 있던 summonList를 받아올 경우
+            if (summonList.ButtonInfo.Contains(sourceButtonInfo))
+            {
+                buttonInfo = sourceButtonInfo;
+            }
+            // 아닐 경우 원본에서
+            var btnUI = GetUI<UIBtn_Check_Gems>(buttonInfo.BtnPrefab);
+            Manager.Summon.SummonTables.TryGetValue(summonList.TypeLink, out var summonTable);
+            // TODO : 창 닫히는것 까지 연결하기
+            var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, ClosePopup);
+            button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, eventdata => Manager.Summon.SummonTry(0, summonList.TypeLink, btnUI));
+            btnUI.SetButtonUI(buttonInfo, button, summonTable.SummonCountsAdd);
+        }
     }
 
     #endregion

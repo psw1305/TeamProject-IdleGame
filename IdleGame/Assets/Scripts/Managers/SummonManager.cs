@@ -137,10 +137,12 @@ public partial class SummonManager
 
         // 최종 획득한 아이템 목록 배열 출력 후 인벤토리에 넣고 팝업 실행
         string[] finalResult = resultIdList.ToArray();
+        // TODO : typeLink에 따라 item Add하는 메소드 다르게 연결
         EquipmentAdd(finalResult);
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
         popup.DataInit(finalResult);
         popup.PlayStart();
+        popup.SummonButtonInit(summonTable.SummonList);
         _shopSummon.BannerUpdate(typeLink, summonTable.SummonCountsAdd);
         summonResurt.Clear();
         resultIdList.Clear();

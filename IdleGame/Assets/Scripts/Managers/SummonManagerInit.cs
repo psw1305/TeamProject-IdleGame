@@ -50,6 +50,7 @@ public class SummonTable
     // 카운트 계산 프로퍼티
     public int GetCurCount => SummonCounts - _gradeUpCount[SummonGrade - 1];
     public int GetNextCount => _gradeUpCount[SummonGrade] - _gradeUpCount[SummonGrade - 1];
+    public SummonList SummonList => _summonList;
 
     #endregion
 
