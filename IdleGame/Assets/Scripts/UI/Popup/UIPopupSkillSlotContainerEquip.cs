@@ -12,7 +12,7 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
             slots.Add(slot);
         }
         InitChildSlot();
-        Manager.SkillData.SetSkillUIEquipSlot += SetChildSlot;
+        Manager.SkillData.AddSetSkillUIEquipSlot(SetChildSlot);
     }
 
     private void InitChildSlot()
@@ -44,7 +44,7 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
     {
         if (Manager.SkillData != null)
         {
-            Manager.SkillData.SetSkillUIEquipSlot -= SetChildSlot;
+            Manager.SkillData.RemoveSetSkillUIEquipSlot(SetChildSlot);
         }
     }
 }

@@ -26,8 +26,8 @@ public class UIPopupSkillSlotContainerInven : MonoBehaviour
         MainPopupUI = Manager.UI.CurrentPopup as UIPopupSkill;
         InitSlot();
 
-        Manager.SkillData.SetSkillUIInvenSlot += SetUISlotEquipState;
-        Manager.SkillData.SetSkillUIInvenSlot += SetUISlotReinforceState;
+        Manager.SkillData.AddSetSkillUIInvenSlot(SetUISlotEquipState);
+        Manager.SkillData.AddSetSkillUIInvenSlot(SetUISlotReinforceState);
     }
     #endregion
 
@@ -86,8 +86,8 @@ public class UIPopupSkillSlotContainerInven : MonoBehaviour
     {
         if (Manager.SkillData != null)
         {
-            Manager.SkillData.SetSkillUIInvenSlot -= SetUISlotEquipState;
-            Manager.SkillData.SetSkillUIInvenSlot -= SetUISlotReinforceState;
+            Manager.SkillData.RemoveSetSkillUIInvenSlot(SetUISlotEquipState);
+            Manager.SkillData.RemoveSetSkillUIInvenSlot(SetUISlotReinforceState);
         }
     }
 

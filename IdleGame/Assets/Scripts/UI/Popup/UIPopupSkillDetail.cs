@@ -13,6 +13,7 @@ public class UIPopupSkillDetail : UIPopup
     private TextMeshProUGUI _nameText;
     private TextMeshProUGUI _rarityText;
 
+    private TextMeshProUGUI _descriptionText;
     private TextMeshProUGUI _levelText;
 
     private TextMeshProUGUI _reinforceProgressText;
@@ -64,6 +65,7 @@ public class UIPopupSkillDetail : UIPopup
         _rarityText = GetUI<TextMeshProUGUI>("Text_Rarity");
         _levelText = GetUI<TextMeshProUGUI>("Text_Lv");
         _reinforceProgressText = GetUI<TextMeshProUGUI>("Text_hasCount");
+        _descriptionText = GetUI<TextMeshProUGUI>("Text_Description");
         _retentionEffectText = GetUI<TextMeshProUGUI>("Text_RetentionStat");
     }
 
@@ -86,9 +88,6 @@ public class UIPopupSkillDetail : UIPopup
         _nameText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].skillName;
         _rarityText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].rarity;
 
-        _levelText.text = _data.level.ToString();
-
-        _retentionEffectText.text = "dummy";
         SetUIReinforce();
     }
 
@@ -104,6 +103,10 @@ public class UIPopupSkillDetail : UIPopup
         CalculateReinforceNeedCount();
         _reinforceProgressText.text = $"{_data.hasCount} / {_needCount}";
         _reinforceProgressSprite.fillAmount = (float)_data.hasCount / _needCount;
+        _descriptionText.text = 
+            $" {Manager.SkillData.SkillDataDictionary[_data.itemID].skillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].reinforceDamage * (_data.level - 1)}% {Manager.SkillData.SkillDataDictionary[_data.itemID].description}";
+        _retentionEffectText.text = 
+            $"{Manager.SkillData.SkillDataDictionary[_data.itemID].retentionEffect + Manager.SkillData.SkillDataDictionary[_data.itemID].reinforceEffect * (_data.level - 1)} % ";
     }
 
     private void SetReinforceBtn()

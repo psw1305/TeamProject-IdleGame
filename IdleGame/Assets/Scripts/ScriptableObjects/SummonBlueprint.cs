@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,32 +6,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SummonList", menuName = "Blueprints/SummonList")]
 public class SummonList : ScriptableObject
 {
+    #region Properties
+
+    public List<ButtonInfo> ButtonInfo => _buttonInfo;
+
+    #endregion
+
     #region Fields
 
     [Header("Info")]
     [SerializeField] private string summonName;
     [SerializeField] private GameObject banner;
     [SerializeField] private string typeLink;
+    [SerializeField] private int countAddLimit;
 
-    [Header("Button Info")]
-    [Header("Button 1")]
-    [Tooltip("속성을 연결할 버튼 프리팹 이름")]
-    [SerializeField] private string btnPrefab_1;
-    [SerializeField] private ResourceType paymentType_1;
-    [SerializeField] private int amount_1;
-    [SerializeField] private int summonCount_1;
+    #endregion
 
-    [Header("Button 2")]
-    [SerializeField] private string btnPrefab_2;
-    [SerializeField] private ResourceType paymentType_2;
-    [SerializeField] private int amount_2;
-    [SerializeField] private int summonCount_2;
+    #region Serialize Fields
 
-    [Header("Button 3")]
-    [SerializeField] private string btnPrefab_3;
-    [SerializeField] private ResourceType paymentType_3;
-    [SerializeField] private int amount_3;
-    [SerializeField] private int summonCount_3;
+    [SerializeField] private List<ButtonInfo> _buttonInfo = new List<ButtonInfo>();
 
     #endregion
 
@@ -39,22 +33,49 @@ public class SummonList : ScriptableObject
     public string SummonName => summonName;
     public GameObject Banner => banner;
     public string TypeLink => typeLink;
+    public int CountAddLimit => countAddLimit;
 
-    public string BtnPrefab_1 => btnPrefab_1;
-    public ResourceType PaymentType_1 => paymentType_1;
-    public int Amount_1 => amount_1;
-    public int SummonCount_1 => summonCount_1;
+    #endregion
+}
 
-    public string BtnPrefab_2 => btnPrefab_2;
-    public ResourceType PaymentType_2 => paymentType_2;
-    public int Amount_2 => amount_2;
-    public int SummonCount_2 => summonCount_2;
+[Serializable]
+public class ButtonInfo
+{
+    #region Serialize Fields
 
-    public string BtnPrefab_3 => btnPrefab_3;
-    public ResourceType PaymentType_3 => paymentType_3;
-    public int Amount_3 => amount_3;
-    public int SummonCount_3 => summonCount_3;
+    [Tooltip("스크립트와 연결할 오브젝트의 이름을 정확히 적어주세요")]
+    [SerializeField] private string btnPrefab;
+    [Tooltip("인게임에서 표기될 버튼 텍스트")]
+    [SerializeField] private string btnText;
+    [SerializeField] private PaymentType paymentType;
+    [SerializeField] private ResourceType resourceType;
+    [SerializeField] private int amount;
+    [SerializeField] private int summonCount;
+    [Tooltip("해당 버튼에서 별도로 실행할 동작이 있는 경우")]
+    [SerializeField] private bool onEvent;
+    [Space(20)]
+    [SerializeField] private bool isLimit;
+    [SerializeField] private int limitCount;
+    [Space(20)]
+    [SerializeField] private bool isCoolDown;
+    [Tooltip("string 형식입니다. HH:mm:ss")]
+    [SerializeField] private string coolTime;
 
+    #endregion
+
+    #region Properties
+
+    public string BtnPrefab => btnPrefab;
+    public string BtnText => btnText;
+    public PaymentType PaymentType => paymentType;
+    public ResourceType ResourceType => resourceType;
+    public int Amount => amount;
+    public int SummonCount => summonCount;
+    public bool OnEvent => onEvent;
+    public bool IsLimit => isLimit;
+    public int LimitCount => limitCount;
+    public bool IsCoolDown => isCoolDown;
+    public string CoolTime => coolTime;
 
     #endregion
 }

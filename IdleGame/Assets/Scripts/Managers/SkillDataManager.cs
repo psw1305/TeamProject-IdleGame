@@ -7,6 +7,7 @@ public class SkillDataManager
     private string _skillDataBaseText;
     private SkillDataBase _skillData;
     private Dictionary<string, SkillData> _skillDataDictionary = new();
+
     public Dictionary<string, SkillData> SkillDataDictionary => _skillDataDictionary;
 
     public void ParseSkillData()
@@ -18,13 +19,31 @@ public class SkillDataManager
             _skillDataDictionary.Add(skillData.itemID, skillData);
         }
     }
+
     public void InitSkill()
     {
         ParseSkillData();
     }
 
-    public event Action<int?> SetSkillUIEquipSlot;
-    public event Action<string> SetSkillUIInvenSlot;
+    private event Action<int?> SetSkillUIEquipSlot;
+    private event Action<string> SetSkillUIInvenSlot;
+
+    public void AddSetSkillUIEquipSlot(Action<int?> handler)
+    {
+        SetSkillUIEquipSlot += handler;
+    }
+    public void RemoveSetSkillUIEquipSlot(Action<int?> handler)
+    {
+        SetSkillUIEquipSlot -= handler;
+    }
+    public void AddSetSkillUIInvenSlot(Action<string> handler)
+    {
+        SetSkillUIInvenSlot += handler;
+    }
+    public void RemoveSetSkillUIInvenSlot(Action<string> handler)
+    {
+        SetSkillUIInvenSlot -= handler;
+    }
 
     public void CallSetUISkillEquipSlot(int? index)
     {
@@ -34,7 +53,6 @@ public class SkillDataManager
     {
         SetSkillUIInvenSlot.Invoke(id);
     }
-
 
     public bool CheckEquipSkill(UserInvenSkillData userInvenSkillData)
     {
@@ -77,6 +95,12 @@ public class SkillDataManager
             userInvenSkillData.level += 1;
         }
     }
+
+    public UserInvenSkillData SearchSkill(string id)
+    {
+        return Manager.Data.SkillInvenDictionary[id];
+    }
+
     public void ReinforceAllSkill()
     {
         foreach (var item in Manager.Data.UserSkillData.UserInvenSkill)
@@ -121,6 +145,7 @@ public class SkillData
 {
     public string itemID;
     public string skillName;
+    public string description;
     public string rarity;
     public float skillDamage;
     public float reinforceDamage;

@@ -21,7 +21,6 @@ public class Player : MonoBehaviour, IDamageable
     private Rigidbody2D playerRigidbody;
     private Coroutine _attackCoroutine;
     private PlayerAnimController _playerAnimController;
-    private bool isClick = false;
     private float _damageBuff = 1;
 
     // 동료 관련 프로퍼티
@@ -132,11 +131,6 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    public void CheckClick(bool isClick)
-    {
-        this.isClick = isClick;
-    }
-
     #endregion
 
     #region Unity Flow
@@ -158,11 +152,6 @@ public class Player : MonoBehaviour, IDamageable
         {
             _playerAnimController.OnIdle();
             _attackCoroutine = StartCoroutine(AttackRoutine());
-        }
-
-        if (isClick)
-        {
-            //Debug.Log("Click Down");
         }
     }
 

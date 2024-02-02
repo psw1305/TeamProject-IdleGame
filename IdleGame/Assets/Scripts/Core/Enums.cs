@@ -35,6 +35,12 @@ public enum DamageType
     Critical
 }
 
+public enum PaymentType
+{
+    Resource,
+    advert
+}
+
 public enum ResourceType
 {
     Gold,

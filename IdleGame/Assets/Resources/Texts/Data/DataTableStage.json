@@ -2,7 +2,6 @@
   {
     "Index": 1,
     "Difficulty": "보통",
-    "Chapter": "1-1",
     "StageConfig": "StageConfig_1",
     "EnemyStatRate": 10,
     "EnemyGoldRate": 8,
@@ -11,7 +10,6 @@
   {
     "Index": 2,
     "Difficulty": "보통",
-    "Chapter": "1-2",
     "StageConfig": "StageConfig_1",
     "EnemyStatRate": 15,
     "EnemyGoldRate": 12,
@@ -20,7 +18,6 @@
   {
     "Index": 3,
     "Difficulty": "보통",
-    "Chapter": "1-3",
     "StageConfig": "StageConfig_2",
     "EnemyStatRate": 20,
     "EnemyGoldRate": 16,
@@ -29,7 +26,6 @@
   {
     "Index": 4,
     "Difficulty": "보통",
-    "Chapter": "1-4",
     "StageConfig": "StageConfig_2",
     "EnemyStatRate": 25,
     "EnemyGoldRate": 20,
@@ -38,7 +34,6 @@
   {
     "Index": 5,
     "Difficulty": "보통",
-    "Chapter": "1-5",
     "StageConfig": "StageConfig_3",
     "EnemyStatRate": 40,
     "EnemyGoldRate": 32,
@@ -47,7 +42,6 @@
   {
     "Index": 6,
     "Difficulty": "보통",
-    "Chapter": "1-6",
     "StageConfig": "StageConfig_3",
     "EnemyStatRate": 45,
     "EnemyGoldRate": 36,
@@ -56,7 +50,6 @@
   {
     "Index": 7,
     "Difficulty": "보통",
-    "Chapter": "1-7",
     "StageConfig": "StageConfig_4",
     "EnemyStatRate": 50,
     "EnemyGoldRate": 40,
@@ -65,7 +58,6 @@
   {
     "Index": 8,
     "Difficulty": "보통",
-    "Chapter": "1-8",
     "StageConfig": "StageConfig_4",
     "EnemyStatRate": 55,
     "EnemyGoldRate": 44,
@@ -74,7 +66,6 @@
   {
     "Index": 9,
     "Difficulty": "보통",
-    "Chapter": "1-9",
     "StageConfig": "StageConfig_5",
     "EnemyStatRate": 60,
     "EnemyGoldRate": 48,
@@ -83,7 +74,6 @@
   {
     "Index": 10,
     "Difficulty": "보통",
-    "Chapter": "1-10",
     "StageConfig": "StageConfig_5",
     "EnemyStatRate": 80,
     "EnemyGoldRate": 64,
@@ -92,7 +82,6 @@
   {
     "Index": 11,
     "Difficulty": "보통",
-    "Chapter": "2-1",
     "StageConfig": "StageConfig_1",
     "EnemyStatRate": 90,
     "EnemyGoldRate": 72,
@@ -101,7 +90,6 @@
   {
     "Index": 12,
     "Difficulty": "보통",
-    "Chapter": "2-2",
     "StageConfig": "StageConfig_1",
     "EnemyStatRate": 100,
     "EnemyGoldRate": 80,
@@ -110,7 +98,6 @@
   {
     "Index": 13,
     "Difficulty": "보통",
-    "Chapter": "2-3",
     "StageConfig": "StageConfig_2",
     "EnemyStatRate": 110,
     "EnemyGoldRate": 88,
@@ -119,7 +106,6 @@
   {
     "Index": 14,
     "Difficulty": "보통",
-    "Chapter": "2-4",
     "StageConfig": "StageConfig_2",
     "EnemyStatRate": 120,
     "EnemyGoldRate": 96,
@@ -128,7 +114,6 @@
   {
     "Index": 15,
     "Difficulty": "보통",
-    "Chapter": "2-5",
     "StageConfig": "StageConfig_3",
     "EnemyStatRate": 150,
     "EnemyGoldRate": 120,
@@ -137,7 +122,6 @@
   {
     "Index": 16,
     "Difficulty": "보통",
-    "Chapter": "2-6",
     "StageConfig": "StageConfig_3",
     "EnemyStatRate": 160,
     "EnemyGoldRate": 128,
@@ -146,7 +130,6 @@
   {
     "Index": 17,
     "Difficulty": "보통",
-    "Chapter": "2-7",
     "StageConfig": "StageConfig_4",
     "EnemyStatRate": 170,
     "EnemyGoldRate": 136,
@@ -155,7 +138,6 @@
   {
     "Index": 18,
     "Difficulty": "보통",
-    "Chapter": "2-8",
     "StageConfig": "StageConfig_4",
     "EnemyStatRate": 185,
     "EnemyGoldRate": 148,
@@ -164,7 +146,6 @@
   {
     "Index": 19,
     "Difficulty": "보통",
-    "Chapter": "2-9",
     "StageConfig": "StageConfig_5",
     "EnemyStatRate": 200,
     "EnemyGoldRate": 160,
@@ -173,10 +154,649 @@
   {
     "Index": 20,
     "Difficulty": "보통",
-    "Chapter": "2-10",
     "StageConfig": "StageConfig_5",
     "EnemyStatRate": 250,
     "EnemyGoldRate": 200,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 21,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 300,
+    "EnemyGoldRate": 210,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 22,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 320,
+    "EnemyGoldRate": 220,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 23,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 340,
+    "EnemyGoldRate": 230,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 24,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 360,
+    "EnemyGoldRate": 240,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 25,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 380,
+    "EnemyGoldRate": 250,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 26,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 400,
+    "EnemyGoldRate": 260,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 27,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 420,
+    "EnemyGoldRate": 270,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 28,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 440,
+    "EnemyGoldRate": 280,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 29,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 460,
+    "EnemyGoldRate": 290,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 30,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 480,
+    "EnemyGoldRate": 300,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 31,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 500,
+    "EnemyGoldRate": 310,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 32,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 520,
+    "EnemyGoldRate": 320,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 33,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 540,
+    "EnemyGoldRate": 330,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 34,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 560,
+    "EnemyGoldRate": 340,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 35,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 580,
+    "EnemyGoldRate": 350,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 36,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 600,
+    "EnemyGoldRate": 360,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 37,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 620,
+    "EnemyGoldRate": 370,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 38,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 640,
+    "EnemyGoldRate": 380,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 39,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 660,
+    "EnemyGoldRate": 390,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 40,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 680,
+    "EnemyGoldRate": 400,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 41,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 700,
+    "EnemyGoldRate": 410,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 42,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 720,
+    "EnemyGoldRate": 420,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 43,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 740,
+    "EnemyGoldRate": 430,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 44,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 760,
+    "EnemyGoldRate": 440,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 45,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 780,
+    "EnemyGoldRate": 450,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 46,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 800,
+    "EnemyGoldRate": 460,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 47,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 820,
+    "EnemyGoldRate": 470,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 48,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 840,
+    "EnemyGoldRate": 480,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 49,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 860,
+    "EnemyGoldRate": 490,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 50,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 880,
+    "EnemyGoldRate": 500,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 51,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 900,
+    "EnemyGoldRate": 510,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 52,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 920,
+    "EnemyGoldRate": 520,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 53,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 940,
+    "EnemyGoldRate": 530,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 54,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 960,
+    "EnemyGoldRate": 540,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 55,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 980,
+    "EnemyGoldRate": 550,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 56,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1000,
+    "EnemyGoldRate": 560,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 57,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1020,
+    "EnemyGoldRate": 570,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 58,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1040,
+    "EnemyGoldRate": 580,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 59,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1060,
+    "EnemyGoldRate": 590,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 60,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1080,
+    "EnemyGoldRate": 600,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 61,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1100,
+    "EnemyGoldRate": 610,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 62,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1120,
+    "EnemyGoldRate": 620,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 63,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1140,
+    "EnemyGoldRate": 630,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 64,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1160,
+    "EnemyGoldRate": 640,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 65,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1180,
+    "EnemyGoldRate": 650,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 66,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1200,
+    "EnemyGoldRate": 660,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 67,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1220,
+    "EnemyGoldRate": 670,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 68,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1240,
+    "EnemyGoldRate": 680,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 69,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1260,
+    "EnemyGoldRate": 690,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 70,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1280,
+    "EnemyGoldRate": 700,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 71,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1300,
+    "EnemyGoldRate": 710,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 72,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1320,
+    "EnemyGoldRate": 720,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 73,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1340,
+    "EnemyGoldRate": 730,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 74,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1360,
+    "EnemyGoldRate": 740,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 75,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1380,
+    "EnemyGoldRate": 750,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 76,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1400,
+    "EnemyGoldRate": 760,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 77,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1420,
+    "EnemyGoldRate": 770,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 78,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1440,
+    "EnemyGoldRate": 780,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 79,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1460,
+    "EnemyGoldRate": 790,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 80,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1480,
+    "EnemyGoldRate": 800,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 81,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1500,
+    "EnemyGoldRate": 810,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 82,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1520,
+    "EnemyGoldRate": 820,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 83,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1540,
+    "EnemyGoldRate": 830,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 84,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1560,
+    "EnemyGoldRate": 840,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 85,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1580,
+    "EnemyGoldRate": 850,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 86,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1600,
+    "EnemyGoldRate": 860,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 87,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1620,
+    "EnemyGoldRate": 870,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 88,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1640,
+    "EnemyGoldRate": 880,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 89,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1660,
+    "EnemyGoldRate": 890,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 90,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1680,
+    "EnemyGoldRate": 900,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 91,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1700,
+    "EnemyGoldRate": 910,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 92,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_1",
+    "EnemyStatRate": 1720,
+    "EnemyGoldRate": 920,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 93,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1740,
+    "EnemyGoldRate": 930,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 94,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_2",
+    "EnemyStatRate": 1760,
+    "EnemyGoldRate": 940,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 95,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1780,
+    "EnemyGoldRate": 950,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 96,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_3",
+    "EnemyStatRate": 1800,
+    "EnemyGoldRate": 960,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 97,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1820,
+    "EnemyGoldRate": 970,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 98,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_4",
+    "EnemyStatRate": 1840,
+    "EnemyGoldRate": 980,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 99,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 1860,
+    "EnemyGoldRate": 990,
+    "EnemySpawnCount": 10
+  },
+  {
+    "Index": 100,
+    "Difficulty": "보통",
+    "StageConfig": "StageConfig_5",
+    "EnemyStatRate": 2000,
+    "EnemyGoldRate": 1000,
     "EnemySpawnCount": 10
   }
 ]

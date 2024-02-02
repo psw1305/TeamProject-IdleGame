@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -10,6 +11,7 @@ public class UISummonBanner : UIBase
     private SummonList _summonList;
     private SummonTable _summonTable;
     private UIPopupShopSummon _shopSummon;
+    private List<UIBtn_Check_Gems> _uiBtns = new();
 
     private TextMeshProUGUI _summonTypeText;
     private TextMeshProUGUI _summonLevel;
@@ -37,9 +39,16 @@ public class UISummonBanner : UIBase
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        SetButtonEvent(_summonList.BtnPrefab_1, UIEventType.Click, SummonBtn_1);
-        SetButtonEvent(_summonList.BtnPrefab_2, UIEventType.Click, SummonBtn_2);
-        SetButtonEvent(_summonList.BtnPrefab_3, UIEventType.Click, SummonBtn_3);
+        SetUI<UIBtn_Check_Gems>();
+        for (int i = 0; i < _summonList.ButtonInfo.Count; i++)
+        {
+            var buttonInfo = _summonList.ButtonInfo[i];
+            var btnUI = GetUI<UIBtn_Check_Gems>(buttonInfo.BtnPrefab);
+            Manager.Summon.SummonTables.TryGetValue(_summonList.TypeLink, out var summonTable);
+            var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, (eventData) => SummonBtn(eventData, btnUI));
+            btnUI.SetButtonUI(buttonInfo, button, summonTable.SummonCountsAdd);
+            _uiBtns.Add(btnUI);
+        }
     }
 
     private void SetTexts()
@@ -59,22 +68,18 @@ public class UISummonBanner : UIBase
     #endregion
 
     #region Button Events
-    private void SummonBtn_1(PointerEventData eventData)
+    private void SummonBtn(PointerEventData eventData, UIBtn_Check_Gems btnUI)
     {
-        _shopSummon.SummonTry(_summonList.PaymentType_1 ,_summonList.Amount_1, _summonList.SummonCount_1, _summonList.TypeLink);
-        Manager.NotificateDot.SetEquipmentNoti();
-    }
+        if (!btnUI.Interactive) return;
 
-    private void SummonBtn_2(PointerEventData eventData)
-    {
-        _shopSummon.SummonTry(_summonList.PaymentType_2, _summonList.Amount_2, _summonList.SummonCount_2, _summonList.TypeLink);
-        Manager.NotificateDot.SetEquipmentNoti();
-    }
+        int addcount = 0;
+        
+        if (btnUI.ButtonInfo.OnEvent)
+        {
+            addcount = _summonTable.SummonCountsAdd;
+        }
 
-    private void SummonBtn_3(PointerEventData eventData)
-    {
-        _shopSummon.SummonTry(_summonList.PaymentType_3, _summonList.Amount_3, _summonList.SummonCount_3, _summonList.TypeLink);
-        Manager.NotificateDot.SetEquipmentNoti();
+        _shopSummon.SummonTry(addcount, _summonList.TypeLink, btnUI);
     }
 
     #endregion
@@ -86,6 +91,15 @@ public class UISummonBanner : UIBase
         _summonLevel.text = $"Lv {_summonTable.SummonGrade}";
         _summonCount.text = $"{_summonTable.GetCurCount}/{_summonTable.GetNextCount}";
         _summonGauge.value = Mathf.Clamp01((float)_summonTable.GetCurCount / (float)_summonTable.GetNextCount);
+    }
+
+    public void UpdateBtns(int summonCountsAdd)
+    {
+        for (int i = 0; i < _uiBtns.Count; i++)
+        {
+            _uiBtns[i].ApplySummonCountAdd(summonCountsAdd);
+            _uiBtns[i].UpdateUI();
+        }
     }
     
     #endregion
