@@ -47,17 +47,33 @@ public partial class SummonManager
 
     #region Summon
 
-    public void SummonTry(ResourceType type,int price, int count, string tableLink)
+    public void SummonTry(int addcount, string tableLink, UIBtn_Check_Gems btnUI)
     {
-        switch (type)
+        switch (btnUI.ButtonInfo.ResourceType)
         {
             case ResourceType.Gold:
-                if (_player.IsTradeGold(price))
-                    Summon(count, tableLink);
+                if (_player.IsTradeGold(btnUI.ButtonInfo.Amount))
+                {
+                    btnUI.ApplyRestriction();
+                    if (btnUI.ButtonInfo.OnEvent)
+                    {
+                        SummonTables.TryGetValue(tableLink, out var summonTable);
+                        summonTable.ApplySummonCountAdd();
+                    }
+                    Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
+                }
                 break;
             case ResourceType.Gems:
-                if (_player.IsTradeGems(price))
-                    Summon(count, tableLink);
+                if (_player.IsTradeGems(btnUI.ButtonInfo.Amount))
+                {
+                    btnUI.ApplyRestriction();
+                    if (btnUI.ButtonInfo.OnEvent)
+                    {
+                        SummonTables.TryGetValue(tableLink, out var summonTable);
+                        summonTable.ApplySummonCountAdd();
+                    }
+                    Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
+                }
                 break;
         }
     }
@@ -125,8 +141,7 @@ public partial class SummonManager
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
         popup.DataInit(finalResult);
         popup.PlayStart();
-        _shopSummon.BannerUpdate(typeLink);
-        summonTable.ApplySummonCountAdd();
+        _shopSummon.BannerUpdate(typeLink, summonTable.SummonCountsAdd);
         summonResurt.Clear();
         resultIdList.Clear();
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -10,6 +11,7 @@ public class UISummonBanner : UIBase
     private SummonList _summonList;
     private SummonTable _summonTable;
     private UIPopupShopSummon _shopSummon;
+    private List<UIBtn_Check_Gems> _uiBtns = new();
 
     private TextMeshProUGUI _summonTypeText;
     private TextMeshProUGUI _summonLevel;
@@ -41,9 +43,11 @@ public class UISummonBanner : UIBase
         for (int i = 0; i < _summonList.ButtonInfo.Count; i++)
         {
             var buttonInfo = _summonList.ButtonInfo[i];
-            var btnUI = GetUI<UIBtn_Check_Gems>(_summonList.ButtonInfo[i].BtnPrefab);
-            var button = SetButtonEvent(_summonList.ButtonInfo[i].BtnPrefab, UIEventType.Click, (eventData) => SummonBtn(eventData, buttonInfo));
-            btnUI.SetButtonUI(buttonInfo, button);
+            var btnUI = GetUI<UIBtn_Check_Gems>(buttonInfo.BtnPrefab);
+            Manager.Summon.SummonTables.TryGetValue(_summonList.TypeLink, out var summonTable);
+            var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, (eventData) => SummonBtn(eventData, btnUI));
+            btnUI.SetButtonUI(buttonInfo, button, summonTable.SummonCountsAdd);
+            _uiBtns.Add(btnUI);
         }
     }
 
@@ -64,16 +68,18 @@ public class UISummonBanner : UIBase
     #endregion
 
     #region Button Events
-    private void SummonBtn(PointerEventData eventData, ButtonInfo buttonInfo)
+    private void SummonBtn(PointerEventData eventData, UIBtn_Check_Gems btnUI)
     {
-        int addcount = 0;
+        if (!btnUI.Interactive) return;
 
-        if (buttonInfo.OnEvent)
+        int addcount = 0;
+        
+        if (btnUI.ButtonInfo.OnEvent)
         {
             addcount = _summonTable.SummonCountsAdd;
         }
 
-        _shopSummon.SummonTry(buttonInfo.ResourceType, buttonInfo.Amount, buttonInfo.SummonCount + addcount, _summonList.TypeLink);
+        _shopSummon.SummonTry(addcount, _summonList.TypeLink, btnUI);
     }
 
     #endregion
@@ -85,6 +91,15 @@ public class UISummonBanner : UIBase
         _summonLevel.text = $"Lv {_summonTable.SummonGrade}";
         _summonCount.text = $"{_summonTable.GetCurCount}/{_summonTable.GetNextCount}";
         _summonGauge.value = Mathf.Clamp01((float)_summonTable.GetCurCount / (float)_summonTable.GetNextCount);
+    }
+
+    public void UpdateBtns(int summonCountsAdd)
+    {
+        for (int i = 0; i < _uiBtns.Count; i++)
+        {
+            _uiBtns[i].ApplySummonCountAdd(summonCountsAdd);
+            _uiBtns[i].UpdateUI();
+        }
     }
     
     #endregion

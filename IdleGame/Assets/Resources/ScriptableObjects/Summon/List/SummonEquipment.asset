@@ -18,14 +18,14 @@ MonoBehaviour:
   countAddLimit: 24
   _buttonInfo:
   - btnPrefab: Btn_Summon_1
-    btnText: "{}\uD68C \uC18C\uD658"
+    btnText: "{0}\uD68C \uC18C\uD658"
     paymentType: 1
     resourceType: 0
     amount: 0
     summonCount: 11
     onEvent: 1
-    isLimit: 0
-    limitCount: 0
+    isLimit: 1
+    limitCount: 3
     isCoolDown: 1
     coolTime: 00:01:00
   - btnPrefab: Btn_Summon_2

@@ -72,9 +72,9 @@ public class UIPopupShopSummon : UIPopup
 
     #region Button Events
 
-    public void SummonTry(ResourceType type,int price, int count, string typeLink)
+    public void SummonTry(int addcount, string typeLink, UIBtn_Check_Gems btnUI)
     {
-        _summon.SummonTry(type, price, count, typeLink);
+        _summon.SummonTry(addcount, typeLink, btnUI);
     }
 
     private void CloseSummonPopup(PointerEventData eventData)
@@ -96,10 +96,11 @@ public class UIPopupShopSummon : UIPopup
         gemsText.text = Manager.Game.Player.Gems.ToString();
     }
 
-    public void BannerUpdate(string typeLink)
+    public void BannerUpdate(string typeLink, int summonCountsAdd)
     {
         _banners.TryGetValue(typeLink, out var banner);
         banner.UpdateUI();
+        banner.UpdateBtns(summonCountsAdd);
     }
 
     #endregion
