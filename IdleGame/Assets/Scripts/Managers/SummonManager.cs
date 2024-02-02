@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -32,9 +33,9 @@ public partial class SummonManager
     {
         _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
 
-        foreach (var i in _summonBlueprint.SummonLists)
+        foreach (var list in _summonBlueprint.SummonLists)
         {
-            TableInitalize(i.TypeLink);
+            TableInitalize(list);
         }
     }
 
@@ -47,19 +48,38 @@ public partial class SummonManager
 
     #region Summon
 
-    public void SummonTry(ResourceType type,int price, int count, string tableLink)
+    public bool SummonTry(int addcount, string tableLink, UIBtn_Check_Gems btnUI)
     {
-        switch (type)
+        switch (btnUI.ButtonInfo.ResourceType)
         {
             case ResourceType.Gold:
-                if (_player.IsTradeGold(price))
-                    Summon(count, tableLink);
+                if (_player.IsTradeGold(btnUI.ButtonInfo.Amount))
+                {
+                    btnUI.ApplyRestriction();
+                    if (btnUI.ButtonInfo.OnEvent)
+                    {
+                        SummonTables.TryGetValue(tableLink, out var summonTable);
+                        summonTable.ApplySummonCountAdd();
+                    }
+                    Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
+                    return true;
+                }
                 break;
             case ResourceType.Gems:
-                if (_player.IsTradeGems(price))
-                    Summon(count, tableLink);
+                if (_player.IsTradeGems(btnUI.ButtonInfo.Amount))
+                {
+                    btnUI.ApplyRestriction();
+                    if (btnUI.ButtonInfo.OnEvent)
+                    {
+                        SummonTables.TryGetValue(tableLink, out var summonTable);
+                        summonTable.ApplySummonCountAdd();
+                    }
+                    Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
+                    return true;
+                }
                 break;
         }
+        return false;
     }
 
     private void Summon(int count, string typeLink)
@@ -78,15 +98,15 @@ public partial class SummonManager
         var curprobability = curLevelTable.Select(x => x.Key).ToArray();
 
         // 테스트 결과 확인용 배열 세팅
-        testResult = new int[curLevelTable.Count];
-        itemIndex = curLevelTable.Select(x => x.Value).ToArray();
+        //testResult = new int[curLevelTable.Count];
+        //itemIndex = curLevelTable.Select(x => x.Value).ToArray();
 
-        for (int i = 0; i < itemIndex.Length; i++)
-        {
-            indexResult[itemIndex[i]] = i;
-        }
+        //for (int i = 0; i < itemIndex.Length; i++)
+        //{
+        //    indexResult[itemIndex[i]] = i;
+        //}
 
-        int idx = 0;
+        int idx = 0; // 배열 인덱스
 
         while (count > 0)
         {
@@ -95,12 +115,13 @@ public partial class SummonManager
             //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");
             resultIdList.Add(index);
             // 확인용 획득 수 카운트 증가
-            indexResult.TryGetValue(index, out int result);
-            testResult[result]++;
+            //indexResult.TryGetValue(index, out int result);
+            //testResult[result]++;
             count--;
             idx++;
             if (summonTable.ApplySummonCount())
             {
+                // 이거 trygetvalue 다시 안해도 될듯 나중에 확인
                 SummonTables.TryGetValue(typeLink, out var newSummonTable);
                 curLevelTable = newSummonTable.GetProbabilityTable();
                 curprobability = curLevelTable.Select(x => x.Key).ToArray();
@@ -120,11 +141,13 @@ public partial class SummonManager
 
         // 최종 획득한 아이템 목록 배열 출력 후 인벤토리에 넣고 팝업 실행
         string[] finalResult = resultIdList.ToArray();
+        // TODO : typeLink에 따라 item Add하는 메소드 다르게 연결
         EquipmentAdd(finalResult);
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
         popup.DataInit(finalResult);
         popup.PlayStart();
-        _shopSummon.BannerUpdate(typeLink);
+        popup.SummonButtonInit(summonTable.SummonList);
+        _shopSummon.BannerUpdate(typeLink, summonTable.SummonCountsAdd);
         summonResurt.Clear();
         resultIdList.Clear();
 
@@ -149,6 +172,19 @@ public partial class SummonManager
             skillData.hasCount++;
         }
     }
+    #endregion
+
+    #region Summon Repeat
+
+    private IEnumerator SummonRepeat(string tableLink, UIBtn_Check_Gems btnUI)
+    {
+        yield return new WaitForSeconds(1.0f);
+        if (!SummonTry(0, tableLink, btnUI))
+        {
+            yield break;
+        }
+    }
+
     #endregion
 
     #region Debug Method
