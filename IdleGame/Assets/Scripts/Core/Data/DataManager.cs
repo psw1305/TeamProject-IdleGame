@@ -9,6 +9,7 @@ public class DataManager
     public GameUserProfile Profile { get; private set; }
     public InventoryData Inventory { get; private set; }
     public UserSkillData UserSkillData { get; private set; }
+    public  Dictionary<string, UserInvenSkillData> SkillInvenDictionary = new();
     public UserFollowerData FollowerData { get; private set; }
 
     #region Create
@@ -106,6 +107,10 @@ public class DataManager
         if (!File.Exists(filePath)) { CreateUserSkill(); return; }
         string jsonRaw = File.ReadAllText(filePath);
         UserSkillData = JsonConvert.DeserializeObject<UserSkillData>(jsonRaw);
+        foreach(var  item in UserSkillData.UserInvenSkill)
+        {
+            SkillInvenDictionary.Add(item.itemID, item);
+        }
     }
     
     public void LoadFromUserFollower(string fileName = "game_follower.dat")

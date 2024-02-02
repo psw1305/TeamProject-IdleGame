@@ -7,7 +7,7 @@ public class PlayerSkillHandler : MonoBehaviour
     private bool _autoSkill;
     private Coroutine _autoSkillCoroutine;
 
-    private Dictionary<SkillSlots, SkillObject> _userEquipSkillSlot = new Dictionary<SkillSlots, SkillObject>();
+    private Dictionary<int, EquipSkillData> _userEquipSkillSlot = new Dictionary<int, EquipSkillData>();
 
     private void Start()
     {
@@ -24,21 +24,20 @@ public class PlayerSkillHandler : MonoBehaviour
 
     private void InitSkillSlot()
     {
-        int slotIndex = 0;
+        int equipslotIndex = 0;
         foreach (var item in Manager.Data.UserSkillData.UserEquipSkill)
         {
-            if (item.itemID != "Empty")
-            {
-                SetSkillObj((SkillSlots)slotIndex, new SkillObject(item.itemID));
-            }
-            slotIndex++;
+            var go = new GameObject("SkillObj");
+            go.transform.parent = transform;
+            _userEquipSkillSlot.Add(equipslotIndex, go.AddComponent<EquipSkillData>());
+            _userEquipSkillSlot[equipslotIndex].SetSkillObject(Manager.Data.UserSkillData.UserEquipSkill[equipslotIndex].itemID);
+            equipslotIndex++;
         }
     }
 
-
-    private void SetSkillObj(SkillSlots enumSkillSlots, SkillObject skillObject)
+    public void ChangeEquipSkillData(int slotIndex)
     {
-        _userEquipSkillSlot.Add(enumSkillSlots, skillObject);
+        _userEquipSkillSlot[slotIndex].SetSkillObject(Manager.Data.UserSkillData.UserEquipSkill[slotIndex].itemID);
     }
 
     private void ToggleAutoSkill()
@@ -64,22 +63,42 @@ public class PlayerSkillHandler : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             foreach (var skill in _userEquipSkillSlot)
             {
-                skill.Value._baseSkill.UseSkill();
-                Debug.Log("@");
+                if (skill.Value.SkillScript != null)
+                {
+                    skill.Value.SkillScript.UseSkill();
+                }
             }
-            Debug.Log("루프중");
         }
     }
 }
 
-public class SkillObject
+public class EquipSkillData : MonoBehaviour
 {
-    public GameObject _skillObject { get; private set; }
-    public BaseSkill _baseSkill { get; private set; }
-    public SkillObject(string itemID)
+    public GameObject SkillObject { get; private set; }
+    public BaseSkill SkillScript { get; private set; }
+
+    private string _skillID;
+    public void SetSkillObject(string itemID)
     {
-        _skillObject = Manager.Resource.InstantiatePrefab((Manager.Resource.GetBlueprint(itemID) as SkillBlueprint).SkillObject.name
-            , Manager.Game.Player.transform);
-        _baseSkill = _skillObject.GetComponent<BaseSkill>();
+        if (itemID == "Empty")
+        {
+            if (SkillObject != null)
+            {
+                Destroy(SkillObject);
+                SkillScript = null;
+            }
+            return;
+        }
+
+        //슬롯에 스킬이 있으나 이미 프로퍼티가 설정되어 있는 경우 초기화
+        if (SkillObject != null)
+        {
+            Destroy(SkillObject);
+            SkillScript = null;
+        }
+        //프로퍼티를 설정함
+        SkillObject = Manager.Resource.InstantiatePrefab((Manager.Resource.GetBlueprint(itemID) as SkillBlueprint).SkillObject.name, Manager.Game.Player.transform);
+        SkillObject.transform.parent = transform;
+        SkillScript = SkillObject.GetComponent<BaseSkill>();
     }
 }

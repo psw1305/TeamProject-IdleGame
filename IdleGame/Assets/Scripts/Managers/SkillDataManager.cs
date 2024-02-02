@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,69 @@ public class SkillDataManager
     {
         ParseSkillData();
     }
+
+    public event Action<int?> SetSkillUIEquipSlot;
+    public event Action<string> SetSkillUIInvenSlot;
+
+    public void CallSetUISkillEquipSlot(int? index)
+    {
+        SetSkillUIEquipSlot?.Invoke(index);
+    }
+    public void CallSetUISkillInvenSlot(string id)
+    {
+        SetSkillUIInvenSlot.Invoke(id);
+    }
+
+
+    public bool CheckEquipSkill(UserInvenSkillData userInvenSkillData)
+    {
+        return Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty") > -1 ? true : false;
+    }
+
+    public int? EquipSkill(UserInvenSkillData userInvenSkillData)
+    {
+        if (userInvenSkillData.level == 1 && userInvenSkillData.hasCount == 0)
+        {
+            return null;
+        }
+        int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty");
+        if (index > -1)
+        {
+            Manager.Data.UserSkillData.UserEquipSkill[index].itemID = userInvenSkillData.itemID;
+            userInvenSkillData.equipped = true;
+            return index;
+        }
+        return null;
+    }
+
+    public int UnEquipSkill(UserInvenSkillData userInvenSkillData)
+    {
+        int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == userInvenSkillData.itemID);
+        Manager.Data.UserSkillData.UserEquipSkill[index].itemID = "Empty";
+        userInvenSkillData.equipped = false;
+        return index;
+    }
+
+    public void ReinforceSkill(UserInvenSkillData userInvenSkillData)
+    {
+        if (userInvenSkillData.hasCount < Mathf.Min(userInvenSkillData.level + 1, 15))
+        {
+            return;
+        }
+        while (userInvenSkillData.hasCount >= Mathf.Min(userInvenSkillData.level + 1, 15))
+        {
+            userInvenSkillData.hasCount -= Mathf.Min(userInvenSkillData.level + 1, 15);
+            userInvenSkillData.level += 1;
+        }
+    }
+    public void ReinforceAllSkill()
+    {
+        foreach (var item in Manager.Data.UserSkillData.UserInvenSkill)
+        {
+            ReinforceSkill(item);
+        }
+    }
+
 }
 
 [System.Serializable]

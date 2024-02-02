@@ -54,7 +54,7 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 384
-  DestroyVFX: {fileID: 165430, guid: 1c4152aeaabc4c44384a8cd573d159bd, type: 3}
+  destroyVFX: {fileID: 165430, guid: 1c4152aeaabc4c44384a8cd573d159bd, type: 3}
 --- !u!61 &1541760649889258757
 BoxCollider2D:
   m_ObjectHideFlags: 0

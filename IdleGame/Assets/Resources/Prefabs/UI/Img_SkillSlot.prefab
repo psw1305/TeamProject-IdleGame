@@ -994,11 +994,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02cba26578f093944adc72806e6121b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lvTxt: {fileID: 312036908265618825}
-  _equippdText: {fileID: 4714479984196514664}
-  reinforceProgress: {fileID: 7828178646648765872}
-  reinforceText: {fileID: 2455639154126169145}
+  levelText: {fileID: 312036908265618825}
+  equippdText: {fileID: 4714479984196514664}
+  reinforceProgressSprite: {fileID: 7828178646648765872}
+  reinforceProgressText: {fileID: 2455639154126169145}
   itemSprite: {fileID: 5858656698680368988}
   lockCover: {fileID: 1954735954939927318}
   lockIcon: {fileID: 6895592357866574191}
-  ReinforceIcon: {fileID: 1472945306752739152}
+  reinforceIcon: {fileID: 1472945306752739152}

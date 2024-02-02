@@ -7,7 +7,6 @@ public class UIPopupSkill : UIPopup
     private Button _btnSkillSummon;
     private Button _btnSkillReinforce;
 
-    public event Action RefreshReinforecEvent;
     protected override void Init()
     {
         base.Init();
@@ -31,7 +30,7 @@ public class UIPopupSkill : UIPopup
 
     private void ReinforceAllSkill(PointerEventData eventData)
     {
-
+        Manager.SkillData.ReinforceAllSkill();
     }
 
     private void SummonPop(PointerEventData eventData)
