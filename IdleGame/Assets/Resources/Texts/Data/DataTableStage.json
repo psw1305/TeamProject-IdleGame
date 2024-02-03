@@ -3,7 +3,7 @@
     "Index": 1,
     "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 10,
+    "EnemyStatRate": 2,
     "EnemyGoldRate": 8,
     "EnemySpawnCount": 10
   },
