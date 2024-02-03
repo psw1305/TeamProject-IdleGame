@@ -35,7 +35,8 @@ public class UIPopupFollowerDetail : UIPopup
         SetImage();
         SetTextMeshProUGUI();
         SetButtonEvents();
-        
+
+        SetReinforceBtn();
         SetUIFollowerData();
         SetEquipBtn();
     }
