@@ -1204,7 +1204,7 @@ GameObject:
   - component: {fileID: 3178948626703606842}
   - component: {fileID: 3969319395885934769}
   - component: {fileID: 909972524036897066}
-  - component: {fileID: 5471153150167919503}
+  - component: {fileID: 8119971530862398661}
   m_Layer: 5
   m_Name: UIPopupFollowerDetail
   m_TagString: Untagged
@@ -1300,16 +1300,16 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5471153150167919503
+--- !u!114 &8119971530862398661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3272576999271269236}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 098ef412c6ae3c3439e5d1ded84b44d2, type: 3}
+  m_Script: {fileID: 11500000, guid: f53e7d0ef958d5540994c8f6dc782221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3483689331786247516

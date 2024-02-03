@@ -4,8 +4,8 @@ using TMPro;
 
 public class UIPopupFollowerDetail : UIPopup
 {
-    private UserInvenFollowerData _data;
-    public UserInvenFollowerData Data => _data;
+    #region Fields & Properties
+    private int _needCount;
 
     private Image _IconSprite;
 
@@ -22,10 +22,11 @@ public class UIPopupFollowerDetail : UIPopup
 
     private Button btn_Equip;
     private Button btn_UnEquip;
+    private Button btn_reinforce;
 
-    private UIPopupFollower _popupFollower;
+    private UserInvenFollowerData _data;
 
-    private int _needCount;
+    #endregion
 
     protected override void Init()
     {
@@ -36,8 +37,14 @@ public class UIPopupFollowerDetail : UIPopup
         SetButtonEvents();
         
         SetUIFollowerData();
-        SetEquipTypeUI();
+        SetEquipBtn();
     }
+
+    public void SetFollowerData(UserInvenFollowerData userInvenFollowerData)
+    {
+        _data = userInvenFollowerData;
+    }
+        
     private void SetImage()
     {
         SetUI<Image>();
@@ -67,6 +74,7 @@ public class UIPopupFollowerDetail : UIPopup
 
         btn_Equip = SetButtonEvent("Btn_Equip", UIEventType.Click, EquipFollower);
         btn_UnEquip = SetButtonEvent("Btn_UnEquip", UIEventType.Click, UnEquipFollower);
+        btn_reinforce = SetButtonEvent("Btn_Reinforce", UIEventType.Click, ReinforceFollower);
 
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
@@ -74,54 +82,39 @@ public class UIPopupFollowerDetail : UIPopup
 
     public void SetUIFollowerData()
     {
-        SetReinforceData();
-
         _IconSprite.sprite = Manager.Resource.GetSprite(_data.itemID);
 
         _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].followerName;
         _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].rarity;
 
-        _levelText.text = $"Lv.{_data.level}";
-
         _atkDamageText.text = (Manager.Game.Player.AtkDamage.Value * Manager.FollowerData.FollowerDataDictionary[_data.itemID].damageCorrection / 100).ToString();
         _atkSpeedText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].atkSpeed.ToString();
 
-        _reinforceProgressText.text = $"{_data.hasCount} / {_needCount}";
-        _reinforceProgressSprite.fillAmount = (float)_data.hasCount / _needCount; ;
-
         _retentionEffectText.text = $"공격력 +{Manager.Game.Player.AtkDamage.Value * ((Manager.FollowerData.FollowerDataDictionary[_data.itemID].retentionEffect + Manager.FollowerData.FollowerDataDictionary[_data.itemID].reinforceEffect*_data.level) / 100)}%";
+
+        SetUIReinforce();
     }
 
-    public void SetFollowerData(UserInvenFollowerData userInvenFollowerData)
+    private int CalcReinforceNeedCount()
     {
-        _data = userInvenFollowerData;
+        return _needCount = _data.level < 15 ? _data.level + 1 : 15;
     }
 
-    private void SetReinforceData()
+    private void SetUIReinforce()
     {
-        if (_data.level < 15)
-        {
-            _needCount = _data.level + 1;
-        }
-        else
-        {
-            _needCount = 15;
-        }
+        _levelText.text = $"Lv. {_data.level}";
+
+        CalcReinforceNeedCount();
+        _reinforceProgressText.text = $"{_data.hasCount} / {_needCount}";
+        _reinforceProgressSprite.fillAmount = (float)_data.hasCount / _needCount;
     }
 
-    private void EquipFollower(PointerEventData enterEvent)
+    private void SetReinforceBtn()
     {
-        _data.equipped = true;
-        SetEquipTypeUI();
+        btn_reinforce.interactable = _data.hasCount >= CalcReinforceNeedCount();
     }
 
-    private void UnEquipFollower(PointerEventData enterEvent)
-    {
-        _data.equipped = false;
-        SetEquipTypeUI();
-    }
-
-    private void SetEquipTypeUI()
+    private void SetEquipBtn()
     {
         if (_data.equipped)
         {
@@ -133,6 +126,32 @@ public class UIPopupFollowerDetail : UIPopup
             btn_Equip.gameObject.SetActive(true);
             btn_UnEquip.gameObject.SetActive(false);
         }
+    }
+
+    private void EquipFollower(PointerEventData enterEvent)
+    {
+        SetEquipBtn();
+        Manager.FollowerData.CallSetUIFollowerEquipSlot(Manager.FollowerData.EquipFollower(_data));
+        Manager.FollowerData.CallSetUIFollowerInvenSlot(_data.itemID);
+        Manager.UI.ClosePopup();
+    }
+
+    private void UnEquipFollower(PointerEventData enterEvent)
+    {
+        SetEquipBtn();
+
+        Manager.FollowerData.CallSetUIFollowerEquipSlot(Manager.FollowerData.UnEquipFollower(_data));
+        Manager.FollowerData.CallSetUIFollowerInvenSlot(_data.itemID);
+        Manager.UI.ClosePopup();
+    }
+
+    private void ReinforceFollower(PointerEventData eventData)
+    {
+        Manager.FollowerData.ReinforceFollower(_data);
+        Manager.FollowerData.CallSetUIFollowerInvenSlot(_data.itemID);
+
+        SetReinforceBtn();
+        SetUIReinforce();
     }
 
     private void ClosePopup(PointerEventData eventData)

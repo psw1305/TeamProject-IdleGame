@@ -11,6 +11,7 @@ public class DataManager
     public UserSkillData UserSkillData { get; private set; }
     public  Dictionary<string, UserInvenSkillData> SkillInvenDictionary = new();
     public UserFollowerData FollowerData { get; private set; }
+    public Dictionary<string, UserInvenFollowerData> FollowerInvenDictionary = new();
 
     #region Create
 
@@ -118,6 +119,10 @@ public class DataManager
         if (!File.Exists(filePath)) { CreateUserFollower(); return; }
         string jsonRaw = File.ReadAllText(filePath);
         FollowerData = JsonConvert.DeserializeObject<UserFollowerData>(jsonRaw);
+        foreach (var item in FollowerData.UserInvenFollower)
+        {
+            FollowerInvenDictionary.Add(item.itemID, item);
+        }
     }
 
     #endregion

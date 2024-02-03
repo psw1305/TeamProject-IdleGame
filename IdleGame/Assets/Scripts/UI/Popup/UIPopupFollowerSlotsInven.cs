@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIPopupFollowerSlots : MonoBehaviour
+public class UIPopupFollowerSlotsInven : MonoBehaviour
 {
     #region Value Fields
 
@@ -25,8 +25,8 @@ public class UIPopupFollowerSlots : MonoBehaviour
 
     public Action SetReinforceUI;
 
-    [SerializeField] private TextMeshProUGUI _lvTxt;
-    [SerializeField] private GameObject _equippdText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private GameObject equippdText;
 
     [SerializeField] private Image reinforceProgress;
     [SerializeField] private TextMeshProUGUI reinforceText;
@@ -36,7 +36,7 @@ public class UIPopupFollowerSlots : MonoBehaviour
     [SerializeField] private GameObject lockCover;
     [SerializeField] private GameObject lockIcon;
 
-    [SerializeField] private GameObject ReinforceIcon;
+    [SerializeField] private GameObject reinforceIcon;
 
     private UserInvenFollowerData _followerData;
     public UserInvenFollowerData FollowerData => _followerData;
@@ -48,14 +48,12 @@ public class UIPopupFollowerSlots : MonoBehaviour
     private void Awake()
     {
         SetReinforceUI += SetReinforceData;
-        SetReinforceUI += SetReinforceProgress;
         SetReinforceUI += SetReinforceIcon;
     }
 
     private void OnDestroy()
     {
         SetReinforceUI -= SetReinforceData;
-        SetReinforceUI -= SetReinforceProgress;
         SetReinforceUI -= SetReinforceIcon;
     }
 
@@ -67,69 +65,55 @@ public class UIPopupFollowerSlots : MonoBehaviour
         _followerData = itemData;
         _itemID = _followerData.itemID;
         _level = _followerData.level;
-        _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].rarity;
-        _lvTxt.text = $"Lv. {_level}";
         _hasCount = _followerData.hasCount;
+        _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].rarity;
     }
 
     public void InitSlotUI()
     {
-        _lvTxt.text = $"Lv : {_level}";
-
         itemSprite.sprite = Manager.Resource.GetSprite(ItemID.ToString());
-
-        SetLockState();
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupFollowerDetailInfo);
+
+        SetUILockState();
     }
 
     #endregion
 
-    public void CheckEquipState()
+    public void SetReinforceData()
+    {
+        levelText.text = $"Lv. {_followerData.level}";
+        _needCount = _followerData.level < 15 ? _followerData.level + 1 : 15;
+        //_hasCount = _followerData.hasCount;
+        reinforceText.text = $"{_hasCount}/{_needCount}";
+        reinforceProgress.fillAmount = (float)_hasCount / _needCount;
+    }
+
+    public void SetUIEquipState()
     {
         if (_followerData.equipped == false)
         {
-            _equippdText.SetActive(false);
+            equippdText.SetActive(false);
         }
         else
         {
-            _equippdText.SetActive(true);
+            equippdText.SetActive(true);
         }
     }
 
-    private void SetReinforceData()
-    {
-        _level = _followerData.level;
-        _lvTxt.text = $"Lv. {_level}";
-        _hasCount = _followerData.hasCount;
-        if (_followerData.level < 15)
-        {
-            _needCount = _followerData.level + 1;
-        }
-        else
-        {
-            _needCount = 15;
-        }
-    }
-
-    private void SetReinforceProgress()
-    {
-        reinforceProgress.fillAmount = (float)_hasCount / _needCount;
-        reinforceText.text = $"{_hasCount}/{_needCount}";
-    }
-
-    private void SetReinforceIcon()
+    public void SetReinforceIcon()
     {
         if (FollowerData.hasCount >= _needCount)
         {
-            ReinforceIcon.SetActive(true);
+            reinforceIcon.SetActive(true);
         }
         else
         {
-            ReinforceIcon.SetActive(false);
+            reinforceIcon.SetActive(false);
         }
-    }
+    }    
 
-    public void SetLockState()
+
+    public void SetUILockState()
     {
         if (_level > 1 || _hasCount > 0)
         {
