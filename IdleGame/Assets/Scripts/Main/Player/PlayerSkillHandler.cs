@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerSkillHandler : MonoBehaviour
 {
-    private bool _autoSkill;
     private Coroutine _autoSkillCoroutine;
 
     private Dictionary<int, EquipSkillData> _userEquipSkillSlot = new Dictionary<int, EquipSkillData>();
@@ -12,14 +11,6 @@ public class PlayerSkillHandler : MonoBehaviour
     private void Start()
     {
         InitSkillSlot();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.G))
-        {
-            ToggleAutoSkill();
-        }
     }
 
     private void InitSkillSlot()
@@ -40,17 +31,17 @@ public class PlayerSkillHandler : MonoBehaviour
         _userEquipSkillSlot[slotIndex].SetSkillObject(Manager.Data.UserSkillData.UserEquipSkill[slotIndex].itemID);
     }
 
-    private void ToggleAutoSkill()
+    public void ToggleAutoSkill(bool state)
     {
-        if (_autoSkill)
+        if (state)
         {
-            _autoSkill = false;
+            state = false;
             StopCoroutine(_autoSkillCoroutine);
             Debug.Log("toggleOff");
         }
-        else if (!_autoSkill)
+        else if (!state)
         {
-            _autoSkill = true;
+            state = true;
             _autoSkillCoroutine = StartCoroutine(UseSkillLoop());
             Debug.Log("toggleON");
         }
