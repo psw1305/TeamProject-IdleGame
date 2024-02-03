@@ -3,53 +3,52 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(ButtonInfo))]
-public class ButtonInfoEdit : Editor
+public class ButtonInfoEdit
 {
-    #region Fields
+    //#region Fields
 
-    SerializedProperty enumProperty;
-    SerializedProperty resourceType;
-    SerializedProperty amount;
-    SerializedProperty summonCount;
+    //SerializedProperty enumProperty;
+    //SerializedProperty resourceType;
+    //SerializedProperty amount;
+    //SerializedProperty summonCount;
 
-    #endregion
+    //#endregion
 
-    #region Initialize
+    //#region Initialize
 
-    private void OnEnable()
-    {
-        enumProperty = serializedObject.FindProperty("paymentType");
-        resourceType = serializedObject.FindProperty("resourceType");
-        amount = serializedObject.FindProperty("amount");
-        summonCount = serializedObject.FindProperty("summonCount");
-    }
+    //private void OnEnable()
+    //{
+    //    enumProperty = serializedObject.FindProperty("paymentType");
+    //    resourceType = serializedObject.FindProperty("resourceType");
+    //    amount = serializedObject.FindProperty("amount");
+    //    summonCount = serializedObject.FindProperty("summonCount");
+    //}
 
-    #endregion
+    //#endregion
 
-    #region Custom Logic
+    //#region Custom Logic
 
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
+    //public override void OnInspectorGUI()
+    //{
+    //    serializedObject.Update();
 
-        EditorGUILayout.PropertyField(enumProperty);
+    //    EditorGUILayout.PropertyField(enumProperty);
 
-        if ((PaymentType)enumProperty.enumValueIndex == PaymentType.Resource)
-        {
-            EditorGUILayout.PropertyField(resourceType);
-            EditorGUILayout.PropertyField(amount);
-            EditorGUILayout.PropertyField(summonCount);
-        }
-        if ((PaymentType)enumProperty.enumValueIndex == PaymentType.advert)
-        {
-            EditorGUILayout.PropertyField(resourceType, true);
-            EditorGUILayout.PropertyField(amount, true);
-            EditorGUILayout.PropertyField(summonCount, true);
-        }
+    //    if ((PaymentType)enumProperty.enumValueIndex == PaymentType.Resource)
+    //    {
+    //        EditorGUILayout.PropertyField(resourceType);
+    //        EditorGUILayout.PropertyField(amount);
+    //        EditorGUILayout.PropertyField(summonCount);
+    //    }
+    //    if ((PaymentType)enumProperty.enumValueIndex == PaymentType.advert)
+    //    {
+    //        EditorGUILayout.PropertyField(resourceType, true);
+    //        EditorGUILayout.PropertyField(amount, true);
+    //        EditorGUILayout.PropertyField(summonCount, true);
+    //    }
 
-        serializedObject.ApplyModifiedProperties();
-    }
+    //    serializedObject.ApplyModifiedProperties();
+    //}
 
-    #endregion
+    //#endregion
 }
