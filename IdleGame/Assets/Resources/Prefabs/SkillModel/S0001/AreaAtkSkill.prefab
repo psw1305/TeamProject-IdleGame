@@ -49,4 +49,4 @@ MonoBehaviour:
   projectileSpawnArea: {fileID: 202507690137476521}
   minDestinationPosition: {x: 0.7, y: 0.5}
   maxDestinationPosition: {x: 2, y: 2}
-  AtkCount: 3
+  atkCount: 0
