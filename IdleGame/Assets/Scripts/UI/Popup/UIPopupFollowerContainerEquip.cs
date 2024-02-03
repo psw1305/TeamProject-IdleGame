@@ -38,7 +38,7 @@ public class UIPopupFollowerContainerEquip : MonoBehaviour
             slots[index.Value].SetSlotEmpty();
         else
             slots[index.Value].SetSlotUI(Manager.Data.FollowerInvenDictionary[Manager.Data.FollowerData.UserEquipFollower[index.Value].itemID]);
-        //Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index.Value);
+        Manager.Game.Player.gameObject.GetComponent<PlayerFollowerHandler>().ChangeEquipFollowerData(index.Value);
     }
 
     private void OnDestroy()

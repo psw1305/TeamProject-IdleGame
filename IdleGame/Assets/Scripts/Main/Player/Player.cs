@@ -108,12 +108,12 @@ public class Player : MonoBehaviour, IDamageable
         BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
         IsBonusCheck = profile.Date_Bonus_Check;
 
-        FollowerInit(AtkDamage.Value);
+        //FollowerInit();
 
         StartCoroutine(RecoverHealthPoint());
     }
 
-    private void FollowerInit(long playerDamage)
+    private void FollowerInit()
     {
         // 임시로 5개 동료를 입력
         _followerPrefab[0] = Manager.Resource.InstantiatePrefab("FollowerFrame_Dragon");
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour, IDamageable
             Follower[i] = _followerPrefab[i].GetComponent<Follower>();
 
             Follower[i].transform.position = FollowerPosition[i].position;
-            Follower[i].Initialize(playerDamage);
+            Follower[i].Initialize();
         }
     }
 

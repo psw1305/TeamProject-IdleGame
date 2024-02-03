@@ -34,7 +34,7 @@ public class Follower : MonoBehaviour
 
     #region Init
 
-    public void Initialize(long playerDamage)
+    public void Initialize()
     {
         _player = Manager.Game.Player;
         //Manager.FollowerData.
