@@ -53,7 +53,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         _moveSpeed = blueprint.MoveSpeed;
         _rewards = blueprint.Rewards;
 
-        gameObject.name = _enemyName;
+        //gameObject.name = _enemyName;
 
         SetPosition(position);
         SetStatWeight(statWeight);
@@ -187,6 +187,10 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
     private void AmountDamage(long damage)
     {
+        if (_currentHP == 0)
+        {
+            return;
+        }
         if (_currentHP - damage <= 0)
         {
             _currentHP = 0;

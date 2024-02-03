@@ -45,14 +45,12 @@ public class BaseSkill : MonoBehaviour
         if (_skillDurateTimeCoroutine == null)
         {
             gameObject.GetComponent<BaseSkill>().ApplySkillEffect();
-            Debug.LogWarning("스킬 유지 시작");
             _currentDurateTime = effectDurateTime;
             while (_currentDurateTime >= 0)
             {
                 yield return null;
                 _currentDurateTime -= Time.deltaTime;
             }
-            Debug.LogWarning("스킬 유지 종료");
             _skillDurateTimeCoroutine = null;
 
             gameObject.GetComponent<BaseSkill>().RemoveSkillEffect();
@@ -65,7 +63,6 @@ public class BaseSkill : MonoBehaviour
     {
         if (_coolDownCoroutine == null)
         {
-            Debug.LogWarning("스킬 쿨타임 시작");
             _currentCoolDown = coolDown;
             while (_currentCoolDown >= 0)
             {
@@ -74,7 +71,6 @@ public class BaseSkill : MonoBehaviour
             }
             _canUse = true;
             _coolDownCoroutine = null;
-            Debug.LogWarning("스킬 쿨타임 종료");
         }
     }
 }
