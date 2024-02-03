@@ -31,19 +31,19 @@ public class PlayerSkillHandler : MonoBehaviour
         _userEquipSkillSlot[slotIndex].SetSkillObject(Manager.Data.UserSkillData.UserEquipSkill[slotIndex].itemID);
     }
 
-    public void ToggleAutoSkill(bool state)
+    public bool ToggleAutoSkill(bool state)
     {
         if (state)
         {
-            state = false;
             StopCoroutine(_autoSkillCoroutine);
-            Debug.Log("toggleOff");
+            Debug.Log("Off");
+            return false;
         }
-        else if (!state)
+        else
         {
-            state = true;
             _autoSkillCoroutine = StartCoroutine(UseSkillLoop());
-            Debug.Log("toggleON");
+            Debug.Log("On");
+            return true;
         }
     }
 

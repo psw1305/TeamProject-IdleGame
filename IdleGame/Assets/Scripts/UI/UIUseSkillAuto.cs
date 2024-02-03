@@ -15,7 +15,6 @@ public class UIUseSkillAuto : MonoBehaviour
 
     private void ChangeAutoSkillState()
     {
-        Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ToggleAutoSkill(AutoState);
-        gameObject.GetComponent<Button>().interactable = !AutoState;
+        AutoState = Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ToggleAutoSkill(AutoState);
     }
 }
