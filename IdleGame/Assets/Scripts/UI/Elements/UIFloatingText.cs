@@ -47,7 +47,8 @@ public class UIFloatingText : ObjectPoolable
         _txtDamage.color = Alpha;
         if (Alpha.a <= 0.01)
         {
-            ReleaseObject();
+            Destroy(gameObject);
+            //ReleaseObject();
             _isReleased = true;
         }
     }

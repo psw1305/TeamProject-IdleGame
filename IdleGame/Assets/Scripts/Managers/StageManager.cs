@@ -187,8 +187,8 @@ public class StageManager
         var randomPos = new Vector2(spawnPoint[0].position.x, Mathf.Round(randomYPos * 10.0f) * 0.1f);
 
         // BaseEnemy 오브젝트 생성
-        //var enemyObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
-        var enemyObject = Manager.ObjectPool.GetGo("EnemyFrame");
+        var enemyObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
+        //var enemyObject = Manager.ObjectPool.GetGo("EnemyFrame");
         // 레이어 조정
         var enemySprite = enemyObject.GetComponent<SpriteRenderer>();
         enemySprite.sortingOrder = (int)Mathf.Ceil(spawnPoint[0].position.y * 10.0f - (randomPos.y * 10.0f));
@@ -208,8 +208,8 @@ public class StageManager
         // Boss 설계도 가져오기
         var enemyBlueprint = Manager.Resource.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
 
-        //var bossObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
-        var bossObject = Manager.ObjectPool.GetGo("EnemyFrame");
+        var bossObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
+        //var bossObject = Manager.ObjectPool.GetGo("EnemyFrame");
         var enemy = bossObject.GetComponent<BaseEnemy>();
         enemy.SetEnemy(enemyBlueprint, bossSpawnPoint.position, EnemyStatRate, EnemyGoldRate);
         enemyList.Add(enemy);

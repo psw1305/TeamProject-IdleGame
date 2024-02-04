@@ -30,7 +30,8 @@ public class PlayerView : MonoBehaviour
 
     public void SetDamageFloating(Vector3 position, long Damage)
     {
-        GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
+        //GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
+        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
         //GameObject DamageHUD = Manager.ObjectPool.GetGo("FloatingText");
         //DamageHUD.transform.SetParent(UICanvas.transform, true);
         DamageHUD.GetComponent<UIFloatingText>().Initialize();

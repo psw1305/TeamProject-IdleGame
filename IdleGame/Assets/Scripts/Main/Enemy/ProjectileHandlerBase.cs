@@ -32,7 +32,8 @@ public class ProjectileHandlerBase : ObjectPoolable
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)) || Vector2.Distance(transform.position, TargetPosition) < Mathf.Epsilon)
         {
-            ReleaseObject();
+            //ReleaseObject();
+            Destroy(gameObject);
         }
     }
 

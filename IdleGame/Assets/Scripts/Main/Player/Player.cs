@@ -108,7 +108,7 @@ public class Player : MonoBehaviour, IDamageable
         BonusCheckTime = DateTime.ParseExact(profile.Date_Bonus_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
         IsBonusCheck = profile.Date_Bonus_Check;
 
-        //FollowerInit();
+        FollowerInit();
 
         StartCoroutine(RecoverHealthPoint());
     }
@@ -241,7 +241,8 @@ public class Player : MonoBehaviour, IDamageable
     public void MakeRangeProjectile()
     {
         // 공격 projectile 생성
-        var testProjectile = Manager.ObjectPool.GetGo("PlayerProjectileFrame");
+        //var testProjectile = Manager.ObjectPool.GetGo("PlayerProjectileFrame");
+        var testProjectile = Manager.Resource.InstantiatePrefab("PlayerProjectileFrame");
         testProjectile.transform.position = ProjectilePoint.position;
         enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 

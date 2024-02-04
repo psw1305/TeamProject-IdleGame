@@ -12,7 +12,8 @@ public class PlayerProjectileHandler : ProjectileHandlerBase
         TrackingTarget(TargetPosition, Speed);
         if (Vector2.Distance(transform.position, TargetPosition) < Mathf.Epsilon)
         {
-            ReleaseObject();
+            //ReleaseObject();
+            Destroy(gameObject);
         }
     }
 }

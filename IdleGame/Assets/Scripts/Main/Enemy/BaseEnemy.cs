@@ -139,7 +139,8 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     private void CreateProjectail()
     {
         //Resources 폴더에서 EnemyProjectileFrame(발사체 틀)을 생성하고 go로 할당받음
-        var go = Manager.ObjectPool.GetGo("EnemyProjectileFrame");
+        //var go = Manager.ObjectPool.GetGo("EnemyProjectileFrame");
+        var go = Manager.Resource.InstantiatePrefab("EnemyProjectileFrame");
         go.transform.position = gameObject.transform.position;
 
 
@@ -160,7 +161,8 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
     public void FloatingDamage(Vector3 position, long damage, DamageType damageTypeValue)
     {
-        GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
+        GameObject DamageHUD = Manager.Resource.InstantiatePrefab("Canvas_FloatingDamage");
+        //GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
         //GameObject DamageHUD = Manager.ObjectPool.GetGo("FloatingText");
         //DamageHUD.transform.SetParent(UICanvas.transform, true);
         DamageHUD.GetComponent<UIFloatingText>().Initialize();
@@ -213,9 +215,9 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         }
 
         _attackCoroutine = null;
-        //Destroy(gameObject);
+        Destroy(gameObject);
         _enemyView.ClearHpBar();
-        ReleaseObject();
+        //ReleaseObject();
     }
 
     #endregion
