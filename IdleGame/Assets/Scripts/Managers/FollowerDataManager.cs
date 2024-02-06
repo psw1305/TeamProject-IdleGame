@@ -123,8 +123,7 @@ public class FollowerDataManager
 
     public UserInvenFollowerData SearchFollower(string itemID)
     {
-        List<UserInvenFollowerData> pickFollower = UserFollowerData.UserInvenFollower.Where(followerData => followerData.itemID == itemID).ToList();
-        return pickFollower[0];
+        return Manager.Data.FollowerInvenDictionary[itemID];
     }
 
 }
