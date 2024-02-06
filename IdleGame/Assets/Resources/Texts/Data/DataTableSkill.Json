@@ -12,7 +12,7 @@
         },
         {
             "itemID": "S0002",
-            "skillName": "테스트 버프 스킬",
+            "skillName": "공격력 증가",
             "description": "의 데미지가 증가합니다.",
             "rarity": "rare",
             "skillDamage": 20.0,
@@ -82,10 +82,10 @@
         },
         {
             "itemID": "S0009",
-            "skillName": "더미 스킬",
-            "description": "더미 스킬입니다.",
+            "skillName": "메테오",
+            "description": "의 데미지로 여러차례 공격합니다.",
             "rarity": "legendary",
-            "skillDamage": 60.0,
+            "skillDamage": 30.0,
             "reinforceDamage": 0.8,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5

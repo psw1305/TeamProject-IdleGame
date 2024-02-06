@@ -9,10 +9,9 @@ public class TestAreaAtkSkill : BaseSkill
     [SerializeField] private Vector2 minDestinationPosition;
     [SerializeField] private Vector2 maxDestinationPosition;
 
-    [SerializeField] private int atkCount;
-
     private GameObject _projectile;
     private Coroutine _atkCor;
+
     protected override void ApplySkillEffect()
     {
         _atkCor = StartCoroutine(AtkLoop());
