@@ -133,3 +133,5 @@ MonoBehaviour:
     - m_Name: 2
       m_Hash: 450215437
       m_Sprite: {fileID: -4865412993223310051, guid: 30ebd786a6d343c1bd865388dfbc3e67, type: 3}
+  m_ModificationHash: 0
+  m_Version: 1
