@@ -36,13 +36,11 @@ public class PlayerSkillHandler : MonoBehaviour
         if (state)
         {
             StopCoroutine(_autoSkillCoroutine);
-            Debug.Log("Off");
             return false;
         }
         else
         {
             _autoSkillCoroutine = StartCoroutine(UseSkillLoop());
-            Debug.Log("On");
             return true;
         }
     }

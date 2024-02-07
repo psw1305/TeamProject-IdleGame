@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
+public class FireBallProjectile : ProjectileHandlerBase
 {
-    [SerializeField] private GameObject destroyVFX;
+    private GameObject _enemyObj;
     private float _skillDamageRatio;
     protected override void Start()
     {
-        string _skillID = "S0009";
+        string _skillID = "S0001";
         _skillDamageRatio = (Manager.SkillData.SkillDataDictionary[_skillID].skillDamage
             + (Manager.Data.SkillInvenDictionary[_skillID].level - 1) + Manager.SkillData.SkillDataDictionary[_skillID].reinforceDamage)
             / 100;
@@ -20,22 +20,20 @@ public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
             Destroy(gameObject);
         }
     }
-
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if(TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
+        {
+            _enemyObj = collision.gameObject;
+            Destroy(gameObject);
+        }
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
     {
-        if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
+        if (_enemyObj != null)
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage((long)(Damage * _skillDamageRatio), DamageTypeValue);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        Instantiate(destroyVFX, gameObject.transform.position, destroyVFX.transform.rotation);
+            _enemyObj.GetComponent<IDamageable>().TakeDamage((long)(Damage * _skillDamageRatio), DamageTypeValue);
+        }    
     }
 }

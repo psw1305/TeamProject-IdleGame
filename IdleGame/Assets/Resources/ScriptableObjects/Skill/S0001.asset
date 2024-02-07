@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: S0001
   m_EditorClassIdentifier: 
   itemID: S0001
-  skillObject: {fileID: 202507690137476521, guid: 2c7fa817d0855414db0f2f3b37a25787, type: 3}
+  skillObject: {fileID: 4650271145879309026, guid: 207724b801b83ea45a1f0b58a3e92c22, type: 3}

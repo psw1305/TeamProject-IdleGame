@@ -25,7 +25,6 @@ public class EnemyView : UIBase
     private Coroutine _damageEffectCoroutine;
     private Coroutine _onHpBarCoroutine;
 
-    private bool _takeDamage = false;
     private bool _isDead = false;
     private float _decreasePerFrame;
     private float _timer;

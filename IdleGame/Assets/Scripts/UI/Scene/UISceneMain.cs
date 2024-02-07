@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.Events;
 
 public class UISceneMain : UIScene
 {
@@ -22,6 +21,7 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI txt_Gold;
     private TextMeshProUGUI txt_Gems;
     private TextMeshProUGUI txt_Stage;
+    private TextMeshProUGUI txt_PlayerPower;
 
     private Image Image_WaveLoop;
     private Image Image_LevelGauge;
@@ -68,10 +68,11 @@ public class UISceneMain : UIScene
     private void SetTexts()
     {
         SetUI<TextMeshProUGUI>();
-        
+
         txt_Gold = GetUI<TextMeshProUGUI>("Txt_Gold");
         txt_Gems = GetUI<TextMeshProUGUI>("Txt_Jewel");
         txt_Stage = GetUI<TextMeshProUGUI>("Txt_Stage");
+        txt_PlayerPower = GetUI<TextMeshProUGUI>("Txt_PlayerPower");
 
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
         _txtQuestObjective = GetUI<TextMeshProUGUI>("Txt_QuestObjective");
@@ -117,6 +118,7 @@ public class UISceneMain : UIScene
         // Update Top UI
         UpdateGold();
         UpdateGems();
+        UpdatePlayerPower();
         UpdateCurrentStage();
 
         // Quest
@@ -221,7 +223,7 @@ public class UISceneMain : UIScene
 
     public void UpdateGold()
     {
-        txt_Gold.text = player.Gold.ToString();
+        txt_Gold.text = Utility.ConvertToString(player.Gold);
     }
 
     public void UpdateGems()
@@ -242,6 +244,16 @@ public class UISceneMain : UIScene
     public void UpdateQuestObjective()
     {
         _txtQuestObjective.text = QuestObjective();
+    }
+
+    public void UpdatePlayerPower()
+    {
+        var player = Manager.Game.Player;
+        string v = Utility.ConvertToString((long)(player.AtkDamage.Value
+                        + player.AtkDamage.Value * player.EquipAttackStat / 100
+                        + player.AtkDamage.Value * player.RetentionAttackEffect / 100));
+
+        txt_PlayerPower.text = $"최종 공격력 : {v}";
     }
 
     public void UpdateStageLevel(int level)
@@ -276,7 +288,7 @@ public class UISceneMain : UIScene
     // 임시. 퀘스트 목표 TEXT 내용 반환
     public string QuestObjective()
     {
-        if(Manager.Quest.CurrentQuest.questType == QuestType.StageClear)
+        if (Manager.Quest.CurrentQuest.questType == QuestType.StageClear)
         {
             return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.objectiveValue}");
         }
