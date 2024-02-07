@@ -104,14 +104,13 @@ public class InventoryManager
         equipItem.equipped = true;
 
         Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     //일괄 강화
     public void ReinforceSelectItem(UserItemData itemdata)
     {
         ReinforceItem(itemdata);
-
-        Manager.Game.Player.EquipmentStatModifier();
     }
 
     // 선택한 아이템 강화
@@ -122,8 +121,6 @@ public class InventoryManager
         {
             ReinforceItem(item);
         }
-
-        Manager.Game.Player.EquipmentStatModifier();
     }
 
     private void ReinforceItem(UserItemData itemdata)
@@ -154,8 +151,9 @@ public class InventoryManager
                 itemdata.level += 1;
             }
         }
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
-
     #endregion
 }
 

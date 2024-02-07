@@ -89,6 +89,66 @@
             "reinforceDamage": 0.8,
             "retentionEffect": 5.0,
             "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0010",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0011",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0012",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0013",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0014",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0015",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
         }
     ]
 }

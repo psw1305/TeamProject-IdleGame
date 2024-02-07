@@ -16,6 +16,7 @@ public class TestAreaAtkSkill : BaseSkill
     {
         _atkCor = StartCoroutine(AtkLoop());
     }
+
     protected override void RemoveSkillEffect()
     {
         StopCoroutine(_atkCor);

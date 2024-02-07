@@ -64,6 +64,8 @@ public class UIUpgradeStat : MonoBehaviour
             textStatLevel.text = $"Lv. {statInfo.Level}";
             textStatValue.text = statInfo.GetString();
             textUpdateCost.text = statInfo.UpgradeCost.ToString();
+
+            (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
         }
     }
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BaseSkill : MonoBehaviour
+public abstract class BaseSkill : MonoBehaviour
 {
     protected float _currentDurateTime;
     protected float _currentCoolDown;
@@ -20,15 +20,9 @@ public class BaseSkill : MonoBehaviour
         StartCoroutine(CountSkillCooldown());
     }
 
-    protected virtual void ApplySkillEffect()
-    {
-        Debug.LogWarning("이 스킬의 'ApplySkillEffect' 메서드가 구현 및 오버라이드되지 않음");
-    }
+    protected abstract void ApplySkillEffect();
 
-    protected virtual void RemoveSkillEffect()
-    {
-        Debug.LogWarning("이 스킬의 'RemoveSkillEffect' 메서드가 구현 및 오버라이드되지 않음");
-    }
+    protected abstract void RemoveSkillEffect();
 
     public void UseSkill()
     {
