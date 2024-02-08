@@ -4,12 +4,22 @@ using UnityEngine;
 public abstract class BaseSkill : MonoBehaviour
 {
     protected float _currentDurateTime;
+    public float CurrentDurateTime => _currentDurateTime;
+
+
     protected float _currentCoolDown;
+    public float CurrentCoolDown => _currentCoolDown;
+
+
     protected SkillType _skillType;
     private bool _canUse;
 
+    [Header("Skill Time Setter")]
     [SerializeField] private float effectDurateTime;
+    public float EffectDurateTime => effectDurateTime;
+
     [SerializeField] private float coolDown;
+    public float CoolDown => effectDurateTime;
 
     Coroutine _skillDurateTimeCoroutine;
     Coroutine _coolDownCoroutine;

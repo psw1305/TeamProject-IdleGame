@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDurateTime: 5
-  coolDown: 2
+  coolDown: 5
   amountValue: 1
   skillVFX: {fileID: 106434, guid: 7404ef0d084afa64fbd0b9800d6f0b4f, type: 3}
