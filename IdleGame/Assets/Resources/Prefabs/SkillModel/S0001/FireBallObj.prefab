@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDurateTime: 1
-  coolDown: 1
+  coolDown: 2
   projectileSpawnPosition: {fileID: 4650271145879309026}
