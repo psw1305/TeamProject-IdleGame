@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -76,13 +77,15 @@ public class DataManager
 
     #region Load
 
-    public void Load()
+    public IEnumerator Load()
     {
         LoadFromUserProfile();
         LoadFromUserEquipment();
         LoadFromUserSkill();
         LoadFromUserFollower();
         Debug.Log($"Load From {Application.persistentDataPath}");
+        
+        yield return null;
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")

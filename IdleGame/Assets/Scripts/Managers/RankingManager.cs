@@ -48,7 +48,7 @@ public class RankingManager
                         string userName = userSnapshot.Child("name").Value.ToString();
                         string userScore = userSnapshot.Child("score").Value.ToString();
 
-                        var uiUserRank = Manager.Resource.InstantiatePrefab("UserRank", contents).GetComponent<UIUserRank>();
+                        var uiUserRank = Manager.Assets.InstantiateUI("uiuserrank", contents).GetComponent<UIUserRank>();
                         uiUserRank.Set(rank, userScore, userName);
                         rank--;
                     }

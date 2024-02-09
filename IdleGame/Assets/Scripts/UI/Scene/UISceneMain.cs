@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Events;
 
 public class UISceneMain : UIScene
 {

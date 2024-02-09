@@ -18,7 +18,7 @@ public class GameManager
 
     public void Initialize()
     {
-        var playerClone = Manager.Resource.InstantiatePrefab("PlayerFrame");
+        var playerClone = Manager.Assets.InstantiateModel("PlayerFrame");
         Player = playerClone.GetComponent<Player>();
     }
 

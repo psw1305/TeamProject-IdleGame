@@ -11,7 +11,7 @@ public class BaseNotiDot : MonoBehaviour
 
     public void InitNotificateUI()
     {
-        GameObject _childDot = Manager.Resource.InstantiatePrefab("NotiDot", gameObject.transform);
+        GameObject _childDot = Manager.Assets.InstantiateUI("notificationdot", gameObject.transform);
         ChildNotiDot = _childDot;
         _childDot.gameObject.transform.localPosition = new Vector2(GetComponent<RectTransform>().rect.width / 2 - 10, GetComponent<RectTransform>().rect.height / 2 - 10);
     }

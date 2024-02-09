@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,7 +12,7 @@ public class BaseScene : MonoBehaviour
         if (initialized) return false;
 
         Object obj = GameObject.FindObjectOfType<EventSystem>();
-        if (obj == null) Manager.Resource.InstantiatePrefab("EventSystem").name = "@EventSystem";
+        if (obj == null) Manager.Assets.InstantiateUI("eventsystem").name = "@EventSystem";
 
         initialized = true;
         return true;
@@ -25,17 +26,17 @@ public class BaseScene : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        // #1. 동기 작업 => 파일 불러오기, 데이터 로드
+        yield return StartCoroutine(Manager.Assets.DownloadFiles());
+        yield return StartCoroutine(Manager.Data.Load());
+
+        // #2. 비동기 작업 => 동시에 처리
         Manager.Resource.Initialize();
         Manager.Game.Initialize();
         Manager.ObjectPool.Initialize();
-
-        // 플레이어 데이터 로드, 이후 플레이어 관련 데이터 불러오기 가능
-        Manager.Data.Load();
-
         Manager.Ranking.Initialize();
-
         Initialize();
     }
 

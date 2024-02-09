@@ -41,14 +41,14 @@ public class ResourceManager
     /// string key를 기반으로 오브젝트 가져오기
     /// </summary>
     /// <param name="key">프리팹 이름</param>
-    /// <returns></returns>
-    public GameObject InstantiatePrefab(string key, Transform parent = null)
-    {
-        if (!prefabs.TryGetValue(key, out GameObject prefab)) return null;
-        GameObject obj = GameObject.Instantiate(prefab, parent);
-        obj.name = prefab.name;
-        return obj;
-    }
+    ///// <returns></returns>
+    //public GameObject InstantiatePrefab(string key, Transform parent = null)
+    //{
+    //    if (!prefabs.TryGetValue(key, out GameObject prefab)) return null;
+    //    GameObject obj = GameObject.Instantiate(prefab, parent);
+    //    obj.name = prefab.name;
+    //    return obj;
+    //}
 
     // 해당 오브젝트를 파괴한다.
     public void Destroy(GameObject obj)
