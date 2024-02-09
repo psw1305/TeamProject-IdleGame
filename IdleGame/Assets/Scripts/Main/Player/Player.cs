@@ -116,11 +116,11 @@ public class Player : MonoBehaviour, IDamageable
     private void FollowerInit()
     {
         // 임시로 5개 동료를 입력
-        _followerPrefab[0] = Manager.Resource.InstantiatePrefab("FollowerFrame_Dragon");
-        _followerPrefab[1] = Manager.Resource.InstantiatePrefab("FollowerFrame_Cat");
-        _followerPrefab[2] = Manager.Resource.InstantiatePrefab("FollowerFrame_WereWolf");
-        _followerPrefab[3] = Manager.Resource.InstantiatePrefab("FollowerFrame_MerMan");
-        _followerPrefab[4] = Manager.Resource.InstantiatePrefab("FollowerFrame_Lizard");
+        _followerPrefab[0] = Manager.Assets.InstantiateFollower("followerframe_dragon");
+        _followerPrefab[1] = Manager.Assets.InstantiateFollower("followerframe_cat");
+        _followerPrefab[2] = Manager.Assets.InstantiateFollower("followerframe_werewolf");
+        _followerPrefab[3] = Manager.Assets.InstantiateFollower("followerframe_merman");
+        _followerPrefab[4] = Manager.Assets.InstantiateFollower("followerframe_lizard");
 
         for (int i = 0; i < 5; i++)
         {

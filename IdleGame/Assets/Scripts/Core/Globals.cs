@@ -1,5 +1,9 @@
 using System;
 
+public static class AssetPath
+{
+}
+
 public static class BaseStat
 {
     public const int AtkDamage = 10;

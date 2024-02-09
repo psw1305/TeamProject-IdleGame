@@ -114,8 +114,11 @@ public class EquipSkillData : MonoBehaviour
             Destroy(SkillObject);
             SkillScript = null;
         }
+
         //프로퍼티를 설정함
-        SkillObject = Manager.Resource.InstantiatePrefab((Manager.Resource.GetBlueprint(itemID) as SkillBlueprint).SkillObject.name, Manager.Game.Player.transform);
+        SkillBlueprint skillBlueprint = Manager.Resource.GetBlueprint(itemID) as SkillBlueprint;
+
+        SkillObject = Manager.Assets.InstantiateModel(skillBlueprint.name, Manager.Game.Player.transform);
         SkillObject.transform.parent = transform;
         SkillScript = SkillObject.GetComponent<BaseSkill>();
     }
