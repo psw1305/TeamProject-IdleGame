@@ -30,8 +30,9 @@ public class GameManager
         Manager.Summon.SetSummon();
         Manager.Stage.SetStage(Manager.Data.Profile);
         Manager.Stage.BattleStart();
-        AudioBGM.Instance.VolumeBGMScale = 0.1f;
-        AudioBGM.Instance.Play(Manager.Resource.GetAudio("pikopikomachi_-_8bit"));
+
+        //AudioBGM.Instance.VolumeBGMScale = 0.1f;
+        //AudioBGM.Instance.Play(Manager.Assets.GetAudioBGM("testbgm"));
 
         // 플레이어 데이터가 초기화 되는 부분
         Player.transform.position = playerPosition;

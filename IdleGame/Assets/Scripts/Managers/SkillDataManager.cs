@@ -12,7 +12,7 @@ public class SkillDataManager
 
     public void ParseSkillData()
     {
-        _skillDataBaseText = Manager.Resource.GetFileText("DataTableSkill");
+        _skillDataBaseText = Manager.Assets.GetTextItem("ItemTableSkill");
         _skillData = JsonUtility.FromJson<SkillDataBase>(_skillDataBaseText);
         foreach (var skillData in _skillData.SkillDataList)
         {

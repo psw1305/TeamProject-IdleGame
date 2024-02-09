@@ -95,7 +95,7 @@ public class UIManager
         if (popupStack.Count == 0) return;
 
         UIPopup popup = popupStack.Pop();
-        Manager.Resource.Destroy(popup.gameObject);
+        Destroy(popup.gameObject);
         order--;
     }
 
@@ -119,6 +119,12 @@ public class UIManager
         T element = Utility.GetOrAddComponent<T>(obj);
 
         return element;
+    }
+
+    private void Destroy(GameObject obj)
+    {
+        if (obj == null) return;
+        UnityEngine.Object.Destroy(obj);
     }
 
     #endregion

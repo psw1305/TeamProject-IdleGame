@@ -35,7 +35,7 @@ public class StageManager
 
     // 스테이지 정보 로드용 프로퍼티
     public string DifficultyStr => _stageData.Difficulty;
-    public StageBlueprint StageConfig => Manager.Resource.GetBlueprint(_stageData.StageConfig) as StageBlueprint;
+    public StageBlueprint StageConfig => Manager.Assets.GetBlueprintStage(_stageData.StageConfig) as StageBlueprint;
     public string StageBackground => string.Empty;
     public int EnemyStatRate => _stageData.EnemyStatRate;
     public int EnemyGoldRate => _stageData.EnemyGoldRate;
@@ -58,7 +58,7 @@ public class StageManager
     public void Initialize()
     {
         // json 파일 로딩, 딕셔너리에 인덱스 그룹 넣기
-        _tableText = Manager.Resource.GetFileText("DataTableStage");
+        _tableText = Manager.Assets.GetTextItem("ItemTableStage");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
         stageTable = stageDataTable.stageDataTable
@@ -180,15 +180,15 @@ public class StageManager
     {
         // 랜덤으로 Enemy 설계도 선정
         var randomEnemyName = StageConfig.Enemies[Random.Range(0, StageConfig.Enemies.Length)];
-        var enemyBlueprint = Manager.Resource.GetBlueprint(randomEnemyName) as EnemyBlueprint;
+        var enemyBlueprint = Manager.Assets.GetBlueprintEnemy(randomEnemyName) as EnemyBlueprint;
 
         // BaseEnemy 랜덤 Y축 위치 선정
         var randomYPos = Random.Range(spawnPoint[0].position.y, spawnPoint[1].position.y);
         var randomPos = new Vector2(spawnPoint[0].position.x, Mathf.Round(randomYPos * 10.0f) * 0.1f);
 
         // BaseEnemy 오브젝트 생성
-        //var enemyObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
         var enemyObject = Manager.ObjectPool.GetGo("EnemyFrame");
+
         // 레이어 조정
         var enemySprite = enemyObject.GetComponent<SpriteRenderer>();
         enemySprite.sortingOrder = (int)Mathf.Ceil(spawnPoint[0].position.y * 10.0f - (randomPos.y * 10.0f));
@@ -206,9 +206,7 @@ public class StageManager
         _uISceneMain.StageLevelGaugeToggle(false);
 
         // Boss 설계도 가져오기
-        var enemyBlueprint = Manager.Resource.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
-
-        //var bossObject = Manager.Resource.InstantiatePrefab("EnemyFrame");
+        var enemyBlueprint = Manager.Assets.GetBlueprintEnemy(StageConfig.Boss) as EnemyBlueprint;
         var bossObject = Manager.ObjectPool.GetGo("EnemyFrame");
         var enemy = bossObject.GetComponent<BaseEnemy>();
         enemy.SetEnemy(enemyBlueprint, bossSpawnPoint.position, EnemyStatRate, EnemyGoldRate);

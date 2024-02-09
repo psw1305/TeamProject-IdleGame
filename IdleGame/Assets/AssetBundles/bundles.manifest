@@ -1,0 +1,388 @@
+ManifestFileVersion: 0
+CRC: 1183638258
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 59e5d8bfff7d51b8f1dbc77c5fd6e2de
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 416b57eb09078a6f937c85dd85f0deff
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 59e5d8bfff7d51b8f1dbc77c5fd6e2de
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9c72e498a8adce24d843f2d83bdee2ee, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4e986e0ab68c1d4fb377e2c1731258a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7e5b4dab6fc929f49888823152fe1ab3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 909b3092a00a8864c9a459ca474a01d4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d3fd25ffeb1da804b89c048df19ea97a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2680ee83af41c064ab776205a47895d0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: db72535973583a94892163c952aa38ce, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f775b4a7b73e9444c97a6277ca181ec6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2423df2c2bed6f348bb2f0fd52910f47, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4cbf1accf056f4d43ae2f3ee49eccd15, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 84c5182b6ee30884a83aa1a06614db5f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: df256a62c946c8c46ac2a72b70e3a6fb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1a674c88092cffe4f8709e0b1c32fe11, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b60082ef4532c6349ab9267062665e18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 098ef412c6ae3c3439e5d1ded84b44d2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 185ed378ab963d2439686a298c257ba8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e4669ecba9a860249a11afa5e5da7932, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c7c8366ee6b8e024788ef1bcc3ced864, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 02cba26578f093944adc72806e6121b9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b39162b45c0cdff47b48b965c71a7be4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0412c0c09a8427e49a12198f9c97503c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0a21db0cde9e0e548b35fb830585a16c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a04a8fc35fc869c4eb44422b881df58e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6d024a34924608548a5b472808fa2b6b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 256a38328ec129b4a91fbdf7ace0383b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 40a922925ee1b9c4cb8b7f50430935e8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0900ce843cac3a44f8f1a08124113da7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 27a3adc4df5aae74994c131aacf2871a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fc9816d1c1d75cf449cf23f9f9356894, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ce63ef39147fc964a9b3214832e8ae6a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 55fdf37999b67b8408cf7a86686658e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 10102bb07c0c74946bebd62ac732393c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0d65f1808da324048b7228c02d81d711, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4bc268785ec8754dbe2b90c4db95636, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 86fbe9126ae9d284fbce67e9b23772c9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 08ee5b720bb7c7246b81eaefe9efbd57, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6fc54e0d18ce7ec4fb715964c6b58bdc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4c16c0ddb04e88f45bbb235fd6082070, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f53e7d0ef958d5540994c8f6dc782221, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d0b1da54c8f0bc440a7a9027e1e87eea, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8fe2cccd47c31304da8b6aebe25f084b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8cac079f5b5b95341a96ef51d1a2b180, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f29cf2a9992ea4e4998cabcabe06f745, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3c4381e411bc09048ba226e7571955f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7638517722be1994da9b4c5138292cb2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f7fc7c3f71224e44ba0a269f8df0e74a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b8a8142f61f50fe4b8aa838087db3ab0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8e238bf1da9fc444bb5566d4f035be86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 43e531d32bcdaf04b9b2ac2f5d4c1b46, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: da9881cb34cc00840911867107cc5b5e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 122084e92b09b4c4d9a73824eef3e2f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9b6546116f3be9541970a07d5edb6cd8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 91e71e97b84f0ed4da62e7dbc5ca7afd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ac67024e0a352134fbffdcf7ec4ea703, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9e57db547eaf1a047a364c283a1f2644, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 774436c22d927d548a7199a01cad9c52, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31c08eace6c6a5f4ba6eea887b21e448, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71e038a1aef77544b9b444b9851abb78, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: ButtonInfo
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Slider/SliderEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/@Resources/Blueprints/Skill/S0007.asset
+- Assets/@Resources/Texts/Item/ItemTableFollower.Json
+- Assets/@Resources/Prefabs/Skill/AreaAtkSkill.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 7.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 4.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 5.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_MerMan.prefab
+- Assets/@Resources/Blueprints/Skill/S0009.asset
+- Assets/@Resources/Prefabs/Model/FireBallObj.prefab
+- Assets/@Resources/Blueprints/Summon/SummonFollower.asset
+- Assets/@Resources/Blueprints/Follower/F0003.asset
+- Assets/@Resources/Prefabs/UI/Elements/Buttons/Btn_Plain.prefab
+- Assets/@Resources/Prefabs/Skill/BuffSkill.prefab
+- Assets/@Resources/Texts/User/UserTableFollower.Json
+- Assets/@Resources/Prefabs/UI/Elements/Slot_Weapon.prefab
+- Assets/@Resources/Blueprints/Stage/StageConfig4.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 8.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Image_HUD_Stage.prefab
+- Assets/@Resources/Texts/Summon/SummonTableEquipment.json
+- Assets/@Resources/Texts/Summon/SummonCountEquipment.json
+- Assets/@Resources/Sprites/F0005.asset
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupSummonRewards.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Buttons/Btn_Check.prefab
+- Assets/@Resources/Blueprints/Follower/F0005.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Lizard2.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Elf.prefab
+- Assets/@Resources/Blueprints/Summon/SummonConfig.asset
+- Assets/@Resources/Prefabs/Projectile/PlayerProjectileVFXTest.prefab
+- Assets/@Resources/Sprites/items.png
+- Assets/@Resources/Texts/User/UserTableSkill.Json
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf2.prefab
+- Assets/@Resources/Texts/User/UserTableEquipment.Json
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Lizard3.prefab
+- Assets/@Resources/Prefabs/Model/Canvas_FloatingDamage.prefab
+- Assets/@Resources/Audios/BGM/testbgm.mp3
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupPlayerSystem.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Cat2.prefab
+- Assets/@Resources/Prefabs/UI/UISceneMain.prefab
+- Assets/@Resources/Blueprints/Skill/S0008.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3.prefab
+- Assets/@Resources/Blueprints/Follower/F0006.asset
+- Assets/@Resources/Blueprints/Stage/StageConfig1.asset
+- Assets/@Resources/Sprites/F0003.asset
+- Assets/@Resources/Sprites/F0001.asset
+- Assets/@Resources/Blueprints/Skill/S0004.asset
+- Assets/@Resources/Prefabs/UI/Elements/UserRank.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Demon2.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupFollower.prefab
+- Assets/@Resources/Prefabs/Projectile/EnemyProjectileVFXTest.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupRanking.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Buttons/Btn_Check_Ads.prefab
+- Assets/@Resources/Prefabs/Model/EnemyFrame.prefab
+- Assets/@Resources/Texts/Item/ItemTableSkill.Json
+- Assets/@Resources/Prefabs/Projectile/FireBallProjectile.prefab
+- Assets/@Resources/Prefabs/UI/Elements/UICanvas_Debug.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupRewardsIdle.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Dragon.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Lizard.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Kinght2.prefab
+- Assets/@Resources/Sprites/F0002.asset
+- Assets/@Resources/Prefabs/Projectile/TestProjectileVFX.prefab
+- Assets/@Resources/Texts/Summon/SummonCountSkills.json
+- Assets/@Resources/Prefabs/UI/Elements/SummonBanner.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Dragon2.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Dragon3.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Buttons/Btn_Cancle.prefab
+- Assets/@Resources/Prefabs/UI/Elements/DynamicReward_ItemSlot.prefab
+- Assets/@Resources/Prefabs/Model/PlayerProjectileFrame.prefab
+- Assets/@Resources/Texts/Item/ItemTableStage.json
+- Assets/@Resources/Blueprints/Enemy/TestEnemy1.asset
+- Assets/@Resources/Prefabs/UI/NotificationDot.prefab
+- Assets/@Resources/Blueprints/Stage/StageConfig5.asset
+- Assets/@Resources/Prefabs/UI/Elements/Slot_Armor.prefab
+- Assets/@Resources/Texts/Summon/SummonCountFollower.json
+- Assets/@Resources/Prefabs/Projectile/TestProjectile.prefab
+- Assets/@Resources/Texts/Summon/SummonTableFollower.json
+- Assets/@Resources/Sprites/F0004.asset
+- Assets/@Resources/Prefabs/Model/FollowerProjectileFrame.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Kinght.prefab
+- Assets/@Resources/Blueprints/Summon/SummonRewards.asset
+- Assets/@Resources/Audios/SFX/testatk.wav
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Guardian.prefab
+- Assets/@Resources/Prefabs/Model/EnemyProjectileFrame.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupShopSummon.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Slot_Skill.prefab
+- Assets/@Resources/Audios/SFX/testclick.wav
+- Assets/@Resources/Prefabs/Skill/BuffSkillVFX.prefab
+- Assets/@Resources/Blueprints/Enemy/TestEnemy2.asset
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupFollowerDetail.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Buttons/Option_Btn.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Buttons/Btn_Check_Gems.prefab
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Demon.prefab
+- Assets/@Resources/Blueprints/Skill/S0002.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Cat3.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIDropDownOptions.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupSkill.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Display_Resource.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupEquipment.prefab
+- Assets/@Resources/Blueprints/Stage/StageConfig3.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Cat.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Slot_Follower.prefab
+- Assets/@Resources/Blueprints/Summon/SummonEquipment.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_Demon3.prefab
+- Assets/@Resources/Prefabs/UI/Popup/UIPopupSkillDetail.prefab
+- Assets/@Resources/Prefabs/UI/EventSystem.prefab
+- Assets/@Resources/Texts/Item/ItemTableEquipment.Json
+- Assets/@Resources/Blueprints/Skill/S0001.asset
+- Assets/@Resources/Prefabs/UI/Elements/Upgrade_Stat.prefab
+- Assets/@Resources/Prefabs/UI/Elements/Buttons/Btn_Check_Free.prefab
+- Assets/@Resources/Prefabs/Model/PlayerFrame.prefab
+- Assets/@Resources/Prefabs/Model/TestDestroyVFX.prefab
+- Assets/@Resources/Prefabs/UI/Elements/DimScreen.prefab
+- Assets/@Resources/Texts/Summon/SummonTableSkills.json
+- Assets/@Resources/Blueprints/Skill/S0006.asset
+- Assets/@Resources/Blueprints/Enemy/TestEnemy3.asset
+- Assets/@Resources/Prefabs/UI/Elements/FloatingText.prefab
+- Assets/@Resources/Blueprints/Skill/S0005.asset
+- Assets/@Resources/Blueprints/Skill/S0003.asset
+- Assets/@Resources/Blueprints/Follower/F0001.asset
+- Assets/@Resources/Sprites/F0006.asset
+- Assets/@Resources/Blueprints/Stage/StageConfig2.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 9.prefab
+- Assets/@Resources/Blueprints/Summon/SummonSkills.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf.prefab
+- Assets/@Resources/Blueprints/Enemy/TestBoss1.asset
+- Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 6.prefab
+- Assets/@Resources/Blueprints/Follower/F0004.asset
+- Assets/@Resources/Prefabs/UI/Elements/Image_HUD_Quest.prefab
+- Assets/@Resources/Blueprints/Follower/F0002.asset
+Dependencies: []

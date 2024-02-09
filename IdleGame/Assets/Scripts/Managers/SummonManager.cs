@@ -32,9 +32,9 @@ public partial class SummonManager
 
     public void Initialize()
     {
-        _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
+        _summonConfig = Manager.Assets.GetBlueprintSummon("SummonConfig") as SummonConfig;
 
-        foreach (var list in _summonBlueprint.SummonLists)
+        foreach (var list in _summonConfig.SummonLists)
         {
             TableInitalize(list);
         }

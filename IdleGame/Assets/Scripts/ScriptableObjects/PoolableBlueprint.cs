@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Poolable", menuName = "Blueprints/Poolable")]
+[CreateAssetMenu(fileName = "PoolableBlueprint", menuName = "Blueprints/Poolable")]
 public class PoolableBlueprint : ScriptableObject
 {
     [Header("Poolable Info")]

@@ -5,7 +5,7 @@ using UnityEngine;
 public partial class SummonManager
 {
     private Dictionary<string, SummonTable> _tables = new Dictionary<string, SummonTable>();
-    private SummonBlueprint _summonBlueprint;
+    private SummonConfig _summonConfig;
     public Dictionary<string, SummonTable> SummonTables => _tables;
 
     public void TableInitalize(SummonList summonList)
@@ -68,7 +68,7 @@ public class SummonTable
 
     private void ProbabilityInit(string tableLink)
     {
-        string _tabletext = Manager.Resource.GetFileText($"SummonTable{tableLink}");
+        string _tabletext = Manager.Assets.GetTextSummon($"SummonTable{tableLink}");
         var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tabletext}}}");
 
         // 불러온 테이블을 레벨 그룹별로 1차 가공
@@ -102,7 +102,7 @@ public class SummonTable
 
     private void GradeCountInit(string tableLink)
     {
-        string _tabletext = Manager.Resource.GetFileText($"SummonCount{tableLink}");
+        string _tabletext = Manager.Assets.GetTextSummon($"SummonCount{tableLink}");
         var gradeUpDataTable = JsonUtility.FromJson<GradeUpDataTable>($"{{\"gradeUpDataTable\":{_tabletext}}}");
 
         _gradeUpCount = gradeUpDataTable.gradeUpDataTable.Select(x => x.needCounts).ToList();

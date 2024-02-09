@@ -55,7 +55,7 @@ public class UIUpgradeStat : MonoBehaviour
     {
         if (player.IsTradeGold(statInfo.UpgradeCost))
         {
-            AudioSFX.Instance.PlayOneShot(Manager.Resource.GetAudio("14_item2"));
+            AudioSFX.Instance.PlayOneShot(Manager.Assets.GetAudioSFX("testclick"));
 
             statInfo.AddModifier();
 

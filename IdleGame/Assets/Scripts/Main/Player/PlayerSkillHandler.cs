@@ -10,7 +10,6 @@ public class PlayerSkillHandler : MonoBehaviour
     private Dictionary<int, EquipSkillData> _userEquipSkillSlot = new();
     public Dictionary<int, EquipSkillData> UserEquipSkillSlot => _userEquipSkillSlot;
 
-
     private event Action<int> _skillUesAction;
     public void AddActionUseSkill(Action<int> skillUesAction)
     {
@@ -108,17 +107,16 @@ public class EquipSkillData : MonoBehaviour
             return;
         }
 
-        //슬롯에 스킬이 있으나 이미 프로퍼티가 설정되어 있는 경우 초기화
+        // 슬롯에 스킬이 있으나 이미 프로퍼티가 설정되어 있는 경우 초기화
         if (SkillObject != null)
         {
             Destroy(SkillObject);
             SkillScript = null;
         }
 
-        //프로퍼티를 설정함
-        SkillBlueprint skillBlueprint = Manager.Resource.GetBlueprint(itemID) as SkillBlueprint;
-
-        SkillObject = Manager.Assets.InstantiateModel(skillBlueprint.name, Manager.Game.Player.transform);
+        // 프로퍼티를 설정함
+        var skillBlueprint = Manager.Assets.GetBlueprintSkill(itemID) as SkillBlueprint;
+        SkillObject = Manager.Assets.InstantiateModel(skillBlueprint.SkillName, Manager.Game.Player.transform);
         SkillObject.transform.parent = transform;
         SkillScript = SkillObject.GetComponent<BaseSkill>();
     }

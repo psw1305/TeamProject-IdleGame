@@ -29,21 +29,24 @@ public class BaseScene : MonoBehaviour
     private IEnumerator Start()
     {
         // #1. 동기 작업 => 파일 불러오기, 데이터 로드
-        yield return StartCoroutine(Manager.Assets.DownloadFiles());
+#if UNITY_EDITOR
+        yield return StartCoroutine(Manager.Assets.DownloadLocalFiles());
+#elif UNITY_ANDROID
+        yield return StartCoroutine(Manager.Assets.DownloadServerFiles());
+#endif
         yield return StartCoroutine(Manager.Data.Load());
 
         // #2. 비동기 작업 => 동시에 처리
-        Manager.Resource.Initialize();
         Manager.Game.Initialize();
         Manager.ObjectPool.Initialize();
-        Manager.Ranking.Initialize();
+        //Manager.Ranking.Initialize();
         Initialize();
     }
 
     private void OnApplicationQuit()
     {
-        Manager.Data.Save();
+        //Manager.Data.Save();
     }
 
-    #endregion
+#endregion
 }

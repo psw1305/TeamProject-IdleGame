@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class UISceneMain : UIScene
 {
@@ -198,7 +197,7 @@ public class UISceneMain : UIScene
     {
         if (_btnIdleRewards.interactable) Manager.UI.ShowPopup<UIPopupRewardsIdle>("UIPopupRewardsIdle");
     }
-    private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptionDropdownPanel>("UIDropDownOptions");
+    private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptions>("UIDropDownOptions");
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
     private void OnPlayerSystem(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupPlayerSystem>();
     private void OnRanking(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupRanking>();

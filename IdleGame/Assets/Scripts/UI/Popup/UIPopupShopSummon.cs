@@ -13,7 +13,7 @@ public class UIPopupShopSummon : UIPopup
 
     private Player player;
     private SummonManager _summon;
-    private SummonBlueprint _summonBlueprint;
+    private SummonConfig _config;
     private Dictionary<string, UISummonBanner> _banners = new();
     private GameObject _content;
 
@@ -21,7 +21,7 @@ public class UIPopupShopSummon : UIPopup
 
     #region Properties
 
-    public SummonBlueprint SummonBlueprint => _summonBlueprint;
+    public SummonConfig Config => _config;
 
     #endregion
 
@@ -31,7 +31,7 @@ public class UIPopupShopSummon : UIPopup
     {
         base.Init();
         _summon = Manager.Summon;
-        _summonBlueprint = Manager.Resource.GetBlueprint("SummonConfig") as SummonBlueprint;
+        _config = Manager.Assets.GetBlueprintSummon("SummonConfig") as SummonConfig;
         _content = transform.GetComponentInChildren<VerticalLayoutGroup>().gameObject;
         _summon.SetShopPopup(this);
 
@@ -58,7 +58,7 @@ public class UIPopupShopSummon : UIPopup
 
     private void SummonBannerInit()
     {
-        foreach (var list in _summonBlueprint.SummonLists)
+        foreach (var list in _config.SummonLists)
         {
             var banner = Manager.UI.AddElement<UISummonBanner>(list.Banner.name);
             _banners[list.TypeLink] = banner;
