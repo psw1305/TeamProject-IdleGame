@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: S0009
   m_EditorClassIdentifier: 
   itemID: S0009
-  skillName: buffskill
-  skillObject: {fileID: 6870505122484580750, guid: 03e0d915358ba124db9f299a501801bf, type: 3}
+  skillObject: {fileID: 202507690137476521, guid: 2c7fa817d0855414db0f2f3b37a25787, type: 3}
