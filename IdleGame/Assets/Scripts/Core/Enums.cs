@@ -52,3 +52,10 @@ public enum EnemyType
     Normal,
     Boss
 }
+
+public enum SkillType
+{
+    Targeting,
+    Area,
+    Buff
+}

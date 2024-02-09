@@ -144,7 +144,7 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     private void SendItemData()
     {
-        FindObjectOfType<UIPopupEquipment>().SetSelectItemInfo(_itemData);
+        (Manager.UI.CurrentPopup as UIPopupEquipment).SetSelectItemInfo(_itemData);
     }
 
     #endregion

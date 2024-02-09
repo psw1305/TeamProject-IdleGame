@@ -3,23 +3,39 @@ using UnityEngine;
 
 public class UIUseSkillContainer : MonoBehaviour
 {
-    private List<UIUseSkillSlots> slots = new();
+    private List<UIUseSkillSlots> _slots = new();
+    private PlayerSkillHandler _playerSkillHandler;
+
     private void Start()
     {
-        for (int i = 0; i > gameObject.GetComponentsInChildren<UIUseSkillSlots>().Length; i++)
-        {
-            slots.Add(gameObject.GetComponentsInChildren<UIUseSkillSlots>()[i]);
+        _playerSkillHandler = Manager.Game.Player.GetComponent<PlayerSkillHandler>();
 
-            Debug.LogWarning(slots[i]);
-            if (Manager.Data.UserSkillData.UserEquipSkill[i].itemID == "Empty")
-            {
-                slots[i].SkillIcon.gameObject.SetActive(false);
-            }
-            else
-            {
-                slots[i].SkillIcon.sprite = Manager.Resource.GetSprite(Manager.Data.UserSkillData.UserEquipSkill[i].itemID);
-                slots[i].SkillIcon.gameObject.SetActive(true);
-            }
+        for (int i = 0; i < gameObject.GetComponentsInChildren<UIUseSkillSlots>().Length; i++)
+        {
+            _slots.Add(gameObject.GetComponentsInChildren<UIUseSkillSlots>()[i]);
+            _slots[i].SetUISkillSlot(_playerSkillHandler.UserEquipSkillSlot[i]);
+        }
+        _playerSkillHandler.AddActionUseSkill(SetUsingUIState);
+        _playerSkillHandler.AddActionChangeSkill(SetSkillUIState);
+    }
+
+    public void SetSkillUIState(int index)
+    {
+        _slots[index].SetUISkillSlot(_playerSkillHandler.UserEquipSkillSlot[index]);
+    }
+
+
+    public void SetUsingUIState(int index)
+    {
+        _slots[index].SetUIUseSkill();
+    }
+
+    private void OnDestroy()
+    {
+        if(_playerSkillHandler != null)
+        {
+            _playerSkillHandler.RemoveActionUseSkill(SetUsingUIState);
+            _playerSkillHandler.RemoveActionChangeSkill(SetSkillUIState);
         }
     }
 }

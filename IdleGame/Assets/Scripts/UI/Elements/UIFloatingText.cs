@@ -29,7 +29,7 @@ public class UIFloatingText : ObjectPoolable
         Alpha = _txtDamage.color;
         Alpha = Color.white;
         Alpha.a = 1;
-        _txtDamage.text = damage.ToString();
+        //_txtDamage.text =string.Empty;
     }
 
     #endregion
@@ -60,7 +60,7 @@ public class UIFloatingText : ObjectPoolable
     {
         _isReleased = false;
         damage = value;
-        _txtDamage.text = damage.ToString();
+        _txtDamage.text = Utility.ConvertToString(damage);
     }
 
     #endregion

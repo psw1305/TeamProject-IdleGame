@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,32 @@ public class PlayerSkillHandler : MonoBehaviour
 {
     private Coroutine _autoSkillCoroutine;
 
-    private Dictionary<int, EquipSkillData> _userEquipSkillSlot = new Dictionary<int, EquipSkillData>();
+    private Dictionary<int, EquipSkillData> _userEquipSkillSlot = new();
+    public Dictionary<int, EquipSkillData> UserEquipSkillSlot => _userEquipSkillSlot;
+
+
+    private event Action<int> _skillUesAction;
+    public void AddActionUseSkill(Action<int> skillUesAction)
+    {
+        _skillUesAction += skillUesAction;
+    }
+    public void RemoveActionUseSkill(Action<int> skillUesAction)
+    {
+        _skillUesAction -= skillUesAction;
+    }
+
+
+    private event Action<int> _skillChangeAction;
+    public void AddActionChangeSkill(Action<int> skillUesAction)
+    {
+        _skillChangeAction += skillUesAction;
+    }
+    public void RemoveActionChangeSkill(Action<int> skillUesAction)
+    {
+        _skillChangeAction -= skillUesAction;
+    }
+
+
 
     private void Start()
     {
@@ -29,6 +55,7 @@ public class PlayerSkillHandler : MonoBehaviour
     public void ChangeEquipSkillData(int slotIndex)
     {
         _userEquipSkillSlot[slotIndex].SetSkillObject(Manager.Data.UserSkillData.UserEquipSkill[slotIndex].itemID);
+        _skillChangeAction?.Invoke(slotIndex);
     }
 
     public bool ToggleAutoSkill(bool state)
@@ -36,13 +63,11 @@ public class PlayerSkillHandler : MonoBehaviour
         if (state)
         {
             StopCoroutine(_autoSkillCoroutine);
-            Debug.Log("Off");
             return false;
         }
         else
         {
             _autoSkillCoroutine = StartCoroutine(UseSkillLoop());
-            Debug.Log("On");
             return true;
         }
     }
@@ -52,11 +77,12 @@ public class PlayerSkillHandler : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            foreach (var skill in _userEquipSkillSlot)
+            for (int i = 0; i < _userEquipSkillSlot.Count; i++)
             {
-                if (skill.Value.SkillScript != null)
+                if (_userEquipSkillSlot[i].SkillScript != null)
                 {
-                    skill.Value.SkillScript.UseSkill();
+                    _userEquipSkillSlot[i].SkillScript.UseSkill();
+                    _skillUesAction?.Invoke(i);
                 }
             }
         }
@@ -67,10 +93,11 @@ public class EquipSkillData : MonoBehaviour
 {
     public GameObject SkillObject { get; private set; }
     public BaseSkill SkillScript { get; private set; }
-
-    private string _skillID;
+    public string SkillID {  get; private set; }
     public void SetSkillObject(string itemID)
     {
+        SkillID = itemID;
+
         if (itemID == "Empty")
         {
             if (SkillObject != null)

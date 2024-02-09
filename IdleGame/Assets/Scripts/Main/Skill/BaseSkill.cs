@@ -1,34 +1,38 @@
 using System.Collections;
 using UnityEngine;
 
-public class BaseSkill : MonoBehaviour
+public abstract class BaseSkill : MonoBehaviour
 {
     protected float _currentDurateTime;
-    protected float _currentCoolDown;
+    public float CurrentDurateTime => _currentDurateTime;
 
+
+    protected float _currentCoolDown;
+    public float CurrentCoolDown => _currentCoolDown;
+
+
+    protected SkillType _skillType;
     private bool _canUse;
 
+    [Header("Skill Time Setter")]
     [SerializeField] private float effectDurateTime;
+    public float EffectDurateTime => effectDurateTime;
+
     [SerializeField] private float coolDown;
+    public float CoolDown => effectDurateTime;
 
     Coroutine _skillDurateTimeCoroutine;
     Coroutine _coolDownCoroutine;
 
-    private void Start()
+    protected virtual void Start()
     {
         _canUse = false;
         StartCoroutine(CountSkillCooldown());
     }
 
-    protected virtual void ApplySkillEffect()
-    {
-        Debug.LogWarning("이 스킬의 'ApplySkillEffect' 메서드가 구현 및 오버라이드되지 않았습니다.");
-    }
+    protected abstract void ApplySkillEffect();
 
-    protected virtual void RemoveSkillEffect()
-    {
-        Debug.LogWarning("이 스킬의 'RemoveSkillEffect' 메서드가 구현 및 오버라이드되지 않았습니다.");
-    }
+    protected abstract void RemoveSkillEffect();
 
     public void UseSkill()
     {
@@ -36,6 +40,12 @@ public class BaseSkill : MonoBehaviour
         {
             return;
         }
+
+        if(_skillType == SkillType.Targeting && Manager.Game.Player.enemyList.Count == 0)
+        {
+            return;
+        }
+
         _canUse = false;
         StartCoroutine(CountDurateTime());
     }

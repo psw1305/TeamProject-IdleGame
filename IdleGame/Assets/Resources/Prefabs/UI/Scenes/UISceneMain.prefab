@@ -180,9 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29cf2a9992ea4e4998cabcabe06f745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillIcon: {fileID: 0}
-  Durate: {fileID: 0}
-  CoolDown: {fileID: 0}
+  ImgSkillIcon: {fileID: 8979198771319090352}
+  ImgDurate: {fileID: 3673646014168955413}
+  ImgCoolDown: {fileID: 4608606795282538270}
 --- !u!1 &296385882363448341
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,9 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29cf2a9992ea4e4998cabcabe06f745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillIcon: {fileID: 0}
-  Durate: {fileID: 0}
-  CoolDown: {fileID: 0}
+  ImgSkillIcon: {fileID: 1972657779814155959}
+  ImgDurate: {fileID: 2590103187661189235}
+  ImgCoolDown: {fileID: 5209618637751640436}
 --- !u!1 &1628018074396418459
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,9 +836,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29cf2a9992ea4e4998cabcabe06f745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillIcon: {fileID: 0}
-  Durate: {fileID: 0}
-  CoolDown: {fileID: 0}
+  ImgSkillIcon: {fileID: 6790667185848950914}
+  ImgDurate: {fileID: 8825887604799951539}
+  ImgCoolDown: {fileID: 5932660086698331053}
 --- !u!1 &2847844546477450435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,9 +2363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29cf2a9992ea4e4998cabcabe06f745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillIcon: {fileID: 0}
-  Durate: {fileID: 0}
-  CoolDown: {fileID: 0}
+  ImgSkillIcon: {fileID: 1953522404611075961}
+  ImgDurate: {fileID: 7876887313837114315}
+  ImgCoolDown: {fileID: 7821673526534250980}
 --- !u!1 &5584910210276583045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,9 +3190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29cf2a9992ea4e4998cabcabe06f745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillIcon: {fileID: 0}
-  Durate: {fileID: 0}
-  CoolDown: {fileID: 0}
+  ImgSkillIcon: {fileID: 5711016252395161392}
+  ImgDurate: {fileID: 5116380724937026592}
+  ImgCoolDown: {fileID: 647917643742004975}
 --- !u!1 &6794685908941233123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,7 +3862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666070277701823701, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 98.18
       objectReference: {fileID: 0}
     - target: {fileID: 3666070277701823701, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_AnchoredPosition.y

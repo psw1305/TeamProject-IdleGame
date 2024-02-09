@@ -151,6 +151,9 @@ public partial class SummonManager
             case "Skills":
                 SkillAdd(finalResult);
                 break;
+            case "Follower":
+                FollowerAdd(finalResult);
+                break;
         }
         
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
@@ -178,7 +181,7 @@ public partial class SummonManager
     {
         for (int i = 0; i < summonResult.Length; i++)
         {
-            UserInvenFollowerData followerData = _followerDataManager.SearchFollower(summonResult[i]);
+            UserInvenFollowerData followerData = Manager.FollowerData.SearchFollower(summonResult[i]);
             followerData.hasCount++;
         }
     }
