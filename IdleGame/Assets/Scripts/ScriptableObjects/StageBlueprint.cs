@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StageConfig", menuName = "Blueprints/Stage")]
+[CreateAssetMenu(fileName = "StageConfig", menuName = "Blueprints/StageBlueprint")]
 public class StageBlueprint : ScriptableObject
 {
     [Header("Monster Data")]

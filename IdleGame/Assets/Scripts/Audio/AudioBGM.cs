@@ -23,12 +23,6 @@ public class AudioBGM : AudioSystem<AudioBGM>
 
     #endregion
 
-    #region Sound Fields
-
-    public AudioClip stage;
-
-    #endregion
-
     protected override void Awake()
     {
         base.Awake();

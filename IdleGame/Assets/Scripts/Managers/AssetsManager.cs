@@ -35,7 +35,6 @@ public class AssetsManager
             {
                 Object asset = bundle.LoadAsset(assetName);
                 bundles.Add(assetName, asset);
-                Debug.Log(assetName);
             }
 
             bundle.Unload(false);

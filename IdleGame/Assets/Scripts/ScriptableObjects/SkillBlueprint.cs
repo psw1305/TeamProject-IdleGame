@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillBlueprint", menuName = "Blueprints/Skill")]
+[CreateAssetMenu(fileName = "SkillBlueprint", menuName = "Blueprints/SkillBlueprint")]
 public class SkillBlueprint : ScriptableObject
 {
     [SerializeField] private string itemID;

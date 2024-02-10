@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FollowerBlueprint", menuName = "Blueprints/Follower")]
+[CreateAssetMenu(fileName = "FollowerBlueprint", menuName = "Blueprints/FollowerBlueprint")]
 public class FollowerBlueprint : ScriptableObject
 {
     [SerializeField] private string itemID;

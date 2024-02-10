@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4669ecba9a860249a11afa5e5da7932, type: 3}
-  m_Name: StageConfig5
+  m_Name: StageConfig_1
   m_EditorClassIdentifier: 
   boss: TestBoss1
   enemies:
   - TestEnemy1
   - TestEnemy2
-  - TestEnemy3
   battleCount: 4

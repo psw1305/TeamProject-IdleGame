@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyBlueprint", menuName = "Blueprints/Enemy")]
+[CreateAssetMenu(fileName = "EnemyBlueprint", menuName = "Blueprints/EnemyBlueprint")]
 public class EnemyBlueprint : ScriptableObject
 {
     [Header("Enemy Info")]

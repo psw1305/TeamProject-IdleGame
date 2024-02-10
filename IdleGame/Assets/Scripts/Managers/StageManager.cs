@@ -11,12 +11,12 @@ public class StageManager
     private string _tableText;
 
     private Dictionary<int, StageData> stageTable;
-    private StageData _stageData;
+    private StageData stageData;
     private List<BaseEnemy> enemyList = new();
     private Transform[] spawnPoint;
     private Transform bossSpawnPoint;
-    private Coroutine _stageCoroutine;
-    private UISceneMain _uISceneMain;
+    private Coroutine stageCoroutine;
+    private UISceneMain uISceneMain;
 
     #endregion
 
@@ -34,21 +34,25 @@ public class StageManager
     public bool PlayerReset { get; private set; }
 
     // 스테이지 정보 로드용 프로퍼티
-    public string DifficultyStr => _stageData.Difficulty;
-    public StageBlueprint StageConfig => Manager.Assets.GetBlueprintStage(_stageData.StageConfig) as StageBlueprint;
+    public StageBlueprint StageConfig => Manager.Assets.GetBlueprintStage(stageData.StageConfig) as StageBlueprint;
+    public string DifficultyStr => stageData.Difficulty;
     public string StageBackground => string.Empty;
-    public int EnemyStatRate => _stageData.EnemyStatRate;
-    public int EnemyGoldRate => _stageData.EnemyGoldRate;
-    public int EnemySpawnCount => _stageData.EnemySpawnCount;
+    public int EnemyStatRate => stageData.EnemyStatRate;
+    public int EnemyGoldRate => stageData.EnemyGoldRate;
+    public int EnemySpawnCount => stageData.EnemySpawnCount;
 
     #endregion
 
     #region Table Reference
 
+    /// <summary>
+    /// 씬 -> 세션 생성 -> 게임 시작 순서. 여기서 스테이지 정보 및 UI 갱신
+    /// </summary>
+    /// <param name="index"></param>
     private void StageDataChange(int index)
     {
         stageTable.TryGetValue(index, out var data);
-        _stageData = data;
+        stageData = data;
     }
 
     #endregion
@@ -61,8 +65,7 @@ public class StageManager
         _tableText = Manager.Assets.GetTextItem("ItemTableStage");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
-        stageTable = stageDataTable.stageDataTable
-            .ToDictionary(group => group.Index, group => group);
+        stageTable = stageDataTable.stageDataTable.ToDictionary(group => group.Index, group => group);
     }
 
     public void SetStage(GameUserProfile profile)
@@ -71,9 +74,8 @@ public class StageManager
         StageLevel = profile.Stage_Level;
         WaveLoop = profile.Stage_WaveLoop;
 
-        // 씬 -> 세션 생성 -> 게임 시작 순서. 여기서 스테이지 정보 및 UI 갱신
         StageDataChange(Chapter);
-        _uISceneMain = Manager.UI.CurrentScene as UISceneMain;
+        uISceneMain = Manager.UI.CurrentScene as UISceneMain;
     }
 
     public void SetSpawnPoint(Transform[] spawnPoint)
@@ -97,13 +99,13 @@ public class StageManager
 
     public void BattleStart()
     {
-        _stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
+        stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
     }
 
     public void BattleStop()
     {
-        CoroutineHelper.StopCoroutine(_stageCoroutine);
-        _stageCoroutine = null;
+        CoroutineHelper.StopCoroutine(stageCoroutine);
+        stageCoroutine = null;
     }
 
     public void StageFailed()
@@ -116,8 +118,8 @@ public class StageManager
         {
             WaveLoop = true;
             StageLevel--;
-            _uISceneMain.RetryBossButtonToggle();
-            _uISceneMain.WaveLoopImageToggle();
+            uISceneMain.RetryBossButtonToggle();
+            uISceneMain.WaveLoopImageToggle();
         }
         else if (StageLevel > 0)
         {
@@ -133,8 +135,8 @@ public class StageManager
             StageLevel = 3;
         }
 
-        _uISceneMain.UpdateCurrentStage();
-        _uISceneMain.UpdateStageLevel(StageLevel);
+        uISceneMain.UpdateCurrentStage();
+        uISceneMain.UpdateStageLevel(StageLevel);
         BattleStart();
     }
 
@@ -203,7 +205,7 @@ public class StageManager
 
     private void BossWaveSpawn()
     {
-        _uISceneMain.StageLevelGaugeToggle(false);
+        uISceneMain.StageLevelGaugeToggle(false);
 
         // Boss 설계도 가져오기
         var enemyBlueprint = Manager.Assets.GetBlueprintEnemy(StageConfig.Boss) as EnemyBlueprint;
@@ -230,10 +232,10 @@ public class StageManager
 
             Chapter++;
             StageDataChange(Chapter);
-            _uISceneMain.StageLevelGaugeToggle();
+            uISceneMain.StageLevelGaugeToggle();
         }
 
-        _uISceneMain.UpdateStageLevel(StageLevel);
+        uISceneMain.UpdateStageLevel(StageLevel);
         SaveStage();
 
         Manager.Quest.QuestDB[3].currentValue = Chapter; // 스테이지 퀘스트 달성 값 변경
@@ -252,8 +254,8 @@ public class StageManager
     {
         BattleStop();
         EnemyReset();
-        _uISceneMain.RetryBossButtonToggle();
-        _uISceneMain.WaveLoopImageToggle();
+        uISceneMain.RetryBossButtonToggle();
+        uISceneMain.WaveLoopImageToggle();
 
         WaveLoop = false;
         StageLevel++;
@@ -263,7 +265,7 @@ public class StageManager
 
     private void SaveStage()
     {
-        _uISceneMain.UpdateCurrentStage();
+        uISceneMain.UpdateCurrentStage();
 
         // 데이터 저장
         Manager.Data.Save();

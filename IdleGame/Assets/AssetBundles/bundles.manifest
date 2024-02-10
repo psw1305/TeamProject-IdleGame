@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1183638258
+CRC: 3540801013
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 59e5d8bfff7d51b8f1dbc77c5fd6e2de
+    Hash: 136a84a59e43a30fb93f2cf5007dfbe2
   TypeTreeHash:
     serializedVersion: 2
     Hash: 416b57eb09078a6f937c85dd85f0deff
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 59e5d8bfff7d51b8f1dbc77c5fd6e2de
+    Hash: 136a84a59e43a30fb93f2cf5007dfbe2
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -271,7 +271,7 @@ Assets:
 - Assets/@Resources/Prefabs/Skill/BuffSkill.prefab
 - Assets/@Resources/Texts/User/UserTableFollower.Json
 - Assets/@Resources/Prefabs/UI/Elements/Slot_Weapon.prefab
-- Assets/@Resources/Blueprints/Stage/StageConfig4.asset
+- Assets/@Resources/Blueprints/Stage/StageConfig_4.asset
 - Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 8.prefab
 - Assets/@Resources/Prefabs/UI/Elements/Image_HUD_Stage.prefab
 - Assets/@Resources/Texts/Summon/SummonTableEquipment.json
@@ -297,7 +297,7 @@ Assets:
 - Assets/@Resources/Blueprints/Skill/S0008.asset
 - Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3.prefab
 - Assets/@Resources/Blueprints/Follower/F0006.asset
-- Assets/@Resources/Blueprints/Stage/StageConfig1.asset
+- Assets/@Resources/Blueprints/Stage/StageConfig_1.asset
 - Assets/@Resources/Sprites/F0003.asset
 - Assets/@Resources/Sprites/F0001.asset
 - Assets/@Resources/Blueprints/Skill/S0004.asset
@@ -327,7 +327,7 @@ Assets:
 - Assets/@Resources/Texts/Item/ItemTableStage.json
 - Assets/@Resources/Blueprints/Enemy/TestEnemy1.asset
 - Assets/@Resources/Prefabs/UI/NotificationDot.prefab
-- Assets/@Resources/Blueprints/Stage/StageConfig5.asset
+- Assets/@Resources/Blueprints/Stage/StageConfig_5.asset
 - Assets/@Resources/Prefabs/UI/Elements/Slot_Armor.prefab
 - Assets/@Resources/Texts/Summon/SummonCountFollower.json
 - Assets/@Resources/Prefabs/Projectile/TestProjectile.prefab
@@ -354,7 +354,7 @@ Assets:
 - Assets/@Resources/Prefabs/UI/Popup/UIPopupSkill.prefab
 - Assets/@Resources/Prefabs/UI/Elements/Display_Resource.prefab
 - Assets/@Resources/Prefabs/UI/Popup/UIPopupEquipment.prefab
-- Assets/@Resources/Blueprints/Stage/StageConfig3.asset
+- Assets/@Resources/Blueprints/Stage/StageConfig_3.asset
 - Assets/@Resources/Prefabs/Follower/FollowerFrame_Cat.prefab
 - Assets/@Resources/Prefabs/UI/Elements/Slot_Follower.prefab
 - Assets/@Resources/Blueprints/Summon/SummonEquipment.asset
@@ -376,7 +376,7 @@ Assets:
 - Assets/@Resources/Blueprints/Skill/S0003.asset
 - Assets/@Resources/Blueprints/Follower/F0001.asset
 - Assets/@Resources/Sprites/F0006.asset
-- Assets/@Resources/Blueprints/Stage/StageConfig2.asset
+- Assets/@Resources/Blueprints/Stage/StageConfig_2.asset
 - Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf3 9.prefab
 - Assets/@Resources/Blueprints/Summon/SummonSkills.asset
 - Assets/@Resources/Prefabs/Follower/FollowerFrame_WereWolf.prefab

@@ -23,12 +23,6 @@ public class AudioSFX : AudioSystem<AudioSFX>
 
     #endregion
 
-    #region Sound Fields
-
-    public AudioClip uiClick;
-
-    #endregion
-
     protected override void Awake()
     {
         base.Awake();
