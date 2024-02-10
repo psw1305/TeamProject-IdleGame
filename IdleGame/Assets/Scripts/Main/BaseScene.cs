@@ -39,7 +39,7 @@ public class BaseScene : MonoBehaviour
         // #2. 비동기 작업 => 동시에 처리
         Manager.Game.Initialize();
         Manager.ObjectPool.Initialize();
-        //Manager.Ranking.Initialize();
+        Manager.Ranking.Initialize();
         Initialize();
     }
 

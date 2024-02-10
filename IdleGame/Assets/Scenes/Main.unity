@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 4c79a3312efa09e4f9f39ff7f46b2bd0, type: 2}
-  stage: {fileID: 0}
 --- !u!82 &575511019
 AudioSource:
   m_ObjectHideFlags: 0
@@ -499,8 +498,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993840693}
-  - component: {fileID: 993840695}
   - component: {fileID: 993840694}
+  - component: {fileID: 993840695}
   m_Layer: 0
   m_Name: SFX - UI
   m_TagString: Untagged
@@ -632,7 +631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 4c79a3312efa09e4f9f39ff7f46b2bd0, type: 2}
-  uiClick: {fileID: 0}
 --- !u!1 &1220129446
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(sceneName)) sceneName = typeof(T).Name;
 
-        GameObject obj = Manager.Assets.InstantiateUI(sceneName.ToLower(), UIRoot.transform);
+        GameObject obj = Manager.Assets.InstantiateUI(sceneName, UIRoot.transform);
         T scene = Utility.GetOrAddComponent<T>(obj);
         CurrentScene = scene;
 
@@ -69,7 +69,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(popupName)) popupName = typeof(T).Name;
 
-        GameObject obj = Manager.Assets .InstantiateUIPopup(popupName.ToLower(), UIRoot.transform);
+        GameObject obj = Manager.Assets .InstantiateUIPopup(popupName, UIRoot.transform);
         T popup = Utility.GetOrAddComponent<T>(obj);
         CurrentPopup = popup;
         popupStack.Push(popup);

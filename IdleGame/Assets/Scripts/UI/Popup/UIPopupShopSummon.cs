@@ -60,8 +60,9 @@ public class UIPopupShopSummon : UIPopup
     {
         foreach (var list in _config.SummonLists)
         {
-            var banner = Manager.UI.AddElement<UISummonBanner>(list.Banner.name);
+            var banner = Manager.Assets.InstantiateUIElement("SummonBanner").GetComponent<UISummonBanner>();
             _banners[list.TypeLink] = banner;
+            banner.name = list.Banner.name;
             banner.ListInit(list, this);
             banner.transform.SetParent(_content.transform, false);
             banner.UpdateUI();

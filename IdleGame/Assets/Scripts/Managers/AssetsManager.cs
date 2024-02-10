@@ -22,7 +22,8 @@ public class AssetsManager
     /// <returns></returns>
     public IEnumerator DownloadLocalFiles()
     {
-        AssetBundle bundle = AssetBundle.LoadFromFile(Path.Combine(localURL, "bundles"));
+        var materials = AssetBundle.LoadFromFile(Path.Combine(localURL, "materials"));
+        var bundle = AssetBundle.LoadFromFile(Path.Combine(localURL, "bundles"));
         
         if (bundle == null)
         {
@@ -37,6 +38,7 @@ public class AssetsManager
                 bundles.Add(assetName, asset);
             }
 
+            materials.Unload(false);
             bundle.Unload(false);
         }
 
