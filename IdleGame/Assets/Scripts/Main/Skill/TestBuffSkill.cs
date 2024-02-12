@@ -20,7 +20,7 @@ public class TestBuffSkill : BaseSkill
     protected override void ApplySkillEffect()
     {
         Manager.Game.Player.DamageBuff += amountValue;
-        _currentVFX = Manager.Assets.InstantiateModel("BuffSkillVFX", gameObject.transform);
+        _currentVFX = Manager.Address.InstantiatePrefab("BuffSkillVFX", gameObject.transform);
     }
 
     protected override void RemoveSkillEffect()

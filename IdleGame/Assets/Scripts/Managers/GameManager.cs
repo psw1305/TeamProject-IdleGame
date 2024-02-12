@@ -18,7 +18,7 @@ public class GameManager
 
     public void Initialize()
     {
-        var playerClone = Manager.Assets.InstantiateModel("PlayerFrame");
+        var playerClone = Manager.Address.InstantiatePrefab("PlayerFrame");
         Player = playerClone.GetComponent<Player>();
     }
 
@@ -32,7 +32,7 @@ public class GameManager
         Manager.Stage.BattleStart();
 
         AudioBGM.Instance.VolumeBGMScale = 0.1f;
-        AudioBGM.Instance.Play(Manager.Assets.GetAudioBGM("testbgm"));
+        AudioBGM.Instance.Play(Manager.Address.GetAudioBGM("testbgm"));
 
         // 플레이어 데이터가 초기화 되는 부분
         Player.transform.position = playerPosition;

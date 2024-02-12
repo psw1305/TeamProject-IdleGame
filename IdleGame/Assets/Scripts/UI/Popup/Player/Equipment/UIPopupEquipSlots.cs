@@ -78,7 +78,7 @@ public class UIPopupEquipSlots : MonoBehaviour
     {
         _lvTxt.text = $"Lv : {_level}";
 
-        itemSprite.sprite = Manager.Assets.GetSprite(ItemID.ToString());
+        itemSprite.sprite = Manager.Address.GetSprite(ItemID.ToString());
 
         SetLockState();
         gameObject.GetComponent<Button>().onClick.AddListener(SendItemData);

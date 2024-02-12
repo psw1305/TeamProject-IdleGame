@@ -50,7 +50,7 @@ public class UIPopupEquipContainer : UIBase
         {
             foreach (var itemData in Manager.Inventory.WeaponItemList)
             {
-                GameObject slot = Manager.Assets.InstantiateUIElement("Slot_Weapon", gameObject.transform);
+                GameObject slot = Manager.Address.InstantiatePrefab("Slot_Weapon", gameObject.transform);
                 itemSlots.Add(slot);
                 slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
                 slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();
@@ -62,7 +62,7 @@ public class UIPopupEquipContainer : UIBase
         {
             foreach (var itemData in Manager.Inventory.ArmorItemList)
             {
-                GameObject slot = Manager.Assets.InstantiateUIElement("Slot_Armor", gameObject.transform);
+                GameObject slot = Manager.Address.InstantiatePrefab("Slot_Armor", gameObject.transform);
                 itemSlots.Add(slot);
                 slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
                 slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();

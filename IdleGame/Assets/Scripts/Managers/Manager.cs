@@ -31,6 +31,7 @@ public class Manager : MonoBehaviour
 
     #region Manage
 
+    private readonly AddressableManager address = new();
     private readonly AssetsManager assets = new();
     private readonly SessionManager session = new();
     private readonly DataManager data = new();
@@ -46,6 +47,7 @@ public class Manager : MonoBehaviour
     private readonly FollowerDataManager followerData = new();
     private readonly RankingManager ranking = new();
 
+    public static AddressableManager Address => Instance != null ? Instance.address : null;
     public static AssetsManager Assets => Instance != null ? Instance.assets : null;
     public static SessionManager Session => Instance != null ? Instance.session : null;
     public static DataManager Data => Instance != null ? Instance.data : null;

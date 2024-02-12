@@ -32,7 +32,7 @@ public partial class SummonManager
 
     public void Initialize()
     {
-        _summonConfig = Manager.Assets.GetBlueprintSummon("SummonConfig") as SummonConfig;
+        _summonConfig = Manager.Address.GetBlueprint("SummonConfig") as SummonConfig;
 
         foreach (var list in _summonConfig.SummonLists)
         {

@@ -71,7 +71,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
 
     public void InitSlotUI()
     {
-        itemSprite.sprite = Manager.Assets.GetSpriteFollower(ItemID.ToString());
+        itemSprite.sprite = Manager.Address.GetSprite(ItemID.ToString());
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupFollowerDetailInfo);
 
         SetUILockState();
