@@ -40,7 +40,6 @@ public class AddressableManager
         asyncOperation.Completed += op =>
         {
             spriteAtlas = op.Result;
-            Debug.Log(spriteAtlas);
         };
     }
 
