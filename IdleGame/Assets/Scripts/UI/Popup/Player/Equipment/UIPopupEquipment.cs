@@ -120,8 +120,8 @@ public class UIPopupEquipment : UIPopup
         _rarityText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].rarity;
         _itemLevelText.text = _selectItemData.level.ToString();
 
-        _itemImage.sprite = Manager.Assets.GetSprite(_selectItemData.itemID.ToString());
-        _typeIcon.sprite = Manager.Assets.GetSprite(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].type);
+        _itemImage.sprite = Manager.Address.GetSprite(_selectItemData.itemID.ToString());
+        _typeIcon.sprite = Manager.Address.GetSprite(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].type);
 
         OperNeedItemCount();
         _itemHasCount.text = $"{_selectItemData.hasCount} / {_needCount}";

@@ -25,7 +25,7 @@ public class UIUseSkillSlots : MonoBehaviour
 
         else
         {
-            ImgSkillIcon.sprite = Manager.Assets.GetSprite(_equipSkillData.SkillID);
+            ImgSkillIcon.sprite = Manager.Address.GetSprite($"{_equipSkillData.SkillID}");
             ImgSkillIcon.gameObject.SetActive(true);
             
             StartCoroutine(SetUIDurateTime());

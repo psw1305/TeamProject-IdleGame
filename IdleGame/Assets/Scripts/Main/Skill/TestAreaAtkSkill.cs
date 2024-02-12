@@ -28,7 +28,7 @@ public class TestAreaAtkSkill : BaseSkill
         while (true)
         {
             yield return new WaitForSeconds(0.4f);
-            _projectile = Manager.Assets.InstantiateModel("testprojectile");
+            _projectile = Manager.Address.InstantiatePrefab("TestProjectile");
             _projectile.transform.position = new Vector2(0, 5);
 
             Manager.Game.Player.FinalAttackDamage(out _projectile.GetComponent<TestAreaAtkSkillProjectile>().Damage

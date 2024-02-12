@@ -116,11 +116,11 @@ public class Player : MonoBehaviour, IDamageable
     private void FollowerInit()
     {
         // 임시로 5개 동료를 입력
-        _followerPrefab[0] = Manager.Assets.InstantiateFollower("followerframe_dragon");
-        _followerPrefab[1] = Manager.Assets.InstantiateFollower("followerframe_cat");
-        _followerPrefab[2] = Manager.Assets.InstantiateFollower("followerframe_werewolf");
-        _followerPrefab[3] = Manager.Assets.InstantiateFollower("followerframe_merman");
-        _followerPrefab[4] = Manager.Assets.InstantiateFollower("followerframe_lizard");
+        _followerPrefab[0] = Manager.Address.InstantiatePrefab("FollowerFrame_Dragon");
+        _followerPrefab[1] = Manager.Address.InstantiatePrefab("FollowerFrame_Cat");
+        _followerPrefab[2] = Manager.Address.InstantiatePrefab("FollowerFrame_WereWolf");
+        _followerPrefab[3] = Manager.Address.InstantiatePrefab("FollowerFrame_MerMan");
+        _followerPrefab[4] = Manager.Address.InstantiatePrefab("FollowerFrame_Lizard");
 
         for (int i = 0; i < 5; i++)
         {
@@ -231,7 +231,7 @@ public class Player : MonoBehaviour, IDamageable
     public void Attack()
     {
         // 효과음 예시
-        AudioSFX.Instance.PlayOneShot(Manager.Assets.GetAudioSFX("testatk"));
+        AudioSFX.Instance.PlayOneShot(Manager.Address.GetAudioSFX("testatk"));
 
         _playerAnimController.OnRangeAtk();
         MakeRangeProjectile();

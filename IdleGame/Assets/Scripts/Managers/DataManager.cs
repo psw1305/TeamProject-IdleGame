@@ -50,7 +50,7 @@ public class DataManager
 
     public void CreateUserEquipment()
     {
-        var jsonData = Manager.Assets.GetTextUser("UserTableEquipment");
+        var jsonData = Manager.Address.GetText("UserTableEquipment");
         Inventory = JsonUtility.FromJson<InventoryData>(jsonData);
 
         SaveToUserEquipment();
@@ -58,7 +58,7 @@ public class DataManager
 
     public void CreateUserSkill()
     {
-        var jsonData = Manager.Assets.GetTextUser("UserTableSkill");
+        var jsonData = Manager.Address.GetText("UserTableSkill");
         UserSkillData = JsonUtility.FromJson<UserSkillData>(jsonData);
 
         SaveToUserSkill();
@@ -66,7 +66,7 @@ public class DataManager
 
     public void CreateUserFollower()
     {
-        var jsonData = Manager.Assets.GetTextUser("UserTableFollower");
+        var jsonData = Manager.Address.GetText("UserTableFollower");
         FollowerData = JsonUtility.FromJson<UserFollowerData>(jsonData);
 
         SaveToUserFollower();

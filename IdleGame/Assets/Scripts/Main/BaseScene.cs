@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 
 public class BaseScene : MonoBehaviour
@@ -12,7 +13,7 @@ public class BaseScene : MonoBehaviour
         if (initialized) return false;
 
         Object obj = GameObject.FindObjectOfType<EventSystem>();
-        if (obj == null) Manager.Assets.InstantiateUI("eventsystem").name = "@EventSystem";
+        if (obj == null) Manager.Address.InstantiatePrefab("EventSystem").name = "@EventSystem";
 
         initialized = true;
         return true;
@@ -28,15 +29,12 @@ public class BaseScene : MonoBehaviour
 
     private IEnumerator Start()
     {
-        // #1. 동기 작업 => 파일 불러오기, 데이터 로드
-#if UNITY_EDITOR
-        yield return StartCoroutine(Manager.Assets.DownloadLocalFiles());
-#elif UNITY_ANDROID
-        yield return StartCoroutine(Manager.Assets.DownloadServerFiles());
-#endif
+        // #1. 동기화 작업 => 순서대로 처리
+        yield return StartCoroutine(DownloadFiles());
         yield return StartCoroutine(Manager.Data.Load());
 
         // #2. 비동기 작업 => 동시에 처리
+        yield return null;
         Manager.Game.Initialize();
         Manager.ObjectPool.Initialize();
         Manager.Ranking.Initialize();
@@ -45,8 +43,43 @@ public class BaseScene : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        //Manager.Data.Save();
+        Manager.Data.Save();
     }
 
-#endregion
+    #endregion
+
+    #region File Download
+
+    private IEnumerator DownloadFiles()
+    {
+        yield return Addressables.InitializeAsync();
+
+        if (Manager.Address.Loaded)
+        {
+            Debug.Log("Loaded");
+        }
+        else
+        {
+            Manager.Address.Loaded = true;
+            Manager.Address.LoadAllAsync<Object>("material", (key, count, totalCount) =>
+            {
+                //Debug.Log($"{count}/{totalCount}");
+
+                //if (count >= totalCount)
+                //{
+                //    Debug.Log("first Load");
+                //}
+            });
+
+            Manager.Address.LoadSprites("SpriteAtlas");
+
+            Manager.Address.LoadAllAsync<Object>("default", (key, count, totalCount) =>
+            {
+            });
+        }
+
+        yield return null;
+    }
+
+    #endregion
 }

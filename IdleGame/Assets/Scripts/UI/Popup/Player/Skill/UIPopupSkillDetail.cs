@@ -83,7 +83,7 @@ public class UIPopupSkillDetail : UIPopup
 
     private void SetUISkillData()
     {
-        _IconSprite.sprite = Manager.Assets.GetSprite(_data.itemID);
+        _IconSprite.sprite = Manager.Address.GetSprite(_data.itemID);
 
         _nameText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].skillName;
         _rarityText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].rarity;

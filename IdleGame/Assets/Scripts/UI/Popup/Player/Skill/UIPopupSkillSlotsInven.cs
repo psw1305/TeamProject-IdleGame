@@ -75,7 +75,7 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
 
     public void InitSlotUI()
     {
-        itemSprite.sprite = Manager.Assets.GetSprite(ItemID.ToString());
+        itemSprite.sprite = Manager.Address.GetSprite(ItemID.ToString());
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupSkillDetailInfo);
 
         SetUILockState();

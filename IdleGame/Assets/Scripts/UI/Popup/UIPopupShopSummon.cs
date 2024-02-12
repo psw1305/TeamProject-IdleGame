@@ -31,7 +31,7 @@ public class UIPopupShopSummon : UIPopup
     {
         base.Init();
         _summon = Manager.Summon;
-        _config = Manager.Assets.GetBlueprintSummon("SummonConfig") as SummonConfig;
+        _config = Manager.Address.GetBlueprint("SummonConfig") as SummonConfig;
         _content = transform.GetComponentInChildren<VerticalLayoutGroup>().gameObject;
         _summon.SetShopPopup(this);
 
@@ -60,7 +60,7 @@ public class UIPopupShopSummon : UIPopup
     {
         foreach (var list in _config.SummonLists)
         {
-            var banner = Manager.Assets.InstantiateUIElement("SummonBanner").GetComponent<UISummonBanner>();
+            var banner = Manager.Address.InstantiatePrefab("SummonBanner").GetComponent<UISummonBanner>();
             _banners[list.TypeLink] = banner;
             banner.name = list.Banner.name;
             banner.ListInit(list, this);

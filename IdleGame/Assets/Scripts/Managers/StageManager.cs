@@ -34,7 +34,7 @@ public class StageManager
     public bool PlayerReset { get; private set; }
 
     // 스테이지 정보 로드용 프로퍼티
-    public StageBlueprint StageConfig => Manager.Assets.GetBlueprintStage(stageData.StageConfig) as StageBlueprint;
+    public StageBlueprint StageConfig => Manager.Address.GetBlueprint(stageData.StageConfig) as StageBlueprint;
     public string DifficultyStr => stageData.Difficulty;
     public string StageBackground => string.Empty;
     public int EnemyStatRate => stageData.EnemyStatRate;
@@ -62,7 +62,7 @@ public class StageManager
     public void Initialize()
     {
         // json 파일 로딩, 딕셔너리에 인덱스 그룹 넣기
-        _tableText = Manager.Assets.GetTextItem("ItemTableStage");
+        _tableText = Manager.Address.GetText("ItemTableStage");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
         stageTable = stageDataTable.stageDataTable.ToDictionary(group => group.Index, group => group);
@@ -182,7 +182,7 @@ public class StageManager
     {
         // 랜덤으로 Enemy 설계도 선정
         var randomEnemyName = StageConfig.Enemies[Random.Range(0, StageConfig.Enemies.Length)];
-        var enemyBlueprint = Manager.Assets.GetBlueprintEnemy(randomEnemyName) as EnemyBlueprint;
+        var enemyBlueprint = Manager.Address.GetBlueprint(randomEnemyName) as EnemyBlueprint;
 
         // BaseEnemy 랜덤 Y축 위치 선정
         var randomYPos = Random.Range(spawnPoint[0].position.y, spawnPoint[1].position.y);
@@ -208,7 +208,7 @@ public class StageManager
         uISceneMain.StageLevelGaugeToggle(false);
 
         // Boss 설계도 가져오기
-        var enemyBlueprint = Manager.Assets.GetBlueprintEnemy(StageConfig.Boss) as EnemyBlueprint;
+        var enemyBlueprint = Manager.Address.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
         var bossObject = Manager.ObjectPool.GetGo("EnemyFrame");
         var enemy = bossObject.GetComponent<BaseEnemy>();
         enemy.SetEnemy(enemyBlueprint, bossSpawnPoint.position, EnemyStatRate, EnemyGoldRate);

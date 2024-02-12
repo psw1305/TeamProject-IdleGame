@@ -13,7 +13,7 @@ public class FollowerDataManager
 
     public void ParseFollowerData()
     {
-        _followerDataBaseText = Manager.Assets.GetTextItem("ItemTableFollower");
+        _followerDataBaseText = Manager.Address.GetText("ItemTableFollower");
         _follwerData = JsonUtility.FromJson<FollowerDataBase>(_followerDataBaseText);
         foreach (var followerData in _follwerData.FollowerDataList)
         {
