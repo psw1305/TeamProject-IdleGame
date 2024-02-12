@@ -8,8 +8,9 @@ public class AssetsManager
 {
     #region Fields
 
-    private readonly string localURL = $"{Application.dataPath}/AssetBundles/";
-    private readonly string serverURL = "https://firebasestorage.googleapis.com/v0/b/portfolio-idlegame.appspot.com/o/prefab?alt=media&token=cca8adbe-d3c4-4f90-9068-d44193ff584e";
+    private readonly string localPath = $"{Application.dataPath}/AssetBundles/";
+    private readonly string materialURL = "https://firebasestorage.googleapis.com/v0/b/portfolio-idlegame.appspot.com/o/materials?alt=media&token=b160897e-2554-47cd-93d0-9d54b77222cc";
+    private readonly string bundleURL = "https://firebasestorage.googleapis.com/v0/b/portfolio-idlegame.appspot.com/o/bundles?alt=media&token=b3ce679c-48c5-475f-a6a8-1b001056c5f0";
     private readonly Dictionary<string, Object> bundles = new();
 
     #endregion
@@ -22,8 +23,8 @@ public class AssetsManager
     /// <returns></returns>
     public IEnumerator DownloadLocalFiles()
     {
-        var materials = AssetBundle.LoadFromFile(Path.Combine(localURL, "materials"));
-        var bundle = AssetBundle.LoadFromFile(Path.Combine(localURL, "bundles"));
+        var materials = AssetBundle.LoadFromFile(Path.Combine(localPath, "materials"));
+        var bundle = AssetBundle.LoadFromFile(Path.Combine(localPath, "bundles"));
         
         if (bundle == null)
         {
@@ -51,8 +52,10 @@ public class AssetsManager
     /// <returns></returns>
     public IEnumerator DownloadServerFiles()
     {
-        using UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(serverURL);
+        using UnityWebRequest wwwMaterial = UnityWebRequestAssetBundle.GetAssetBundle(materialURL);
+        yield return wwwMaterial.SendWebRequest();
 
+        using UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(bundleURL);
         yield return www.SendWebRequest();
 
         if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
@@ -61,6 +64,7 @@ public class AssetsManager
         }
         else
         {
+            AssetBundle material = DownloadHandlerAssetBundle.GetContent(wwwMaterial);
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
 
             // 파일 가져오기 및 딕셔너리에 저장
@@ -70,7 +74,7 @@ public class AssetsManager
                 bundles.Add(assetName, (Object)asset);
             }
 
-            // 에셋 번들 해제
+            material.Unload(false);
             bundle.Unload(false);
         }
 
