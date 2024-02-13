@@ -20,12 +20,16 @@ public class Player : MonoBehaviour, IDamageable
     [HideInInspector] public List<BaseEnemy> enemyList;
     private Rigidbody2D playerRigidbody;
     private Coroutine _attackCoroutine;
-    private PlayerAnimController _playerAnimController;
     private float _damageBuff = 1;
 
     // 동료 관련 프로퍼티
     private GameObject[] _followerPrefab = new GameObject[5];
     private Follower[] Follower = new Follower[5];
+
+    // 플레이어 관련 스크립트
+    private PlayerAnimController playerAnimController;
+    private PlayerSkillHandler playerSkillHandler;
+    private PlayerFollowerHandler playerFollowerHandler;
 
     #endregion
 
@@ -76,6 +80,12 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Initialize()
     {
+        playerView = GetComponent<PlayerView>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        playerAnimController = GetComponent<PlayerAnimController>();
+        playerSkillHandler = GetComponent<PlayerSkillHandler>();
+        playerFollowerHandler = GetComponent<PlayerFollowerHandler>();
+
         AttackRange = 5;
         MoveSpeed = 100;
 
@@ -110,6 +120,9 @@ public class Player : MonoBehaviour, IDamageable
 
         //FollowerInit();
 
+        playerSkillHandler.InitSkillSlot();
+        playerFollowerHandler.InitFollowerSlot();
+
         StartCoroutine(RecoverHealthPoint());
     }
 
@@ -135,22 +148,15 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Unity Flow
 
-    private void Start()
-    {
-        playerView = GetComponent<PlayerView>();
-        playerRigidbody = GetComponent<Rigidbody2D>();
-        _playerAnimController = GetComponent<PlayerAnimController>();
-    }
-
     private void FixedUpdate()
     {
         if (_attackCoroutine == null && enemyList.Count <= 0)
         {
-            _playerAnimController.OnWalk();
+            playerAnimController.OnWalk();
         }
         else if (_attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
         {
-            _playerAnimController.OnIdle();
+            playerAnimController.OnIdle();
             _attackCoroutine = StartCoroutine(AttackRoutine());
         }
     }
@@ -161,7 +167,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Idle()
     {
-        _playerAnimController.OnIdle();
+        playerAnimController.OnIdle();
         playerRigidbody.velocity = MoveSpeed * Time.deltaTime * Vector2.right;
     }
 
@@ -208,13 +214,13 @@ public class Player : MonoBehaviour, IDamageable
         if (CurrentHp - damage <= 0)
         {
             CurrentHp = 0;
-            _playerAnimController.OnDead();
-            _playerAnimController.OnRevive();
+            playerAnimController.OnDead();
+            playerAnimController.OnRevive();
             Dead();
         }
         else
         {
-            _playerAnimController.OnHit();
+            playerAnimController.OnHit();
             CurrentHp -= damage;
         }
     }
@@ -233,7 +239,7 @@ public class Player : MonoBehaviour, IDamageable
         // 효과음 예시
         AudioSFX.Instance.PlayOneShot(Manager.Address.GetAudioSFX("testatk"));
 
-        _playerAnimController.OnRangeAtk();
+        playerAnimController.OnRangeAtk();
         MakeRangeProjectile();
     }
 
@@ -257,7 +263,7 @@ public class Player : MonoBehaviour, IDamageable
             if (enemyList.Count == 0)
             {
                 _attackCoroutine = null;
-                _playerAnimController.OnWalk();
+                playerAnimController.OnWalk();
                 break;
             }
 

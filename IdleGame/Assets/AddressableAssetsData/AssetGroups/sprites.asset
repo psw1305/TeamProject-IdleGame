@@ -20,7 +20,8 @@ MonoBehaviour:
   - m_GUID: e4bd3664fb1b4f84892ab35de4d88797
     m_Address: SpriteAtlas
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - sprite
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4a6bef2a1e0af3847be1bf5bec164b6f, type: 2}

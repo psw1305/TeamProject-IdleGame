@@ -581,12 +581,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7025cc7e6a55a9d48b72850addb544ca
-    m_Address: EventSystem.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f949726f61fda2647b293ded825f1ccf
     m_Address: UIDropDownOptions.prefab
     m_ReadOnly: 0

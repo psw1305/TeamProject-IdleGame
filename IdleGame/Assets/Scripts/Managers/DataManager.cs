@@ -20,7 +20,7 @@ public class DataManager
     {
         Profile = new()
         {
-            Uid = Utility.GenerateID(),
+            Uid = Utilities.GenerateID(),
             Nickname = $"Guest-Test",
             Date_Login = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
             Date_Logout = string.Empty,
@@ -212,7 +212,7 @@ public class DataManager
     {
         Profile = new()
         {
-            Uid = Utility.GenerateID(),
+            Uid = Utilities.GenerateID(),
             Nickname = $"Guest-{guestId}",
             Date_Login = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
             Date_Logout = string.Empty,

@@ -5,33 +5,27 @@ public class MainScene : BaseScene
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private Transform[] enemySpawnPoint;
 
-    protected override bool Initialize()
+    public void SceneStart()
     {
-        if (!base.Initialize()) return false;
-
         //보스 임시 스폰 포인트 스크립트로 만들기
-        TestBossSpawnPointAdd(out Transform bossSpawnPoint);
-        Manager.Game.SetPosition(playerSpawnPoint.position);
 
-        // 스테이지 전투 구성 & 시작
-        Manager.Stage.Initialize();
-        Manager.Stage.SetSpawnPoint(enemySpawnPoint);
-        Manager.Stage.SetBossPoint(bossSpawnPoint);
+        // 스테이지 전투 구성
+        Manager.Game.PlayerInit(playerSpawnPoint.position);
+        Manager.UI.ShowScene<UISceneMain>();
 
-        Manager.Summon.Initialize();
-        Manager.Inventory.Initialize();
+        Manager.Stage.SetStage(enemySpawnPoint, BossSpawnPointAdd());
+        Manager.Summon.SetSummon();
 
-        Manager.Game.GameStart();
-
-        return true;
+        Manager.Stage.BattleStart();
     }
 
-    private void TestBossSpawnPointAdd(out Transform bossSpawnPosition)
+    private Transform BossSpawnPointAdd()
     {
         var spawnPointTransform = this.transform.Find("Enemy Spawn Point");
         var bossSpawnPoint = Instantiate(new GameObject("Boss Spawn Point"), spawnPointTransform.position, Quaternion.identity);
-        bossSpawnPosition = bossSpawnPoint.transform;
         bossSpawnPoint.transform.position = new Vector2(3.5f, 1.5f);
         bossSpawnPoint.transform.parent = spawnPointTransform;
+
+        return bossSpawnPoint.transform;
     }
 }

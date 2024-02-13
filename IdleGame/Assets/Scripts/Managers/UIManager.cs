@@ -35,13 +35,13 @@ public class UIManager
     public void SetCanvas(GameObject uiObject)
     {
         // Canvas 컴포넌트 세팅
-        var canvas = Utility.GetOrAddComponent<Canvas>(uiObject);
+        var canvas = Utilities.GetOrAddComponent<Canvas>(uiObject);
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
         canvas.sortingOrder = order++;
 
         // Canvas Scaler 세팅
-        var canvasScaler = Utility.GetOrAddComponent<CanvasScaler>(uiObject);
+        var canvasScaler = Utilities.GetOrAddComponent<CanvasScaler>(uiObject);
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasScaler.referenceResolution = new Vector2(1080, 1920);
     }
@@ -55,7 +55,7 @@ public class UIManager
         if (string.IsNullOrEmpty(sceneName)) sceneName = typeof(T).Name;
 
         GameObject obj = Manager.Address.InstantiatePrefab(sceneName, UIRoot.transform);
-        T scene = Utility.GetOrAddComponent<T>(obj);
+        T scene = Utilities.GetOrAddComponent<T>(obj);
         CurrentScene = scene;
 
         return scene;
@@ -70,7 +70,7 @@ public class UIManager
         if (string.IsNullOrEmpty(popupName)) popupName = typeof(T).Name;
 
         GameObject obj = Manager.Address.InstantiatePrefab(popupName, UIRoot.transform);
-        T popup = Utility.GetOrAddComponent<T>(obj);
+        T popup = Utilities.GetOrAddComponent<T>(obj);
         CurrentPopup = popup;
         popupStack.Push(popup);
 
@@ -116,7 +116,7 @@ public class UIManager
         if (string.IsNullOrEmpty(elementName)) elementName = typeof(T).Name;
 
         GameObject obj = Manager.Address.InstantiatePrefab(elementName, UIRoot.transform);
-        T element = Utility.GetOrAddComponent<T>(obj);
+        T element = Utilities.GetOrAddComponent<T>(obj);
 
         return element;
     }
