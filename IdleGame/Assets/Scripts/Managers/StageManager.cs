@@ -130,9 +130,10 @@ public class StageManager
         {
             // 스테이지 처음에서 죽었으면 아예 뒤로 물리기
             Chapter--;
-            StageDataChange(Chapter);
-
             StageLevel = 3;
+
+            ChapterCheck();
+            StageDataChange(Chapter);
         }
 
         uISceneMain.UpdateCurrentStage();
@@ -231,6 +232,7 @@ public class StageManager
             PlayerReset = true;
 
             Chapter++;
+            ChapterCheck();
             StageDataChange(Chapter);
             uISceneMain.StageLevelGaugeToggle();
         }
@@ -261,6 +263,20 @@ public class StageManager
         StageLevel++;
 
         BattleStart();
+    }
+
+    private void ChapterCheck()
+    {
+        if (Chapter == 0)
+        {
+            Chapter = 1;
+            StageLevel = 0;
+        }
+        
+        if (Chapter > stageTable.Count)
+        {
+            Chapter = stageTable.Count;
+        }
     }
 
     private void SaveStage()
