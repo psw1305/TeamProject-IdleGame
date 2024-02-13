@@ -1,6 +1,3 @@
-
-using UnityEngine;
-
 public class NotificateRecommendWeaponItemSlot : BaseNotiDot
 {
     private UserItemData _currentItemData;
@@ -20,16 +17,18 @@ public class NotificateRecommendWeaponItemSlot : BaseNotiDot
 
     private void SetRecommendItemNoti()
     {
-        if (Manager.NotificateDot.CheckRecommendWeaponItem().equipped)
+        var _recommendItem = Manager.NotificateDot.CheckRecommendItem(Manager.Inventory.WeaponItemList);
+
+        if (_recommendItem == null || _recommendItem.equipped)
         {
             InactiveNotiDot();
             return;
         }
-         if (_currentItemData == Manager.NotificateDot.CheckRecommendWeaponItem())
+        if (_currentItemData == _recommendItem)
         {
             ActiveNotiDot();
         }
-        else if (_currentItemData != Manager.NotificateDot.CheckRecommendWeaponItem())
+        else if (_currentItemData != _recommendItem)
         {
             InactiveNotiDot();
         }
