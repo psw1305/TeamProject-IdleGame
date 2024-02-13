@@ -21,16 +21,17 @@ public class NotificateRecommendArmorItemSlot : BaseNotiDot
 
     private void SetRecommendItemNoti()
     {
-        if (Manager.NotificateDot.CheckRecommendArmorItem().equipped)
+        var _recommendItem = Manager.NotificateDot.CheckRecommendItem(Manager.Inventory.ArmorItemList);
+        if (_recommendItem == null || _recommendItem.equipped)
         {
             InactiveNotiDot();
             return;
         }
-        if (_currentItemData == Manager.NotificateDot.CheckRecommendArmorItem())
+        if (_currentItemData == _recommendItem)
         {
             ActiveNotiDot();
         }
-        else if (_currentItemData != Manager.NotificateDot.CheckRecommendArmorItem())
+        else if (_currentItemData != _recommendItem)
         {
             InactiveNotiDot();
         }
