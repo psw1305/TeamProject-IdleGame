@@ -148,9 +148,6 @@ public class SessionManager
             {
                 DebugNotice.Instance.Notice($"Player data Load : {GuestID}");
                 Manager.Data.SetUserProfile(snapshot.ConvertTo<GameUserProfile>());
-
-                // 게임 시작
-                Manager.Game.GameStart();
             }
             // 데이터가 존재하지 않을 경우 => 새로운 유저 데이터 생성
             else
@@ -177,9 +174,6 @@ public class SessionManager
             else
             {
                 DebugNotice.Instance.Notice("Player data created successfully.");
-
-                // 새로 생성 후 => 게임시작
-                Manager.Game.GameStart();
             }
         });
     }

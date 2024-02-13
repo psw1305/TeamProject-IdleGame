@@ -41,7 +41,7 @@ MonoBehaviour:
   m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
-  m_BuildAddressablesWithPlayerBuild: 0
+  m_BuildAddressablesWithPlayerBuild: 2
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: 0302287a3008dc44ebc2716b3e318093, type: 2}
@@ -70,6 +70,20 @@ MonoBehaviour:
         m_Value: ServerData/[BuildTarget]
       - m_Id: 6f04b6622c486e94f9ad1dcc2b18ac6e
         m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+    - m_InheritedParent: 
+      m_Id: 03a81274dc3b73c4093e19823e321167
+      m_ProfileName: Develop
+      m_Values:
+      - m_Id: 6057d654828a7b84d9904310debd054c
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 5c92b8f71ffa5274ebcde81617a4b408
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: e333e3f59b798c34abc8902e824ac4bd
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: e552e4c85bd45294883f0dd4d6e7c7f4
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 6f04b6622c486e94f9ad1dcc2b18ac6e
+        m_Value: https://firebasestorage.googleapis.com/v0/b/portfolio-idlegame.appspot.com/o/Android/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 6057d654828a7b84d9904310debd054c
       m_Name: BuildTarget
@@ -91,6 +105,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - material
+    - sprite
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: cece1791f28fccb4db1a317b52b6ae80, type: 2}
@@ -104,7 +119,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 989783a31f30eb84ea539d51686edb5e, type: 2}
   - {fileID: 11400000, guid: bbf5484fe42c6df4480efa74ceba4b72, type: 2}
   - {fileID: 11400000, guid: 048acd80bfcc8d94f8a515ae9459632e, type: 2}
-  m_ActiveProfileId: be96702a29d77d24d9b5897fc5707650
+  m_ActiveProfileId: 03a81274dc3b73c4093e19823e321167
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}

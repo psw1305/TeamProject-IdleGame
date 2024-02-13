@@ -31,14 +31,7 @@ public class PlayerSkillHandler : MonoBehaviour
         _skillChangeAction -= skillUesAction;
     }
 
-
-
-    private void Start()
-    {
-        InitSkillSlot();
-    }
-
-    private void InitSkillSlot()
+    public void InitSkillSlot()
     {
         int equipslotIndex = 0;
         foreach (var item in Manager.Data.UserSkillData.UserEquipSkill)

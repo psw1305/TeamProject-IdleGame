@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerFollowerHandler : MonoBehaviour
@@ -10,12 +7,7 @@ public class PlayerFollowerHandler : MonoBehaviour
 
     private Dictionary<int, EquipFollowerData> _userEquipFollowerSlot = new Dictionary<int, EquipFollowerData>();
 
-    private void Start()
-    {
-        InitFollowerSlot();
-    }
-
-    private void InitFollowerSlot()
+    public void InitFollowerSlot()
     {
         int equipslotIndex = 0;
         foreach (var item in Manager.Data.FollowerData.UserEquipFollower)

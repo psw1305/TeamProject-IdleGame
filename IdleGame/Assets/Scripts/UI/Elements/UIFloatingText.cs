@@ -60,7 +60,7 @@ public class UIFloatingText : ObjectPoolable
     {
         _isReleased = false;
         damage = value;
-        _txtDamage.text = Utility.ConvertToString(damage);
+        _txtDamage.text = Utilities.ConvertToString(damage);
     }
 
     #endregion
