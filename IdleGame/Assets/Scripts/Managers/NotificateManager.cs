@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class NotificateManager
 {
@@ -10,7 +11,7 @@ public class NotificateManager
     //잠금이 해제된 장비가 있는지 확인합니다.
     public List<UserItemData> CheckUnlockEquipment(List<UserItemData> itemList)
     {
-        return Manager.Data.Inventory.UserItemData.Where(item => item.level > 1 || item.hasCount > 0).ToList();
+        return itemList.Where(item => item.level > 1 || item.hasCount > 0).ToList();
     }
 
 
@@ -31,10 +32,6 @@ public class NotificateManager
 
     public UserItemData CheckRecommendItem(List<UserItemData> itemList)
     {
-        // BUG => InvalidOperationException: Sequence contains no elements
-        // 데이터 변경 후 해당 오류 코드 발생
-        // 인벤토리 테이블에 장착된 아이템이 하나도 없는 경우 or 갯수가 없을 경우 생기는 버그 확인
-
         var recommendItem = CheckUnlockEquipment(itemList)
             .OrderBy(item => Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + item.level * Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip)
             .ToList();
@@ -81,8 +78,6 @@ public class NotificateManager
     public EquipmentTypeNotificate ActiveWeaponEquipmentBtnNoti;
     public EquipmentTypeNotificate InactiveWeaponEquipmentBtnNoti;
 
-
-
     public void SetWeaponEquipmentNoti()
     {
         if (CheckEquipmentWeaponBtnNotiState())
@@ -97,8 +92,6 @@ public class NotificateManager
 
     public EquipmentTypeNotificate ActiveArmorEquipmentBtnNoti;
     public EquipmentTypeNotificate InactiveArmorEquipmentBtnNoti;
-
-
 
     public void SetArmorEquipmentNoti()
     {
@@ -119,6 +112,7 @@ public class NotificateManager
     public delegate void TypeReinforceNotificate();
     public TypeReinforceNotificate ActiveReinforceWeaponItemNoti;
     public TypeReinforceNotificate InactiveReinforceWeaponItemNoti;
+
     public TypeReinforceNotificate ActiveReinforceArmorItemNoti;
     public TypeReinforceNotificate InactiveReinforceArmorItemNoti;
 

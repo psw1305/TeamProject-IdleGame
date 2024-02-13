@@ -66,6 +66,12 @@
       "equipped": false
     },
     {
+      "itemID": "S0009",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
       "itemID": "S0010",
       "level": 1,
       "hasCount": 0,

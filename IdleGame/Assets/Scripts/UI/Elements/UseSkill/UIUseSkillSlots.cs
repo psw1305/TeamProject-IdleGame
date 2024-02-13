@@ -22,13 +22,11 @@ public class UIUseSkillSlots : MonoBehaviour
             ImgSkillIcon.gameObject.SetActive(false);
             return;
         }
-
         else
         {
             ImgSkillIcon.sprite = Manager.Address.GetSprite($"{_equipSkillData.SkillID}");
             ImgSkillIcon.gameObject.SetActive(true);
-            
-            StartCoroutine(SetUIDurateTime());
+            StartCoroutine(SetUICoolDown());
         }
     }
 
@@ -45,7 +43,6 @@ public class UIUseSkillSlots : MonoBehaviour
             ImgDurate.fillAmount = _equipSkillData.SkillScript.CurrentDurateTime / _equipSkillData.SkillScript.EffectDurateTime;
         }
         ImgDurate.fillAmount = 0f;
-
         StartCoroutine(SetUICoolDown());
     }
 

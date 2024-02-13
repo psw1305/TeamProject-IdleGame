@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6525045568317542948}
   - component: {fileID: 8351568156059120061}
   m_Layer: 0
-  m_Name: AreaAtkSkill
+  m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

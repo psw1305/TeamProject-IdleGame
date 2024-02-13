@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
+public class MeteorProjectile : ProjectileHandlerBase
 {
     [SerializeField] private GameObject destroyVFX;
     private float _skillDamageRatio;
@@ -36,6 +36,9 @@ public class TestAreaAtkSkillProjectile : ProjectileHandlerBase
 
     private void OnDestroy()
     {
-        Instantiate(destroyVFX, gameObject.transform.position, destroyVFX.transform.rotation);
+        if (gameObject != null)
+        {
+            Instantiate(destroyVFX, gameObject.transform.position, destroyVFX.transform.rotation);
+        }
     }
 }

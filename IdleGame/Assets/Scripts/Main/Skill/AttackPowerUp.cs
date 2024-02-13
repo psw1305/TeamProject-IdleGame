@@ -1,15 +1,16 @@
 
 using UnityEngine;
 
-public class TestBuffSkill : BaseSkill
+public class AttackPowerUp : BaseSkill
 {
     [SerializeField] private float amountValue;
-    [SerializeField] private GameObject skillVFX;
+    [SerializeField] private ParticleSystem skillVFX;
 
-    private GameObject _currentVFX;
     protected override void Start()
     {
         base.Start();
+
+        skillVFX.Stop();
 
         string _skillID = "S0002";
         amountValue =
@@ -20,12 +21,12 @@ public class TestBuffSkill : BaseSkill
     protected override void ApplySkillEffect()
     {
         Manager.Game.Player.DamageBuff += amountValue;
-        _currentVFX = Manager.Address.InstantiatePrefab("BuffSkillVFX", gameObject.transform);
+        skillVFX.Play();
     }
 
     protected override void RemoveSkillEffect()
     {
         Manager.Game.Player.DamageBuff -= amountValue;
-        Destroy(_currentVFX);
+        skillVFX.Stop();
     }
 }
