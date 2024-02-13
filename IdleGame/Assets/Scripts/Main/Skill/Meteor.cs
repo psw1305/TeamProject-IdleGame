@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TestAreaAtkSkill : BaseSkill
+public class Meteor : BaseSkill
 {
     [SerializeField] private GameObject projectileSpawnArea;
 
@@ -31,10 +31,10 @@ public class TestAreaAtkSkill : BaseSkill
             _projectile = Manager.Address.InstantiatePrefab("TestProjectile");
             _projectile.transform.position = new Vector2(0, 5);
 
-            Manager.Game.Player.FinalAttackDamage(out _projectile.GetComponent<TestAreaAtkSkillProjectile>().Damage
-                , out _projectile.GetComponent<TestAreaAtkSkillProjectile>().DamageTypeValue);
+            Manager.Game.Player.FinalAttackDamage(out _projectile.GetComponent<MeteorProjectile>().Damage
+                , out _projectile.GetComponent<MeteorProjectile>().DamageTypeValue);
 
-            _projectile.GetComponent<TestAreaAtkSkillProjectile>().TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
+            _projectile.GetComponent<MeteorProjectile>().TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
         }
     }
 }
