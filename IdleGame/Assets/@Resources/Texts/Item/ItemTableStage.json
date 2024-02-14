@@ -1,802 +1,802 @@
 ﻿[
   {
     "Index": 1,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 2,
-    "EnemyGoldRate": 8,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 5,
+    "EnemyGoldRate": 4,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2000
   },
   {
     "Index": 2,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 15,
-    "EnemyGoldRate": 12,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 8,
+    "EnemyGoldRate": 7,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2000
   },
   {
     "Index": 3,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 20,
-    "EnemyGoldRate": 16,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 12,
+    "EnemyGoldRate": 10,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2200
   },
   {
     "Index": 4,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 25,
-    "EnemyGoldRate": 20,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 17,
+    "EnemyGoldRate": 14,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2200
   },
   {
     "Index": 5,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 40,
-    "EnemyGoldRate": 32,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 23,
+    "EnemyGoldRate": 19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2400
   },
   {
     "Index": 6,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 45,
-    "EnemyGoldRate": 36,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 29,
+    "EnemyGoldRate": 24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2400
   },
   {
     "Index": 7,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 50,
-    "EnemyGoldRate": 40,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 35,
+    "EnemyGoldRate": 28,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2600
   },
   {
     "Index": 8,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 55,
-    "EnemyGoldRate": 44,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 42,
+    "EnemyGoldRate": 34,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2600
   },
   {
     "Index": 9,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 60,
-    "EnemyGoldRate": 48,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 51,
+    "EnemyGoldRate": 41,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2800
   },
   {
     "Index": 10,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 80,
-    "EnemyGoldRate": 64,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 62,
+    "EnemyGoldRate": 50,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 2800
   },
   {
     "Index": 11,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 90,
-    "EnemyGoldRate": 72,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 75,
+    "EnemyGoldRate": 60,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3000
   },
   {
     "Index": 12,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 100,
-    "EnemyGoldRate": 80,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 90,
+    "EnemyGoldRate": 72,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3000
   },
   {
     "Index": 13,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 110,
-    "EnemyGoldRate": 88,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 108,
+    "EnemyGoldRate": 87,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3300
   },
   {
     "Index": 14,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 120,
-    "EnemyGoldRate": 96,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 130,
+    "EnemyGoldRate": 104,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3300
   },
   {
     "Index": 15,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 150,
-    "EnemyGoldRate": 120,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 156,
+    "EnemyGoldRate": 125,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3600
   },
   {
     "Index": 16,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 160,
-    "EnemyGoldRate": 128,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 188,
+    "EnemyGoldRate": 151,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3600
   },
   {
     "Index": 17,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 170,
-    "EnemyGoldRate": 136,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 226,
+    "EnemyGoldRate": 181,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3900
   },
   {
     "Index": 18,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 185,
-    "EnemyGoldRate": 148,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 272,
+    "EnemyGoldRate": 218,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 3900
   },
   {
     "Index": 19,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 200,
-    "EnemyGoldRate": 160,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 327,
+    "EnemyGoldRate": 262,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 4200
   },
   {
     "Index": 20,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 250,
-    "EnemyGoldRate": 200,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 393,
+    "EnemyGoldRate": 315,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 4200
   },
   {
     "Index": 21,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 300,
-    "EnemyGoldRate": 210,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 472,
+    "EnemyGoldRate": 378,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 4600
   },
   {
     "Index": 22,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 320,
-    "EnemyGoldRate": 220,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 567,
+    "EnemyGoldRate": 454,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 4600
   },
   {
     "Index": 23,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 340,
-    "EnemyGoldRate": 230,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 681,
+    "EnemyGoldRate": 545,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 5000
   },
   {
     "Index": 24,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 360,
-    "EnemyGoldRate": 240,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 818,
+    "EnemyGoldRate": 655,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 5000
   },
   {
     "Index": 25,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 380,
-    "EnemyGoldRate": 250,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 982,
+    "EnemyGoldRate": 786,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 5500
   },
   {
     "Index": 26,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 400,
-    "EnemyGoldRate": 260,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 1179,
+    "EnemyGoldRate": 944,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 5500
   },
   {
     "Index": 27,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 420,
-    "EnemyGoldRate": 270,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 1415,
+    "EnemyGoldRate": 1132,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 28,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 440,
-    "EnemyGoldRate": 280,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 1698,
+    "EnemyGoldRate": 1359,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 29,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 460,
-    "EnemyGoldRate": 290,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 2038,
+    "EnemyGoldRate": 1631,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 30,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 480,
-    "EnemyGoldRate": 300,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 2446,
+    "EnemyGoldRate": 1957,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 31,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 500,
-    "EnemyGoldRate": 310,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 2936,
+    "EnemyGoldRate": 2349,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 32,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 520,
-    "EnemyGoldRate": 320,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 3524,
+    "EnemyGoldRate": 2820,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 33,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 540,
-    "EnemyGoldRate": 330,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 4229,
+    "EnemyGoldRate": 3384,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 34,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 560,
-    "EnemyGoldRate": 340,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 5075,
+    "EnemyGoldRate": 4060,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 35,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 580,
-    "EnemyGoldRate": 350,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 6090,
+    "EnemyGoldRate": 4872,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 36,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 600,
-    "EnemyGoldRate": 360,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 7308,
+    "EnemyGoldRate": 5847,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 37,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 620,
-    "EnemyGoldRate": 370,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 8770,
+    "EnemyGoldRate": 7016,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 38,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 640,
-    "EnemyGoldRate": 380,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 10524,
+    "EnemyGoldRate": 8420,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 39,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 660,
-    "EnemyGoldRate": 390,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 12629,
+    "EnemyGoldRate": 10104,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 40,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 680,
-    "EnemyGoldRate": 400,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 15155,
+    "EnemyGoldRate": 12124,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 41,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 700,
-    "EnemyGoldRate": 410,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 18186,
+    "EnemyGoldRate": 14549,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 42,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 720,
-    "EnemyGoldRate": 420,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 21824,
+    "EnemyGoldRate": 17460,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 43,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 740,
-    "EnemyGoldRate": 430,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 26189,
+    "EnemyGoldRate": 20952,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 44,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 760,
-    "EnemyGoldRate": 440,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 31427,
+    "EnemyGoldRate": 25142,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 45,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 780,
-    "EnemyGoldRate": 450,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 37713,
+    "EnemyGoldRate": 30171,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 46,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 800,
-    "EnemyGoldRate": 460,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 45256,
+    "EnemyGoldRate": 36205,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 47,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 820,
-    "EnemyGoldRate": 470,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 54308,
+    "EnemyGoldRate": 43447,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 48,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 840,
-    "EnemyGoldRate": 480,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 65170,
+    "EnemyGoldRate": 52136,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 49,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 860,
-    "EnemyGoldRate": 490,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 78204,
+    "EnemyGoldRate": 62564,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 50,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 880,
-    "EnemyGoldRate": 500,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 93845,
+    "EnemyGoldRate": 75076,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 51,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 900,
-    "EnemyGoldRate": 510,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 112614,
+    "EnemyGoldRate": 90092,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 52,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 920,
-    "EnemyGoldRate": 520,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 135137,
+    "EnemyGoldRate": 108110,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 53,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 940,
-    "EnemyGoldRate": 530,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 162165,
+    "EnemyGoldRate": 129732,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 54,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 960,
-    "EnemyGoldRate": 540,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 194598,
+    "EnemyGoldRate": 155679,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 55,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 980,
-    "EnemyGoldRate": 550,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 233518,
+    "EnemyGoldRate": 186815,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 56,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1000,
-    "EnemyGoldRate": 560,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 280222,
+    "EnemyGoldRate": 224178,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 57,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1020,
-    "EnemyGoldRate": 570,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 336267,
+    "EnemyGoldRate": 269014,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 58,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1040,
-    "EnemyGoldRate": 580,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 403521,
+    "EnemyGoldRate": 322817,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 59,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1060,
-    "EnemyGoldRate": 590,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 484226,
+    "EnemyGoldRate": 387381,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 60,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1080,
-    "EnemyGoldRate": 600,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 581072,
+    "EnemyGoldRate": 464858,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 61,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1100,
-    "EnemyGoldRate": 610,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 697287,
+    "EnemyGoldRate": 557830,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 62,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1120,
-    "EnemyGoldRate": 620,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 836745,
+    "EnemyGoldRate": 669396,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 63,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1140,
-    "EnemyGoldRate": 630,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 1004094,
+    "EnemyGoldRate": 803276,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 64,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1160,
-    "EnemyGoldRate": 640,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 1204913,
+    "EnemyGoldRate": 963931,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 65,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1180,
-    "EnemyGoldRate": 650,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 1445896,
+    "EnemyGoldRate": 1156717,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 66,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1200,
-    "EnemyGoldRate": 660,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 1735076,
+    "EnemyGoldRate": 1388061,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 67,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1220,
-    "EnemyGoldRate": 670,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 2082092,
+    "EnemyGoldRate": 1665674,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 68,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1240,
-    "EnemyGoldRate": 680,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 2498511,
+    "EnemyGoldRate": 1998809,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 69,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1260,
-    "EnemyGoldRate": 690,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 2998214,
+    "EnemyGoldRate": 2398572,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 70,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1280,
-    "EnemyGoldRate": 700,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 3597857,
+    "EnemyGoldRate": 2878286,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 71,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1300,
-    "EnemyGoldRate": 710,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 4317429,
+    "EnemyGoldRate": 3453944,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 72,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1320,
-    "EnemyGoldRate": 720,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 5180915,
+    "EnemyGoldRate": 4144732,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 73,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1340,
-    "EnemyGoldRate": 730,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 6217098,
+    "EnemyGoldRate": 4973679,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 74,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1360,
-    "EnemyGoldRate": 740,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 7460518,
+    "EnemyGoldRate": 5968415,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 75,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1380,
-    "EnemyGoldRate": 750,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 8952622,
+    "EnemyGoldRate": 7162098,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 76,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1400,
-    "EnemyGoldRate": 760,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 10743147,
+    "EnemyGoldRate": 8594518,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 77,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1420,
-    "EnemyGoldRate": 770,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 12891777,
+    "EnemyGoldRate": 10313422,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 78,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1440,
-    "EnemyGoldRate": 780,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 15470133,
+    "EnemyGoldRate": 12376107,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 79,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1460,
-    "EnemyGoldRate": 790,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 18564160,
+    "EnemyGoldRate": 14851328,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 80,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1480,
-    "EnemyGoldRate": 800,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 22276992,
+    "EnemyGoldRate": 17821594,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 81,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1500,
-    "EnemyGoldRate": 810,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 26732391,
+    "EnemyGoldRate": 21385913,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 82,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1520,
-    "EnemyGoldRate": 820,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 32078870,
+    "EnemyGoldRate": 25663096,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 83,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1540,
-    "EnemyGoldRate": 830,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 38494644,
+    "EnemyGoldRate": 30795716,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 84,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1560,
-    "EnemyGoldRate": 840,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 46193573,
+    "EnemyGoldRate": 36954859,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 85,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1580,
-    "EnemyGoldRate": 850,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 55432288,
+    "EnemyGoldRate": 44345831,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 86,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1600,
-    "EnemyGoldRate": 860,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 66518746,
+    "EnemyGoldRate": 53214997,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 87,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1620,
-    "EnemyGoldRate": 870,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 79822496,
+    "EnemyGoldRate": 63857997,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 88,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1640,
-    "EnemyGoldRate": 880,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 95786996,
+    "EnemyGoldRate": 76629597,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 89,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1660,
-    "EnemyGoldRate": 890,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 114944396,
+    "EnemyGoldRate": 91955517,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 90,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1680,
-    "EnemyGoldRate": 900,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 137933276,
+    "EnemyGoldRate": 110346621,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 91,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1700,
-    "EnemyGoldRate": 910,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 165519932,
+    "EnemyGoldRate": 132415946,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 92,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_1",
-    "EnemyStatRate": 1720,
-    "EnemyGoldRate": 920,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 198623919,
+    "EnemyGoldRate": 158899136,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 93,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1740,
-    "EnemyGoldRate": 930,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 238348703,
+    "EnemyGoldRate": 190678963,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 94,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_2",
-    "EnemyStatRate": 1760,
-    "EnemyGoldRate": 940,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 286018444,
+    "EnemyGoldRate": 228814756,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 95,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1780,
-    "EnemyGoldRate": 950,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 343222133,
+    "EnemyGoldRate": 274577707,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 96,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_3",
-    "EnemyStatRate": 1800,
-    "EnemyGoldRate": 960,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 411866560,
+    "EnemyGoldRate": 329493248,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 97,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1820,
-    "EnemyGoldRate": 970,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 494239872,
+    "EnemyGoldRate": 395391898,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 98,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_4",
-    "EnemyStatRate": 1840,
-    "EnemyGoldRate": 980,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 593087847,
+    "EnemyGoldRate": 474470278,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 99,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 1860,
-    "EnemyGoldRate": 990,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 711705417,
+    "EnemyGoldRate": 569364334,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   },
   {
     "Index": 100,
-    "Difficulty": "보통",
     "StageConfig": "StageConfig_5",
-    "EnemyStatRate": 2000,
-    "EnemyGoldRate": 1000,
-    "EnemySpawnCount": 10
+    "EnemyStatRate": 854046501,
+    "EnemyGoldRate": 683237201,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 6000
   }
 ]
