@@ -30,20 +30,4 @@ public class FollowerAnimController : MonoBehaviour
     {
         _animator.SetTrigger(_isRangeTrigger);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            OnWalk();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            OnIdle();
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            OnRangeAtk();
-        }
-    }
 }

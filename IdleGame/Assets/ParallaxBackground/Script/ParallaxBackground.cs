@@ -29,13 +29,13 @@ public class ParallaxBackground : MonoBehaviour
     void Update()
     {
         //Moving camera
-        //if (Camera_Move)
-        //{
-        //    _camera.position += Vector3.right * Time.deltaTime * Camera_MoveSpeed;
-        //}
+        if (Camera_Move)
+        {
+            _camera.position += Vector3.right * Time.deltaTime * Camera_MoveSpeed;
+        }
         for (int i=0;i<7;i++){
-            float temp = ((Vector3.right * Time.deltaTime * Camera_MoveSpeed).x * (1-Layer_Speed[i]) );
-            float distance = (Vector3.right * Time.deltaTime * Camera_MoveSpeed).x  * Layer_Speed[i];
+            float temp = (_camera.position.x * (1-Layer_Speed[i]) );
+            float distance = _camera.position.x * Layer_Speed[i];
             Layer_Objects[i].transform.position = new Vector2 (startPos[i] + distance, _camera.position.y);
 
             if (temp > startPos[i] + boundSizeX*sizeX){
