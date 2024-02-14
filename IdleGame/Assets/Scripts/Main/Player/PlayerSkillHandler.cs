@@ -31,14 +31,7 @@ public class PlayerSkillHandler : MonoBehaviour
         _skillChangeAction -= skillUesAction;
     }
 
-
-
-    private void Start()
-    {
-        InitSkillSlot();
-    }
-
-    private void InitSkillSlot()
+    public void InitSkillSlot()
     {
         int equipslotIndex = 0;
         foreach (var item in Manager.Data.UserSkillData.UserEquipSkill)
@@ -116,7 +109,7 @@ public class EquipSkillData : MonoBehaviour
 
         // 프로퍼티를 설정함
         var skillBlueprint = Manager.Address.GetBlueprint(itemID) as SkillBlueprint;
-        SkillObject = Manager.Address.InstantiatePrefab(skillBlueprint.SkillName, Manager.Game.Player.transform);
+        SkillObject = Manager.Address.InstantiatePrefab(skillBlueprint.SkillObject.name, Manager.Game.Player.transform);
         SkillObject.transform.parent = transform;
         SkillScript = SkillObject.GetComponent<BaseSkill>();
     }

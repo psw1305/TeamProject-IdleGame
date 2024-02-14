@@ -223,7 +223,7 @@ public class UISceneMain : UIScene
 
     public void UpdateGold()
     {
-        txt_Gold.text = Utility.ConvertToString(player.Gold);
+        txt_Gold.text = Utilities.ConvertToString(player.Gold);
     }
 
     public void UpdateGems()
@@ -252,7 +252,7 @@ public class UISceneMain : UIScene
     public void UpdatePlayerPower()
     {
         var player = Manager.Game.Player;
-        string v = Utility.ConvertToString((long)(player.AtkDamage.Value
+        string v = Utilities.ConvertToString((long)(player.AtkDamage.Value
                         + player.AtkDamage.Value * player.EquipAttackStat / 100
                         + player.AtkDamage.Value * player.RetentionAttackEffect / 100));
 

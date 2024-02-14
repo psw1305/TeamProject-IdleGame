@@ -794,7 +794,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7137216215933988840}
   m_Father: {fileID: 466724721762124061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1669,11 +1670,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 466724721762124061}
+  m_Father: {fileID: 6906094662237198095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -149.99992}
+  m_AnchoredPosition: {x: 0, y: 0.000091552734}
   m_SizeDelta: {x: 800, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4141886943370258209
@@ -1794,7 +1795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fdf37999b67b8408cf7a86686658e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillSlots: []
   itemInfoUI: {fileID: 0}
   MainPopupUI: {fileID: 0}
 --- !u!1 &5157451393428461370
@@ -2549,7 +2549,6 @@ RectTransform:
   - {fileID: 746522499477924661}
   - {fileID: 7699613749508484537}
   - {fileID: 6906094662237198095}
-  - {fileID: 7137216215933988840}
   - {fileID: 5741400402692102662}
   - {fileID: 6837906333821360499}
   m_Father: {fileID: 223535061871734822}

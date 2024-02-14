@@ -74,24 +74,20 @@ public class StageManager
         stageUITable = stageUIDataTable.stageUIDataTable.ToDictionary(group => group.Index, group => group);
     }
 
-    public void SetStage(GameUserProfile profile)
+    public void SetStage(Transform[] spawnPoint, Transform bossSpawnPoint)
     {
+        var profile = Manager.Data.Profile;
+
         Chapter = profile.Stage_Chapter;
         StageLevel = profile.Stage_Level;
         WaveLoop = profile.Stage_WaveLoop;
 
         StageDataChange(Chapter);
-        uISceneMain = Manager.UI.CurrentScene as UISceneMain;
-    }
 
-    public void SetSpawnPoint(Transform[] spawnPoint)
-    {
         this.spawnPoint = spawnPoint;
-    }
-
-    public void SetBossPoint(Transform bossSpawnPoint)
-    {
         this.bossSpawnPoint = bossSpawnPoint;
+
+        uISceneMain = Manager.UI.CurrentScene as UISceneMain;
     }
 
     public List<BaseEnemy> GetEnemyList()
@@ -113,6 +109,9 @@ public class StageManager
 
     public void BattleStart()
     {
+        AudioBGM.Instance.VolumeBGMScale = 0.1f;
+        AudioBGM.Instance.Play(Manager.Address.GetAudioBGM("testbgm"));
+
         stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
     }
 

@@ -19,7 +19,7 @@ public abstract class BaseSkill : MonoBehaviour
     public float EffectDurateTime => effectDurateTime;
 
     [SerializeField] private float coolDown;
-    public float CoolDown => effectDurateTime;
+    public float CoolDown => coolDown;
 
     Coroutine _skillDurateTimeCoroutine;
     Coroutine _coolDownCoroutine;

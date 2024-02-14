@@ -1,3 +1,9 @@
+// 다운로드 사이즈 단위
+public enum SizeUnits
+{
+    Bytes, KB, MB, GB
+}
+
 // UI Event 타입 열거형
 public enum UIEventType
 {

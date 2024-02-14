@@ -292,8 +292,8 @@ GameObject:
   - component: {fileID: 1637531026307754313}
   - component: {fileID: 7121881572504259846}
   - component: {fileID: 5395698594513558487}
-  - component: {fileID: 7920778997282225395}
   - component: {fileID: 6689143209383149431}
+  - component: {fileID: 7920778997282225395}
   - component: {fileID: 2376948602761534169}
   - component: {fileID: 1864270443632120618}
   m_Layer: 6
@@ -415,6 +415,18 @@ MonoBehaviour:
   - {fileID: 5013788043004985825}
   enemyList: []
   IsPlay: 0
+--- !u!114 &6689143209383149431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571000953013123022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce63ef39147fc964a9b3214832e8ae6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7920778997282225395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,18 +441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 4923252188006877486}
   UICanvas: {fileID: 0}
---- !u!114 &6689143209383149431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5571000953013123022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce63ef39147fc964a9b3214832e8ae6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2376948602761534169
 MonoBehaviour:
   m_ObjectHideFlags: 0

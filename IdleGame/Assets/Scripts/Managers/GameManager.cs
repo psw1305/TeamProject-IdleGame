@@ -2,50 +2,38 @@ using UnityEngine;
 
 public class GameManager
 {
-    #region Fields
-
-    private Vector2 playerPosition;
-
-    #endregion
-
     #region Properties
 
     public Player Player { get; private set; }
+    public MainScene Main { get; private set; }
 
     #endregion
 
     #region Init
 
+    /// <summary>
+    /// 데이터 동기화 후 => 게임 세팅
+    /// </summary>
     public void Initialize()
     {
         var playerClone = Manager.Address.InstantiatePrefab("PlayerFrame");
         Player = playerClone.GetComponent<Player>();
+
+        Manager.ObjectPool.Initialize();
+        Manager.Ranking.Initialize();
+        Manager.Stage.Initialize();
+        Manager.Summon.Initialize();
+        Manager.Inventory.Initialize();
+
+        Main = GameObject.FindObjectOfType<MainScene>();
+        Main.SceneStart();
     }
 
-    // TODO => 서순을 교체하니 실행이 가능함
-    public void GameStart()
+    // 플레이어 데이터가 초기화 되는 부분
+    public void PlayerInit(Vector2 position)
     {
-        Manager.UI.ShowScene<UISceneMain>();
-
-        Manager.Summon.SetSummon();
-        Manager.Stage.SetStage(Manager.Data.Profile);
-        Manager.Stage.BattleStart();
-
-        AudioBGM.Instance.VolumeBGMScale = 0.1f;
-        AudioBGM.Instance.Play(Manager.Address.GetAudioBGM("testbgm"));
-
-        // 플레이어 데이터가 초기화 되는 부분
-        Player.transform.position = playerPosition;
+        Player.transform.position = position;
         Player.Initialize();
-    }
-
-    #endregion
-
-    #region Set Player
-
-    public void SetPosition(Vector2 position)
-    {
-        playerPosition = position;
     }
 
     #endregion

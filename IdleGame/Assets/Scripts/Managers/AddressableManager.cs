@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.ResourceManagement;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.U2D;
 
@@ -10,6 +13,117 @@ public class AddressableManager
     public bool Loaded { get; set; }
     private Dictionary<string, UnityEngine.Object> assets = new();
     private SpriteAtlas spriteAtlas;
+
+    #region Work Flow
+
+    public static string DownloadURL;
+    private DownloadEvents events;
+    private string labelToDownload;
+    private long totalSize;
+    private AsyncOperationHandle downloadHandle;
+
+    public DownloadEvents InitializeSystem(string label, string downloadURL)
+    {
+        events = new DownloadEvents();
+
+        Addressables.InitializeAsync().Completed += OnInitialized;
+
+        labelToDownload = label;
+        DownloadURL = downloadURL;
+
+        ResourceManager.ExceptionHandler += OnException;
+
+        return events;
+    }
+
+    public void Update()
+    {
+        if (Utilities.IsNetworkValid() == false)
+        {
+            // 네트워크가 끊길 시, 관련 메서드
+        }
+
+        if (downloadHandle.IsValid() 
+            && downloadHandle.IsDone == false
+            && downloadHandle.Status != AsyncOperationStatus.Failed)
+        {
+            var status = downloadHandle.GetDownloadStatus();
+
+            long curDownloadedSize = status.DownloadedBytes;
+            long remainedSize = totalSize - curDownloadedSize;
+
+            events.NotifyDownloadProgress(
+                new DownloadProgressStatus(
+                    status.DownloadedBytes, 
+                    totalSize, 
+                    remainedSize, 
+                    status.Percent));
+        }
+    }
+
+    public void UpdateCatalog()
+    {
+        Addressables.CheckForCatalogUpdates().Completed += (result) =>
+        {
+            var catalogToUpdate = result.Result;
+            if (catalogToUpdate.Count > 0)
+            {
+                Addressables.UpdateCatalogs(catalogToUpdate).Completed += OnCatelogUpdate;
+            }
+            else
+            {
+                events.NotifyCatalogUpdated();
+            }
+        };
+    }
+
+    public void DownloadSize()
+    {
+        Addressables.GetDownloadSizeAsync(labelToDownload).Completed += OnSizeDownloaded;
+    }
+
+    public void StartDownload()
+    {
+        downloadHandle = Addressables.DownloadDependenciesAsync(labelToDownload);
+        downloadHandle.Completed += OnDependenciesDownloaded;
+    }
+
+    #endregion
+
+    #region Init
+
+    private void OnInitialized(AsyncOperationHandle<IResourceLocator> result)
+    {
+        events.NotifyInitialized();
+    }
+
+    private void OnCatelogUpdate(AsyncOperationHandle<List<IResourceLocator>> result)
+    {
+        events.NotifyCatalogUpdated();
+    }
+
+    private void OnSizeDownloaded(AsyncOperationHandle<long> result)
+    {
+        totalSize = result.Result;
+        events.NotifySizeDownloaded(result.Result);
+    }
+
+    private void OnDependenciesDownloaded(AsyncOperationHandle result)
+    {
+        events.NotifyDownloadFinished(result.Status == AsyncOperationStatus.Succeeded);
+    }
+
+    private void OnException(AsyncOperationHandle handle, Exception exp)
+    {
+        Debug.LogError("CustomExceptionCaugh !:" + exp.Message);
+
+        if (exp is UnityEngine.ResourceManagement.Exceptions.RemoteProviderException)
+        {
+            // Remote 관련 에러 발생시
+        }
+    }
+
+    #endregion
 
     #region Load
 
