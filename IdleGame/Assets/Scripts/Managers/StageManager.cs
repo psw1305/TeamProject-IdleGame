@@ -42,6 +42,7 @@ public class StageManager
     public int EnemyStatRate => stageData.EnemyStatRate;
     public int EnemyGoldRate => stageData.EnemyGoldRate;
     public int EnemySpawnCount => stageData.EnemySpawnCount;
+    public int IdleGoldReward => stageData.IdleGoldReward * EnemyGoldRate;
 
     #endregion
 
