@@ -7,15 +7,13 @@ public class MainScene : BaseScene
 
     public void SceneStart()
     {
-        //보스 임시 스폰 포인트 스크립트로 만들기
-
-        // 스테이지 전투 구성
+        // 플레이어 위치 & UI 생성
         Manager.Game.PlayerInit(playerSpawnPoint.position);
         Manager.UI.ShowScene<UISceneMain>();
-
-        Manager.Stage.SetStage(enemySpawnPoint, BossSpawnPointAdd());
         Manager.Summon.SetSummon();
 
+        // 스테이지 전투 구성
+        Manager.Stage.SetStage(enemySpawnPoint, BossSpawnPointAdd());
         Manager.Stage.BattleStart();
     }
 
