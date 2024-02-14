@@ -103,8 +103,9 @@ public class UIPopupSkillDetail : UIPopup
         CalculateReinforceNeedCount();
         _reinforceProgressText.text = $"{_data.hasCount} / {_needCount}";
         _reinforceProgressSprite.fillAmount = (float)_data.hasCount / _needCount;
+
         _descriptionText.text = 
-            $" {Manager.SkillData.SkillDataDictionary[_data.itemID].skillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].reinforceDamage * (_data.level - 1)}% {Manager.SkillData.SkillDataDictionary[_data.itemID].description}";
+            $"<color=red> {Manager.SkillData.SkillDataDictionary[_data.itemID].skillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].reinforceDamage * (_data.level - 1)}%</color>{Manager.SkillData.SkillDataDictionary[_data.itemID].description}";
         _retentionEffectText.text = 
             $"{Manager.SkillData.SkillDataDictionary[_data.itemID].retentionEffect + Manager.SkillData.SkillDataDictionary[_data.itemID].reinforceEffect * (_data.level - 1)} % ";
     }

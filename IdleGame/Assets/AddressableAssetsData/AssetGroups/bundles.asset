@@ -426,7 +426,7 @@ MonoBehaviour:
     - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6eff6273c57086040ad9c091a98805d4
-    m_Address: TestProjectile.prefab
+    m_Address: MeteorProjectile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
@@ -745,6 +745,30 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f4381d97b2cb92242b4b9c193c9e1f8f
     m_Address: ChainLight.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 378e9310bd81f2c45a572e29b6d6ee7f
+    m_Address: WindSlash.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb1e82ceaba907c44b225a3ae2b2d068
+    m_Address: MoonSlash.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78e7efef249293f458e5c464de3449e5
+    m_Address: BloodSlash.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa76011e5ad8b704599035845b8a95c4
+    m_Address: Rainbow.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - default

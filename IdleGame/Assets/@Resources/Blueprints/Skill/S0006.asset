@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df256a62c946c8c46ac2a72b70e3a6fb, type: 3}
   m_Name: S0006
   m_EditorClassIdentifier: 
-  itemID: S0006
-  skillName: BuffSkill
-  skillObject: {fileID: 6870505122484580750, guid: 03e0d915358ba124db9f299a501801bf, type: 3}
+  skillObject: {fileID: 3141414119778857945, guid: 78e7efef249293f458e5c464de3449e5, type: 3}

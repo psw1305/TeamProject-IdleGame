@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Blizzard : BaseSkill
 {
-    [SerializeField] private ParticleSystem vfxParticle;
+    private string _skillID = "S0008";
 
     private long _damage;
-    private float _skillDamageRatio;
-    private DamageType _damageType;
 
+    private DamageType _damageType;
     private Coroutine _loopSkill;
+    
+    [SerializeField] private ParticleSystem vfxParticle;
     protected override void Start()
     {
         base.Start();
@@ -29,17 +30,9 @@ public class Blizzard : BaseSkill
         StopCoroutine(_loopSkill);
     }
 
-    private void CalculateDamageRatio()
-    {
-        string _skillID = "S0008";
-        _skillDamageRatio = (Manager.SkillData.SkillDataDictionary[_skillID].skillDamage
-            + (Manager.Data.SkillInvenDictionary[_skillID].level - 1) + Manager.SkillData.SkillDataDictionary[_skillID].reinforceDamage)
-            / 100;
-    }
-
     IEnumerator LoopSkillEffect()
     {
-        CalculateDamageRatio();
+        _skillDamageRatio = CalculateDamageRatio(_skillID);
         while (true)
         {
             yield return new WaitForSeconds(0.2f);
