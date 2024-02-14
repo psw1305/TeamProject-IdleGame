@@ -98,7 +98,7 @@ public class StageManager
     public StageUIData UITextReturn()
     {
         var UITable = stageUITable.Select(x => x.Key).ToList();
-        var CurChapter = UITable.OrderBy(x => (x - Chapter <= 0)).First();
+        var CurChapter = UITable.OrderBy(x => (x - Chapter <= 0)).Last();
         stageUITable.TryGetValue(CurChapter, out var chapterUI);
         return chapterUI;
     }
