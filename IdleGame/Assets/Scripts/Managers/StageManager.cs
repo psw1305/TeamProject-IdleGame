@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class StageManager
@@ -9,8 +10,10 @@ public class StageManager
 
     // json 경로 관련
     private string _tableText;
+    private string _UItableText;
 
     private Dictionary<int, StageData> stageTable;
+    private Dictionary<int, StageUIData> stageUITable;
     private StageData stageData;
     private List<BaseEnemy> enemyList = new();
     private Transform[] spawnPoint;
@@ -35,11 +38,11 @@ public class StageManager
 
     // 스테이지 정보 로드용 프로퍼티
     public StageBlueprint StageConfig => Manager.Address.GetBlueprint(stageData.StageConfig) as StageBlueprint;
-    public string DifficultyStr => stageData.Difficulty;
     public string StageBackground => string.Empty;
     public int EnemyStatRate => stageData.EnemyStatRate;
     public int EnemyGoldRate => stageData.EnemyGoldRate;
     public int EnemySpawnCount => stageData.EnemySpawnCount;
+    public int IdleGoldReward => stageData.IdleGoldReward * EnemyGoldRate;
 
     #endregion
 
@@ -65,7 +68,11 @@ public class StageManager
         _tableText = Manager.Address.GetText("ItemTableStage");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
+        _UItableText = Manager.Address.GetText("ItemTableStage_Hud");
+        var stageUIDataTable = JsonUtility.FromJson<StageUIDataTable>($"{{\"stageUIDataTable\":{_UItableText}}}");
+
         stageTable = stageDataTable.stageDataTable.ToDictionary(group => group.Index, group => group);
+        stageUITable = stageUIDataTable.stageUIDataTable.ToDictionary(group => group.Index, group => group);
     }
 
     public void SetStage(Transform[] spawnPoint, Transform bossSpawnPoint)
@@ -87,6 +94,14 @@ public class StageManager
     public List<BaseEnemy> GetEnemyList()
     {
         return enemyList;
+    }
+
+    public StageUIData UITextReturn()
+    {
+        var UITable = stageUITable.Select(x => x.Key).ToList();
+        var CurChapter = UITable.OrderBy(x => (x - Chapter <= 0)).Last();
+        stageUITable.TryGetValue(CurChapter, out var chapterUI);
+        return chapterUI;
     }
 
     #endregion
@@ -129,9 +144,10 @@ public class StageManager
         {
             // 스테이지 처음에서 죽었으면 아예 뒤로 물리기
             Chapter--;
-            StageDataChange(Chapter);
-
             StageLevel = 3;
+
+            ChapterCheck();
+            StageDataChange(Chapter);
         }
 
         uISceneMain.UpdateCurrentStage();
@@ -230,6 +246,7 @@ public class StageManager
             PlayerReset = true;
 
             Chapter++;
+            ChapterCheck();
             StageDataChange(Chapter);
             uISceneMain.StageLevelGaugeToggle();
         }
@@ -262,6 +279,20 @@ public class StageManager
         BattleStart();
     }
 
+    private void ChapterCheck()
+    {
+        if (Chapter == 0)
+        {
+            Chapter = 1;
+            StageLevel = 0;
+        }
+        
+        if (Chapter > stageTable.Count)
+        {
+            Chapter = stageTable.Count;
+        }
+    }
+
     private void SaveStage()
     {
         uISceneMain.UpdateCurrentStage();
@@ -285,13 +316,25 @@ public class StageDataTable
 public class StageData
 {
     public int Index;
-    public string Difficulty;
-    public string Chapter;
     public string StageConfig;
     public string StageBackground;
     public int EnemyStatRate;
     public int EnemyGoldRate;
     public int EnemySpawnCount;
+    public int IdleGoldReward;
+}
+
+[System.Serializable]
+public class StageUIDataTable
+{
+    public List<StageUIData> stageUIDataTable;
+}
+
+[System.Serializable]
+public class StageUIData
+{
+    public int Index;
+    public string UIText;
 }
 
 #endregion

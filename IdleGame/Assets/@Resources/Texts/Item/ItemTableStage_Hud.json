@@ -1,0 +1,18 @@
+﻿[
+  {
+    "Index": 0,
+    "UIText": "보통"
+  },
+  {
+    "Index": 30,
+    "UIText": "어려움"
+  },
+  {
+    "Index": 60,
+    "UIText": "극악"
+  },
+  {
+    "Index": 90,
+    "UIText": "지옥"
+  }
+]
