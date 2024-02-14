@@ -99,7 +99,7 @@ public class UIPopupRewardsIdle : UIPopup
     {
         if (!player.IsBonusCheck)
         {
-            player.RewardGold(100 * 500);
+            player.RewardGold(Manager.Stage.IdleGoldReward * 5);
 
             StartBonusTimer();
         } 
@@ -114,9 +114,9 @@ public class UIPopupRewardsIdle : UIPopup
         TimeSpan earnTime = DateTime.Now.Subtract(player.IdleCheckTime);
         int totalMinutes = Mathf.FloorToInt((float)earnTime.TotalMinutes);
 
-        earnTimeText.text = $"{100}/m";
+        earnTimeText.text = $"{Manager.Stage.IdleGoldReward}/m";
         idleTimeText.text = totalMinutes.ToString();
-        idleGoldRewards = 100 * totalMinutes;
+        idleGoldRewards = Manager.Stage.IdleGoldReward * totalMinutes;
         goldProvisionText.text = $"{idleGoldRewards}";
     }
 
