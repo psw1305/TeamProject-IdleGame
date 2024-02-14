@@ -77,7 +77,7 @@ public class DataManager
 
     #region Load
 
-    public IEnumerator Load()
+    public void Load()
     {
         LoadFromUserProfile();
         LoadFromUserEquipment();
@@ -85,7 +85,7 @@ public class DataManager
         LoadFromUserFollower();
         Debug.Log($"Load From {Application.persistentDataPath}");
         
-        yield return null;
+        //yield return null;
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")

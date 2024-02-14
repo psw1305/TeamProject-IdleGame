@@ -27,7 +27,7 @@ public class BaseScene : MonoBehaviour
     {
         yield return StartCoroutine(downloadPopup.StartDownload());
 
-        yield return StartCoroutine(Manager.Data.Load());
+        //yield return StartCoroutine(Manager.Data.Load());
     }
 
     private void OnApplicationQuit()
