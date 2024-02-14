@@ -39,7 +39,7 @@ public class Follower : MonoBehaviour
         _player = Manager.Game.Player;
         //Manager.FollowerData.
 
-        AttackRange = 6;
+        AttackRange = 4;
         AtkDamage = _player.AtkDamage.Value;
         AtkCorrection = 0.2f;
         AtkSpeed = 0.6f;
@@ -100,7 +100,7 @@ public class Follower : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(AttakSpeedToTime());
-            if (enemyList.Count == 0)
+            if (enemyList.Count == 0 || Vector2.Distance(transform.position, enemyList[0].transform.position) > AttackRange)
             {
                 _attackCoroutine = null;
                 _followerAnimController.OnWalk();
