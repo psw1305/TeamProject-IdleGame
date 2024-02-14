@@ -31,6 +31,8 @@ public class Player : MonoBehaviour, IDamageable
     private PlayerSkillHandler playerSkillHandler;
     private PlayerFollowerHandler playerFollowerHandler;
 
+    private ParallaxController parallaxController;
+
     #endregion
 
     #region Properties
@@ -85,6 +87,8 @@ public class Player : MonoBehaviour, IDamageable
         playerAnimController = GetComponent<PlayerAnimController>();
         playerSkillHandler = GetComponent<PlayerSkillHandler>();
         playerFollowerHandler = GetComponent<PlayerFollowerHandler>();
+        
+        parallaxController = FindObjectOfType<ParallaxController>();
 
         AttackRange = 5;
         MoveSpeed = 100;
@@ -153,11 +157,17 @@ public class Player : MonoBehaviour, IDamageable
         if (_attackCoroutine == null && enemyList.Count <= 0)
         {
             playerAnimController.OnWalk();
+            parallaxController.LayerMove();
         }
         else if (_attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
         {
             playerAnimController.OnIdle();
             _attackCoroutine = StartCoroutine(AttackRoutine());
+        }
+        else if (enemyList.Count <= 0 || Vector2.Distance(enemyList[0].transform.position, transform.position) > 4)
+        {
+            playerAnimController.OnWalk();
+            parallaxController.LayerMove();
         }
     }
 
