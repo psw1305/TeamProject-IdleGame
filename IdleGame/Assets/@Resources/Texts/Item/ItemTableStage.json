@@ -1,7 +1,7 @@
 ﻿[
   {
     "Index": 1,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 5,
     "EnemyGoldRate": 4,
     "EnemySpawnCount": 10,
@@ -9,7 +9,7 @@
   },
   {
     "Index": 2,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 8,
     "EnemyGoldRate": 7,
     "EnemySpawnCount": 10,
@@ -17,7 +17,7 @@
   },
   {
     "Index": 3,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 12,
     "EnemyGoldRate": 10,
     "EnemySpawnCount": 10,
@@ -25,7 +25,7 @@
   },
   {
     "Index": 4,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 17,
     "EnemyGoldRate": 14,
     "EnemySpawnCount": 10,
@@ -33,7 +33,7 @@
   },
   {
     "Index": 5,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 23,
     "EnemyGoldRate": 19,
     "EnemySpawnCount": 10,
@@ -41,7 +41,7 @@
   },
   {
     "Index": 6,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 29,
     "EnemyGoldRate": 24,
     "EnemySpawnCount": 10,
@@ -49,7 +49,7 @@
   },
   {
     "Index": 7,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 35,
     "EnemyGoldRate": 28,
     "EnemySpawnCount": 10,
@@ -57,7 +57,7 @@
   },
   {
     "Index": 8,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 42,
     "EnemyGoldRate": 34,
     "EnemySpawnCount": 10,
@@ -65,7 +65,7 @@
   },
   {
     "Index": 9,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 51,
     "EnemyGoldRate": 41,
     "EnemySpawnCount": 10,
@@ -73,7 +73,7 @@
   },
   {
     "Index": 10,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Field",
     "EnemyStatRate": 62,
     "EnemyGoldRate": 50,
     "EnemySpawnCount": 10,
@@ -81,7 +81,7 @@
   },
   {
     "Index": 11,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 75,
     "EnemyGoldRate": 60,
     "EnemySpawnCount": 10,
@@ -89,7 +89,7 @@
   },
   {
     "Index": 12,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 90,
     "EnemyGoldRate": 72,
     "EnemySpawnCount": 10,
@@ -97,7 +97,7 @@
   },
   {
     "Index": 13,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 108,
     "EnemyGoldRate": 87,
     "EnemySpawnCount": 10,
@@ -105,7 +105,7 @@
   },
   {
     "Index": 14,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 130,
     "EnemyGoldRate": 104,
     "EnemySpawnCount": 10,
@@ -113,7 +113,7 @@
   },
   {
     "Index": 15,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 156,
     "EnemyGoldRate": 125,
     "EnemySpawnCount": 10,
@@ -121,7 +121,7 @@
   },
   {
     "Index": 16,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 188,
     "EnemyGoldRate": 151,
     "EnemySpawnCount": 10,
@@ -129,7 +129,7 @@
   },
   {
     "Index": 17,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 226,
     "EnemyGoldRate": 181,
     "EnemySpawnCount": 10,
@@ -137,7 +137,7 @@
   },
   {
     "Index": 18,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 272,
     "EnemyGoldRate": 218,
     "EnemySpawnCount": 10,
@@ -145,7 +145,7 @@
   },
   {
     "Index": 19,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 327,
     "EnemyGoldRate": 262,
     "EnemySpawnCount": 10,
@@ -153,7 +153,7 @@
   },
   {
     "Index": 20,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Field2",
     "EnemyStatRate": 393,
     "EnemyGoldRate": 315,
     "EnemySpawnCount": 10,
@@ -161,7 +161,7 @@
   },
   {
     "Index": 21,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 472,
     "EnemyGoldRate": 378,
     "EnemySpawnCount": 10,
@@ -169,7 +169,7 @@
   },
   {
     "Index": 22,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 567,
     "EnemyGoldRate": 454,
     "EnemySpawnCount": 10,
@@ -177,7 +177,7 @@
   },
   {
     "Index": 23,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 681,
     "EnemyGoldRate": 545,
     "EnemySpawnCount": 10,
@@ -185,7 +185,7 @@
   },
   {
     "Index": 24,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 818,
     "EnemyGoldRate": 655,
     "EnemySpawnCount": 10,
@@ -193,7 +193,7 @@
   },
   {
     "Index": 25,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 982,
     "EnemyGoldRate": 786,
     "EnemySpawnCount": 10,
@@ -201,7 +201,7 @@
   },
   {
     "Index": 26,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 1179,
     "EnemyGoldRate": 944,
     "EnemySpawnCount": 10,
@@ -209,7 +209,7 @@
   },
   {
     "Index": 27,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 1415,
     "EnemyGoldRate": 1132,
     "EnemySpawnCount": 10,
@@ -217,7 +217,7 @@
   },
   {
     "Index": 28,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 1698,
     "EnemyGoldRate": 1359,
     "EnemySpawnCount": 10,
@@ -225,7 +225,7 @@
   },
   {
     "Index": 29,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 2038,
     "EnemyGoldRate": 1631,
     "EnemySpawnCount": 10,
@@ -233,7 +233,7 @@
   },
   {
     "Index": 30,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Forest",
     "EnemyStatRate": 2446,
     "EnemyGoldRate": 1957,
     "EnemySpawnCount": 10,
@@ -241,7 +241,7 @@
   },
   {
     "Index": 31,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 2936,
     "EnemyGoldRate": 2349,
     "EnemySpawnCount": 10,
@@ -249,7 +249,7 @@
   },
   {
     "Index": 32,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 3524,
     "EnemyGoldRate": 2820,
     "EnemySpawnCount": 10,
@@ -257,7 +257,7 @@
   },
   {
     "Index": 33,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 4229,
     "EnemyGoldRate": 3384,
     "EnemySpawnCount": 10,
@@ -265,7 +265,7 @@
   },
   {
     "Index": 34,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 5075,
     "EnemyGoldRate": 4060,
     "EnemySpawnCount": 10,
@@ -273,7 +273,7 @@
   },
   {
     "Index": 35,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 6090,
     "EnemyGoldRate": 4872,
     "EnemySpawnCount": 10,
@@ -281,7 +281,7 @@
   },
   {
     "Index": 36,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 7308,
     "EnemyGoldRate": 5847,
     "EnemySpawnCount": 10,
@@ -289,7 +289,7 @@
   },
   {
     "Index": 37,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 8770,
     "EnemyGoldRate": 7016,
     "EnemySpawnCount": 10,
@@ -297,7 +297,7 @@
   },
   {
     "Index": 38,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 10524,
     "EnemyGoldRate": 8420,
     "EnemySpawnCount": 10,
@@ -305,7 +305,7 @@
   },
   {
     "Index": 39,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 12629,
     "EnemyGoldRate": 10104,
     "EnemySpawnCount": 10,
@@ -313,7 +313,7 @@
   },
   {
     "Index": 40,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Forest2",
     "EnemyStatRate": 15155,
     "EnemyGoldRate": 12124,
     "EnemySpawnCount": 10,
@@ -321,7 +321,7 @@
   },
   {
     "Index": 41,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 18186,
     "EnemyGoldRate": 14549,
     "EnemySpawnCount": 10,
@@ -329,7 +329,7 @@
   },
   {
     "Index": 42,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 21824,
     "EnemyGoldRate": 17460,
     "EnemySpawnCount": 10,
@@ -337,7 +337,7 @@
   },
   {
     "Index": 43,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 26189,
     "EnemyGoldRate": 20952,
     "EnemySpawnCount": 10,
@@ -345,7 +345,7 @@
   },
   {
     "Index": 44,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 31427,
     "EnemyGoldRate": 25142,
     "EnemySpawnCount": 10,
@@ -353,7 +353,7 @@
   },
   {
     "Index": 45,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 37713,
     "EnemyGoldRate": 30171,
     "EnemySpawnCount": 10,
@@ -361,7 +361,7 @@
   },
   {
     "Index": 46,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 45256,
     "EnemyGoldRate": 36205,
     "EnemySpawnCount": 10,
@@ -369,7 +369,7 @@
   },
   {
     "Index": 47,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 54308,
     "EnemyGoldRate": 43447,
     "EnemySpawnCount": 10,
@@ -377,7 +377,7 @@
   },
   {
     "Index": 48,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 65170,
     "EnemyGoldRate": 52136,
     "EnemySpawnCount": 10,
@@ -385,7 +385,7 @@
   },
   {
     "Index": 49,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 78204,
     "EnemyGoldRate": 62564,
     "EnemySpawnCount": 10,
@@ -393,7 +393,7 @@
   },
   {
     "Index": 50,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Sea",
     "EnemyStatRate": 93845,
     "EnemyGoldRate": 75076,
     "EnemySpawnCount": 10,
@@ -401,7 +401,7 @@
   },
   {
     "Index": 51,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 112614,
     "EnemyGoldRate": 90092,
     "EnemySpawnCount": 10,
@@ -409,7 +409,7 @@
   },
   {
     "Index": 52,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 135137,
     "EnemyGoldRate": 108110,
     "EnemySpawnCount": 10,
@@ -417,7 +417,7 @@
   },
   {
     "Index": 53,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 162165,
     "EnemyGoldRate": 129732,
     "EnemySpawnCount": 10,
@@ -425,7 +425,7 @@
   },
   {
     "Index": 54,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 194598,
     "EnemyGoldRate": 155679,
     "EnemySpawnCount": 10,
@@ -433,7 +433,7 @@
   },
   {
     "Index": 55,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 233518,
     "EnemyGoldRate": 186815,
     "EnemySpawnCount": 10,
@@ -441,7 +441,7 @@
   },
   {
     "Index": 56,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 280222,
     "EnemyGoldRate": 224178,
     "EnemySpawnCount": 10,
@@ -449,7 +449,7 @@
   },
   {
     "Index": 57,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 336267,
     "EnemyGoldRate": 269014,
     "EnemySpawnCount": 10,
@@ -457,7 +457,7 @@
   },
   {
     "Index": 58,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 403521,
     "EnemyGoldRate": 322817,
     "EnemySpawnCount": 10,
@@ -465,7 +465,7 @@
   },
   {
     "Index": 59,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 484226,
     "EnemyGoldRate": 387381,
     "EnemySpawnCount": 10,
@@ -473,7 +473,7 @@
   },
   {
     "Index": 60,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Sea2",
     "EnemyStatRate": 581072,
     "EnemyGoldRate": 464858,
     "EnemySpawnCount": 10,
@@ -481,7 +481,7 @@
   },
   {
     "Index": 61,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 697287,
     "EnemyGoldRate": 557830,
     "EnemySpawnCount": 10,
@@ -489,7 +489,7 @@
   },
   {
     "Index": 62,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 836745,
     "EnemyGoldRate": 669396,
     "EnemySpawnCount": 10,
@@ -497,7 +497,7 @@
   },
   {
     "Index": 63,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 1004094,
     "EnemyGoldRate": 803276,
     "EnemySpawnCount": 10,
@@ -505,7 +505,7 @@
   },
   {
     "Index": 64,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 1204913,
     "EnemyGoldRate": 963931,
     "EnemySpawnCount": 10,
@@ -513,7 +513,7 @@
   },
   {
     "Index": 65,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 1445896,
     "EnemyGoldRate": 1156717,
     "EnemySpawnCount": 10,
@@ -521,7 +521,7 @@
   },
   {
     "Index": 66,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 1735076,
     "EnemyGoldRate": 1388061,
     "EnemySpawnCount": 10,
@@ -529,7 +529,7 @@
   },
   {
     "Index": 67,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 2082092,
     "EnemyGoldRate": 1665674,
     "EnemySpawnCount": 10,
@@ -537,7 +537,7 @@
   },
   {
     "Index": 68,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 2498511,
     "EnemyGoldRate": 1998809,
     "EnemySpawnCount": 10,
@@ -545,7 +545,7 @@
   },
   {
     "Index": 69,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 2998214,
     "EnemyGoldRate": 2398572,
     "EnemySpawnCount": 10,
@@ -553,7 +553,7 @@
   },
   {
     "Index": 70,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Ice",
     "EnemyStatRate": 3597857,
     "EnemyGoldRate": 2878286,
     "EnemySpawnCount": 10,
@@ -561,7 +561,7 @@
   },
   {
     "Index": 71,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 4317429,
     "EnemyGoldRate": 3453944,
     "EnemySpawnCount": 10,
@@ -569,7 +569,7 @@
   },
   {
     "Index": 72,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 5180915,
     "EnemyGoldRate": 4144732,
     "EnemySpawnCount": 10,
@@ -577,7 +577,7 @@
   },
   {
     "Index": 73,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 6217098,
     "EnemyGoldRate": 4973679,
     "EnemySpawnCount": 10,
@@ -585,7 +585,7 @@
   },
   {
     "Index": 74,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 7460518,
     "EnemyGoldRate": 5968415,
     "EnemySpawnCount": 10,
@@ -593,7 +593,7 @@
   },
   {
     "Index": 75,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 8952622,
     "EnemyGoldRate": 7162098,
     "EnemySpawnCount": 10,
@@ -601,7 +601,7 @@
   },
   {
     "Index": 76,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 10743147,
     "EnemyGoldRate": 8594518,
     "EnemySpawnCount": 10,
@@ -609,7 +609,7 @@
   },
   {
     "Index": 77,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 12891777,
     "EnemyGoldRate": 10313422,
     "EnemySpawnCount": 10,
@@ -617,7 +617,7 @@
   },
   {
     "Index": 78,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 15470133,
     "EnemyGoldRate": 12376107,
     "EnemySpawnCount": 10,
@@ -625,7 +625,7 @@
   },
   {
     "Index": 79,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 18564160,
     "EnemyGoldRate": 14851328,
     "EnemySpawnCount": 10,
@@ -633,7 +633,7 @@
   },
   {
     "Index": 80,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Ice2",
     "EnemyStatRate": 22276992,
     "EnemyGoldRate": 17821594,
     "EnemySpawnCount": 10,
@@ -641,7 +641,7 @@
   },
   {
     "Index": 81,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 26732391,
     "EnemyGoldRate": 21385913,
     "EnemySpawnCount": 10,
@@ -649,7 +649,7 @@
   },
   {
     "Index": 82,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 32078870,
     "EnemyGoldRate": 25663096,
     "EnemySpawnCount": 10,
@@ -657,7 +657,7 @@
   },
   {
     "Index": 83,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 38494644,
     "EnemyGoldRate": 30795716,
     "EnemySpawnCount": 10,
@@ -665,7 +665,7 @@
   },
   {
     "Index": 84,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 46193573,
     "EnemyGoldRate": 36954859,
     "EnemySpawnCount": 10,
@@ -673,7 +673,7 @@
   },
   {
     "Index": 85,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 55432288,
     "EnemyGoldRate": 44345831,
     "EnemySpawnCount": 10,
@@ -681,7 +681,7 @@
   },
   {
     "Index": 86,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 66518746,
     "EnemyGoldRate": 53214997,
     "EnemySpawnCount": 10,
@@ -689,7 +689,7 @@
   },
   {
     "Index": 87,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 79822496,
     "EnemyGoldRate": 63857997,
     "EnemySpawnCount": 10,
@@ -697,7 +697,7 @@
   },
   {
     "Index": 88,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 95786996,
     "EnemyGoldRate": 76629597,
     "EnemySpawnCount": 10,
@@ -705,7 +705,7 @@
   },
   {
     "Index": 89,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 114944396,
     "EnemyGoldRate": 91955517,
     "EnemySpawnCount": 10,
@@ -713,7 +713,7 @@
   },
   {
     "Index": 90,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Devil",
     "EnemyStatRate": 137933276,
     "EnemyGoldRate": 110346621,
     "EnemySpawnCount": 10,
@@ -721,7 +721,7 @@
   },
   {
     "Index": 91,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 165519932,
     "EnemyGoldRate": 132415946,
     "EnemySpawnCount": 10,
@@ -729,7 +729,7 @@
   },
   {
     "Index": 92,
-    "StageConfig": "StageConfig_1",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 198623919,
     "EnemyGoldRate": 158899136,
     "EnemySpawnCount": 10,
@@ -737,7 +737,7 @@
   },
   {
     "Index": 93,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 238348703,
     "EnemyGoldRate": 190678963,
     "EnemySpawnCount": 10,
@@ -745,7 +745,7 @@
   },
   {
     "Index": 94,
-    "StageConfig": "StageConfig_2",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 286018444,
     "EnemyGoldRate": 228814756,
     "EnemySpawnCount": 10,
@@ -753,7 +753,7 @@
   },
   {
     "Index": 95,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 343222133,
     "EnemyGoldRate": 274577707,
     "EnemySpawnCount": 10,
@@ -761,7 +761,7 @@
   },
   {
     "Index": 96,
-    "StageConfig": "StageConfig_3",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 411866560,
     "EnemyGoldRate": 329493248,
     "EnemySpawnCount": 10,
@@ -769,7 +769,7 @@
   },
   {
     "Index": 97,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 494239872,
     "EnemyGoldRate": 395391898,
     "EnemySpawnCount": 10,
@@ -777,7 +777,7 @@
   },
   {
     "Index": 98,
-    "StageConfig": "StageConfig_4",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 593087847,
     "EnemyGoldRate": 474470278,
     "EnemySpawnCount": 10,
@@ -785,7 +785,7 @@
   },
   {
     "Index": 99,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 711705417,
     "EnemyGoldRate": 569364334,
     "EnemySpawnCount": 10,
@@ -793,7 +793,7 @@
   },
   {
     "Index": 100,
-    "StageConfig": "StageConfig_5",
+    "StageConfig": "StageConfig_Devil2",
     "EnemyStatRate": 854046501,
     "EnemyGoldRate": 683237201,
     "EnemySpawnCount": 10,
