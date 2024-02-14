@@ -10,6 +10,7 @@ public abstract class BaseSkill : MonoBehaviour
     protected float _currentCoolDown;
     public float CurrentCoolDown => _currentCoolDown;
 
+    protected float _skillDamageRatio;
 
     protected SkillType _skillType;
     private bool _canUse;
@@ -48,6 +49,12 @@ public abstract class BaseSkill : MonoBehaviour
 
         _canUse = false;
         StartCoroutine(CountDurateTime());
+    }
+    protected float CalculateDamageRatio(string skillID)
+    {
+        return (Manager.SkillData.SkillDataDictionary[skillID].skillDamage
+            + (Manager.Data.SkillInvenDictionary[skillID].level - 1) + Manager.SkillData.SkillDataDictionary[skillID].reinforceDamage)
+            / 100;
     }
 
     private IEnumerator CountDurateTime()

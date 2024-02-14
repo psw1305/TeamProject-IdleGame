@@ -33281,7 +33281,7 @@ GameObject:
   - component: {fileID: 19915746}
   - component: {fileID: 8202790}
   m_Layer: 0
-  m_Name: TestDestroyVFX
+  m_Name: MeteorProjectileDestroyVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

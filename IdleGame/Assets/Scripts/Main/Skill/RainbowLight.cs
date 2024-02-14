@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class ChainLight : BaseSkill
+public class RainbowLight : BaseSkill
 {
     [SerializeField] private ParticleSystem vfxParticle;
 
     private long _damage;
 
     private DamageType _damageType;
-    string _skillID = "S0003";
+    string _skillID = "S0007";
     private Coroutine _loopSkill;
     protected override void Start()
     {
