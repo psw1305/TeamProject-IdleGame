@@ -130,24 +130,6 @@ public class Player : MonoBehaviour, IDamageable
         StartCoroutine(RecoverHealthPoint());
     }
 
-    private void FollowerInit()
-    {
-        // 임시로 5개 동료를 입력
-        _followerPrefab[0] = Manager.Address.InstantiatePrefab("FollowerFrame_Dragon");
-        _followerPrefab[1] = Manager.Address.InstantiatePrefab("FollowerFrame_Cat");
-        _followerPrefab[2] = Manager.Address.InstantiatePrefab("FollowerFrame_WereWolf");
-        _followerPrefab[3] = Manager.Address.InstantiatePrefab("FollowerFrame_MerMan");
-        _followerPrefab[4] = Manager.Address.InstantiatePrefab("FollowerFrame_Lizard");
-
-        for (int i = 0; i < 5; i++)
-        {
-            Follower[i] = _followerPrefab[i].GetComponent<Follower>();
-
-            Follower[i].transform.position = FollowerPosition[i].position;
-            Follower[i].Initialize();
-        }
-    }
-
     #endregion
 
     #region Unity Flow

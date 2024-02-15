@@ -13,4 +13,13 @@ MonoBehaviour:
   m_Name: F0004
   m_EditorClassIdentifier: 
   itemID: F0004
-  followerObject: {fileID: 5649214538301124217, guid: de5b16228df3f0c44922652ce02fccf2, type: 3}
+  followerName: "\uB9AC\uC790\uB4DC"
+  followerObject: {fileID: 5649214538301124217, guid: 734f0fca9f337594cb840c75b5d13f53, type: 3}
+  sprite: {fileID: -2978808618200810919, guid: 572791806029cdd4ba5c896ac55e3f07, type: 3}
+  animator: {fileID: 9100000, guid: f9f7abe8f8731214e8130a138548adda, type: 2}
+  rarity: legendary
+  damageCorrection: 40
+  atkSpeed: 0.4
+  reinforceDamage: 4
+  reinforceEffect: 5
+  retentionEffect: 0.5
