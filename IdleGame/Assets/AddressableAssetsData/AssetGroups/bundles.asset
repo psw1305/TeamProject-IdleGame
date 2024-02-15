@@ -402,7 +402,7 @@ MonoBehaviour:
     - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c4152aeaabc4c44384a8cd573d159bd
-    m_Address: TestDestroyVFX.prefab
+    m_Address: MeteorProjectileDestroyVFX.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
@@ -426,7 +426,7 @@ MonoBehaviour:
     - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6eff6273c57086040ad9c091a98805d4
-    m_Address: TestProjectile.prefab
+    m_Address: MeteorProjectile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
@@ -804,7 +804,7 @@ MonoBehaviour:
     - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fd3e0af092a99724099425bdd9d59b28
-    m_Address: Assets/@Resources/Blueprints/Stage/StageConfig_Forest2.asset
+    m_Address: StageConfig_Forest2.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - default

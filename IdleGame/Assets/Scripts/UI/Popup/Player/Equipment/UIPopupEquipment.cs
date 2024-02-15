@@ -147,7 +147,7 @@ public class UIPopupEquipment : UIPopup
         else
         {
             btn_Select_Equip.interactable = true;
-            btn_Select_Reinforce.interactable = true;
+            btn_Select_Reinforce.interactable = (_selectItemData.hasCount >= _needCount);
         }
     }
 
@@ -256,13 +256,13 @@ public class UIPopupEquipment : UIPopup
     {
         if (EquipFillterType == EquipFillterType.Weapon)
         {
-            titleText.text = "무기";
+            titleText.text = "Weapon";
             btn_Reinforce_Weapon.gameObject.SetActive(true);
             btn_Reinforce_Armor.gameObject.SetActive(false);
         }
         else if (EquipFillterType == EquipFillterType.Armor)
         {
-            titleText.text = "방어구";
+            titleText.text = "Skill";
             btn_Reinforce_Weapon.gameObject.SetActive(false);
             btn_Reinforce_Armor.gameObject.SetActive(true);
         }
