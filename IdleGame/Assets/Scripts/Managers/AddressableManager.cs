@@ -213,7 +213,7 @@ public class AddressableManager
 
     public ScriptableObject GetBlueprint(string key)
     {
-        ScriptableObject blueprint = Load<ScriptableObject>($"{key}.asset");
+        ScriptableObject blueprint = Load<ScriptableObject>(key);
         if (blueprint == null)
         {
             Debug.LogError($"Blueprint({key}): Failed to load Blueprint.");

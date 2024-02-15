@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Prefabs_UI
+  m_EditorClassIdentifier: 
+  m_GroupName: Prefabs_UI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 98118766c1a7eda43b859b25ab205490
+  m_SerializeEntries:
+  - m_GUID: 99e6a82cda8bdf341a50de4d2b235565
+    m_Address: UICanvas_Debug.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f949726f61fda2647b293ded825f1ccf
+    m_Address: UIDropDownOptions.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 478c5691dce675d42bf7c27b306edcb8
+    m_Address: UIPopupEquipment.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3685fefd1165994dbf6c79814b25cf3
+    m_Address: UIPopupFollower.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 569a6b8b29affb7478fa51f523ca91f9
+    m_Address: UIPopupFollowerDetail.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 133d7d554e49ec941a751103488b98a5
+    m_Address: UIPopupPlayerSystem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b71fb3d7e54efff46b7d91d287d190b6
+    m_Address: UIPopupRanking.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a6ed03e5bb69434ba3a86da9e599be3
+    m_Address: UIPopupRewardsIdle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5917d8b06e921084195ed2df7d446926
+    m_Address: UIPopupShopSummon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0064ee2697e7c7147ad5de700b305e2d
+    m_Address: UIPopupSkill.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17b622294bd35854287508dae4a37ca0
+    m_Address: UIPopupSkillDetail.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfdc48bb73c41f448ae6ff9cf845bc80
+    m_Address: UIPopupSummonRewards.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d3c88a7023509545a32170f877a622d
+    m_Address: UISceneMain.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca35ae99d805dd441bf83a9c70a8c1d2
+    m_Address: UpgradeStat.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d77236c13621bfb45a006499126d9130
+    m_Address: UserRank.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57b54498119d5f84096529496188aaab
+    m_Address: Slot_Armor.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74eb856db4c5e9c458748a0f8c9261de
+    m_Address: Slot_Follower.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34593a6e7610cf0468f571edc473964e
+    m_Address: Slot_Skill.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5935ce630e284946b30476dc8cdc47f
+    m_Address: Slot_Weapon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf04a83e14cc68145a9003b3127a4a7e
+    m_Address: NotificationDot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24f373dd3314a994a885e723350d4eb8
+    m_Address: PlayerFrame.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75cc5a598962d5b43a0a2e49f9f9b1fb
+    m_Address: PlayerProjectileFrame.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b80775fdd5c02b24991e2e2d7e9f189f
+    m_Address: PlayerProjectileVFXTest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03e0d915358ba124db9f299a501801bf
+    m_Address: PowerUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 920b4e26fcc0aa94c92b10db334d43ff
+    m_Address: FloatingText.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96ae227bc1d463242bfc398261cf5f72
+    m_Address: Image_HUD_Quest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6506ab1f120958b4eb2518498aa995fd
+    m_Address: Image_HUD_Stage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0489e0b811c41746b16784f926ec8d3
+    m_Address: Canvas_FloatingDamage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f44a26e03e24aa64bba9e3b7dbee9cd9
+    m_Address: Display_Resource.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b12df036406e9db4dbedf77f8b7f9252
+    m_Address: DynamicReward_ItemSlot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f0c7c44213b1f048aa5e4316bede5a0
+    m_Address: SummonBanner.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4a6bef2a1e0af3847be1bf5bec164b6f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: de362d7da738a9541815b81c27a604f7, type: 2}
+    - {fileID: 11400000, guid: 8466905b7b53c8941818a48ebe0ad696, type: 2}
