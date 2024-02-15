@@ -666,7 +666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25af83b2ff30ae438ee86fcd68a66fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labalToDownload: default
   downloadURL: http://172.30.1.37/Android/
 --- !u!1 &3561997355266988017
 GameObject:
