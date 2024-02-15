@@ -23,7 +23,7 @@
         {
             "itemID": "F0003",
             "followerName": "드래곤",
-            "rarity": "eqic",
+            "rarity": "epic",
             "damageCorrection": 30.0,
             "atkSpeed": 0.6,
             "reinforceDamage": 3.0,
