@@ -66,13 +66,13 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6eff6273c57086040ad9c091a98805d4
-    m_Address: TestProjectile.prefab
+    m_Address: MeteorProjectile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c4152aeaabc4c44384a8cd573d159bd
-    m_Address: TestDestroyVFX.prefab
+    m_Address: MeteorProjectileDestroyVFX.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -85,6 +85,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6eaa3b50ef2d7a4b95d5478e691fa22
     m_Address: FollowerProjectileFrame.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa76011e5ad8b704599035845b8a95c4
+    m_Address: Rainbow.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
