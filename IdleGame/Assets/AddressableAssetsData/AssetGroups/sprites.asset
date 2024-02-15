@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: sprites
+  m_Name: Sprites
   m_EditorClassIdentifier: 
-  m_GroupName: sprites
+  m_GroupName: Sprites
   m_Data:
     m_SerializedData: []
   m_GUID: 4031da3931061b3449c41f15bb5c66ba
@@ -21,7 +21,13 @@ MonoBehaviour:
     m_Address: SpriteAtlas
     m_ReadOnly: 0
     m_SerializedLabels:
-    - sprite
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a17be5f4913a8aa44af0abee20b662b9
+    m_Address: Assets/Pixel Arsenal/Textures/atlas_big_modular.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4a6bef2a1e0af3847be1bf5bec164b6f, type: 2}

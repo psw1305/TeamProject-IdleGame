@@ -37,6 +37,28 @@ public class DownloadController : MonoBehaviour
         }
     }
 
+    public void GoNext()
+    {
+        if (LastValidState == State.Initialize)
+        {
+            CurrentState = State.UpdateCatalog;
+        }
+        else if (LastValidState == State.UpdateCatalog)
+        {
+            CurrentState = State.DownloadSize;
+        }
+        else if (LastValidState == State.DownloadSize)
+        {
+            CurrentState = State.DownloadDependencies;
+        }
+        else if (LastValidState == State.Downloading || LastValidState == State.DownloadDependencies)
+        {
+            CurrentState = State.Finished;
+        }
+
+        LastValidState = CurrentState;
+    }
+
     private void OnExecute()
     {
         if (CurrentState == State.Idle)
@@ -46,10 +68,9 @@ public class DownloadController : MonoBehaviour
 
         if (CurrentState == State.Initialize)
         {
-            downloader.InitializeSystem("material", downloadURL);
-            downloader.InitializeSystem("sprite", downloadURL);
+            downloader.InitializeSystem("PreLoad", downloadURL);
 
-            var events = downloader.InitializeSystem("default", downloadURL);
+            var events = downloader.InitializeSystem("Bundle", downloadURL);
             OnEventObtained?.Invoke(events);
 
             CurrentState = State.Idle;
@@ -73,27 +94,5 @@ public class DownloadController : MonoBehaviour
         {
             downloader.Update();
         }
-    }
-
-    public void GoNext()
-    {
-        if (LastValidState == State.Initialize)
-        {
-            CurrentState = State.UpdateCatalog;
-        }
-        else if(LastValidState == State.UpdateCatalog) 
-        {
-            CurrentState = State.DownloadSize;
-        }
-        else if (LastValidState == State.DownloadSize)
-        {
-            CurrentState = State.DownloadDependencies;
-        }
-        else if (LastValidState == State.Downloading || LastValidState == State.DownloadDependencies)
-        {
-            CurrentState = State.Finished;
-        }
-
-        LastValidState = CurrentState;
     }
 }

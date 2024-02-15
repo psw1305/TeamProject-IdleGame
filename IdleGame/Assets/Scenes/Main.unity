@@ -908,6 +908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DownloadPopup
       objectReference: {fileID: 0}
+    - target: {fileID: 5747573102989837017, guid: dfd717af2400df74b933d0071ef396f2, type: 3}
+      propertyPath: downloadURL
+      value: http://172.30.1.37/Android/
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -953,6 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38426ec4685f39a479746486ea22872e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downloadPopup: {fileID: 1596959797}
   playerSpawnPoint: {fileID: 17109828}
   enemySpawnPoint:
   - {fileID: 1504062031}
@@ -960,7 +965,6 @@ MonoBehaviour:
   - {fileID: 1970748553}
   - {fileID: 1580255601}
   - {fileID: 502370289}
-  downloadPopup: {fileID: 1596959797}
 --- !u!4 &1694102190
 Transform:
   m_ObjectHideFlags: 0

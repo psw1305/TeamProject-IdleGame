@@ -27,7 +27,7 @@ public class BaseScene : MonoBehaviour
     {
         yield return StartCoroutine(downloadPopup.StartDownload());
 
-        //yield return StartCoroutine(Manager.Data.Load());
+        yield return StartCoroutine(AddressableLoad());
     }
 
     private void OnApplicationQuit()
@@ -36,4 +36,11 @@ public class BaseScene : MonoBehaviour
     }
 
     #endregion
+
+    private IEnumerator AddressableLoad()
+    {
+        yield return null;
+        Manager.Address.LoadSpriteAtlas("SpriteAtlas");
+        Manager.Address.LoadAllAsync<Object>("Bundle");
+    }
 }
