@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: "\uBE59\uB8E1"
   enemySprite: {fileID: 21300000, guid: 1db6def621f09467380ad6183ee1c70f, type: 3}
   projectailVFX: {fileID: 1774369579939242439, guid: 8661ddf265e4d4e4faa458c501fd039a, type: 3}
-  enemyType: 1
+  enemyType: 0
   damage: 10
   hp: 200
   range: 3
