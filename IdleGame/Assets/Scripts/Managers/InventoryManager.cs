@@ -7,10 +7,10 @@ public class InventoryManager
     #region ItemData Fields & Properties
 
     private string _itemDataBaseText;
-    private ItemDataBase _itemDataBase;
-    private Dictionary<string, ItemData> _itemDataDictionary = new();
+    private ItemContainerBlueprint _itemDataBase;
+    private Dictionary<string, ItemBlueprint> _itemDataDictionary = new();
 
-    public Dictionary<string, ItemData> ItemDataDictionary => _itemDataDictionary;
+    public Dictionary<string, ItemBlueprint> ItemDataDictionary => _itemDataDictionary;
 
     #endregion
 
@@ -18,11 +18,10 @@ public class InventoryManager
 
     public void ParseItemData()
     {
-        _itemDataBaseText = Manager.Address.GetText("ItemTableEquipment");
-        _itemDataBase = JsonUtility.FromJson<ItemDataBase>(_itemDataBaseText);
-        foreach (var itemData in _itemDataBase.ItemDB)
+        _itemDataBase = Manager.Address.GetBlueprint("ItemDataContainer") as ItemContainerBlueprint;
+        foreach (var itemData in _itemDataBase.itemBlueprints)
         {
-            _itemDataDictionary.Add(itemData.itemID, itemData);
+            _itemDataDictionary.Add(itemData.ItemID, itemData);
         }
     }
     #endregion
@@ -64,11 +63,11 @@ public class InventoryManager
     private void CheckToInventoryDataInit()
     {
         int index = 0;
-        foreach (var item in _itemDataBase.ItemDB)
+        foreach (var item in _itemDataBase.itemBlueprints)
         {
-            if (item.itemID != UserInventory.UserItemData[index].itemID)
+            if (item.ItemID != UserInventory.UserItemData[index].itemID)
             {
-                UserInventory.UserItemData.Insert(index, new UserItemData(item.itemID, 1, 0, false));
+                UserInventory.UserItemData.Insert(index, new UserItemData(item.ItemID, 1, 0, false));
             }
             index++;
         }
@@ -180,22 +179,22 @@ public class UserItemData
     }
 }
 
-[System.Serializable]
-public class ItemDataBase
-{
-    public List<ItemData> ItemDB;
-}
+//[System.Serializable]
+//public class ItemDataBase
+//{
+//    public List<ItemData> ItemDB;
+//}
 
-[System.Serializable]
-public class ItemData
-{
-    public string itemID;
-    public string itemName;
-    public string type;
-    public string statType;
-    public string rarity;
-    public float equipStat;
-    public float reinforceEquip;
-    public float retentionEffect;
-    public float reinforceEffect;
-}
+//[System.Serializable]
+//public class ItemData
+//{
+//    public string ItemID;
+//    public string ItemName;
+//    public string type;
+//    public string statType;
+//    public string Rarity;
+//    public float EquipStat;
+//    public float ReinforceEquip;
+//    public float RetentionEffect;
+//    public float ReinforceEffect;
+//}

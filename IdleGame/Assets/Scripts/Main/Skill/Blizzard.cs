@@ -39,7 +39,7 @@ public class Blizzard : BaseSkill
             foreach (var enemy in Manager.Game.Player.enemyList.ToList())
             {
                 Manager.Game.Player.FinalAttackDamage(out _damage, out _damageType);
-                enemy.GetComponent<IDamageable>().TakeDamage((long)(_damage * _skillDamageRatio), _damageType);
+                enemy.TakeDamage((long)(_damage * _skillDamageRatio), _damageType);
             }
         }
     }

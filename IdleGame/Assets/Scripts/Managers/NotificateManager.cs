@@ -33,7 +33,7 @@ public class NotificateManager
     public UserItemData CheckRecommendItem(List<UserItemData> itemList)
     {
         var recommendItem = CheckUnlockEquipment(itemList)
-            .OrderBy(item => Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + item.level * Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip)
+            .OrderBy(item => Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + item.level * Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip)
             .ToList();
 
         return recommendItem.Count == 0 ? null : recommendItem.Last();

@@ -37,14 +37,10 @@ public static class Utilities
         }
         string[] numSymbol = { "", "A ", "B  ", "C ", "D ", "E " };
         int magnitudeIndex = (int)Mathf.Log10(number) / 3;
-
         StringBuilder sb = new StringBuilder()
-
-            .Append(number.ToString().Substring(0, number.ToString().Length % 3 == 0 ? 3 : number.ToString().Length % 3))
-            .Append(numSymbol[magnitudeIndex])
-            .Append(number.ToString().Substring(number.ToString().Length % 3 == 0 ? 3 : number.ToString().Length % 3, 3));
-
-        if (magnitudeIndex >= 2) sb.Append(numSymbol[magnitudeIndex - 1]);
+        
+            .Append((number * Mathf.Pow(0.001f, magnitudeIndex)).ToString("N2"))
+            .Append(numSymbol[magnitudeIndex]);
 
         return sb.ToString();
     }
