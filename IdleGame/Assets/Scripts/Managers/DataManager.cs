@@ -121,9 +121,12 @@ public class DataManager
     public void LoadFromUserFollower(string fileName = "game_follower.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
-        if (!File.Exists(filePath)) { CreateUserFollower(); return; }
-        string jsonRaw = File.ReadAllText(filePath);
-        FollowerData = JsonConvert.DeserializeObject<UserFollowerData>(jsonRaw);
+        if (!File.Exists(filePath)) { CreateUserFollower(); }
+        else
+        {
+            string jsonRaw = File.ReadAllText(filePath);
+            FollowerData = JsonConvert.DeserializeObject<UserFollowerData>(jsonRaw);
+        }        
         foreach (var item in FollowerData.UserInvenFollower)
         {
             FollowerInvenDictionary.Add(item.itemID, item);

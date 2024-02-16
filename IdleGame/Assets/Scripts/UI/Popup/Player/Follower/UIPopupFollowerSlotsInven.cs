@@ -66,7 +66,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
         _itemID = _followerData.itemID;
         _level = _followerData.level;
         _hasCount = _followerData.hasCount;
-        _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].rarity;
+        _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].Rarity;
     }
 
     public void InitSlotUI()

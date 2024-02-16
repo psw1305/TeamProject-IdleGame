@@ -5,19 +5,18 @@ using System.Linq;
 
 public class FollowerDataManager
 {
-    private string _followerDataBaseText;
-    private FollowerDataBase _follwerData;
+    private FollowerContainerBlueprint _follwerDataContainer;
 
-    private Dictionary<string, FollowerData> _followerDataDictionary = new();
-    public Dictionary<string, FollowerData> FollowerDataDictionary => _followerDataDictionary;
+    private Dictionary<string, FollowerBlueprint> _followerDataDictionary = new();
+    public Dictionary<string, FollowerBlueprint> FollowerDataDictionary => _followerDataDictionary;
 
     public void ParseFollowerData()
     {
-        _followerDataBaseText = Manager.Address.GetText("ItemTableFollower");
-        _follwerData = JsonUtility.FromJson<FollowerDataBase>(_followerDataBaseText);
-        foreach (var followerData in _follwerData.FollowerDataList)
+        _follwerDataContainer = Manager.Address.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
+        //_follwerData = JsonUtility.FromJson<FollowerDataBase>(_followerDataBaseText);
+        foreach (var followerData in _follwerDataContainer.followerDatas)
         {
-            _followerDataDictionary.Add(followerData.itemID, followerData);
+            _followerDataDictionary.Add(followerData.ItemID, followerData);
         }
     }
     public void InitFollower()
@@ -150,21 +149,21 @@ public class UserInvenFollowerData
     public bool equipped;
 }
 
-[System.Serializable]
-public class FollowerDataBase
-{
-    public List<FollowerData> FollowerDataList;
-}
+//[System.Serializable]
+//public class FollowerDataBase
+//{
+//    public List<FollowerData> FollowerDataList;
+//}
 
-[System.Serializable]
-public class FollowerData
-{
-    public string itemID;
-    public string followerName;
-    public string rarity;
-    public float damageCorrection;
-    public float atkSpeed;
-    public float reinforceDamage;
-    public float retentionEffect;
-    public float reinforceEffect;
-}
+//[System.Serializable]
+//public class FollowerData
+//{
+//    public string itemID;
+//    public string followerName;
+//    public string rarity;
+//    public float damageCorrection;
+//    public float atkSpeed;
+//    public float reinforceDamage;
+//    public float retentionEffect;
+//    public float reinforceEffect;
+//}
