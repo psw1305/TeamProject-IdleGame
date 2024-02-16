@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1209571262815064657}
-  - component: {fileID: 2175462661969919051}
+  - component: {fileID: 4068631706434711747}
   m_Layer: 0
   m_Name: MegaMeteor
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2175462661969919051
+--- !u!114 &4068631706434711747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4755445883408343319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60082ef4532c6349ab9267062665e18, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dc826f5258aad141b54ccf1e97948d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDurateTime: 5
-  coolDown: 10
+  effectDurateTime: 10
+  coolDown: 5
   projectileSpawnArea: {fileID: 4755445883408343319}
   minDestinationPosition: {x: 0.7, y: 0.5}
   maxDestinationPosition: {x: 2, y: 2}
