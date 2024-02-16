@@ -9,12 +9,24 @@ public class BackgroundControl : MonoBehaviour
     public Sprite[] Layer_Sprites;
     private GameObject[] Layer_Object = new GameObject[7];
     private int max_backgroundNum = 19;
+
     void Start()
     {
-        for (int i = 0; i < Layer_Object.Length; i++){
-            Layer_Object[i] = GameObject.Find("Layer_" + i);
+        for (int i = 0; i < Layer_Object.Length; i++)
+        {
+            Layer_Object[i] = GetComponent<ParallaxController>().Layer_Objects[i];
         }
-        
+        backgroundNum = Manager.Stage.StageLevel % max_backgroundNum;
+        ChangeSprite();
+    }
+
+    public void Initiailize()
+    {
+        for (int i = 0; i < Layer_Object.Length; i++)
+        {
+            Layer_Object[i] = GetComponent<ParallaxController>().Layer_Objects[i];
+        }
+        backgroundNum = Manager.Stage.StageLevel % max_backgroundNum;
         ChangeSprite();
     }
 
@@ -29,7 +41,7 @@ public class BackgroundControl : MonoBehaviour
         for (int i = 1; i < Layer_Object.Length; i++){
             Sprite changeSprite = Layer_Sprites[backgroundNum*7 + i];
             //Change Layer_1->7
-            Layer_Object[i].GetComponent<SpriteRenderer>().sprite = changeSprite;
+            //Layer_Object[i].GetComponent<SpriteRenderer>().sprite = changeSprite;
             //Change "Layer_(*)x" sprites in children of Layer_1->7
             Layer_Object[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = changeSprite;
             Layer_Object[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = changeSprite;

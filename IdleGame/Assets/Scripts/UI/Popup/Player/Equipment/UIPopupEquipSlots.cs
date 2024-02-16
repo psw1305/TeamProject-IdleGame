@@ -69,7 +69,7 @@ public class UIPopupEquipSlots : MonoBehaviour
         _itemData = itemData;
         _itemID = _itemData.itemID;
         _level = _itemData.level;
-        _rarity = Manager.Inventory.ItemDataDictionary[itemData.itemID].rarity;
+        _rarity = Manager.Inventory.ItemDataDictionary[itemData.itemID].Rarity;
         _lvTxt.text = $"Lv. {_level}";
         _hasCount = _itemData.hasCount;
     }
@@ -78,7 +78,7 @@ public class UIPopupEquipSlots : MonoBehaviour
     {
         _lvTxt.text = $"Lv : {_level}";
 
-        itemSprite.sprite = Manager.Address.GetSprite(ItemID.ToString());
+        itemSprite.sprite = Manager.Inventory.ItemDataDictionary[ItemID].Sprite;
 
         SetLockState();
         gameObject.GetComponent<Button>().onClick.AddListener(SendItemData);

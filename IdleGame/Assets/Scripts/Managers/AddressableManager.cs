@@ -10,17 +10,16 @@ using UnityEngine.U2D;
 
 public class AddressableManager
 {
-    public bool Loaded { get; set; }
     private Dictionary<string, UnityEngine.Object> assets = new();
     private SpriteAtlas spriteAtlas;
-
-    #region Work Flow
 
     public static string DownloadURL;
     private DownloadEvents events;
     private string labelToDownload;
     private long totalSize;
     private AsyncOperationHandle downloadHandle;
+
+    #region Work Flow
 
     public DownloadEvents InitializeSystem(string label, string downloadURL)
     {
@@ -36,31 +35,6 @@ public class AddressableManager
         return events;
     }
 
-    public void Update()
-    {
-        if (Utilities.IsNetworkValid() == false)
-        {
-            // 네트워크가 끊길 시, 관련 메서드
-        }
-
-        if (downloadHandle.IsValid() 
-            && downloadHandle.IsDone == false
-            && downloadHandle.Status != AsyncOperationStatus.Failed)
-        {
-            var status = downloadHandle.GetDownloadStatus();
-
-            long curDownloadedSize = status.DownloadedBytes;
-            long remainedSize = totalSize - curDownloadedSize;
-
-            events.NotifyDownloadProgress(
-                new DownloadProgressStatus(
-                    status.DownloadedBytes, 
-                    totalSize, 
-                    remainedSize, 
-                    status.Percent));
-        }
-    }
-
     public void UpdateCatalog()
     {
         Addressables.CheckForCatalogUpdates().Completed += (result) =>
@@ -68,7 +42,7 @@ public class AddressableManager
             var catalogToUpdate = result.Result;
             if (catalogToUpdate.Count > 0)
             {
-                Addressables.UpdateCatalogs(catalogToUpdate).Completed += OnCatelogUpdate;
+                Addressables.UpdateCatalogs(catalogToUpdate).Completed += OnCatelogUpdated;
             }
             else
             {
@@ -88,6 +62,25 @@ public class AddressableManager
         downloadHandle.Completed += OnDependenciesDownloaded;
     }
 
+    public void Update()
+    {
+        if (downloadHandle.IsValid()
+            && downloadHandle.IsDone == false
+            && downloadHandle.Status != AsyncOperationStatus.Failed)
+        {
+            var status = downloadHandle.GetDownloadStatus();
+
+            long curDownloadedSize = status.DownloadedBytes;
+            long remainedSize = totalSize - curDownloadedSize;
+
+            events.NotifyDownloadProgress(new DownloadProgressStatus(
+                    status.DownloadedBytes,
+                    totalSize,
+                    remainedSize,
+                    status.Percent));
+        }
+    }
+
     #endregion
 
     #region Init
@@ -97,7 +90,7 @@ public class AddressableManager
         events.NotifyInitialized();
     }
 
-    private void OnCatelogUpdate(AsyncOperationHandle<List<IResourceLocator>> result)
+    private void OnCatelogUpdated(AsyncOperationHandle<List<IResourceLocator>> result)
     {
         events.NotifyCatalogUpdated();
     }
@@ -115,71 +108,12 @@ public class AddressableManager
 
     private void OnException(AsyncOperationHandle handle, Exception exp)
     {
-        Debug.LogError("CustomExceptionCaugh !:" + exp.Message);
-
-        if (exp is UnityEngine.ResourceManagement.Exceptions.RemoteProviderException)
-        {
-            // Remote 관련 에러 발생시
-        }
+        Debug.LogError(exp.Message);
     }
 
     #endregion
 
     #region Load
-
-    /// <summary>
-    /// key(주소)를 받아 비동기(Async) 로드
-    /// </summary>
-    public void LoadAsync<T>(string key, Action<T> callback = null) where T : UnityEngine.Object
-    {
-        if (assets.TryGetValue(key, out UnityEngine.Object bundle))
-        {
-            callback?.Invoke(bundle as T);
-            return;
-        }
-
-        string loadKey = key;
-
-        var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
-        asyncOperation.Completed += op =>
-        {
-            assets.Add(key, op.Result);
-            callback?.Invoke(op.Result);
-        };
-    }
-
-    public void LoadSprites(string key)
-    {
-        var asyncOperation = Addressables.LoadAssetAsync<SpriteAtlas>(key);
-        asyncOperation.Completed += op =>
-        {
-            spriteAtlas = op.Result;
-        };
-    }
-
-    /// <summary>
-    /// 해당 label을 가진 모든 리소스를 비동기 로드
-    /// 완료되면 콜백(key, 현재로드수, 전체로드수) 호출
-    /// </summary>
-    public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
-    {
-        var operation = Addressables.LoadResourceLocationsAsync(label, typeof(T));
-
-        operation.Completed += op =>
-        {
-            int loadCount = 0;
-            int totalCount = op.Result.Count;
-
-            foreach (IResourceLocation result in op.Result)
-            {
-                LoadAsync<T>(result.PrimaryKey, obj =>
-                {
-                    loadCount++;
-                    callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
-                });
-            }
-        };
-    }
 
     public T Load<T>(string key) where T : UnityEngine.Object
     {
@@ -198,6 +132,60 @@ public class AddressableManager
         {
             Debug.LogError($"Assets Unload {key}");
         }
+    }
+
+    public void LoadSpriteAtlas(string key)
+    {
+        var asyncOperation = Addressables.LoadAssetAsync<SpriteAtlas>(key);
+        asyncOperation.Completed += (result) =>
+        {
+            if (result.Status == AsyncOperationStatus.Succeeded)
+            {
+                spriteAtlas = result.Result;
+            }
+            else
+            {
+                Debug.LogError("Failed Load Sprite Atlas");
+            }
+        };
+    }
+
+    /// <summary>
+    /// key(주소)를 받아 비동기(Async) 로드
+    /// </summary>
+    public void LoadAsync<T>(string key) where T : UnityEngine.Object
+    {
+        if (assets.TryGetValue(key, out UnityEngine.Object bundle))
+        {
+            return;
+        }
+
+        string loadKey = key;
+
+        var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
+        asyncOperation.Completed += (result) =>
+        {
+            assets.Add(key, result.Result);
+        };
+    }
+
+    /// <summary>
+    /// 해당 label을 가진 모든 리소스를 비동기 로드
+    /// 완료되면 콜백(key, 현재로드수, 전체로드수) 호출
+    /// </summary>
+    public void LoadAllAsync<T>(string label) where T : UnityEngine.Object
+    {
+        var operation = Addressables.LoadResourceLocationsAsync(label, typeof(T));
+
+        operation.Completed += (op) =>
+        {
+            int totalCount = op.Result.Count;
+
+            foreach (IResourceLocation result in op.Result)
+            {
+                LoadAsync<T>(result.PrimaryKey);
+            }
+        };
     }
 
     #endregion
@@ -224,7 +212,7 @@ public class AddressableManager
 
     public ScriptableObject GetBlueprint(string key)
     {
-        ScriptableObject blueprint = Load<ScriptableObject>($"{key}.asset");
+        ScriptableObject blueprint = Load<ScriptableObject>(key);
         if (blueprint == null)
         {
             Debug.LogError($"Blueprint({key}): Failed to load Blueprint.");

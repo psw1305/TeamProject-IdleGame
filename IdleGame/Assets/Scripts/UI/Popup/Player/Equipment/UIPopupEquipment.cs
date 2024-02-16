@@ -116,27 +116,27 @@ public class UIPopupEquipment : UIPopup
     {
         //UI 정보를 세팅합니다.
         _selectItemData = selectItemData;
-        _itemNameText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].itemName;
-        _rarityText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].rarity;
+        _itemNameText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ItemName;
+        _rarityText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].Rarity;
         _itemLevelText.text = _selectItemData.level.ToString();
 
-        _itemImage.sprite = Manager.Address.GetSprite(_selectItemData.itemID.ToString());
-        _typeIcon.sprite = Manager.Address.GetSprite(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].type);
+        _itemImage.sprite = Manager.Inventory.ItemDataDictionary[_selectItemData.itemID].Sprite;
+        //_typeIcon.sprite = Manager.Address.GetSprite(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].type);
 
         OperNeedItemCount();
         _itemHasCount.text = $"{_selectItemData.hasCount} / {_needCount}";
         _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / _needCount;
 
 
-        if (Manager.Inventory.ItemDataDictionary[selectItemData.itemID].statType == "attack")
+        if (Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == "attack")
         {
-            _equipEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].equipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEquip * _selectItemData.level}%";
-            _retentionEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEffect * _selectItemData.level}%";
+            _equipEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEquip * _selectItemData.level}%";
+            _retentionEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEffect * _selectItemData.level}%";
         }
-        else if(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].statType == "hp")
+        else if(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == "hp")
         {
-            _equipEffect.text = $"체력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].equipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEquip * _selectItemData.level}%";
-            _retentionEffect.text = $"체력 :  {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].reinforceEffect * _selectItemData.level}%";
+            _equipEffect.text = $"체력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEquip * _selectItemData.level}%";
+            _retentionEffect.text = $"체력 :  {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEffect * _selectItemData.level}%";
         }
 
         if (_selectItemData.level == 1 && _selectItemData.hasCount == 0)
@@ -147,7 +147,7 @@ public class UIPopupEquipment : UIPopup
         else
         {
             btn_Select_Equip.interactable = true;
-            btn_Select_Reinforce.interactable = true;
+            btn_Select_Reinforce.interactable = (_selectItemData.hasCount >= _needCount);
         }
     }
 
@@ -256,13 +256,13 @@ public class UIPopupEquipment : UIPopup
     {
         if (EquipFillterType == EquipFillterType.Weapon)
         {
-            titleText.text = "무기";
+            titleText.text = "Weapon";
             btn_Reinforce_Weapon.gameObject.SetActive(true);
             btn_Reinforce_Armor.gameObject.SetActive(false);
         }
         else if (EquipFillterType == EquipFillterType.Armor)
         {
-            titleText.text = "방어구";
+            titleText.text = "Skill";
             btn_Reinforce_Weapon.gameObject.SetActive(false);
             btn_Reinforce_Armor.gameObject.SetActive(true);
         }

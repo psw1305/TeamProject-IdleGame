@@ -133,24 +133,6 @@ public class Player : MonoBehaviour, IDamageable
         StartCoroutine(RecoverHealthPoint());
     }
 
-    private void FollowerInit()
-    {
-        // 임시로 5개 동료를 입력
-        _followerPrefab[0] = Manager.Address.InstantiatePrefab("FollowerFrame_Dragon");
-        _followerPrefab[1] = Manager.Address.InstantiatePrefab("FollowerFrame_Cat");
-        _followerPrefab[2] = Manager.Address.InstantiatePrefab("FollowerFrame_WereWolf");
-        _followerPrefab[3] = Manager.Address.InstantiatePrefab("FollowerFrame_MerMan");
-        _followerPrefab[4] = Manager.Address.InstantiatePrefab("FollowerFrame_Lizard");
-
-        for (int i = 0; i < 5; i++)
-        {
-            Follower[i] = _followerPrefab[i].GetComponent<Follower>();
-
-            Follower[i].transform.position = FollowerPosition[i].position;
-            Follower[i].Initialize();
-        }
-    }
-
     private void InitIdleGoldReward(out int leftTime)
     {
         TimeSpan timeSpan = DateTime.Now - IdleCheckTime;
@@ -442,13 +424,13 @@ public class Player : MonoBehaviour, IDamageable
 
         foreach (var item in Manager.Inventory.UserInventory.UserItemData.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
         {
-            if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "attack")
+            if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "attack")
             {
-                RetentionAttackEffect += Manager.Inventory.ItemDataDictionary[item.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEffect * item.level;
+                RetentionAttackEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * item.level;
             }
-            else if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "hp")
+            else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "hp")
             {
-                RetentionHPEffect += Manager.Inventory.ItemDataDictionary[item.itemID].retentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEffect * item.level;
+                RetentionHPEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * item.level;
             }
         }
 
@@ -456,13 +438,13 @@ public class Player : MonoBehaviour, IDamageable
 
         foreach (var item in filteredEquipItem)
         {
-            if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "attack" && item.equipped == true)
+            if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "attack" && item.equipped == true)
             {
-                EquipAttackStat += Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip * item.level;
+                EquipAttackStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * item.level;
             }
-            else if (Manager.Inventory.ItemDataDictionary[item.itemID].statType == "hp" && item.equipped == true)
+            else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "hp" && item.equipped == true)
             {
-                EquipHPStat += Manager.Inventory.ItemDataDictionary[item.itemID].equipStat + Manager.Inventory.ItemDataDictionary[item.itemID].reinforceEquip * item.level;
+                EquipHPStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * item.level;
             }
         }
     }

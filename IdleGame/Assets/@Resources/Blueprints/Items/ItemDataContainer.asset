@@ -1,0 +1,465 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ItemDataContainer
+  m_EditorClassIdentifier: Assembly-CSharp::ItemContainerBlueprint
+  itemBlueprints:
+  - _sprite: {fileID: 682649363, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+    itemID: W0001
+    itemName: 233
+    rarity: common
+    statType: attack
+    equipStat: 10
+    reinforceEquip: 0.1
+    retentionEffect: 30
+    reinforceEffect: 0.5
+  - _sprite: {fileID: 0}
+    itemID: W0002
+    itemName: 
+    rarity: 
+    statType: attack
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0003
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0004
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0005
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0006
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0007
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0008
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0009
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0010
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0011
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0012
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0013
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0014
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0015
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0016
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0017
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0018
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0019
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0020
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0021
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0022
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0023
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0024
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: W0025
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0001
+    itemName: 
+    rarity: 
+    statType: hp
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0002
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0003
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0004
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0005
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0006
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0007
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0008
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0009
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0010
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0011
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0012
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0013
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0014
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0015
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0016
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0017
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0018
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0019
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0020
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0021
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0022
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0023
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0024
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
+    itemID: A0025
+    itemName: 
+    rarity: 
+    statType: 
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0

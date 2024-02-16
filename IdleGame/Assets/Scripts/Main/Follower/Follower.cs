@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
 public class Follower : MonoBehaviour
 {
@@ -17,6 +16,14 @@ public class Follower : MonoBehaviour
     private FollowerAnimController _followerAnimController;
     [HideInInspector] public List<BaseEnemy> enemyList;
     private Player _player;
+
+    private EnemyBlueprint _followerBlueprint;
+    private string _itemID;
+    private string _followerName;
+    private GameObject _followerPrefab;
+    private SpriteRenderer _sprite;
+    private Animator _animator;
+    private string _rarity;
 
     #endregion
 
@@ -34,15 +41,18 @@ public class Follower : MonoBehaviour
 
     #region Init
 
-    public void Initialize()
+    public void Initialize(FollowerBlueprint followerBlueprint)
     {
         _player = Manager.Game.Player;
-        //Manager.FollowerData.
+
+        _sprite.sprite = followerBlueprint.Sprite;
+        _animator.runtimeAnimatorController = followerBlueprint.Animator;
+        _rarity = followerBlueprint.Rarity;
 
         AttackRange = 4;
         AtkDamage = _player.AtkDamage.Value;
-        AtkCorrection = 0.2f;
-        AtkSpeed = 0.6f;
+        AtkCorrection = followerBlueprint.DamageCorrection;
+        AtkSpeed = followerBlueprint.AtkSpeed;
         
         enemyList = Manager.Stage.GetEnemyList();
     }
@@ -50,6 +60,13 @@ public class Follower : MonoBehaviour
     #endregion
 
     #region Unity Flow
+
+    private void Awake()
+    {
+        _sprite = GetComponentInChildren<SpriteRenderer>();
+        _animator = GetComponentInChildren<Animator>();
+    }
+
     private void Start()
     {
         _followerAnimController = GetComponent<FollowerAnimController>();
