@@ -84,6 +84,7 @@ public class StageManager
         WaveLoop = profile.Stage_WaveLoop;
 
         StageDataChange(Chapter);
+        Manager.Game.Player.IdleRewardInit();
 
         this.spawnPoint = spawnPoint;
         this.bossSpawnPoint = bossSpawnPoint;
@@ -148,6 +149,7 @@ public class StageManager
 
             ChapterCheck();
             StageDataChange(Chapter);
+            Manager.Game.Player.IdleRewardPopupUpdate();
         }
 
         uISceneMain.UpdateCurrentStage();
@@ -239,7 +241,7 @@ public class StageManager
         if (!WaveLoop)        
             StageLevel++;
         
-        // 마지막 진행은 보스를 등장시킴
+        // 보스 처치 시 챕터 상승
         if (StageClear)
         {
             StageLevel = 0;
@@ -248,6 +250,7 @@ public class StageManager
             Chapter++;
             ChapterCheck();
             StageDataChange(Chapter);
+            Manager.Game.Player.IdleRewardPopupUpdate();
             uISceneMain.StageLevelGaugeToggle();
         }
 

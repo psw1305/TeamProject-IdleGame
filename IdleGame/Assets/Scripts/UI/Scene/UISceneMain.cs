@@ -143,7 +143,7 @@ public class UISceneMain : UIScene
     {
         TimeSpan timeLeft = DateTime.Now.Subtract(player.IdleCheckTime);
 
-        if (timeLeft.TotalMinutes < 1)
+        if (timeLeft.TotalMinutes < 1 && Manager.Game.Player.ToTalIdleTime < 1)
         {
             _btnIdleRewards.interactable = false;
             StartCoroutine(DelayEnableButton(timeLeft));
