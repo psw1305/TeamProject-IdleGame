@@ -123,8 +123,6 @@ public class DownloadPopup : MonoBehaviour
 
     public void OnClickStartDownload()
     {
-        Debug.Log("다운로드를 시작합니다");
-
         SetState(State.Downloading, true);
         downloader.GoNext();
     }
@@ -192,8 +190,6 @@ public class DownloadPopup : MonoBehaviour
 
     private void OnDownloadFinished(bool isSuccess)
     {
-        Debug.Log("다운로드 완료 ! 결과 : " + isSuccess);
-
         SetState(State.DownloadFinished, true);
         downloader.GoNext();
     }

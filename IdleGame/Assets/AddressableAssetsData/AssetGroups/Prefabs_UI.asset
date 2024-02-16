@@ -137,30 +137,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 24f373dd3314a994a885e723350d4eb8
-    m_Address: PlayerFrame.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 75cc5a598962d5b43a0a2e49f9f9b1fb
-    m_Address: PlayerProjectileFrame.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b80775fdd5c02b24991e2e2d7e9f189f
-    m_Address: PlayerProjectileVFXTest.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 03e0d915358ba124db9f299a501801bf
-    m_Address: PowerUp.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 920b4e26fcc0aa94c92b10db334d43ff
     m_Address: FloatingText.prefab
     m_ReadOnly: 0

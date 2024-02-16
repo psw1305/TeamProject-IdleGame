@@ -141,7 +141,6 @@ public class AddressableManager
         {
             if (result.Status == AsyncOperationStatus.Succeeded)
             {
-                Debug.Log("Success Load Sprite Atlas");
                 spriteAtlas = result.Result;
             }
             else
