@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0412c0c09a8427e49a12198f9c97503c, type: 3}
+  m_Name: FollowerDataContainer
+  m_EditorClassIdentifier: 
+  followerDatas:
+  - itemID: F0001
+    followerName: "\uACE0\uC591\uC774"
+    followerObject: {fileID: 5649214538301124217, guid: 734f0fca9f337594cb840c75b5d13f53, type: 3}
+    sprite: {fileID: -2978808618200810919, guid: 1d9d5de3d2546e24d9cb63a5a3d0e669, type: 3}
+    animator: {fileID: 9100000, guid: 75221f8347b8bfd4eb4f7fe29a7a71ac, type: 2}
+    rarity: common
+    damageCorrection: 10
+    atkSpeed: 0.4
+    reinforceDamage: 1
+    reinforceEffect: 2
+    retentionEffect: 0.2
+  - itemID: F0002
+    followerName: "\uB370\uBAAC"
+    followerObject: {fileID: 5649214538301124217, guid: 734f0fca9f337594cb840c75b5d13f53, type: 3}
+    sprite: {fileID: -2978808618200810919, guid: 1750691493dbe3a4f998f4876277664b, type: 3}
+    animator: {fileID: 9100000, guid: 8780ec05a4670f14fbfc8f42350421a7, type: 2}
+    rarity: rare
+    damageCorrection: 20
+    atkSpeed: 0.5
+    reinforceDamage: 2
+    reinforceEffect: 3
+    retentionEffect: 0.3
+  - itemID: F0003
+    followerName: "\uB4DC\uB798\uACE4"
+    followerObject: {fileID: 5649214538301124217, guid: 734f0fca9f337594cb840c75b5d13f53, type: 3}
+    sprite: {fileID: -2978808618200810919, guid: 73c004a8e5542eb44a75abfadbf1898c, type: 3}
+    animator: {fileID: 9100000, guid: 3052dc1356a643e42b4561fe47f1df00, type: 2}
+    rarity: epic
+    damageCorrection: 30
+    atkSpeed: 0.6
+    reinforceDamage: 3
+    reinforceEffect: 4
+    retentionEffect: 0.4
+  - itemID: F0004
+    followerName: "\uB9AC\uC790\uB4DC"
+    followerObject: {fileID: 5649214538301124217, guid: 734f0fca9f337594cb840c75b5d13f53, type: 3}
+    sprite: {fileID: -2978808618200810919, guid: 572791806029cdd4ba5c896ac55e3f07, type: 3}
+    animator: {fileID: 9100000, guid: f9f7abe8f8731214e8130a138548adda, type: 2}
+    rarity: legendary
+    damageCorrection: 40
+    atkSpeed: 0.4
+    reinforceDamage: 4
+    reinforceEffect: 5
+    retentionEffect: 0.5
+  - itemID: F0005
+    followerName: "\uC778\uC5B4"
+    followerObject: {fileID: 5649214538301124217, guid: 734f0fca9f337594cb840c75b5d13f53, type: 3}
+    sprite: {fileID: -2978808618200810919, guid: 699da10dacfad784d9fcb15d03553dc9, type: 3}
+    animator: {fileID: 9100000, guid: e0399a1bcec2eb14bbd6ce89d02f1268, type: 2}
+    rarity: legendary
+    damageCorrection: 50
+    atkSpeed: 0.5
+    reinforceDamage: 5
+    reinforceEffect: 6
+    retentionEffect: 0.6
+  - itemID: F0006
+    followerName: "\uC6E8\uC5B4\uC6B8\uD504"
+    followerObject: {fileID: 5649214538301124217, guid: 734f0fca9f337594cb840c75b5d13f53, type: 3}
+    sprite: {fileID: 0}
+    animator: {fileID: 9100000, guid: 27b8d4291cf269a4cb08b24ae984dbc8, type: 2}
+    rarity: legendary
+    damageCorrection: 60
+    atkSpeed: 0.6
+    reinforceDamage: 6
+    reinforceEffect: 7
+    retentionEffect: 0.7
