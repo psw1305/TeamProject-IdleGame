@@ -19,7 +19,7 @@ MonoBehaviour:
     skillName: "\uD30C\uC774\uC5B4\uBCFC"
     rarity: common
     description: "\uD14C\uC2A4\uD2B8"
-    skillDamage: 1.34
+    skillDamage: 80
     reinforceDamage: 0.74
     retentionEffect: 0.64
     reinforceEffect: 1.69

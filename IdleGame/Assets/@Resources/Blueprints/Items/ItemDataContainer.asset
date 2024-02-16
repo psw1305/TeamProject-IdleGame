@@ -9,20 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d88842e2c1d9bfa448d03f5963807517, type: 3}
   m_Name: ItemDataContainer
   m_EditorClassIdentifier: Assembly-CSharp::ItemContainerBlueprint
   itemDatas:
-  - _sprite: {fileID: 1773745777, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - _sprite: {fileID: 0}
     itemID: W0001
-    itemName: "\uBAA9\uAC80"
+    itemName: 
     rarity: 
     statType: 
-    equipStat: 1.58
-    reinforceEquip: 0.96
-    retentionEffect: 1.63
-    reinforceEffect: 1.51
-  - _sprite: {fileID: -228674563, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+    equipStat: 0
+    reinforceEquip: 0
+    retentionEffect: 0
+    reinforceEffect: 0
+  - _sprite: {fileID: 0}
     itemID: W0002
     itemName: 
     rarity: 
@@ -31,7 +31,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: -1799060869, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - _sprite: {fileID: 0}
     itemID: W0003
     itemName: 
     rarity: 
@@ -40,7 +40,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 1139293032, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - _sprite: {fileID: 0}
     itemID: W0004
     itemName: 
     rarity: 
@@ -49,7 +49,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 1970691703, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - _sprite: {fileID: 0}
     itemID: W0005
     itemName: 
     rarity: 
@@ -58,7 +58,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: -420967544, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - _sprite: {fileID: 0}
     itemID: W0006
     itemName: 
     rarity: 
@@ -238,7 +238,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: -2078314833, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - _sprite: {fileID: 0}
     itemID: A0001
     itemName: 
     rarity: 
