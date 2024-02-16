@@ -11,8 +11,7 @@ public class SkillContainerBlueprint : ScriptableObject
 [System.Serializable]
 public class SkillBlueprint
 {
-    [SerializeField] private Sprite _sprite;
-    [SerializeField] private GameObject skillObject;
+    [Header("Skill Info")]
     [SerializeField] private string itemID;
     [SerializeField] private string skillName;
     [SerializeField] private string rarity;
@@ -21,6 +20,10 @@ public class SkillBlueprint
     [SerializeField] private float reinforceDamage;
     [SerializeField] private float retentionEffect;
     [SerializeField] private float reinforceEffect;
+
+    [Header("Skill Resource")]
+    [SerializeField] private Sprite _sprite;
+    [SerializeField] private GameObject skillObject;
 
 
     public Sprite Sprite => _sprite;

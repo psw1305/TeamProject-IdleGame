@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class Meteor : BaseSkill
+public class MegaMeteor : BaseSkill
 {
-    private string _skillID = "S0009";
+    private string _skillID = "S0013";
 
     private long _damage;
     private DamageType _damageType;

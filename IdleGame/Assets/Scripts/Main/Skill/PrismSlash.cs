@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class WindSlash : BaseSkill
+public class PrismSlash : BaseSkill
 {
-    private string _skillID = "S0004";
+    private string _skillID = "S0010";
 
     private long _damage;
 

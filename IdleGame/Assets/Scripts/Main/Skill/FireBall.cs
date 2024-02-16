@@ -5,7 +5,7 @@ public class FireBall : BaseSkill
 {
     [SerializeField] private GameObject projectileSpawnPosition;
 
-    private GameObject _projectile;
+    private FireBallProjectile _projectile;
     private Coroutine _atkCor;
 
     protected override void ApplySkillEffect()
@@ -23,14 +23,12 @@ public class FireBall : BaseSkill
     {
         while (Manager.Game.Player.enemyList.Count > 0)
         {
-            _projectile = Manager.Address.InstantiatePrefab("FireBallProjectile", transform);
+            _projectile = Manager.Address.InstantiatePrefab("FireBallProjectile", transform).GetComponent<FireBallProjectile>();
             _projectile.transform.position = projectileSpawnPosition.transform.position;
 
-            Manager.Game.Player.FinalAttackDamage(out _projectile.GetComponent<FireBallProjectile>().Damage
-                , out _projectile.GetComponent<FireBallProjectile>().DamageTypeValue);
+            Manager.Game.Player.FinalAttackDamage(out _projectile.Damage, out _projectile.DamageTypeValue);
 
-            _projectile.GetComponent<FireBallProjectile>().TargetPosition = Manager.Game.Player.enemyList[0].transform.position;
-
+            _projectile.TargetPosition = Manager.Game.Player.enemyList[0].transform.position;
             yield return new WaitForSeconds(0.5f);
         }
     }

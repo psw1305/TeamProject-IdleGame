@@ -10,7 +10,7 @@ public class ItemContainerBlueprint : ScriptableObject
 [System.Serializable]
 public class ItemBlueprint
 {
-    [SerializeField] private Sprite _sprite;
+    [Header("Equip Info")]
     [SerializeField] private string itemID;
     [SerializeField] private string itemName;
     [SerializeField] private string rarity;
@@ -20,6 +20,8 @@ public class ItemBlueprint
     [SerializeField] private float retentionEffect;
     [SerializeField] private float reinforceEffect;
 
+    [Header("Equip Resource")]
+    [SerializeField] private Sprite _sprite;
 
     public Sprite Sprite => _sprite;
     public string ItemID => itemID;
