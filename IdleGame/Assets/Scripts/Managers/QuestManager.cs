@@ -17,6 +17,7 @@ public class QuestManager
     #region Properties
 
     public int QuestNum { get; private set; }
+    public int DefeatQuestValue { get; private set; }
     public QuestData[] QuestDB { get; private set; }
     public QuestData CurrentQuest { get; private set; }
 
@@ -77,14 +78,17 @@ public class QuestManager
         CurrentQuest.ObjectiveValueUp();
         CurrentQuest.isClear = false;
         
+        // 사냥 퀘스트 일 경우, 진행 값 초기화
+        if (CurrentQuest.questType == QuestType.DefeatEnemy)
+        {
+            QuestDB[2].currentValue = 0;
+            DefeatQuestValue = 0;
+        }
+
         QuestNum++;
         questIndex++;
 
-        if (questIndex >= QuestDB.Length)
-        {
-            questIndex = 0;
-            QuestDB[2].currentValue = 0; // 몬스터 사냥 횟수 초기화
-        }
+        if (questIndex >= QuestDB.Length) questIndex = 0;
 
         CurrentQuest = QuestDB[questIndex];
 
@@ -95,6 +99,13 @@ public class QuestManager
     public void QuestCurrentValueUp()
     {
         CurrentQuest.currentValue++;
+
+        // 사냥 진행 데이터 저장
+        if (CurrentQuest.questType == QuestType.DefeatEnemy)
+        {
+            DefeatQuestValue = CurrentQuest.currentValue;
+            Debug.Log($"사냥 수 : {DefeatQuestValue}");
+        }
     }
 
     public void EarnQuestReward()

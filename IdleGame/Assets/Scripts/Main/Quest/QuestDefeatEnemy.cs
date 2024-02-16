@@ -6,7 +6,7 @@ public class QuestDefeatEnemy : QuestData
         questObjective = "적 격파";
         ValueUpRate = 5;
         objectiveValue = (questLevel + 1) / questCount < 1 ? 5 : (questLevel + 1) / questCount * ValueUpRate;
-        currentValue = 0;
+        currentValue = Manager.Data.Profile.Quest_Current_Progress;
         isClear = currentValue > objectiveValue;
     }
 
