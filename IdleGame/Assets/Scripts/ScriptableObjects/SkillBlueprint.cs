@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillBlueprint", menuName = "Blueprints/SkillBlueprint")]
-public class SkillBlueprint : ScriptableObject
+public class SkillBlueprintt : ScriptableObject
 {
     [SerializeField] private GameObject skillObject;
 

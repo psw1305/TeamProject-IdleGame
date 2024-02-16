@@ -52,8 +52,8 @@ public abstract class BaseSkill : MonoBehaviour
     }
     protected float CalculateDamageRatio(string skillID)
     {
-        return (Manager.SkillData.SkillDataDictionary[skillID].skillDamage
-            + (Manager.Data.SkillInvenDictionary[skillID].level - 1) + Manager.SkillData.SkillDataDictionary[skillID].reinforceDamage)
+        return (Manager.SkillData.SkillDataDictionary[skillID].SkillDamage
+            + (Manager.Data.SkillInvenDictionary[skillID].level - 1) + Manager.SkillData.SkillDataDictionary[skillID].ReinforceDamage)
             / 100;
     }
 

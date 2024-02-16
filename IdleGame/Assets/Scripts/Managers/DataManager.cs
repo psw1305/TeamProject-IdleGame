@@ -1,16 +1,15 @@
+using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using Newtonsoft.Json;
 
 public class DataManager
 {
     public GameUserProfile Profile { get; private set; }
     public InventoryData Inventory { get; private set; }
     public UserSkillData UserSkillData { get; private set; }
-    public  Dictionary<string, UserInvenSkillData> SkillInvenDictionary = new();
+    public Dictionary<string, UserInvenSkillData> SkillInvenDictionary = new();
     public UserFollowerData FollowerData { get; private set; }
     public Dictionary<string, UserInvenFollowerData> FollowerInvenDictionary = new();
 
@@ -84,7 +83,7 @@ public class DataManager
         LoadFromUserSkill();
         LoadFromUserFollower();
         Debug.Log($"Load From {Application.persistentDataPath}");
-        
+
         //yield return null;
     }
 
@@ -107,15 +106,18 @@ public class DataManager
     public void LoadFromUserSkill(string fileName = "game_skill.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
-        if (!File.Exists(filePath)) { CreateUserSkill(); return; }
-        string jsonRaw = File.ReadAllText(filePath);
-        UserSkillData = JsonConvert.DeserializeObject<UserSkillData>(jsonRaw);
-        foreach(var  item in UserSkillData.UserInvenSkill)
+        if (!File.Exists(filePath)) { CreateUserSkill(); }
+        else
+        {
+            string jsonRaw = File.ReadAllText(filePath);
+            UserSkillData = JsonConvert.DeserializeObject<UserSkillData>(jsonRaw);
+        }
+        foreach (var item in UserSkillData.UserInvenSkill)
         {
             SkillInvenDictionary.Add(item.itemID, item);
         }
     }
-    
+
     public void LoadFromUserFollower(string fileName = "game_follower.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
@@ -185,7 +187,7 @@ public class DataManager
         string json = JsonConvert.SerializeObject(UserSkillData, Formatting.Indented);
         File.WriteAllText(filePath, json);
     }
-    
+
     public void SaveToUserFollower(string fileName = "game_follower.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";

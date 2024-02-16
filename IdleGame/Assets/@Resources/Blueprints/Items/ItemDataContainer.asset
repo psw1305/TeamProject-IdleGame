@@ -12,26 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: ItemDataContainer
   m_EditorClassIdentifier: Assembly-CSharp::ItemContainerBlueprint
-  itemBlueprints:
-  - _sprite: {fileID: 682649363, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  itemDatas:
+  - _sprite: {fileID: 1773745777, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
     itemID: W0001
-    itemName: 233
-    rarity: common
-    statType: attack
-    equipStat: 10
-    reinforceEquip: 0.1
-    retentionEffect: 30
-    reinforceEffect: 0.5
-  - _sprite: {fileID: 0}
+    itemName: "\uBAA9\uAC80"
+    rarity: 
+    statType: 
+    equipStat: 1.58
+    reinforceEquip: 0.96
+    retentionEffect: 1.63
+    reinforceEffect: 1.51
+  - _sprite: {fileID: -228674563, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
     itemID: W0002
     itemName: 
     rarity: 
-    statType: attack
+    statType: 
     equipStat: 0
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
+  - _sprite: {fileID: -1799060869, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
     itemID: W0003
     itemName: 
     rarity: 
@@ -40,7 +40,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
+  - _sprite: {fileID: 1139293032, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
     itemID: W0004
     itemName: 
     rarity: 
@@ -49,7 +49,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
+  - _sprite: {fileID: 1970691703, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
     itemID: W0005
     itemName: 
     rarity: 
@@ -58,7 +58,7 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
+  - _sprite: {fileID: -420967544, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
     itemID: W0006
     itemName: 
     rarity: 
@@ -238,11 +238,11 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
+  - _sprite: {fileID: -2078314833, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
     itemID: A0001
     itemName: 
     rarity: 
-    statType: hp
+    statType: 
     equipStat: 0
     reinforceEquip: 0
     retentionEffect: 0

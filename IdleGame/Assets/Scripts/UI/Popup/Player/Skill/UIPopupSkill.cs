@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class UIPopupSkill : UIPopup
 {
-    private Button _btnSkillSummon;
-    private Button _btnSkillReinforce;
-
     protected override void Init()
     {
         base.Init();
@@ -17,8 +14,8 @@ public class UIPopupSkill : UIPopup
     {
         SetUI<Button>();
 
-        _btnSkillReinforce = SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, ReinforceAllSkill);
-        _btnSkillSummon = SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, SummonPop);
+        SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, ReinforceAllSkill);
+        SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, SummonPop);
 
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
     }

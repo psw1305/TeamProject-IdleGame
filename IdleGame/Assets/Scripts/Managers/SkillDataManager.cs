@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class SkillDataManager
 {
-    private string _skillDataBaseText;
-    private SkillDataBase _skillData;
-    private Dictionary<string, SkillData> _skillDataDictionary = new();
+    private SkillContainerBlueprint _skillDataContainer;
+    private Dictionary<string, SkillBlueprint> _skillDataDictionary = new();
 
-    public Dictionary<string, SkillData> SkillDataDictionary => _skillDataDictionary;
+    public Dictionary<string, SkillBlueprint> SkillDataDictionary => _skillDataDictionary;
 
     public void ParseSkillData()
     {
-        _skillDataBaseText = Manager.Address.GetText("ItemTableSkill");
-        _skillData = JsonUtility.FromJson<SkillDataBase>(_skillDataBaseText);
-        foreach (var skillData in _skillData.SkillDataList)
+        _skillDataContainer = Manager.Address.GetBlueprint("SkillDataContainer") as SkillContainerBlueprint;
+        //_skillData = JsonUtility.FromJson<SkillDataBase>(_skillDataContainer);
+        foreach (var skillData in _skillDataContainer.skillDatas)
         {
-            _skillDataDictionary.Add(skillData.itemID, skillData);
+            _skillDataDictionary.Add(skillData.ItemID, skillData);
         }
     }
 
@@ -134,21 +133,21 @@ public class UserInvenSkillData
 }
 
 
-[System.Serializable]
-public class SkillDataBase
-{
-    public List<SkillData> SkillDataList;
-}
+//[System.Serializable]
+//public class SkillDataBase
+//{
+//    public List<SkillData> SkillDataList;
+//}
 
-[System.Serializable]
-public class SkillData
-{
-    public string itemID;
-    public string skillName;
-    public string description;
-    public string rarity;
-    public float skillDamage;
-    public float reinforceDamage;
-    public float retentionEffect;
-    public float reinforceEffect;
-}
+//[System.Serializable]
+//public class SkillData
+//{
+//    public string ItemID;
+//    public string SkillName;
+//    public string Description;
+//    public string Rarity;
+//    public float SkillDamage;
+//    public float ReinforceDamage;
+//    public float RetentionEffect;
+//    public float ReinforceEffect;
+//}

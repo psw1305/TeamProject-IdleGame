@@ -19,7 +19,7 @@ public class InventoryManager
     public void ParseItemData()
     {
         _itemDataBase = Manager.Address.GetBlueprint("ItemDataContainer") as ItemContainerBlueprint;
-        foreach (var itemData in _itemDataBase.itemBlueprints)
+        foreach (var itemData in _itemDataBase.itemDatas)
         {
             _itemDataDictionary.Add(itemData.ItemID, itemData);
         }
@@ -63,7 +63,7 @@ public class InventoryManager
     private void CheckToInventoryDataInit()
     {
         int index = 0;
-        foreach (var item in _itemDataBase.itemBlueprints)
+        foreach (var item in _itemDataBase.itemDatas)
         {
             if (item.ItemID != UserInventory.UserItemData[index].itemID)
             {
