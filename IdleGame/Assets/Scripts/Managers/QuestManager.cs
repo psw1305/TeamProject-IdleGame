@@ -104,7 +104,6 @@ public class QuestManager
         if (CurrentQuest.questType == QuestType.DefeatEnemy)
         {
             DefeatQuestValue = CurrentQuest.currentValue;
-            Debug.Log($"사냥 수 : {DefeatQuestValue}");
         }
     }
 
