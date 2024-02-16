@@ -1,129 +1,26 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
-using UnityEngine.ResourceManagement;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.U2D;
 
 public class AddressableManager
 {
-    private Dictionary<string, UnityEngine.Object> assets = new();
+    private Dictionary<string, Object> assets = new();
     private SpriteAtlas spriteAtlas;
-
-    public static string DownloadURL;
-    private DownloadEvents events;
-    private string labelToDownload;
-    private long totalSize;
-    private AsyncOperationHandle downloadHandle;
-
-    #region Work Flow
-
-    public DownloadEvents InitializeSystem(string label, string downloadURL)
-    {
-        events = new DownloadEvents();
-
-        Addressables.InitializeAsync().Completed += OnInitialized;
-
-        labelToDownload = label;
-        DownloadURL = downloadURL;
-
-        ResourceManager.ExceptionHandler += OnException;
-
-        return events;
-    }
-
-    public void UpdateCatalog()
-    {
-        Addressables.CheckForCatalogUpdates().Completed += (result) =>
-        {
-            var catalogToUpdate = result.Result;
-            if (catalogToUpdate.Count > 0)
-            {
-                Addressables.UpdateCatalogs(catalogToUpdate).Completed += OnCatelogUpdated;
-            }
-            else
-            {
-                events.NotifyCatalogUpdated();
-            }
-        };
-    }
-
-    public void DownloadSize()
-    {
-        Addressables.GetDownloadSizeAsync(labelToDownload).Completed += OnSizeDownloaded;
-    }
-
-    public void StartDownload()
-    {
-        downloadHandle = Addressables.DownloadDependenciesAsync(labelToDownload);
-        downloadHandle.Completed += OnDependenciesDownloaded;
-    }
-
-    public void Update()
-    {
-        if (downloadHandle.IsValid()
-            && downloadHandle.IsDone == false
-            && downloadHandle.Status != AsyncOperationStatus.Failed)
-        {
-            var status = downloadHandle.GetDownloadStatus();
-
-            long curDownloadedSize = status.DownloadedBytes;
-            long remainedSize = totalSize - curDownloadedSize;
-
-            events.NotifyDownloadProgress(new DownloadProgressStatus(
-                    status.DownloadedBytes,
-                    totalSize,
-                    remainedSize,
-                    status.Percent));
-        }
-    }
-
-    #endregion
-
-    #region Init
-
-    private void OnInitialized(AsyncOperationHandle<IResourceLocator> result)
-    {
-        events.NotifyInitialized();
-    }
-
-    private void OnCatelogUpdated(AsyncOperationHandle<List<IResourceLocator>> result)
-    {
-        events.NotifyCatalogUpdated();
-    }
-
-    private void OnSizeDownloaded(AsyncOperationHandle<long> result)
-    {
-        totalSize = result.Result;
-        events.NotifySizeDownloaded(result.Result);
-    }
-
-    private void OnDependenciesDownloaded(AsyncOperationHandle result)
-    {
-        events.NotifyDownloadFinished(result.Status == AsyncOperationStatus.Succeeded);
-    }
-
-    private void OnException(AsyncOperationHandle handle, Exception exp)
-    {
-        Debug.LogError(exp.Message);
-    }
-
-    #endregion
 
     #region Load
 
-    public T Load<T>(string key) where T : UnityEngine.Object
+    public T Load<T>(string key) where T : Object
     {
-        if (!assets.TryGetValue(key, out UnityEngine.Object bundle)) return null;
+        if (!assets.TryGetValue(key, out Object bundle)) return null;
         return bundle as T;
     }
 
-    public void Unload<T>(string key) where T : UnityEngine.Object
+    public void Unload<T>(string key) where T : Object
     {
-        if (assets.TryGetValue(key, out UnityEngine.Object bundle))
+        if (assets.TryGetValue(key, out Object bundle))
         {
             Addressables.Release(bundle);
             assets.Remove(key);
@@ -153,9 +50,9 @@ public class AddressableManager
     /// <summary>
     /// key(주소)를 받아 비동기(Async) 로드
     /// </summary>
-    public void LoadAsync<T>(string key) where T : UnityEngine.Object
+    public void LoadAsync<T>(string key) where T : Object
     {
-        if (assets.TryGetValue(key, out UnityEngine.Object bundle))
+        if (assets.TryGetValue(key, out Object bundle))
         {
             return;
         }
@@ -173,7 +70,7 @@ public class AddressableManager
     /// 해당 label을 가진 모든 리소스를 비동기 로드
     /// 완료되면 콜백(key, 현재로드수, 전체로드수) 호출
     /// </summary>
-    public void LoadAllAsync<T>(string label) where T : UnityEngine.Object
+    public void LoadAllAsync<T>(string label) where T : Object
     {
         var operation = Addressables.LoadResourceLocationsAsync(label, typeof(T));
 

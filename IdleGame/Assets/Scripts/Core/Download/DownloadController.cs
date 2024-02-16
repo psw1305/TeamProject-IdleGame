@@ -17,16 +17,16 @@ public class DownloadController : MonoBehaviour
 
     [SerializeField] private string downloadURL;
 
-    private AddressableManager downloader;
-    private Action<DownloadEvents> OnEventObtained;
+    private AddressableDownloader downloader;
+    private Action<DownloadEvents> onEventObtained;
 
     public State CurrentState { get; private set; } = State.Idle;
     public State LastValidState { get; private set; } = State.Idle;
 
     public IEnumerator StartDownloadRoutine(Action<DownloadEvents> onEventObtained)
     {
-        downloader = Manager.Address;
-        OnEventObtained = onEventObtained;
+        downloader = new AddressableDownloader();
+        this.onEventObtained = onEventObtained;
 
         LastValidState = CurrentState = State.Initialize;
 
@@ -68,14 +68,14 @@ public class DownloadController : MonoBehaviour
 
         if (CurrentState == State.Initialize)
         {
-            downloader.InitializeSystem("PreLoad", downloadURL);
+            //downloader.InitializeSystem("PreLoad", downloadURL);
 
             var events = downloader.InitializeSystem("Bundle", downloadURL);
-            OnEventObtained?.Invoke(events);
+            this.onEventObtained?.Invoke(events);
 
             CurrentState = State.Idle;
         }
-        else if (CurrentState == State.UpdateCatalog) 
+        else if (CurrentState == State.UpdateCatalog)
         {
             downloader.UpdateCatalog();
             CurrentState = State.Idle;

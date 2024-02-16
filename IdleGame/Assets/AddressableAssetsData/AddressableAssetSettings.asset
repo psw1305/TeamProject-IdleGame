@@ -46,12 +46,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 0302287a3008dc44ebc2716b3e318093, type: 2}
   - {fileID: 11400000, guid: 71b4c4c81ce9a68468f6a1359f6bd00d, type: 2}
-  - {fileID: 11400000, guid: d47006be8f6a19347ad5abee2ececac9, type: 2}
-  - {fileID: 11400000, guid: 75cac327815793c468fac22456bcba9c, type: 2}
-  - {fileID: 11400000, guid: 6777696f67f3e5042b57262cec3b0340, type: 2}
-  - {fileID: 11400000, guid: 98cdf49552233d04fbb06b4bc11728a3, type: 2}
-  - {fileID: 11400000, guid: af4b538053d3a444a960a89807d9e2f1, type: 2}
-  - {fileID: 11400000, guid: d6efa27f495b01d48b23f73bcc0a40c6, type: 2}
+  - {fileID: 11400000, guid: 551b01b1cc5e77442b5093568082b965, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -86,7 +81,7 @@ MonoBehaviour:
       - m_Id: e552e4c85bd45294883f0dd4d6e7c7f4
         m_Value: ServerData/[BuildTarget]
       - m_Id: 6f04b6622c486e94f9ad1dcc2b18ac6e
-        m_Value: http://172.30.1.37/Android/
+        m_Value: '{AddressableDownloader.DownloadURL}'
     m_ProfileEntryNames:
     - m_Id: 6057d654828a7b84d9904310debd054c
       m_Name: BuildTarget

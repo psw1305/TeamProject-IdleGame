@@ -25,7 +25,7 @@ public class BaseScene : MonoBehaviour
 
     private IEnumerator Start()
     {
-        yield return StartCoroutine(downloadPopup.StartDownload());
+        //yield return StartCoroutine(downloadPopup.StartDownload());
 
         yield return StartCoroutine(AddressableLoad());
     }

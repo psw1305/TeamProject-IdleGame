@@ -114,7 +114,7 @@ public static class Utilities
     public static string GetConvertedByteString(long byteSize, SizeUnits unit, bool appendUnit = true)
     {
         string unitStr = appendUnit ? unit.ToString() : string.Empty;
-        return $"{ConvertByteByUnit(byteSize, unit).ToString("0.00")}{unitStr}";
+        return $"{ConvertByteByUnit(byteSize, unit):0.00}{unitStr}";
     }
 
     #endregion

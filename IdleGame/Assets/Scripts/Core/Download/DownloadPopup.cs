@@ -48,16 +48,16 @@ public class DownloadPopup : MonoBehaviour
 
     #region Unity Flow
 
-    public IEnumerator StartDownload()
+    private IEnumerator Start()
     {
         SetState(State.CalculatingSize, true);
 
         yield return downloader.StartDownloadRoutine((events) => 
         {
-            events.SystemInitializedListner += OnInitialized;
-            events.CatalogUpdatedListenr += OnCatalogUpdated;
-            events.SizeDownloadedListner += OnSizeDownloaded;
-            events.DownloadProgressListner += OnDownloadProgress;
+            events.SystemInitializedListener += OnInitialized;
+            events.CatalogUpdatedListener += OnCatalogUpdated;
+            events.SizeDownloadedListener += OnSizeDownloaded;
+            events.DownloadProgressListener += OnDownloadProgress;
             events.DownloadFinished += OnDownloadFinished;
         });
     }
@@ -142,9 +142,10 @@ public class DownloadPopup : MonoBehaviour
     public void OnClickEnterGame()
     {
         // 게임 시작
-        Manager.Game.Initialize();
+        //Manager.Game.Initialize();
+        //Destroy(gameObject);
 
-        Destroy(gameObject);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     #endregion
