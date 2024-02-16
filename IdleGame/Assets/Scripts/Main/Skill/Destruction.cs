@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class WindSlash : BaseSkill
+public class Destruction : BaseSkill
 {
-    private string _skillID = "S0004";
+    private string _skillID = "S0014";
 
     private long _damage;
 
@@ -20,12 +20,11 @@ public class WindSlash : BaseSkill
     {
         Manager.Game.Player.FinalAttackDamage(out _damage, out _damageType);
         _skillDamageRatio = CalculateDamageRatio(_skillID);
-
-        var go = Manager.Game.Player.enemyList[Random.Range(0, Manager.Game.Player.enemyList.Count)];
-        go.TakeDamage((long)(_damage * _skillDamageRatio), _damageType);
-
-        gameObject.transform.position = go.transform.position;
         vfxParticle.Play();
+        for(int i = 0; i < Manager.Game.Player.enemyList.Count; i++)
+        {
+            Manager.Game.Player.enemyList[i].TakeDamage((long)(_damage * _skillDamageRatio), _damageType);
+        }
     }
 
     protected override void RemoveSkillEffect()

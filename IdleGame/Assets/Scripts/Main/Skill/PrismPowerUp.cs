@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AttackPowerUp : BaseSkill
+public class PrismPowerUp : BaseSkill
 {
-    string _skillID = "S0002";
+    string _skillID = "S0012";
 
     private float _amountValue;
 
