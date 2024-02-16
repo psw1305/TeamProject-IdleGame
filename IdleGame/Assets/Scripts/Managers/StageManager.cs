@@ -72,16 +72,15 @@ public class StageManager
 
         stageTable = stageDataTable.stageDataTable.ToDictionary(group => group.Index, group => group);
         stageUITable = stageUIDataTable.stageUIDataTable.ToDictionary(group => group.Index, group => group);
+
+        var profile = Manager.Data.Profile;
+        Chapter = profile.Stage_Chapter;
+        StageLevel = profile.Stage_Level;
+        WaveLoop = profile.Stage_WaveLoop;
     }
 
     public void SetStage(Transform[] spawnPoint, Transform bossSpawnPoint)
     {
-        var profile = Manager.Data.Profile;
-
-        Chapter = profile.Stage_Chapter;
-        StageLevel = profile.Stage_Level;
-        WaveLoop = profile.Stage_WaveLoop;
-
         StageDataChange(Chapter);
         Manager.Game.Player.IdleRewardInit();
 
