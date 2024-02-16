@@ -4,9 +4,14 @@ public class QuestDefeatEnemy : QuestData
     {
         questType = QuestType.DefeatEnemy;
         questObjective = "적 격파";
-        ValueUpRate = 1;
-        objectiveValue = 5;
+        ValueUpRate = 5;
+        objectiveValue = (questLevel + 1) / questCount < 1 ? 5 : (questLevel + 1) / questCount * ValueUpRate;
         currentValue = 0;
         isClear = currentValue > objectiveValue;
+    }
+
+    public override void ObjectiveValueUp()
+    {
+        objectiveValue += ValueUpRate;
     }
 }

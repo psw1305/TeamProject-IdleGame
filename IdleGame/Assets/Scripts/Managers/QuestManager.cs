@@ -116,9 +116,6 @@ public abstract class QuestData
 
     public abstract void Init(int questLevel, int questCount);
 
-    public void ObjectiveValueUp()
-    {
-        objectiveValue *= ValueUpRate;
-    }
+    public abstract void ObjectiveValueUp();
 }
 #endregion
