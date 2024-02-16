@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IDamageable
     private Rigidbody2D playerRigidbody;
     private Coroutine _attackCoroutine;
     private float _damageBuff = 1;
+    private event Action IdleRewardUpdate;
 
     // 동료 관련 프로퍼티
     private GameObject[] _followerPrefab = new GameObject[5];
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour, IDamageable
     public float AttackRange { get; private set; }
     public int MoveSpeed { get; private set; }
     public long Gold { get; private set; }
+    public long ToTalIdleGold { get; private set; }     // 방치 골드 누적
     public int Gems { get; private set; }
 
     // 장비 관련 프로퍼티
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour, IDamageable
     public float RetentionHPEffect { get; private set; }
 
     // 시간 관련 프로퍼티
+    public int ToTalIdleTime { get; private set; }
     public DateTime IdleCheckTime { get; private set; }
     public DateTime BonusCheckTime { get; private set; }
     public bool IsBonusCheck { get; private set; }
@@ -126,8 +129,21 @@ public class Player : MonoBehaviour, IDamageable
 
         playerSkillHandler.InitSkillSlot();
         playerFollowerHandler.InitFollowerSlot();
-
+        
         StartCoroutine(RecoverHealthPoint());
+    }
+
+    private void InitIdleGoldReward(out int leftTime)
+    {
+        TimeSpan timeSpan = DateTime.Now - IdleCheckTime;
+        int missedMinutes = Mathf.FloorToInt((float)timeSpan.TotalMinutes);
+        ToTalIdleTime += missedMinutes;
+        ToTalIdleGold += Manager.Stage.IdleGoldReward * missedMinutes;
+
+        // 남은 시간 계산 후 lastRewardTime 갱신
+        int secondsLeft = (int)(timeSpan.TotalSeconds % 60);
+        IdleCheckTime = DateTime.Now.AddSeconds(-secondsLeft);
+        leftTime = secondsLeft;
     }
 
     #endregion
@@ -346,6 +362,53 @@ public class Player : MonoBehaviour, IDamageable
     {
         Gems += Amount;
         playerView.SetGemsAmout();
+    }
+
+    // 데이터 로드 순서 상 SetStage로 스테이지 데이터가 활성화 되는 부분에서 동작하게 함
+    public void IdleRewardInit()
+    {
+        InitIdleGoldReward(out int leftTime);
+        StartCoroutine(IdleGoldCoroutine(leftTime));
+    }
+
+    public void PopupUIInit(Action action)
+    {
+        IdleRewardUpdate += action;
+    }
+
+    private IEnumerator IdleGoldCoroutine(int leftTime)
+    {
+        bool isFirst = true;
+        int Delay;
+
+        while (true)
+        {
+            if (isFirst)
+            {
+                Delay = 60 - leftTime;
+                isFirst = false;
+            }
+            else
+            {
+                Delay = 60;
+            }
+            yield return new WaitForSeconds(Delay);
+            ToTalIdleGold += Manager.Stage.IdleGoldReward;
+            ToTalIdleTime += 1;
+            IdleCheckTime = DateTime.Now;
+            IdleRewardPopupUpdate();
+        }
+    }
+
+    public void IdleRewardPopupUpdate()
+    {
+        IdleRewardUpdate?.Invoke();
+    }
+
+    public void IdleRewardReset()
+    {
+        ToTalIdleGold = 0;
+        ToTalIdleTime = 0;
     }
 
     #endregion

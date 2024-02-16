@@ -38,6 +38,7 @@ public class UIPopupRewardsIdle : UIPopup
         SetButtonEvents();
 
         player = Manager.Game.Player;
+        player.PopupUIInit(DisplayIdleRewards);
 
         DisplayIdleRewards();
         DisplayBonusCheck();
@@ -85,8 +86,9 @@ public class UIPopupRewardsIdle : UIPopup
 
     private void CheckIdleReward(PointerEventData eventData)
     {
-        player.RewardGold(idleGoldRewards);
+        player.RewardGold(player.ToTalIdleGold);
         player.SetIdleCheckTime(DateTime.Now);
+        player.IdleRewardReset();
 
         UISceneMain mainUI = Manager.UI.CurrentScene as UISceneMain;
         mainUI.IdleRewardsTimeCheck();
@@ -111,13 +113,9 @@ public class UIPopupRewardsIdle : UIPopup
 
     private void DisplayIdleRewards()
     {
-        TimeSpan earnTime = DateTime.Now.Subtract(player.IdleCheckTime);
-        int totalMinutes = Mathf.FloorToInt((float)earnTime.TotalMinutes);
-
         earnTimeText.text = $"{Manager.Stage.IdleGoldReward}/m";
-        idleTimeText.text = totalMinutes.ToString();
-        idleGoldRewards = Manager.Stage.IdleGoldReward * totalMinutes;
-        goldProvisionText.text = $"{idleGoldRewards}";
+        idleTimeText.text = Manager.Game.Player.ToTalIdleTime.ToString();
+        goldProvisionText.text = $"{Manager.Game.Player.ToTalIdleGold}";
     }
 
     #endregion
