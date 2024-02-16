@@ -20,7 +20,7 @@ public class UIPopupSkillSlotsEquip : MonoBehaviour
         levelText.text = $"Lv.{userInvenSkillData.level}";
 
             skillIcon.gameObject.SetActive(true);
-            skillIcon.sprite = Manager.Address.GetSprite(userInvenSkillData.itemID);
+            skillIcon.sprite = Manager.SkillData.SkillDataDictionary[userInvenSkillData.itemID].Sprite;
     }
 
     public void SetSlotEmpty()

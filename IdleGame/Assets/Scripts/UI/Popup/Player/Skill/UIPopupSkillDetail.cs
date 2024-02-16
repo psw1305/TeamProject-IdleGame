@@ -83,10 +83,10 @@ public class UIPopupSkillDetail : UIPopup
 
     private void SetUISkillData()
     {
-        _IconSprite.sprite = Manager.Address.GetSprite(_data.itemID);
+        _IconSprite.sprite = Manager.SkillData.SkillDataDictionary[_data.itemID].Sprite;
 
-        _nameText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].skillName;
-        _rarityText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].rarity;
+        _nameText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].SkillName;
+        _rarityText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].Rarity;
 
         SetUIReinforce();
     }
@@ -105,9 +105,9 @@ public class UIPopupSkillDetail : UIPopup
         _reinforceProgressSprite.fillAmount = (float)_data.hasCount / _needCount;
 
         _descriptionText.text = 
-            $"<color=red> {Manager.SkillData.SkillDataDictionary[_data.itemID].skillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].reinforceDamage * (_data.level - 1)}%</color>{Manager.SkillData.SkillDataDictionary[_data.itemID].description}";
+            $"<color=red> {Manager.SkillData.SkillDataDictionary[_data.itemID].SkillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceDamage * (_data.level - 1)}%</color>{Manager.SkillData.SkillDataDictionary[_data.itemID].Description}";
         _retentionEffectText.text = 
-            $"{Manager.SkillData.SkillDataDictionary[_data.itemID].retentionEffect + Manager.SkillData.SkillDataDictionary[_data.itemID].reinforceEffect * (_data.level - 1)} % ";
+            $"{Manager.SkillData.SkillDataDictionary[_data.itemID].RetentionEffect + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceEffect * (_data.level - 1)} % ";
     }
 
     private void SetReinforceBtn()

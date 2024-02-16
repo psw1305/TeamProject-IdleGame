@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemDataContainer", menuName = "Blueprints/ItemDataContainer")]
 public class ItemContainerBlueprint : ScriptableObject
 {
-    public List<ItemBlueprint> itemBlueprints = new();
+    public List<ItemBlueprint> itemDatas = new();
 }
 
 [System.Serializable]

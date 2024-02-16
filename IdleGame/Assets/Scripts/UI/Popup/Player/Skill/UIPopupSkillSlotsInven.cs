@@ -70,12 +70,12 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
         _itemID = _skillData.itemID;
         _level = _skillData.level;
         _hasCount = _skillData.hasCount;
-        _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].rarity;
+        _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].Rarity;
     }
 
     public void InitSlotUI()
     {
-        itemSprite.sprite = Manager.Address.GetSprite(ItemID.ToString());
+        itemSprite.sprite = Manager.SkillData.SkillDataDictionary[ItemID].Sprite;
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupSkillDetailInfo);
 
         SetUILockState();
