@@ -85,13 +85,13 @@ public class UIPopupFollowerDetail : UIPopup
     {
         _IconSprite.sprite = Manager.Address.GetSprite(_data.itemID);
 
-        _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].followerName;
-        _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].rarity;
+        _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].FollowerName;
+        _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity;
 
-        _atkDamageText.text = (Manager.Game.Player.AtkDamage.Value * Manager.FollowerData.FollowerDataDictionary[_data.itemID].damageCorrection / 100).ToString();
-        _atkSpeedText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].atkSpeed.ToString();
+        _atkDamageText.text = (Manager.Game.Player.AtkDamage.Value * Manager.FollowerData.FollowerDataDictionary[_data.itemID].DamageCorrection / 100).ToString();
+        _atkSpeedText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].AtkSpeed.ToString();
 
-        _retentionEffectText.text = $"공격력 +{Manager.Game.Player.AtkDamage.Value * ((Manager.FollowerData.FollowerDataDictionary[_data.itemID].retentionEffect + Manager.FollowerData.FollowerDataDictionary[_data.itemID].reinforceEffect*_data.level) / 100)}%";
+        _retentionEffectText.text = $"공격력 +{Manager.Game.Player.AtkDamage.Value * ((Manager.FollowerData.FollowerDataDictionary[_data.itemID].RetentionEffect + Manager.FollowerData.FollowerDataDictionary[_data.itemID].ReinforceEffect*_data.level) / 100)}%";
 
         SetUIReinforce();
     }

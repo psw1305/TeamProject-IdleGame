@@ -1,7 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FollowerBlueprint", menuName = "Blueprints/FollowerBlueprint")]
-public class FollowerBlueprint : ScriptableObject
+[CreateAssetMenu(fileName = "FollowerDataContainer", menuName = "Blueprints/FollowerDataContainer")]
+public class FollowerContainerBlueprint : ScriptableObject
+{
+    public List<FollowerBlueprint> followerDatas = new();
+}
+
+[System.Serializable]
+public class FollowerBlueprint
 {
     [Header("Follower Info")]
     [SerializeField] private string itemID;
