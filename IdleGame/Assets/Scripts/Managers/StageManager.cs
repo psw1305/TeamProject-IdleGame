@@ -40,7 +40,7 @@ public class StageManager
     public bool PlayerReset { get; private set; }
 
     // 스테이지 정보 로드용 프로퍼티
-    public StageBlueprint StageConfig => Manager.Address.GetBlueprint(stageData.StageConfig) as StageBlueprint;
+    public StageBlueprint StageConfig => Manager.Asset.GetBlueprint(stageData.StageConfig) as StageBlueprint;
     public string StageBackground => string.Empty;
     public int EnemyStatRate => stageData.EnemyStatRate;
     public int EnemyGoldRate => stageData.EnemyGoldRate;
@@ -68,10 +68,10 @@ public class StageManager
     public void Initialize()
     {
         // json 파일 로딩, 딕셔너리에 인덱스 그룹 넣기
-        _tableText = Manager.Address.GetText("ItemTableStage");
+        _tableText = Manager.Asset.GetText("ItemTableStage");
         var stageDataTable = JsonUtility.FromJson<StageDataTable>($"{{\"stageDataTable\":{_tableText}}}");
 
-        _UItableText = Manager.Address.GetText("ItemTableStage_Hud");
+        _UItableText = Manager.Asset.GetText("ItemTableStage_Hud");
         var stageUIDataTable = JsonUtility.FromJson<StageUIDataTable>($"{{\"stageUIDataTable\":{_UItableText}}}");
 
         stageTable = stageDataTable.stageDataTable.ToDictionary(group => group.Index, group => group);
@@ -119,7 +119,7 @@ public class StageManager
     public void BattleStart()
     {
         AudioBGM.Instance.VolumeBGMScale = 0.1f;
-        AudioBGM.Instance.Play(Manager.Address.GetAudioBGM("testbgm"));
+        AudioBGM.Instance.Play(Manager.Asset.GetAudio("testbgm"));
 
         stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
     }
@@ -206,7 +206,7 @@ public class StageManager
     {
         // 랜덤으로 Enemy 설계도 선정
         var randomEnemyName = StageConfig.Enemies[Random.Range(0, StageConfig.Enemies.Length)];
-        var enemyBlueprint = Manager.Address.GetBlueprint(randomEnemyName) as EnemyBlueprint;
+        var enemyBlueprint = Manager.Asset.GetBlueprint(randomEnemyName) as EnemyBlueprint;
 
         // BaseEnemy 랜덤 Y축 위치 선정
         var randomYPos = Random.Range(spawnPoint[0].position.y, spawnPoint[1].position.y);
@@ -232,7 +232,7 @@ public class StageManager
         uISceneMain.StageLevelGaugeToggle(false);
 
         // Boss 설계도 가져오기
-        var enemyBlueprint = Manager.Address.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
+        var enemyBlueprint = Manager.Asset.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
         var bossObject = Manager.ObjectPool.GetGo("EnemyFrame");
         var enemy = bossObject.GetComponent<BaseEnemy>();
         enemy.SetEnemy(enemyBlueprint, bossSpawnPoint.position, EnemyStatRate, EnemyGoldRate);

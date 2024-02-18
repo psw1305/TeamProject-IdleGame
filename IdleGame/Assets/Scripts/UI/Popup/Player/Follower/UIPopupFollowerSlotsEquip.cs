@@ -20,7 +20,8 @@ public class UIPopupFollowerSlotsEquip : MonoBehaviour
         //levelText.text = $"Lv.{userInvenFollowerData.level}";
 
         FollowerIcon.gameObject.SetActive(true);
-        FollowerIcon.sprite = Manager.Address.GetSprite(userInvenFollowerData.itemID);
+        // TODO => FollowerContainer에서 가져오도록
+        //FollowerIcon.sprite = Manager.Asset.GetSprite(userInvenFollowerData.itemID);
     }
 
     public void SetSlotEmpty()

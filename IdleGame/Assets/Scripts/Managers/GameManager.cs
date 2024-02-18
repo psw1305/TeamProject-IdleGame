@@ -20,9 +20,7 @@ public class GameManager
     /// </summary>
     public void Initialize()
     {
-        Manager.Data.Load();
-
-        var playerClone = Manager.Address.InstantiatePrefab("PlayerFrame");
+        var playerClone = Manager.Asset.InstantiatePrefab("PlayerFrame");
         Player = playerClone.GetComponent<Player>();
 
         Manager.ObjectPool.Initialize();

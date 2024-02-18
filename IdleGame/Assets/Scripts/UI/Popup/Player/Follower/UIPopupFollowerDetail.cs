@@ -83,7 +83,7 @@ public class UIPopupFollowerDetail : UIPopup
 
     public void SetUIFollowerData()
     {
-        _IconSprite.sprite = Manager.Address.GetSprite(_data.itemID);
+        //_IconSprite.sprite = Manager.Asset.GetSprite(_data.itemID);
 
         _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].FollowerName;
         _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity;

@@ -49,7 +49,7 @@ public class DataManager
 
     public void CreateUserEquipment()
     {
-        var jsonData = Manager.Address.GetText("UserTableEquipment");
+        var jsonData = Manager.Asset.GetText("UserTableEquipment");
         Inventory = JsonUtility.FromJson<InventoryData>(jsonData);
 
         SaveToUserEquipment();
@@ -57,7 +57,7 @@ public class DataManager
 
     public void CreateUserSkill()
     {
-        var jsonData = Manager.Address.GetText("UserTableSkill");
+        var jsonData = Manager.Asset.GetText("UserTableSkill");
         UserSkillData = JsonUtility.FromJson<UserSkillData>(jsonData);
 
         SaveToUserSkill();
@@ -65,7 +65,7 @@ public class DataManager
 
     public void CreateUserFollower()
     {
-        var jsonData = Manager.Address.GetText("UserTableFollower");
+        var jsonData = Manager.Asset.GetText("UserTableFollower");
         FollowerData = JsonUtility.FromJson<UserFollowerData>(jsonData);
 
         SaveToUserFollower();
@@ -83,8 +83,6 @@ public class DataManager
         LoadFromUserSkill();
         LoadFromUserFollower();
         Debug.Log($"Load From {Application.persistentDataPath}");
-
-        //yield return null;
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")

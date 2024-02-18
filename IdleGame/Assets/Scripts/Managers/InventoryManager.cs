@@ -18,7 +18,7 @@ public class InventoryManager
 
     public void ParseItemData()
     {
-        _itemDataBase = Manager.Address.GetBlueprint("ItemDataContainer") as ItemContainerBlueprint;
+        _itemDataBase = Manager.Asset.GetBlueprint("ItemDataContainer") as ItemContainerBlueprint;
         foreach (var itemData in _itemDataBase.itemDatas)
         {
             _itemDataDictionary.Add(itemData.ItemID, itemData);

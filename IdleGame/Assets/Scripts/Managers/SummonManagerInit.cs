@@ -68,7 +68,7 @@ public class SummonTable
 
     private void ProbabilityInit(string tableLink)
     {
-        string _tabletext = Manager.Address.GetText($"SummonTable{tableLink}");
+        string _tabletext = Manager.Asset.GetText($"SummonTable{tableLink}");
         var probabilityDataTable = JsonUtility.FromJson<ProbabilityDataTable>($"{{\"probabilityDataTable\":{_tabletext}}}");
 
         // 불러온 테이블을 레벨 그룹별로 1차 가공
@@ -102,7 +102,7 @@ public class SummonTable
 
     private void GradeCountInit(string tableLink)
     {
-        string _tabletext = Manager.Address.GetText($"SummonCount{tableLink}");
+        string _tabletext = Manager.Asset.GetText($"SummonCount{tableLink}");
         var gradeUpDataTable = JsonUtility.FromJson<GradeUpDataTable>($"{{\"gradeUpDataTable\":{_tabletext}}}");
 
         _gradeUpCount = gradeUpDataTable.gradeUpDataTable.Select(x => x.needCounts).ToList();

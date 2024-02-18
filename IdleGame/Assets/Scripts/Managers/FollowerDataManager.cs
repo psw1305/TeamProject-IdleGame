@@ -12,7 +12,7 @@ public class FollowerDataManager
 
     public void ParseFollowerData()
     {
-        _follwerDataContainer = Manager.Address.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
+        _follwerDataContainer = Manager.Asset.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
         //_follwerData = JsonUtility.FromJson<FollowerDataBase>(_followerDataBaseText);
         foreach (var followerData in _follwerDataContainer.followerDatas)
         {
