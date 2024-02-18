@@ -78,7 +78,11 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
     public void SetPosition(Vector2 position)
     {
+        float ratio = Manager.Game.screenRatio;
+        position.x -= ratio;
+        position.y -= ratio;
         transform.position = position;
+
     }
 
     public void SetHpBar()

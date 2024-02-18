@@ -5,6 +5,7 @@ public class MainScene : BaseScene
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private Transform[] enemySpawnPoint;
 
+
     public void SceneStart()
     {
         // 플레이어 위치 & UI 생성

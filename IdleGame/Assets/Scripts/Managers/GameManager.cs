@@ -7,7 +7,11 @@ public class GameManager
     public Player Player { get; private set; }
     public MainScene Main { get; private set; }
 
+    public float screenRatio { get; private set; } =  Screen.height / Screen.width * 0.1f;
+
     #endregion
+
+    // 화면 비율 컨트롤
 
     #region Init
 
@@ -34,7 +38,11 @@ public class GameManager
     // 플레이어 데이터가 초기화 되는 부분
     public void PlayerInit(Vector2 position)
     {
-        Player.transform.position = position;
+        Vector2 positionRatio = new Vector2(screenRatio, -screenRatio);
+        Vector2 scaleRatio = new Vector2(screenRatio, screenRatio);
+
+        Player.transform.position = position + positionRatio;
+        Player.transform.localScale = Vector2.one - scaleRatio;
         Player.Initialize();
     }
 
