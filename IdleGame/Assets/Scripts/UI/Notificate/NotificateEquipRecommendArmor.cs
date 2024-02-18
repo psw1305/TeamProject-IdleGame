@@ -1,4 +1,4 @@
-public class NotificateRecommendArmorItemSlot : BaseNotiDot
+public class NotificateEquipRecommendArmor : BaseNotiDot
 {
     private UserItemData _currentItemData;
 
@@ -6,7 +6,7 @@ public class NotificateRecommendArmorItemSlot : BaseNotiDot
     {
         base.Start();
         GetItemData();
-        Manager.NotificateDot.SetRecommendArmorItemNoti += SetRecommendItemNoti;
+        Manager.Notificate.SetRecommendArmorItemNoti += SetRecommendItemNoti;
         SetRecommendItemNoti();
     }
 
@@ -17,7 +17,7 @@ public class NotificateRecommendArmorItemSlot : BaseNotiDot
 
     private void SetRecommendItemNoti()
     {
-        var _recommendItem = Manager.NotificateDot.CheckRecommendItem(Manager.Inventory.ArmorItemList);
+        var _recommendItem = Manager.Notificate.CheckRecommendItem(Manager.Inventory.ArmorItemList);
         if (_recommendItem == null || _recommendItem.equipped)
         {
             InactiveNotiDot();
@@ -35,9 +35,9 @@ public class NotificateRecommendArmorItemSlot : BaseNotiDot
 
     private void OnDestroy()
     {
-        if (Manager.NotificateDot != null)
+        if (Manager.Notificate != null)
         {
-            Manager.NotificateDot.SetRecommendArmorItemNoti -= SetRecommendItemNoti;
+            Manager.Notificate.SetRecommendArmorItemNoti -= SetRecommendItemNoti;
         }
     }
 }

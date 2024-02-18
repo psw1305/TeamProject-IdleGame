@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521e666d0f7b424f83350d2898a9138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChildNotiDot: {fileID: 0}
 --- !u!1 &413988353558797845
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +282,7 @@ GameObject:
   - component: {fileID: 4505890735924721650}
   - component: {fileID: 4921911588564966633}
   - component: {fileID: 5990540136041884338}
+  - component: {fileID: 6114821140547217120}
   m_Layer: 5
   m_Name: Btn_Show_Skill
   m_TagString: Untagged
@@ -392,6 +392,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6114821140547217120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413988353558797845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920c399298b3a4445beb0ce4c355a721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1433773501139868292
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +684,7 @@ GameObject:
   - component: {fileID: 7645417748043593118}
   - component: {fileID: 7279012711997498895}
   - component: {fileID: 4882665775797935428}
+  - component: {fileID: 5746126498905681046}
   m_Layer: 5
   m_Name: Btn_Show_Follower
   m_TagString: Untagged
@@ -781,6 +794,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5746126498905681046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961723236702899214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cbb46b802c36647a21cc12c2ddf841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3135674266990826365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +2003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff82285054550034dadd5f1fb08446dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChildNotiDot: {fileID: 0}
 --- !u!1 &7745867643291929031
 GameObject:
   m_ObjectHideFlags: 0

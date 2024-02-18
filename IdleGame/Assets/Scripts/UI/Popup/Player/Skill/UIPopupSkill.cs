@@ -14,8 +14,8 @@ public class UIPopupSkill : UIPopup
     {
         SetUI<Button>();
 
+        SetButtonEvent("Btn_SkillSummon", UIEventType.Click, SummonPop);
         SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, ReinforceAllSkill);
-        SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, SummonPop);
 
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
     }
