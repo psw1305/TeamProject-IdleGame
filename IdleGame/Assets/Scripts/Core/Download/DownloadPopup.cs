@@ -141,10 +141,6 @@ public class DownloadPopup : MonoBehaviour
 
     public void OnClickEnterGame()
     {
-        // 게임 시작
-        //Manager.Game.Initialize();
-        //Destroy(gameObject);
-
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 

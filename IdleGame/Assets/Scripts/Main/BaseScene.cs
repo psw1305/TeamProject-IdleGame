@@ -1,10 +1,7 @@
-using System.Collections;
 using UnityEngine;
 
 public class BaseScene : MonoBehaviour
 {
-    [SerializeField] private DownloadPopup downloadPopup;
-
     private bool initialized = false;
 
     protected virtual bool Initialize()
@@ -23,11 +20,9 @@ public class BaseScene : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    private IEnumerator Start()
+    private void Start()
     {
-        //yield return StartCoroutine(downloadPopup.StartDownload());
-
-        yield return StartCoroutine(AddressableLoad());
+        AddressableLoad();
     }
 
     private void OnApplicationQuit()
@@ -37,10 +32,15 @@ public class BaseScene : MonoBehaviour
 
     #endregion
 
-    private IEnumerator AddressableLoad()
+    private void AddressableLoad()
     {
-        yield return null;
-        Manager.Address.LoadSpriteAtlas("SpriteAtlas");
-        Manager.Address.LoadAllAsync<Object>("Bundle");
+        Manager.Asset.LoadAllAsync<Object>("Bundle", (key, count, totalCount) =>
+        {
+            if (count >= totalCount)
+            {
+                Manager.Data.Load();
+                Manager.Game.Initialize();
+            }
+        });
     }
 }

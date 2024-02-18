@@ -28,7 +28,7 @@ public class Meteor : BaseSkill
         while (true)
         {
             yield return new WaitForSeconds(0.4f);
-            _projectile = Manager.Address.InstantiatePrefab("MeteorProjectile");
+            _projectile = Manager.Asset.InstantiatePrefab("MeteorProjectile");
             _projectile.transform.position = new Vector2(0, 5);
 
             Manager.Game.Player.FinalAttackDamage(out _projectile.GetComponent<MeteorProjectile>().Damage

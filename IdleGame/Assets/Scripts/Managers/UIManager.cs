@@ -54,7 +54,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(sceneName)) sceneName = typeof(T).Name;
 
-        GameObject obj = Manager.Address.InstantiatePrefab(sceneName, UIRoot.transform);
+        GameObject obj = Manager.Asset.InstantiatePrefab(sceneName, UIRoot.transform);
         T scene = Utilities.GetOrAddComponent<T>(obj);
         CurrentScene = scene;
 
@@ -69,7 +69,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(popupName)) popupName = typeof(T).Name;
 
-        GameObject obj = Manager.Address.InstantiatePrefab(popupName, UIRoot.transform);
+        GameObject obj = Manager.Asset.InstantiatePrefab(popupName, UIRoot.transform);
         T popup = Utilities.GetOrAddComponent<T>(obj);
         CurrentPopup = popup;
         popupStack.Push(popup);
@@ -115,7 +115,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(elementName)) elementName = typeof(T).Name;
 
-        GameObject obj = Manager.Address.InstantiatePrefab(elementName, UIRoot.transform);
+        GameObject obj = Manager.Asset.InstantiatePrefab(elementName, UIRoot.transform);
         T element = Utilities.GetOrAddComponent<T>(obj);
 
         return element;

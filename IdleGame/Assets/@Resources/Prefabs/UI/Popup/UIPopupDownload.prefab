@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25af83b2ff30ae438ee86fcd68a66fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downloadURL: http://172.30.1.37/Android/
+  downloadURL: https://storage.googleapis.com/portfolio-idlegame.appspot.com
 --- !u!1 &640291420139691745
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +625,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3969319395885934769
 MonoBehaviour:
@@ -757,7 +757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8350684588784564713
 RectTransform:
   m_ObjectHideFlags: 0

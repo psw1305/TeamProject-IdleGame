@@ -17,7 +17,7 @@ public class Manager : MonoBehaviour
                 GameObject obj = GameObject.Find("@Manager");
                 if (obj == null)
                 {
-                    obj = new() { name = @"Manager" };
+                    obj = new() { name = "@Manager" };
                     obj.AddComponent<Manager>();
                     DontDestroyOnLoad(obj);
                     instance = obj.GetComponent<Manager>();
@@ -31,7 +31,7 @@ public class Manager : MonoBehaviour
 
     #region Manage
 
-    private readonly AddressableManager address = new();
+    private readonly AssetManager asset = new();
     private readonly SessionManager session = new();
     private readonly DataManager data = new();
     private readonly GameManager game = new();
@@ -46,7 +46,7 @@ public class Manager : MonoBehaviour
     private readonly FollowerDataManager followerData = new();
     private readonly RankingManager ranking = new();
 
-    public static AddressableManager Address => Instance != null ? Instance.address : null;
+    public static AssetManager Asset => Instance != null ? Instance.asset : null;
     public static SessionManager Session => Instance != null ? Instance.session : null;
     public static DataManager Data => Instance != null ? Instance.data : null;
     public static GameManager Game => Instance != null ? Instance.game : null;

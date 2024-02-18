@@ -58,7 +58,7 @@ public class ObjectPoolManager
 
     private GameObject CreateProjectile()
     {
-        GameObject poolGo = Manager.Address.InstantiatePrefab(_objectName);
+        GameObject poolGo = Manager.Asset.InstantiatePrefab(_objectName);
         poolGo.GetComponent<ObjectPoolable>().SetManagedPool(_poolDict[_objectName]);
         return poolGo;
     }

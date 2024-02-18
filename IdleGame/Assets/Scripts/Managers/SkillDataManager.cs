@@ -11,7 +11,7 @@ public class SkillDataManager
 
     public void ParseSkillData()
     {
-        _skillDataContainer = Manager.Address.GetBlueprint("SkillDataContainer") as SkillContainerBlueprint;
+        _skillDataContainer = Manager.Asset.GetBlueprint("SkillDataContainer") as SkillContainerBlueprint;
         //_skillData = JsonUtility.FromJson<SkillDataBase>(_skillDataContainer);
         foreach (var skillData in _skillDataContainer.skillDatas)
         {
