@@ -20,6 +20,8 @@ public class StageManager
     private Coroutine stageCoroutine;
     private UISceneMain uISceneMain;
 
+    private BackgroundControl backgroundControl;
+
     #endregion
 
     #region Properties
@@ -77,6 +79,9 @@ public class StageManager
         Chapter = profile.Stage_Chapter;
         StageLevel = profile.Stage_Level;
         WaveLoop = profile.Stage_WaveLoop;
+
+        backgroundControl = Object.FindObjectOfType<BackgroundControl>();
+        backgroundControl.Initiailize();
     }
 
     public void SetStage(Transform[] spawnPoint, Transform bossSpawnPoint)
@@ -250,6 +255,7 @@ public class StageManager
             StageDataChange(Chapter);
             Manager.Game.Player.IdleRewardPopupUpdate();
             uISceneMain.StageLevelGaugeToggle();
+            backgroundControl.ChangeSprite(); // 챕터 상승 시 배경 변경
         }
 
         uISceneMain.UpdateStageLevel(StageLevel);

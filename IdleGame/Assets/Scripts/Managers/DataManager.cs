@@ -165,6 +165,7 @@ public class DataManager
         Profile.Stage_Level = Manager.Stage.StageLevel;
         Profile.Stage_WaveLoop = Manager.Stage.WaveLoop;
         Profile.Quest_Complete = Manager.Quest.QuestNum;
+        Profile.Quest_Current_Progress = Manager.Quest.DefeatQuestValue;
         Profile.Summon_Progress_Equipment = Manager.Summon.GetSummonCounts("Equipment");
         Profile.Summon_Progress_Skills = Manager.Summon.GetSummonCounts("Skills");
         Profile.Summon_Progress_Follower = Manager.Summon.GetSummonCounts("Follower");
@@ -266,6 +267,7 @@ public class DataManager
             { "Stage_Level", Manager.Stage.StageLevel },
             { "Stage_WaveLoop", Manager.Stage.WaveLoop },
             { "Quest_Complete", Manager.Quest.QuestNum },
+            { "Quest_Current_Progress", Manager.Quest.DefeatQuestValue }
         };
 
         Manager.Session.UpdateUserData(updates);

@@ -4,9 +4,14 @@ public class QuestDamageUp : QuestData
     {
         questType = QuestType.DamageUp;
         questObjective = "공격력 강화";
-        ValueUpRate = 2;
-        objectiveValue = (questLevel / questCount) < 1 ? 10 : (questLevel / questCount) * ValueUpRate * 10;
+        ValueUpRate = 10;
+        objectiveValue = (questLevel / questCount) < 1 ? 10 : (questLevel + 1) / questCount * ValueUpRate;
         currentValue = Manager.Data.Profile.Stat_Level_AtkDamage;
         isClear = currentValue > objectiveValue;
+    }
+
+    public override void ObjectiveValueUp()
+    {
+        objectiveValue += ValueUpRate;
     }
 }
