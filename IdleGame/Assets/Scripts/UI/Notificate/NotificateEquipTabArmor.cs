@@ -7,17 +7,17 @@ public class NotificateEquipTabArmor : BaseNotiDot
     protected override void Start()
     {
         base.Start();
-        Manager.NotificateDot.ActiveArmorEquipmentBtnNoti += ActiveNotiDot;
-        Manager.NotificateDot.InactiveArmorEquipmentBtnNoti += InactiveNotiDot;
-        Manager.NotificateDot.SetArmorEquipmentNoti();
+        Manager.Notificate.ActiveArmorEquipmentBtnNoti += ActiveNotiDot;
+        Manager.Notificate.InactiveArmorEquipmentBtnNoti += InactiveNotiDot;
+        Manager.Notificate.SetArmorEquipmentNoti();
     }
 
     private void OnDestroy()
     {
-        if (Manager.NotificateDot != null)
+        if (Manager.Notificate != null)
         {
-            Manager.NotificateDot.ActiveArmorEquipmentBtnNoti -= ActiveNotiDot;
-            Manager.NotificateDot.InactiveArmorEquipmentBtnNoti -= InactiveNotiDot;
+            Manager.Notificate.ActiveArmorEquipmentBtnNoti -= ActiveNotiDot;
+            Manager.Notificate.InactiveArmorEquipmentBtnNoti -= InactiveNotiDot;
         }
     }
 }
