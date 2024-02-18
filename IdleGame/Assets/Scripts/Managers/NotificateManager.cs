@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class NotificateManager
 {
-    #region 장비 필터 Method
-
-
+    #region 장비 알림 필터
 
     //잠금이 해제된 장비가 있는지 확인합니다.
     public List<UserItemData> CheckUnlockEquipment(List<UserItemData> itemList)
@@ -41,26 +39,29 @@ public class NotificateManager
 
     #endregion
 
-    #region 장비 버튼 알림 관련 Method
+    #region 메인 화면 장비 버튼
 
     public delegate void EquipmentNotificate();
-    public EquipmentNotificate ActiveEquipmentBtnNoti;
-    public EquipmentNotificate InactiveEquipmentBtnNoti;
+    public event EquipmentNotificate ActiveEquipmentBtnNoti;
+    public event EquipmentNotificate InactiveEquipmentBtnNoti;
 
-    public bool CheckEquipmentBtnNotiState()
+    //추천 장비 착용 여부를 체크
+    public bool CheckEquipRecommendItem()
     {
         var _weaponRecommendItem = CheckRecommendItem(Manager.Inventory.WeaponItemList);
         var _armorRecommendItem = CheckRecommendItem(Manager.Inventory.ArmorItemList);
-        if (_weaponRecommendItem == null || _armorRecommendItem == null)
+        // 장비가 아예 없을 경우 false 반환
+        if (_weaponRecommendItem == null | _armorRecommendItem == null)
         {
             return false;
         }
-        return CheckReinforceNotiState(Manager.Inventory.UserInventory.UserItemData) | !_weaponRecommendItem.equipped | !_armorRecommendItem.equipped ? true : false;
+        //아니라면 추천 장비를 착용하고 있는 지
+        return CheckReinforceNotiState(Manager.Inventory.UserInventory.UserItemData) | !_weaponRecommendItem.equipped | !_armorRecommendItem.equipped;
     }
 
-    public void SetEquipmentNoti()
+    public void SetPlayerStateNoti()
     {
-        if (CheckEquipmentBtnNotiState())
+        if (CheckEquipRecommendItem() | CheckSkillReinforceState() | CheckFollowerReinforceState())
         {
             ActiveEquipmentBtnNoti?.Invoke();
         }
@@ -72,11 +73,11 @@ public class NotificateManager
 
     #endregion
 
-    #region 장비 타입 버튼 알림 관련 Method
+    #region 장비 타입 버튼 알림
 
     public delegate void EquipmentTypeNotificate();
-    public EquipmentTypeNotificate ActiveWeaponEquipmentBtnNoti;
-    public EquipmentTypeNotificate InactiveWeaponEquipmentBtnNoti;
+    public event EquipmentTypeNotificate ActiveWeaponEquipmentBtnNoti;
+    public event EquipmentTypeNotificate InactiveWeaponEquipmentBtnNoti;
 
     public void SetWeaponEquipmentNoti()
     {
@@ -90,8 +91,8 @@ public class NotificateManager
         }
     }
 
-    public EquipmentTypeNotificate ActiveArmorEquipmentBtnNoti;
-    public EquipmentTypeNotificate InactiveArmorEquipmentBtnNoti;
+    public event EquipmentTypeNotificate ActiveArmorEquipmentBtnNoti;
+    public event EquipmentTypeNotificate InactiveArmorEquipmentBtnNoti;
 
     public void SetArmorEquipmentNoti()
     {
@@ -107,14 +108,14 @@ public class NotificateManager
 
     #endregion
 
-    #region 일괄 강화 알림 관련 Method
+    #region 일괄 강화 알림 관련
 
-    public delegate void TypeReinforceNotificate();
-    public TypeReinforceNotificate ActiveReinforceWeaponItemNoti;
-    public TypeReinforceNotificate InactiveReinforceWeaponItemNoti;
+    public delegate void EquipReinforceNotificate();
+    public event EquipReinforceNotificate ActiveReinforceWeaponItemNoti;
+    public event EquipReinforceNotificate InactiveReinforceWeaponItemNoti;
 
-    public TypeReinforceNotificate ActiveReinforceArmorItemNoti;
-    public TypeReinforceNotificate InactiveReinforceArmorItemNoti;
+    public event EquipReinforceNotificate ActiveReinforceArmorItemNoti;
+    public event EquipReinforceNotificate InactiveReinforceArmorItemNoti;
 
     public void SetReinforceWeaponNoti()
     {
@@ -142,7 +143,7 @@ public class NotificateManager
 
     #endregion
 
-    #region 추천 장비 알림 관련 Method
+    #region 추천 장비 알림 관련
 
     public delegate void RecommendEquipItemNotificate();
     public RecommendEquipItemNotificate SetRecommendWeaponItemNoti;
@@ -167,6 +168,62 @@ public class NotificateManager
     {
         SetRecommendWeaponItemNoti = null;
         SetRecommendArmorItemNoti = null;
+    }
+
+    #endregion
+
+    #region 스킬 강화 알림
+    public delegate void SkillReinforceNotificate();
+    public event SkillReinforceNotificate ActiveReinforceSkillNoti;
+    public event SkillReinforceNotificate InactiveReinforceSkillNoti;
+
+    private bool CheckSkillReinforceState()
+    {
+        if (Manager.Data.UserSkillData.UserInvenSkill.Where(data => data.hasCount >= Mathf.Min(data.level + 1 , 15)).Count() != 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetReinforceSkillNoti()
+    {
+        if (CheckSkillReinforceState())
+        {
+            ActiveReinforceSkillNoti?.Invoke();
+        }
+        else
+        {
+            InactiveReinforceSkillNoti?.Invoke();
+        }
+    }
+
+    #endregion
+
+    #region 동료 강화 알림
+    public delegate void FollowerReinforceNotificate();
+    public event FollowerReinforceNotificate ActiveReinforceFollowerNoti;
+    public event FollowerReinforceNotificate InactiveReinforceFollowerNoti;
+
+    private bool CheckFollowerReinforceState()
+    {
+        if (Manager.Data.FollowerData.UserInvenFollower.Where(data => data.hasCount >= Mathf.Min(data.level + 1, 15)).Count() != 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetReinforceFollowerNoti()
+    {
+        if (CheckFollowerReinforceState())
+        {
+            ActiveReinforceFollowerNoti?.Invoke();
+        }
+        else
+        {
+            InactiveReinforceFollowerNoti?.Invoke();
+        }
     }
 
     #endregion

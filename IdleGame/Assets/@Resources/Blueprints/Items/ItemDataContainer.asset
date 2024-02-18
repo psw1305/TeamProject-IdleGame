@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: ItemDataContainer
   m_EditorClassIdentifier: Assembly-CSharp::ItemContainerBlueprint
   itemDatas:
-  - _sprite: {fileID: 0}
-    itemID: W0001
+  - itemID: W0001
     itemName: 
     rarity: 
     statType: 
@@ -22,8 +21,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0002
+    _sprite: {fileID: 1773745777, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0002
     itemName: 
     rarity: 
     statType: 
@@ -31,8 +30,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0003
+    _sprite: {fileID: -228674563, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0003
     itemName: 
     rarity: 
     statType: 
@@ -40,8 +39,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0004
+    _sprite: {fileID: -1799060869, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0004
     itemName: 
     rarity: 
     statType: 
@@ -49,8 +48,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0005
+    _sprite: {fileID: 1139293032, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0005
     itemName: 
     rarity: 
     statType: 
@@ -58,8 +57,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0006
+    _sprite: {fileID: 1970691703, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0006
     itemName: 
     rarity: 
     statType: 
@@ -67,8 +66,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0007
+    _sprite: {fileID: -420967544, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0007
     itemName: 
     rarity: 
     statType: 
@@ -76,8 +75,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0008
+    _sprite: {fileID: -1600079528, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0008
     itemName: 
     rarity: 
     statType: 
@@ -85,8 +84,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0009
+    _sprite: {fileID: -887327037, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0009
     itemName: 
     rarity: 
     statType: 
@@ -94,8 +93,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0010
+    _sprite: {fileID: -1227277726, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0010
     itemName: 
     rarity: 
     statType: 
@@ -103,8 +102,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0011
+    _sprite: {fileID: -1519588927, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0011
     itemName: 
     rarity: 
     statType: 
@@ -112,8 +111,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0012
+    _sprite: {fileID: -713061474, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0012
     itemName: 
     rarity: 
     statType: 
@@ -121,8 +120,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0013
+    _sprite: {fileID: 97214568, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0013
     itemName: 
     rarity: 
     statType: 
@@ -130,8 +129,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0014
+    _sprite: {fileID: 1704789817, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0014
     itemName: 
     rarity: 
     statType: 
@@ -139,8 +138,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0015
+    _sprite: {fileID: 1672701338, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0015
     itemName: 
     rarity: 
     statType: 
@@ -148,8 +147,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0016
+    _sprite: {fileID: 1389215711, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0016
     itemName: 
     rarity: 
     statType: 
@@ -157,8 +156,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0017
+    _sprite: {fileID: 620303185, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0017
     itemName: 
     rarity: 
     statType: 
@@ -166,8 +165,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0018
+    _sprite: {fileID: 172351525, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0018
     itemName: 
     rarity: 
     statType: 
@@ -175,8 +174,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0019
+    _sprite: {fileID: -387681499, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0019
     itemName: 
     rarity: 
     statType: 
@@ -184,8 +183,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0020
+    _sprite: {fileID: -1569583686, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0020
     itemName: 
     rarity: 
     statType: 
@@ -193,8 +192,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0021
+    _sprite: {fileID: -1926022557, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0021
     itemName: 
     rarity: 
     statType: 
@@ -202,8 +201,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0022
+    _sprite: {fileID: 2120850029, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0022
     itemName: 
     rarity: 
     statType: 
@@ -211,8 +210,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0023
+    _sprite: {fileID: 1695658101, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0023
     itemName: 
     rarity: 
     statType: 
@@ -220,8 +219,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0024
+    _sprite: {fileID: -2098509070, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0024
     itemName: 
     rarity: 
     statType: 
@@ -229,8 +228,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: W0025
+    _sprite: {fileID: 1643253633, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: W0025
     itemName: 
     rarity: 
     statType: 
@@ -238,8 +237,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0001
+    _sprite: {fileID: -1063883134, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0001
     itemName: 
     rarity: 
     statType: 
@@ -247,8 +246,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0002
+    _sprite: {fileID: -2078314833, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0002
     itemName: 
     rarity: 
     statType: 
@@ -256,8 +255,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0003
+    _sprite: {fileID: -1111854076, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0003
     itemName: 
     rarity: 
     statType: 
@@ -265,8 +264,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0004
+    _sprite: {fileID: -873253725, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0004
     itemName: 
     rarity: 
     statType: 
@@ -274,8 +273,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0005
+    _sprite: {fileID: -855137963, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0005
     itemName: 
     rarity: 
     statType: 
@@ -283,8 +282,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0006
+    _sprite: {fileID: 664212963, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0006
     itemName: 
     rarity: 
     statType: 
@@ -292,8 +291,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0007
+    _sprite: {fileID: 1786460681, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0007
     itemName: 
     rarity: 
     statType: 
@@ -301,8 +300,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0008
+    _sprite: {fileID: 1456394923, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0008
     itemName: 
     rarity: 
     statType: 
@@ -310,8 +309,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0009
+    _sprite: {fileID: 1350875991, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0009
     itemName: 
     rarity: 
     statType: 
@@ -319,8 +318,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0010
+    _sprite: {fileID: 648026016, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0010
     itemName: 
     rarity: 
     statType: 
@@ -328,8 +327,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0011
+    _sprite: {fileID: -254794787, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0011
     itemName: 
     rarity: 
     statType: 
@@ -337,8 +336,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0012
+    _sprite: {fileID: 449488711, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0012
     itemName: 
     rarity: 
     statType: 
@@ -346,8 +345,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0013
+    _sprite: {fileID: 208519102, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0013
     itemName: 
     rarity: 
     statType: 
@@ -355,8 +354,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0014
+    _sprite: {fileID: -1248366103, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0014
     itemName: 
     rarity: 
     statType: 
@@ -364,8 +363,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0015
+    _sprite: {fileID: 957023120, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0015
     itemName: 
     rarity: 
     statType: 
@@ -373,8 +372,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0016
+    _sprite: {fileID: 1410791795, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0016
     itemName: 
     rarity: 
     statType: 
@@ -382,8 +381,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0017
+    _sprite: {fileID: 160122874, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0017
     itemName: 
     rarity: 
     statType: 
@@ -391,8 +390,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0018
+    _sprite: {fileID: -475490551, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0018
     itemName: 
     rarity: 
     statType: 
@@ -400,8 +399,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0019
+    _sprite: {fileID: -232863849, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0019
     itemName: 
     rarity: 
     statType: 
@@ -409,8 +408,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0020
+    _sprite: {fileID: -1411451948, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0020
     itemName: 
     rarity: 
     statType: 
@@ -418,8 +417,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0021
+    _sprite: {fileID: 17694516, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0021
     itemName: 
     rarity: 
     statType: 
@@ -427,8 +426,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0022
+    _sprite: {fileID: -1662376579, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0022
     itemName: 
     rarity: 
     statType: 
@@ -436,8 +435,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0023
+    _sprite: {fileID: 213450800, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0023
     itemName: 
     rarity: 
     statType: 
@@ -445,8 +444,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0024
+    _sprite: {fileID: -1304879416, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0024
     itemName: 
     rarity: 
     statType: 
@@ -454,8 +453,8 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
-  - _sprite: {fileID: 0}
-    itemID: A0025
+    _sprite: {fileID: -596035579, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}
+  - itemID: A0025
     itemName: 
     rarity: 
     statType: 
@@ -463,3 +462,4 @@ MonoBehaviour:
     reinforceEquip: 0
     retentionEffect: 0
     reinforceEffect: 0
+    _sprite: {fileID: 1679796072, guid: c3bf15a4e329b1d46b567e62986e3ce7, type: 3}

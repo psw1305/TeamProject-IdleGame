@@ -99,7 +99,7 @@ public class UIPopupEquipment : UIPopup
     #region OtherMethod
 
     //강화에 필요한아이템 개수를 계산합니다.
-    private void OperNeedItemCount()
+    private void CalculateNeedItemCount()
     {
         if(_selectItemData.level < 15)
         {
@@ -121,9 +121,8 @@ public class UIPopupEquipment : UIPopup
         _itemLevelText.text = _selectItemData.level.ToString();
 
         _itemImage.sprite = Manager.Inventory.ItemDataDictionary[_selectItemData.itemID].Sprite;
-        //_typeIcon.sprite = Manager.Address.GetSprite(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].type);
 
-        OperNeedItemCount();
+        CalculateNeedItemCount();
         _itemHasCount.text = $"{_selectItemData.hasCount} / {_needCount}";
         _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / _needCount;
 
@@ -155,13 +154,13 @@ public class UIPopupEquipment : UIPopup
     private void EquipmentSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ChangeEquipmentItem(_selectItemData);
-        Manager.NotificateDot.SetEquipmentNoti();
+        Manager.Notificate.SetPlayerStateNoti();
 
-        Manager.NotificateDot.SetRecommendWeaponNoti();
-        Manager.NotificateDot.SetRecommendArmorNoti();
+        Manager.Notificate.SetRecommendWeaponNoti();
+        Manager.Notificate.SetRecommendArmorNoti();
 
-        Manager.NotificateDot.SetWeaponEquipmentNoti();
-        Manager.NotificateDot.SetArmorEquipmentNoti();
+        Manager.Notificate.SetWeaponEquipmentNoti();
+        Manager.Notificate.SetArmorEquipmentNoti();
 
         CallEquipRefreshEvent();
     }
@@ -175,16 +174,16 @@ public class UIPopupEquipment : UIPopup
     {
         Manager.Inventory.ReinforceSelectItem(_selectItemData);
 
-        Manager.NotificateDot.SetReinforceWeaponNoti();
-        Manager.NotificateDot.SetReinforceArmorNoti();
+        Manager.Notificate.SetReinforceWeaponNoti();
+        Manager.Notificate.SetReinforceArmorNoti();
 
-        Manager.NotificateDot.SetRecommendWeaponNoti();
-        Manager.NotificateDot.SetRecommendArmorNoti();
+        Manager.Notificate.SetRecommendWeaponNoti();
+        Manager.Notificate.SetRecommendArmorNoti();
 
-        Manager.NotificateDot.SetWeaponEquipmentNoti();
-        Manager.NotificateDot.SetArmorEquipmentNoti();
+        Manager.Notificate.SetWeaponEquipmentNoti();
+        Manager.Notificate.SetArmorEquipmentNoti();
 
-        Manager.NotificateDot.SetEquipmentNoti();
+        Manager.Notificate.SetPlayerStateNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }
@@ -194,10 +193,10 @@ public class UIPopupEquipment : UIPopup
     {
         Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.WeaponItemList);
         //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
-        Manager.NotificateDot.SetRecommendWeaponNoti();
-        Manager.NotificateDot.SetWeaponEquipmentNoti();
-        Manager.NotificateDot.SetReinforceWeaponNoti();
-        Manager.NotificateDot.SetEquipmentNoti();
+        Manager.Notificate.SetRecommendWeaponNoti();
+        Manager.Notificate.SetWeaponEquipmentNoti();
+        Manager.Notificate.SetReinforceWeaponNoti();
+        Manager.Notificate.SetPlayerStateNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }
@@ -207,10 +206,10 @@ public class UIPopupEquipment : UIPopup
     {
         Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.ArmorItemList);
         //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
-        Manager.NotificateDot.SetRecommendArmorNoti();
-        Manager.NotificateDot.SetArmorEquipmentNoti();
-        Manager.NotificateDot.SetReinforceArmorNoti();
-        Manager.NotificateDot.SetEquipmentNoti();
+        Manager.Notificate.SetRecommendArmorNoti();
+        Manager.Notificate.SetArmorEquipmentNoti();
+        Manager.Notificate.SetReinforceArmorNoti();
+        Manager.Notificate.SetPlayerStateNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
     }

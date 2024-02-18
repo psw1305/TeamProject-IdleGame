@@ -3,18 +3,24 @@ using UnityEngine;
 
 public class Meteor : BaseSkill
 {
-    [SerializeField] private GameObject projectileSpawnArea;
+    private string _skillID = "S0009";
 
+    private long _damage;
+    private DamageType _damageType;
+
+    [SerializeField] private GameObject projectileSpawnArea;
 
     [SerializeField] private Vector2 minDestinationPosition;
     [SerializeField] private Vector2 maxDestinationPosition;
 
-    private GameObject _projectile;
+    private MeteorProjectile _projectile;
     private Coroutine _atkCor;
 
     protected override void ApplySkillEffect()
     {
         _atkCor = StartCoroutine(AtkLoop());
+        _skillDamageRatio = CalculateDamageRatio(_skillID);
+        Manager.Game.Player.FinalAttackDamage(out _damage, out _damageType);
     }
 
     protected override void RemoveSkillEffect()
@@ -27,14 +33,14 @@ public class Meteor : BaseSkill
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.4f);
-            _projectile = Manager.Asset.InstantiatePrefab("MeteorProjectile");
+            _projectile = Manager.Asset.InstantiatePrefab("MeteorProjectile").GetComponent<MeteorProjectile>();
+            _projectile.Damage = (long)(_damage * _skillDamageRatio);
+            _projectile.DamageTypeValue = _damageType;
+
             _projectile.transform.position = new Vector2(0, 5);
 
-            Manager.Game.Player.FinalAttackDamage(out _projectile.GetComponent<MeteorProjectile>().Damage
-                , out _projectile.GetComponent<MeteorProjectile>().DamageTypeValue);
-
-            _projectile.GetComponent<MeteorProjectile>().TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
+            _projectile.TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
+            yield return new WaitForSeconds(0.4f);
         }
     }
 }

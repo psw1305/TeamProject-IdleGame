@@ -115,8 +115,7 @@ public class InventoryManager
     // 선택한 아이템 강화
     public void ReinforceSelectTypeItem(List<UserItemData> itemList)
     {
-        List<UserItemData> targetItemlist = itemList;
-        foreach (var item in targetItemlist)
+        foreach (var item in itemList)
         {
             ReinforceItem(item);
         }
@@ -178,23 +177,3 @@ public class UserItemData
         equipped = Equiped;
     }
 }
-
-//[System.Serializable]
-//public class ItemDataBase
-//{
-//    public List<ItemData> ItemDB;
-//}
-
-//[System.Serializable]
-//public class ItemData
-//{
-//    public string ItemID;
-//    public string ItemName;
-//    public string type;
-//    public string statType;
-//    public string Rarity;
-//    public float EquipStat;
-//    public float ReinforceEquip;
-//    public float RetentionEffect;
-//    public float ReinforceEffect;
-//}

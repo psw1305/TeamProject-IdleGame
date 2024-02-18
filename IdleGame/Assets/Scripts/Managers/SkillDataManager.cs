@@ -48,6 +48,7 @@ public class SkillDataManager
     {
         SetSkillUIEquipSlot?.Invoke(index);
     }
+
     public void CallSetUISkillInvenSlot(string id)
     {
         SetSkillUIInvenSlot.Invoke(id);
@@ -93,11 +94,9 @@ public class SkillDataManager
             userInvenSkillData.hasCount -= Mathf.Min(userInvenSkillData.level + 1, 15);
             userInvenSkillData.level += 1;
         }
-    }
-
-    public UserInvenSkillData SearchSkill(string id)
-    {
-        return Manager.Data.SkillInvenDictionary[id];
+        CallSetUISkillInvenSlot(userInvenSkillData.itemID);
+        Manager.Notificate.SetReinforceSkillNoti();
+        Manager.Notificate.SetPlayerStateNoti();
     }
 
     public void ReinforceAllSkill()
@@ -108,6 +107,10 @@ public class SkillDataManager
         }
     }
 
+    public UserInvenSkillData SearchSkill(string id)
+    {
+        return Manager.Data.SkillInvenDictionary[id];
+    }
 }
 
 [System.Serializable]
@@ -131,23 +134,3 @@ public class UserInvenSkillData
     public int hasCount;
     public bool equipped;
 }
-
-
-//[System.Serializable]
-//public class SkillDataBase
-//{
-//    public List<SkillData> SkillDataList;
-//}
-
-//[System.Serializable]
-//public class SkillData
-//{
-//    public string ItemID;
-//    public string SkillName;
-//    public string Description;
-//    public string Rarity;
-//    public float SkillDamage;
-//    public float ReinforceDamage;
-//    public float RetentionEffect;
-//    public float ReinforceEffect;
-//}

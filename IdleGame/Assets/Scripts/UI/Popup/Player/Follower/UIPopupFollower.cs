@@ -19,8 +19,6 @@ public class UIPopupFollower : UIPopup
 
     #endregion
 
-    public event Action RefreshReinforecEvent;
-
     protected override void Init()
     {
         base.Init();
@@ -50,39 +48,9 @@ public class UIPopupFollower : UIPopup
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
 
-    // TODO : follower data 가져오기
-    private void OperNeedItemCount()
-    {
-        if (_selectItemData.level < 15)
-        {
-            _needCount = _selectItemData.level + 1;
-        }
-        else
-        {
-            _needCount = 15;
-        }
-    }
-
-    public void SetSelectItemInfo(UserItemData selectItemData)
-    {
-
-    }
-
-    private void CallReinforceRefreshEvent()
-    {
-        RefreshReinforecEvent?.Invoke();
-    }
-
     private void ReinforceFollowers(PointerEventData enterEvent)
     {
-        Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.WeaponItemList);
-        // TODO: 강화 알리미 추가 
-        //Manager.NotificateDot.SetRecommendWeaponNoti();
-        //Manager.NotificateDot.SetWeaponEquipmentNoti();
-        //Manager.NotificateDot.SetReinforceWeaponNoti();
-        //Manager.NotificateDot.SetEquipmentNoti();
-        SetSelectItemInfo(_selectItemData);
-        CallReinforceRefreshEvent();
+        Manager.FollowerData.ReinforceAllFollower();
     }
 
     private void ClosePopup(PointerEventData eventData)

@@ -20,6 +20,10 @@ public class StageManager
     private Coroutine stageCoroutine;
     private UISceneMain uISceneMain;
 
+    private BackgroundControl backgroundControl;
+
+    // 스케일 비율 
+    private float ratio;
     #endregion
 
     #region Properties
@@ -77,6 +81,11 @@ public class StageManager
         Chapter = profile.Stage_Chapter;
         StageLevel = profile.Stage_Level;
         WaveLoop = profile.Stage_WaveLoop;
+
+        ratio = Manager.Game.screenRatio;
+
+        backgroundControl = Object.FindObjectOfType<BackgroundControl>();
+        backgroundControl.Initiailize();
     }
 
     public void SetStage(Transform[] spawnPoint, Transform bossSpawnPoint)
@@ -215,7 +224,7 @@ public class StageManager
         enemyList.Add(enemy);
 
         // 보스->몬스터 임시 변경
-        enemyObject.transform.localScale = new Vector2(1, 1);
+        enemyObject.transform.localScale = new Vector2(1 - ratio, 1 - ratio);
     }
 
     private void BossWaveSpawn()
@@ -230,7 +239,7 @@ public class StageManager
         enemyList.Add(enemy);
 
         // 보스 설정 임시 변경
-        bossObject.transform.localScale = new Vector2(3, 3);
+        bossObject.transform.localScale = new Vector2(3 - ratio, 3 - ratio);
     }
 
     private void WaveCompleted()
@@ -250,6 +259,7 @@ public class StageManager
             StageDataChange(Chapter);
             Manager.Game.Player.IdleRewardPopupUpdate();
             uISceneMain.StageLevelGaugeToggle();
+            backgroundControl.ChangeSprite(); // 챕터 상승 시 배경 변경
         }
 
         uISceneMain.UpdateStageLevel(StageLevel);
