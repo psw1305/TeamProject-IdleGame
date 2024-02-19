@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class UISceneMain : UIScene
 {
@@ -18,8 +18,6 @@ public class UISceneMain : UIScene
     private UIUpgradeStat UpgradeStat_CriticalChance;
     private UIUpgradeStat UpgradeStat_CriticalDamage;
 
-    private TextMeshProUGUI txt_Gold;
-    private TextMeshProUGUI txt_Gems;
     private TextMeshProUGUI txt_Stage;
     private TextMeshProUGUI txt_PlayerPower;
 
@@ -69,14 +67,11 @@ public class UISceneMain : UIScene
     {
         SetUI<TextMeshProUGUI>();
 
-        txt_Gold = GetUI<TextMeshProUGUI>("Txt_Gold");
-        txt_Gems = GetUI<TextMeshProUGUI>("Txt_Jewel");
         txt_Stage = GetUI<TextMeshProUGUI>("Txt_Stage");
         txt_PlayerPower = GetUI<TextMeshProUGUI>("Txt_PlayerPower");
 
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
         _txtQuestObjective = GetUI<TextMeshProUGUI>("Txt_QuestObjective");
-
         _textIdleNotice = GetUI<TextMeshProUGUI>("Text_IdleRewards_Notice");
     }
 
@@ -89,10 +84,6 @@ public class UISceneMain : UIScene
 
         _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
         _btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);
-
-        SetButtonEvent("Btn_PlayerSystem", UIEventType.Click, OnPlayerSystem);
-        SetButtonEvent("Btn_Ranking", UIEventType.Click, OnRanking);
-        SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
     }
 
     private void SetUpgradeStats()
@@ -116,8 +107,6 @@ public class UISceneMain : UIScene
     private void SetUI()
     {
         // Update Top UI
-        UpdateGold();
-        UpdateGems();
         UpdatePlayerPower();
         UpdateCurrentStage();
 
@@ -197,11 +186,8 @@ public class UISceneMain : UIScene
     {
         if (_btnIdleRewards.interactable) Manager.UI.ShowPopup<UIPopupRewardsIdle>("UIPopupRewardsIdle");
     }
-    private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptions>("UIDropDownOptions");
+    private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptions>("UIPopupOptions");
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
-    private void OnPlayerSystem(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupPlayerSystem>();
-    private void OnRanking(PointerEventData eventData) => Debug.Log("랭킹시스템 임시 잠금");
-    private void OnShop(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupShopSummon>();
 
     private void OnGameSpeed(PointerEventData eventData)
     {
@@ -220,16 +206,6 @@ public class UISceneMain : UIScene
     #endregion
 
     #region Update UI
-
-    public void UpdateGold()
-    {
-        txt_Gold.text = Utilities.ConvertToString(player.Gold);
-    }
-
-    public void UpdateGems()
-    {
-        txt_Gems.text = player.Gems.ToString();
-    }
 
     public void UpdateCurrentStage()
     {

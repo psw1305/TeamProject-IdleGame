@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIPopupRanking : UIPopup
+public class UISubSceneRanking : UIScene
 {
     [SerializeField] private Transform contents;
 
@@ -18,9 +18,11 @@ public class UIPopupRanking : UIPopup
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
-        SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
+        SetButtonEvent("Btn_Close", UIEventType.Click, CloseSubScene);
+        SetButtonEvent("DimScreen", UIEventType.Click, CloseSubScene);
     }
+
+    #endregion
 
     #region Ranking Methods
 
@@ -33,12 +35,7 @@ public class UIPopupRanking : UIPopup
 
     #region Button Events
 
-    private void ClosePopup(PointerEventData eventData)
-    {
-        Manager.UI.ClosePopup();
-    }
-
-    #endregion
+    private void CloseSubScene(PointerEventData eventData) => Manager.UI.CloseSubScene();
 
     #endregion
 }

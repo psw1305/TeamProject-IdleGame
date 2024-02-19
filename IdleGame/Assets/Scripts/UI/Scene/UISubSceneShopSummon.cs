@@ -2,14 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
-public class UIPopupShopSummon : UIPopup
+public class UISubSceneShopSummon : UIScene
 {
     #region Fields
-
-    private TextMeshProUGUI goldText;
-    private TextMeshProUGUI gemsText;
 
     private Player player;
     private SummonManager _summon;
@@ -35,25 +31,14 @@ public class UIPopupShopSummon : UIPopup
         _content = transform.GetComponentInChildren<VerticalLayoutGroup>().gameObject;
         _summon.SetShopPopup(this);
 
-        SetTexts();
         SetButtonEvents();
         SummonBannerInit();
-    }
-
-    private void SetTexts()
-    {
-        SetUI<TextMeshProUGUI>();
-        goldText = GetUI<TextMeshProUGUI>("Txt_Gold");
-        gemsText = GetUI<TextMeshProUGUI>("Txt_Jewel");
-
-        UpdateGold();
-        UpdateGems();
     }
 
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        SetButtonEvent("Btn_Close", UIEventType.Click, CloseSummonPopup);
+        SetButtonEvent("Btn_Close", UIEventType.Click, CloseSubScene);
     }
 
     private void SummonBannerInit()
@@ -78,24 +63,14 @@ public class UIPopupShopSummon : UIPopup
         _summon.SummonTry(addcount, typeLink, btnUI);
     }
 
-    private void CloseSummonPopup(PointerEventData eventData)
+    private void CloseSubScene(PointerEventData eventData)
     {
         _summon.SetShopPopup(null);
-        Manager.UI.ClosePopup();
+        Manager.UI.CloseSubScene();
     }
     #endregion
 
     #region UI Update Method
-
-    public void UpdateGold()
-    {
-        goldText.text = Manager.Game.Player.Gold.ToString();
-    }
-
-    public void UpdateGems()
-    {
-        gemsText.text = Manager.Game.Player.Gems.ToString();
-    }
 
     public void BannerUpdate(string typeLink, int summonCountsAdd)
     {

@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 909972524036897066}
   - component: {fileID: -8938170505013741216}
   m_Layer: 5
-  m_Name: UIPopupRanking
+  m_Name: UISubSceneRanking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3969319395885934769
 MonoBehaviour:

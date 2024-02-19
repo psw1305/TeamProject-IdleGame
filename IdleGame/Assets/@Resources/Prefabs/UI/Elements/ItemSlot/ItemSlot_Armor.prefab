@@ -866,9 +866,10 @@ GameObject:
   - component: {fileID: 1418655227743375837}
   - component: {fileID: 8076452739330684734}
   - component: {fileID: 7458344093727640609}
-  - component: {fileID: 7974294696286444960}
+  - component: {fileID: 2796191159971722188}
+  - component: {fileID: -6848463396112888135}
   m_Layer: 5
-  m_Name: Slot_Follower
+  m_Name: ItemSlot_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,7 +983,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7974294696286444960
+--- !u!114 &2796191159971722188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -991,14 +992,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 7618128863570054218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e238bf1da9fc444bb5566d4f035be86, type: 3}
+  m_Script: {fileID: 11500000, guid: 40a922925ee1b9c4cb8b7f50430935e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelText: {fileID: 312036908265618825}
-  equippdText: {fileID: 4714479984196514664}
+  _lvTxt: {fileID: 312036908265618825}
+  _equippdText: {fileID: 4714479984196514664}
   reinforceProgress: {fileID: 7828178646648765872}
   reinforceText: {fileID: 2455639154126169145}
   itemSprite: {fileID: 5858656698680368988}
   lockCover: {fileID: 1954735954939927318}
   lockIcon: {fileID: 6895592357866574191}
-  reinforceIcon: {fileID: 1472945306752739152}
+  ReinforceIcon: {fileID: 1472945306752739152}
+--- !u!114 &-6848463396112888135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618128863570054218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac67024e0a352134fbffdcf7ec4ea703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChildNotiDot: {fileID: 0}
