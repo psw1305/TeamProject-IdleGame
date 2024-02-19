@@ -15,14 +15,14 @@ public class PlayerFollowerHandler : MonoBehaviour
             var go = new GameObject("FollowerObj");
             go.transform.parent = transform;
             _userEquipFollowerSlot.Add(equipslotIndex, go.AddComponent<EquipFollowerData>());
-            _userEquipFollowerSlot[equipslotIndex].SetFollowerObject(Manager.Data.FollowerData.UserEquipFollower[equipslotIndex].itemID, _followerPosition[equipslotIndex]);
+            _userEquipFollowerSlot[equipslotIndex].SetFollowerObject(Manager.Data.FollowerData.UserEquipFollower[equipslotIndex].itemID, _followerPosition[equipslotIndex], equipslotIndex);
             equipslotIndex++;
         }
     }
 
     public void ChangeEquipFollowerData(int slotIndex)
     {
-        _userEquipFollowerSlot[slotIndex].SetFollowerObject(Manager.Data.FollowerData.UserEquipFollower[slotIndex].itemID, _followerPosition[slotIndex]);
+        _userEquipFollowerSlot[slotIndex].SetFollowerObject(Manager.Data.FollowerData.UserEquipFollower[slotIndex].itemID, _followerPosition[slotIndex], slotIndex);        
     }
 }
 
@@ -32,7 +32,7 @@ public class EquipFollowerData: MonoBehaviour
 
     public Follower FollowerScript { get; private set; }
 
-    public void SetFollowerObject(string itemID, Transform spawntransform)
+    public void SetFollowerObject(string itemID, Transform spawntransform, int slotIndex)
     {
         if(itemID == "Empty")
         {
@@ -51,7 +51,8 @@ public class EquipFollowerData: MonoBehaviour
         }
 
         var followerBlueprint = Manager.FollowerData.FollowerDataDictionary[itemID];
-        FollowerObject = Manager.Asset.InstantiatePrefab("FollowerFrame", spawntransform);        
+        FollowerObject = Manager.Asset.InstantiatePrefab("FollowerFrame", spawntransform);
+        FollowerObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = slotIndex;
         FollowerScript = FollowerObject.GetComponent<Follower>();
         FollowerScript.Initialize(followerBlueprint);
     }
