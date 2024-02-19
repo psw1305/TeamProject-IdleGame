@@ -35,6 +35,8 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI _txtQuestObjective;
     private TextMeshProUGUI _textIdleNotice;
 
+    private bool isSpeedUp = false;
+
     #endregion
 
     #region Initialize
@@ -190,8 +192,19 @@ public class UISceneMain : UIScene
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
 
     private void OnGameSpeed(PointerEventData eventData)
-    {
-        Debug.Log("게임 스피드 업"); // 버튼 작동 테스트
+    {        
+        if(isSpeedUp)
+        {
+            Debug.Log("게임 스피드 다운");
+            isSpeedUp = false;
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Debug.Log("게임 스피드 업");
+            isSpeedUp = true;
+            Time.timeScale = 1.5f;
+        }
     }
 
     private void OnQuestComplete(PointerEventData eventData)
@@ -262,7 +275,8 @@ public class UISceneMain : UIScene
 
     #endregion
 
-    // 임시. 퀘스트 목표 TEXT 내용 반환
+    #region Quest
+
     public string QuestObjective()
     {
         if (Manager.Quest.CurrentQuest.questType == QuestType.StageClear)
@@ -274,4 +288,6 @@ public class UISceneMain : UIScene
             return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.currentValue} / {Manager.Quest.CurrentQuest.objectiveValue}");
         }
     }
+
+    #endregion
 }

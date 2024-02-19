@@ -4,7 +4,6 @@ public class ProjectileHandlerBase : ObjectPoolable
 {
     [HideInInspector]
     public long Damage;
-    [HideInInspector]
     public GameObject ProjectileVFX;
     [HideInInspector]
     public DamageType DamageTypeValue = DamageType.Normal;
