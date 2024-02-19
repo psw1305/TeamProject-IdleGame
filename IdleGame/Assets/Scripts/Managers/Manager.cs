@@ -17,7 +17,7 @@ public class Manager : MonoBehaviour
                 GameObject obj = GameObject.Find("@Manager");
                 if (obj == null)
                 {
-                    obj = new() { name = @"Manager" };
+                    obj = new() { name = "@Manager" };
                     obj.AddComponent<Manager>();
                     DontDestroyOnLoad(obj);
                     instance = obj.GetComponent<Manager>();
@@ -31,7 +31,7 @@ public class Manager : MonoBehaviour
 
     #region Manage
 
-    private readonly AddressableManager address = new();
+    private readonly AssetManager asset = new();
     private readonly SessionManager session = new();
     private readonly DataManager data = new();
     private readonly GameManager game = new();
@@ -40,13 +40,13 @@ public class Manager : MonoBehaviour
     private readonly InventoryManager inventory = new();
     private readonly QuestManager quest = new();
     private readonly SummonManager summon = new();
-    private readonly NotificateManager notificateDot = new();
+    private readonly NotificateManager notificate = new();
     private readonly ObjectPoolManager objectPool = new();
     private readonly SkillDataManager skillData = new();
     private readonly FollowerDataManager followerData = new();
     private readonly RankingManager ranking = new();
 
-    public static AddressableManager Address => Instance != null ? Instance.address : null;
+    public static AssetManager Asset => Instance != null ? Instance.asset : null;
     public static SessionManager Session => Instance != null ? Instance.session : null;
     public static DataManager Data => Instance != null ? Instance.data : null;
     public static GameManager Game => Instance != null ? Instance.game : null;
@@ -55,7 +55,7 @@ public class Manager : MonoBehaviour
     public static InventoryManager Inventory => Instance != null ? Instance.inventory : null;
     public static QuestManager Quest => Instance != null ? Instance.quest : null;
     public static SummonManager Summon => Instance != null ? Instance.summon : null;
-    public static NotificateManager NotificateDot => Instance != null ? Instance.notificateDot : null;
+    public static NotificateManager Notificate => Instance != null ? Instance.notificate : null;
     public static ObjectPoolManager ObjectPool => Instance != null ? Instance.objectPool : null;
     public static SkillDataManager SkillData => Instance != null ? Instance.skillData : null;
     public static FollowerDataManager FollowerData => Instance != null ? Instance.followerData : null;

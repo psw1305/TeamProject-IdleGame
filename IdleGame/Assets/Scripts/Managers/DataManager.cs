@@ -49,7 +49,7 @@ public class DataManager
 
     public void CreateUserEquipment()
     {
-        var jsonData = Manager.Address.GetText("UserTableEquipment");
+        var jsonData = Manager.Asset.GetText("UserTableEquipment");
         Inventory = JsonUtility.FromJson<InventoryData>(jsonData);
 
         SaveToUserEquipment();
@@ -57,7 +57,7 @@ public class DataManager
 
     public void CreateUserSkill()
     {
-        var jsonData = Manager.Address.GetText("UserTableSkill");
+        var jsonData = Manager.Asset.GetText("UserTableSkill");
         UserSkillData = JsonUtility.FromJson<UserSkillData>(jsonData);
 
         SaveToUserSkill();
@@ -65,7 +65,7 @@ public class DataManager
 
     public void CreateUserFollower()
     {
-        var jsonData = Manager.Address.GetText("UserTableFollower");
+        var jsonData = Manager.Asset.GetText("UserTableFollower");
         FollowerData = JsonUtility.FromJson<UserFollowerData>(jsonData);
 
         SaveToUserFollower();
@@ -83,8 +83,6 @@ public class DataManager
         LoadFromUserSkill();
         LoadFromUserFollower();
         Debug.Log($"Load From {Application.persistentDataPath}");
-
-        //yield return null;
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")
@@ -165,6 +163,7 @@ public class DataManager
         Profile.Stage_Level = Manager.Stage.StageLevel;
         Profile.Stage_WaveLoop = Manager.Stage.WaveLoop;
         Profile.Quest_Complete = Manager.Quest.QuestNum;
+        Profile.Quest_Current_Progress = Manager.Quest.DefeatQuestValue;
         Profile.Summon_Progress_Equipment = Manager.Summon.GetSummonCounts("Equipment");
         Profile.Summon_Progress_Skills = Manager.Summon.GetSummonCounts("Skills");
         Profile.Summon_Progress_Follower = Manager.Summon.GetSummonCounts("Follower");
@@ -266,6 +265,7 @@ public class DataManager
             { "Stage_Level", Manager.Stage.StageLevel },
             { "Stage_WaveLoop", Manager.Stage.WaveLoop },
             { "Quest_Complete", Manager.Quest.QuestNum },
+            { "Quest_Current_Progress", Manager.Quest.DefeatQuestValue }
         };
 
         Manager.Session.UpdateUserData(updates);

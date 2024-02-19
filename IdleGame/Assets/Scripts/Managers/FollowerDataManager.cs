@@ -12,7 +12,7 @@ public class FollowerDataManager
 
     public void ParseFollowerData()
     {
-        _follwerDataContainer = Manager.Address.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
+        _follwerDataContainer = Manager.Asset.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
         //_follwerData = JsonUtility.FromJson<FollowerDataBase>(_followerDataBaseText);
         foreach (var followerData in _follwerDataContainer.followerDatas)
         {
@@ -97,6 +97,9 @@ public class FollowerDataManager
             userInvenFollowerData.hasCount -= Mathf.Min(userInvenFollowerData.level + 1, 15);
             userInvenFollowerData.level += 1;
         }
+        CallSetUIFollowerInvenSlot(userInvenFollowerData.itemID);
+        Manager.Notificate.SetReinforceFollowerNoti();
+        Manager.Notificate.SetPlayerStateNoti();
     }
     public void ReinforceAllFollower()
     {
@@ -148,22 +151,3 @@ public class UserInvenFollowerData
     public int hasCount;
     public bool equipped;
 }
-
-//[System.Serializable]
-//public class FollowerDataBase
-//{
-//    public List<FollowerData> FollowerDataList;
-//}
-
-//[System.Serializable]
-//public class FollowerData
-//{
-//    public string itemID;
-//    public string followerName;
-//    public string rarity;
-//    public float damageCorrection;
-//    public float atkSpeed;
-//    public float reinforceDamage;
-//    public float retentionEffect;
-//    public float reinforceEffect;
-//}

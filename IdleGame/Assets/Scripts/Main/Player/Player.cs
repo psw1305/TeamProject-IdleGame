@@ -245,7 +245,7 @@ public class Player : MonoBehaviour, IDamageable
     public void Attack()
     {
         // 효과음 예시
-        AudioSFX.Instance.PlayOneShot(Manager.Address.GetAudioSFX("testatk"));
+        AudioSFX.Instance.PlayOneShot(Manager.Asset.GetAudio("testatk"));
 
         playerAnimController.OnRangeAtk();
         MakeRangeProjectile();

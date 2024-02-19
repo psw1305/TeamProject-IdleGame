@@ -36,6 +36,8 @@ public class ObjectPoolManager
 
     public void Initialize()
     {
+        GameObject obj = new GameObject("Object Polling List");
+
         for (int i = 0; i < _poolList.Length; i++)
         {
             IObjectPool<GameObject> pool = new ObjectPool<GameObject>(CreateProjectile, OnGetProjectile,
@@ -48,6 +50,7 @@ public class ObjectPoolManager
                 _objectName = _poolList[i].ObjectName;
                 ObjectPoolable poolGo = CreateProjectile().GetComponent<ObjectPoolable>();
                 poolGo.Poolable.Release(poolGo.gameObject);
+                poolGo.transform.SetParent(obj.transform);
             }
         }
     }
@@ -58,7 +61,7 @@ public class ObjectPoolManager
 
     private GameObject CreateProjectile()
     {
-        GameObject poolGo = Manager.Address.InstantiatePrefab(_objectName);
+        GameObject poolGo = Manager.Asset.InstantiatePrefab(_objectName);
         poolGo.GetComponent<ObjectPoolable>().SetManagedPool(_poolDict[_objectName]);
         return poolGo;
     }

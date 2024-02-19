@@ -1114,6 +1114,7 @@ GameObject:
   - component: {fileID: 397382675197301893}
   - component: {fileID: 9072558411501499969}
   - component: {fileID: 1356962585282411307}
+  - component: {fileID: 7493087671224894167}
   m_Layer: 5
   m_Name: Btn_ReinforceFollower
   m_TagString: Untagged
@@ -1223,6 +1224,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7493087671224894167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383968087017150210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cbb46b802c36647a21cc12c2ddf841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5504587949975827640
 GameObject:
   m_ObjectHideFlags: 0

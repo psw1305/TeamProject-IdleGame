@@ -4,8 +4,8 @@ public class ParallaxController : MonoBehaviour
 {
     #region Serialize Fields
 
-    [SerializeField] private float[] layer_Speed = new float[7];
-    [SerializeField] private GameObject[] layer_Objects = new GameObject[7];
+    [SerializeField] private float[] layer_Speed = new float[6];
+    [SerializeField] private GameObject[] layer_Objects = new GameObject[6];
 
     #endregion
 
@@ -18,7 +18,7 @@ public class ParallaxController : MonoBehaviour
 
     public void LayerMove()
     {
-        for (int i = 1; i < 7; i++)
+        for (int i = 1; i < layer_Objects.Length; i++)
         {
             layer_Objects[i].transform.GetChild(0).position += Vector3.left * Time.deltaTime * layer_Speed[i];
             layer_Objects[i].transform.GetChild(1).position += Vector3.left * Time.deltaTime * layer_Speed[i];

@@ -33,7 +33,7 @@ public class MegaMeteor : BaseSkill
     {
         while (true)
         {
-            _projectile = Manager.Address.InstantiatePrefab("MeteorProjectile").GetComponent<MeteorProjectile>();
+            _projectile = Manager.Asset.InstantiatePrefab("MeteorProjectile").GetComponent<MeteorProjectile>();
             _projectile.Damage = (long)(_damage * _skillDamageRatio);
             _projectile.DamageTypeValue = _damageType;
 

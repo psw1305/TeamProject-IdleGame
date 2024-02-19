@@ -147,7 +147,6 @@ public class UIPopupSkillDetail : UIPopup
     private void ReinforceSkill(PointerEventData eventData)
     {
         Manager.SkillData.ReinforceSkill(_data);
-        Manager.SkillData.CallSetUISkillInvenSlot(_data.itemID);
 
         SetReinforceBtn();
         SetUIReinforce();

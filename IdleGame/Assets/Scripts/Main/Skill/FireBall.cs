@@ -23,7 +23,7 @@ public class FireBall : BaseSkill
     {
         while (Manager.Game.Player.enemyList.Count > 0)
         {
-            _projectile = Manager.Address.InstantiatePrefab("FireBallProjectile", transform).GetComponent<FireBallProjectile>();
+            _projectile = Manager.Asset.InstantiatePrefab("FireBallProjectile", transform).GetComponent<FireBallProjectile>();
             _projectile.transform.position = projectileSpawnPosition.transform.position;
 
             Manager.Game.Player.FinalAttackDamage(out _projectile.Damage, out _projectile.DamageTypeValue);

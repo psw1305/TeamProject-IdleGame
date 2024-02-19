@@ -18,7 +18,8 @@ public class UIRewardsItemSlot : MonoBehaviour
 
     public void UpdateSlot(string index)
     {
-        _icon.sprite = Manager.Address.GetSprite(index);
+        // TODO => 아이템 데이터에서 이미지 가져오도록
+        //_icon.sprite = Manager.Asset.GetSprite(index);
     }
 
     public void SlotClear()

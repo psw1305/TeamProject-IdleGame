@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIUseSkillContainer : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class UIUseSkillContainer : MonoBehaviour
             _slots.Add(gameObject.GetComponentsInChildren<UIUseSkillSlots>()[i]);
             _slots[i].SetUISkillSlot(_playerSkillHandler.UserEquipSkillSlot[i]);
         }
-        _playerSkillHandler.AddActionUseSkill(SetUsingUIState);
+        _playerSkillHandler.AddActionUseSkill(SetUISkillState);
         _playerSkillHandler.AddActionChangeSkill(SetSkillUIState);
     }
 
@@ -25,7 +26,7 @@ public class UIUseSkillContainer : MonoBehaviour
     }
 
 
-    public void SetUsingUIState(int index)
+    public void SetUISkillState(int index)
     {
         _slots[index].SetUIUseSkill();
     }
@@ -34,7 +35,7 @@ public class UIUseSkillContainer : MonoBehaviour
     {
         if(_playerSkillHandler != null)
         {
-            _playerSkillHandler.RemoveActionUseSkill(SetUsingUIState);
+            _playerSkillHandler.RemoveActionUseSkill(SetUISkillState);
             _playerSkillHandler.RemoveActionChangeSkill(SetSkillUIState);
         }
     }
