@@ -9,6 +9,7 @@ public class MegaMeteor : BaseSkill
     private DamageType _damageType;
 
     [SerializeField] private GameObject projectileSpawnArea;
+    [SerializeField] private GameObject skillProjectile;
 
     [SerializeField] private Vector2 minDestinationPosition;
     [SerializeField] private Vector2 maxDestinationPosition;
@@ -33,7 +34,7 @@ public class MegaMeteor : BaseSkill
     {
         while (true)
         {
-            _projectile = Manager.Address.InstantiatePrefab("MeteorProjectile").GetComponent<MeteorProjectile>();
+            _projectile = Instantiate(skillProjectile).GetComponent<MeteorProjectile>();
             _projectile.Damage = (long)(_damage * _skillDamageRatio);
             _projectile.DamageTypeValue = _damageType;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 public class FireBall : BaseSkill
 {
     [SerializeField] private GameObject projectileSpawnPosition;
+    [SerializeField] private GameObject skillProjectile;
 
     private FireBallProjectile _projectile;
     private Coroutine _atkCor;
@@ -23,7 +24,9 @@ public class FireBall : BaseSkill
     {
         while (Manager.Game.Player.enemyList.Count > 0)
         {
-            _projectile = Manager.Address.InstantiatePrefab("FireBallProjectile", transform).GetComponent<FireBallProjectile>();
+
+            _projectile = Instantiate(skillProjectile, transform).GetComponent<FireBallProjectile>();
+
             _projectile.transform.position = projectileSpawnPosition.transform.position;
 
             Manager.Game.Player.FinalAttackDamage(out _projectile.Damage, out _projectile.DamageTypeValue);

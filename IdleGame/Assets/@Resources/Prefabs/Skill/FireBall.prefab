@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5633480301767991925}
   - component: {fileID: 2757800328718091775}
   m_Layer: 0
-  m_Name: FireBallObj
+  m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,3 +47,4 @@ MonoBehaviour:
   effectDurateTime: 1
   coolDown: 2
   projectileSpawnPosition: {fileID: 4650271145879309026}
+  skillProjectile: {fileID: 729477830978001608, guid: e590fc4b1abd53d44b14a6634343f11c, type: 3}
