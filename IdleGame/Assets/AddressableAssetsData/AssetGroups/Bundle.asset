@@ -401,6 +401,150 @@ MonoBehaviour:
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 239075ecd099a1543a760a7f1147a632
+    m_Address: B_IceDragon.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba5614711c0d83f41ace52324d18cf0a
+    m_Address: B_IceGuardian.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc1e5e8c519c88744b0b7816970f1409
+    m_Address: Icecrab.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7094b4633a184042bf1228501af9051
+    m_Address: IceMage.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1cd136ac69956154e8f3641ac098385a
+    m_Address: Iceneedle.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a9efce4657be774bb27fb55557b9433
+    m_Address: IceSlime.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c62dff3009a5b146bc28f616831a8ef
+    m_Address: Snowman.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b1cf1b16bc1f3642aad539b7df73f3d
+    m_Address: Yeti.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab1ae3d197c841f43ae8559a2ea383dc
+    m_Address: B_Butcher.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6926890edf7881d4c8ac7c958c77e335
+    m_Address: B_Minotauros.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68481bae80b41834384a38f4a0cf0f70
+    m_Address: Bug.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db45ed3d9fea05b40978c21a9abc170e
+    m_Address: Mushroom1.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d31caffeeb52fce4896e78d6e8b4ef39
+    m_Address: Mushroom2.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50c8b3f6f339f2a488a4cd64c60da9a1
+    m_Address: Raptor.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7230ba8a72989640a1d7405c33786dd
+    m_Address: RockMonster.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cde134844c73192419d0a3fd40e9c1d7
+    m_Address: WoodMonster.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7573657d9ad4cb4fb720f583c3291cb
+    m_Address: B_DarkArchmage.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a70adecd772009240a8b160ba5dab640
+    m_Address: B_Predator.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a302bf583206dac4b95640fdfd724d4c
+    m_Address: EvilDog.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c42e59d460ddb4439efb7fa2c8d0d60
+    m_Address: EvilMonkey.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ebc7fdacf5409344af547aa47985e48
+    m_Address: EvilOwl.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b27af1c567b7bf479bafc3d0aead545
+    m_Address: EvilSlime.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9510e51bf5fb131428cf5bd287c407ea
+    m_Address: Gargoyle.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 547ebda3abb3e15418bdf932170d9963
+    m_Address: Specter.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4a6bef2a1e0af3847be1bf5bec164b6f, type: 2}
   m_SchemaSet:
