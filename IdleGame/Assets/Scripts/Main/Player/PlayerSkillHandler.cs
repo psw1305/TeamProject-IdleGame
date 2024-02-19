@@ -109,7 +109,7 @@ public class EquipSkillData : MonoBehaviour
 
         // 프로퍼티를 설정함
         var obj = Manager.SkillData.SkillDataDictionary[itemID].SkillObject;
-        SkillObject = Manager.Asset.InstantiatePrefab(obj.name, Manager.Game.Player.transform);
+        SkillObject = Instantiate(obj, Manager.Game.Player.transform);
         SkillObject.transform.parent = transform;
         SkillScript = SkillObject.GetComponent<BaseSkill>();
     }
