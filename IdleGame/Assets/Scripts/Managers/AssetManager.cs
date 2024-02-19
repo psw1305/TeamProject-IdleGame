@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -37,11 +38,9 @@ public class AssetManager
         if (assets.TryGetValue(key, out UnityEngine.Object asset))
         {
             callback?.Invoke(asset as T);
-            return;
         }
 
         string loadKey = key;
-
         var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
         asyncOperation.Completed += (result) =>
         {
@@ -54,25 +53,51 @@ public class AssetManager
     /// 해당 label을 가진 모든 리소스를 비동기 로드
     /// 완료되면 콜백(key, 현재로드수, 전체로드수) 호출
     /// </summary>
-    public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
+    //public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
+    //{
+    //    var operation = Addressables.LoadResourceLocationsAsync(label, typeof(T));
+
+    //    operation.Completed += (op) =>
+    //    {
+    //        int loadCount = 0;
+    //        int totalCount = op.Result.Count;
+
+    //        foreach (IResourceLocation result in op.Result)
+    //        {
+    //            LoadAsync<T>(result.PrimaryKey, obj =>
+    //            {
+    //                loadCount++;
+    //                callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
+    //            });
+    //        }
+    //    };
+    //}
+
+    public IEnumerator LoadAllAsyncCoroutine<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
     {
         var operation = Addressables.LoadResourceLocationsAsync(label, typeof(T));
+        yield return operation;
 
-        operation.Completed += (op) =>
+        if (operation.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
         {
             int loadCount = 0;
-            int totalCount = op.Result.Count;
+            int totalCount = operation.Result.Count;
 
-            foreach (IResourceLocation result in op.Result)
+            foreach (IResourceLocation result in operation.Result)
             {
+                yield return new WaitForSeconds(1.0f / totalCount);
+
                 LoadAsync<T>(result.PrimaryKey, obj =>
                 {
                     loadCount++;
-                    // callback을 받아 loadCount / totalCount로 로딩중을 만들 수도 있다.
                     callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
                 });
             }
-        };
+        }
+        else
+        {
+            Debug.LogError("Failed to load resource locations.");
+        }
     }
 
     #endregion

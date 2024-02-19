@@ -300,7 +300,7 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5917d8b06e921084195ed2df7d446926
-    m_Address: UIPopupShopSummon.prefab
+    m_Address: UISubSceneShopSummon.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -318,37 +318,37 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 133d7d554e49ec941a751103488b98a5
-    m_Address: UIPopupPlayerSystem.prefab
+    m_Address: UISubScenePlayerSystem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f949726f61fda2647b293ded825f1ccf
-    m_Address: UIDropDownOptions.prefab
+    m_Address: UIPopupOptions.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 57b54498119d5f84096529496188aaab
-    m_Address: Slot_Armor.prefab
+    m_Address: ItemSlot_Armor.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74eb856db4c5e9c458748a0f8c9261de
-    m_Address: Slot_Follower.prefab
+    m_Address: ItemSlot_Follower.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 34593a6e7610cf0468f571edc473964e
-    m_Address: Slot_Skill.prefab
+    m_Address: ItemSlot_Skill.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5935ce630e284946b30476dc8cdc47f
-    m_Address: Slot_Weapon.prefab
+    m_Address: ItemSlot_Weapon.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -541,6 +541,24 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 547ebda3abb3e15418bdf932170d9963
     m_Address: Specter.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b71fb3d7e54efff46b7d91d287d190b6
+    m_Address: UISubSceneRanking.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c7fa817d0855414db0f2f3b37a25787
+    m_Address: Meteor.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6eff6273c57086040ad9c091a98805d4
+    m_Address: MeteorProjectile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle

@@ -10,7 +10,7 @@ public partial class SummonManager
     private Player _player;
     private InventoryManager _inventoryManager;
     private FollowerDataManager _followerDataManager;
-    private UIPopupShopSummon _shopSummon;
+    private UISubSceneShopSummon _shopSummon;
 
     private List<int> summonResurt = new List<int>(200);
     private List<string> resultIdList = new List<string>(200);
@@ -40,7 +40,7 @@ public partial class SummonManager
         }
     }
 
-    public void SetShopPopup(UIPopupShopSummon uIPopupShopSummon)
+    public void SetShopPopup(UISubSceneShopSummon uIPopupShopSummon)
     {
         _shopSummon = uIPopupShopSummon;
     }

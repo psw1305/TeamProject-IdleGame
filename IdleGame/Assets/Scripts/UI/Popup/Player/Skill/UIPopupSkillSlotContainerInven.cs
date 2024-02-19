@@ -45,7 +45,7 @@ public class UIPopupSkillSlotContainerInven : MonoBehaviour
 
         foreach (var itemData in Manager.Data.UserSkillData.UserInvenSkill)
         {
-            UIPopupSkillSlotsInven slot = Manager.Asset.InstantiatePrefab("Slot_Skill", gameObject.transform).GetComponent<UIPopupSkillSlotsInven>();
+            UIPopupSkillSlotsInven slot = Manager.Asset.InstantiatePrefab("ItemSlot_Skill", gameObject.transform).GetComponent<UIPopupSkillSlotsInven>();
             SkillSlots.Add(itemData.itemID, slot);
             slot.InitSlotInfo(itemData);
             slot.InitSlotUI();

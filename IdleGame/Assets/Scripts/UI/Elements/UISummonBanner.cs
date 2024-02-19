@@ -10,7 +10,7 @@ public class UISummonBanner : UIBase
 
     private SummonList _summonList;
     private SummonTable _summonTable;
-    private UIPopupShopSummon _shopSummon;
+    private UISubSceneShopSummon _shopSummon;
     private List<UIBtn_Check_Gems> _uiBtns = new();
 
     private TextMeshProUGUI _summonTypeText;
@@ -22,7 +22,7 @@ public class UISummonBanner : UIBase
 
     #region Initialize
 
-    public void ListInit(SummonList summonList, UIPopupShopSummon shopSummon)
+    public void ListInit(SummonList summonList, UISubSceneShopSummon shopSummon)
     {
         _summonList = summonList;
         _shopSummon = shopSummon;

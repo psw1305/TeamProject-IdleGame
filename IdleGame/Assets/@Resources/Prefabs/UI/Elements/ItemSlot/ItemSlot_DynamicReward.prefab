@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2278493480248854388}
   - component: {fileID: -8029408493310082012}
   m_Layer: 5
-  m_Name: DynamicReward_ItemSlot
+  m_Name: ItemSlot_DynamicReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
