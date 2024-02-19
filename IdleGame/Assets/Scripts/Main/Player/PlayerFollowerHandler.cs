@@ -51,7 +51,7 @@ public class EquipFollowerData: MonoBehaviour
         }
 
         var followerBlueprint = Manager.FollowerData.FollowerDataDictionary[itemID];
-        FollowerObject = Manager.Address.InstantiatePrefab("FollowerFrame", spawntransform);        
+        FollowerObject = Manager.Asset.InstantiatePrefab("FollowerFrame", spawntransform);        
         FollowerScript = FollowerObject.GetComponent<Follower>();
         FollowerScript.Initialize(followerBlueprint);
     }

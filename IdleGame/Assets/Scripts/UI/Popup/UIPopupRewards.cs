@@ -69,7 +69,7 @@ public class UIPopupRewards : UIPopup
 
     public void SummonButtonInit(SummonList summonList)
     {
-        _summonList = Manager.Address.GetBlueprint("SummonRewards") as SummonList;
+        _summonList = Manager.Asset.GetBlueprint("SummonRewards") as SummonList;
         SetUI<Button>();
         SetUI<UIBtn_Check_Gems>();
         for (int i = 0; i < _summonList.ButtonInfo.Count; i++)

@@ -42,7 +42,7 @@ public class UIPopupFollowerContainerInven : MonoBehaviour
 
         foreach(var followerData in Manager.Data.FollowerData.UserInvenFollower)
         {
-            UIPopupFollowerSlotsInven slot = Manager.Address.InstantiatePrefab("Slot_Follower", gameObject.transform).GetComponent<UIPopupFollowerSlotsInven>();
+            UIPopupFollowerSlotsInven slot = Manager.Asset.InstantiatePrefab("Slot_Follower", gameObject.transform).GetComponent<UIPopupFollowerSlotsInven>();
             FollowerSlots.Add(followerData.itemID, slot);
             slot.InitSlotInfo(followerData);
             slot.InitSlotUI();

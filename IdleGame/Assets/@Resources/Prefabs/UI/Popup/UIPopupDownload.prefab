@@ -181,6 +181,8 @@ GameObject:
   - component: {fileID: 8772311623467261202}
   - component: {fileID: 201819929944253634}
   - component: {fileID: 2689847603670427857}
+  - component: {fileID: 5878756026351971747}
+  - component: {fileID: 3825622685071941668}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -248,6 +250,47 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5878756026351971747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478356915995470545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487c913b60305c2468be03783b58a0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roots:
+  - state: 1
+    root: {fileID: 3271864353133238196}
+  - state: 2
+    root: {fileID: 1641327146508941196}
+  - state: 3
+    root: {fileID: 640291420139691745}
+  - state: 4
+    root: {fileID: 7765031698639696522}
+  - state: 5
+    root: {fileID: 4172583031133189032}
+  txtTitle: {fileID: 3191939406261147136}
+  txtContent: {fileID: 2779755963432424459}
+  txtDownloadingBarStatus: {fileID: 3712253590009865174}
+  downloadProgressBar: {fileID: 8525636205124444579}
+  downloader: {fileID: 3825622685071941668}
+--- !u!114 &3825622685071941668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478356915995470545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25af83b2ff30ae438ee86fcd68a66fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downloadURL: https://storage.googleapis.com/portfolio-idlegame.appspot.com
 --- !u!1 &640291420139691745
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,8 +576,6 @@ GameObject:
   - component: {fileID: 3178948626703606842}
   - component: {fileID: 3969319395885934769}
   - component: {fileID: 909972524036897066}
-  - component: {fileID: -4941127853109556862}
-  - component: {fileID: 5747573102989837017}
   m_Layer: 5
   m_Name: UIPopupDownload
   m_TagString: Untagged
@@ -584,7 +625,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3969319395885934769
 MonoBehaviour:
@@ -626,47 +667,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &-4941127853109556862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3272576999271269236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487c913b60305c2468be03783b58a0e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roots:
-  - state: 1
-    root: {fileID: 3271864353133238196}
-  - state: 2
-    root: {fileID: 1641327146508941196}
-  - state: 3
-    root: {fileID: 640291420139691745}
-  - state: 4
-    root: {fileID: 7765031698639696522}
-  - state: 5
-    root: {fileID: 4172583031133189032}
-  txtTitle: {fileID: 3191939406261147136}
-  txtContent: {fileID: 2779755963432424459}
-  txtDownloadingBarStatus: {fileID: 3712253590009865174}
-  downloadProgressBar: {fileID: 8525636205124444579}
-  downloader: {fileID: 5747573102989837017}
---- !u!114 &5747573102989837017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3272576999271269236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25af83b2ff30ae438ee86fcd68a66fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  downloadURL: http://172.30.1.37/Android/
 --- !u!1 &3561997355266988017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1238,7 @@ PrefabInstance:
     - target: {fileID: 1748810698161190153, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: -4941127853109556862}
+      objectReference: {fileID: 5878756026351971747}
     - target: {fileID: 1748810698161190153, guid: 1fd6e4cad8c8a5d47aaa928fc00b8e09, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1384,7 +1384,7 @@ PrefabInstance:
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: -4941127853109556862}
+      objectReference: {fileID: 5878756026351971747}
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1494,6 +1494,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5538475048828197158, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
+      propertyPath: m_text
+      value: "\uAC8C\uC784 \uC2DC\uC791"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538475048828197158, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -1504,6 +1508,10 @@ PrefabInstance:
     - target: {fileID: 5538475048828197158, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_fontColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538475048828197158, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7614835571575468070, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_Name
@@ -1640,14 +1648,14 @@ PrefabInstance:
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: -4941127853109556862}
+      objectReference: {fileID: 5878756026351971747}
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickStartDownload
+      value: OnClickEnterGame
       objectReference: {fileID: 0}
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1794,7 +1802,7 @@ PrefabInstance:
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: -4941127853109556862}
+      objectReference: {fileID: 5878756026351971747}
     - target: {fileID: -6484159081554188168, guid: c5c93cbdf16e33449adf98962949d25f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2

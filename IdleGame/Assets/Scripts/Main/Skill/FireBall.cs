@@ -24,9 +24,7 @@ public class FireBall : BaseSkill
     {
         while (Manager.Game.Player.enemyList.Count > 0)
         {
-
             _projectile = Instantiate(skillProjectile, transform).GetComponent<FireBallProjectile>();
-
             _projectile.transform.position = projectileSpawnPosition.transform.position;
 
             Manager.Game.Player.FinalAttackDamage(out _projectile.Damage, out _projectile.DamageTypeValue);

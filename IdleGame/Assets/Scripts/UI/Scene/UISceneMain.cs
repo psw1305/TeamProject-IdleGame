@@ -200,7 +200,7 @@ public class UISceneMain : UIScene
     private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptions>("UIDropDownOptions");
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
     private void OnPlayerSystem(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupPlayerSystem>();
-    private void OnRanking(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupRanking>();
+    private void OnRanking(PointerEventData eventData) => Debug.Log("랭킹시스템 임시 잠금");
     private void OnShop(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupShopSummon>();
 
     private void OnGameSpeed(PointerEventData eventData)

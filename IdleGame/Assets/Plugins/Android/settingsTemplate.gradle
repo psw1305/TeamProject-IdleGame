@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 // Android Resolver Repos Start
         def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
         maven {
-            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Assets/Firebase/Editor/AnalyticsDependencies.xml:18, Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/AuthDependencies.xml:20, Assets/Firebase/Editor/DatabaseDependencies.xml:22, Assets/Firebase/Editor/FirestoreDependencies.xml:20, Assets/Firebase/Editor/MessagingDependencies.xml:24
+            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Assets/Firebase/Editor/AnalyticsDependencies.xml:18, Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/AuthDependencies.xml:20, Assets/Firebase/Editor/DatabaseDependencies.xml:22, Assets/Firebase/Editor/FirestoreDependencies.xml:20, Assets/Firebase/Editor/MessagingDependencies.xml:24, Assets/Firebase/Editor/StorageDependencies.xml:20
         }
         maven {
             url (unityProjectPath + "/Assets/GeneratedLocalRepo/GoogleSignIn/Editor/m2repository") // Assets/GoogleSignIn/Editor/GoogleSignInSupportDependencies.xml:9
