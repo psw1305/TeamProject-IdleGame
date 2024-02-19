@@ -68,7 +68,6 @@ public class DownloadController : MonoBehaviour
 
         if (CurrentState == State.Initialize)
         {
-            downloader.InitializeSystem("Preload", downloadURL);
             var events = downloader.InitializeSystem("Bundle", downloadURL);
             this.onEventObtained?.Invoke(events);
 

@@ -312,7 +312,7 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 478c5691dce675d42bf7c27b306edcb8
-    m_Address: UIPopupEquipment.prefab
+    m_Address: UIPopupEquipment
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -379,24 +379,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c733843193a3f84449635e49981939f4
     m_Address: SummonRewards.blueprint
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 207724b801b83ea45a1f0b58a3e92c22
-    m_Address: FireBallObj.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e590fc4b1abd53d44b14a6634343f11c
-    m_Address: FireBallProjectile.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 03e0d915358ba124db9f299a501801bf
-    m_Address: PowerUp.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -547,18 +529,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b71fb3d7e54efff46b7d91d287d190b6
     m_Address: UISubSceneRanking.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2c7fa817d0855414db0f2f3b37a25787
-    m_Address: Meteor.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6eff6273c57086040ad9c091a98805d4
-    m_Address: MeteorProjectile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle

@@ -22,9 +22,9 @@ public class MainScene : MonoBehaviour
     private void Start()
     {
         StartCoroutine(
-        Manager.Asset.LoadAllAsyncCoroutine<Object>("Bundle", (key, count, totalCount) =>
+        Manager.Asset.LoadAllAsyncCoroutine((key, count, totalCount) =>
         {
-            uiTopMain.UpdateLoading(count, totalCount);
+            uiTopMain.UpdateLoading("에셋", count, totalCount);
 
             if (count >= totalCount)
             {

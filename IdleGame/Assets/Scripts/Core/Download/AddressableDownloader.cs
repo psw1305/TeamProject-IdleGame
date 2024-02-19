@@ -57,7 +57,7 @@ public class AddressableDownloader
 
     public void StartDownload()
     {
-        downloadHandle = Addressables.DownloadDependenciesAsync(labelToDownload);
+        downloadHandle = Addressables.DownloadDependenciesAsync(labelToDownload, true);
         downloadHandle.Completed += OnDependenciesDownloaded;
     }
 
