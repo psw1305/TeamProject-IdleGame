@@ -1,10 +1,47 @@
 using UnityEngine;
 
-public class MainScene : BaseScene
+public class MainScene : MonoBehaviour
 {
+    #region Fields
+
+    [SerializeField] private UITopScene uiTopMain;
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private Transform[] enemySpawnPoint;
+    private bool isLoadComplete = false;
 
+    #endregion
+
+    #region Unity Flow
+
+    private void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(
+        Manager.Asset.LoadAllAsyncCoroutine<Object>("Bundle", (key, count, totalCount) =>
+        {
+            uiTopMain.UpdateLoading(count, totalCount);
+
+            if (count >= totalCount)
+            {
+                isLoadComplete = true;
+                uiTopMain.UpdateLoadingComplete();
+            }
+        }));
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (isLoadComplete) Manager.Data.Save();
+    }
+
+    #endregion
+
+    #region Scene Setting
 
     public void SceneStart()
     {
@@ -27,4 +64,6 @@ public class MainScene : BaseScene
 
         return bossSpawnPoint.transform;
     }
+
+    #endregion
 }

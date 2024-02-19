@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Firestore;
@@ -46,11 +47,11 @@ public class SessionManager
         {
             if (task.IsCanceled || task.IsFaulted)
             {
-                DebugNotice.Instance.Notice("Firebase Initialize Failed");
+                Debug.LogError("Firebase Initialize Failed");
                 return;
             }
 
-            DebugNotice.Instance.Notice("Firebase Initialize Complete");
+            Debug.Log("Firebase Initialize Complete");
             FirebaseApp app = FirebaseApp.DefaultInstance;
             auth = FirebaseAuth.DefaultInstance;
             db = FirebaseFirestore.GetInstance(app);
@@ -107,12 +108,12 @@ public class SessionManager
         {
             if (task.IsCanceled || task.IsFaulted)
             {
-                DebugNotice.Instance.Notice("Google Sign-In Failed");
+                Debug.LogError("Google Sign-In Failed");
                 return;
             }
 
             FirebaseUser user = task.Result;
-            DebugNotice.Instance.Notice("Google Sign-In Successful!");
+            Debug.Log("Google Sign-In Successful!");
 
             //로그인 성공 후 Realtime Database에 데이터 생성
             if (user != null)
@@ -137,7 +138,7 @@ public class SessionManager
         {
             if (task.IsFaulted || task.IsCanceled)
             {
-                DebugNotice.Instance.Notice("Failed to read data: " + task.Exception);
+                Debug.LogError("Failed to read data: " + task.Exception);
                 return;
             }
 
@@ -146,13 +147,13 @@ public class SessionManager
             // 데이터가 존재할 경우
             if (snapshot.Exists)
             {
-                DebugNotice.Instance.Notice($"Player data Load : {GuestID}");
+                Debug.Log($"Player data Load : {GuestID}");
                 Manager.Data.SetUserProfile(snapshot.ConvertTo<GameUserProfile>());
             }
             // 데이터가 존재하지 않을 경우 => 새로운 유저 데이터 생성
             else
             {
-                DebugNotice.Instance.Notice("Player data not found.");
+                Debug.LogError("Player data not found.");
                 CreateUserDataInFirestore();
             }
         });
@@ -169,18 +170,18 @@ public class SessionManager
         {
             if (task.IsFaulted || task.IsCanceled)
             {
-                DebugNotice.Instance.Notice("Failed to create user data: " + task.Exception);
+                Debug.LogError("Failed to create user data: " + task.Exception);
             }
             else
             {
-                DebugNotice.Instance.Notice("Player data created successfully.");
+                Debug.LogError("Player data created successfully.");
             }
         });
     }
 
     public void UpdateUserData(Dictionary<string, object> updateFields)
     {
-        DebugNotice.Instance.Notice("Data Save");
+        Debug.Log("Data Save");
         //db.Collection("users").Document(GuestID).UpdateAsync(updates);
         db.Collection("users").Document(GuestID).SetAsync(updateFields, SetOptions.MergeAll);
     }
@@ -193,7 +194,7 @@ public class SessionManager
     {
         if (e != null)
         {
-            DebugNotice.Instance.Notice($"Token received: {e.Token}");
+            Debug.LogError($"Token received: {e.Token}");
         }
     }
 
@@ -201,7 +202,7 @@ public class SessionManager
     {
         if (e != null && e.Message != null && e.Message.Notification != null)
         {
-            DebugNotice.Instance.Notice($"From : {e.Message.From}, Title : {e.Message.Notification.Title}, Text : {e.Message.Notification.Body}");
+            Debug.LogError($"From : {e.Message.From}, Title : {e.Message.Notification.Title}, Text : {e.Message.Notification.Body}");
         }
     }
 

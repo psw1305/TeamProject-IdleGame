@@ -867,9 +867,9 @@ GameObject:
   - component: {fileID: 8076452739330684734}
   - component: {fileID: 7458344093727640609}
   - component: {fileID: 2796191159971722188}
-  - component: {fileID: -6848463396112888135}
+  - component: {fileID: 7510142869562780399}
   m_Layer: 5
-  m_Name: Slot_Armor
+  m_Name: ItemSlot_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   lockCover: {fileID: 1954735954939927318}
   lockIcon: {fileID: 6895592357866574191}
   ReinforceIcon: {fileID: 1472945306752739152}
---- !u!114 &-6848463396112888135
+--- !u!114 &7510142869562780399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7618128863570054218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac67024e0a352134fbffdcf7ec4ea703, type: 3}
+  m_Script: {fileID: 11500000, guid: 10102bb07c0c74946bebd62ac732393c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ChildNotiDot: {fileID: 0}
