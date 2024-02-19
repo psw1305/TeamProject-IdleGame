@@ -6,11 +6,17 @@ using UnityEngine;
 public class PlayerSkillHandler : MonoBehaviour
 {
     private Coroutine _autoSkillCoroutine;
-
+    private Player _player;
     private Dictionary<int, EquipSkillData> _userEquipSkillSlot = new();
     public Dictionary<int, EquipSkillData> UserEquipSkillSlot => _userEquipSkillSlot;
 
     private event Action<int> _skillUesAction;
+
+    private void Start()
+    {
+        _player = GetComponent<Player>();
+    }
+
     public void AddActionUseSkill(Action<int> skillUesAction)
     {
         _skillUesAction += skillUesAction;
@@ -68,7 +74,11 @@ public class PlayerSkillHandler : MonoBehaviour
     {
         while (true)
         {
+            
             yield return new WaitForSeconds(0.5f);
+           
+            if (_player.State != PlayerState.Move)
+
             for (int i = 0; i < _userEquipSkillSlot.Count; i++)
             {
                 if (_userEquipSkillSlot[i].SkillScript != null)

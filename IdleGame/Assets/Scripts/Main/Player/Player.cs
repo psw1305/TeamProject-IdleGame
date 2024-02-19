@@ -18,7 +18,6 @@ public class Player : MonoBehaviour, IDamageable
     private GameUserProfile profile;
     private PlayerView playerView;
     [HideInInspector] public List<BaseEnemy> enemyList;
-    private Rigidbody2D playerRigidbody;
     private Coroutine _attackCoroutine;
     private float _damageBuff = 1;
     private event Action IdleRewardUpdate;
@@ -41,6 +40,7 @@ public class Player : MonoBehaviour, IDamageable
     // 테스트 용 플레이 제어
     public bool IsPlay = false;
 
+    public PlayerState State = PlayerState.None;
     public StatInfo AtkDamage { get; private set; }
     public StatInfo AtkSpeed { get; private set; }
     public StatInfo CritChance { get; private set; }
@@ -86,15 +86,13 @@ public class Player : MonoBehaviour, IDamageable
     public void Initialize()
     {
         playerView = GetComponent<PlayerView>();
-        playerRigidbody = GetComponent<Rigidbody2D>();
         playerAnimController = GetComponent<PlayerAnimController>();
         playerSkillHandler = GetComponent<PlayerSkillHandler>();
         playerFollowerHandler = GetComponent<PlayerFollowerHandler>();
-        
+
         parallaxController = FindObjectOfType<ParallaxController>();
 
-        AttackRange = 5;
-        MoveSpeed = 100;
+        AttackRange = 3;
 
         profile = Manager.Data.Profile;
 
@@ -129,7 +127,7 @@ public class Player : MonoBehaviour, IDamageable
 
         playerSkillHandler.InitSkillSlot();
         playerFollowerHandler.InitFollowerSlot();
-        
+
         StartCoroutine(RecoverHealthPoint());
     }
 
@@ -150,22 +148,15 @@ public class Player : MonoBehaviour, IDamageable
 
     #region Unity Flow
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (_attackCoroutine == null && enemyList.Count <= 0)
+        if (enemyList.Count == 0)
         {
-            playerAnimController.OnWalk();
-            parallaxController.LayerMove();
+            Walk();
         }
-        else if (_attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
+        else if (State != PlayerState.Battle)
         {
-            playerAnimController.OnIdle();
-            _attackCoroutine = StartCoroutine(AttackRoutine());
-        }
-        else if (enemyList.Count <= 0 || Vector2.Distance(enemyList[0].transform.position, transform.position) > 4)
-        {
-            playerAnimController.OnWalk();
-            parallaxController.LayerMove();
+            Battle();
         }
     }
 
@@ -173,10 +164,22 @@ public class Player : MonoBehaviour, IDamageable
 
     #region State
 
-    public void Idle()
+    public void Walk()
     {
+        State = PlayerState.Move;
+        playerAnimController.OnWalk();
+        parallaxController.LayerMove();
+    }
+
+    public void Battle()
+    {
+        State = PlayerState.Battle;
         playerAnimController.OnIdle();
-        playerRigidbody.velocity = MoveSpeed * Time.deltaTime * Vector2.right;
+
+        if (_attackCoroutine == null)
+        {
+            _attackCoroutine = StartCoroutine(AttackRoutine());
+        }
     }
 
     private void Dead()
@@ -263,25 +266,6 @@ public class Player : MonoBehaviour, IDamageable
         FinalAttackDamage(out testProjectile.GetComponent<PlayerProjectileHandler>().Damage, out testProjectile.GetComponent<PlayerProjectileHandler>().DamageTypeValue);
     }
 
-    IEnumerator AttackRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(AttakSpeedToTime());
-            if (enemyList.Count == 0)
-            {
-                _attackCoroutine = null;
-                playerAnimController.OnWalk();
-                break;
-            }
-
-            if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
-            {
-                Attack();
-            }
-        }
-    }
-
     private bool IsCritical()
     {
         int chance = UnityEngine.Random.Range(1, 1001);
@@ -313,6 +297,19 @@ public class Player : MonoBehaviour, IDamageable
                 * _damageBuff);
             damageTypeValue = DamageType.Normal;
         }
+    }
+
+    IEnumerator AttackRoutine()
+    {
+        while (enemyList.Count > 0)
+        {
+            if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
+            {
+                Attack();
+            }
+            yield return new WaitForSeconds(AttakSpeedToTime());
+        }
+        _attackCoroutine = null;
     }
 
     private float AttakSpeedToTime()
