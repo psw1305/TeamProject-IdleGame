@@ -1,152 +1,152 @@
-[
+﻿[
   {
     "SummonGrade": 1,
     "ItemId": "F0001",
-    "Probability": 1000
+    "Probability": 1666
   },
   {
     "SummonGrade": 1,
     "ItemId": "F0002",
-    "Probability": 1000
+    "Probability": 1666
   },
   {
     "SummonGrade": 1,
     "ItemId": "F0003",
-    "Probability": 1000
+    "Probability": 1667
   },
   {
     "SummonGrade": 1,
     "ItemId": "F0004",
-    "Probability": 1000
+    "Probability": 1667
   },
   {
     "SummonGrade": 1,
     "ItemId": "F0005",
-    "Probability": 1000
+    "Probability": 1667
   },
   {
     "SummonGrade": 1,
     "ItemId": "F0006",
-    "Probability": 999
+    "Probability": 1667
   },
   {
     "SummonGrade": 2,
     "ItemId": "F0001",
-    "Probability": 1
+    "Probability": 1666
   },
   {
     "SummonGrade": 2,
     "ItemId": "F0002",
-    "Probability": 4995
+    "Probability": 1666
   },
   {
     "SummonGrade": 2,
     "ItemId": "F0003",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 2,
     "ItemId": "F0004",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 2,
     "ItemId": "F0005",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 2,
     "ItemId": "F0006",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 3,
     "ItemId": "F0001",
-    "Probability": 1
+    "Probability": 1666
   },
   {
     "SummonGrade": 3,
     "ItemId": "F0002",
-    "Probability": 1
+    "Probability": 1666
   },
   {
     "SummonGrade": 3,
     "ItemId": "F0003",
-    "Probability": 4995
+    "Probability": 1667
   },
   {
     "SummonGrade": 3,
     "ItemId": "F0004",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 3,
     "ItemId": "F0005",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 3,
     "ItemId": "F0006",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 4,
     "ItemId": "F0001",
-    "Probability": 1
+    "Probability": 1666
   },
   {
     "SummonGrade": 4,
     "ItemId": "F0002",
-    "Probability": 1
+    "Probability": 1666
   },
   {
     "SummonGrade": 4,
     "ItemId": "F0003",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 4,
     "ItemId": "F0004",
-    "Probability": 4995
+    "Probability": 1667
   },
   {
     "SummonGrade": 4,
     "ItemId": "F0005",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 4,
     "ItemId": "F0006",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 5,
     "ItemId": "F0001",
-    "Probability": 1
+    "Probability": 1666
   },
   {
     "SummonGrade": 5,
     "ItemId": "F0002",
-    "Probability": 1
+    "Probability": 1666
   },
   {
     "SummonGrade": 5,
     "ItemId": "F0003",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 5,
     "ItemId": "F0004",
-    "Probability": 1
+    "Probability": 1667
   },
   {
     "SummonGrade": 5,
     "ItemId": "F0005",
-    "Probability": 4995
+    "Probability": 1667
   },
   {
     "SummonGrade": 5,
     "ItemId": "F0006",
-    "Probability": 1
+    "Probability": 1667
   }
 ]
