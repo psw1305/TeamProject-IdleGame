@@ -857,11 +857,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer_Speed:
   - 0
-  - 0.4
   - 0.7
   - 1.1
   - 1.4
   - 1.7
+  - 2
   layer_Objects:
   - {fileID: 5728381907112393516}
   - {fileID: 5247703564051121291}
