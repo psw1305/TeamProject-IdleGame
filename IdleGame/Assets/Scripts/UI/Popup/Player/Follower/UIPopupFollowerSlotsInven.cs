@@ -84,7 +84,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
         levelText.text = $"Lv. {_followerData.level}";
         _needCount = _followerData.level < 15 ? _followerData.level + 1 : 15;
         //_hasCount = _followerData.hasCount;
-        reinforceText.text = $"{_hasCount}/{_needCount}";
+        reinforceText.text = $"{_hasCount} / {_needCount}";
         reinforceProgress.fillAmount = (float)_hasCount / _needCount;
     }
 

@@ -533,6 +533,54 @@ MonoBehaviour:
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9150be2a7544e34d951588a761b1199
+    m_Address: B_BlackShark.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 653291acaebc43d46ad9e870d48d4128
+    m_Address: B_Fishman.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c13f103247df9e34a8564610c60a1fd6
+    m_Address: EvilOctopus.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0d77078f9b4e30438cb6a9581667806
+    m_Address: Jellyfish.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2700bdbb1972f1847afeba11d588b549
+    m_Address: Monkfish.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a90bfe853b5d1744d8f3934a57e0dde9
+    m_Address: RazorShell.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a16990d1b6249b45865e7742c5a9848
+    m_Address: Shell.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d21e2af6acb40640b5326620b76670d
+    m_Address: TurbanSnail.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4a6bef2a1e0af3847be1bf5bec164b6f, type: 2}
   m_SchemaSet:
