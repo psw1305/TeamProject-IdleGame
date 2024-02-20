@@ -11,30 +11,23 @@ public class AssetManager
 
     #region Load
 
-    public IEnumerator LoadAllAsyncCoroutine(Action<string, int, int> callback)
+    public void LoadAllAsync(Action<int, int> callback)
     {
-        int loadCount = 0;
         var asyncOperation = Addressables.LoadAssetsAsync<UnityEngine.Object>("Bundle", null);
 
-        yield return asyncOperation;
-
-        if (asyncOperation.Status == AsyncOperationStatus.Succeeded)
+        asyncOperation.Completed += (op) =>
         {
-            int totalCount = asyncOperation.Result.Count;
-            foreach (UnityEngine.Object loadedObj in asyncOperation.Result)
+            int loadCount = 0;
+            int totalCount = op.Result.Count;
+
+            foreach (UnityEngine.Object loadedObj in op.Result)
             {
                 loadCount++;
                 string loadKey = loadedObj.name;
                 assets.Add(loadKey, loadedObj);
-                callback?.Invoke(loadKey, loadCount, totalCount);
-
-                yield return new WaitForSeconds(1.0f / totalCount);
+                callback?.Invoke(loadCount, totalCount);
             }
-        }
-        else
-        {
-            Debug.LogError("Failed to load resource of gameobject.");
-        }
+        };
     }
 
     public T Load<T>(string key) where T : UnityEngine.Object

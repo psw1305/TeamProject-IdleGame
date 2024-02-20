@@ -21,17 +21,16 @@ public class MainScene : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(
-        Manager.Asset.LoadAllAsyncCoroutine((key, count, totalCount) =>
+        Manager.Asset.LoadAllAsync((count, totalCount) =>
         {
-            uiTopMain.UpdateLoading("에셋", count, totalCount);
+            uiTopMain.UpdateLoading(count, totalCount);
 
             if (count >= totalCount)
             {
                 isLoadComplete = true;
                 uiTopMain.UpdateLoadingComplete();
             }
-        }));
+        });
     }
 
     private void OnApplicationQuit()

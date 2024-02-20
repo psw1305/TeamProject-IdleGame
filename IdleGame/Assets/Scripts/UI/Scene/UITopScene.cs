@@ -74,10 +74,10 @@ public class UITopScene : UIBase
 
     #region Update UI
 
-    public void UpdateLoading(string assetName, int count, int totalCount)
+    public void UpdateLoading(int count, int totalCount)
     {
         loadingSlider.value = (float)count / totalCount;
-        assetDownloadTxt.text = $"{assetName} 다운로드중... ({count}/{totalCount})";
+        assetDownloadTxt.text = $"에셋 다운로드중... ({count}/{totalCount})";
     }
 
     public void UpdateLoadingComplete()
