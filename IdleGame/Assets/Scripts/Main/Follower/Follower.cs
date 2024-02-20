@@ -12,6 +12,7 @@ public class Follower : MonoBehaviour
 
     #region Fields
 
+    private PlayerFollowerHandler _followerHandler;
     private Coroutine _attackCoroutine;
     private FollowerAnimController _followerAnimController;
     [HideInInspector] public List<BaseEnemy> enemyList;
@@ -31,9 +32,9 @@ public class Follower : MonoBehaviour
     // TODO: 플레이어의 데이터를 가져와서 가공하고 장착 시 보일 수 있도록
 
     public long AtkDamage { get; private set; }
-    public float AtkCorrection {  get; private set; }
+    public float AtkCorrection { get; private set; }
     public float AtkSpeed { get; private set; }
-    public float AttackRange { get; private set; } 
+    public float AttackRange { get; private set; }
     public float CriticalChance { get; private set; }
     public long RetentionEffect { get; private set; }
 
@@ -53,7 +54,7 @@ public class Follower : MonoBehaviour
         AtkDamage = _player.AtkDamage.Value;
         AtkCorrection = followerBlueprint.DamageCorrection;
         AtkSpeed = followerBlueprint.AtkSpeed;
-        
+
         enemyList = Manager.Stage.GetEnemyList();
     }
 
@@ -70,32 +71,40 @@ public class Follower : MonoBehaviour
     private void Start()
     {
         _followerAnimController = GetComponent<FollowerAnimController>();
-    }
-
-    private void FixedUpdate()
-    {
-        if (_attackCoroutine == null && enemyList.Count <= 0)
-        {
-            _followerAnimController.OnWalk();
-        }
-        else if (_attackCoroutine == null && enemyList.Count > 0 && Vector2.Distance(enemyList[0].transform.position, transform.position) < 4)
-        {
-            _followerAnimController.OnIdle();
-            _attackCoroutine = StartCoroutine(AttackRoutine());
-        }
+        _followerHandler = Manager.Game.Player.GetComponent<PlayerFollowerHandler>();
+        _followerHandler.AddFollowerWalkEvent(Walk);
+        _followerHandler.AddFollowerBattleEvent(Battle);
     }
 
     #endregion
 
-   
-
-    public void Idle()
+    public void Walk()
     {
-        // 애니메이션 OnIdle()
-        // 이동시에 위치는 고정시키고 달리는 애니메이션만 실행
+        _followerAnimController.OnWalk();
     }
 
-    // 플레이어의 어택 코루틴이 들어가면 동료들도 공격 코루틴에 들어간다
+    public void Battle()
+    {
+        _followerAnimController.OnIdle();
+        if (_attackCoroutine == null)
+        {
+            _attackCoroutine = StartCoroutine(AttackRoutine());
+        }
+    }
+
+    IEnumerator AttackRoutine()
+    {
+        while (enemyList.Count > 0)
+        {
+            if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
+            {
+                Attack();
+            }
+            yield return new WaitForSeconds(AttakSpeedToTime());
+        }
+        _attackCoroutine = null;
+    }
+
     public void Attack()
     {
         _followerAnimController.OnRangeAtk();
@@ -110,25 +119,6 @@ public class Follower : MonoBehaviour
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = enemyList[0].transform.position;
         FinalAttackDamage(out testProjectile.GetComponent<PlayerProjectileHandler>().Damage, out testProjectile.GetComponent<PlayerProjectileHandler>().DamageTypeValue);
-    }
-
-    IEnumerator AttackRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(AttakSpeedToTime());
-            if (enemyList.Count == 0 || Vector2.Distance(transform.position, enemyList[0].transform.position) > AttackRange)
-            {
-                _attackCoroutine = null;
-                _followerAnimController.OnWalk();
-                break;
-            }
-
-            if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
-            {
-                Attack();
-            }
-        }
     }
 
     private bool IsCritical()
@@ -164,5 +154,13 @@ public class Follower : MonoBehaviour
     private float AttakSpeedToTime()
     {
         return 1.0f / AtkSpeed;
+    }
+    private void OnDestroy()
+    {
+        if (_followerHandler != null)
+        {
+            _followerHandler.RemoveFollowerWalkEvent(Walk);
+            _followerHandler.RemoveFollowerBattleEvent(Battle);
+        }
     }
 }
