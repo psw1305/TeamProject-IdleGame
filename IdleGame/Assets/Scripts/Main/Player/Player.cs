@@ -92,7 +92,7 @@ public class Player : MonoBehaviour, IDamageable
         playerFollowerHandler = GetComponent<PlayerFollowerHandler>();
         parallaxController = FindObjectOfType<ParallaxController>();
 
-        AttackRange = 3;
+        AttackRange = 4;
 
         profile = Manager.Data.Profile;
 
