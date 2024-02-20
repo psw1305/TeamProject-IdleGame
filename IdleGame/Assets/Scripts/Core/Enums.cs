@@ -59,13 +59,6 @@ public enum EnemyType
     Boss
 }
 
-public enum SkillType
-{
-    Targeting,
-    Area,
-    Buff
-}
-
 public enum PlayerState
 {
     None,
