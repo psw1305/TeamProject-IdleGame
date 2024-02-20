@@ -17,10 +17,11 @@ public class Player : MonoBehaviour, IDamageable
 
     private GameUserProfile profile;
     private PlayerView playerView;
-    [HideInInspector] public List<BaseEnemy> enemyList;
     private Coroutine _attackCoroutine;
     private float _damageBuff = 1;
     private event Action IdleRewardUpdate;
+
+    [HideInInspector] public List<BaseEnemy> enemyList;
 
     // 동료 관련 프로퍼티
     private GameObject[] _followerPrefab = new GameObject[5];
@@ -89,7 +90,6 @@ public class Player : MonoBehaviour, IDamageable
         playerAnimController = GetComponent<PlayerAnimController>();
         playerSkillHandler = GetComponent<PlayerSkillHandler>();
         playerFollowerHandler = GetComponent<PlayerFollowerHandler>();
-
         parallaxController = FindObjectOfType<ParallaxController>();
 
         AttackRange = 3;
@@ -154,7 +154,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             Walk();
         }
-        else if (State != PlayerState.Battle)
+        else if (State != PlayerState.Battle & State != PlayerState.Die)
         {
             Battle();
         }
@@ -169,13 +169,14 @@ public class Player : MonoBehaviour, IDamageable
         State = PlayerState.Move;
         playerAnimController.OnWalk();
         parallaxController.LayerMove();
+        playerFollowerHandler.InvokeFollowerWalk();
     }
 
     public void Battle()
     {
         State = PlayerState.Battle;
         playerAnimController.OnIdle();
-
+        playerFollowerHandler.InvokeFollowerBattle();
         if (_attackCoroutine == null)
         {
             _attackCoroutine = StartCoroutine(AttackRoutine());
@@ -187,6 +188,8 @@ public class Player : MonoBehaviour, IDamageable
         //이전 스테이지로, Hp 리셋
         Manager.Stage.StageFailed();
         SetCurrentHp(ModifierHp);
+        playerAnimController.OnDead();
+        playerAnimController.OnRevive();
     }
 
     #endregion
@@ -225,8 +228,6 @@ public class Player : MonoBehaviour, IDamageable
         if (CurrentHp - damage <= 0)
         {
             CurrentHp = 0;
-            playerAnimController.OnDead();
-            playerAnimController.OnRevive();
             Dead();
         }
         else
@@ -244,6 +245,19 @@ public class Player : MonoBehaviour, IDamageable
     #endregion
 
     #region Attack Method
+
+    IEnumerator AttackRoutine()
+    {
+        while (enemyList.Count > 0)
+        {
+            if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
+            {
+                Attack();
+            }
+            yield return new WaitForSeconds(AttakSpeedToTime());
+        }
+        _attackCoroutine = null;
+    }
 
     public void Attack()
     {
@@ -297,19 +311,6 @@ public class Player : MonoBehaviour, IDamageable
                 * _damageBuff);
             damageTypeValue = DamageType.Normal;
         }
-    }
-
-    IEnumerator AttackRoutine()
-    {
-        while (enemyList.Count > 0)
-        {
-            if (Vector2.Distance(transform.position, enemyList[0].transform.position) <= AttackRange)
-            {
-                Attack();
-            }
-            yield return new WaitForSeconds(AttakSpeedToTime());
-        }
-        _attackCoroutine = null;
     }
 
     private float AttakSpeedToTime()

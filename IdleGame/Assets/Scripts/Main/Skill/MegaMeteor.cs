@@ -34,13 +34,16 @@ public class MegaMeteor : BaseSkill
     {
         while (true)
         {
-            _projectile = Instantiate(skillProjectile).GetComponent<MeteorProjectile>();
-            _projectile.Damage = (long)(_damage * _skillDamageRatio);
-            _projectile.DamageTypeValue = _damageType;
+            if (_player.State == PlayerState.Battle)
+            {
+                _projectile = Instantiate(skillProjectile).GetComponent<MeteorProjectile>();
 
-            _projectile.transform.position = new Vector2(0, 5);
+                _projectile.Damage = (long)(_damage * _skillDamageRatio);
+                _projectile.DamageTypeValue = _damageType;
 
-            _projectile.TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
+                _projectile.transform.position = new Vector2(0, 5);
+                _projectile.TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
+            }
             yield return new WaitForSeconds(0.4f);
         }
     }

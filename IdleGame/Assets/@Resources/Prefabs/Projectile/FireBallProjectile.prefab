@@ -99,6 +99,7 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 384
+  vec2: {x: 0, y: 0}
 --- !u!1 &9173889265047462979
 GameObject:
   m_ObjectHideFlags: 0
