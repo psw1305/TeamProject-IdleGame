@@ -47,5 +47,6 @@ MonoBehaviour:
   effectDurateTime: 10
   coolDown: 5
   projectileSpawnArea: {fileID: 4755445883408343319}
+  skillProjectile: {fileID: 4359257486813297750, guid: 6eff6273c57086040ad9c091a98805d4, type: 3}
   minDestinationPosition: {x: 0.7, y: 0.5}
   maxDestinationPosition: {x: 2, y: 2}

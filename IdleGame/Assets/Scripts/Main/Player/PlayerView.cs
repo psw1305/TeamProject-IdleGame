@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,21 +17,17 @@ public class PlayerView : MonoBehaviour
 
     public void SetGoldAmount()
     {
-        var mainUI = Manager.UI.CurrentScene as UISceneMain;
-        mainUI.UpdateGold();
+        Manager.UI.Top.UpdateGold();
     }
 
     public void SetGemsAmout()
     {
-        var mainUI = Manager.UI.CurrentScene as UISceneMain;
-        mainUI.UpdateGems();
+        Manager.UI.Top.UpdateGems();
     }
 
     public void SetDamageFloating(Vector3 position, long Damage)
     {
         GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
-        //GameObject DamageHUD = Manager.ObjectPool.GetGo("FloatingText");
-        //DamageHUD.transform.SetParent(UICanvas.transform, true);
         DamageHUD.GetComponent<UIFloatingText>().Initialize();
         DamageHUD.transform.position = gameObject.transform.position + position;
         DamageHUD.GetComponent<UIFloatingText>().SetDamage(Damage);

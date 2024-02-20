@@ -15,6 +15,8 @@ public abstract class BaseSkill : MonoBehaviour
     protected SkillType _skillType;
     private bool _canUse;
 
+    protected Player _player;
+
     [Header("Skill Time Setter")]
     [SerializeField] private float effectDurateTime;
     public float EffectDurateTime => effectDurateTime;
@@ -27,6 +29,7 @@ public abstract class BaseSkill : MonoBehaviour
 
     protected virtual void Start()
     {
+        _player = Manager.Game.Player;
         _canUse = false;
         StartCoroutine(CountSkillCooldown());
     }

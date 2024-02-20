@@ -300,7 +300,7 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5917d8b06e921084195ed2df7d446926
-    m_Address: UIPopupShopSummon.prefab
+    m_Address: UISubSceneShopSummon.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -312,43 +312,43 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 478c5691dce675d42bf7c27b306edcb8
-    m_Address: UIPopupEquipment.prefab
+    m_Address: UIPopupEquipment
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 133d7d554e49ec941a751103488b98a5
-    m_Address: UIPopupPlayerSystem.prefab
+    m_Address: UISubScenePlayerSystem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f949726f61fda2647b293ded825f1ccf
-    m_Address: UIDropDownOptions.prefab
+    m_Address: UIPopupOptions.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 57b54498119d5f84096529496188aaab
-    m_Address: Slot_Armor.prefab
+    m_Address: ItemSlot_Armor.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74eb856db4c5e9c458748a0f8c9261de
-    m_Address: Slot_Follower.prefab
+    m_Address: ItemSlot_Follower.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 34593a6e7610cf0468f571edc473964e
-    m_Address: Slot_Skill.prefab
+    m_Address: ItemSlot_Skill.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5935ce630e284946b30476dc8cdc47f
-    m_Address: Slot_Weapon.prefab
+    m_Address: ItemSlot_Weapon.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -379,24 +379,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c733843193a3f84449635e49981939f4
     m_Address: SummonRewards.blueprint
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 207724b801b83ea45a1f0b58a3e92c22
-    m_Address: FireBallObj.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e590fc4b1abd53d44b14a6634343f11c
-    m_Address: FireBallProjectile.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Bundle
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 03e0d915358ba124db9f299a501801bf
-    m_Address: PowerUp.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -541,6 +523,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 547ebda3abb3e15418bdf932170d9963
     m_Address: Specter.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b71fb3d7e54efff46b7d91d287d190b6
+    m_Address: UISubSceneRanking.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle

@@ -15,7 +15,7 @@ public class FireBallProjectile : ProjectileHandlerBase
     private void FixedUpdate()
     {
         TrackingTarget(TargetPosition, Speed);
-        if (Vector2.Distance(transform.position, TargetPosition) < Mathf.Epsilon)
+        if (Vector2.Distance(transform.position, TargetPosition) < 0.02)
         {
             Destroy(gameObject);
         }

@@ -65,3 +65,11 @@ public enum SkillType
     Area,
     Buff
 }
+
+public enum PlayerState
+{
+    None,
+    Move,
+    Battle,
+    Die
+}

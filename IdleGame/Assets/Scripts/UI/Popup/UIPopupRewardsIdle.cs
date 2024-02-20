@@ -113,9 +113,9 @@ public class UIPopupRewardsIdle : UIPopup
 
     private void DisplayIdleRewards()
     {
-        earnTimeText.text = $"{Manager.Stage.IdleGoldReward}/m";
+        earnTimeText.text = Utilities.ConvertToString(Manager.Stage.IdleGoldReward) + "/m";
         idleTimeText.text = Manager.Game.Player.ToTalIdleTime.ToString();
-        goldProvisionText.text = $"{Manager.Game.Player.ToTalIdleGold}";
+        goldProvisionText.text = Utilities.ConvertToString(Manager.Game.Player.ToTalIdleGold);
     }
 
     #endregion

@@ -1,87 +1,48 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AssetManager
 {
-    private Dictionary<string, UnityEngine.Object> assets = new();
+    private readonly Dictionary<string, UnityEngine.Object> assets = new();
 
     #region Load
 
-    public T Load<T>(string key) where T : UnityEngine.Object
+    public void LoadAllAsync(Action<int, int> callback)
     {
-        if (!assets.TryGetValue(key, out UnityEngine.Object bundle)) return null;
-        return bundle as T;
-    }
+        var asyncOperation = Addressables.LoadAssetsAsync<UnityEngine.Object>("Bundle", null);
 
-    public void Unload<T>(string key) where T : UnityEngine.Object
-    {
-        if (assets.TryGetValue(key, out UnityEngine.Object bundle))
-        {
-            Addressables.Release(bundle);
-            assets.Remove(key);
-        }
-        else
-        {
-            Debug.LogError($"Assets Unload {key}");
-        }
-    }
-
-    /// <summary>
-    /// key(주소)를 받아 비동기(Async) 로드
-    /// </summary>
-    public void LoadAsync<T>(string key, Action<T> callback = null) where T : UnityEngine.Object
-    {
-        if (assets.TryGetValue(key, out UnityEngine.Object asset))
-        {
-            callback?.Invoke(asset as T);
-            return;
-        }
-
-        string loadKey = key;
-
-        var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
-        asyncOperation.Completed += (result) =>
-        {
-            assets.Add(key, result.Result);
-            callback?.Invoke(result.Result);
-        };
-    }
-
-    /// <summary>
-    /// 해당 label을 가진 모든 리소스를 비동기 로드
-    /// 완료되면 콜백(key, 현재로드수, 전체로드수) 호출
-    /// </summary>
-    public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
-    {
-        var operation = Addressables.LoadResourceLocationsAsync(label, typeof(T));
-
-        operation.Completed += (op) =>
+        asyncOperation.Completed += (op) =>
         {
             int loadCount = 0;
             int totalCount = op.Result.Count;
 
-            foreach (IResourceLocation result in op.Result)
+            foreach (UnityEngine.Object loadedObj in op.Result)
             {
-                LoadAsync<T>(result.PrimaryKey, obj =>
-                {
-                    loadCount++;
-                    // callback을 받아 loadCount / totalCount로 로딩중을 만들 수도 있다.
-                    callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
-                });
+                loadCount++;
+                string loadKey = loadedObj.name;
+                assets.Add(loadKey, loadedObj);
+                callback?.Invoke(loadCount, totalCount);
             }
         };
     }
 
+    public T Load<T>(string key) where T : UnityEngine.Object
+    {
+        if (!assets.TryGetValue(key, out UnityEngine.Object asset)) return null;
+        return asset as T;
+    }
+
     #endregion
 
-    #region Instantiate Prefab
+    #region Get Asset
 
     public GameObject InstantiatePrefab(string key, Transform parent = null)
     {
-        GameObject prefab = Load<GameObject>($"{key}.prefab");
+        GameObject prefab = Load<GameObject>(key);
         if (prefab == null)
         {
             Debug.LogError($"Instantiate({key}): Failed to load prefab.");
@@ -93,48 +54,36 @@ public class AssetManager
         return obj;
     }
 
-    #endregion
-
-    #region Blueprint
-
     public ScriptableObject GetBlueprint(string key)
     {
-        ScriptableObject blueprint = Load<ScriptableObject>($"{key}.blueprint");
+        ScriptableObject blueprint = Load<ScriptableObject>(key);
         if (blueprint == null)
         {
-            Debug.LogError($"Blueprint({key}): Failed to load Blueprint.");
+            Debug.LogError($"Get({key}): Failed to load blueprint.");
             return null;
         }
 
         return blueprint;
     }
 
-    #endregion
-
-    #region Text
-
     public string GetText(string key)
     {
-        TextAsset data = Load<TextAsset>($"{key}.json");
+        TextAsset data = Load<TextAsset>(key);
         if (data == null)
         {
-            Debug.LogError($"Text({key}): Failed to load Text.");
+            Debug.LogError($"Get({key}): Failed to load text.");
             return null;
         }
 
         return data.text;
     }
 
-    #endregion
-
-    #region Audio
-
     public AudioClip GetAudio(string key)
     {
-        AudioClip audio = Load<AudioClip>($"{key}.audio");
+        AudioClip audio = Load<AudioClip>(key);
         if (audio == null)
         {
-            Debug.LogError($"Audio({key}): Failed to load Audio.");
+            Debug.LogError($"Get({key}): Failed to load audio.");
             return null;
         }
 

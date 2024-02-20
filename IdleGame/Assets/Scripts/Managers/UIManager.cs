@@ -1,3 +1,4 @@
+using Assets.PixelFantasy.PixelHeroes.Common.Scripts.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,8 +7,10 @@ public class UIManager
 {
     #region Fields
 
-    private int order = 10;
-    private Stack<UIPopup> popupStack = new();
+    private int sceneOrder = 10;
+    private int popupOrder = 30;
+    private readonly Stack<UIScene> sceneStack = new();
+    private readonly Stack<UIPopup> popupStack = new();
 
     #endregion
 
@@ -21,24 +24,39 @@ public class UIManager
             return root;
         }
     }
+    public UITopScene Top { get; private set; }
     public UIScene CurrentScene { get; private set; }
+    public UIScene CurrentSubScene { get; private set; }
     public UIPopup CurrentPopup { get; private set; }
 
     #endregion
 
-    #region Init
+    #region Initialize
 
     /// <summary>
-    /// Scene, Popup 생성 => 캔버스 초기화
+    /// Scene 생성 => 캔버스 초기화
     /// </summary>
-    /// <param name="uiObject">해당 UI 오브젝트</param>
-    public void SetCanvas(GameObject uiObject)
+    public void SetCanvasScene(GameObject uiObject)
     {
         // Canvas 컴포넌트 세팅
         var canvas = Utilities.GetOrAddComponent<Canvas>(uiObject);
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
-        canvas.sortingOrder = order++;
+        canvas.sortingOrder = sceneOrder++;
+
+        // Canvas Scaler 세팅
+        var canvasScaler = Utilities.GetOrAddComponent<CanvasScaler>(uiObject);
+        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasScaler.referenceResolution = new Vector2(1080, 1920);
+    }
+
+    public void SetCanvasPopup(GameObject uiObject)
+    {
+        // Canvas 컴포넌트 세팅
+        var canvas = Utilities.GetOrAddComponent<Canvas>(uiObject);
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.overrideSorting = true;
+        canvas.sortingOrder = popupOrder++;
 
         // Canvas Scaler 세팅
         var canvasScaler = Utilities.GetOrAddComponent<CanvasScaler>(uiObject);
@@ -50,6 +68,11 @@ public class UIManager
 
     #region Scene
 
+    public void InitTop(UITopScene uITopMain)
+    {
+        Top = uITopMain;
+    }
+
     public T ShowScene<T>(string sceneName = null) where T : UIScene
     {
         if (string.IsNullOrEmpty(sceneName)) sceneName = typeof(T).Name;
@@ -59,6 +82,32 @@ public class UIManager
         CurrentScene = scene;
 
         return scene;
+    }
+
+    public T ShowSubScene<T>(string sceneName = null) where T : UIScene
+    {
+        if (string.IsNullOrEmpty(sceneName)) sceneName = typeof(T).Name;
+
+        if (CurrentSubScene != null)
+        {
+            CloseSubScene();
+        }
+
+        GameObject obj = Manager.Asset.InstantiatePrefab(sceneName, UIRoot.transform);
+        T scene = Utilities.GetOrAddComponent<T>(obj);
+        CurrentSubScene = scene;
+        sceneStack.Push(scene);
+
+        return scene;
+    }
+
+    public void CloseSubScene()
+    {
+        if (sceneStack.Count == 0) return;
+
+        UIScene scene = sceneStack.Pop();
+        Destroy(scene.gameObject);
+        sceneOrder--;
     }
 
     #endregion
@@ -77,26 +126,13 @@ public class UIManager
         return popup;
     }
 
-    public void ClosePopup(UIPopup popup)
-    {
-        if (popupStack.Count == 0) return;
-
-        if (popupStack.Peek() != popup)
-        {
-            Debug.Log("Close Popup Failed!");
-            return;
-        }
-
-        ClosePopup();
-    }
-
     public void ClosePopup()
     {
         if (popupStack.Count == 0) return;
 
         UIPopup popup = popupStack.Pop();
         Destroy(popup.gameObject);
-        order--;
+        popupOrder--;
     }
 
     public void CloseAllPopupUI()
