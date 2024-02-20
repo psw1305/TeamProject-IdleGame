@@ -23,7 +23,10 @@ public class RainbowLight : BaseSkill
 
     protected override void RemoveSkillEffect()
     {
-        StopCoroutine(_loopSkill);
+        if (_loopSkill != null)
+        {
+            StopCoroutine(_loopSkill);
+        }
     }
 
     private IEnumerator LoopSkill()

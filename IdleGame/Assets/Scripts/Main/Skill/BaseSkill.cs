@@ -12,7 +12,6 @@ public abstract class BaseSkill : MonoBehaviour
 
     protected float _skillDamageRatio;
 
-    protected SkillType _skillType;
     private bool _canUse;
 
     protected Player _player;
@@ -45,7 +44,12 @@ public abstract class BaseSkill : MonoBehaviour
             return;
         }
 
-        if(_skillType == SkillType.Targeting && Manager.Game.Player.enemyList.Count == 0)
+        if(Manager.Game.Player.enemyList.Count == 0) 
+        {
+            return;
+        }
+
+        if(Manager.Game.Player.State != PlayerState.Battle)
         {
             return;
         }
