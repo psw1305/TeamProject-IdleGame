@@ -5,7 +5,10 @@ public class UIRewardsItemSlot : MonoBehaviour
 {
     #region Fields
 
-    private Image _icon;
+    private Image icon;
+    private ItemContainerBlueprint itemContainer;
+    private SkillContainerBlueprint skillContainer;
+    private FollowerContainerBlueprint followerContainer;
 
     #endregion
 
@@ -13,18 +16,31 @@ public class UIRewardsItemSlot : MonoBehaviour
 
     private void Awake()
     {
-        _icon = transform.Find("ItemIcon").GetComponent<Image>();
+        icon = transform.Find("ItemIcon").GetComponent<Image>();
+        itemContainer = Manager.Asset.GetBlueprint("ItemDataContainer") as ItemContainerBlueprint;
+        skillContainer = Manager.Asset.GetBlueprint("SkillDataContainer") as SkillContainerBlueprint;
+        followerContainer = Manager.Asset.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
     }
 
-    public void UpdateSlot(string index)
+    public void UpdateSlot(string itemType, string id)
     {
-        // TODO => 아이템 데이터에서 이미지 가져오도록
-        //_icon.sprite = Manager.Asset.GetSprite(index);
+        if (itemType == "Equipment")
+        {
+            icon.sprite = itemContainer.FindSprite(id);
+        }
+        else if (itemType == "Skills")
+        {
+            icon.sprite = skillContainer.FindSprite(id);
+        }
+        else if (itemType == "Follower")
+        {
+            icon.sprite = followerContainer.FindSprite(id);
+        }
     }
 
     public void SlotClear()
     {
-        _icon.sprite = null;
+        icon.sprite = null;
     }
 
     #endregion

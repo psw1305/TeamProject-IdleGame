@@ -1,11 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SkillDataContainer", menuName = "Blueprints/SkillDataContainer")]
 public class SkillContainerBlueprint : ScriptableObject
 {
     public List<SkillBlueprint> skillDatas = new();
+
+    public Sprite FindSprite(string id)
+    {
+        return skillDatas.FirstOrDefault(item => item.ItemID == id)?.Sprite;
+    }
 }
 
 [System.Serializable]

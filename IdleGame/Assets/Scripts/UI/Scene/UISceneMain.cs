@@ -23,6 +23,8 @@ public class UISceneMain : UIScene
 
     private Image Image_WaveLoop;
     private Image Image_LevelGauge;
+    private Image image_1xSpeed;
+    private Image image_2xSpeed;
 
     #endregion
 
@@ -63,6 +65,8 @@ public class UISceneMain : UIScene
         SetUI<Image>();
         Image_WaveLoop = GetUI<Image>("LoopImage");
         Image_LevelGauge = GetUI<Image>("ProgressGauge");
+        image_1xSpeed = GetUI<Image>("Image_1xSpeed");
+        image_2xSpeed = GetUI<Image>("Image_2xSpeed");
     }
 
     private void SetTexts()
@@ -193,17 +197,21 @@ public class UISceneMain : UIScene
 
     private void OnGameSpeed(PointerEventData eventData)
     {        
-        if(isSpeedUp)
+        if (isSpeedUp)
         {
-            Debug.Log("게임 스피드 다운");
             isSpeedUp = false;
             Time.timeScale = 1f;
+
+            image_1xSpeed.gameObject.SetActive(true);
+            image_2xSpeed.gameObject.SetActive(false);
         }
         else
         {
-            Debug.Log("게임 스피드 업");
             isSpeedUp = true;
             Time.timeScale = 1.5f;
+
+            image_1xSpeed.gameObject.SetActive(false);
+            image_2xSpeed.gameObject.SetActive(true);
         }
     }
 
