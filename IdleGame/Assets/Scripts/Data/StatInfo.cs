@@ -49,7 +49,7 @@ public class StatInfo
         }
         else
         { 
-            return Value.ToString(); 
+            return Utilities.ConvertToString(Value); 
         }
     }
 

@@ -79,7 +79,7 @@ public class EnemyView : UIBase
     public void SetHealthBar(float currentHpPercent, long currentHp, bool isInit = false)
     {
         _hpBar.fillAmount = Mathf.Clamp(currentHpPercent, 0, 1);
-        _hpBarText.text = currentHp.ToString();
+        _hpBarText.text = Utilities.ConvertToString(currentHp);
 
         if (isInit) return;
 

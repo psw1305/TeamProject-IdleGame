@@ -114,7 +114,7 @@ public class UIPopupEquipSlots : MonoBehaviour
     private void SetReinforceProgress()
     {
         reinforceProgress.fillAmount = (float)_hasCount / _needCount;
-        reinforceText.text = $"{_hasCount}/{_needCount}";
+        reinforceText.text = $"{_hasCount} / {_needCount}";
     }
 
     private void SetReinforceIcon()

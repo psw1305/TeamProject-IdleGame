@@ -37,7 +37,7 @@ public class UIUpgradeStat : MonoBehaviour
 
         textStatLevel.text = $"Lv. {statInfo.Level}";
         textStatValue.text = statInfo.GetString();
-        textUpdateCost.text = statInfo.UpgradeCost.ToString();
+        textUpdateCost.text = Utilities.ConvertToString(statInfo.UpgradeCost);
 
         btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerDown, OnPointerDown);
         btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerUp, OnPointerUp);
@@ -63,7 +63,7 @@ public class UIUpgradeStat : MonoBehaviour
 
             textStatLevel.text = $"Lv. {statInfo.Level}";
             textStatValue.text = statInfo.GetString();
-            textUpdateCost.text = statInfo.UpgradeCost.ToString();
+            textUpdateCost.text = Utilities.ConvertToString(statInfo.UpgradeCost);
 
             (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
         }
