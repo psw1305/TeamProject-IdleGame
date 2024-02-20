@@ -12,8 +12,8 @@ public partial class SummonManager
     private FollowerDataManager _followerDataManager;
     private UISubSceneShopSummon _shopSummon;
 
-    private List<int> summonResurt = new List<int>(200);
-    private List<string> resultIdList = new List<string>(200);
+    private List<int> summonResurt = new(200);
+    private List<string> resultIdList = new(200);
 
     // 확인용
     private int[] testResult;
@@ -113,8 +113,10 @@ public partial class SummonManager
         {
             int getResultKey = curprobability.OrderBy(x => (summonResultValue[idx] - x >= 0)).First(); // 나중에 이진 탐색으로 줄여봅시다
             curLevelTable.TryGetValue(getResultKey, out string index);
-            //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");
+            //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");       
             resultIdList.Add(index);
+            
+            
             // 확인용 획득 수 카운트 증가
             //indexResult.TryGetValue(index, out int result);
             //testResult[result]++;
@@ -157,7 +159,7 @@ public partial class SummonManager
         }
         
         var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
-        popup.DataInit(finalResult);
+        popup.DataInit(typeLink, finalResult);
         popup.PlayStart();
         popup.SummonButtonInit(summonTable.SummonList);
         _shopSummon.BannerUpdate(typeLink, summonTable.SummonCountsAdd);

@@ -7,14 +7,14 @@ public class UIPopupRewards : UIPopup
 {
     #region Fields
 
-    [SerializeField]private UIRewardsItemSlot[] _itemSlots;
-    private GameObject _content;
-    private GameObject _outbox;
-    private Button _closeBtn;
+    [SerializeField] private UIRewardsItemSlot[] itemSlots;
+    private GameObject content;
+    private GameObject outbox;
+    private SummonList summonList;
     private string[] itemData;
-    private SummonList _summonList;
+    private string itemType;
 
-    private bool _isSkip = false;
+    private bool isSkip = false;
 
     #endregion
 
@@ -34,21 +34,21 @@ public class UIPopupRewards : UIPopup
     private void ButtonActionInit()
     {
         SetUI<Button>();
-        _closeBtn = SetButtonEvent("CloseButton", UIEventType.Click, ClosePopup);
+        SetButtonEvent("CloseButton", UIEventType.Click, ClosePopup);
     }
 
     private void SlotInit()
     {
-        _itemSlots = transform.GetComponentsInChildren<UIRewardsItemSlot>(true);
-        _content = transform.GetComponentInChildren<GridLayoutGroup>().gameObject;
-        _outbox = transform.Find("_Outbox").gameObject;
+        itemSlots = transform.GetComponentsInChildren<UIRewardsItemSlot>(true);
+        content = transform.GetComponentInChildren<GridLayoutGroup>().gameObject;
+        outbox = transform.Find("Outbox").gameObject;
     }
 
     private void SlotClear()
     {
-        for (int i = 0; i < _itemSlots.Length; i++)
+        for (int i = 0; i < itemSlots.Length; i++)
         {
-            _itemSlots[i].transform.SetParent(_outbox.transform, false);
+            itemSlots[i].transform.SetParent(outbox.transform, false);
         }
     }
 
@@ -56,23 +56,24 @@ public class UIPopupRewards : UIPopup
     {
         for (int i = 0; i < itemData.Length; i++)
         {
-            _itemSlots[i].transform.SetParent(_content.transform, false);
+            itemSlots[i].transform.SetParent(content.transform, false);
         }
     }
 
-    public void DataInit(string[] itemDatas)
+    public void DataInit(string typeLink, string[] itemDatas)
     {
+        itemType = typeLink;
         itemData = itemDatas;
     }
 
     public void SummonButtonInit(SummonList summonList)
     {
-        _summonList = Manager.Asset.GetBlueprint("SummonRewards") as SummonList;
+        this.summonList = Manager.Asset.GetBlueprint("SummonRewards") as SummonList;
         SetUI<Button>();
         SetUI<UIBtn_Check_Gems>();
-        for (int i = 0; i < _summonList.ButtonInfo.Count; i++)
+        for (int i = 0; i < this.summonList.ButtonInfo.Count; i++)
         {
-            var buttonInfo = _summonList.ButtonInfo[i];
+            var buttonInfo = this.summonList.ButtonInfo[i];
             var sourceButtonInfo = summonList.ButtonInfo.Find(x => x.BtnPrefab == buttonInfo.BtnPrefab);
             // 이름이 같은 buttoninfo가 있으면 그걸로 적용
             if (summonList.ButtonInfo.Contains(sourceButtonInfo))
@@ -106,12 +107,13 @@ public class UIPopupRewards : UIPopup
     {
         for (int i = 0; i < itemData.Length; i++)
         {
-            if (!_isSkip)
-                yield return new WaitForSeconds(0.05f);
-            _itemSlots[i].gameObject.SetActive(true);
-            _itemSlots[i].UpdateSlot(itemData[i]);
+            if (!isSkip) yield return new WaitForSeconds(0.05f);
+
+            itemSlots[i].gameObject.SetActive(true);
+            itemSlots[i].UpdateSlot(itemType, itemData[i]);
         }
-        _isSkip = true;
+
+        isSkip = true;
     }
 
     #endregion
@@ -120,9 +122,9 @@ public class UIPopupRewards : UIPopup
 
     private void ClosePopup(PointerEventData eventData)
     {
-        if (!_isSkip)
+        if (!isSkip)
         {
-            _isSkip = true;
+            isSkip = true;
         }
         else
         {

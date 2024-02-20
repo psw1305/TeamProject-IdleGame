@@ -1,10 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FollowerDataContainer", menuName = "Blueprints/FollowerDataContainer")]
 public class FollowerContainerBlueprint : ScriptableObject
 {
     public List<FollowerBlueprint> followerDatas = new();
+
+    public Sprite FindSprite(string id)
+    {
+        return followerDatas.FirstOrDefault(item => item.ItemID == id)?.Sprite;
+    }
 }
 
 [System.Serializable]
