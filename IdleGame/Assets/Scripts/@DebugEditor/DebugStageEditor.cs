@@ -39,7 +39,7 @@ public class StageEditor : EditorWindow
     private int attackLevel = 1;
     private int weaponLevel = 1;
 
-    [MenuItem("Window/Stage Test Setting")]
+    [MenuItem("Tools/Stage Test Setting")]
     public static void ShowWindow()
     {
         GetWindow<StageEditor>("Stage Test Setting");
