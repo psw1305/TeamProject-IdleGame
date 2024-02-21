@@ -231,7 +231,7 @@ public class UISceneMain : UIScene
     public void UpdateCurrentStage()
     {
         var stageUI = Manager.Stage.UITextReturn();
-        txt_Stage.text = $"{stageUI.UIText} {Manager.Stage.Chapter - stageUI.Index}층";
+        txt_Stage.text = $"{stageUI.UIText} {Manager.Stage.Chapter - (stageUI.Index - 1)}층";
     }
 
     public void UpdateQuestNum()

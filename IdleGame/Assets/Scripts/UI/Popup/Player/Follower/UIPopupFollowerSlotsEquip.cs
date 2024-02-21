@@ -10,6 +10,7 @@ public class UIPopupFollowerSlotsEquip : MonoBehaviour
     [SerializeField] private Image FollowerIcon;
     private Image _bgImg;
     private Button _btn;
+
     private void Awake()
     {
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupFollowerDetailInfo);
@@ -25,8 +26,7 @@ public class UIPopupFollowerSlotsEquip : MonoBehaviour
         //levelText.text = $"Lv.{userInvenFollowerData.level}";
 
         FollowerIcon.gameObject.SetActive(true);
-        // TODO => FollowerContainer에서 가져오도록
-        //FollowerIcon.sprite = Manager.Asset.GetSprite(userInvenFollowerData.itemID);
+        FollowerIcon.sprite = Manager.FollowerData.FollowerDataDictionary[userInvenFollowerData.itemID].Sprite;
     }
 
     public void SetSlotEmpty()

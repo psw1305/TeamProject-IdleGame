@@ -42,10 +42,11 @@ public class StageManager
     // 스테이지 정보 로드용 프로퍼티
     public StageBlueprint StageConfig => Manager.Asset.GetBlueprint(stageData.StageConfig) as StageBlueprint;
     public string StageBackground => string.Empty;
-    public int EnemyStatRate => stageData.EnemyStatRate;
-    public int EnemyGoldRate => stageData.EnemyGoldRate;
+    public long EnemyHpRate => stageData.EnemyHpRate;
+    public long EnemyAttackRate => stageData.EnemyAttackRate;
+    public long EnemyGoldRate => stageData.EnemyGoldRate;
     public int EnemySpawnCount => stageData.EnemySpawnCount;
-    public int IdleGoldReward => stageData.IdleGoldReward * EnemyGoldRate;
+    public long IdleGoldReward => stageData.IdleGoldReward * EnemyGoldRate;
 
     #endregion
 
@@ -118,9 +119,6 @@ public class StageManager
 
     public void BattleStart()
     {
-        AudioBGM.Instance.VolumeBGMScale = 0.1f;
-        AudioBGM.Instance.Play(Manager.Asset.GetAudio("testbgm"));
-
         stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
     }
 
@@ -220,7 +218,7 @@ public class StageManager
         enemySprite.sortingOrder = (int)Mathf.Ceil(spawnPoint[0].position.y * 10.0f - (randomPos.y * 10.0f));
         var enemy = enemyObject.GetComponent<BaseEnemy>();
         // 적 설정
-        enemy.SetEnemy(enemyBlueprint, randomPos, EnemyStatRate, EnemyGoldRate);
+        enemy.SetEnemy(enemyBlueprint, randomPos, EnemyHpRate, EnemyAttackRate, EnemyGoldRate);
         enemyList.Add(enemy);
 
         // 보스->몬스터 임시 변경
@@ -235,11 +233,11 @@ public class StageManager
         var enemyBlueprint = Manager.Asset.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
         var bossObject = Manager.ObjectPool.GetGo("EnemyFrame");
         var enemy = bossObject.GetComponent<BaseEnemy>();
-        enemy.SetEnemy(enemyBlueprint, bossSpawnPoint.position, EnemyStatRate, EnemyGoldRate);
+        enemy.SetEnemy(enemyBlueprint, bossSpawnPoint.position, EnemyHpRate, EnemyAttackRate, EnemyGoldRate);
         enemyList.Add(enemy);
 
         // 보스 설정 임시 변경
-        bossObject.transform.localScale = new Vector2(3 - ratio, 3 - ratio);
+        bossObject.transform.localScale = new Vector2(2.5f - ratio, 2.5f - ratio);
     }
 
     private void WaveCompleted()
@@ -329,10 +327,11 @@ public class StageData
     public int Index;
     public string StageConfig;
     public string StageBackground;
-    public int EnemyStatRate;
-    public int EnemyGoldRate;
+    public long EnemyHpRate;
+    public long EnemyAttackRate;
+    public long EnemyGoldRate;
     public int EnemySpawnCount;
-    public int IdleGoldReward;
+    public long IdleGoldReward;
 }
 
 [System.Serializable]

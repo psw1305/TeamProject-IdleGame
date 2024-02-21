@@ -49,6 +49,9 @@ public class MainScene : MonoBehaviour
         Manager.UI.ShowScene<UISceneMain>();
         Manager.Summon.SetSummon();
 
+        // 사운드 설정
+        SetAudio();
+
         // 스테이지 전투 구성
         Manager.Stage.SetStage(enemySpawnPoint, BossSpawnPointAdd());
         Manager.Stage.BattleStart();
@@ -62,6 +65,29 @@ public class MainScene : MonoBehaviour
         bossSpawnPoint.transform.parent = spawnPointTransform;
 
         return bossSpawnPoint.transform;
+    }
+
+    private void SetAudio()
+    {
+        if (PlayerPrefs.GetInt("BGM", 1) == 1)
+        {
+            AudioBGM.Instance.VolumeScale = 0.1f;
+        }
+        else
+        {
+            AudioBGM.Instance.VolumeScale = 0.0f;
+        }
+
+        if (PlayerPrefs.GetInt("SFX", 1) == 1)
+        {
+            AudioSFX.Instance.VolumeScale = 1.0f;
+        }
+        else
+        {
+            AudioSFX.Instance.VolumeScale = 0.0f;
+        }
+
+        AudioBGM.Instance.Play(Manager.Asset.GetAudio("testbgm"));
     }
 
     #endregion

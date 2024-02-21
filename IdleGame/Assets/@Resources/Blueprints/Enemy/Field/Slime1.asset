@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: "\uC2AC\uB77C\uC784"
   enemySprite: {fileID: 21300000, guid: c1904b8d5e55847098372e0c21eb677a, type: 3}
-  projectailVFX: {fileID: 144006, guid: 761c740b02ca298419b0a405f3ee050d, type: 3}
+  projectailVFX: {fileID: 170320, guid: 2dca19da96364f743a25be15b64734db, type: 3}
   enemyType: 0
-  damage: 1
-  hp: 15
+  damage: 2
+  hp: 10
   range: 2
   attackSpeed: 1
-  rewards: 10
+  rewards: 5
   moveSpeed: 3

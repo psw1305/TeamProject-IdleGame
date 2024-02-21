@@ -34,10 +34,8 @@ public class UIPopupOptions : UIPopup
         // 추후 공지 연결
     }
 
-    private void OnSettingPopup(PointerEventData eventData)
-    {
-        // 추후 설정 연결
-    }
+    private void OnSettingPopup(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupSettings>();
+
     private void OnMailBoxPopup(PointerEventData eventData)
     {
         // 추후 우편함 연결

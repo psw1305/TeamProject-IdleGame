@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public class EnemyProjectileHandler : ProjectileHandlerBase
 {
-    private bool has;
-
     protected override void Start()
     {
         base.Start();
