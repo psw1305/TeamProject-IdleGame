@@ -49,7 +49,7 @@ public class Follower : MonoBehaviour
 
         _sprite.sprite = followerBlueprint.Sprite;
         _animator.runtimeAnimatorController = followerBlueprint.Animator;
-        _rarity = Utilities.ConvertTierString(followerBlueprint.Rarity);
+        _rarity = followerBlueprint.Rarity.ToString();
 
         AttackRange = 4;
         AtkDamage = _player.AtkDamage.Value;

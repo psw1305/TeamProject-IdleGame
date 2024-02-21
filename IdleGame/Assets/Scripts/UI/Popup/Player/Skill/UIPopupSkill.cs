@@ -18,6 +18,7 @@ public class UIPopupSkill : UIPopup
         SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, ReinforceAllSkill);
 
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
+        SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
 
     private void ClosePopup(PointerEventData eventData)

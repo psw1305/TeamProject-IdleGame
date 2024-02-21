@@ -8,6 +8,7 @@ public class UIPopupFollowerDetail : UIPopup
     private int _needCount;
 
     private Image _IconSprite;
+    private Image _bgImg;
 
     private TextMeshProUGUI _nameText;
     private TextMeshProUGUI _rarityText;
@@ -51,6 +52,7 @@ public class UIPopupFollowerDetail : UIPopup
         SetUI<Image>();
 
         _IconSprite = GetUI<Image>("Img_Follower_Icon");
+        _bgImg = GetUI<Image>("Img_Follower_Icon_BG");
         _reinforceProgressSprite = GetUI<Image>("Img_ReinforceProgress");
     }
     private void SetTextMeshProUGUI()
@@ -84,9 +86,11 @@ public class UIPopupFollowerDetail : UIPopup
     public void SetUIFollowerData()
     {
         //_IconSprite.sprite = Manager.Asset.GetSprite(_data.itemID);
-
+        _bgImg.color = Utilities.SetSlotTierColor(Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity);
         _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].FollowerName;
-        _rarityText.text = Utilities.ConvertTierString(Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity);
+
+        _rarityText.color = Utilities.SetSlotTierColor(Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity);
+        _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity.ToString();
 
         _atkDamageText.text = (Manager.Game.Player.AtkDamage.Value * Manager.FollowerData.FollowerDataDictionary[_data.itemID].DamageCorrection / 100).ToString();
         _atkSpeedText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].AtkSpeed.ToString();

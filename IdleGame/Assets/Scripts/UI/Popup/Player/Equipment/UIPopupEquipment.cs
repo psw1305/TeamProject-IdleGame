@@ -10,6 +10,7 @@ public class UIPopupEquipment : UIPopup
     #region Fleids
 
     private Image _itemImage;
+    private Image _bgImage;
     private Image _typeIcon;
     private Image _reinforceProgress;
 
@@ -64,6 +65,7 @@ public class UIPopupEquipment : UIPopup
     {
         SetUI<Image>();
         _itemImage = GetUI<Image>("Img_EquipSlot");
+        _bgImage = GetUI<Image>("Img_EquipSlotBG");
         _typeIcon = GetUI<Image>("Img_ETypeIcon");
         _reinforceProgress = GetUI<Image>("Img_ReinforceProgress");
     }
@@ -117,9 +119,13 @@ public class UIPopupEquipment : UIPopup
         //UI 정보를 세팅합니다.
         _selectItemData = selectItemData;
         _itemNameText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ItemName;
-        _rarityText.text = Utilities.ConvertTierString(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].Rarity);
+
+        _rarityText.color = Utilities.SetSlotTierColor(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].Rarity);
+        _rarityText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].Rarity.ToString();
+
         _itemLevelText.text = _selectItemData.level.ToString();
 
+        _bgImage.color = Utilities.SetSlotTierColor(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].Rarity);
         _itemImage.sprite = Manager.Inventory.ItemDataDictionary[_selectItemData.itemID].Sprite;
 
         CalculateNeedItemCount();

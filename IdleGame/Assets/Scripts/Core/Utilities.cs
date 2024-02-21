@@ -147,23 +147,4 @@ public static class Utilities
         ColorUtility.TryParseHtmlString(SetTierColor(itemTier), out Color color);
         return color;
     }
-
-        public static string ConvertTierString(ItemTier itemTier)
-    {
-        switch (itemTier)
-        {
-            case ItemTier.Common:
-                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
-            case ItemTier.Uncommon:
-                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
-            case ItemTier.Rare:
-                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
-            case ItemTier.epic:
-                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
-            case ItemTier.Legendary:
-                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
-            default: 
-                return "등록되지 않은 티어";
-        }
-    }
 }
