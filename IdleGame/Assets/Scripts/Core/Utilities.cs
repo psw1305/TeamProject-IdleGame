@@ -134,7 +134,7 @@ public static class Utilities
             case ItemTier.Rare:
                 return "#56BAF8";
             case ItemTier.epic:
-                return "#FF3B58";
+                return "#D500FF";
             case ItemTier.Legendary:
                 return "#FFD150";
             default:
