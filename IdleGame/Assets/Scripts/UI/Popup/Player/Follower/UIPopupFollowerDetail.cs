@@ -85,15 +85,18 @@ public class UIPopupFollowerDetail : UIPopup
 
     public void SetUIFollowerData()
     {
+        _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].FollowerName;
         _IconSprite.sprite = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Sprite;
         _rarityText.color = Utilities.SetSlotTierColor(Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity);
         _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity.ToString();
 
-        _atkDamageText.text = (Manager.Game.Player.AtkDamage.Value * Manager.FollowerData.FollowerDataDictionary[_data.itemID].DamageCorrection / 100).ToString();
+        string damage = Utilities.ConvertToString((long)(Manager.Game.Player.AtkDamage.Value * Manager.FollowerData.FollowerDataDictionary[_data.itemID].DamageCorrection));
+        _atkDamageText.text = damage;
         _atkSpeedText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].AtkSpeed.ToString();
 
-        _retentionEffectText.text = $"공격력 +{Manager.Game.Player.AtkDamage.Value * ((Manager.FollowerData.FollowerDataDictionary[_data.itemID].RetentionEffect + Manager.FollowerData.FollowerDataDictionary[_data.itemID].ReinforceEffect*_data.level) / 100)}%";
-
+        string v = Utilities.ConvertToString((long)(Manager.Game.Player.AtkDamage.Value * ((Manager.FollowerData.FollowerDataDictionary[_data.itemID].RetentionEffect + Manager.FollowerData.FollowerDataDictionary[_data.itemID].ReinforceEffect * _data.level) / 100)));
+        _retentionEffectText.text = $"공격력 +{v}%";
+        
         SetUIReinforce();
     }
 
