@@ -123,7 +123,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         EvaluateState();
     }

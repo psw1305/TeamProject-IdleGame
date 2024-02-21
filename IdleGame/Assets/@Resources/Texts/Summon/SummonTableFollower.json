@@ -136,17 +136,17 @@
   },
   {
     "SummonGrade": 5,
-    "ItemId": "F0013",
+    "ItemId": "F0004",
     "Probability": 1667
   },
   {
     "SummonGrade": 5,
-    "ItemId": "F0014",
+    "ItemId": "F0005",
     "Probability": 1667
   },
   {
     "SummonGrade": 5,
-    "ItemId": "F0015",
+    "ItemId": "F0006",
     "Probability": 1667
   }
 ]
