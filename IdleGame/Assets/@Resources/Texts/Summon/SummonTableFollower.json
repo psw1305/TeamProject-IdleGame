@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "SummonGrade": 1,
     "ItemId": "F0001",
@@ -136,17 +136,17 @@
   },
   {
     "SummonGrade": 5,
-    "ItemId": "F0004",
+    "ItemId": "F0013",
     "Probability": 1667
   },
   {
     "SummonGrade": 5,
-    "ItemId": "F0005",
+    "ItemId": "F0014",
     "Probability": 1667
   },
   {
     "SummonGrade": 5,
-    "ItemId": "F0006",
+    "ItemId": "F0015",
     "Probability": 1667
   }
 ]

@@ -82,6 +82,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   ProjectileVFX: {fileID: 0}
+  DamageTypeValue: 0
+  Speed: 0.1
+  TargetPosition: {x: 0, y: 0}
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  projectileSprite: {fileID: 0}
