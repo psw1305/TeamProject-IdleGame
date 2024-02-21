@@ -85,6 +85,7 @@ public class UIPopupFollowerDetail : UIPopup
 
     public void SetUIFollowerData()
     {
+        _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].FollowerName;
         _IconSprite.sprite = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Sprite;
         _rarityText.color = Utilities.SetSlotTierColor(Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity);
         _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity.ToString();
