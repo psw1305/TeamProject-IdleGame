@@ -432,11 +432,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "attack")
             {
-                RetentionAttackEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * item.level;
+                RetentionAttackEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * (item.level - 1);
             }
             else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "hp")
             {
-                RetentionHPEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * item.level;
+                RetentionHPEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * (item.level - 1);
             }
         }
 
@@ -446,11 +446,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "attack" && item.equipped == true)
             {
-                EquipAttackStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * item.level;
+                EquipAttackStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * (item.level - 1);
             }
             else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "hp" && item.equipped == true)
             {
-                EquipHPStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * item.level;
+                EquipHPStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * (item.level - 1);
             }
         }
     }
