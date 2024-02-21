@@ -135,7 +135,8 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     //플레이어 방향으로 이동
     private void EvaluateState()
     {
-        if (_range < Vector2.Distance(Manager.Game.Player.gameObject.transform.position, transform.position))
+        //사거리보다 거리가 멀거나 뷰포트에 들어오지 않았을때
+        if (_range < Vector2.Distance(Manager.Game.Player.gameObject.transform.position, transform.position) | !_inViewport)
         {
             _rigidbody.velocity = new Vector2(
                 Manager.Game.Player.gameObject.transform.position.x - transform.position.x,
