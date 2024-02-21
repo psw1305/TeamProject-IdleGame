@@ -227,7 +227,6 @@ public class Player : MonoBehaviour, IDamageable
         PlayerDamaged(Damage);
         FloatingDamage(new Vector3(0, 0.25f, 0), Damage, damageTypeValue);
         playerView.SetHealthBar(GetCurrentHpPercent());
-        Debug.Log(CurrentHp);
     }
 
     private void PlayerDamaged(long damage)
