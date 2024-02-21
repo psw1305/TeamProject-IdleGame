@@ -35,7 +35,7 @@ public class DataManager
             Stat_Level_Hp = 1,
             Stat_Level_HpRecovery = 1,
             Stage_Chapter = 1,
-            Stage_Level = 1,
+            Stage_Level = 0,
             Stage_WaveLoop = false,
             Quest_Complete = 0,
             Quest_Current_Progress = 0,
