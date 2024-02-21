@@ -18,7 +18,7 @@ public class Follower : MonoBehaviour
     [HideInInspector] public List<BaseEnemy> enemyList;
     private Player _player;
 
-    private EnemyBlueprint _followerBlueprint;
+    private FollowerBlueprint _followerBlueprint;
     private string _itemID;
     private string _followerName;
     private GameObject _followerPrefab;
@@ -45,6 +45,7 @@ public class Follower : MonoBehaviour
     public void Initialize(FollowerBlueprint followerBlueprint)
     {
         _player = Manager.Game.Player;
+        _followerBlueprint = followerBlueprint;
 
         _sprite.sprite = followerBlueprint.Sprite;
         _animator.runtimeAnimatorController = followerBlueprint.Animator;
@@ -115,6 +116,7 @@ public class Follower : MonoBehaviour
     {
         var testProjectile = Manager.ObjectPool.GetGo("FollowerProjectileFrame");
         testProjectile.transform.position = ProjectilePoint.position;
+        //testProjectile.GetComponent<FollowerProjectileHandler>().ProjectileVFX.GetComponent<SpriteRenderer>().sprite = _followerBlueprint.ProjectileSprite; 
         enemyList[0].gameObject.layer = LayerMask.NameToLayer("TargetEnemy");
 
         testProjectile.GetComponent<PlayerProjectileHandler>().TargetPosition = enemyList[0].transform.position;
