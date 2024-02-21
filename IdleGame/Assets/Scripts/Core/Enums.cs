@@ -18,6 +18,13 @@ public enum StatModType
     DecimalPoint,
 }
 
+// 스탯 적용 타입
+public enum StatApplyType
+{
+    linear,
+    EnhancedLinear
+}
+
 // 퀘스트 타입 열거형
 public enum QuestType
 {

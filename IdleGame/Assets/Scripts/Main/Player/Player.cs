@@ -101,12 +101,18 @@ public class Player : MonoBehaviour, IDamageable
         Gems = profile.Gems;
 
         // 스탯 데이터 적용
-        AtkDamage = new StatInfo("Stat_Level_AtkDamage", profile.Stat_Level_AtkDamage, BaseStat.AtkDamage, 10, StatModType.Integer);
-        AtkSpeed = new StatInfo("Stat_Level_AtkSpeed", profile.Stat_Level_AtkSpeed, BaseStat.AtkSpeed, 10, StatModType.DecimalPoint);
-        CritChance = new StatInfo("Stat_Level_CritChance", profile.Stat_Level_CritChance, BaseStat.CritChance, 1, StatModType.Percent);
-        CritDamage = new StatInfo("Stat_Level_CritDamage", profile.Stat_Level_CritDamage, BaseStat.CritDamage, 10, StatModType.Percent);
-        Hp = new StatInfo("Stat_Level_Hp", profile.Stat_Level_Hp, BaseStat.Hp, 100, StatModType.Integer);
-        HpRecovery = new StatInfo("Stat_Level_HpRecovery", profile.Stat_Level_HpRecovery, BaseStat.HpRecovery, 10, StatModType.Integer);
+        AtkDamage = new StatInfo("Stat_Level_AtkDamage", profile.Stat_Level_AtkDamage, StatModType.Integer, StatApplyType.EnhancedLinear);
+        AtkDamage.InfoInit(BaseStat.AtkDamage, BaseUpgradeCost.AtkDamage, StatModifier.AtkDamage, CostModifier.AtkDamage);
+        AtkSpeed = new StatInfo("Stat_Level_AtkSpeed", profile.Stat_Level_AtkSpeed, StatModType.DecimalPoint, StatApplyType.linear);
+        AtkSpeed.InfoInit(BaseStat.AtkSpeed, BaseUpgradeCost.AtkSpeed, StatModifier.AtkSpeed, CostModifier.AtkSpeed);
+        CritChance = new StatInfo("Stat_Level_CritChance", profile.Stat_Level_CritChance, StatModType.Percent, StatApplyType.linear);
+        CritChance.InfoInit(BaseStat.CritChance, BaseUpgradeCost.CritChance, StatModifier.CritChance, CostModifier.CritChance);
+        CritDamage = new StatInfo("Stat_Level_CritDamage", profile.Stat_Level_CritDamage, StatModType.Percent, StatApplyType.EnhancedLinear);
+        CritDamage.InfoInit(BaseStat.CritDamage, BaseUpgradeCost.CritDamage, StatModifier.CritDamage, CostModifier.CritDamage);
+        Hp = new StatInfo("Stat_Level_Hp", profile.Stat_Level_Hp, StatModType.Integer, StatApplyType.EnhancedLinear);
+        Hp.InfoInit(BaseStat.Hp, BaseUpgradeCost.Hp, StatModifier.Hp, CostModifier.Hp);
+        HpRecovery = new StatInfo("Stat_Level_HpRecovery", profile.Stat_Level_HpRecovery, StatModType.Integer, StatApplyType.EnhancedLinear);
+        HpRecovery.InfoInit(BaseStat.HpRecovery, BaseUpgradeCost.HpRecovery, StatModifier.HpRecovery, CostModifier.HpRecovery);
 
         enemyList = Manager.Stage.GetEnemyList();
 
@@ -298,16 +304,18 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (IsCritical())
         {
-            damage = (long)((AtkDamage.Value
-                + AtkDamage.Value * EquipAttackStat / 100
-                + AtkDamage.Value * RetentionAttackEffect / 100) * (1 + CritDamage.GetFloat()) * _damageBuff);
+            damage = (long)(AtkDamage.Value
+                * (1 * EquipAttackStat / 100)
+                * (1 * RetentionAttackEffect / 100) 
+                * (1 + CritDamage.GetFloat()) 
+                * _damageBuff);
             damageTypeValue = DamageType.Critical;
         }
         else
         {
-            damage = (long)((AtkDamage.Value
-                + AtkDamage.Value * EquipAttackStat / 100
-                + AtkDamage.Value * RetentionAttackEffect / 100)
+            damage = (long)(AtkDamage.Value
+                * (1 * EquipAttackStat / 100)
+                * (1 * RetentionAttackEffect / 100)
                 * _damageBuff);
             damageTypeValue = DamageType.Normal;
         }
