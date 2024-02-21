@@ -1,7 +1,7 @@
 // 유저 인게임 스텟 정보
 public class StatInfo
 {
-    private int scaling = 1000;
+    private float scaling = 0.001f;
 
     public string Id;
     public int Level;
@@ -85,31 +85,31 @@ public class StatInfo
     {
         if (Level < 101)
         {
-            UpgradeCost = BaseUpgradeCost * CostPow(60, Level - 1) / scaling;
+            UpgradeCost = (long)(BaseUpgradeCost * CostPow(1 + 60 * scaling, Level - 1));
         }
         else
         {
-            UpgradeCost = BaseUpgradeCost * CostPow(60, Level - 1) / scaling
-                          * CostPow(CostModifier, Level - 101) / scaling;
+            UpgradeCost = (long)(BaseUpgradeCost * CostPow(1 + 60 * scaling, 100)
+                          * CostPow(1 + CostModifier * scaling, Level - 101));
         }
     }
 
-    public long CostPow(long modifier, int exponent)
+    public double CostPow(double modifier, int exponent)
     {
         if (exponent <= 0)
-            return scaling;
+            return 1;
         if (exponent == 1)
             return modifier;
 
         // exponent를 절반으로 나누어 재귀 호출
-        long temp = CostPow(modifier, exponent / 2);
+        double temp = CostPow(modifier, exponent / 2);
 
         // exponent가 짝수인 경우
         if (exponent % 2 == 0)
-            return (temp * temp) / scaling;
+            return temp * temp;
         // exponent가 홀수인 경우
         else
-            return modifier * (temp * temp) / (scaling * scaling);
+            return modifier * (temp * temp);
     }
 
     #endregion

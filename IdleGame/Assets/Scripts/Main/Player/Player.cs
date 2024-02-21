@@ -305,8 +305,8 @@ public class Player : MonoBehaviour, IDamageable
         if (IsCritical())
         {
             damage = (long)(AtkDamage.Value
-                * (1 * EquipAttackStat / 100)
-                * (1 * RetentionAttackEffect / 100) 
+                * (1 + EquipAttackStat * 0.01f)
+                * (1 + RetentionAttackEffect * 0.01f) 
                 * (1 + CritDamage.GetFloat()) 
                 * _damageBuff);
             damageTypeValue = DamageType.Critical;
@@ -314,8 +314,8 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             damage = (long)(AtkDamage.Value
-                * (1 * EquipAttackStat / 100)
-                * (1 * RetentionAttackEffect / 100)
+                * (1 + EquipAttackStat * 0.01f)
+                * (1 + RetentionAttackEffect * 0.01f)
                 * _damageBuff);
             damageTypeValue = DamageType.Normal;
         }
