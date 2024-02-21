@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 6137408864656622750}
   - component: {fileID: 7609795127323102292}
   m_Layer: 5
-  m_Name: _Btns
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,10 +430,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7204831771036695112}
-  - {fileID: 5300881228184464896}
   - {fileID: 846975607987886847}
-  - {fileID: 6137408864656622750}
   - {fileID: 8520165014873893327}
+  - {fileID: 6137408864656622750}
+  - {fileID: 5300881228184464896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185ed378ab963d2439686a298c257ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemSlots: []
+  itemSlots: []
 --- !u!1 &8780738894988792336
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8520165014873893327}
   m_Layer: 5
-  m_Name: _Outbox
+  m_Name: Outbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,10 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemDataContainer", menuName = "Blueprints/ItemDataContainer")]
 public class ItemContainerBlueprint : ScriptableObject
 {
     public List<ItemBlueprint> itemDatas = new();
+
+    public Sprite FindSprite(string id)
+    {
+        return itemDatas.FirstOrDefault(item => item.ItemID == id)?.Sprite;
+    }
 }
 
 [System.Serializable]

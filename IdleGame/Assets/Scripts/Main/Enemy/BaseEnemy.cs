@@ -12,7 +12,6 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     private EnemyView _enemyView;
 
     private string _enemyName;
-    private Coroutine _attackCoroutine;
 
     //체력
     private long _maxHp;
@@ -28,9 +27,12 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
     public long _rewards;
 
+    private bool _inViewport;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
+    private Camera _camera;
 
+    private Coroutine _attackCoroutine;
     public int TestWeight;
 
     #endregion
@@ -105,6 +107,20 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _enemyView = GetComponent<EnemyView>();
+        _camera = Camera.main;
+    }
+
+    private void Update()
+    {
+        Vector3 viewport = _camera.WorldToViewportPoint(transform.position);
+        if ((0 < viewport.x & viewport.x < 1) && (0 < viewport.y & viewport.y < 1))
+        {
+            _inViewport = true;
+        }
+        else
+        {
+            _inViewport = false;
+        }
     }
 
     private void Update()
@@ -130,10 +146,6 @@ public class BaseEnemy : ObjectPoolable, IDamageable
             _rigidbody.velocity = Vector2.zero;
 
             _attackCoroutine ??= StartCoroutine(AttackRoutine());
-            //if (_attackCoroutine == null)
-            //{
-            //    _attackCoroutine = StartCoroutine(AttackRoutine());
-            //}
         }
     }
     #endregion
@@ -190,6 +202,10 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     private void AmountDamage(long damage)
     {
         if (_currentHP == 0)
+        {
+            return;
+        }
+        if (!_inViewport)
         {
             return;
         }
