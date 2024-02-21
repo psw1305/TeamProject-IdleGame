@@ -86,7 +86,7 @@ public class UIPopupFollowerDetail : UIPopup
         //_IconSprite.sprite = Manager.Asset.GetSprite(_data.itemID);
 
         _nameText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].FollowerName;
-        _rarityText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity;
+        _rarityText.text = Utilities.ConvertTierString(Manager.FollowerData.FollowerDataDictionary[_data.itemID].Rarity);
 
         _atkDamageText.text = (Manager.Game.Player.AtkDamage.Value * Manager.FollowerData.FollowerDataDictionary[_data.itemID].DamageCorrection / 100).ToString();
         _atkSpeedText.text = Manager.FollowerData.FollowerDataDictionary[_data.itemID].AtkSpeed.ToString();

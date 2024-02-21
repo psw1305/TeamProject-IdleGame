@@ -26,6 +26,8 @@ public static class Utilities
         return builder.ToString();
     }
 
+    #region NumberConvert
+
     public static string ConvertToString(int number) => Convert(number);
     public static string ConvertToString(long number) => Convert(number);
     private static string Convert(long number)
@@ -44,6 +46,8 @@ public static class Utilities
 
         return sb.ToString();
     }
+
+    #endregion
 
     #region Download
 
@@ -118,4 +122,23 @@ public static class Utilities
     }
 
     #endregion
+
+    public static string ConvertTierString(ItemTier itemTier)
+    {
+        switch (itemTier)
+        {
+            case ItemTier.Common:
+                return $"<color=#E1D4C0>{itemTier}</color>";
+            case ItemTier.Uncommon:
+                return $"<color=#F4F3F7>{itemTier}</color>";
+            case ItemTier.Rare:
+                return $"<color=#56BAF8>{itemTier}</color>";
+            case ItemTier.epic:
+                return $"<color=#FF3B58>{itemTier}</color>";
+            case ItemTier.Legendary:
+                return $"<color=#CD0000>{itemTier}</color>";
+            default: 
+                return "등록되지 않은 티어";
+        }
+    }
 }

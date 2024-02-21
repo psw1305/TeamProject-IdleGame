@@ -70,7 +70,7 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
         _itemID = _skillData.itemID;
         _level = _skillData.level;
         _hasCount = _skillData.hasCount;
-        _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].Rarity;
+        _rarity = Utilities.ConvertTierString(Manager.SkillData.SkillDataDictionary[skillData.itemID].Rarity);
     }
 
     public void InitSlotUI()

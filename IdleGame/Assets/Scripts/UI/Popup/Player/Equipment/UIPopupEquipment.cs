@@ -117,7 +117,7 @@ public class UIPopupEquipment : UIPopup
         //UI 정보를 세팅합니다.
         _selectItemData = selectItemData;
         _itemNameText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ItemName;
-        _rarityText.text = Manager.Inventory.ItemDataDictionary[selectItemData.itemID].Rarity;
+        _rarityText.text = Utilities.ConvertTierString(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].Rarity);
         _itemLevelText.text = _selectItemData.level.ToString();
 
         _itemImage.sprite = Manager.Inventory.ItemDataDictionary[_selectItemData.itemID].Sprite;

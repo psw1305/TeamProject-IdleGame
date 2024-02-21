@@ -66,3 +66,12 @@ public enum PlayerState
     Battle,
     Die
 }
+
+public enum ItemTier
+{
+    Common,
+    Uncommon,
+    Rare,
+    epic,
+    Legendary
+}

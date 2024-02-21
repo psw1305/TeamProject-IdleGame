@@ -1,7 +1,7 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIPopupFollowerSlotsInven : MonoBehaviour
 {
@@ -66,7 +66,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
         _itemID = _followerData.itemID;
         _level = _followerData.level;
         _hasCount = _followerData.hasCount;
-        _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].Rarity;
+        _rarity = Utilities.ConvertTierString(Manager.FollowerData.FollowerDataDictionary[itemData.itemID].Rarity);
     }
 
     public void InitSlotUI()
@@ -110,7 +110,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
         {
             reinforceIcon.SetActive(false);
         }
-    }    
+    }
 
 
     public void SetUILockState()

@@ -69,7 +69,7 @@ public class UIPopupEquipSlots : MonoBehaviour
         _itemData = itemData;
         _itemID = _itemData.itemID;
         _level = _itemData.level;
-        _rarity = Manager.Inventory.ItemDataDictionary[itemData.itemID].Rarity;
+        _rarity = Utilities.ConvertTierString(Manager.Inventory.ItemDataDictionary[itemData.itemID].Rarity);
         _lvTxt.text = $"Lv. {_level}";
         _hasCount = _itemData.hasCount;
     }

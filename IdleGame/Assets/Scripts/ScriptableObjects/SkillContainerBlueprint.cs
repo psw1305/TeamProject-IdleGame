@@ -19,7 +19,7 @@ public class SkillBlueprint
     [Header("Skill Info")]
     [SerializeField] private string itemID;
     [SerializeField] private string skillName;
-    [SerializeField] private string rarity;
+    [SerializeField] private ItemTier rarity;
     [SerializeField] private string description;
     [SerializeField] private float skillDamage;
     [SerializeField] private float reinforceDamage;
@@ -35,7 +35,7 @@ public class SkillBlueprint
     public GameObject SkillObject => skillObject;
     public string ItemID => itemID;
     public string SkillName => skillName;
-    public string Rarity => rarity;
+    public ItemTier Rarity => rarity;
     public string Description => description;
     public float SkillDamage => skillDamage;
     public float ReinforceDamage => reinforceDamage;
