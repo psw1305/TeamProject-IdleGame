@@ -26,6 +26,8 @@ public static class Utilities
         return builder.ToString();
     }
 
+    #region NumberConvert
+
     public static string ConvertToString(int number) => Convert(number);
     public static string ConvertToString(long number) => Convert(number);
     private static string Convert(long number)
@@ -44,6 +46,8 @@ public static class Utilities
 
         return sb.ToString();
     }
+
+    #endregion
 
     #region Download
 
@@ -118,4 +122,29 @@ public static class Utilities
     }
 
     #endregion
+
+    private static string SetTierColor(ItemTier itemTier)
+    {
+        switch (itemTier)
+        {
+            case ItemTier.Common:
+                return "#C3C2C5";
+            case ItemTier.Uncommon:
+                return "#93DCC3";
+            case ItemTier.Rare:
+                return "#56BAF8";
+            case ItemTier.epic:
+                return "#FF3B58";
+            case ItemTier.Legendary:
+                return "#FFD150";
+            default:
+                return "등록되지 않은 티어";
+        }
+    }
+
+    public static Color SetSlotTierColor(ItemTier itemTier)
+    {
+        ColorUtility.TryParseHtmlString(SetTierColor(itemTier), out Color color);
+        return color;
+    }
 }

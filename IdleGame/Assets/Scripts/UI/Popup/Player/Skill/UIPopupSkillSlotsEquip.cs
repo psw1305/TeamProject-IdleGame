@@ -8,30 +8,40 @@ public class UIPopupSkillSlotsEquip : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image skillIcon;
+    private Image _bgImg;
+    private Button _btn;
 
     private void Awake()
     {
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupSkillDetailInfo);
+        _bgImg = GetComponent<Image>();
+        _btn = GetComponent<Button>();
     }
 
     public void SetSlotUI(UserInvenSkillData userInvenSkillData)
     {
+        _btn.interactable = true;
         _userInvenSkillData = userInvenSkillData;
         levelText.text = $"Lv.{userInvenSkillData.level}";
 
-            skillIcon.gameObject.SetActive(true);
-            skillIcon.sprite = Manager.SkillData.SkillDataDictionary[userInvenSkillData.itemID].Sprite;
+        skillIcon.gameObject.SetActive(true);
+
+        SkillBlueprint sb = Manager.SkillData.SkillDataDictionary[userInvenSkillData.itemID];
+        _bgImg.color = Utilities.SetSlotTierColor(sb.Rarity);
+        skillIcon.sprite = sb.Sprite;
     }
 
     public void SetSlotEmpty()
     {
+        _btn.interactable = false;
+        _bgImg.color = Color.white;
         levelText.text = string.Empty;
         skillIcon.gameObject.SetActive(false);
     }
 
     private void ShowPopupSkillDetailInfo()
     {
-        if(_userInvenSkillData == null)
+        if (_userInvenSkillData == null)
         {
             return;
         }

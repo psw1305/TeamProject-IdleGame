@@ -66,3 +66,18 @@ public enum PlayerState
     Battle,
     Die
 }
+
+public enum StatType
+{
+    Attack,
+    HP
+}
+
+public enum ItemTier
+{
+    Common,
+    Uncommon,
+    Rare,
+    epic,
+    Legendary
+}

@@ -1,7 +1,7 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIPopupFollowerSlotsInven : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
     private int _level;
     private int _hasCount;
     private int _needCount;
-    private string _rarity;
+    private ItemTier _rarity;
 
     #endregion
 
@@ -66,7 +66,9 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
         _itemID = _followerData.itemID;
         _level = _followerData.level;
         _hasCount = _followerData.hasCount;
+
         _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].Rarity;
+        GetComponent<Image>().color = Utilities.SetSlotTierColor(_rarity);
     }
 
     public void InitSlotUI()
@@ -110,7 +112,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
         {
             reinforceIcon.SetActive(false);
         }
-    }    
+    }
 
 
     public void SetUILockState()

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,24 +51,24 @@ public class UIPopupEquipContainer : UIBase
         {
             foreach (var itemData in Manager.Inventory.WeaponItemList)
             {
-                GameObject slot = Manager.Asset.InstantiatePrefab("ItemSlot_Weapon", gameObject.transform);
-                itemSlots.Add(slot);
-                slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
-                slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();
-                slot.GetComponent<UIPopupEquipSlots>().CheckEquipState();
-                slot.GetComponent<UIPopupEquipSlots>().SetReinforceUI();
+                UIPopupEquipSlots slot = Manager.Asset.InstantiatePrefab("ItemSlot_Weapon", gameObject.transform).GetComponent<UIPopupEquipSlots>();
+                itemSlots.Add(slot.gameObject);
+                slot.InitSlotInfo(itemData);
+                slot.InitSlotUI();
+                slot.CheckEquipState();
+                slot.SetReinforceUI();
             }
         }
         else if (MainPopupUI.EquipFillterType == EquipFillterType.Armor)
         {
             foreach (var itemData in Manager.Inventory.ArmorItemList)
             {
-                GameObject slot = Manager.Asset.InstantiatePrefab("ItemSlot_Armor", gameObject.transform);
-                itemSlots.Add(slot);
-                slot.GetComponent<UIPopupEquipSlots>().InitSlotInfo(itemData);
-                slot.GetComponent<UIPopupEquipSlots>().InitSlotUI();
-                slot.GetComponent<UIPopupEquipSlots>().CheckEquipState();
-                slot.GetComponent<UIPopupEquipSlots>().SetReinforceUI();
+                UIPopupEquipSlots slot = Manager.Asset.InstantiatePrefab("ItemSlot_Armor", gameObject.transform).GetComponent<UIPopupEquipSlots>();
+                itemSlots.Add(slot.gameObject);
+                slot.InitSlotInfo(itemData);
+                slot.InitSlotUI();
+                slot.CheckEquipState();
+                slot.SetReinforceUI();
             }
         }
         ResetOnScrollTop();

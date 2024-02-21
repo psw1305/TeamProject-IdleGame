@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDurateTime: 0.5
-  coolDown: 0
+  coolDown: 0.5
   vfxParticle: {fileID: 5587715457156137417}
 --- !u!1 &3649234360871498320
 GameObject:

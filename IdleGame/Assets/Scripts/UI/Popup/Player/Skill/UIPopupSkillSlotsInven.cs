@@ -12,7 +12,7 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
     private int _level;
     private int _hasCount;
     private int _needCount;
-    private string _rarity;
+    private ItemTier _rarity;
 
     #endregion
 
@@ -70,7 +70,9 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
         _itemID = _skillData.itemID;
         _level = _skillData.level;
         _hasCount = _skillData.hasCount;
+
         _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].Rarity;
+        GetComponent<Image>().color = Utilities.SetSlotTierColor(_rarity);
     }
 
     public void InitSlotUI()

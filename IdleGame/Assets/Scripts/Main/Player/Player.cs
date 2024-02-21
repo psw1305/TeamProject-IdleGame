@@ -422,11 +422,11 @@ public class Player : MonoBehaviour, IDamageable
 
         foreach (var item in Manager.Inventory.UserInventory.UserItemData.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
         {
-            if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "attack")
+            if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == StatType.Attack)
             {
                 RetentionAttackEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * item.level;
             }
-            else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "hp")
+            else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == StatType.HP)
             {
                 RetentionHPEffect += Manager.Inventory.ItemDataDictionary[item.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEffect * item.level;
             }
@@ -436,11 +436,11 @@ public class Player : MonoBehaviour, IDamageable
 
         foreach (var item in filteredEquipItem)
         {
-            if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "attack" && item.equipped == true)
+            if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == StatType.Attack && item.equipped == true)
             {
                 EquipAttackStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * item.level;
             }
-            else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == "hp" && item.equipped == true)
+            else if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == StatType.HP && item.equipped == true)
             {
                 EquipHPStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * item.level;
             }

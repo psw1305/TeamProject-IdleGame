@@ -15,8 +15,8 @@ MonoBehaviour:
   itemDatas:
   - itemID: W0001
     itemName: "\uB3D9\uAC80"
-    rarity: 
-    statType: attack
+    rarity: 0
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.2
     retentionEffect: 10
@@ -24,8 +24,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: c2a0b2ab5044235478ccd300e3e4e9c2, type: 3}
   - itemID: W0002
     itemName: "\uB0A0\uCE74\uB85C\uC6B4 \uB3D9\uAC80"
-    rarity: 
-    statType: attack
+    rarity: 0
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.3
     retentionEffect: 10
@@ -33,8 +33,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: c6a650513c1ccd04fb1ade9ddff61bbb, type: 3}
   - itemID: W0003
     itemName: "\uCCA0 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 0
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.4
     retentionEffect: 10
@@ -42,8 +42,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 197118548233d24479bdd7abaf6416bd, type: 3}
   - itemID: W0004
     itemName: "\uC5D0\uBA54\uB784\uB4DC \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 0
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.5
     retentionEffect: 10
@@ -51,8 +51,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: f4e3b26d98c7be94fb1df7a7f33bd359, type: 3}
   - itemID: W0005
     itemName: "\uC740 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 0
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.5
     retentionEffect: 10
@@ -60,8 +60,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 7b711df914313e8498682df3a5d031b9, type: 3}
   - itemID: W0006
     itemName: "\uD145\uC2A4\uD150 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 1
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.5
     retentionEffect: 15
@@ -69,8 +69,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: a2ca26c88faa6144a96258e71c92d2d8, type: 3}
   - itemID: W0007
     itemName: "\uD638\uBC15 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 1
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.6
     retentionEffect: 15
@@ -78,8 +78,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 7831e2360f079804ca93dfcff4ba76ff, type: 3}
   - itemID: W0008
     itemName: "\uBBF8\uC2A4\uB9B4 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 1
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.7
     retentionEffect: 15
@@ -87,8 +87,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 60a33fa8b77ff614f8bdf97a12cbb233, type: 3}
   - itemID: W0009
     itemName: "\uAE30\uC0AC\uC758 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 1
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.8
     retentionEffect: 15
@@ -96,8 +96,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: fdf8b9f17bcb5f04db88a3d080695a46, type: 3}
   - itemID: W0010
     itemName: "\uC2AC\uB77C\uC784 \uB2E8\uAC80"
-    rarity: 
-    statType: attack
+    rarity: 1
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.9
     retentionEffect: 15
@@ -105,8 +105,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 66f5f97431acf5f4d8af510b54dea1d1, type: 3}
   - itemID: W0011
     itemName: "\uB9C8\uADF8\uB9C8 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 2
+    statType: 0
     equipStat: 35
     reinforceEquip: 1
     retentionEffect: 20
@@ -114,8 +114,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 309e6a9d8e0bf364d8879312bc1bb31b, type: 3}
   - itemID: W0012
     itemName: "\uBE59\uD574\uC758 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 2
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.1
     retentionEffect: 20
@@ -123,8 +123,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: fee5020a2c2989c42a516c1f1220d4d3, type: 3}
   - itemID: W0013
     itemName: "\uD1B1\uB0A0 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 2
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.2
     retentionEffect: 20
@@ -132,8 +132,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: a6f5961ba6509eb4aa49837fef7781db, type: 3}
   - itemID: W0014
     itemName: "\uB300\uC9C0\uC758 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 2
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.3
     retentionEffect: 20
@@ -141,8 +141,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 5482164199c85774aacfad441c60f14e, type: 3}
   - itemID: W0015
     itemName: "\uBB3C\uC758 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 2
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.4
     retentionEffect: 20
@@ -150,8 +150,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 28645077d38842a469a5fb154ca1f89b, type: 3}
   - itemID: W0016
     itemName: "\uBD88\uC758 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 3
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.5
     retentionEffect: 25
@@ -159,8 +159,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: c0d3ffe89411657418f16173867b55ab, type: 3}
   - itemID: W0017
     itemName: "\uAD11\uC120\uAC80"
-    rarity: 
-    statType: attack
+    rarity: 3
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.6
     retentionEffect: 25
@@ -168,8 +168,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 393bba95a9d686842a879448bd83fd94, type: 3}
   - itemID: W0018
     itemName: "\uACE0\uCD9C\uB825 \uAD11\uC120\uAC80"
-    rarity: 
-    statType: attack
+    rarity: 3
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.7
     retentionEffect: 25
@@ -177,8 +177,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 28347af849f1ac24d906d370853adee6, type: 3}
   - itemID: W0019
     itemName: "\uAD11\uC120 \uB2E8\uB3C4"
-    rarity: 
-    statType: attack
+    rarity: 3
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.8
     retentionEffect: 25
@@ -186,8 +186,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 7d03ce7d3f0dbba4c826a51521355f55, type: 3}
   - itemID: W0020
     itemName: "\uBD89\uC740 \uB9C8\uB178 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 3
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.9
     retentionEffect: 25
@@ -195,8 +195,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: f643fe49016311a4ab84d0e1f4232585, type: 3}
   - itemID: W0021
     itemName: "\uB2E4\uC774\uC544\uBAAC\uB4DC \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 4
+    statType: 0
     equipStat: 70
     reinforceEquip: 2.5
     retentionEffect: 30
@@ -204,8 +204,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: be60225c731f69f42b929cb03e46bb62, type: 3}
   - itemID: W0022
     itemName: "\uD658\uC601\uC758 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 4
+    statType: 0
     equipStat: 70
     reinforceEquip: 3
     retentionEffect: 30
@@ -213,8 +213,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 82926a5d55f5a6d47b142d90a8bd4d3a, type: 3}
   - itemID: W0023
     itemName: "\uC774\uAE00\uAC70\uB9AC\uB294 \uAC80"
-    rarity: 
-    statType: attack
+    rarity: 4
+    statType: 0
     equipStat: 70
     reinforceEquip: 4
     retentionEffect: 30
@@ -222,8 +222,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: c813a4bb7c8c17348b126c27d7cd0ca7, type: 3}
   - itemID: W0024
     itemName: "\uCD08 \uACE0\uCD9C\uB825 \uAD11\uC120\uAC80"
-    rarity: 
-    statType: attack
+    rarity: 4
+    statType: 0
     equipStat: 70
     reinforceEquip: 5
     retentionEffect: 30
@@ -231,8 +231,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 5438a95b63da3ab4d9d4781dd0372d66, type: 3}
   - itemID: W0025
     itemName: "\uCD08\uC6D4\uC758 \uC7A5\uAC80"
-    rarity: 
-    statType: attack
+    rarity: 4
+    statType: 0
     equipStat: 100
     reinforceEquip: 10
     retentionEffect: 30
@@ -240,8 +240,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: af0f21e8000ddeb42a844a0f97228690, type: 3}
   - itemID: A0001
     itemName: "\uB098\uBB34 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 0
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.1
     retentionEffect: 10
@@ -249,8 +249,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 318f7a7748627ff4988d91a6676ed605, type: 3}
   - itemID: A0002
     itemName: "\uB3D9 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 0
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.2
     retentionEffect: 10
@@ -258,8 +258,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 8ec3e95ababec184cb6872f704e450b0, type: 3}
   - itemID: A0003
     itemName: "\uB3CC \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 0
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.3
     retentionEffect: 10
@@ -267,8 +267,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: b5e347bbdf82a874298afa7f9fc6dbb6, type: 3}
   - itemID: A0004
     itemName: "\uC0AC\uC554 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 0
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.4
     retentionEffect: 10
@@ -276,8 +276,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: eec384211f03f894ca831b3c61407426, type: 3}
   - itemID: A0005
     itemName: "\uC9D5 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 0
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.5
     retentionEffect: 10
@@ -285,8 +285,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: b654bd6636b6cd6478fbf393f56c2670, type: 3}
   - itemID: A0006
     itemName: "\uAF79\uAC00\uB9AC"
-    rarity: 
-    statType: hp
+    rarity: 1
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.6
     retentionEffect: 15
@@ -294,8 +294,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 5a872ad9a77cd004b87227c304f7edc0, type: 3}
   - itemID: A0007
     itemName: "\uC9D5 \uB300\uD615 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 1
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.7
     retentionEffect: 15
@@ -303,8 +303,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 8d63af1648d2fe84ebd5b19edd14ea42, type: 3}
   - itemID: A0008
     itemName: "\uAE08\uC18D \uC9D5 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 1
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.8
     retentionEffect: 15
@@ -312,8 +312,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: d9284b06a519bc644a741946663b6a8f, type: 3}
   - itemID: A0009
     itemName: "\uCC0C\uB974\uAE30 \uC88B\uC740 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 1
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.9
     retentionEffect: 15
@@ -321,8 +321,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 4f7e01bfd77bd4545a8bdffcd75a0a08, type: 3}
   - itemID: A0010
     itemName: "\uD2BC\uD2BC\uD55C \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 1
+    statType: 1
     equipStat: 15
     reinforceEquip: 1
     retentionEffect: 15
@@ -330,8 +330,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: dcd7274e721d96740a0a421590698e23, type: 3}
   - itemID: A0011
     itemName: "\uC2E0\uC131\uD55C \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 2
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.1
     retentionEffect: 20
@@ -339,8 +339,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 66ca6d92a39c17d4b85a997e1c01de48, type: 3}
   - itemID: A0012
     itemName: "\uC758\uC2DD\uC6A9 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 2
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.2
     retentionEffect: 20
@@ -348,8 +348,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 7ffbbf53eec43714ea8718ee4c87a72f, type: 3}
   - itemID: A0013
     itemName: "\uD1A0\uD30C\uC988 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 2
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.3
     retentionEffect: 20
@@ -357,8 +357,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: f15cb077302aa824c889516c383f7f39, type: 3}
   - itemID: A0014
     itemName: "\uD2BC\uD2BC\uD55C \uC0AC\uAC01 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 2
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.4
     retentionEffect: 20
@@ -366,8 +366,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: f06be3e58ea055c4b8206c262561f402, type: 3}
   - itemID: A0015
     itemName: "\uAE30\uC0AC\uC758 \uC0BC\uAC01 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 2
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.5
     retentionEffect: 20
@@ -375,8 +375,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: f516f7d2074d7974ba834cd039811659, type: 3}
   - itemID: A0016
     itemName: "\uC545\uB9C8\uC758 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 3
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.6
     retentionEffect: 25
@@ -384,8 +384,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 6fe5905f04c15af42b578b3afa8792c2, type: 3}
   - itemID: A0017
     itemName: "\uCC9C\uC0AC\uC758 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 3
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.7
     retentionEffect: 25
@@ -393,8 +393,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: e85f7dcbafabfbd49b08c603297eff3c, type: 3}
   - itemID: A0018
     itemName: "\uC808\uB300\uC790\uC758 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 3
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.8
     retentionEffect: 25
@@ -402,8 +402,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 41937765063dfa742928d96bdf4baae4, type: 3}
   - itemID: A0019
     itemName: "\uC7A5\uBCBD\uC758 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 3
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.9
     retentionEffect: 25
@@ -411,8 +411,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 72303bfeda7e7354c9247a4e8d559196, type: 3}
   - itemID: A0020
     itemName: "\uCCB4\uD06C\uBB34\uB2AC \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 3
+    statType: 1
     equipStat: 25
     reinforceEquip: 2
     retentionEffect: 25
@@ -420,8 +420,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: ede5f39416d51fa46a7c91b935cfb3fe, type: 3}
   - itemID: A0021
     itemName: "\uC6A9\uAE30\uC0AC \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 4
+    statType: 1
     equipStat: 30
     reinforceEquip: 3
     retentionEffect: 30
@@ -429,8 +429,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: e05648b7ca911904fa9ff5821a209be0, type: 3}
   - itemID: A0022
     itemName: "\uB4A4\uD2C0\uB9B0 \uC545\uB9C8"
-    rarity: 
-    statType: hp
+    rarity: 4
+    statType: 1
     equipStat: 30
     reinforceEquip: 4
     retentionEffect: 30
@@ -438,8 +438,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 36eaf0b8487f3924398f133bc5e2ccba, type: 3}
   - itemID: A0023
     itemName: "\uC9C0\uC625\uBD88 \uC545\uB9C8 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 4
+    statType: 1
     equipStat: 30
     reinforceEquip: 5
     retentionEffect: 30
@@ -447,8 +447,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 1f63bcf4bb8cd6c4f823d636cbdbccff, type: 3}
   - itemID: A0024
     itemName: "\uAD11\uD718\uC758 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 0
+    statType: 1
     equipStat: 30
     reinforceEquip: 6
     retentionEffect: 30
@@ -456,8 +456,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: e286aba6d541afd4bb51144c185b103e, type: 3}
   - itemID: A0025
     itemName: "\uCD08\uC6D4\uC758 \uBC29\uD328"
-    rarity: 
-    statType: hp
+    rarity: 4
+    statType: 1
     equipStat: 50
     reinforceEquip: 7
     retentionEffect: 30

@@ -9,6 +9,7 @@ public class UIPopupSkillDetail : UIPopup
     private int _needCount;
 
     private Image _IconSprite;
+    private Image _bgImg;
 
     private TextMeshProUGUI _nameText;
     private TextMeshProUGUI _rarityText;
@@ -54,6 +55,7 @@ public class UIPopupSkillDetail : UIPopup
         SetUI<Image>();
 
         _IconSprite = GetUI<Image>("Img_Skill_Icon");
+        _bgImg = GetUI<Image>("Img_Skill_Icon_BG");
         _reinforceProgressSprite = GetUI<Image>("Img_ReinforceProgress");
     }
 
@@ -83,11 +85,13 @@ public class UIPopupSkillDetail : UIPopup
 
     private void SetUISkillData()
     {
+        _bgImg.color = Utilities.SetSlotTierColor(Manager.SkillData.SkillDataDictionary[_data.itemID].Rarity);
         _IconSprite.sprite = Manager.SkillData.SkillDataDictionary[_data.itemID].Sprite;
 
-        _nameText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].SkillName;
-        _rarityText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].Rarity;
+        _rarityText.color = Utilities.SetSlotTierColor(Manager.SkillData.SkillDataDictionary[_data.itemID].Rarity);
+        _rarityText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].Rarity.ToString();
 
+        _nameText.text = Manager.SkillData.SkillDataDictionary[_data.itemID].SkillName;
         SetUIReinforce();
     }
 

@@ -23,7 +23,7 @@ public class FollowerBlueprint
     [SerializeField] private GameObject projectile;
     [SerializeField] private Sprite sprite;
     [SerializeField] private RuntimeAnimatorController animator;
-    [SerializeField] private string rarity;
+    [SerializeField] private ItemTier rarity;
     
     [Header("Follower Stats")]
     [SerializeField] private float damageCorrection;
@@ -38,7 +38,7 @@ public class FollowerBlueprint
     public GameObject Projectile => projectile;
     public  Sprite Sprite => sprite;
     public RuntimeAnimatorController Animator => animator;
-    public string Rarity => rarity;
+    public ItemTier Rarity => rarity;
 
     public float DamageCorrection => damageCorrection;
     public float AtkSpeed => atkSpeed;

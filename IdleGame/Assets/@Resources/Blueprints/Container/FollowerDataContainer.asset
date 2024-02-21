@@ -19,7 +19,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 1d9d5de3d2546e24d9cb63a5a3d0e669, type: 3}
     animator: {fileID: 9100000, guid: 75221f8347b8bfd4eb4f7fe29a7a71ac, type: 2}
-    rarity: common
+    rarity: 0
     damageCorrection: 0.2
     atkSpeed: 0.2
     reinforceDamage: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 699da10dacfad784d9fcb15d03553dc9, type: 3}
     animator: {fileID: 9100000, guid: e0399a1bcec2eb14bbd6ce89d02f1268, type: 2}
-    rarity: common
+    rarity: 0
     damageCorrection: 0.2
     atkSpeed: 0.2
     reinforceDamage: 2
@@ -43,7 +43,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 572791806029cdd4ba5c896ac55e3f07, type: 3}
     animator: {fileID: 9100000, guid: f9f7abe8f8731214e8130a138548adda, type: 2}
-    rarity: common
+    rarity: 0
     damageCorrection: 0.2
     atkSpeed: 0.2
     reinforceDamage: 2
@@ -55,7 +55,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 1750691493dbe3a4f998f4876277664b, type: 3}
     animator: {fileID: 9100000, guid: 8780ec05a4670f14fbfc8f42350421a7, type: 2}
-    rarity: uncommon
+    rarity: 1
     damageCorrection: 0.3
     atkSpeed: 0.3
     reinforceDamage: 3
@@ -67,7 +67,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 73c004a8e5542eb44a75abfadbf1898c, type: 3}
     animator: {fileID: 9100000, guid: 3052dc1356a643e42b4561fe47f1df00, type: 2}
-    rarity: uncommon
+    rarity: 1
     damageCorrection: 0.3
     atkSpeed: 0.3
     reinforceDamage: 3
@@ -79,7 +79,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 29190f6924618bd40b4febc30c676f2e, type: 3}
     animator: {fileID: 9100000, guid: 27b8d4291cf269a4cb08b24ae984dbc8, type: 2}
-    rarity: uncommon
+    rarity: 1
     damageCorrection: 0.3
     atkSpeed: 0.3
     reinforceDamage: 3
@@ -91,7 +91,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 3cf34dd6ae2a41547b537cf911fb2220, type: 3}
     animator: {fileID: 9100000, guid: 083088fa94fc35344904009cde8f8ec4, type: 2}
-    rarity: rare
+    rarity: 2
     damageCorrection: 0.4
     atkSpeed: 0.4
     reinforceDamage: 4
@@ -103,7 +103,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 0518aa52ca8fa9549825c08bd31e550d, type: 3}
     animator: {fileID: 9100000, guid: eee4a7d0113df584a9c53c323c21f9b7, type: 2}
-    rarity: rare
+    rarity: 2
     damageCorrection: 0.4
     atkSpeed: 0.4
     reinforceDamage: 4
@@ -115,7 +115,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 8d15002cf52a91441950cba557c0f07d, type: 3}
     animator: {fileID: 9100000, guid: 91946d14485e5be49b1e1067e571e489, type: 2}
-    rarity: rare
+    rarity: 2
     damageCorrection: 0.4
     atkSpeed: 0.4
     reinforceDamage: 4
@@ -127,7 +127,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 33f1f173cf13808489c581d50f70cc98, type: 3}
     animator: {fileID: 9100000, guid: ee48e24b74832f54f8149c1a45a91e3b, type: 2}
-    rarity: epic
+    rarity: 3
     damageCorrection: 0.5
     atkSpeed: 0.5
     reinforceDamage: 5
@@ -139,7 +139,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 218ac8f25703b804497dddbf11c9e1d5, type: 3}
     animator: {fileID: 9100000, guid: cb8797823cf2915448d54ebb4a00468d, type: 2}
-    rarity: epic
+    rarity: 3
     damageCorrection: 0.5
     atkSpeed: 0.5
     reinforceDamage: 5
@@ -151,7 +151,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 54969353c44468240a6b31dd99b7f37c, type: 3}
     animator: {fileID: 9100000, guid: e413743d09bf9e44993be515084a2c7a, type: 2}
-    rarity: epic
+    rarity: 3
     damageCorrection: 0.5
     atkSpeed: 0.5
     reinforceDamage: 5
@@ -163,7 +163,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: 473a98b005d46804e9af5ea1cc931fe1, type: 3}
     animator: {fileID: 9100000, guid: fac1d1405197de345a85e05f01e30e2b, type: 2}
-    rarity: legendary
+    rarity: 4
     damageCorrection: 0.6
     atkSpeed: 0.6
     reinforceDamage: 6
@@ -175,7 +175,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: f6406514dbac7b848b1d0b49c91164e3, type: 3}
     animator: {fileID: 9100000, guid: f248651e02f2286419432bc61d5dc124, type: 2}
-    rarity: legendary
+    rarity: 4
     damageCorrection: 0.6
     atkSpeed: 0.6
     reinforceDamage: 6
@@ -187,7 +187,7 @@ MonoBehaviour:
     projectile: {fileID: 6129305065457122331, guid: d6eaa3b50ef2d7a4b95d5478e691fa22, type: 3}
     sprite: {fileID: -7279525710136958521, guid: b563c82d6fa973c49a232f1c64af99e8, type: 3}
     animator: {fileID: 9100000, guid: e534b9e31d0ec2c40bd022ea70b89b52, type: 2}
-    rarity: legendary
+    rarity: 4
     damageCorrection: 0.6
     atkSpeed: 0.6
     reinforceDamage: 6
