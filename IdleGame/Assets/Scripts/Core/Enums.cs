@@ -67,6 +67,12 @@ public enum PlayerState
     Die
 }
 
+public enum StatType
+{
+    Attack,
+    HP
+}
+
 public enum ItemTier
 {
     Common,

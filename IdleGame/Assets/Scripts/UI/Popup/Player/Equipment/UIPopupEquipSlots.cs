@@ -12,7 +12,7 @@ public class UIPopupEquipSlots : MonoBehaviour
     private int _level;
     private int _hasCount;
     private int _needCount;
-    private string _rarity;
+    private ItemTier _rarity;
 
     #endregion
 
@@ -69,7 +69,10 @@ public class UIPopupEquipSlots : MonoBehaviour
         _itemData = itemData;
         _itemID = _itemData.itemID;
         _level = _itemData.level;
-        _rarity = Utilities.ConvertTierString(Manager.Inventory.ItemDataDictionary[itemData.itemID].Rarity);
+
+        _rarity = Manager.Inventory.ItemDataDictionary[itemData.itemID].Rarity;
+        GetComponent<Image>().color = Utilities.SetSlotTierColor(_rarity);
+
         _lvTxt.text = $"Lv. {_level}";
         _hasCount = _itemData.hasCount;
     }

@@ -20,7 +20,7 @@ public class ItemBlueprint
     [SerializeField] private string itemID;
     [SerializeField] private string itemName;
     [SerializeField] private ItemTier rarity;
-    [SerializeField] private string statType;
+    [SerializeField] private StatType statType;
     [SerializeField] private float equipStat;
     [SerializeField] private float reinforceEquip;
     [SerializeField] private float retentionEffect;
@@ -33,7 +33,7 @@ public class ItemBlueprint
     public string ItemID => itemID;
     public string ItemName => itemName;
     public ItemTier Rarity => rarity;
-    public string StatType => statType;
+    public StatType StatType => statType;
     public float EquipStat => equipStat;
     public float  ReinforceEquip => reinforceEquip;
     public float RetentionEffect => retentionEffect;

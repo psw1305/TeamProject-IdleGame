@@ -123,20 +123,45 @@ public static class Utilities
 
     #endregion
 
-    public static string ConvertTierString(ItemTier itemTier)
+    private static string SetTierColor(ItemTier itemTier)
     {
         switch (itemTier)
         {
             case ItemTier.Common:
-                return $"<color=#E1D4C0>{itemTier}</color>";
+                return "#C3C2C5";
             case ItemTier.Uncommon:
-                return $"<color=#F4F3F7>{itemTier}</color>";
+                return "#93DCC3";
             case ItemTier.Rare:
-                return $"<color=#56BAF8>{itemTier}</color>";
+                return "#56BAF8";
             case ItemTier.epic:
-                return $"<color=#FF3B58>{itemTier}</color>";
+                return "#FF3B58";
             case ItemTier.Legendary:
-                return $"<color=#CD0000>{itemTier}</color>";
+                return "#FFD150";
+            default:
+                return "등록되지 않은 티어";
+        }
+    }
+
+    public static Color SetSlotTierColor(ItemTier itemTier)
+    {
+        ColorUtility.TryParseHtmlString(SetTierColor(itemTier), out Color color);
+        return color;
+    }
+
+        public static string ConvertTierString(ItemTier itemTier)
+    {
+        switch (itemTier)
+        {
+            case ItemTier.Common:
+                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
+            case ItemTier.Uncommon:
+                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
+            case ItemTier.Rare:
+                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
+            case ItemTier.epic:
+                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
+            case ItemTier.Legendary:
+                return $"<color={SetTierColor(itemTier)}>{itemTier}</color>";
             default: 
                 return "등록되지 않은 티어";
         }

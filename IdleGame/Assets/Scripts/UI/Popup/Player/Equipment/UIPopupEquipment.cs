@@ -127,12 +127,12 @@ public class UIPopupEquipment : UIPopup
         _reinforceProgress.fillAmount = (float)_selectItemData.hasCount / _needCount;
 
 
-        if (Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == "attack")
+        if (Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == StatType.Attack)
         {
             _equipEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEquip * _selectItemData.level}%";
             _retentionEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEffect * _selectItemData.level}%";
         }
-        else if(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == "hp")
+        else if(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == StatType.HP)
         {
             _equipEffect.text = $"체력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEquip * _selectItemData.level}%";
             _retentionEffect.text = $"체력 :  {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEffect * _selectItemData.level}%";

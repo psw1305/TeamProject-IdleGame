@@ -16,7 +16,7 @@ MonoBehaviour:
   - itemID: W0001
     itemName: "\uB3D9\uAC80"
     rarity: 0
-    statType: attack
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.2
     retentionEffect: 10
@@ -25,7 +25,7 @@ MonoBehaviour:
   - itemID: W0002
     itemName: "\uB0A0\uCE74\uB85C\uC6B4 \uB3D9\uAC80"
     rarity: 0
-    statType: attack
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.3
     retentionEffect: 10
@@ -34,7 +34,7 @@ MonoBehaviour:
   - itemID: W0003
     itemName: "\uCCA0 \uAC80"
     rarity: 0
-    statType: attack
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.4
     retentionEffect: 10
@@ -43,7 +43,7 @@ MonoBehaviour:
   - itemID: W0004
     itemName: "\uC5D0\uBA54\uB784\uB4DC \uAC80"
     rarity: 0
-    statType: attack
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.5
     retentionEffect: 10
@@ -52,7 +52,7 @@ MonoBehaviour:
   - itemID: W0005
     itemName: "\uC740 \uAC80"
     rarity: 0
-    statType: attack
+    statType: 0
     equipStat: 20
     reinforceEquip: 0.5
     retentionEffect: 10
@@ -61,7 +61,7 @@ MonoBehaviour:
   - itemID: W0006
     itemName: "\uD145\uC2A4\uD150 \uAC80"
     rarity: 1
-    statType: attack
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.5
     retentionEffect: 15
@@ -70,7 +70,7 @@ MonoBehaviour:
   - itemID: W0007
     itemName: "\uD638\uBC15 \uAC80"
     rarity: 1
-    statType: attack
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.6
     retentionEffect: 15
@@ -79,7 +79,7 @@ MonoBehaviour:
   - itemID: W0008
     itemName: "\uBBF8\uC2A4\uB9B4 \uAC80"
     rarity: 1
-    statType: attack
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.7
     retentionEffect: 15
@@ -88,7 +88,7 @@ MonoBehaviour:
   - itemID: W0009
     itemName: "\uAE30\uC0AC\uC758 \uAC80"
     rarity: 1
-    statType: attack
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.8
     retentionEffect: 15
@@ -97,7 +97,7 @@ MonoBehaviour:
   - itemID: W0010
     itemName: "\uC2AC\uB77C\uC784 \uB2E8\uAC80"
     rarity: 1
-    statType: attack
+    statType: 0
     equipStat: 30
     reinforceEquip: 0.9
     retentionEffect: 15
@@ -106,7 +106,7 @@ MonoBehaviour:
   - itemID: W0011
     itemName: "\uB9C8\uADF8\uB9C8 \uAC80"
     rarity: 2
-    statType: attack
+    statType: 0
     equipStat: 35
     reinforceEquip: 1
     retentionEffect: 20
@@ -115,7 +115,7 @@ MonoBehaviour:
   - itemID: W0012
     itemName: "\uBE59\uD574\uC758 \uAC80"
     rarity: 2
-    statType: attack
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.1
     retentionEffect: 20
@@ -124,7 +124,7 @@ MonoBehaviour:
   - itemID: W0013
     itemName: "\uD1B1\uB0A0 \uAC80"
     rarity: 2
-    statType: attack
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.2
     retentionEffect: 20
@@ -133,7 +133,7 @@ MonoBehaviour:
   - itemID: W0014
     itemName: "\uB300\uC9C0\uC758 \uAC80"
     rarity: 2
-    statType: attack
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.3
     retentionEffect: 20
@@ -142,7 +142,7 @@ MonoBehaviour:
   - itemID: W0015
     itemName: "\uBB3C\uC758 \uAC80"
     rarity: 2
-    statType: attack
+    statType: 0
     equipStat: 35
     reinforceEquip: 1.4
     retentionEffect: 20
@@ -151,7 +151,7 @@ MonoBehaviour:
   - itemID: W0016
     itemName: "\uBD88\uC758 \uAC80"
     rarity: 3
-    statType: attack
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.5
     retentionEffect: 25
@@ -160,7 +160,7 @@ MonoBehaviour:
   - itemID: W0017
     itemName: "\uAD11\uC120\uAC80"
     rarity: 3
-    statType: attack
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.6
     retentionEffect: 25
@@ -169,7 +169,7 @@ MonoBehaviour:
   - itemID: W0018
     itemName: "\uACE0\uCD9C\uB825 \uAD11\uC120\uAC80"
     rarity: 3
-    statType: attack
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.7
     retentionEffect: 25
@@ -178,7 +178,7 @@ MonoBehaviour:
   - itemID: W0019
     itemName: "\uAD11\uC120 \uB2E8\uB3C4"
     rarity: 3
-    statType: attack
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.8
     retentionEffect: 25
@@ -187,7 +187,7 @@ MonoBehaviour:
   - itemID: W0020
     itemName: "\uBD89\uC740 \uB9C8\uB178 \uAC80"
     rarity: 3
-    statType: attack
+    statType: 0
     equipStat: 40
     reinforceEquip: 1.9
     retentionEffect: 25
@@ -196,7 +196,7 @@ MonoBehaviour:
   - itemID: W0021
     itemName: "\uB2E4\uC774\uC544\uBAAC\uB4DC \uAC80"
     rarity: 4
-    statType: attack
+    statType: 0
     equipStat: 70
     reinforceEquip: 2.5
     retentionEffect: 30
@@ -205,7 +205,7 @@ MonoBehaviour:
   - itemID: W0022
     itemName: "\uD658\uC601\uC758 \uAC80"
     rarity: 4
-    statType: attack
+    statType: 0
     equipStat: 70
     reinforceEquip: 3
     retentionEffect: 30
@@ -214,7 +214,7 @@ MonoBehaviour:
   - itemID: W0023
     itemName: "\uC774\uAE00\uAC70\uB9AC\uB294 \uAC80"
     rarity: 4
-    statType: attack
+    statType: 0
     equipStat: 70
     reinforceEquip: 4
     retentionEffect: 30
@@ -223,7 +223,7 @@ MonoBehaviour:
   - itemID: W0024
     itemName: "\uCD08 \uACE0\uCD9C\uB825 \uAD11\uC120\uAC80"
     rarity: 4
-    statType: attack
+    statType: 0
     equipStat: 70
     reinforceEquip: 5
     retentionEffect: 30
@@ -232,7 +232,7 @@ MonoBehaviour:
   - itemID: W0025
     itemName: "\uCD08\uC6D4\uC758 \uC7A5\uAC80"
     rarity: 4
-    statType: attack
+    statType: 0
     equipStat: 100
     reinforceEquip: 10
     retentionEffect: 30
@@ -241,7 +241,7 @@ MonoBehaviour:
   - itemID: A0001
     itemName: "\uB098\uBB34 \uBC29\uD328"
     rarity: 0
-    statType: hp
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.1
     retentionEffect: 10
@@ -250,7 +250,7 @@ MonoBehaviour:
   - itemID: A0002
     itemName: "\uB3D9 \uBC29\uD328"
     rarity: 0
-    statType: hp
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.2
     retentionEffect: 10
@@ -259,7 +259,7 @@ MonoBehaviour:
   - itemID: A0003
     itemName: "\uB3CC \uBC29\uD328"
     rarity: 0
-    statType: hp
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.3
     retentionEffect: 10
@@ -268,7 +268,7 @@ MonoBehaviour:
   - itemID: A0004
     itemName: "\uC0AC\uC554 \uBC29\uD328"
     rarity: 0
-    statType: hp
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.4
     retentionEffect: 10
@@ -277,7 +277,7 @@ MonoBehaviour:
   - itemID: A0005
     itemName: "\uC9D5 \uBC29\uD328"
     rarity: 0
-    statType: hp
+    statType: 1
     equipStat: 10
     reinforceEquip: 0.5
     retentionEffect: 10
@@ -286,7 +286,7 @@ MonoBehaviour:
   - itemID: A0006
     itemName: "\uAF79\uAC00\uB9AC"
     rarity: 1
-    statType: hp
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.6
     retentionEffect: 15
@@ -295,7 +295,7 @@ MonoBehaviour:
   - itemID: A0007
     itemName: "\uC9D5 \uB300\uD615 \uBC29\uD328"
     rarity: 1
-    statType: hp
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.7
     retentionEffect: 15
@@ -304,7 +304,7 @@ MonoBehaviour:
   - itemID: A0008
     itemName: "\uAE08\uC18D \uC9D5 \uBC29\uD328"
     rarity: 1
-    statType: hp
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.8
     retentionEffect: 15
@@ -313,7 +313,7 @@ MonoBehaviour:
   - itemID: A0009
     itemName: "\uCC0C\uB974\uAE30 \uC88B\uC740 \uBC29\uD328"
     rarity: 1
-    statType: hp
+    statType: 1
     equipStat: 15
     reinforceEquip: 0.9
     retentionEffect: 15
@@ -322,7 +322,7 @@ MonoBehaviour:
   - itemID: A0010
     itemName: "\uD2BC\uD2BC\uD55C \uBC29\uD328"
     rarity: 1
-    statType: hp
+    statType: 1
     equipStat: 15
     reinforceEquip: 1
     retentionEffect: 15
@@ -331,7 +331,7 @@ MonoBehaviour:
   - itemID: A0011
     itemName: "\uC2E0\uC131\uD55C \uBC29\uD328"
     rarity: 2
-    statType: hp
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.1
     retentionEffect: 20
@@ -340,7 +340,7 @@ MonoBehaviour:
   - itemID: A0012
     itemName: "\uC758\uC2DD\uC6A9 \uBC29\uD328"
     rarity: 2
-    statType: hp
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.2
     retentionEffect: 20
@@ -349,7 +349,7 @@ MonoBehaviour:
   - itemID: A0013
     itemName: "\uD1A0\uD30C\uC988 \uBC29\uD328"
     rarity: 2
-    statType: hp
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.3
     retentionEffect: 20
@@ -358,7 +358,7 @@ MonoBehaviour:
   - itemID: A0014
     itemName: "\uD2BC\uD2BC\uD55C \uC0AC\uAC01 \uBC29\uD328"
     rarity: 2
-    statType: hp
+    statType: 1
     equipStat: 20
     reinforceEquip: 1.4
     retentionEffect: 20
@@ -367,7 +367,7 @@ MonoBehaviour:
   - itemID: A0015
     itemName: "\uAE30\uC0AC\uC758 \uC0BC\uAC01 \uBC29\uD328"
     rarity: 2
-    statType: hp
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.5
     retentionEffect: 20
@@ -376,7 +376,7 @@ MonoBehaviour:
   - itemID: A0016
     itemName: "\uC545\uB9C8\uC758 \uBC29\uD328"
     rarity: 3
-    statType: hp
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.6
     retentionEffect: 25
@@ -385,7 +385,7 @@ MonoBehaviour:
   - itemID: A0017
     itemName: "\uCC9C\uC0AC\uC758 \uBC29\uD328"
     rarity: 3
-    statType: hp
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.7
     retentionEffect: 25
@@ -394,7 +394,7 @@ MonoBehaviour:
   - itemID: A0018
     itemName: "\uC808\uB300\uC790\uC758 \uBC29\uD328"
     rarity: 3
-    statType: hp
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.8
     retentionEffect: 25
@@ -403,7 +403,7 @@ MonoBehaviour:
   - itemID: A0019
     itemName: "\uC7A5\uBCBD\uC758 \uBC29\uD328"
     rarity: 3
-    statType: hp
+    statType: 1
     equipStat: 25
     reinforceEquip: 1.9
     retentionEffect: 25
@@ -412,7 +412,7 @@ MonoBehaviour:
   - itemID: A0020
     itemName: "\uCCB4\uD06C\uBB34\uB2AC \uBC29\uD328"
     rarity: 3
-    statType: hp
+    statType: 1
     equipStat: 25
     reinforceEquip: 2
     retentionEffect: 25
@@ -421,7 +421,7 @@ MonoBehaviour:
   - itemID: A0021
     itemName: "\uC6A9\uAE30\uC0AC \uBC29\uD328"
     rarity: 4
-    statType: hp
+    statType: 1
     equipStat: 30
     reinforceEquip: 3
     retentionEffect: 30
@@ -430,7 +430,7 @@ MonoBehaviour:
   - itemID: A0022
     itemName: "\uB4A4\uD2C0\uB9B0 \uC545\uB9C8"
     rarity: 4
-    statType: hp
+    statType: 1
     equipStat: 30
     reinforceEquip: 4
     retentionEffect: 30
@@ -439,7 +439,7 @@ MonoBehaviour:
   - itemID: A0023
     itemName: "\uC9C0\uC625\uBD88 \uC545\uB9C8 \uBC29\uD328"
     rarity: 4
-    statType: hp
+    statType: 1
     equipStat: 30
     reinforceEquip: 5
     retentionEffect: 30
@@ -448,7 +448,7 @@ MonoBehaviour:
   - itemID: A0024
     itemName: "\uAD11\uD718\uC758 \uBC29\uD328"
     rarity: 0
-    statType: hp
+    statType: 1
     equipStat: 30
     reinforceEquip: 6
     retentionEffect: 30
@@ -457,7 +457,7 @@ MonoBehaviour:
   - itemID: A0025
     itemName: "\uCD08\uC6D4\uC758 \uBC29\uD328"
     rarity: 4
-    statType: hp
+    statType: 1
     equipStat: 50
     reinforceEquip: 7
     retentionEffect: 30
