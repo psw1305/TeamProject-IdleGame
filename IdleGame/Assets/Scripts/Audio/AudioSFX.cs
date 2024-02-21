@@ -7,17 +7,17 @@ public class AudioSFX : AudioSystem<AudioSFX>
 
     private AudioSource AudioSource { get; set; }
 
-    private float volumeSFXScale = 1.0f;
-    public float VolumeSFXScale
+    private float volumeScale = 1.0f;
+    public float VolumeScale
     {
         get
         {
-            return this.volumeSFXScale;
+            return this.volumeScale;
         }
         set
         {
-            this.volumeSFXScale = Mathf.Clamp01(value);
-            SetVolume(this.volumeSFXScale);
+            this.volumeScale = Mathf.Clamp01(value);
+            SetVolume(this.volumeScale);
         }
     }
 

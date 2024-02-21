@@ -118,9 +118,6 @@ public class StageManager
 
     public void BattleStart()
     {
-        AudioBGM.Instance.VolumeBGMScale = 0.1f;
-        AudioBGM.Instance.Play(Manager.Asset.GetAudio("testbgm"));
-
         stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
     }
 

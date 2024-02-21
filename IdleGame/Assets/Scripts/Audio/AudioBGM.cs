@@ -7,17 +7,17 @@ public class AudioBGM : AudioSystem<AudioBGM>
 
     private AudioSource AudioSource { get; set; }
 
-    private float volumeBGMScale = 1.0f;
-    public float VolumeBGMScale
+    private float volumeScale = 1.0f;
+    public float VolumeScale
     {
         get
         {
-            return this.volumeBGMScale;
+            return this.volumeScale;
         }
         set
         {
-            this.volumeBGMScale = Mathf.Clamp01(value);
-            SetVolume(this.volumeBGMScale);
+            this.volumeScale = Mathf.Clamp01(value);
+            SetVolume(this.volumeScale);
         }
     }
 

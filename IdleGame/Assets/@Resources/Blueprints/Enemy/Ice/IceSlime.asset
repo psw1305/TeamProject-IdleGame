@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: "\uC5BC\uC74C \uC2AC\uB77C\uC784"
   enemySprite: {fileID: 21300000, guid: 223d5d0b5515b4069981296f73b24255, type: 3}
-  projectailVFX: {fileID: 151592, guid: 616f69804973e2544aef82c5610d8b3b, type: 3}
+  projectailVFX: {fileID: 137368, guid: 35ebb9da2cca6ca47b28d321371deddd, type: 3}
   enemyType: 0
   damage: 1
   hp: 15
