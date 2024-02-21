@@ -16,8 +16,8 @@ MonoBehaviour:
   enemySprite: {fileID: 21300000, guid: b66be5a60b68547a09897e411af3a352, type: 3}
   projectailVFX: {fileID: 146252, guid: 3ff2cdf1800f3e44b962fb174deb1193, type: 3}
   enemyType: 1
-  damage: 10
-  hp: 200
+  damage: 12
+  hp: 150
   range: 3
   attackSpeed: 2
   rewards: 100

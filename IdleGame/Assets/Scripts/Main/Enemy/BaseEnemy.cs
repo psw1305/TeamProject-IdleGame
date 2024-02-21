@@ -39,7 +39,7 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
     #region Init
 
-    public void SetEnemy(EnemyBlueprint blueprint, Vector2 position, int statWeight, int goldWeight)
+    public void SetEnemy(EnemyBlueprint blueprint, Vector2 position, long hpWeight, long atkWeight, long goldWeight)
     {
         _enemyBlueprint = blueprint;
         _enemyName = blueprint.EnemyName;
@@ -58,23 +58,24 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         //gameObject.name = _enemyName;
 
         SetPosition(position);
-        SetStatWeight(statWeight);
+        SetStatWeight(hpWeight, atkWeight);
         SetGoldWeight(goldWeight);
         ResetHealth();
         SetHpBar();
     }
 
-    public void SetStatWeight(int Weight)
+    public void SetStatWeight(long hpWeight, long atkWeight)
     {
-        long _weight = (long)(Weight - 1);
-        _maxHp = _maxHp + _maxHp * _weight;
-        _damage = _damage + _damage * _weight;
+        long _hpWeight = hpWeight - 1;
+        _maxHp = _maxHp + _maxHp * _hpWeight;
+        long _atkWeight = atkWeight - 1;
+        _damage = _damage + _damage * _atkWeight;
         ResetHealth();
     }
 
-    public void SetGoldWeight(int Weight)
+    public void SetGoldWeight(long Weight)
     {
-        long _weight = (long)(Weight - 1);
+        long _weight = Weight - 1;
         _rewards = _rewards + _rewards * _weight;
     }
 
