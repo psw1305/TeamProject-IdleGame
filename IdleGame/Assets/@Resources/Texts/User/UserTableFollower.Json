@@ -52,6 +52,60 @@
       "level": 1,
       "hasCount": 0,
       "equipped": false
+    },
+    {
+      "itemID": "F0007",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0008",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0009",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0010",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0011",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0012",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0013",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0014",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "F0015",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
     }
   ]
 }

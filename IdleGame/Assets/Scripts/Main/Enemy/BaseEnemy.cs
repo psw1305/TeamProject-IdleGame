@@ -159,10 +159,8 @@ public class BaseEnemy : ObjectPoolable, IDamageable
         var go = Manager.ObjectPool.GetGo("EnemyProjectileFrame");
         go.transform.position = gameObject.transform.position;
 
-
         //발사체 초기화를 위해 정보를 넘겨줌
-        go.GetComponent<EnemyProjectileHandler>().ProjectileVFX = _enemyBlueprint.ProjectailVFX;
-        go.GetComponent<EnemyProjectileHandler>().Damage = _damage;
+        go.GetComponent<EnemyProjectileHandler>().SetProjectile(_enemyBlueprint.ProjectailVFX, _damage);
     }
 
     //발사체 생성 코루틴

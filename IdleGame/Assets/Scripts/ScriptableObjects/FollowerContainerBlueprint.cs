@@ -20,6 +20,7 @@ public class FollowerBlueprint
     [SerializeField] private string itemID;
     [SerializeField] private string followerName;
     [SerializeField] private GameObject followerObject;
+    [SerializeField] private GameObject projectile;
     [SerializeField] private Sprite sprite;
     [SerializeField] private RuntimeAnimatorController animator;
     [SerializeField] private string rarity;
@@ -34,6 +35,7 @@ public class FollowerBlueprint
     public string ItemID => itemID;
     public string FollowerName => followerName;
     public GameObject FollowerObject => followerObject;
+    public GameObject Projectile => projectile;
     public  Sprite Sprite => sprite;
     public RuntimeAnimatorController Animator => animator;
     public string Rarity => rarity;

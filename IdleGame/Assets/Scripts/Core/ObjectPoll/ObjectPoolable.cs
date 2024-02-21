@@ -14,4 +14,12 @@ public class ObjectPoolable : MonoBehaviour
     {
         Poolable.Release(gameObject);
     }
+
+    public void VFXOff()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            this.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
 }
