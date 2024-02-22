@@ -48,13 +48,13 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
     private void Awake()
     {
         SetReinforceUI += SetReinforceData;
-        SetReinforceUI += SetReinforceIcon;
+        SetReinforceUI += SetUIReinforceIcon;
     }
 
     private void OnDestroy()
     {
         SetReinforceUI -= SetReinforceData;
-        SetReinforceUI -= SetReinforceIcon;
+        SetReinforceUI -= SetUIReinforceIcon;
     }
 
     #endregion
@@ -83,9 +83,8 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
     {
         levelText.text = $"Lv. {_followerData.level}";
         _needCount = _followerData.level < 15 ? _followerData.level + 1 : 15;
-        //_hasCount = _followerData.hasCount;
-        reinforceText.text = $"{_hasCount} / {_needCount}";
-        reinforceProgress.fillAmount = (float)_hasCount / _needCount;
+        reinforceText.text = $"{_followerData.hasCount} / {_needCount}";
+        reinforceProgress.fillAmount = (float)_followerData.hasCount / _needCount;
     }
 
     public void SetUIEquipState()
@@ -100,7 +99,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
         }
     }
 
-    public void SetReinforceIcon()
+    public void SetUIReinforceIcon()
     {
         if (FollowerData.hasCount >= _needCount)
         {
