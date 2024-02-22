@@ -228,6 +228,11 @@ public class Player : MonoBehaviour, IDamageable
                 playerView.SetHealthBar(GetCurrentHpPercent());
             }
             yield return new WaitForSeconds(1f);
+            long hpRecoveryValue = (long)(HpRecovery.Value
+                                   * (1 + EquipHPStat * 0.01f)
+                                   * (1 + RetentionHPEffect * 0.01f));
+            CurrentHp = (long)Mathf.Clamp(CurrentHp + hpRecoveryValue, 0, ModifierHp);
+            playerView.SetHealthBar(GetCurrentHpPercent());
         }
     }
 

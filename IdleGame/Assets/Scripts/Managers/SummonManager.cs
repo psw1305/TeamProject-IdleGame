@@ -95,7 +95,7 @@ public partial class SummonManager
         // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기, 소환 횟수 증가
         for (int i = 0; i < count; i++)
         {
-            summonResurt.Add(Random.Range(0, 10000));
+            summonResurt.Add(Random.Range(0, 1000000));
         }
 
         int[] summonResultValue = summonResurt.ToArray();

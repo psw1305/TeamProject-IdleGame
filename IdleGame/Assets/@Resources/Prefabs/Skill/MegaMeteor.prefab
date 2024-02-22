@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc826f5258aad141b54ccf1e97948d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDurateTime: 10
-  coolDown: 5
+  effectDurateTime: 2.2
+  coolDown: 18
   projectileSpawnArea: {fileID: 4755445883408343319}
   skillProjectile: {fileID: 4359257486813297750, guid: 6eff6273c57086040ad9c091a98805d4, type: 3}
   minDestinationPosition: {x: 0.7, y: 0.5}

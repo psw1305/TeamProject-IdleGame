@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5b4dab6fc929f49888823152fe1ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDurateTime: 5
-  coolDown: 5
+  effectDurateTime: 8
+  coolDown: 7
   skillVFX: {fileID: 7124793275522068813}
 --- !u!1 &7124793275507597425
 GameObject:
