@@ -122,7 +122,6 @@ public class Player : MonoBehaviour, IDamageable
         Manager.Quest.InitQuest();
         EquipmentStatModifier();
 
-        ModifierHp = (long)(Hp.Value + Hp.Value * (EquipHPStat / 100) + Hp.Value * (RetentionHPEffect / 100));
         SetCurrentHp(ModifierHp);
 
         IdleCheckTime = DateTime.ParseExact(profile.Date_Idle_ClickTime, "yyyy/MM/dd HH:mm:ss", null);
@@ -306,8 +305,8 @@ public class Player : MonoBehaviour, IDamageable
         {
             damage = (long)(AtkDamage.Value
                 * (1 + EquipAttackStat * 0.01f)
-                * (1 + RetentionAttackEffect * 0.01f) 
-                * (1 + CritDamage.GetFloat()) 
+                * (1 + RetentionAttackEffect * 0.01f)
+                * (1 + CritDamage.GetFloat())
                 * _damageBuff);
             damageTypeValue = DamageType.Critical;
         }
@@ -428,6 +427,7 @@ public class Player : MonoBehaviour, IDamageable
         RetentionHPEffect = 0;
         EquipHPStat = 0;
 
+        //장비 보유 효과
         foreach (var item in Manager.Inventory.UserInventory.UserItemData.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
         {
             if (Manager.Inventory.ItemDataDictionary[item.itemID].StatType == StatType.Attack)
@@ -440,6 +440,19 @@ public class Player : MonoBehaviour, IDamageable
             }
         }
 
+        //스킬 보유 효과
+        foreach (var item in Manager.Data.UserSkillData.UserInvenSkill.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
+        {
+            RetentionAttackEffect += Manager.SkillData.SkillDataDictionary[item.itemID].RetentionEffect + Manager.SkillData.SkillDataDictionary[item.itemID].ReinforceEffect * (item.level - 1);
+        }
+
+        //동료 보유 효과
+        foreach (var item in Manager.Data.FollowerData.UserInvenFollower.Where(itemData => itemData.level > 1 || itemData.hasCount > 0).ToList())
+        {
+            RetentionAttackEffect += Manager.FollowerData.FollowerDataDictionary[item.itemID].RetentionEffect + Manager.FollowerData.FollowerDataDictionary[item.itemID].ReinforceEffect * (item.level - 1);
+        }
+
+        //장비 장착 효과
         var filteredEquipItem = Manager.Inventory.UserInventory.UserItemData.Where(itemdata => itemdata.equipped == true).ToList();
 
         foreach (var item in filteredEquipItem)
@@ -453,6 +466,8 @@ public class Player : MonoBehaviour, IDamageable
                 EquipHPStat += Manager.Inventory.ItemDataDictionary[item.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[item.itemID].ReinforceEquip * (item.level - 1);
             }
         }
+
+        ModifierHp = (long)(Hp.Value + Hp.Value * (EquipHPStat / 100) + Hp.Value * (RetentionHPEffect / 100));
     }
 
     #endregion

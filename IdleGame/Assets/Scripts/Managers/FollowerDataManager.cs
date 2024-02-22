@@ -100,6 +100,9 @@ public class FollowerDataManager
         CallSetUIFollowerInvenSlot(userInvenFollowerData.itemID);
         Manager.Notificate.SetReinforceFollowerNoti();
         Manager.Notificate.SetPlayerStateNoti();
+
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
     public void ReinforceAllFollower()
     {
@@ -107,6 +110,9 @@ public class FollowerDataManager
         {
             ReinforceFollower(item);
         }
+
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     #region FollowerData Fields & properties
