@@ -92,6 +92,7 @@ public class UIPopupEquipment : UIPopup
         btn_Reinforce_Weapon = SetButtonEvent("Btn_ReinforceWeaponType", UIEventType.Click, ReinforceWeaponTypeItem);
         btn_Reinforce_Armor = SetButtonEvent("Btn_ReinforceArmorType", UIEventType.Click, ReinforceArmorTypeItem);
 
+        SetButtonEvent("Btn_ShowSummon", UIEventType.Click, ShowSummonScene);
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
@@ -271,6 +272,12 @@ public class UIPopupEquipment : UIPopup
             btn_Reinforce_Weapon.gameObject.SetActive(false);
             btn_Reinforce_Armor.gameObject.SetActive(true);
         }
+    }
+
+    private void ShowSummonScene(PointerEventData eventData)
+    {
+        Manager.UI.ShowSubScene<UISubSceneShopSummon>();
+        Manager.UI.ClosePopup();
     }
 
     private void ClosePopup(PointerEventData eventData)

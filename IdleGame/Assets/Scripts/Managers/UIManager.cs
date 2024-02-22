@@ -28,6 +28,7 @@ public class UIManager
     public UIScene CurrentScene { get; private set; }
     public UIScene CurrentSubScene { get; private set; }
     public UIPopup CurrentPopup { get; private set; }
+    public UIPopupRewardsSummon CurrentSummonPopup { get; private set; }
 
     #endregion
 
@@ -126,6 +127,18 @@ public class UIManager
         return popup;
     }
 
+    public T ShowSummonPopup<T>(string popupName = null) where T : UIPopupRewardsSummon
+    {
+        if (string.IsNullOrEmpty(popupName)) popupName = typeof(T).Name;
+
+        GameObject obj = Manager.Asset.InstantiatePrefab(popupName, UIRoot.transform);
+        T summonPopup = Utilities.GetOrAddComponent<T>(obj);
+        CurrentSummonPopup = summonPopup;
+        popupStack.Push(summonPopup);
+
+        return summonPopup;
+    }
+
     public void ClosePopup()
     {
         if (popupStack.Count == 0) return;
@@ -134,6 +147,16 @@ public class UIManager
         Destroy(popup.gameObject);
         popupOrder--;
     }
+
+    public void CloseCurrentSummonPopup()
+    {
+        if (CurrentSummonPopup == null) return;
+
+        UIPopup popup = popupStack.Pop();
+        Destroy(popup.gameObject);
+        popupOrder--;
+    }
+
 
     public void CloseAllPopupUI()
     {

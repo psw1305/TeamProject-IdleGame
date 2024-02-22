@@ -19,9 +19,6 @@ public class UIPopupSettings : UIPopup
         SetTexts();
         SetButtonEvents();
 
-        bgmToggle.onValueChanged.AddListener(OnChangedBGM);
-        sfxToggle.onValueChanged.AddListener(OnChangedSFX);
-
         SetAudio();
     }
 
@@ -48,6 +45,9 @@ public class UIPopupSettings : UIPopup
 
     private void SetAudio()
     {
+        bgmToggle.onValueChanged.AddListener(OnChangedBGM);
+        sfxToggle.onValueChanged.AddListener(OnChangedSFX);
+
         if (PlayerPrefs.GetInt("BGM", 1) == 1)
         {
             bgmToggle.isOn = true;

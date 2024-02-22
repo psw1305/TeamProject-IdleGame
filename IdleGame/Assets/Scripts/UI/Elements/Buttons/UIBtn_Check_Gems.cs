@@ -1,62 +1,54 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIBtn_Check_Gems : MonoBehaviour
 {
+    #region Serialize Field
+
+    [SerializeField] private TextMeshProUGUI textAction;
+    [SerializeField] private TextMeshProUGUI textPayment;
+    [SerializeField] private Image payType;
+
+    #endregion
+
     #region Fields
 
-    private ButtonInfo _buttonInfo;
-    private Button _button;
-
-    private Image _backGround;
-    private Image _payType;
-
-    private TextMeshProUGUI _textAction;
-    private TextMeshProUGUI _textPayment;
+    private ButtonInfo buttonInfo;
+    private Button button;
 
     private DateTime _btnCoolTime;
 
-    private int _summonCountAdd;
+    private int summonCountAdd;
 
     #endregion
 
     #region Properties
 
     public int BtnCheckRemain { get; private set; }
-    public bool Interactive => _button.interactable;
-    public ButtonInfo ButtonInfo => _buttonInfo;
+    public bool Interactive => button.interactable;
+    public ButtonInfo ButtonInfo => buttonInfo;
 
     #endregion
 
     #region Initialize
 
-    private void Awake()
-    {
-        _backGround = transform.GetComponent<Image>();
-        _payType = transform.Find("Txt_Payment").Find("Image_PayType").GetComponent<Image>();
-
-        _textAction = transform.Find("Txt_Action").GetComponent<TextMeshProUGUI>();
-        _textPayment = transform.Find("Txt_Payment").GetComponent<TextMeshProUGUI>();
-    }
-
     public void SetButtonUI(ButtonInfo buttonInfo, Button button, int summonCountAdd)
     {
-        _buttonInfo = buttonInfo;
-        _button = button;
-        _summonCountAdd = summonCountAdd;
+        this.buttonInfo = buttonInfo;
+        this.button = button;
+        this.summonCountAdd = summonCountAdd;
 
         BtnCheckRemain = -1;
-        _button.interactable = true;
+        this.button.interactable = true;
 
-        if (_buttonInfo.IsLimit)
-            BtnCheckRemain = _buttonInfo.LimitCount;
+        if (this.buttonInfo.IsLimit)
+        {
+            BtnCheckRemain = this.buttonInfo.LimitCount;
+        }
 
-        _textAction.text = String.Format(_buttonInfo.BtnText, _buttonInfo.SummonCount + _summonCountAdd);
+        textAction.text = string.Format(this.buttonInfo.BtnText, this.buttonInfo.SummonCount + this.summonCountAdd);
         UpdatePaymentText();
     }
 
@@ -66,17 +58,20 @@ public class UIBtn_Check_Gems : MonoBehaviour
 
     public void ApplyRestriction()
     {
-        if (_buttonInfo.IsLimit)
-            BtnCheckRemain--;
-        if (_buttonInfo.IsCoolDown)
+        if (buttonInfo.IsLimit)
         {
-            DateTime.ParseExact(_buttonInfo.CoolTime, "HH:mm:ss", null);
-            //StartCoroutine(BtnTimer());
+            BtnCheckRemain--;
+        }
+
+        if (buttonInfo.IsCoolDown)
+        {
+            DateTime.ParseExact(buttonInfo.CoolTime, "HH:mm:ss", null);
         }
 
         if (BtnCheckRemain <= 0 && BtnCheckRemain != -1)
-            _button.interactable = false;
-
+        {
+            button.interactable = false;
+        }
     }
 
     #endregion
@@ -85,24 +80,24 @@ public class UIBtn_Check_Gems : MonoBehaviour
 
     public void ApplySummonCountAdd(int summonCountAdd)
     {
-        _summonCountAdd = summonCountAdd;
+        this.summonCountAdd = summonCountAdd;
     }
 
     public void UpdateUI()
     {
-        _textAction.text = String.Format(_buttonInfo.BtnText, _buttonInfo.SummonCount + _summonCountAdd);
+        textAction.text = String.Format(buttonInfo.BtnText, buttonInfo.SummonCount + summonCountAdd);
         UpdatePaymentText();
     }
 
     private void UpdatePaymentText()
     {
-        if (_buttonInfo.Amount < 1 && _buttonInfo.IsLimit)
+        if (buttonInfo.Amount < 1 && buttonInfo.IsLimit)
         {
-            _textPayment.text = $"{BtnCheckRemain}/{_buttonInfo.LimitCount}";
+            textPayment.text = $"{BtnCheckRemain}/{buttonInfo.LimitCount}";
         }
         else
         {
-            _textPayment.text = _buttonInfo.Amount.ToString();
+            textPayment.text = buttonInfo.Amount.ToString();
         }
     }
 

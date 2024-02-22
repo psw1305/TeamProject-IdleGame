@@ -44,6 +44,7 @@ public class UIPopupFollower : UIPopup
 
         Btn_ReinforceFollower = SetButtonEvent("Btn_ReinforceFollower", UIEventType.Click, ReinforceFollowers);
 
+        SetButtonEvent("Btn_ShowSummon", UIEventType.Click, ShowSummonScene);
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
@@ -51,6 +52,12 @@ public class UIPopupFollower : UIPopup
     private void ReinforceFollowers(PointerEventData enterEvent)
     {
         Manager.FollowerData.ReinforceAllFollower();
+    }
+
+    private void ShowSummonScene(PointerEventData eventData)
+    {
+        Manager.UI.ShowSubScene<UISubSceneShopSummon>();
+        Manager.UI.ClosePopup();
     }
 
     private void ClosePopup(PointerEventData eventData)
