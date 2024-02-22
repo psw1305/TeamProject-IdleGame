@@ -1137,6 +1137,7 @@ GameObject:
   - component: {fileID: 3178948626703606842}
   - component: {fileID: 3969319395885934769}
   - component: {fileID: 909972524036897066}
+  - component: {fileID: -8550139703432395654}
   m_Layer: 5
   m_Name: UIPopupSkill
   m_TagString: Untagged
@@ -1229,6 +1230,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-8550139703432395654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3272576999271269236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33217f762f30d6b42b24019a7aae716a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3782097173996288650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill
+  m_text: "\uC2A4\uD0AC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74baee43b8ca96648858dedb919311da, type: 2}
   m_sharedMaterial: {fileID: 2090150599649867912, guid: 74baee43b8ca96648858dedb919311da, type: 2}
@@ -1595,8 +1608,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2835,7 +2848,7 @@ GameObject:
   - component: {fileID: 6637895428462384214}
   - component: {fileID: 325667175973658058}
   m_Layer: 5
-  m_Name: Btn_SkillSummon
+  m_Name: Btn_ShowSummon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

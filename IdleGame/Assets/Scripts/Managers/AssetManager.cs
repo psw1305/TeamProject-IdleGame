@@ -40,6 +40,18 @@ public class AssetManager
 
     #region Get Asset
 
+    public GameObject GetPrefab(string key)
+    {
+        GameObject prefab = Load<GameObject>(key);
+        if (prefab == null)
+        {
+            Debug.LogError($"Prefab({key}): Failed to load blueprint.");
+            return null;
+        }
+
+        return prefab;
+    }
+
     public GameObject InstantiatePrefab(string key, Transform parent = null)
     {
         GameObject prefab = Load<GameObject>(key);

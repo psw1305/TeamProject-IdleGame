@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.909804, g: 0.8117648, b: 0.6509804, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.909804, g: 0.8117648, b: 0.6509804, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -507,6 +507,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1520004327, guid: 500dfd2ad35c53d4e8a35c8af9faafb3, type: 3}
+    - target: {fileID: 63093683286319059, guid: f44a26e03e24aa64bba9e3b7dbee9cd9, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2425429048636297323, guid: f44a26e03e24aa64bba9e3b7dbee9cd9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -654,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2255610952867558529, guid: f2d91009d21d39440b702f7fe91aed84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 2255610952867558529, guid: f2d91009d21d39440b702f7fe91aed84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1685,8 +1689,8 @@ Camera:
   m_GameObject: {fileID: 1297804439}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2482,7 +2486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.909804, g: 0.8117648, b: 0.6509804, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2516,6 +2520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1844082723}
   - component: {fileID: 1844082724}
+  - component: {fileID: 1844082725}
   m_Layer: 5
   m_Name: Playing Panel
   m_TagString: Untagged
@@ -2552,6 +2557,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844082722}
   m_CullTransparentMesh: 1
+--- !u!114 &1844082725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844082722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1887703005
 GameObject:
   m_ObjectHideFlags: 0

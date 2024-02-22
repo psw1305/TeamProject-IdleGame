@@ -14,16 +14,11 @@ public class UIPopupSkill : UIPopup
     {
         SetUI<Button>();
 
-        SetButtonEvent("Btn_SkillSummon", UIEventType.Click, SummonPop);
         SetButtonEvent("Btn_SkillReinforceAll", UIEventType.Click, ReinforceAllSkill);
 
+        SetButtonEvent("Btn_ShowSummon", UIEventType.Click, ShowSummonScene);
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
-    }
-
-    private void ClosePopup(PointerEventData eventData)
-    {
-        Manager.UI.ClosePopup();
     }
 
     private void ReinforceAllSkill(PointerEventData eventData)
@@ -31,8 +26,14 @@ public class UIPopupSkill : UIPopup
         Manager.SkillData.ReinforceAllSkill();
     }
 
-    private void SummonPop(PointerEventData eventData)
+    private void ShowSummonScene(PointerEventData eventData)
     {
-        //var SummonPopup = Manager.UI.ShowPopup<>();
+        Manager.UI.ShowSubScene<UISubSceneShopSummon>();
+        Manager.UI.ClosePopup();
+    }
+
+    private void ClosePopup(PointerEventData eventData)
+    {
+        Manager.UI.ClosePopup();
     }
 }

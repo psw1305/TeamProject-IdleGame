@@ -372,7 +372,7 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bfdc48bb73c41f448ae6ff9cf845bc80
-    m_Address: UIPopupSummonRewards.prefab
+    m_Address: UIPopupRewardsSummon.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -583,6 +583,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48a4af1177e33b14d969a1bf01bed4e7
     m_Address: UIPopupSettings.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b12df036406e9db4dbedf77f8b7f9252
+    m_Address: ItemSlot_SummonReward.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle

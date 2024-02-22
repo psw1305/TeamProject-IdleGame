@@ -62,10 +62,12 @@ public partial class SummonManager
                         SummonTables.TryGetValue(tableLink, out var summonTable);
                         summonTable.ApplySummonCountAdd();
                     }
+
                     Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
                     return true;
                 }
                 break;
+
             case ResourceType.Gems:
                 if (_player.IsTradeGems(btnUI.ButtonInfo.Amount))
                 {
@@ -75,21 +77,27 @@ public partial class SummonManager
                         SummonTables.TryGetValue(tableLink, out var summonTable);
                         summonTable.ApplySummonCountAdd();
                     }
+
                     Summon(btnUI.ButtonInfo.SummonCount + addcount, tableLink);
                     return true;
                 }
                 break;
         }
+
         return false;
     }
 
     private void Summon(int count, string typeLink)
     {
+        // 현재 소환된 팝업이 존재할 경우 => 제거
+        Manager.UI.CloseCurrentSummonPopup();
+
         // 횟수만큼 랜덤값 뽑아서 배열로 만들고 리스트 비우기, 소환 횟수 증가
         for (int i = 0; i < count; i++)
         {
             summonResurt.Add(Random.Range(0, 10000));
         }
+
         int[] summonResultValue = summonResurt.ToArray();
         summonResurt.Clear();
 
@@ -158,7 +166,7 @@ public partial class SummonManager
                 break;
         }
         
-        var popup = Manager.UI.ShowPopup<UIPopupRewards>("UIPopupSummonRewards");
+        var popup = Manager.UI.ShowSummonPopup<UIPopupRewardsSummon>("UIPopupRewardsSummon");
         popup.DataInit(typeLink, finalResult);
         popup.PlayStart();
         popup.SummonButtonInit(summonTable.SummonList);

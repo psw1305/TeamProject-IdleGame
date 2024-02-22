@@ -21,8 +21,8 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI txt_Stage;
     private TextMeshProUGUI txt_PlayerPower;
 
-    private Image Image_WaveLoop;
-    private Image Image_LevelGauge;
+    private Image image_WaveLoop;
+    private Image image_LevelGauge;
     private Image image_1xSpeed;
     private Image image_2xSpeed;
 
@@ -30,14 +30,13 @@ public class UISceneMain : UIScene
 
     #region Fields
 
-    private Button _btnBoss;
-    private Button _btnIdleRewards;
+    private Button btnBoss;
+    private Button btnIdleRewards;
+    private Toggle toggleGameSpeed;
 
     private TextMeshProUGUI _txtQuestNum;
     private TextMeshProUGUI _txtQuestObjective;
     private TextMeshProUGUI _textIdleNotice;
-
-    private bool isSpeedUp = false;
 
     #endregion
 
@@ -50,8 +49,8 @@ public class UISceneMain : UIScene
         SetImages();
         SetTexts();
         SetButtons();
+        SetToggles();
 
-        // 데이터 초기화
         player = Manager.Game.Player;
 
         SetUpgradeStats();
@@ -63,8 +62,8 @@ public class UISceneMain : UIScene
     private void SetImages()
     {
         SetUI<Image>();
-        Image_WaveLoop = GetUI<Image>("LoopImage");
-        Image_LevelGauge = GetUI<Image>("ProgressGauge");
+        image_WaveLoop = GetUI<Image>("LoopImage");
+        image_LevelGauge = GetUI<Image>("ProgressGauge");
         image_1xSpeed = GetUI<Image>("Image_1xSpeed");
         image_2xSpeed = GetUI<Image>("Image_2xSpeed");
     }
@@ -84,12 +83,17 @@ public class UISceneMain : UIScene
     private void SetButtons()
     {
         SetUI<Button>();
-        SetButtonEvent("Btn_Plain_GameSpeed", UIEventType.Click, OnGameSpeed);
-        SetButtonEvent("Btn_Plain_Option", UIEventType.Click, OnOption);
+        SetButtonEvent("Btn_Options", UIEventType.Click, OnOption);
         SetButtonEvent("Btn_Quest", UIEventType.Click, OnQuestComplete);
 
-        _btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
-        _btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);
+        btnBoss = SetButtonEvent("Btn_Boss", UIEventType.Click, OnBossStage);
+        btnIdleRewards = SetButtonEvent("Btn_IdleRewards", UIEventType.Click, OnIdleRewards);
+    }
+
+    private void SetToggles()
+    {
+        SetUI<Toggle>();
+        toggleGameSpeed = GetUI<Toggle>("Toggle_GameSpeed");
     }
 
     private void SetUpgradeStats()
@@ -121,8 +125,8 @@ public class UISceneMain : UIScene
         _txtQuestObjective.text = QuestObjective();
 
         // Stage Button Off
-        _btnBoss.gameObject.SetActive(false);
-        Image_WaveLoop.gameObject.SetActive(false);
+        btnBoss.gameObject.SetActive(false);
+        image_WaveLoop.gameObject.SetActive(false);
 
         if (Manager.Stage.WaveLoop)
         {
@@ -132,6 +136,23 @@ public class UISceneMain : UIScene
         }
 
         UpdateStageLevel(Manager.Stage.StageLevel);
+
+        // Game Speed
+        SetGameSpeed();
+    }
+
+    private void SetGameSpeed()
+    {
+        toggleGameSpeed.onValueChanged.AddListener(OnChangedGameSpeed);
+
+        if (PlayerPrefs.GetInt("GameSpeed", 0) == 1)
+        {
+            toggleGameSpeed.isOn = true;
+        }
+        else
+        {
+            toggleGameSpeed.isOn = false;
+        }
     }
 
     public void IdleRewardsTimeCheck()
@@ -140,12 +161,12 @@ public class UISceneMain : UIScene
 
         if (timeLeft.TotalMinutes < 1 && Manager.Game.Player.ToTalIdleTime < 1)
         {
-            _btnIdleRewards.interactable = false;
+            btnIdleRewards.interactable = false;
             StartCoroutine(DelayEnableButton(timeLeft));
         }
         else
         {
-            _btnIdleRewards.interactable = true;
+            btnIdleRewards.interactable = true;
             _textIdleNotice.text = "";
         }
     }
@@ -174,7 +195,7 @@ public class UISceneMain : UIScene
             }
             else
             {
-                _btnIdleRewards.interactable = true;
+                btnIdleRewards.interactable = true;
                 _textIdleNotice.text = "";
                 break;
             }
@@ -190,28 +211,28 @@ public class UISceneMain : UIScene
     // 기능성 버튼 이벤트
     private void OnIdleRewards(PointerEventData eventData)
     {
-        if (_btnIdleRewards.interactable) Manager.UI.ShowPopup<UIPopupRewardsIdle>("UIPopupRewardsIdle");
+        if (btnIdleRewards.interactable) Manager.UI.ShowPopup<UIPopupRewardsIdle>("UIPopupRewardsIdle");
     }
     private void OnOption(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupOptions>("UIPopupOptions");
     private void OnBossStage(PointerEventData eventData) => Manager.Stage.RetryBossBattle();
 
-    private void OnGameSpeed(PointerEventData eventData)
-    {        
-        if (isSpeedUp)
+    private void OnChangedGameSpeed(bool isOn)
+    {
+        if (isOn)
         {
-            isSpeedUp = false;
+            Time.timeScale = 1.5f;
+            
+            image_1xSpeed.gameObject.SetActive(false);
+            image_2xSpeed.gameObject.SetActive(true);
+            PlayerPrefs.SetInt("GameSpeed", 1);
+        }
+        else
+        {
             Time.timeScale = 1f;
 
             image_1xSpeed.gameObject.SetActive(true);
             image_2xSpeed.gameObject.SetActive(false);
-        }
-        else
-        {
-            isSpeedUp = true;
-            Time.timeScale = 1.5f;
-
-            image_1xSpeed.gameObject.SetActive(false);
-            image_2xSpeed.gameObject.SetActive(true);
+            PlayerPrefs.SetInt("GameSpeed", 0);
         }
     }
 
@@ -256,28 +277,28 @@ public class UISceneMain : UIScene
 
     public void UpdateStageLevel(int level)
     {
-        Image_LevelGauge.fillAmount = level / 4.0f;
+        image_LevelGauge.fillAmount = level / 4.0f;
     }
 
     public void RetryBossButtonToggle()
     {
-        _btnBoss.gameObject.SetActive(!_btnBoss.IsActive());
+        btnBoss.gameObject.SetActive(!btnBoss.IsActive());
     }
 
     public void WaveLoopImageToggle()
     {
-        Image_WaveLoop.gameObject.SetActive(!Image_WaveLoop.IsActive());
+        image_WaveLoop.gameObject.SetActive(!image_WaveLoop.IsActive());
     }
 
     public void StageLevelGaugeToggle()
     {
-        var gauge = Image_LevelGauge.transform.parent.gameObject;
+        var gauge = image_LevelGauge.transform.parent.gameObject;
         gauge.SetActive(!gauge.activeSelf);
     }
 
     public void StageLevelGaugeToggle(bool active)
     {
-        var gauge = Image_LevelGauge.transform.parent.gameObject;
+        var gauge = image_LevelGauge.transform.parent.gameObject;
         gauge.SetActive(active);
     }
 

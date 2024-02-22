@@ -7,7 +7,6 @@ public class UISubSceneShopSummon : UIScene
 {
     #region Fields
 
-    private Player player;
     private SummonManager _summon;
     private SummonConfig _config;
     private Dictionary<string, UISummonBanner> _banners = new();

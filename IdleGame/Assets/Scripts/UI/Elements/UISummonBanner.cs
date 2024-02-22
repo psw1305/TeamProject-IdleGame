@@ -40,6 +40,7 @@ public class UISummonBanner : UIBase
     {
         SetUI<Button>();
         SetUI<UIBtn_Check_Gems>();
+
         for (int i = 0; i < _summonList.ButtonInfo.Count; i++)
         {
             var buttonInfo = _summonList.ButtonInfo[i];
@@ -68,6 +69,7 @@ public class UISummonBanner : UIBase
     #endregion
 
     #region Button Events
+
     private void SummonBtn(PointerEventData eventData, UIBtn_Check_Gems btnUI)
     {
         if (!btnUI.Interactive) return;
