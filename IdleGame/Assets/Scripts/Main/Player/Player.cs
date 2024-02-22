@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -155,13 +156,17 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (enemyList.Count == 0)
+        if (enemyList.Count == 0 & State != PlayerState.Die)
         {
             Walk();
         }
         else if (State != PlayerState.Battle & State != PlayerState.Die)
         {
             Battle();
+        }
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            TakeDamage(1000000000, DamageType.Critical);
         }
     }
 
@@ -188,13 +193,20 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private void Dead()
+    private IEnumerator Dead()
     {
         //이전 스테이지로, Hp 리셋
-        Manager.Stage.StageFailed();
-        SetCurrentHp(ModifierHp);
+        State = PlayerState.Die;
         playerAnimController.OnDead();
+        yield return StartCoroutine(Manager.Stage.StageFailed());
+        Revive();
+    }
+
+    private void Revive()
+    {
+        State = PlayerState.None;
         playerAnimController.OnRevive();
+        SetCurrentHp(ModifierHp);
     }
 
     #endregion
@@ -210,9 +222,12 @@ public class Player : MonoBehaviour, IDamageable
     {
         while (true)
         {
+            if(State != PlayerState.Die)
+            {
+                CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, ModifierHp);
+                playerView.SetHealthBar(GetCurrentHpPercent());
+            }
             yield return new WaitForSeconds(1f);
-            CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, ModifierHp);
-            playerView.SetHealthBar(GetCurrentHpPercent());
         }
     }
 
@@ -230,10 +245,14 @@ public class Player : MonoBehaviour, IDamageable
 
     private void PlayerDamaged(long damage)
     {
+        if (CurrentHp == 0) 
+        {
+            return;
+        }
         if (CurrentHp - damage <= 0)
         {
             CurrentHp = 0;
-            Dead();
+            StartCoroutine(Dead());
         }
         else
         {

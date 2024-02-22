@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class FireBallProjectile : ProjectileHandlerBase
+public class FireBallProjectile : SkillProjectileHandlerBase
 {
     private GameObject _enemyObj;
     private float _skillDamageRatio;
-    protected override void Start()
+    private void Start()
     {
         string _skillID = "S0001";
         _skillDamageRatio = (Manager.SkillData.SkillDataDictionary[_skillID].SkillDamage
@@ -20,7 +20,7 @@ public class FireBallProjectile : ProjectileHandlerBase
             Destroy(gameObject);
         }
     }
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {
@@ -29,7 +29,7 @@ public class FireBallProjectile : ProjectileHandlerBase
         }
     }
 
-    protected override void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (_enemyObj != null)
         {

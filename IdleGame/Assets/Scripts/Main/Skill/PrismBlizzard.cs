@@ -10,7 +10,7 @@ public class PrismBlizzard : BaseSkill
     private DamageType _damageType;
 
     private Coroutine _loopSkill;
-    
+
     [SerializeField] private ParticleSystem vfxParticle;
     protected override void Start()
     {
@@ -27,7 +27,10 @@ public class PrismBlizzard : BaseSkill
     protected override void RemoveSkillEffect()
     {
         vfxParticle.Stop();
-        StopCoroutine(_loopSkill);
+        if (_loopSkill != null)
+        {
+            StopCoroutine(_loopSkill);
+        }
     }
 
     IEnumerator LoopSkillEffect()

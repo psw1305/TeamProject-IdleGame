@@ -30,12 +30,30 @@ public abstract class BaseSkill : MonoBehaviour
     {
         _player = Manager.Game.Player;
         _canUse = false;
-        StartCoroutine(CountSkillCooldown());
+        _coolDownCoroutine = StartCoroutine(CountSkillCooldown());
     }
 
     protected abstract void ApplySkillEffect();
 
     protected abstract void RemoveSkillEffect();
+
+    public void ResetSkill()
+    {
+        RemoveSkillEffect();
+        _currentDurateTime = 0;
+        _currentCoolDown = 0;
+        if (_coolDownCoroutine != null)
+        {
+            StopCoroutine(_coolDownCoroutine);
+            _coolDownCoroutine = null;
+        }
+        if (_skillDurateTimeCoroutine != null)
+        {
+            StopCoroutine(_skillDurateTimeCoroutine);
+            _skillDurateTimeCoroutine = null;
+        }
+        _canUse = true;
+    }
 
     public void UseSkill()
     {
@@ -44,18 +62,18 @@ public abstract class BaseSkill : MonoBehaviour
             return;
         }
 
-        if(Manager.Game.Player.enemyList.Count == 0) 
+        if (Manager.Game.Player.enemyList.Count == 0)
         {
             return;
         }
 
-        if(Manager.Game.Player.State != PlayerState.Battle)
+        if (Manager.Game.Player.State != PlayerState.Battle)
         {
             return;
         }
 
         _canUse = false;
-        StartCoroutine(CountDurateTime());
+        _skillDurateTimeCoroutine = StartCoroutine(CountDurateTime());
     }
     protected float CalculateDamageRatio(string skillID)
     {
@@ -68,7 +86,7 @@ public abstract class BaseSkill : MonoBehaviour
     {
         if (_skillDurateTimeCoroutine == null)
         {
-            gameObject.GetComponent<BaseSkill>().ApplySkillEffect();
+            ApplySkillEffect();
             _currentDurateTime = effectDurateTime;
             while (_currentDurateTime >= 0)
             {
@@ -77,8 +95,8 @@ public abstract class BaseSkill : MonoBehaviour
             }
             _skillDurateTimeCoroutine = null;
 
-            gameObject.GetComponent<BaseSkill>().RemoveSkillEffect();
-            StartCoroutine(CountSkillCooldown());
+            RemoveSkillEffect();
+            _coolDownCoroutine = StartCoroutine(CountSkillCooldown());
         }
     }
 
