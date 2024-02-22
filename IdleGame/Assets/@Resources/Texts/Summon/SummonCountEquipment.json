@@ -30,5 +30,13 @@
   {
     "SummonGrade": 8,
     "needCounts": 8000
+  },
+  {
+    "SummonGrade": 9,
+    "needCounts": 12000
+  },
+  {
+    "SummonGrade": 10,
+    "needCounts": 18000
   }
 ]
