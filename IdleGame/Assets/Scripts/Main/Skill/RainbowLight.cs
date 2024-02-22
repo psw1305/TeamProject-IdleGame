@@ -41,7 +41,7 @@ public class RainbowLight : BaseSkill
             gameObject.transform.position = enemy.transform.position;
             enemy.TakeDamage((long)(_damage * _skillDamageRatio), _damageType);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.15f);
         }
 
         gameObject.transform.position = Manager.Game.Player.transform.position;

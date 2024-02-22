@@ -44,7 +44,7 @@ public class MegaMeteor : BaseSkill
                 _projectile.transform.position = new Vector2(0, 5);
                 _projectile.TargetPosition = new Vector2(Random.Range(minDestinationPosition.x, maxDestinationPosition.x), Random.Range(minDestinationPosition.y, maxDestinationPosition.y));
             }
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

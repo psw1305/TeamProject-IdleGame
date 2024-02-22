@@ -4681,5 +4681,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDurateTime: 5
-  coolDown: 3
+  coolDown: 10
   vfxParticle: {fileID: 5517565398686029760}

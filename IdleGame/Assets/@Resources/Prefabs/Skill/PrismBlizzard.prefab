@@ -4680,6 +4680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2399974be4f6b144e83e23b5f17cb775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDurateTime: 5
-  coolDown: 5
+  effectDurateTime: 3.2
+  coolDown: 12
   vfxParticle: {fileID: 3012172720346173910}

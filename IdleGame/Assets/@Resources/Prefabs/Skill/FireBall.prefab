@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d024a34924608548a5b472808fa2b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDurateTime: 1
-  coolDown: 2
+  effectDurateTime: 0.5
+  coolDown: 4
   projectileSpawnPosition: {fileID: 4650271145879309026}
   skillProjectile: {fileID: 729477830978001608, guid: e590fc4b1abd53d44b14a6634343f11c, type: 3}

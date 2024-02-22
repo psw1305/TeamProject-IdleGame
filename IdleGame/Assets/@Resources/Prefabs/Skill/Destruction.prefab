@@ -9785,8 +9785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac36713d0d408a344b529d9bddd07d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDurateTime: 0
-  coolDown: 5
+  effectDurateTime: 0.5
+  coolDown: 6
   vfxParticle: {fileID: 4520019674405513688}
 --- !u!1 &8975887894991394068
 GameObject:

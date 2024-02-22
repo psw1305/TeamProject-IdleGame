@@ -35,7 +35,7 @@ public class PrismBlizzard : BaseSkill
         _skillDamageRatio = CalculateDamageRatio(_skillID);
         while (true)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.25f);
             foreach (var enemy in Manager.Game.Player.enemyList.ToList())
             {
                 Manager.Game.Player.FinalAttackDamage(out _damage, out _damageType);
