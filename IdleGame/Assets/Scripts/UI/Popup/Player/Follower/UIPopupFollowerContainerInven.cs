@@ -31,6 +31,8 @@ public class UIPopupFollowerContainerInven : MonoBehaviour
 
     #endregion
 
+    #region Initial Method
+
     private void ResetOnScrollTop()
     {
         scrollRect.verticalNormalizedPosition = 1;
@@ -78,7 +80,7 @@ public class UIPopupFollowerContainerInven : MonoBehaviour
     public void SetUISlotFollowerReinforceState(string id)
     {
         FollowerSlots[id].SetReinforceData();
-        FollowerSlots[id].SetReinforceIcon();
+        FollowerSlots[id].SetUIReinforceIcon();
     }
 
     private void OnDestroy()
@@ -89,4 +91,5 @@ public class UIPopupFollowerContainerInven : MonoBehaviour
             Manager.FollowerData.SetFollowerUIInvenSlot -= SetUISlotFollowerReinforceState;
         }
     }
+#endregion
 }
