@@ -8,8 +8,9 @@ public class UIPopupRewards : UIPopup
     #region Fields
 
     [SerializeField] private UIRewardsItemSlot[] itemSlots;
+    [SerializeField] private GameObject outbox;
+
     private GameObject content;
-    private GameObject outbox;
     private SummonList summonList;
     private string[] itemData;
     private string itemType;
@@ -41,7 +42,6 @@ public class UIPopupRewards : UIPopup
     {
         itemSlots = transform.GetComponentsInChildren<UIRewardsItemSlot>(true);
         content = transform.GetComponentInChildren<GridLayoutGroup>().gameObject;
-        outbox = transform.Find("Outbox").gameObject;
     }
 
     private void SlotClear()
