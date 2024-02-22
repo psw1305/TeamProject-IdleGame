@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class MeteorProjectile : ProjectileHandlerBase
+public class MeteorProjectile : SkillProjectileHandlerBase
 {
     [SerializeField] private GameObject destroyVFX;
     private float _skillDamageRatio;
-    protected override void Start()
+    private void Start()
     {
         string _skillID = "S0009";
         _skillDamageRatio = (Manager.SkillData.SkillDataDictionary[_skillID].SkillDamage
@@ -21,12 +21,7 @@ public class MeteorProjectile : ProjectileHandlerBase
         }
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-
-    }
-
-    protected override void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {

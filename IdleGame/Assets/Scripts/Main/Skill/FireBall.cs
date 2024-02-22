@@ -16,8 +16,10 @@ public class FireBall : BaseSkill
 
     protected override void RemoveSkillEffect()
     {
-        StopCoroutine(_atkCor);
-        _atkCor = null;
+        if (_atkCor != null)
+        {
+            StopCoroutine(_atkCor);
+        }
     }
 
     IEnumerator AtkLoop()

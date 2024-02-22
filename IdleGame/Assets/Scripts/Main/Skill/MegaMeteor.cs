@@ -19,6 +19,7 @@ public class MegaMeteor : BaseSkill
 
     protected override void ApplySkillEffect()
     {
+
         _atkCor = StartCoroutine(AtkLoop());
         _skillDamageRatio = CalculateDamageRatio(_skillID);
         Manager.Game.Player.FinalAttackDamage(out _damage, out _damageType);
@@ -26,8 +27,11 @@ public class MegaMeteor : BaseSkill
 
     protected override void RemoveSkillEffect()
     {
-        StopCoroutine(_atkCor);
-        _atkCor = null;
+        if (_atkCor != null)
+        {
+            StopCoroutine(_atkCor);
+            _atkCor = null;
+        }
     }
 
     IEnumerator AtkLoop()

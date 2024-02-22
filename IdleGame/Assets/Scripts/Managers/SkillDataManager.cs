@@ -5,9 +5,14 @@ using UnityEngine;
 public class SkillDataManager
 {
     private SkillContainerBlueprint _skillDataContainer;
-    private Dictionary<string, SkillBlueprint> _skillDataDictionary = new();
 
+    private Dictionary<string, SkillBlueprint> _skillDataDictionary = new();
     public Dictionary<string, SkillBlueprint> SkillDataDictionary => _skillDataDictionary;
+
+    public void InitSkill()
+    {
+        ParseSkillData();
+    }
 
     public void ParseSkillData()
     {
@@ -19,13 +24,11 @@ public class SkillDataManager
         }
     }
 
-    public void InitSkill()
-    {
-        ParseSkillData();
-    }
+    #region popup event actions
 
     private event Action<int?> SetSkillUIEquipSlot;
     private event Action<string> SetSkillUIInvenSlot;
+    private event Action SetAllSkillUIEquipSlot;
 
     public void AddSetSkillUIEquipSlot(Action<int?> handler)
     {
@@ -35,6 +38,24 @@ public class SkillDataManager
     {
         SetSkillUIEquipSlot -= handler;
     }
+    public void CallSetUISkillEquipSlot(int? index)
+    {
+        SetSkillUIEquipSlot?.Invoke(index);
+    }
+
+    public void AddSetAllSkillUIEquipSlot(Action handler)
+    {
+        SetAllSkillUIEquipSlot += handler;
+    }
+    public void RemoveSetAllSkillUIEquipSlot(Action handler)
+    {
+        SetAllSkillUIEquipSlot -= handler;
+    }
+    public void CallSetAllSkillUIEquipSlot()
+    {
+        SetAllSkillUIEquipSlot.Invoke();
+    }
+
     public void AddSetSkillUIInvenSlot(Action<string> handler)
     {
         SetSkillUIInvenSlot += handler;
@@ -43,16 +64,14 @@ public class SkillDataManager
     {
         SetSkillUIInvenSlot -= handler;
     }
-
-    public void CallSetUISkillEquipSlot(int? index)
-    {
-        SetSkillUIEquipSlot?.Invoke(index);
-    }
-
     public void CallSetUISkillInvenSlot(string id)
     {
         SetSkillUIInvenSlot.Invoke(id);
     }
+
+    #endregion
+
+    #region Equip, Reinforce Method
 
     public bool CheckEquipSkill(UserInvenSkillData userInvenSkillData)
     {
@@ -95,8 +114,12 @@ public class SkillDataManager
             userInvenSkillData.level += 1;
         }
         CallSetUISkillInvenSlot(userInvenSkillData.itemID);
+        CallSetAllSkillUIEquipSlot();
         Manager.Notificate.SetReinforceSkillNoti();
         Manager.Notificate.SetPlayerStateNoti();
+
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     public void ReinforceAllSkill()
@@ -105,7 +128,13 @@ public class SkillDataManager
         {
             ReinforceSkill(item);
         }
+        CallSetAllSkillUIEquipSlot();
+
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
+
+    #endregion
 
     public UserInvenSkillData SearchSkill(string id)
     {

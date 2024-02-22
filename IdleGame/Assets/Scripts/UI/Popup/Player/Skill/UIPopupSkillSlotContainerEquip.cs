@@ -12,6 +12,7 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
             slots.Add(slot);
         }
         InitChildSlot();
+        Manager.SkillData.AddSetAllSkillUIEquipSlot(InitChildSlot);
         Manager.SkillData.AddSetSkillUIEquipSlot(SetChildSlot);
     }
 
@@ -25,6 +26,7 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
                 slots[i].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[i].itemID]);
         }
     }
+
     /// <summary>
     /// 특정 인덱스의 스킬 장착 슬롯 정보를 세팅합니다.
     /// </summary>
@@ -44,6 +46,7 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
     {
         if (Manager.SkillData != null)
         {
+            Manager.SkillData.RemoveSetAllSkillUIEquipSlot(InitChildSlot);
             Manager.SkillData.RemoveSetSkillUIEquipSlot(SetChildSlot);
         }
     }

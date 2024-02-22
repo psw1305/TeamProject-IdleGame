@@ -56,7 +56,6 @@ public class InventoryManager
     {
         ParseItemData();
         CheckToInventoryDataInit();
-        Manager.Game.Player.EquipmentStatModifier();
     }
 
     private void CheckToInventoryDataInit()

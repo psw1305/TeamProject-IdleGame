@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class StageManager
@@ -124,15 +125,21 @@ public class StageManager
 
     public void BattleStop()
     {
-        CoroutineHelper.StopCoroutine(stageCoroutine);
-        stageCoroutine = null;
+        if(stageCoroutine != null)
+        {
+            CoroutineHelper.StopCoroutine(stageCoroutine);
+            stageCoroutine = null;
+        }
     }
 
-    public void StageFailed()
+    public IEnumerator StageFailed()
     {
         BattleStop();
         EnemyReset();
-        
+        Manager.Game.Player.GetComponent<PlayerSkillHandler>().ResetSkillCondition();
+
+        yield return CoroutineHelper.StartCoroutine(StageTransitionDelay(3));
+
         // 보스 잡다 죽었으면 루프랑 버튼 켜주고 진행도만 하나 뒤로 물리기
         if (BossAppearance)
         {
@@ -160,6 +167,11 @@ public class StageManager
         uISceneMain.UpdateCurrentStage();
         uISceneMain.UpdateStageLevel(StageLevel);
         BattleStart();
+    }
+
+     private IEnumerator StageTransitionDelay(float delaySec)
+    {
+        yield return new WaitForSeconds(delaySec);
     }
 
     // [임시] 코루틴 => 전투 무한 사이클
@@ -191,6 +203,7 @@ public class StageManager
             }
             else
             {
+                Manager.Game.Player.GetComponent<PlayerSkillHandler>().ResetSkillCondition();
                 BossWaveSpawn();
             }
 
@@ -279,6 +292,7 @@ public class StageManager
     {
         BattleStop();
         EnemyReset();
+
         uISceneMain.RetryBossButtonToggle();
         uISceneMain.WaveLoopImageToggle();
 
