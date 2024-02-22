@@ -174,6 +174,8 @@ public partial class SummonManager
         summonResurt.Clear();
         resultIdList.Clear();
 
+        Manager.Notificate.SetPlayerStateNoti();
+
         // Data Save
         Manager.Data.Save();
     }
