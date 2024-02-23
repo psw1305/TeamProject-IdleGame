@@ -155,7 +155,7 @@ public class Follower : MonoBehaviour
 
     private float AttakSpeedToTime()
     {
-        return 1.0f / AtkSpeed;
+        return 1.0f / Manager.Game.Player.AtkSpeed.GetFloat() / AtkSpeed;
     }
     private void OnDestroy()
     {

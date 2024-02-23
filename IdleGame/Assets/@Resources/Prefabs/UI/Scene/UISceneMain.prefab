@@ -8714,45 +8714,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5268586290781821838, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1763893726, guid: 7d62ad2e0d591ec409aad12dbd576d60, type: 3}
-    - target: {fileID: 5379128692871905220, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.36862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 5379128692871905220, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 5379128692871905220, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5379128692871905220, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4284373247
-      objectReference: {fileID: 0}
     - target: {fileID: 7028797560483747474, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_Name
       value: Display Stage
-      objectReference: {fileID: 0}
-    - target: {fileID: 7345721664882323635, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7345721664882323635, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7345721664882323635, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7345721664882323635, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8771019506217900619, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_SizeDelta.x
