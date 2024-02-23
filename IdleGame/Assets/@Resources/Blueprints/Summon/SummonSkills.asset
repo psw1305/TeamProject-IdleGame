@@ -18,12 +18,12 @@ MonoBehaviour:
   countAddLimit: 24
   _buttonInfo:
   - btnPrefab: Btn_Summon_1
-    btnText: "11\uD68C \uC18C\uD658"
+    btnText: "{0}\uD68C \uC18C\uD658"
     paymentType: 1
     resourceType: 0
     amount: 0
     summonCount: 11
-    onEvent: 0
+    onEvent: 1
     isLimit: 1
     limitCount: 1
     isCoolDown: 1
