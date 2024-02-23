@@ -14,6 +14,7 @@ public class UIPopupSkillDetail : UIPopup
     private TextMeshProUGUI _rarityText;
 
     private TextMeshProUGUI _descriptionText;
+    private TextMeshProUGUI _coolTimeText;
     private TextMeshProUGUI _levelText;
 
     private TextMeshProUGUI _reinforceProgressText;
@@ -66,6 +67,7 @@ public class UIPopupSkillDetail : UIPopup
         _levelText = GetUI<TextMeshProUGUI>("Text_Lv");
         _reinforceProgressText = GetUI<TextMeshProUGUI>("Text_hasCount");
         _descriptionText = GetUI<TextMeshProUGUI>("Text_Description");
+        _coolTimeText = GetUI<TextMeshProUGUI>("Text_CoolTime");
         _retentionEffectText = GetUI<TextMeshProUGUI>("Text_RetentionStat");
     }
 
@@ -105,9 +107,12 @@ public class UIPopupSkillDetail : UIPopup
         _reinforceProgressSprite.fillAmount = (float)_data.hasCount / _needCount;
 
         _descriptionText.text = 
-            $"<color=red> {Manager.SkillData.SkillDataDictionary[_data.itemID].SkillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceDamage * (_data.level - 1)}%</color>{Manager.SkillData.SkillDataDictionary[_data.itemID].Description}";
+            $"<color=red>{Manager.SkillData.SkillDataDictionary[_data.itemID].SkillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceDamage * (_data.level - 1)}%</color>{Manager.SkillData.SkillDataDictionary[_data.itemID].Description}";
+
+        _coolTimeText.text = $"쿨타임 : {Manager.SkillData.SkillDataDictionary[_data.itemID].SkillObject.GetComponent<BaseSkill>().CoolDown}초";
+
         _retentionEffectText.text = 
-            $"{Manager.SkillData.SkillDataDictionary[_data.itemID].RetentionEffect + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceEffect * (_data.level - 1)} % ";
+            $"공격력 + {Manager.SkillData.SkillDataDictionary[_data.itemID].RetentionEffect + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceEffect * (_data.level - 1)}% ";
     }
 
     private void SetReinforceBtn()

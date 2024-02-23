@@ -12,6 +12,7 @@ public class QuestManager
     private QuestDefeatEnemy DefeatEnemy = new();
     private QuestReachStage ReachStage = new();
 
+    private GameObject questClearEffect;
     #endregion
 
     #region Properties
@@ -98,7 +99,7 @@ public class QuestManager
 
     public void QuestCurrentValueUp()
     {
-        CurrentQuest.currentValue++;
+        CurrentQuest.currentValue++;       
 
         // 사냥 진행 데이터 저장
         if (CurrentQuest.questType == QuestType.DefeatEnemy)
