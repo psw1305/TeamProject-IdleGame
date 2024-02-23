@@ -103,12 +103,12 @@ public class DataManager
     public void LoadFromUserEquipment(string fileName = "game_equipment.dat")
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
-        if (!File.Exists(filePath)) { CreateUserEquipment(); return; }
-
-        string jsonRaw = File.ReadAllText(filePath);
-        Inventory = JsonConvert.DeserializeObject<InventoryData>(jsonRaw);
-
-
+        if (!File.Exists(filePath)) { CreateUserEquipment(); }
+        else
+        {
+            string jsonRaw = File.ReadAllText(filePath);
+            Inventory = JsonConvert.DeserializeObject<InventoryData>(jsonRaw);
+        }
 
         foreach (var item in Inventory.UserItemData)
         {
