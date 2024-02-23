@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -5,7 +6,6 @@ using UnityEngine.UI;
 public class UIPopupSkillDetail : UIPopup
 {
     #region Field & Properties
-
     private int _needCount;
 
     private Image _IconSprite;
@@ -108,15 +108,22 @@ public class UIPopupSkillDetail : UIPopup
         _reinforceProgressText.text = $"{_data.hasCount} / {_needCount}";
         _reinforceProgressSprite.fillAmount = (float)_data.hasCount / _needCount;
 
-        _descriptionText.text = 
+        _descriptionText.text =
             $"<color=red> {Manager.SkillData.SkillDataDictionary[_data.itemID].SkillDamage + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceDamage * (_data.level - 1)}%</color>{Manager.SkillData.SkillDataDictionary[_data.itemID].Description}";
-        _retentionEffectText.text = 
+        _retentionEffectText.text =
             $"{Manager.SkillData.SkillDataDictionary[_data.itemID].RetentionEffect + Manager.SkillData.SkillDataDictionary[_data.itemID].ReinforceEffect * (_data.level - 1)} % ";
     }
 
     private void SetReinforceBtn()
     {
-        _reinforceBtn.interactable = _data.hasCount >= CalculateReinforceNeedCount();
+        if (_data.itemID == Manager.Data.SkillInvenList.Last().itemID & _data.level >= 100)
+        {
+            _reinforceBtn.interactable = false;
+        }
+        else
+        {
+            _reinforceBtn.interactable = _data.hasCount >= CalculateReinforceNeedCount();
+        }
     }
 
     private void SetEquipBtn()

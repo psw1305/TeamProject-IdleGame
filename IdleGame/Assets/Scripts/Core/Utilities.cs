@@ -37,7 +37,7 @@ public static class Utilities
         {
             return number.ToString();
         }
-        string[] numSymbol = { "", "A ", "B  ", "C ", "D ", "E " };
+        string[] numSymbol = { "", "A ", "B  ", "C ", "D ", "E ", "F", "G", "H", "I", "J", "K" };
         int magnitudeIndex = (int)Mathf.Log10(number) / 3;
         StringBuilder sb = new StringBuilder()
         

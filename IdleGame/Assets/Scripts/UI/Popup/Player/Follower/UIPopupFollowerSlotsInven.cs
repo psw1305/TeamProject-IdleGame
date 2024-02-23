@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,18 +7,8 @@ using UnityEngine.UI;
 public class UIPopupFollowerSlotsInven : MonoBehaviour
 {
     #region Value Fields
-
-    private string _itemID;
-    private int _level;
-    private int _hasCount;
     private int _needCount;
     private ItemTier _rarity;
-
-    #endregion
-
-    #region Properties
-
-    public string ItemID => _itemID;
 
     #endregion
 
@@ -63,9 +54,6 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
     public void InitSlotInfo(UserInvenFollowerData itemData)
     {
         _followerData = itemData;
-        _itemID = _followerData.itemID;
-        _level = _followerData.level;
-        _hasCount = _followerData.hasCount;
 
         _rarity = Manager.FollowerData.FollowerDataDictionary[itemData.itemID].Rarity;
         GetComponent<Image>().color = Utilities.SetSlotTierColor(_rarity);
@@ -73,7 +61,7 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
 
     public void InitSlotUI()
     {
-        itemSprite.sprite = Manager.FollowerData.FollowerDataDictionary[ItemID].Sprite;
+        itemSprite.sprite = Manager.FollowerData.FollowerDataDictionary[_followerData.itemID].Sprite;
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupFollowerDetailInfo);
 
         SetUILockState();
@@ -103,20 +91,24 @@ public class UIPopupFollowerSlotsInven : MonoBehaviour
 
     public void SetUIReinforceIcon()
     {
-        if (FollowerData.hasCount >= _needCount)
+        if (_followerData.itemID == Manager.Data.FollowerInvenList.Last().itemID & _followerData.level >= 100)
         {
-            reinforceIcon.SetActive(true);
+            reinforceIcon.SetActive(false);
+        }
+        else if (_followerData.hasCount < _needCount)
+        {
+            reinforceIcon.SetActive(false);
         }
         else
         {
-            reinforceIcon.SetActive(false);
+            reinforceIcon.SetActive(true);
         }
     }
 
 
     public void SetUILockState()
     {
-        if (_level > 1 || _hasCount > 0)
+        if (_followerData.level > 1 || _followerData.hasCount > 0)
         {
             lockCover.SetActive(false);
             lockIcon.SetActive(false);

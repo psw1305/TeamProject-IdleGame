@@ -1,6 +1,7 @@
+using System.Linq;
+using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIPopupFollowerDetail : UIPopup
 {
@@ -46,7 +47,7 @@ public class UIPopupFollowerDetail : UIPopup
     {
         _data = userInvenFollowerData;
     }
-        
+
     private void SetImage()
     {
         SetUI<Image>();
@@ -96,7 +97,7 @@ public class UIPopupFollowerDetail : UIPopup
 
         string v = Utilities.ConvertToString((long)(Manager.Game.Player.AtkDamage.Value * ((Manager.FollowerData.FollowerDataDictionary[_data.itemID].RetentionEffect + Manager.FollowerData.FollowerDataDictionary[_data.itemID].ReinforceEffect * _data.level) / 100)));
         _retentionEffectText.text = $"공격력 +{v}%";
-        
+
         SetUIReinforce();
     }
 
@@ -116,7 +117,14 @@ public class UIPopupFollowerDetail : UIPopup
 
     private void SetReinforceBtn()
     {
-        btn_reinforce.interactable = _data.hasCount >= CalcReinforceNeedCount();
+        if (_data.itemID == Manager.Data.SkillInvenList.Last().itemID & _data.level >= 100)
+        {
+            btn_reinforce.interactable = false;
+        }
+        else
+        {
+            btn_reinforce.interactable = _data.hasCount >= CalcReinforceNeedCount();
+        }
     }
 
     private void SetEquipBtn()

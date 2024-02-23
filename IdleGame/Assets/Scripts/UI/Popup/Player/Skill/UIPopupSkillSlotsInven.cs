@@ -2,22 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class UIPopupSkillSlotsInven : MonoBehaviour
 {
-
     #region Value Fields
 
-    private string _itemID;
-    private int _level;
-    private int _hasCount;
     private int _needCount;
     private ItemTier _rarity;
-
-    #endregion
-
-    #region Properties
-    public string ItemID => _itemID;
 
     #endregion
 
@@ -67,9 +59,6 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
     public void InitSlotInfo(UserInvenSkillData skillData)
     {
         _skillData = skillData;
-        _itemID = _skillData.itemID;
-        _level = _skillData.level;
-        _hasCount = _skillData.hasCount;
 
         _rarity = Manager.SkillData.SkillDataDictionary[skillData.itemID].Rarity;
         GetComponent<Image>().color = Utilities.SetSlotTierColor(_rarity);
@@ -77,7 +66,7 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
 
     public void InitSlotUI()
     {
-        itemSprite.sprite = Manager.SkillData.SkillDataDictionary[ItemID].Sprite;
+        itemSprite.sprite = Manager.SkillData.SkillDataDictionary[_skillData.itemID].Sprite;
         gameObject.GetComponent<Button>().onClick.AddListener(ShowPopupSkillDetailInfo);
 
         SetUILockState();
@@ -105,19 +94,23 @@ public class UIPopupSkillSlotsInven : MonoBehaviour
 
     public void SetUIReinforceIcon()
     {
-        if (SkillData.hasCount >= _needCount)
+        if (_skillData.itemID == Manager.Data.SkillInvenList.Last().itemID & _skillData.level >= 100)
         {
-            reinforceIcon.SetActive(true);
+            reinforceIcon.SetActive(false);
+        }
+        else if (SkillData.hasCount < _needCount)
+        {
+            reinforceIcon.SetActive(false);
         }
         else
         {
-            reinforceIcon.SetActive(false);
+            reinforceIcon.SetActive(true);
         }
     }
 
     public void SetUILockState()
     {
-        if (_level > 1 || _hasCount > 0)
+        if (_skillData.level > 1 || _skillData.hasCount > 0)
         {
             lockCover.SetActive(false);
             lockIcon.SetActive(false);

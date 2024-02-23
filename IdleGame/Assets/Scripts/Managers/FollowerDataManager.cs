@@ -94,8 +94,29 @@ public class FollowerDataManager
         }
         while (userInvenFollowerData.hasCount >= Mathf.Min(userInvenFollowerData.level + 1, 15))
         {
-            userInvenFollowerData.hasCount -= Mathf.Min(userInvenFollowerData.level + 1, 15);
-            userInvenFollowerData.level += 1;
+            if (userInvenFollowerData.level < 100)
+            {
+                userInvenFollowerData.hasCount -= Mathf.Min(userInvenFollowerData.level + 1, 15);
+                userInvenFollowerData.level += 1;
+            }
+            else
+            {
+                int index = Manager.Data.FollowerInvenList.FindIndex(item => item.itemID == userInvenFollowerData.itemID);
+                if (Manager.Data.FollowerInvenList.Count - 1 > index)
+                {
+                    userInvenFollowerData.hasCount -= Mathf.Min(userInvenFollowerData.level + 1, 15);
+                    Manager.Data.FollowerInvenList[index + 1].hasCount += 1;
+                }
+                else if (Manager.Data.FollowerInvenList.Last().level < 100)
+                {
+                    userInvenFollowerData.hasCount -= Mathf.Min(userInvenFollowerData.level + 1, 15);
+                    Manager.Data.FollowerInvenList[index + 1].hasCount += 1;
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
         CallSetUIFollowerInvenSlot(userInvenFollowerData.itemID);
         Manager.Notificate.SetReinforceFollowerNoti();

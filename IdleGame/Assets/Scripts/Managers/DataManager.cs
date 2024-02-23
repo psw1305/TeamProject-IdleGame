@@ -8,9 +8,16 @@ public class DataManager
 {
     public GameUserProfile Profile { get; private set; }
     public InventoryData Inventory { get; private set; }
+    public List<UserItemData> WeaponInvenList = new();
+    public List<UserItemData> ArmorInvenList = new();
+    public Dictionary<string, UserItemData> WeaponInvenDictionary = new();
+    public Dictionary<string, UserItemData> ArmorInvenDictionary = new();
+
     public UserSkillData UserSkillData { get; private set; }
+    public List<UserInvenSkillData> SkillInvenList = new();
     public Dictionary<string, UserInvenSkillData> SkillInvenDictionary = new();
     public UserFollowerData FollowerData { get; private set; }
+    public List<UserInvenFollowerData> FollowerInvenList = new();
     public Dictionary<string, UserInvenFollowerData> FollowerInvenDictionary = new();
 
     #region Create
@@ -97,8 +104,58 @@ public class DataManager
     {
         string filePath = $"{Application.persistentDataPath}/{fileName}";
         if (!File.Exists(filePath)) { CreateUserEquipment(); return; }
+
         string jsonRaw = File.ReadAllText(filePath);
         Inventory = JsonConvert.DeserializeObject<InventoryData>(jsonRaw);
+
+
+
+        foreach (var item in Inventory.UserItemData)
+        {
+            if (item.itemID[0] == 'W')
+            {
+                WeaponInvenDictionary.Add(item.itemID, item);
+                WeaponInvenList.Add(item);
+            }
+
+            else
+            {
+                ArmorInvenDictionary.Add(item.itemID, item);
+                ArmorInvenList.Add(item);
+            }
+        }
+
+        int _levelOverCount = 0;
+        foreach (var item in WeaponInvenList)
+        {
+            item.hasCount += _levelOverCount;
+
+            if (item.level > 100)
+            {
+                _levelOverCount = item.level - 100;
+                item.level = 100;
+            }
+            else
+            {
+                _levelOverCount = 0;
+            }
+        }
+
+        _levelOverCount = 0;
+        foreach (var item in ArmorInvenList)
+        {
+            item.hasCount += _levelOverCount;
+
+            if (item.level > 100)
+            {
+                _levelOverCount = item.level - 100;
+                item.level = 100;
+            }
+            else
+            {
+                _levelOverCount = 0;
+            }
+        }
     }
 
     public void LoadFromUserSkill(string fileName = "game_skill.dat")
@@ -110,9 +167,25 @@ public class DataManager
             string jsonRaw = File.ReadAllText(filePath);
             UserSkillData = JsonConvert.DeserializeObject<UserSkillData>(jsonRaw);
         }
+
+        int _levelOverCount = 0;
+
         foreach (var item in UserSkillData.UserInvenSkill)
         {
             SkillInvenDictionary.Add(item.itemID, item);
+            SkillInvenList.Add(item);
+
+            item.hasCount += _levelOverCount;
+
+            if (item.level > 100)
+            {
+                _levelOverCount = item.level - 100;
+                item.level = 100;
+            }
+            else
+            {
+                _levelOverCount = 0;
+            }
         }
     }
 
@@ -124,10 +197,26 @@ public class DataManager
         {
             string jsonRaw = File.ReadAllText(filePath);
             FollowerData = JsonConvert.DeserializeObject<UserFollowerData>(jsonRaw);
-        }        
+        }
+
+        int _levelOverCount = 0;
+
         foreach (var item in FollowerData.UserInvenFollower)
         {
             FollowerInvenDictionary.Add(item.itemID, item);
+            FollowerInvenList.Add(item);
+
+            item.hasCount += _levelOverCount;
+
+            if (item.level > 100)
+            {
+                _levelOverCount = item.level - 100;
+                item.level = 100;
+            }
+            else
+            {
+                _levelOverCount = 0;
+            }
         }
     }
 
