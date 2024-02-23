@@ -86,7 +86,8 @@ MonoBehaviour:
   - itemID: S0008
     skillName: "\uB208\uBCF4\uB77C"
     rarity: 2
-    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC804\uCCB4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 5\uCD08\uAC04 \uC801 \uC804\uCCB4\uB97C
+      12\uD68C \uACF5\uACA9\uD569\uB2C8\uB2E4."
     skillDamage: 45
     reinforceDamage: 4.5
     retentionEffect: 40
@@ -96,7 +97,8 @@ MonoBehaviour:
   - itemID: S0009
     skillName: "\uBA54\uD14C\uC624"
     rarity: 2
-    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uBC94\uC704 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 8\uAC1C\uC758 \uBA54\uD14C\uC624\uAC00
+      \uB5A8\uC5B4\uC9D1\uB2C8\uB2E4."
     skillDamage: 90
     reinforceDamage: 9
     retentionEffect: 40
@@ -116,7 +118,8 @@ MonoBehaviour:
   - itemID: S0011
     skillName: "\uD504\uB9AC\uC998 \uBE14\uB9AC\uC790\uB4DC"
     rarity: 3
-    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC804\uCCB4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 3.2\uCD08\uAC04 \uC801 \uC804\uCCB4\uB97C
+      \uCD5C\uB300 12\uD68C \uACF5\uACA9\uD569\uB2C8\uB2E4."
     skillDamage: 150
     reinforceDamage: 15
     retentionEffect: 600
@@ -136,8 +139,8 @@ MonoBehaviour:
   - itemID: S0013
     skillName: "\uBA54\uAC00 \uBA54\uD14C\uC624"
     rarity: 4
-    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uBC94\uC704 \uACF5\uACA9\uC744
-      \uAC00\uD569\uB2C8\uB2E4."
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 2.2\uCD08\uB3D9\uC548 4\uAC1C\uC758
+      \uBA54\uAC00 \uBA54\uD14C\uC624\uAC00 \uB5A8\uC5B4\uC9D1\uB2C8\uB2E4."
     skillDamage: 300
     reinforceDamage: 30
     retentionEffect: 600
@@ -147,7 +150,7 @@ MonoBehaviour:
   - itemID: S0014
     skillName: "\uD30C\uAD34"
     rarity: 4
-    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC804\uCCB4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD569\uB2C8\uB2E4."
     skillDamage: 800
     reinforceDamage: 80
     retentionEffect: 600
@@ -157,7 +160,8 @@ MonoBehaviour:
   - itemID: S0015
     skillName: "\uBE14\uB7EC\uB4DC \uC2A4\uD1B0"
     rarity: 4
-    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC804\uCCB4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801 \uC804\uCCB4\uB97C 1\uCD08\uB3D9\uC548
+      12\uD68C \uACF5\uACA9\uD569\uB2C8\uB2E4."
     skillDamage: 110
     reinforceDamage: 11
     retentionEffect: 600
