@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIPopupEquipment : UIPopup
 {
@@ -55,7 +55,7 @@ public class UIPopupEquipment : UIPopup
         SetText();
         SetImage();
         SetButtonEvents();
-     
+
         SetItemTypeUI();
         FillterCurrentPopupUseItemData();
         SetFirstVisibleItem();
@@ -104,7 +104,7 @@ public class UIPopupEquipment : UIPopup
     //강화에 필요한아이템 개수를 계산합니다.
     private void CalculateNeedItemCount()
     {
-        if(_selectItemData.level < 15)
+        if (_selectItemData.level < 15)
         {
             _needCount = _selectItemData.level + 1;
         }
@@ -139,23 +139,37 @@ public class UIPopupEquipment : UIPopup
             _equipEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEquip * _selectItemData.level}%";
             _retentionEffect.text = $"공격력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEffect * _selectItemData.level}%";
         }
-        else if(Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == StatType.HP)
+        else if (Manager.Inventory.ItemDataDictionary[selectItemData.itemID].StatType == StatType.HP)
         {
             _equipEffect.text = $"체력 : {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].EquipStat + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEquip * _selectItemData.level}%";
             _retentionEffect.text = $"체력 :  {Manager.Inventory.ItemDataDictionary[selectItemData.itemID].RetentionEffect + Manager.Inventory.ItemDataDictionary[selectItemData.itemID].ReinforceEffect * _selectItemData.level}%";
         }
+        SetEquipBtn(_selectItemData);
+        SetReinforceBtn(_selectItemData);
+    }
 
-        if (_selectItemData.level == 1 && _selectItemData.hasCount == 0)
+    private void SetEquipBtn(UserItemData userItemData)
+    {
+        btn_Select_Equip.interactable = userItemData.level > 1 | userItemData.hasCount > 0;
+    }
+
+
+    private void SetReinforceBtn(UserItemData userItemData)
+    {
+        if (userItemData.itemID == Manager.Data.WeaponInvenList.Last().itemID & userItemData.level >= 100)
         {
-            btn_Select_Equip.interactable = false;
-            btn_Select_Reinforce.interactable= false;
+            btn_Select_Reinforce.interactable = false;
+        }
+        else if (userItemData.itemID == Manager.Data.ArmorInvenList.Last().itemID & userItemData.level >= 100)
+        {
+            btn_Select_Reinforce.interactable = false;
         }
         else
         {
-            btn_Select_Equip.interactable = true;
-            btn_Select_Reinforce.interactable = (_selectItemData.hasCount >= _needCount);
+            btn_Select_Reinforce.interactable = userItemData.hasCount >= MathF.Min(userItemData.level + 1, 15);
         }
     }
+
 
     //선택한 아이템을 착용합니다.
     private void EquipmentSelectItem(PointerEventData enterEvent)
@@ -179,7 +193,7 @@ public class UIPopupEquipment : UIPopup
     //선택한 아이템을 강화합니다.
     private void ReinforceSelectItem(PointerEventData enterEvent)
     {
-        Manager.Inventory.ReinforceSelectItem(_selectItemData);
+        Manager.Inventory.ReinforceItem(_selectItemData);
 
         Manager.Notificate.SetReinforceWeaponNoti();
         Manager.Notificate.SetReinforceArmorNoti();
@@ -236,8 +250,8 @@ public class UIPopupEquipment : UIPopup
         {
             _fillterItems = Manager.Inventory.WeaponItemList;
         }
-        else if(EquipFillterType == EquipFillterType.Armor)
-         {
+        else if (EquipFillterType == EquipFillterType.Armor)
+        {
             _fillterItems = Manager.Inventory.ArmorItemList;
         }
     }

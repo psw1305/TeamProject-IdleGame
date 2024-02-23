@@ -15,7 +15,31 @@ public class NotificateManager
 
     public bool CheckReinforceNotiState(List<UserItemData> userItemDatas)
     {
-        return userItemDatas.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0 ? true : false;
+        //return userItemDatas.Where(item => item.hasCount >= 15 || item.hasCount >= item.level + 1).ToList().Count > 0 ? true : false;
+        var notiList = userItemDatas.Where(data => data.hasCount >= Mathf.Min(data.level + 1, 15)).ToList();
+        if (notiList.Count == 0)
+        {
+            return false;
+        }
+        else if (notiList.Count == 1
+            & notiList[0].itemID == Manager.Data.WeaponInvenList.Last().itemID & notiList[0].level >= 100)
+        {
+            return false;
+        }
+        else if (notiList.Count == 1
+            & notiList[0].itemID == Manager.Data.ArmorInvenList.Last().itemID & notiList[0].level >= 100)
+        {
+            return false;
+        }
+        else if (notiList.Count == 2
+    & (notiList[0].itemID == Manager.Data.WeaponInvenList.Last().itemID & notiList[0].level >= 100 | notiList[0].itemID == Manager.Data.ArmorInvenList.Last().itemID & notiList[0].level >= 100))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public bool CheckEquipmentWeaponBtnNotiState()
@@ -179,11 +203,20 @@ public class NotificateManager
 
     private bool CheckSkillReinforceState()
     {
-        if (Manager.Data.UserSkillData.UserInvenSkill.Where(data => data.hasCount >= Mathf.Min(data.level + 1 , 15)).Count() != 0)
+        var notiList = Manager.Data.UserSkillData.UserInvenSkill.Where(data => data.hasCount >= Mathf.Min(data.level + 1, 15)).ToList();
+        if (notiList.Count == 0)
+        {
+            return false;
+        }
+        else if (notiList.Count == 1
+            & notiList[0].itemID == Manager.Data.SkillInvenList.Last().itemID & notiList[0].level >= 100)
+        {
+            return false;
+        }
+        else
         {
             return true;
         }
-        return false;
     }
 
     public void SetReinforceSkillNoti()
@@ -207,11 +240,20 @@ public class NotificateManager
 
     private bool CheckFollowerReinforceState()
     {
-        if (Manager.Data.FollowerData.UserInvenFollower.Where(data => data.hasCount >= Mathf.Min(data.level + 1, 15)).Count() != 0)
+        var notiList = Manager.Data.FollowerData.UserInvenFollower.Where(data => data.hasCount >= Mathf.Min(data.level + 1, 15)).ToList();
+        if (notiList.Count == 0)
+        {
+            return false;
+        }
+        else if (notiList.Count == 1
+            & notiList[0].itemID == Manager.Data.FollowerInvenList.Last().itemID & notiList[0].level >= 100)
+        {
+            return false;
+        }
+        else
         {
             return true;
         }
-        return false;
     }
 
     public void SetReinforceFollowerNoti()

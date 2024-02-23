@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SkillDataManager
@@ -104,15 +105,40 @@ public class SkillDataManager
 
     public void ReinforceSkill(UserInvenSkillData userInvenSkillData)
     {
+        //조건 미충족 시 리턴
         if (userInvenSkillData.hasCount < Mathf.Min(userInvenSkillData.level + 1, 15))
         {
             return;
         }
+
         while (userInvenSkillData.hasCount >= Mathf.Min(userInvenSkillData.level + 1, 15))
         {
-            userInvenSkillData.hasCount -= Mathf.Min(userInvenSkillData.level + 1, 15);
-            userInvenSkillData.level += 1;
+            if (userInvenSkillData.level < 100)
+            {
+                userInvenSkillData.hasCount -= Mathf.Min(userInvenSkillData.level + 1, 15);
+                userInvenSkillData.level += 1;
+            }
+            //최고 레벨
+            else
+            {
+                int index = Manager.Data.SkillInvenList.FindIndex(item => item.itemID == userInvenSkillData.itemID);
+                if (Manager.Data.SkillInvenList.Count - 1 > index)
+                {
+                    userInvenSkillData.hasCount -= Mathf.Min(userInvenSkillData.level + 1, 15);
+                    Manager.Data.SkillInvenList[index + 1].hasCount += 1;
+                }
+                else if (Manager.Data.SkillInvenList.Last().level < 100)
+                {
+                    userInvenSkillData.hasCount -= Mathf.Min(userInvenSkillData.level + 1, 15);
+                    Manager.Data.SkillInvenList[index + 1].hasCount += 1;
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
+
         CallSetUISkillInvenSlot(userInvenSkillData.itemID);
         CallSetAllSkillUIEquipSlot();
         Manager.Notificate.SetReinforceSkillNoti();

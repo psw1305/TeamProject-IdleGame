@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class InventoryManager
 {
@@ -104,13 +105,56 @@ public class InventoryManager
         (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
-    //일괄 강화
-    public void ReinforceSelectItem(UserItemData itemdata)
+    public void ReinforceItem(UserItemData itemdata)
     {
-        ReinforceItem(itemdata);
+        if (itemdata.hasCount < Mathf.Min(itemdata.level + 1, 15))
+        {
+            return;
+        }
+
+        var list = new List<UserItemData>();
+        if ((itemdata.itemID[0] == 'W'))
+        {
+            list = Manager.Data.WeaponInvenList;
+        }
+        else
+        {
+            list = Manager.Data.ArmorInvenList;
+        }
+
+        while (itemdata.hasCount >= Mathf.Min(itemdata.level + 1, 15))
+        {
+            if (itemdata.level < 100)
+            {
+                itemdata.hasCount -= Mathf.Min(itemdata.level + 1, 15);
+                itemdata.level += 1;
+            }
+            else
+            {
+                int index = list.FindIndex(item => item.itemID == itemdata.itemID);
+                if (list.Count - 1 > index)
+                {
+                    itemdata.hasCount -= Mathf.Min(itemdata.level + 1, 15);
+                    list[index + 1].hasCount += 1;
+                }
+                else if (list.Last().level < 100)
+                {
+                    itemdata.hasCount -= Mathf.Min(itemdata.level + 1, 15);
+                    list[index + 1].hasCount += 1;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        Manager.Notificate.SetPlayerStateNoti();
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
-    // 선택한 아이템 강화
+    // 일괄 강화
     public void ReinforceSelectTypeItem(List<UserItemData> itemList)
     {
         foreach (var item in itemList)
@@ -119,37 +163,6 @@ public class InventoryManager
         }
     }
 
-    private void ReinforceItem(UserItemData itemdata)
-    {
-        while (true)
-        {
-            //업그레이드를 위해 필요한 아이템 수  == 15레벨 미만 = 레벨 + 1 / 15레벨 이상 15개 고정 
-            if (itemdata.level < 15)
-            {
-                if (itemdata.hasCount <= itemdata.level)
-                {
-                    break;
-                }
-            }
-            else if (itemdata.hasCount < 15)
-            {
-                break;
-            }
-
-            if (itemdata.level < 15)
-            {
-                itemdata.hasCount -= itemdata.level + 1;
-                itemdata.level += 1;
-            }
-            else
-            {
-                itemdata.hasCount -= 15;
-                itemdata.level += 1;
-            }
-        }
-        Manager.Game.Player.EquipmentStatModifier();
-        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
-    }
     #endregion
 }
 

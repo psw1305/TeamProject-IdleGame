@@ -2,24 +2,16 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class UIPopupEquipSlots : MonoBehaviour
 {
 
     #region Value Fields
-
-    private string _itemID;
-    private int _level;
-    private int _hasCount;
     private int _needCount;
     private ItemTier _rarity;
-
     #endregion
 
-    #region Properties
-    public string ItemID => _itemID;
-
-    #endregion
 
     #region Object Fields
     //타 클래스에서 여러 메서드를 실행할때 콜백으로 하거나 여러번 GetCompornent 처리하는게 마음에 들지 않아 일단 Action으로 묶어두었음 
@@ -67,21 +59,18 @@ public class UIPopupEquipSlots : MonoBehaviour
     public void InitSlotInfo(UserItemData itemData)
     {
         _itemData = itemData;
-        _itemID = _itemData.itemID;
-        _level = _itemData.level;
 
         _rarity = Manager.Inventory.ItemDataDictionary[itemData.itemID].Rarity;
         GetComponent<Image>().color = Utilities.SetSlotTierColor(_rarity);
 
-        _lvTxt.text = $"Lv. {_level}";
-        _hasCount = _itemData.hasCount;
+        _lvTxt.text = $"Lv. {_itemData.level}";
     }
 
     public void InitSlotUI()
     {
-        _lvTxt.text = $"Lv : {_level}";
+        _lvTxt.text = $"Lv : {_itemData.level}";
 
-        itemSprite.sprite = Manager.Inventory.ItemDataDictionary[ItemID].Sprite;
+        itemSprite.sprite = Manager.Inventory.ItemDataDictionary[_itemData.itemID].Sprite;
 
         SetLockState();
         gameObject.GetComponent<Button>().onClick.AddListener(SendItemData);
@@ -101,9 +90,8 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     private void SetReinforceData()
     {
-        _level = _itemData.level;
-        _lvTxt.text = $"Lv. {_level}";
-        _hasCount = _itemData.hasCount;
+        _lvTxt.text = $"Lv. {_itemData.level}";
+
         if (_itemData.level < 15)
         {
             _needCount = _itemData.level + 1;
@@ -116,25 +104,47 @@ public class UIPopupEquipSlots : MonoBehaviour
 
     private void SetReinforceProgress()
     {
-        reinforceProgress.fillAmount = (float)_hasCount / _needCount;
-        reinforceText.text = $"{_hasCount} / {_needCount}";
+        reinforceProgress.fillAmount = (float)_itemData.hasCount / _needCount;
+        reinforceText.text = $"{_itemData.hasCount} / {_needCount}";
     }
 
     private void SetReinforceIcon()
     {
-        if (ItemData.hasCount >= _needCount)
+        if (_itemData.itemID[0] == 'W')
         {
-            ReinforceIcon.SetActive(true);
+            if (_itemData.itemID == Manager.Data.WeaponInvenList.Last().itemID & _itemData.level >= 100)
+            {
+                ReinforceIcon.SetActive(false);
+            }
+            else if (_itemData.hasCount < _needCount)
+            {
+                ReinforceIcon.SetActive(false);
+            }
+            else
+            {
+                ReinforceIcon.SetActive(true);
+            }
         }
-        else
+        else if (_itemData.itemID[0] == 'A')
         {
-            ReinforceIcon.SetActive(false);
+            if (_itemData.itemID == Manager.Data.ArmorInvenList.Last().itemID & _itemData.level >= 100)
+            {
+                ReinforceIcon.SetActive(false);
+            }
+            else if (_itemData.hasCount < _needCount)
+            {
+                ReinforceIcon.SetActive(false);
+            }
+            else
+            {
+                ReinforceIcon.SetActive(true);
+            }
         }
     }
 
     public void SetLockState()
     {
-        if (_level > 1 || _hasCount > 0)
+        if (_itemData.level > 1 || _itemData.hasCount > 0)
         {
             lockCover.SetActive(false);
             lockIcon.SetActive(false);
