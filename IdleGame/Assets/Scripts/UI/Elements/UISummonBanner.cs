@@ -91,8 +91,8 @@ public class UISummonBanner : UIBase
     public void UpdateUI()
     {
         _summonLevel.text = $"Lv {_summonTable.SummonGrade}";
-        _summonCount.text = $"{_summonTable.GetCurCount}/{_summonTable.GetNextCount}";
-        _summonGauge.value = Mathf.Clamp01((float)_summonTable.GetCurCount / (float)_summonTable.GetNextCount);
+        _summonCount.text = _summonTable.IsMaxGrade ? "MAX" : $"{_summonTable.GetCurCount}/{_summonTable.GetNextCount}";
+        _summonGauge.value = _summonTable.IsMaxGrade ? 1 : Mathf.Clamp01((float)_summonTable.GetCurCount / (float)_summonTable.GetNextCount);
     }
 
     public void UpdateBtns(int summonCountsAdd)

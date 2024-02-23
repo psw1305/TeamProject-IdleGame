@@ -48,6 +48,7 @@ public class SummonTable
     public int SummonCountsAdd { get; private set; }
 
     // 카운트 계산 프로퍼티
+    public bool IsMaxGrade => SummonGrade == _gradeUpCount.Count;
     public int GetCurCount => SummonCounts - _gradeUpCount[SummonGrade - 1];
     public int GetNextCount => _gradeUpCount[SummonGrade] - _gradeUpCount[SummonGrade - 1];
     public SummonList SummonList => _summonList;
@@ -106,18 +107,18 @@ public class SummonTable
         var gradeUpDataTable = JsonUtility.FromJson<GradeUpDataTable>($"{{\"gradeUpDataTable\":{_tabletext}}}");
 
         _gradeUpCount = gradeUpDataTable.gradeUpDataTable.Select(x => x.needCounts).ToList();
-        _gradeUpCount.Add(-1);
     }
     
     private void SummonGradeInit()
     {
         int CurCount = _gradeUpCount.OrderBy(x => (SummonCounts - x >= 0)).First();
+        Debug.Log(CurCount);
 
         for (int i = 0; i < _gradeUpCount.Count; i++)
         {
             if (_gradeUpCount[i] == CurCount)
             {
-                SummonGrade = i;
+                SummonGrade = (_gradeUpCount[0] == CurCount)? _gradeUpCount.Count : i;
             }
         }
     }
@@ -137,12 +138,17 @@ public class SummonTable
     /// </summary>
     public bool ApplySummonCount()
     {
-        SummonCounts++;
-        if (SummonCounts >= _gradeUpCount[SummonGrade] && _gradeUpCount[SummonGrade] > -1)
+        if (!IsMaxGrade)
         {
-            SummonGrade++;
-            return true;
+            SummonCounts++;
+
+            if (SummonCounts >= _gradeUpCount[SummonGrade] && !IsMaxGrade)
+            {
+                SummonGrade++;
+                return true;
+            }
         }
+        
         return false;
     }
 

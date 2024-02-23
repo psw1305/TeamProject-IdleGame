@@ -124,7 +124,6 @@ public partial class SummonManager
             //Debug.Log($"idx : {idx}, summonResultValue : {summonResultValue[idx]}, getResultKey : {getResultKey}, index : {index}");       
             resultIdList.Add(index);
             
-            
             // 확인용 획득 수 카운트 증가
             //indexResult.TryGetValue(index, out int result);
             //testResult[result]++;
