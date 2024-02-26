@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Snowman
   m_EditorClassIdentifier: 
   enemyName: "\uB208\uC0AC\uB78C"
-  enemySprite: {fileID: 21300000, guid: 6706b1f94b5904eb69abf09deac9919d, type: 3}
+  enemySprite: {fileID: 21300000, guid: 52ed251b0d3d24448b8056f75c425728, type: 3}
   projectailVFX: {fileID: 137368, guid: 35ebb9da2cca6ca47b28d321371deddd, type: 3}
   enemyType: 0
   damage: 2
   hp: 10
-  range: 2.5
+  range: 2.25
   attackSpeed: 1
   rewards: 5
   moveSpeed: 2.5

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: RazorShell
   m_EditorClassIdentifier: 
   enemyName: "\uB9DB\uC870\uAC1C"
-  enemySprite: {fileID: 21300000, guid: ad74e0ac14a4141f78af29263f683716, type: 3}
+  enemySprite: {fileID: 21300000, guid: 358b80e8e30f14e4c8f0679a413501f3, type: 3}
   projectailVFX: {fileID: 128804, guid: dfc7f93dc23405f4e8f962740046f567, type: 3}
   enemyType: 0
   damage: 2
   hp: 10
-  range: 2.5
+  range: 2.25
   attackSpeed: 1
   rewards: 5
   moveSpeed: 2.5

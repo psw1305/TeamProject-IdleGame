@@ -14,6 +14,17 @@ public class UIPopupRewardsSummon : UIPopup
     private string itemType;
     private bool isSkip = false;
 
+    private GameObject _buttons;
+    private GameObject _repeatEffect;
+
+    private Button _closeButton;
+
+    #endregion
+
+    #region Properties
+
+    public bool IsSkip => isSkip;
+
     #endregion
 
     #region Initialize
@@ -58,14 +69,13 @@ public class UIPopupRewardsSummon : UIPopup
             var btnUI = GetUI<UIBtn_Check_Gems>(buttonInfo.BtnPrefab);
             Manager.Summon.SummonTables.TryGetValue(summonList.TypeLink, out var summonTable);
 
-            // TODO : 창 닫히는것 까지 연결하기
-            var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, ClosePopup);
-            button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, (eventdata) => Manager.Summon.SummonTry(0, summonList.TypeLink, btnUI));
+            var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, (eventdata) => Manager.Summon.SummonTry(0, summonList.TypeLink, btnUI));
             btnUI.SetButtonUI(buttonInfo, button, summonTable.SummonCountsAdd);
         }
 
         // 반복 버튼 연결
-        SetButtonEvent("Btn_Summon_Repeat", UIEventType.Click, ClosePopup);
+        var btnUI35 = GetUI<UIBtn_Check_Gems>("Btn_Summon_3");
+        SetButtonEvent("Btn_Summon_Repeat", UIEventType.Click, (eventdata) => OnSummonRepeat(summonList.TypeLink, btnUI35));
     }
 
     #endregion
@@ -83,7 +93,7 @@ public class UIPopupRewardsSummon : UIPopup
 
         for (int i = 0; i < itemData.Length; i++)
         {
-            if (!isSkip) yield return new WaitForSeconds(0.05f);
+            if (!isSkip) yield return new WaitForSeconds(0.1f);
 
             var itemSlotClone = Instantiate(rewardItemSlot, itemContents).GetComponent<UIRewardsItemSlot>();
             itemSlotClone.UpdateSlot(itemType, itemData[i]);
@@ -95,6 +105,18 @@ public class UIPopupRewardsSummon : UIPopup
     #endregion
 
     #region Button Events
+
+    private void OnSummonRepeat(string tableLink, UIBtn_Check_Gems btnUI)
+    {
+        if (!isSkip)
+        {
+            isSkip = true;
+        }
+        else
+        {
+            Manager.Summon.SetSummonRepeat(tableLink, btnUI);
+        }
+    }
 
     private void ClosePopup(PointerEventData eventData)
     {

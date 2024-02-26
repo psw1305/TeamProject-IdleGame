@@ -8714,6 +8714,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4363720311180514263, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7028797560483747474, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_Name
       value: Display Stage

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Iceneedle
   m_EditorClassIdentifier: 
   enemyName: "\uC5BC\uC74C \uAC00\uC2DC"
-  enemySprite: {fileID: 21300000, guid: f917eafdbd78b428b9419cd038a344be, type: 3}
+  enemySprite: {fileID: 21300000, guid: 9b5bdaee497034767b634fab1386d44f, type: 3}
   projectailVFX: {fileID: 137368, guid: 35ebb9da2cca6ca47b28d321371deddd, type: 3}
   enemyType: 0
   damage: 2
   hp: 10
-  range: 2.5
+  range: 2.25
   attackSpeed: 1
   rewards: 5
   moveSpeed: 2.5

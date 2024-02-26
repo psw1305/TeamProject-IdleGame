@@ -270,7 +270,7 @@ TextureImporter:
         width: 35
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 8, y: 5, z: 8, w: 4}
       outline: []
       physicsShape: []
@@ -291,7 +291,7 @@ TextureImporter:
         width: 30
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 8, y: 3, z: 8, w: 3}
       outline: []
       physicsShape: []
@@ -299,6 +299,27 @@ TextureImporter:
       bones: []
       spriteID: 9abdeb694711ed441b1247c7af04f5ac
       internalID: -1763969834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: close-btn
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da4e1d8d372eefe4b91c795e1285ed6e
+      internalID: -224709388
       vertices: []
       indices: 
       edges: []
@@ -319,6 +340,7 @@ TextureImporter:
       all-ui-sets_2: 38738777
       all-ui-sets_3: -366605881
       all-ui-sets_4: -1763969834
+      close-btn: -224709388
       ui-player-equipment: -664851271
       ui-player-tab-button: 316147399
       ui-upgrade-stat: -428605603

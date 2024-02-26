@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: EvilSlime
   m_EditorClassIdentifier: 
   enemyName: "\uB9C8\uACC4 \uC2AC\uB77C\uC784"
-  enemySprite: {fileID: 21300000, guid: 240d5bb3430cb465d8475b27f226d61e, type: 3}
+  enemySprite: {fileID: 21300000, guid: 414bd4be94a2940c3aee6c1aa15a08d7, type: 3}
   projectailVFX: {fileID: 142594, guid: b6d3117b277f36c48b756be615fb5f3b, type: 3}
   enemyType: 0
   damage: 2
   hp: 10
-  range: 2.5
+  range: 1.5
   attackSpeed: 1
   rewards: 5
   moveSpeed: 2.5

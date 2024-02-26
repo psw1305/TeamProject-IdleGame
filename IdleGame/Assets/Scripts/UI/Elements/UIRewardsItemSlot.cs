@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,12 +6,13 @@ public class UIRewardsItemSlot : MonoBehaviour
 {
     #region Fields
 
-    private Image _bgImg;
+    [SerializeField] private Image bgImg;
+    [SerializeField] private Image icon;
     private ItemTier _tier;
-    private Image icon;
     private ItemContainerBlueprint itemContainer;
     private SkillContainerBlueprint skillContainer;
     private FollowerContainerBlueprint followerContainer;
+    private RectTransform rectTransform;
 
     #endregion
 
@@ -18,8 +20,9 @@ public class UIRewardsItemSlot : MonoBehaviour
 
     private void Awake()
     {
-        _bgImg = GetComponent<Image>();
-        icon = transform.Find("ItemIcon").GetComponent<Image>();
+        rectTransform = GetComponent<RectTransform>();
+        rectTransform.localScale = Vector3.zero;
+
         itemContainer = Manager.Asset.GetBlueprint("ItemDataContainer") as ItemContainerBlueprint;
         skillContainer = Manager.Asset.GetBlueprint("SkillDataContainer") as SkillContainerBlueprint;
         followerContainer = Manager.Asset.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
@@ -27,6 +30,8 @@ public class UIRewardsItemSlot : MonoBehaviour
 
     public void UpdateSlot(string itemType, string id)
     {
+        rectTransform.BounceScale(0.25f);
+
         if (itemType == "Equipment")
         {
             icon.sprite = itemContainer.FindSprite(id);
@@ -42,12 +47,13 @@ public class UIRewardsItemSlot : MonoBehaviour
             icon.sprite = followerContainer.FindSprite(id);
             _tier = followerContainer.followerDatas.Find(item => item.ItemID == id).Rarity;
         }
-        _bgImg.color = Utilities.SetSlotTierColor(_tier);
+
+        bgImg.color = Utilities.SetSlotTierColor(_tier);
     }
 
-    public void SlotClear()
+    private void OnDestroy()
     {
-        icon.sprite = null;
+        rectTransform.DOKill();
     }
 
     #endregion

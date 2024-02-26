@@ -15,6 +15,9 @@ public partial class SummonManager
     private List<int> summonResurt = new(200);
     private List<string> resultIdList = new(200);
 
+    public bool _summonRepeat = false;
+    private Coroutine _repeatCoroutine;
+
     // 확인용
     private int[] testResult;
     private string[] itemIndex;
@@ -209,12 +212,23 @@ public partial class SummonManager
 
     #region Summon Repeat
 
+    public void SetSummonRepeat(string tableLink, UIBtn_Check_Gems btnUI)
+    {
+        _repeatCoroutine = CoroutineHelper.StartCoroutine(SummonRepeat(tableLink, btnUI));
+    }
+
     private IEnumerator SummonRepeat(string tableLink, UIBtn_Check_Gems btnUI)
     {
-        yield return new WaitForSeconds(1.0f);
-        if (!SummonTry(0, tableLink, btnUI))
+        while (true)
         {
-            yield break;
+            yield return new WaitUntil(() => Manager.UI.CurrentSummonPopup.IsSkip);
+
+            yield return new WaitForSecondsRealtime(1.0f);
+            if (!SummonTry(0, tableLink, btnUI))
+            {
+                _repeatCoroutine = null;
+                yield break;
+            }
         }
     }
 

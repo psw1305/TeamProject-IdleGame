@@ -30,14 +30,7 @@ public class UISubSceneShopSummon : UIScene
         _content = transform.GetComponentInChildren<VerticalLayoutGroup>().gameObject;
         _summon.SetShopPopup(this);
 
-        SetButtonEvents();
         SummonBannerInit();
-    }
-
-    private void SetButtonEvents()
-    {
-        SetUI<Button>();
-        SetButtonEvent("Btn_Close", UIEventType.Click, CloseSubScene);
     }
 
     private void SummonBannerInit()
@@ -62,11 +55,6 @@ public class UISubSceneShopSummon : UIScene
         _summon.SummonTry(addcount, typeLink, btnUI);
     }
 
-    private void CloseSubScene(PointerEventData eventData)
-    {
-        _summon.SetShopPopup(null);
-        Manager.UI.CloseSubScene();
-    }
     #endregion
 
     #region UI Update Method

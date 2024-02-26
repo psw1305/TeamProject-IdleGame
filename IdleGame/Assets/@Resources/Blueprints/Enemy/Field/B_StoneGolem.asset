@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: B_StoneGolem
   m_EditorClassIdentifier: 
   enemyName: "\uC2A4\uD1A4\uACE8"
-  enemySprite: {fileID: 21300000, guid: b66be5a60b68547a09897e411af3a352, type: 3}
+  enemySprite: {fileID: 21300000, guid: 434a7633efddb4c6bb6db3687f6f2bb6, type: 3}
   projectailVFX: {fileID: 146252, guid: 3ff2cdf1800f3e44b962fb174deb1193, type: 3}
   enemyType: 1
   damage: 12
   hp: 150
-  range: 3
+  range: 2.5
   attackSpeed: 2
   rewards: 100
   moveSpeed: 3.5

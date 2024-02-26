@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Specter
   m_EditorClassIdentifier: 
   enemyName: "\uBC8C\uB808"
-  enemySprite: {fileID: 21300000, guid: d2a8ffa0c1b89457b8f84a8092d54029, type: 3}
+  enemySprite: {fileID: 21300000, guid: c12c1e5d15cc04027be9a9e7cb637f2d, type: 3}
   projectailVFX: {fileID: 142594, guid: b6d3117b277f36c48b756be615fb5f3b, type: 3}
   enemyType: 0
   damage: 2
   hp: 10
-  range: 2.5
+  range: 2
   attackSpeed: 1
   rewards: 5
   moveSpeed: 2.5
