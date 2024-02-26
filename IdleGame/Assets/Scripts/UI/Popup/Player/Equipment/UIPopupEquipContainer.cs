@@ -12,7 +12,7 @@ public class UIPopupEquipContainer : UIBase
     public GameObject itemInfoUI;
     private ScrollRect scrollRect;
 
-    [SerializeField] private UIPopupEquipment MainPopupUI;
+    [SerializeField] private UIPopupEquipment UIPopupEquipment;
 
     #endregion
 
@@ -24,11 +24,21 @@ public class UIPopupEquipContainer : UIBase
     }
     private void Start()
     {
-        MainPopupUI = Manager.UI.CurrentPopup as UIPopupEquipment;
+        UIPopupEquipment = Manager.UI.CurrentPopup as UIPopupEquipment;
         InitSlot();
-        MainPopupUI.RefreshReinforecEvent += SetSlotEquipUI;
-        MainPopupUI.RefreshReinforecEvent += SetSlotReinforceUI;
+        UIPopupEquipment.SubscribeEquipRefreshEvent(SetSlotEquipUI);
+        UIPopupEquipment.SubscribeEquipRefreshEvent(SetSlotReinforceUI);
     }
+
+    private void OnDestroy()
+    {
+        if (UIPopupEquipment != null)
+        {
+            UIPopupEquipment.UnsubscribeEquipRefreshEvent(SetSlotEquipUI);
+            UIPopupEquipment.UnsubscribeEquipRefreshEvent(SetSlotReinforceUI);
+        }
+    }
+
     #endregion
 
     #region Initial Method
@@ -47,7 +57,7 @@ public class UIPopupEquipContainer : UIBase
         }
 
         itemSlots.Clear();
-        if (MainPopupUI.EquipFillterType == EquipFillterType.Weapon)
+        if (UIPopupEquipment.EquipFillterType == EquipFillterType.Weapon)
         {
             foreach (var itemData in Manager.Inventory.WeaponItemList)
             {
@@ -59,7 +69,7 @@ public class UIPopupEquipContainer : UIBase
                 slot.SetReinforceUI();
             }
         }
-        else if (MainPopupUI.EquipFillterType == EquipFillterType.Armor)
+        else if (UIPopupEquipment.EquipFillterType == EquipFillterType.Armor)
         {
             foreach (var itemData in Manager.Inventory.ArmorItemList)
             {

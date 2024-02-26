@@ -1,16 +1,22 @@
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIPopupSkillSlotContainerEquip : MonoBehaviour
 {
-    private List<UIPopupSkillSlotsEquip> slots = new List<UIPopupSkillSlotsEquip>();
+    private UIPopupSkillSlotsEquip[] _slots = new UIPopupSkillSlotsEquip[5];
+    private Button[] _slotsBtn = new Button[5];
 
     private void Start()
     {
-        foreach (var slot in gameObject.GetComponentsInChildren<UIPopupSkillSlotsEquip>())
+        _slots = gameObject.GetComponentsInChildren<UIPopupSkillSlotsEquip>();
+        _slotsBtn = gameObject.GetComponentsInChildren<Button>();
+
+        for (int i = 0; i < _slots.Count(); i++)
         {
-            slots.Add(slot);
+            _slots[i].SetIndex(i);
         }
+
         InitChildSlot();
         Manager.SkillData.AddSetAllSkillUIEquipSlot(InitChildSlot);
         Manager.SkillData.AddSetSkillUIEquipSlot(SetChildSlot);
@@ -21,9 +27,9 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
         for (int i = 0; i < Manager.Data.UserSkillData.UserEquipSkill.Count; i++)
         {
             if (Manager.Data.UserSkillData.UserEquipSkill[i].itemID == "Empty")
-                slots[i].SetSlotEmpty();
+                _slots[i].SetSlotEmpty();
             else
-                slots[i].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[i].itemID]);
+                _slots[i].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[i].itemID]);
         }
     }
 
@@ -31,15 +37,27 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
     /// 특정 인덱스의 스킬 장착 슬롯 정보를 세팅합니다.
     /// </summary>
     /// <param name="index"></param>
-    private void SetChildSlot(int? index)
+    private void SetChildSlot(int index)
     {
-        if (index == null)
+        if (index == -100)
+        {
             return;
-        if (Manager.Data.UserSkillData.UserEquipSkill[index.Value].itemID == "Empty")
-            slots[index.Value].SetSlotEmpty();
+        }
+
+        if (index == -200)
+        {
+            return;
+        }
+
+        if (Manager.Data.UserSkillData.UserEquipSkill[index].itemID == "Empty")
+        {
+            _slots[index].SetSlotEmpty();
+        }
         else
-            slots[index.Value].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[index.Value].itemID]);
-        Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index.Value);
+        {
+            _slots[index].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[index].itemID]);
+            Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index);
+        }
     }
 
     private void OnDestroy()

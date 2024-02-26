@@ -164,10 +164,6 @@ public class Player : MonoBehaviour, IDamageable
         {
             Battle();
         }
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            TakeDamage(1000000000, DamageType.Critical);
-        }
     }
 
     #endregion
@@ -227,6 +223,7 @@ public class Player : MonoBehaviour, IDamageable
                 CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, ModifierHp);
                 playerView.SetHealthBar(GetCurrentHpPercent());
             }
+
             yield return new WaitForSeconds(1f);
             long hpRecoveryValue = (long)(HpRecovery.Value
                                    * (1 + EquipHPStat * 0.01f)
@@ -243,6 +240,11 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(long Damage, DamageType damageTypeValue)
     {
+        if(State == PlayerState.Die | State == PlayerState.Move)
+        {
+            return;
+        }
+
         PlayerDamaged(Damage);
         FloatingDamage(new Vector3(0, 0.25f, 0), Damage, damageTypeValue);
         playerView.SetHealthBar(GetCurrentHpPercent());

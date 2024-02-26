@@ -144,6 +144,7 @@ public class UIPopupSkillDetail : UIPopup
             _unequipBtn.gameObject.SetActive(false);
         }
     }
+
     private void EquipSkill(PointerEventData eventData)
     {
         SetEquipBtn();
@@ -152,6 +153,7 @@ public class UIPopupSkillDetail : UIPopup
         Manager.SkillData.CallSetUISkillInvenSlot(_data.itemID);
         Manager.UI.ClosePopup();
     }
+
     private void UnequipSkill(PointerEventData eventData)
     {
         SetEquipBtn();
@@ -163,6 +165,12 @@ public class UIPopupSkillDetail : UIPopup
     private void ReinforceSkill(PointerEventData eventData)
     {
         Manager.SkillData.ReinforceSkill(_data);
+
+        Manager.Notificate.SetReinforceSkillNoti();
+        Manager.Notificate.SetPlayerStateNoti();
+
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
 
         SetReinforceBtn();
         SetUIReinforce();

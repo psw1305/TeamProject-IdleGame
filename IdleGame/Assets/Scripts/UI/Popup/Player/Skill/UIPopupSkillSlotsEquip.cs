@@ -10,6 +10,8 @@ public class UIPopupSkillSlotsEquip : MonoBehaviour
     [SerializeField] private Image skillIcon;
     private Image _bgImg;
     private Button _btn;
+    
+    public int ChildIndex { get; private set; }
 
     private void Awake()
     {
@@ -17,6 +19,12 @@ public class UIPopupSkillSlotsEquip : MonoBehaviour
         _bgImg = GetComponent<Image>();
         _btn = GetComponent<Button>();
     }
+
+    public void SetIndex(int index)
+    {
+        ChildIndex = index;
+    }
+
 
     public void SetSlotUI(UserInvenSkillData userInvenSkillData)
     {

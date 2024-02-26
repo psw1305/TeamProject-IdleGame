@@ -38,7 +38,7 @@ public class UIPopupEquipment : UIPopup
 
     #region Properties
 
-    public event Action RefreshReinforecEvent;
+    private event Action RefreshReinforecEvent;
 
     public EquipFillterType EquipFillterType;
 
@@ -93,6 +93,7 @@ public class UIPopupEquipment : UIPopup
         btn_Reinforce_Armor = SetButtonEvent("Btn_ReinforceArmorType", UIEventType.Click, ReinforceArmorTypeItem);
 
         SetButtonEvent("Btn_ShowSummon", UIEventType.Click, ShowSummonScene);
+        SetButtonEvent("Btn_RecommendEquip", UIEventType.Click, EquipmentRecommendItem);
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
@@ -184,7 +185,37 @@ public class UIPopupEquipment : UIPopup
         Manager.Notificate.SetArmorEquipmentNoti();
 
         CallEquipRefreshEvent();
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
+
+    private void EquipmentRecommendItem(PointerEventData enterEvent)
+    {
+        Manager.Inventory.ChangeEquipmentItem(Manager.Notificate.CheckRecommendItem(Manager.Inventory.WeaponItemList));
+        Manager.Inventory.ChangeEquipmentItem(Manager.Notificate.CheckRecommendItem(Manager.Inventory.ArmorItemList));
+        Manager.Notificate.SetPlayerStateNoti();
+
+        Manager.Notificate.SetRecommendWeaponNoti();
+        Manager.Notificate.SetRecommendArmorNoti();
+
+        Manager.Notificate.SetWeaponEquipmentNoti();
+        Manager.Notificate.SetArmorEquipmentNoti();
+
+        CallEquipRefreshEvent();
+        Manager.Game.Player.EquipmentStatModifier();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
+    }
+
+
+    public void SubscribeEquipRefreshEvent(Action action)
+    {
+        RefreshReinforecEvent += action;
+    }
+    public void UnsubscribeEquipRefreshEvent(Action action)
+    {
+        RefreshReinforecEvent -= action;
+    }
+
     private void CallEquipRefreshEvent()
     {
         RefreshReinforecEvent?.Invoke();
@@ -194,19 +225,23 @@ public class UIPopupEquipment : UIPopup
     private void ReinforceSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceItem(_selectItemData);
-
-        Manager.Notificate.SetReinforceWeaponNoti();
-        Manager.Notificate.SetReinforceArmorNoti();
-
-        Manager.Notificate.SetRecommendWeaponNoti();
-        Manager.Notificate.SetRecommendArmorNoti();
-
-        Manager.Notificate.SetWeaponEquipmentNoti();
-        Manager.Notificate.SetArmorEquipmentNoti();
+        if (_selectItemData.itemID[0]== 'W')
+        {
+            Manager.Notificate.SetRecommendWeaponNoti();
+            Manager.Notificate.SetWeaponEquipmentNoti();
+            Manager.Notificate.SetReinforceWeaponNoti();
+        }
+        else
+        {
+            Manager.Notificate.SetRecommendArmorNoti();
+            Manager.Notificate.SetReinforceArmorNoti();
+            Manager.Notificate.SetArmorEquipmentNoti();
+        }
 
         Manager.Notificate.SetPlayerStateNoti();
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     //무기 종류 일괄 강화
@@ -218,9 +253,14 @@ public class UIPopupEquipment : UIPopup
         Manager.Notificate.SetWeaponEquipmentNoti();
         Manager.Notificate.SetReinforceWeaponNoti();
         Manager.Notificate.SetPlayerStateNoti();
+
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
+
+    
+
 
     //방어구 종류 일괄 강화
     private void ReinforceArmorTypeItem(PointerEventData enterEvent)
@@ -231,8 +271,10 @@ public class UIPopupEquipment : UIPopup
         Manager.Notificate.SetArmorEquipmentNoti();
         Manager.Notificate.SetReinforceArmorNoti();
         Manager.Notificate.SetPlayerStateNoti();
+
         SetSelectItemInfo(_selectItemData);
         CallReinforceRefreshEvent();
+        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     private void CallReinforceRefreshEvent()
