@@ -112,7 +112,6 @@ public class SummonTable
     private void SummonGradeInit()
     {
         int CurCount = _gradeUpCount.OrderBy(x => (SummonCounts - x >= 0)).First();
-        Debug.Log(CurCount);
 
         for (int i = 0; i < _gradeUpCount.Count; i++)
         {
