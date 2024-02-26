@@ -27,6 +27,8 @@ public class ObjectPoolManager
     };
 
     private string _objectName;
+
+    GameObject objpoolParent;
     
     private Dictionary<string, IObjectPool<GameObject>> _poolDict = new Dictionary<string, IObjectPool<GameObject>>();
     
@@ -36,7 +38,7 @@ public class ObjectPoolManager
 
     public void Initialize()
     {
-        GameObject obj = new GameObject("Object Polling List");
+        objpoolParent = new GameObject("Object Polling List");
 
         for (int i = 0; i < _poolList.Length; i++)
         {
@@ -62,7 +64,7 @@ public class ObjectPoolManager
     {
         GameObject poolGo = Manager.Asset.InstantiatePrefab(_objectName);
         poolGo.GetComponent<ObjectPoolable>().SetManagedPool(_poolDict[_objectName]);
-        poolGo.transform.SetParent(obj.transform);
+        poolGo.transform.SetParent(objpoolParent.transform);
         return poolGo;
     }
 
