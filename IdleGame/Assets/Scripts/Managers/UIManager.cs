@@ -1,4 +1,3 @@
-using Assets.PixelFantasy.PixelHeroes.Common.Scripts.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -111,6 +110,13 @@ public class UIManager
         sceneOrder--;
     }
 
+    public bool CheckSceneStack()
+    {
+        if (sceneStack.Count != 0) return true;
+
+        return false;
+    }
+
     #endregion
 
     #region Popup
@@ -164,6 +170,13 @@ public class UIManager
         {
             ClosePopup();
         }
+    }
+
+    public bool CheckPopupStack()
+    {
+        if (popupStack.Count != 0) return true;
+
+        return false;
     }
 
     #endregion

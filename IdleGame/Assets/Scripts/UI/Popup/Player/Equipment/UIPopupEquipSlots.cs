@@ -1,8 +1,8 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Linq;
 
 public class UIPopupEquipSlots : MonoBehaviour
 {
@@ -11,7 +11,6 @@ public class UIPopupEquipSlots : MonoBehaviour
     private int _needCount;
     private ItemTier _rarity;
     #endregion
-
 
     #region Object Fields
     //타 클래스에서 여러 메서드를 실행할때 콜백으로 하거나 여러번 GetCompornent 처리하는게 마음에 들지 않아 일단 Action으로 묶어두었음 

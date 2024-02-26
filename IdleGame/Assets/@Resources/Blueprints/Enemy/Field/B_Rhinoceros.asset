@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B_Rhinoceros
   m_EditorClassIdentifier: 
   enemyName: "\uBFD4\uC18C\uC804\uC0AC"
-  enemySprite: {fileID: 21300000, guid: f46ad53094c67418bb486497a0dee254, type: 3}
+  enemySprite: {fileID: 21300000, guid: 05e42ba3bd79d4a1f80d33fc308b6337, type: 3}
   projectailVFX: {fileID: 146252, guid: 3ff2cdf1800f3e44b962fb174deb1193, type: 3}
   enemyType: 1
   damage: 12

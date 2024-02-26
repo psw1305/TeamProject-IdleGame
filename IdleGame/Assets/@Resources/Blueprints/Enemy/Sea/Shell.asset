@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shell
   m_EditorClassIdentifier: 
   enemyName: "\uC870\uAC1C"
-  enemySprite: {fileID: 21300000, guid: 7ec4bb69ad75a4722bf4166b16fcb396, type: 3}
+  enemySprite: {fileID: 21300000, guid: 90bb2e4468a674acba1cbac4ee215a82, type: 3}
   projectailVFX: {fileID: 128804, guid: dfc7f93dc23405f4e8f962740046f567, type: 3}
   enemyType: 0
   damage: 2

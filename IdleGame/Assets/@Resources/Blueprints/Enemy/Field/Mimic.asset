@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mimic
   m_EditorClassIdentifier: 
   enemyName: "\uBBF8\uBBF9"
-  enemySprite: {fileID: 21300000, guid: d2f3d43de50fe422a972f456193af2d1, type: 3}
+  enemySprite: {fileID: 21300000, guid: 2eca6bbc54e6d4fd184056664731bbc7, type: 3}
   projectailVFX: {fileID: 170320, guid: 2dca19da96364f743a25be15b64734db, type: 3}
   enemyType: 0
   damage: 2
