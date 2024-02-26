@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BaseNotiDot : MonoBehaviour
 {
+    [SerializeField] private int order = 25;
     private GameObject ChildNotiDot;
 
     protected virtual void Start()
@@ -13,6 +14,7 @@ public class BaseNotiDot : MonoBehaviour
     {
         ChildNotiDot = Manager.Asset.InstantiatePrefab("NotificationDot", gameObject.transform);
         ChildNotiDot.transform.localPosition = new Vector2(GetComponent<RectTransform>().rect.width / 2 - 10, GetComponent<RectTransform>().rect.height / 2 - 10);
+        ChildNotiDot.GetComponent<Canvas>().sortingOrder = order;
     }
 
     protected void ActiveNotiDot()

@@ -12,6 +12,7 @@ public class UITopScene : UIBase
     [SerializeField] private Slider loadingSlider;
     [SerializeField] private GameObject completeBtn;
     [SerializeField] private TextMeshProUGUI assetDownloadTxt;
+    [SerializeField] private GameObject sceneCloseBtn;
 
     #endregion
 
@@ -50,6 +51,12 @@ public class UITopScene : UIBase
         SetButtonEvent("Btn_PlayerSystem", UIEventType.Click, OnPlayerSystem);
         SetButtonEvent("Btn_Ranking", UIEventType.Click, OnRanking);
         SetButtonEvent("Btn_Shop", UIEventType.Click, OnShop);
+        SetButtonEvent("Btn_Close", UIEventType.Click, CloseSubScene);
+    }
+
+    public void SetCloseButton(bool active)
+    {
+        sceneCloseBtn.SetActive(active);
     }
 
     #endregion
@@ -66,9 +73,27 @@ public class UITopScene : UIBase
         playingPanel.SetActive(true);
     }
 
-    private void OnPlayerSystem(PointerEventData eventData) => Manager.UI.ShowSubScene<UISubScenePlayerSystem>();
+    private void OnPlayerSystem(PointerEventData eventData)
+    {
+        Manager.UI.ShowSubScene<UISubScenePlayerSystem>();
+        sceneCloseBtn.transform.localPosition = new Vector2(-360, 0);
+        sceneCloseBtn.SetActive(true);
+    }
+    
     private void OnRanking(PointerEventData eventData) => Debug.Log("랭킹시스템 임시 잠금");
-    private void OnShop(PointerEventData eventData) => Manager.UI.ShowSubScene<UISubSceneShopSummon>();
+    
+    private void OnShop(PointerEventData eventData)
+    {
+        Manager.UI.ShowSubScene<UISubSceneShopSummon>();
+        sceneCloseBtn.transform.localPosition = new Vector2(360, 0);
+        sceneCloseBtn.SetActive(true);
+    }
+
+    private void CloseSubScene(PointerEventData eventData) 
+    {
+        Manager.UI.CloseSubScene();
+        sceneCloseBtn.SetActive(false);
+    }
 
     #endregion
 

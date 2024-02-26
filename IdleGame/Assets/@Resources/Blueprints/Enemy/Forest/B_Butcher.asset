@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B_Butcher
   m_EditorClassIdentifier: 
   enemyName: "\uB3C4\uC0B4\uC790"
-  enemySprite: {fileID: 21300000, guid: dff22a01d1b904a1f9c583e670130324, type: 3}
+  enemySprite: {fileID: 21300000, guid: eb5f03deb401242d698932c61d193f0f, type: 3}
   projectailVFX: {fileID: 182986, guid: afc09a50c081c5a4a89fdc995ebcd45f, type: 3}
   enemyType: 1
   damage: 12

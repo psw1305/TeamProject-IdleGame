@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceMage
   m_EditorClassIdentifier: 
   enemyName: "\uB0C9\uAE30 \uB9C8\uBC95\uC0AC"
-  enemySprite: {fileID: 21300000, guid: 55e4cc73127044a0899256e75b69a843, type: 3}
+  enemySprite: {fileID: 21300000, guid: 649fbaddac02b44e8aff03df33a7f105, type: 3}
   projectailVFX: {fileID: 137368, guid: 35ebb9da2cca6ca47b28d321371deddd, type: 3}
   enemyType: 0
   damage: 2

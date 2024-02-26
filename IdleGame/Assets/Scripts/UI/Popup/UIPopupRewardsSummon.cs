@@ -83,7 +83,7 @@ public class UIPopupRewardsSummon : UIPopup
 
         for (int i = 0; i < itemData.Length; i++)
         {
-            if (!isSkip) yield return new WaitForSeconds(0.05f);
+            if (!isSkip) yield return new WaitForSeconds(0.1f);
 
             var itemSlotClone = Instantiate(rewardItemSlot, itemContents).GetComponent<UIRewardsItemSlot>();
             itemSlotClone.UpdateSlot(itemType, itemData[i]);

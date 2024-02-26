@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B_IceDragon
   m_EditorClassIdentifier: 
   enemyName: "\uBE59\uB8E1"
-  enemySprite: {fileID: 21300000, guid: 1db6def621f09467380ad6183ee1c70f, type: 3}
+  enemySprite: {fileID: 21300000, guid: 38ee0c6d95e8a46eab6d9068f40dc3f1, type: 3}
   projectailVFX: {fileID: 192706, guid: f2162a38562187b4ea1135325714295c, type: 3}
   enemyType: 1
   damage: 12

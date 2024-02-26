@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slime1
   m_EditorClassIdentifier: 
   enemyName: "\uC2AC\uB77C\uC784"
-  enemySprite: {fileID: 21300000, guid: c1904b8d5e55847098372e0c21eb677a, type: 3}
+  enemySprite: {fileID: 21300000, guid: 5b38d498c734c47a5b88ffb669f2427d, type: 3}
   projectailVFX: {fileID: 170320, guid: 2dca19da96364f743a25be15b64734db, type: 3}
   enemyType: 0
   damage: 2

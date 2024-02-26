@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TurbanSnail
   m_EditorClassIdentifier: 
   enemyName: "\uC18C\uB77C"
-  enemySprite: {fileID: 21300000, guid: 897be634e27694353bdc58e6b94278a2, type: 3}
+  enemySprite: {fileID: 21300000, guid: 77af8719b2c82495fa16fe4b122bbeaa, type: 3}
   projectailVFX: {fileID: 128804, guid: dfc7f93dc23405f4e8f962740046f567, type: 3}
   enemyType: 0
   damage: 2

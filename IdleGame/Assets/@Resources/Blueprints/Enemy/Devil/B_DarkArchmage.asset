@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B_DarkArchmage
   m_EditorClassIdentifier: 
   enemyName: "\uB300 \uD751\uB9C8\uBC95\uC0AC"
-  enemySprite: {fileID: 21300000, guid: d09d855f5f5ef4fed862392189a4b8a1, type: 3}
+  enemySprite: {fileID: 21300000, guid: 67e674aae27464d04b5d3fbf1d45d2b2, type: 3}
   projectailVFX: {fileID: 111912, guid: a42fb76af6cb33646be6633428f143cb, type: 3}
   enemyType: 1
   damage: 12
