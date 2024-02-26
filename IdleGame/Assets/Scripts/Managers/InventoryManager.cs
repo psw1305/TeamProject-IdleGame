@@ -100,11 +100,9 @@ public class InventoryManager
 
         // 새로운 아이템 장착
         equipItem.equipped = true;
-
-        Manager.Game.Player.EquipmentStatModifier();
-        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
+    //선택 아이템 강화
     public void ReinforceItem(UserItemData itemdata)
     {
         if (itemdata.hasCount < Mathf.Min(itemdata.level + 1, 15))
@@ -148,10 +146,6 @@ public class InventoryManager
                 }
             }
         }
-
-        Manager.Notificate.SetPlayerStateNoti();
-        Manager.Game.Player.EquipmentStatModifier();
-        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     // 일괄 강화

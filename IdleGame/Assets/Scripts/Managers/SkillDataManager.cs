@@ -27,19 +27,19 @@ public class SkillDataManager
 
     #region popup event actions
 
-    private event Action<int?> SetSkillUIEquipSlot;
+    private event Action<int> SetSkillUIEquipSlot;
     private event Action<string> SetSkillUIInvenSlot;
     private event Action SetAllSkillUIEquipSlot;
 
-    public void AddSetSkillUIEquipSlot(Action<int?> handler)
+    public void AddSetSkillUIEquipSlot(Action<int> handler)
     {
         SetSkillUIEquipSlot += handler;
     }
-    public void RemoveSetSkillUIEquipSlot(Action<int?> handler)
+    public void RemoveSetSkillUIEquipSlot(Action<int> handler)
     {
         SetSkillUIEquipSlot -= handler;
     }
-    public void CallSetUISkillEquipSlot(int? index)
+    public void CallSetUISkillEquipSlot(int index)
     {
         SetSkillUIEquipSlot?.Invoke(index);
     }
@@ -74,17 +74,24 @@ public class SkillDataManager
 
     #region Equip, Reinforce Method
 
-    public bool CheckEquipSkill(UserInvenSkillData userInvenSkillData)
-    {
-        return Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty") > -1 ? true : false;
-    }
+    //public bool CheckEquipSkill(UserInvenSkillData userInvenSkillData)
+    //{
+    //    return Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty") > -1 ? true : false;
+    //}
 
-    public int? EquipSkill(UserInvenSkillData userInvenSkillData)
+    /// <summary>
+    /// userInvenSkillData 장착 시도 후 성공 시 슬롯의 인덱스, 실패 시 감시값을 반환합니다.
+    /// <para> -100 : 해당 아이템을 보유하지 않아 착용 불가, -200 : 장착 가능한 슬롯이  없음</para>
+    /// </summary>
+    /// <param name="userInvenSkillData"></param>
+    /// <returns></returns>
+    public int EquipSkill(UserInvenSkillData userInvenSkillData)
     {
         if (userInvenSkillData.level == 1 && userInvenSkillData.hasCount == 0)
         {
-            return null;
+            return -100;
         }
+
         int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty");
         if (index > -1)
         {
@@ -92,9 +99,15 @@ public class SkillDataManager
             userInvenSkillData.equipped = true;
             return index;
         }
-        return null;
+
+        return -200;
     }
 
+    /// <summary>
+    /// userInvenSkillData의 장착을 해제합니다.
+    /// </summary>
+    /// <param name="userInvenSkillData"></param>
+    /// <returns></returns>
     public int UnEquipSkill(UserInvenSkillData userInvenSkillData)
     {
         int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == userInvenSkillData.itemID);
@@ -141,11 +154,6 @@ public class SkillDataManager
 
         CallSetUISkillInvenSlot(userInvenSkillData.itemID);
         CallSetAllSkillUIEquipSlot();
-        Manager.Notificate.SetReinforceSkillNoti();
-        Manager.Notificate.SetPlayerStateNoti();
-
-        Manager.Game.Player.EquipmentStatModifier();
-        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     public void ReinforceAllSkill()
@@ -155,9 +163,6 @@ public class SkillDataManager
             ReinforceSkill(item);
         }
         CallSetAllSkillUIEquipSlot();
-
-        Manager.Game.Player.EquipmentStatModifier();
-        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
 
     #endregion

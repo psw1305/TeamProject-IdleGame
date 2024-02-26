@@ -34,6 +34,7 @@ public class UIUseSkillSlots : MonoBehaviour
             ImgSkillIcon.gameObject.SetActive(true);
             StartCoroutine(SetUICoolDown());
         }
+
         _skillBtn.onClick.RemoveAllListeners();
         _skillBtn.onClick.AddListener(_equipSkillData.SkillScript.UseSkill);
         _skillBtn.onClick.AddListener(SetUIUseSkill);
