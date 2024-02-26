@@ -220,7 +220,7 @@ public class StageManager
         var enemyBlueprint = Manager.Asset.GetBlueprint(randomEnemyName) as EnemyBlueprint;
 
         // BaseEnemy 랜덤 Y축 위치 선정
-        var randomYPos = Random.Range(spawnPoint[0].position.y, spawnPoint[1].position.y);
+        var randomYPos = Random.Range(spawnPoint[0].position.y, spawnPoint[3].position.y);
         var randomPos = new Vector2(spawnPoint[0].position.x, Mathf.Round(randomYPos * 10.0f) * 0.1f);
 
         // BaseEnemy 오브젝트 생성
@@ -250,7 +250,7 @@ public class StageManager
         enemyList.Add(enemy);
 
         // 보스 설정 임시 변경
-        bossObject.transform.localScale = new Vector2(2.5f - ratio, 2.5f - ratio);
+        bossObject.transform.localScale = new Vector2(2.0f - ratio, 2.0f - ratio);
     }
 
     private void WaveCompleted()

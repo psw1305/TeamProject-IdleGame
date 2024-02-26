@@ -61,7 +61,7 @@ public class MainScene : MonoBehaviour
     {
         var spawnPointTransform = this.transform.Find("Enemy Spawn Point");
         var bossSpawnPoint = Instantiate(new GameObject("Boss Spawn Point"), spawnPointTransform.position, Quaternion.identity);
-        bossSpawnPoint.transform.position = new Vector2(3.5f, 1.5f);
+        bossSpawnPoint.transform.position = new Vector2(3.5f, 2.0f);
         bossSpawnPoint.transform.parent = spawnPointTransform;
 
         return bossSpawnPoint.transform;
