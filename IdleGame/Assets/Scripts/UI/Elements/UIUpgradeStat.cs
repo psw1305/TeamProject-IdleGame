@@ -13,6 +13,8 @@ public class UIUpgradeStat : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textStatValue;
     [SerializeField] private TextMeshProUGUI textUpdateCost;
     [SerializeField] private Button btnUpgradeStat;
+    [SerializeField] private GameObject maxStat;
+    [SerializeField] private GameObject dimScreen;
     [SerializeField] private QuestType questType;
 
     #endregion
@@ -21,27 +23,18 @@ public class UIUpgradeStat : MonoBehaviour
 
     private Player player;
     private StatInfo statInfo;
+    private UISceneMain uiSceneMain;
 
     private bool isPointerDown = false;
     private bool isHoldPressed = false;
     private bool isUpgradeRoutine = false;
     private DateTime pressTime;
     private float upgradeDelay = 0.05f;
+    private bool isMax = false;
 
     #endregion
 
-    public void SetUpgradeStat(StatInfo statInfo)
-    {
-        this.player = Manager.Game.Player;
-        this.statInfo = statInfo;
-
-        textStatLevel.text = $"Lv. {statInfo.Level}";
-        textStatValue.text = statInfo.GetString();
-        textUpdateCost.text = Utilities.ConvertToString(statInfo.UpgradeCost);
-
-        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerDown, OnPointerDown);
-        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerUp, OnPointerUp);
-    }
+    #region Unity Flow
 
     private void Update()
     {
@@ -51,6 +44,61 @@ public class UIUpgradeStat : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Upgrade Methods
+
+    public void SetUpgradeStat(StatInfo statInfo, UISceneMain uiSceneMain)
+    {
+        this.player = Manager.Game.Player;
+        this.statInfo = statInfo;
+        this.uiSceneMain = uiSceneMain;
+
+        UpdateText();
+
+        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerDown, OnPointerDown);
+        btnUpgradeStat.gameObject.SetEvent(UIEventType.PointerUp, OnPointerUp);
+    }
+
+    public void UpdateText()
+    {
+        // 레벨 최대치 도달할 경우, 버튼 잠김
+        if (statInfo.MaxLevel != -1 && statInfo.Level >= statInfo.MaxLevel)
+        {
+            isMax = true;
+            textStatLevel.text = "MAX";
+            textStatValue.text = statInfo.GetString();
+
+            btnUpgradeStat.gameObject.SetActive(false);
+            maxStat.SetActive(true);
+
+            uiSceneMain.UpdateStatLayoutChange(gameObject);
+        }
+        else
+        {
+            textStatLevel.text = $"Lv. {statInfo.Level}";
+            textStatValue.text = statInfo.GetString();
+            textUpdateCost.text = Utilities.ConvertToString(statInfo.UpgradeCost);
+        }
+    }
+
+    public void TradeCheck()
+    {
+        if (isMax) return;
+
+        if (player.Gold < statInfo.UpgradeCost)
+        {
+            dimScreen.SetActive(true);
+        }
+        else
+        {
+            dimScreen.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// 플레이어 재화로 스탯 업그레이드
+    /// </summary>
     public void UpdateUpgradeStat()
     {
         if (player.IsTradeGold(statInfo.UpgradeCost))
@@ -58,14 +106,10 @@ public class UIUpgradeStat : MonoBehaviour
             AudioSFX.Instance.PlayOneShot(Manager.Asset.GetAudio("testclick"));
 
             statInfo.AddModifier();
-
             UpdateQuestObjective();
+            UpdateText();
 
-            textStatLevel.text = $"Lv. {statInfo.Level}";
-            textStatValue.text = statInfo.GetString();
-            textUpdateCost.text = Utilities.ConvertToString(statInfo.UpgradeCost);
-
-            (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
+            uiSceneMain.UpdatePlayerPower();
         }
     }
 
@@ -74,16 +118,18 @@ public class UIUpgradeStat : MonoBehaviour
         if (questType == QuestType.DamageUp)
         {
             Manager.Quest.QuestDB[0].currentValue++;
-            UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
             uiSceneMain.UpdateQuestObjective();
         }
         else if(questType == QuestType.HPUp)
         {
             Manager.Quest.QuestDB[1].currentValue++;
-            UISceneMain uiSceneMain = Manager.UI.CurrentScene as UISceneMain;
             uiSceneMain.UpdateQuestObjective();
         }
     }
+
+    #endregion
+
+    #region Button Methods
 
     private IEnumerator HoldPressListener()
     {
@@ -130,4 +176,6 @@ public class UIUpgradeStat : MonoBehaviour
         isHoldPressed = false;
         upgradeDelay = 0.05f;
     }
+
+    #endregion
 }

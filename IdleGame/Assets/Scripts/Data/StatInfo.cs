@@ -1,10 +1,13 @@
-// 유저 인게임 스텟 정보
+/// <summary>
+/// 유저 인게임 스텟 정보
+/// </summary>
 public class StatInfo
 {
     private float scaling = 0.001f;
 
     public string Id;
     public int Level;
+    public int MaxLevel;
     public long BaseValue;
     public long BaseUpgradeCost;
 
@@ -16,12 +19,18 @@ public class StatInfo
     public StatModType ModType;
     public StatApplyType ApplyType;
 
-    public StatInfo(string id, int level, StatModType modType, StatApplyType applyType)
+    public StatInfo(string id, int level, int maxLevel, StatModType modType, StatApplyType applyType)
     {
         Id = id;
         Level = level;
+        MaxLevel = maxLevel;
         ModType = modType;
         ApplyType = applyType;
+
+        if (MaxLevel != -1 && Level >= MaxLevel)
+        {
+            Level = MaxLevel;
+        }
     }
 
     #region Initialize
@@ -48,20 +57,29 @@ public class StatInfo
 
     public float GetFloat()
     {
-        return Value / 1000f;
+        return Value * 0.001f;
+    }
+
+    public float GetIntegerFloat()
+    {
+        return Value * 0.01f;
     }
 
     public string GetString()
     {
         if (ModType == StatModType.Percent)
         {
-            float percent = Value / 10f;
+            float percent = Value * 0.1f;
             return $"{percent}%";
         }
         else if (ModType == StatModType.DecimalPoint)
         {
-            float decimalPoint = Value / 1000f;
+            float decimalPoint = Value * 0.001f;
             return decimalPoint.ToString();
+        }
+        else if (ModType == StatModType.IntegerPercent)
+        {
+            return $"{Utilities.ConvertToString(Value)}%";
         }
         else
         { 

@@ -18,6 +18,8 @@ public class PlayerView : MonoBehaviour
     public void SetGoldAmount()
     {
         Manager.UI.Top.UpdateGold();
+        var mainScene = Manager.UI.CurrentScene as UISceneMain;
+        mainScene.UpdateStatTradeCheck();
     }
 
     public void SetGemsAmout()
