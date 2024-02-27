@@ -175,7 +175,7 @@ public class UISceneMain : UIScene
     {
         TimeSpan remainTime = Delay.IdleClick - timeLeft;
         double totalSecondsLeft = remainTime.TotalSeconds;
-
+        var notiMarker = btnIdleRewards.GetComponent<NotificateIdleReward>();
         while (true)
         {
             if (totalSecondsLeft > 1)
@@ -189,12 +189,13 @@ public class UISceneMain : UIScene
                 {
                     _textIdleNotice.text = Mathf.FloorToInt((float)totalSecondsLeft) + "초";
                 }
-
+                notiMarker.SetNotiDot(false);
                 totalSecondsLeft -= Time.deltaTime;
                 yield return null;
             }
             else
             {
+                notiMarker.SetNotiDot(true);
                 btnIdleRewards.interactable = true;
                 _textIdleNotice.text = "";
                 break;

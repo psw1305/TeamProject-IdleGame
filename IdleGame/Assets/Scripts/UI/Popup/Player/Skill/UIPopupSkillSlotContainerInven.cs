@@ -14,7 +14,6 @@ public class UIPopupSkillSlotContainerInven : MonoBehaviour
 
     #endregion
 
-
     #region Unity Flow
 
     private void Awake()

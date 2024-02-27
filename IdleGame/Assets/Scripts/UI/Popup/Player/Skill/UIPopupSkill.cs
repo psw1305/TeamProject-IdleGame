@@ -4,22 +4,12 @@ using UnityEngine.UI;
 
 public class UIPopupSkill : UIPopup
 {
-    private Image _popupDimCover;
 
     protected override void Init()
     {
         base.Init();
-        SetImage();
         SetButtonEvents();
     }
-
-    private void SetImage()
-    {
-        SetUI<Image>();
-
-        _popupDimCover = GetUI<Image>("Img_PopupDimCover");
-    }
-
 
     private void SetButtonEvents()
     {
@@ -35,6 +25,7 @@ public class UIPopupSkill : UIPopup
     {
         Manager.SkillData.ReinforceAllSkill();
 
+        Manager.Notificate.SetReinforceSkillNoti();
         Manager.Game.Player.EquipmentStatModifier();
         (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
@@ -43,11 +34,6 @@ public class UIPopupSkill : UIPopup
     {
         Manager.UI.ShowSubScene<UISubSceneShopSummon>();
         Manager.UI.ClosePopup();
-    }
-
-    public void TogglePopupDim()
-    {
-        _popupDimCover.enabled = !_popupDimCover.enabled;
     }
 
     private void ClosePopup(PointerEventData eventData)

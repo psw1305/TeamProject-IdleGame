@@ -10,6 +10,8 @@ public class SkillDataManager
     private Dictionary<string, SkillBlueprint> _skillDataDictionary = new();
     public Dictionary<string, SkillBlueprint> SkillDataDictionary => _skillDataDictionary;
 
+    public UserInvenSkillData ReplaceSkill;
+
     public void InitSkill()
     {
         ParseSkillData();
@@ -74,11 +76,6 @@ public class SkillDataManager
 
     #region Equip, Reinforce Method
 
-    //public bool CheckEquipSkill(UserInvenSkillData userInvenSkillData)
-    //{
-    //    return Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty") > -1 ? true : false;
-    //}
-
     /// <summary>
     /// userInvenSkillData 장착 시도 후 성공 시 슬롯의 인덱스, 실패 시 감시값을 반환합니다.
     /// <para> -100 : 해당 아이템을 보유하지 않아 착용 불가, -200 : 장착 가능한 슬롯이  없음</para>
@@ -99,9 +96,10 @@ public class SkillDataManager
             userInvenSkillData.equipped = true;
             return index;
         }
-
+        ReplaceSkill = userInvenSkillData;
         return -200;
     }
+
 
     /// <summary>
     /// userInvenSkillData의 장착을 해제합니다.

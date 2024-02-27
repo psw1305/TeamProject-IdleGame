@@ -6059,6 +6059,7 @@ GameObject:
   - component: {fileID: 7444868618961721814}
   - component: {fileID: 6382027702626115746}
   - component: {fileID: 4459183725886470586}
+  - component: {fileID: 3191896638450138892}
   m_Layer: 5
   m_Name: Btn_IdleRewards
   m_TagString: Untagged
@@ -6163,11 +6164,25 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6382027702626115746}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3191896638450138892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945208292093789601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538635cb09c42f74da158f9d197f3b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 25
+  ChildNotiDot: {fileID: 0}
 --- !u!1 &3189736061468462994
 GameObject:
   m_ObjectHideFlags: 0

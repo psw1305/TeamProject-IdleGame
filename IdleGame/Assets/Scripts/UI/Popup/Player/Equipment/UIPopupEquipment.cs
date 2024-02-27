@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -27,8 +28,6 @@ public class UIPopupEquipment : UIPopup
 
     private Button btn_Select_Equip;
     private Button btn_Select_Reinforce;
-    private Button btn_Reinforce_Weapon;
-    private Button btn_Reinforce_Armor;
 
     private UserItemData _selectItemData;
     private List<UserItemData> _fillterItems;
@@ -40,7 +39,7 @@ public class UIPopupEquipment : UIPopup
 
     private event Action RefreshReinforecEvent;
 
-    public EquipFillterType EquipFillterType;
+    public EquipFillterType _equipFillterType;
 
     public List<UserItemData> FillterItems => _fillterItems;
 
@@ -89,9 +88,7 @@ public class UIPopupEquipment : UIPopup
         btn_Select_Equip = SetButtonEvent("Btn_Equip", UIEventType.Click, EquipmentSelectItem);
         btn_Select_Reinforce = SetButtonEvent("Btn_Reinforce", UIEventType.Click, ReinforceSelectItem);
 
-        btn_Reinforce_Weapon = SetButtonEvent("Btn_ReinforceWeaponType", UIEventType.Click, ReinforceWeaponTypeItem);
-        btn_Reinforce_Armor = SetButtonEvent("Btn_ReinforceArmorType", UIEventType.Click, ReinforceArmorTypeItem);
-
+        SetButtonEvent("Btn_ReinforceType", UIEventType.Click, ReinforceWeaponTypeItem);
         SetButtonEvent("Btn_ShowSummon", UIEventType.Click, ShowSummonScene);
         SetButtonEvent("Btn_RecommendEquip", UIEventType.Click, EquipmentRecommendItem);
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
@@ -101,6 +98,47 @@ public class UIPopupEquipment : UIPopup
     #endregion
 
     #region OtherMethod
+
+    //EquipFillterType 상태에 맞춰 보여주는 장비류 필터를 Inventory Manager로부터 가져옵니다.
+    private void FillterCurrentPopupUseItemData()
+    {
+        if (_equipFillterType == EquipFillterType.Weapon)
+        {
+            _fillterItems = Manager.Inventory.WeaponItemList;
+        }
+        else if (_equipFillterType == EquipFillterType.Armor)
+        {
+            _fillterItems = Manager.Inventory.ArmorItemList;
+        }
+    }
+
+    //팝업 첫 진입 시 조건에 따라 처음 아이템을 설정해줍니다.
+    private void SetFirstVisibleItem()
+    {
+        //아무것도 착용하지 않은 경우 제일 첫 아이템
+        if (_fillterItems.Where(item => item.equipped == true).ToList().Count == 0)
+        {
+            SetSelectItemInfo(_fillterItems[0]);
+        }
+        //착용한 경우 착용한 아이템
+        else
+        {
+            SetSelectItemInfo(_fillterItems.Where(item => item.equipped == true).ToList()[0]);
+        }
+    }
+
+    //아이템 타입에 따라 UI가 세팅되는 메서드
+    private void SetItemTypeUI()
+    {
+        if (_equipFillterType == EquipFillterType.Weapon)
+        {
+            titleText.text = "Weapon";
+        }
+        else if (_equipFillterType == EquipFillterType.Armor)
+        {
+            titleText.text = "Armor";
+        }
+    }
 
     //강화에 필요한아이템 개수를 계산합니다.
     private void CalculateNeedItemCount()
@@ -154,14 +192,9 @@ public class UIPopupEquipment : UIPopup
         btn_Select_Equip.interactable = userItemData.level > 1 | userItemData.hasCount > 0;
     }
 
-
     private void SetReinforceBtn(UserItemData userItemData)
     {
-        if (userItemData.itemID == Manager.Data.WeaponInvenList.Last().itemID & userItemData.level >= 100)
-        {
-            btn_Select_Reinforce.interactable = false;
-        }
-        else if (userItemData.itemID == Manager.Data.ArmorInvenList.Last().itemID & userItemData.level >= 100)
+        if (userItemData.itemID == _fillterItems.Last().itemID & userItemData.level >= 100)
         {
             btn_Select_Reinforce.interactable = false;
         }
@@ -170,7 +203,6 @@ public class UIPopupEquipment : UIPopup
             btn_Select_Reinforce.interactable = userItemData.hasCount >= MathF.Min(userItemData.level + 1, 15);
         }
     }
-
 
     //선택한 아이템을 착용합니다.
     private void EquipmentSelectItem(PointerEventData enterEvent)
@@ -191,17 +223,21 @@ public class UIPopupEquipment : UIPopup
 
     private void EquipmentRecommendItem(PointerEventData enterEvent)
     {
-        Manager.Inventory.ChangeEquipmentItem(Manager.Notificate.CheckRecommendItem(Manager.Inventory.WeaponItemList));
-        Manager.Inventory.ChangeEquipmentItem(Manager.Notificate.CheckRecommendItem(Manager.Inventory.ArmorItemList));
-        Manager.Notificate.SetPlayerStateNoti();
+        Manager.Inventory.ChangeEquipmentItem(Manager.Notificate.CheckRecommendItem(_fillterItems));
 
-        Manager.Notificate.SetRecommendWeaponNoti();
-        Manager.Notificate.SetRecommendArmorNoti();
-
-        Manager.Notificate.SetWeaponEquipmentNoti();
-        Manager.Notificate.SetArmorEquipmentNoti();
+        if (_equipFillterType == EquipFillterType.Weapon)
+        {
+            Manager.Notificate.SetRecommendWeaponNoti();
+            Manager.Notificate.SetWeaponEquipmentNoti();
+        }
+        else if (_equipFillterType == EquipFillterType.Armor)
+        {
+            Manager.Notificate.SetRecommendArmorNoti();
+            Manager.Notificate.SetArmorEquipmentNoti();
+        }
 
         CallEquipRefreshEvent();
+        Manager.Notificate.SetPlayerStateNoti();
         Manager.Game.Player.EquipmentStatModifier();
         (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
     }
@@ -225,7 +261,7 @@ public class UIPopupEquipment : UIPopup
     private void ReinforceSelectItem(PointerEventData enterEvent)
     {
         Manager.Inventory.ReinforceItem(_selectItemData);
-        if (_selectItemData.itemID[0]== 'W')
+        if (_selectItemData.itemID[0] == 'W')
         {
             Manager.Notificate.SetRecommendWeaponNoti();
             Manager.Notificate.SetWeaponEquipmentNoti();
@@ -247,29 +283,20 @@ public class UIPopupEquipment : UIPopup
     //무기 종류 일괄 강화
     private void ReinforceWeaponTypeItem(PointerEventData enterEvent)
     {
-        Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.WeaponItemList);
-        //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
-        Manager.Notificate.SetRecommendWeaponNoti();
-        Manager.Notificate.SetWeaponEquipmentNoti();
-        Manager.Notificate.SetReinforceWeaponNoti();
-        Manager.Notificate.SetPlayerStateNoti();
+        Manager.Inventory.ReinforceSelectTypeItem(_fillterItems);
 
-        SetSelectItemInfo(_selectItemData);
-        CallReinforceRefreshEvent();
-        (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();
-    }
-
-    
-
-
-    //방어구 종류 일괄 강화
-    private void ReinforceArmorTypeItem(PointerEventData enterEvent)
-    {
-        Manager.Inventory.ReinforceSelectTypeItem(Manager.Inventory.ArmorItemList);
-        //이후 각각 조건에 맞춰 버튼에 알람이 활성화 되어야 하는지, 종료되어야 하는지에 대한 정보를 뿌립니다.
-        Manager.Notificate.SetRecommendArmorNoti();
-        Manager.Notificate.SetArmorEquipmentNoti();
-        Manager.Notificate.SetReinforceArmorNoti();
+        if (_equipFillterType == EquipFillterType.Weapon)
+        {
+            Manager.Notificate.SetRecommendWeaponNoti();
+            Manager.Notificate.SetWeaponEquipmentNoti();
+            Manager.Notificate.SetReinforceWeaponNoti();
+        }
+        else
+        {
+            Manager.Notificate.SetRecommendArmorNoti();
+            Manager.Notificate.SetArmorEquipmentNoti();
+            Manager.Notificate.SetReinforceArmorNoti();
+        }
         Manager.Notificate.SetPlayerStateNoti();
 
         SetSelectItemInfo(_selectItemData);
@@ -285,50 +312,7 @@ public class UIPopupEquipment : UIPopup
         Manager.Data.Save();
     }
 
-    //EquipFillterType 상태에 맞춰 보여주는 장비류 필터를 Inventory Manager로부터 가져옵니다.
-    private void FillterCurrentPopupUseItemData()
-    {
-        if (EquipFillterType == EquipFillterType.Weapon)
-        {
-            _fillterItems = Manager.Inventory.WeaponItemList;
-        }
-        else if (EquipFillterType == EquipFillterType.Armor)
-        {
-            _fillterItems = Manager.Inventory.ArmorItemList;
-        }
-    }
 
-    //팝업 첫 진입 시 조건에 따라 처음 아이템을 설정해줍니다.
-    private void SetFirstVisibleItem()
-    {
-        //아무것도 착용하지 않은 경우 제일 첫 아이템
-        if (_fillterItems.Where(item => item.equipped == true).ToList().Count == 0)
-        {
-            SetSelectItemInfo(_fillterItems[0]);
-        }
-        //착용한 경우 착용한 아이템
-        else
-        {
-            SetSelectItemInfo(_fillterItems.Where(item => item.equipped == true).ToList()[0]);
-        }
-    }
-
-    //아이템 타입에 따라 UI가 세팅되는 메서드
-    private void SetItemTypeUI()
-    {
-        if (EquipFillterType == EquipFillterType.Weapon)
-        {
-            titleText.text = "Weapon";
-            btn_Reinforce_Weapon.gameObject.SetActive(true);
-            btn_Reinforce_Armor.gameObject.SetActive(false);
-        }
-        else if (EquipFillterType == EquipFillterType.Armor)
-        {
-            titleText.text = "Skill";
-            btn_Reinforce_Weapon.gameObject.SetActive(false);
-            btn_Reinforce_Armor.gameObject.SetActive(true);
-        }
-    }
 
     private void ShowSummonScene(PointerEventData eventData)
     {

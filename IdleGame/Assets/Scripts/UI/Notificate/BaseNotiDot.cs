@@ -3,7 +3,7 @@ using UnityEngine;
 public class BaseNotiDot : MonoBehaviour
 {
     [SerializeField] private int order = 25;
-    private GameObject ChildNotiDot;
+    public GameObject ChildNotiDot;
 
     protected virtual void Start()
     {
@@ -19,7 +19,10 @@ public class BaseNotiDot : MonoBehaviour
 
     protected void ActiveNotiDot()
     {
-        ChildNotiDot.SetActive(true);
+        if (ChildNotiDot != null)
+        {
+            ChildNotiDot.SetActive(true);
+        }
     }
 
     protected void InactiveNotiDot()

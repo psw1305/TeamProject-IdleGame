@@ -57,7 +57,7 @@ public class UIPopupEquipContainer : UIBase
         }
 
         itemSlots.Clear();
-        if (UIPopupEquipment.EquipFillterType == EquipFillterType.Weapon)
+        if (UIPopupEquipment._equipFillterType == EquipFillterType.Weapon)
         {
             foreach (var itemData in Manager.Inventory.WeaponItemList)
             {
@@ -69,7 +69,7 @@ public class UIPopupEquipContainer : UIBase
                 slot.SetReinforceUI();
             }
         }
-        else if (UIPopupEquipment.EquipFillterType == EquipFillterType.Armor)
+        else if (UIPopupEquipment._equipFillterType == EquipFillterType.Armor)
         {
             foreach (var itemData in Manager.Inventory.ArmorItemList)
             {
