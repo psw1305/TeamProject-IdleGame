@@ -76,11 +76,13 @@ public class UIPopupRewardsSummon : UIPopup
 
             var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, (eventdata) => Manager.Summon.SummonTry(0, summonList.TypeLink, btnUI));
             btnUI.SetButtonUI(buttonInfo, button, summonTable.SummonCountsAdd);
+            InteractiveToggle(buttonInfo, button);
         }
 
         // 반복 버튼 연결
         var btnUI35 = GetUI<UIBtn_Check_Gems>("Btn_Summon_3");
-        SetButtonEvent("Btn_Summon_Repeat", UIEventType.Click, (eventdata) => OnSummonRepeat(summonList.TypeLink, btnUI35));
+        var repeatButton = SetButtonEvent("Btn_Summon_Repeat", UIEventType.Click, (eventdata) => OnSummonRepeat(summonList.TypeLink, btnUI35));
+        InteractiveToggle(btnUI35.ButtonInfo, repeatButton);
     }
 
     #endregion
@@ -90,6 +92,26 @@ public class UIPopupRewardsSummon : UIPopup
     public void PlayStart()
     {
         StartCoroutine(ShowSlots());
+    }
+
+    public void NotEnoughResource()
+    {
+        SetPanel();
+        SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
+    }
+
+    private void SetPanel()
+    {
+        SetUI<RectTransform>();
+        var buttons = GetUI<RectTransform>("Buttons");
+        var stopButton = GetUI<RectTransform>("StopButton");
+        var repeats = GetUI<RectTransform>("Repeats");
+        var closeButton = GetUI<RectTransform>("CloseButton");
+
+        buttons.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
+        closeButton.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
+        repeats.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
+        stopButton.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
     }
 
     private IEnumerator ShowSlots()
@@ -107,20 +129,6 @@ public class UIPopupRewardsSummon : UIPopup
         isSkip = true;
     }
 
-    private void SetPanel()
-    {
-        SetUI<RectTransform>();
-        var buttons = GetUI<RectTransform>("Buttons");
-        var stopButton = GetUI<RectTransform>("StopButton");
-        var repeats = GetUI<RectTransform>("Repeats");
-        var closeButton = GetUI<RectTransform>("CloseButton");
-
-        buttons.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
-        closeButton.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
-        repeats.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
-        stopButton.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
-    }
-
     private void ResourceUpdate()
     {
         SetUI<TextMeshProUGUI>();
@@ -131,6 +139,25 @@ public class UIPopupRewardsSummon : UIPopup
     #endregion
 
     #region Button Events
+
+    private void InteractiveToggle(ButtonInfo buttonInfo, Button button)
+    {
+        switch (buttonInfo.ResourceType)
+        {
+            case ResourceType.Gold:
+                if (Manager.Game.Player.Gold < buttonInfo.Amount)
+                {
+                    button.interactable = false;
+                }
+            break;
+            case ResourceType.Gems:
+                if (Manager.Game.Player.Gems < buttonInfo.Amount)
+                {
+                    button.interactable = false;
+                }
+            break;
+        }
+    }
 
     private void OnSummonRepeat(string tableLink, UIBtn_Check_Gems btnUI)
     {

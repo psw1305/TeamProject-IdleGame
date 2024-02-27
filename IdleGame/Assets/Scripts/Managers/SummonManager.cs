@@ -232,13 +232,14 @@ public partial class SummonManager
     {
         while (true)
         {
-            yield return new WaitUntil(() => Manager.UI.CurrentSummonPopup.IsSkip);
-
             if (!SummonTry(0, tableLink, btnUI))
             {
                 _repeatCoroutine = null;
+                Manager.UI.CurrentSummonPopup.NotEnoughResource();
                 yield break;
             }
+
+            yield return new WaitUntil(() => Manager.UI.CurrentSummonPopup.IsSkip);
             yield return new WaitForSecondsRealtime(1.0f);
         }
     }
