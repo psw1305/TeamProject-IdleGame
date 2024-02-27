@@ -13,6 +13,7 @@ public class QuestManager
     private QuestReachStage ReachStage = new();
 
     private GameObject questClearEffect;
+
     #endregion
 
     #region Properties
@@ -33,6 +34,8 @@ public class QuestManager
         QuestDB = new QuestData[4];
 
         LoadQuestdataBase();
+        questClearEffect = GameObject.Find("Yellow blur");
+        ClearEffectOnOff();
     }
 
     #endregion
@@ -60,17 +63,19 @@ public class QuestManager
     public bool IsQuestComplete()
     {
         if (CurrentQuest.objectiveValue > CurrentQuest.currentValue)
-        {
             CurrentQuest.isClear = false;
-            return false;
-        }
         else
-        {
             CurrentQuest.isClear = true;
-            EarnQuestReward();
-            NextQuest();
-            return true;
-        }
+
+        return CurrentQuest.isClear;
+    }
+
+    public void ClearEffectOnOff()
+    {
+        if (IsQuestComplete())
+            questClearEffect.SetActive(true);
+        else
+            questClearEffect.SetActive(false);
     }
 
     // 다음 퀘스트로 넘어가기
@@ -100,6 +105,7 @@ public class QuestManager
     public void QuestCurrentValueUp()
     {
         CurrentQuest.currentValue++;       
+        ClearEffectOnOff();
 
         // 사냥 진행 데이터 저장
         if (CurrentQuest.questType == QuestType.DefeatEnemy)

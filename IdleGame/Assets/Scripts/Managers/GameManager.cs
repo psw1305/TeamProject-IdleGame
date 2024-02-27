@@ -31,6 +31,8 @@ public class GameManager
 
         Main = GameObject.FindObjectOfType<MainScene>();
         Main.SceneStart();
+
+        Manager.Quest.InitQuest();
     }
 
     // 플레이어 데이터가 초기화 되는 부분

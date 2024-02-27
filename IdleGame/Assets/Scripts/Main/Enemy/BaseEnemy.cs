@@ -50,12 +50,15 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
         _damage = blueprint.Damage;
         _attackSpeed = blueprint.AttackSpeed;
-        _range = blueprint.Range + Random.Range(-0.5f, 0.5f);
+
+        if (blueprint.EnemyType != EnemyType.Boss) 
+            _range = blueprint.Range + Random.Range(-0.5f, 0.5f);
+        else 
+            _range = blueprint.Range;
+        
 
         _moveSpeed = blueprint.MoveSpeed;
         _rewards = blueprint.Rewards;
-
-        //gameObject.name = _enemyName;
 
         SetPosition(position);
         SetStatWeight(hpWeight, atkWeight);
