@@ -29,13 +29,13 @@ public class UISubScenePlayerSystem : UIScene
     private void ShowPopupWeapon(PointerEventData eventData)
     {
         var equipmentPopup = Manager.UI.ShowPopup<UIPopupEquipment>();
-        equipmentPopup.EquipFillterType = EquipFillterType.Weapon;
+        equipmentPopup._equipFillterType = EquipFillterType.Weapon;
     }
 
     private void ShowPopupArmor(PointerEventData eventData)
     {
         var equipmentPopup = Manager.UI.ShowPopup<UIPopupEquipment>();
-        equipmentPopup.EquipFillterType = EquipFillterType.Armor;
+        equipmentPopup._equipFillterType = EquipFillterType.Armor;
     }
 
     private void ShowPopupSkill(PointerEventData eventData) => Manager.UI.ShowPopup<UIPopupSkill>();

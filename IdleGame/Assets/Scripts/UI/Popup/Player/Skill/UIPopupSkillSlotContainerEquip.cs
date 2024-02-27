@@ -7,6 +7,9 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
     private UIPopupSkillSlotsEquip[] _slots = new UIPopupSkillSlotsEquip[5];
     private Button[] _slotsBtn = new Button[5];
 
+    [SerializeField] private Image _DimCover;
+
+
     private void Start()
     {
         _slots = gameObject.GetComponentsInChildren<UIPopupSkillSlotsEquip>();
@@ -46,6 +49,7 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
 
         if (index == -200)
         {
+            ToggleSlotReplaceMode();
             return;
         }
 
@@ -59,6 +63,16 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
             Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index);
         }
     }
+
+    public void ToggleSlotReplaceMode()
+    {
+        foreach (var slot in _slots)
+        {
+            slot.ReplaceMode = !slot.ReplaceMode;
+        }
+        _DimCover.enabled = !_DimCover.enabled;
+    }
+
 
     private void OnDestroy()
     {

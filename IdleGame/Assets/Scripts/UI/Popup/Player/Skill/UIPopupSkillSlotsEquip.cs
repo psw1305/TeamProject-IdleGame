@@ -5,11 +5,11 @@ using UnityEngine.UI;
 public class UIPopupSkillSlotsEquip : MonoBehaviour
 {
     private UserInvenSkillData _userInvenSkillData;
-
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image skillIcon;
     private Image _bgImg;
     private Button _btn;
+    public bool ReplaceMode = false;
     
     public int ChildIndex { get; private set; }
 
@@ -54,7 +54,17 @@ public class UIPopupSkillSlotsEquip : MonoBehaviour
             return;
         }
 
-        var instancePopup = Manager.UI.ShowPopup<UIPopupSkillDetail>();
-        instancePopup.SetSkillData(_userInvenSkillData);
+        if(ReplaceMode == false)
+        {
+            var instancePopup = Manager.UI.ShowPopup<UIPopupSkillDetail>();
+            instancePopup.SetSkillData(_userInvenSkillData);
+        }
+        else
+        {
+            Manager.SkillData.UnEquipSkill(_userInvenSkillData);
+            Manager.SkillData.CallSetUISkillEquipSlot(Manager.SkillData.EquipSkill(Manager.SkillData.ReplaceSkill));
+            Manager.SkillData.CallSetUISkillInvenSlot(Manager.SkillData.ReplaceSkill.itemID);
+            transform.parent.GetComponent<UIPopupSkillSlotContainerEquip>().ToggleSlotReplaceMode();
+        }
     }
 }
