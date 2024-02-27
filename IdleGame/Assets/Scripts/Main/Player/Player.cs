@@ -119,7 +119,6 @@ public class Player : MonoBehaviour, IDamageable
         Manager.Inventory.InitItem();
         Manager.SkillData.InitSkill();
         Manager.FollowerData.InitFollower();
-        Manager.Quest.InitQuest();
         EquipmentStatModifier();
 
         SetCurrentHp(ModifierHp);

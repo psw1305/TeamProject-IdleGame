@@ -18,7 +18,7 @@ MonoBehaviour:
   enemyType: 1
   damage: 12
   hp: 150
-  range: 2.75
+  range: 2.5
   attackSpeed: 2
   rewards: 100
   moveSpeed: 3.5

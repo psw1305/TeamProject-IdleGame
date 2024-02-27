@@ -233,6 +233,8 @@ public class UISceneMain : UIScene
     {
         if (Manager.Quest.IsQuestComplete())
         {
+            Manager.Quest.EarnQuestReward();
+            Manager.Quest.NextQuest();
             UpdateQuestNum();
             UpdateQuestObjective();
         }

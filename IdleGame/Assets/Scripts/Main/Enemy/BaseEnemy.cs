@@ -50,12 +50,15 @@ public class BaseEnemy : ObjectPoolable, IDamageable
 
         _damage = blueprint.Damage;
         _attackSpeed = blueprint.AttackSpeed;
-        _range = blueprint.Range;
+
+        if (blueprint.EnemyType != EnemyType.Boss) 
+            _range = blueprint.Range + Random.Range(-0.5f, 0.5f);
+        else 
+            _range = blueprint.Range;
+        
 
         _moveSpeed = blueprint.MoveSpeed;
         _rewards = blueprint.Rewards;
-
-        //gameObject.name = _enemyName;
 
         SetPosition(position);
         SetStatWeight(hpWeight, atkWeight);
@@ -177,8 +180,6 @@ public class BaseEnemy : ObjectPoolable, IDamageable
     public void FloatingDamage(Vector3 position, long damage, DamageType damageTypeValue)
     {
         GameObject DamageHUD = Manager.ObjectPool.GetGo("Canvas_FloatingDamage");
-        //GameObject DamageHUD = Manager.ObjectPool.GetGo("FloatingText");
-        //DamageHUD.transform.SetParent(UICanvas.transform, true);
         DamageHUD.GetComponent<UIFloatingText>().Initialize();
         DamageHUD.GetComponent<UIFloatingText>().Alpha = damageTypeValue == DamageType.Critical ? Color.red : Color.white;
         DamageHUD.transform.position = this.gameObject.transform.position + position;
