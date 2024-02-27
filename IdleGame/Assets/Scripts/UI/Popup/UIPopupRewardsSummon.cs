@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,6 +34,8 @@ public class UIPopupRewardsSummon : UIPopup
     {
         base.Init();
         SetButtonEvents();
+        SetPanel();
+        ResourceUpdate();
     }
 
     private void SetButtonEvents()
@@ -40,7 +43,9 @@ public class UIPopupRewardsSummon : UIPopup
         SetUI<Button>();
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
         SetButtonEvent("CloseButton", UIEventType.Click, ClosePopup);
+        SetButtonEvent("StopButton", UIEventType.Click, StopSummonRepeat);
     }
+
 
     public void DataInit(string typeLink, string[] itemDatas)
     {
@@ -71,11 +76,13 @@ public class UIPopupRewardsSummon : UIPopup
 
             var button = SetButtonEvent(buttonInfo.BtnPrefab, UIEventType.Click, (eventdata) => Manager.Summon.SummonTry(0, summonList.TypeLink, btnUI));
             btnUI.SetButtonUI(buttonInfo, button, summonTable.SummonCountsAdd);
+            InteractiveToggle(buttonInfo, button);
         }
 
         // 반복 버튼 연결
         var btnUI35 = GetUI<UIBtn_Check_Gems>("Btn_Summon_3");
-        SetButtonEvent("Btn_Summon_Repeat", UIEventType.Click, (eventdata) => OnSummonRepeat(summonList.TypeLink, btnUI35));
+        var repeatButton = SetButtonEvent("Btn_Summon_Repeat", UIEventType.Click, (eventdata) => OnSummonRepeat(summonList.TypeLink, btnUI35));
+        InteractiveToggle(btnUI35.ButtonInfo, repeatButton);
     }
 
     #endregion
@@ -87,13 +94,33 @@ public class UIPopupRewardsSummon : UIPopup
         StartCoroutine(ShowSlots());
     }
 
+    public void NotEnoughResource()
+    {
+        SetPanel();
+        SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
+    }
+
+    private void SetPanel()
+    {
+        SetUI<RectTransform>();
+        var buttons = GetUI<RectTransform>("Buttons");
+        var stopButton = GetUI<RectTransform>("StopButton");
+        var repeats = GetUI<RectTransform>("Repeats");
+        var closeButton = GetUI<RectTransform>("CloseButton");
+
+        buttons.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
+        closeButton.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
+        repeats.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
+        stopButton.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
+    }
+
     private IEnumerator ShowSlots()
     {
         var rewardItemSlot = Manager.Asset.GetPrefab("ItemSlot_SummonReward");
 
         for (int i = 0; i < itemData.Length; i++)
         {
-            if (!isSkip) yield return new WaitForSeconds(0.1f);
+            if (!isSkip) yield return new WaitForSecondsRealtime(0.05f);
 
             var itemSlotClone = Instantiate(rewardItemSlot, itemContents).GetComponent<UIRewardsItemSlot>();
             itemSlotClone.UpdateSlot(itemType, itemData[i]);
@@ -102,9 +129,35 @@ public class UIPopupRewardsSummon : UIPopup
         isSkip = true;
     }
 
+    private void ResourceUpdate()
+    {
+        SetUI<TextMeshProUGUI>();
+        var resource = GetUI<TextMeshProUGUI>("Txt_Resource");
+        resource.text = Manager.Game.Player.Gems.ToString();
+    }
+
     #endregion
 
     #region Button Events
+
+    private void InteractiveToggle(ButtonInfo buttonInfo, Button button)
+    {
+        switch (buttonInfo.ResourceType)
+        {
+            case ResourceType.Gold:
+                if (Manager.Game.Player.Gold < buttonInfo.Amount)
+                {
+                    button.interactable = false;
+                }
+            break;
+            case ResourceType.Gems:
+                if (Manager.Game.Player.Gems < buttonInfo.Amount)
+                {
+                    button.interactable = false;
+                }
+            break;
+        }
+    }
 
     private void OnSummonRepeat(string tableLink, UIBtn_Check_Gems btnUI)
     {
@@ -124,10 +177,17 @@ public class UIPopupRewardsSummon : UIPopup
         {
             isSkip = true;
         }
-        else
+        else if (!Manager.Summon.SummonRepeatCheck)
         {
             Manager.UI.ClosePopup();  
         }
+    }
+
+    private void StopSummonRepeat(PointerEventData eventData)
+    {
+        Manager.Summon.StopSummonRepeat();
+        SetPanel();
+        SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
 
     #endregion
