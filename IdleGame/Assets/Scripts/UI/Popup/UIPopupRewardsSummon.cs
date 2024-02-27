@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,6 +34,8 @@ public class UIPopupRewardsSummon : UIPopup
     {
         base.Init();
         SetButtonEvents();
+        SetPanel();
+        ResourceUpdate();
     }
 
     private void SetButtonEvents()
@@ -40,7 +43,9 @@ public class UIPopupRewardsSummon : UIPopup
         SetUI<Button>();
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
         SetButtonEvent("CloseButton", UIEventType.Click, ClosePopup);
+        SetButtonEvent("StopButton", UIEventType.Click, StopSummonRepeat);
     }
+
 
     public void DataInit(string typeLink, string[] itemDatas)
     {
@@ -102,6 +107,27 @@ public class UIPopupRewardsSummon : UIPopup
         isSkip = true;
     }
 
+    private void SetPanel()
+    {
+        SetUI<RectTransform>();
+        var buttons = GetUI<RectTransform>("Buttons");
+        var stopButton = GetUI<RectTransform>("StopButton");
+        var repeats = GetUI<RectTransform>("Repeats");
+        var closeButton = GetUI<RectTransform>("CloseButton");
+
+        buttons.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
+        closeButton.gameObject.SetActive(!Manager.Summon.SummonRepeatCheck);
+        repeats.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
+        stopButton.gameObject.SetActive(Manager.Summon.SummonRepeatCheck);
+    }
+
+    private void ResourceUpdate()
+    {
+        SetUI<TextMeshProUGUI>();
+        var resource = GetUI<TextMeshProUGUI>("Txt_Resource");
+        resource.text = Manager.Game.Player.Gems.ToString();
+    }
+
     #endregion
 
     #region Button Events
@@ -124,10 +150,17 @@ public class UIPopupRewardsSummon : UIPopup
         {
             isSkip = true;
         }
-        else
+        else if (!Manager.Summon.SummonRepeatCheck)
         {
             Manager.UI.ClosePopup();  
         }
+    }
+
+    private void StopSummonRepeat(PointerEventData eventData)
+    {
+        Manager.Summon.StopSummonRepeat();
+        SetPanel();
+        SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
     }
 
     #endregion
