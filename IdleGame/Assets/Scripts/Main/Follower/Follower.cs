@@ -143,7 +143,7 @@ public class Follower : MonoBehaviour
         if (IsCritical())
         {
             damage = (long)((_player.AtkDamage.Value * AtkCorrection)
-                * (1 + _player.CritDamage.GetFloat()));
+                * (1 + _player.CritDamage.GetIntegerFloat()));
             damageTypeValue = DamageType.Critical;
         }
         else
