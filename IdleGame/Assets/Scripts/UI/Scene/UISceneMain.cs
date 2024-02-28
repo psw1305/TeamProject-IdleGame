@@ -220,7 +220,7 @@ public class UISceneMain : UIScene
     {
         if (isOn)
         {
-            Time.timeScale = 1.5f;
+            Manager.Stage.ApplyGameSpeed(isOn);
             
             image_1xSpeed.gameObject.SetActive(false);
             image_2xSpeed.gameObject.SetActive(true);
@@ -228,7 +228,7 @@ public class UISceneMain : UIScene
         }
         else
         {
-            Time.timeScale = 1f;
+            Manager.Stage.ApplyGameSpeed(isOn);
 
             image_1xSpeed.gameObject.SetActive(true);
             image_2xSpeed.gameObject.SetActive(false);

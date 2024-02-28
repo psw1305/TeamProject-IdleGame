@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class StageManager
@@ -120,7 +119,7 @@ public class StageManager
 
     public void BattleStart()
     {
-        stageCoroutine ??= CoroutineHelper.StartCoroutine(TestBattleCycle());
+        stageCoroutine ??= CoroutineHelper.StartCoroutine(BattleCycle());
     }
 
     public void BattleStop()
@@ -175,17 +174,18 @@ public class StageManager
     }
 
     // [임시] 코루틴 => 전투 무한 사이클
-    private IEnumerator TestBattleCycle()
+    private IEnumerator BattleCycle()
     {
         while (true)
         {
             //Debug.Log($"Difficulty : {Difficulty}, CurrentStage : {StageChapter}, StageProgress : {StageLevel}");
             
-            // #1. 스폰 전 스테이지를 클리어하고 넘어왔으면 체력 리셋
+            // #1. 스폰 전 스테이지를 클리어하고 넘어왔으면 플레이어 리셋
             if (PlayerReset)
             {
                 var Player = Manager.Game.Player;
                 Player.SetCurrentHp(Player.ModifierHp);
+                Manager.Game.Player.GetComponent<PlayerSkillHandler>().ResetSkillCondition();
                 PlayerReset = false;
             }
 
@@ -203,12 +203,17 @@ public class StageManager
             }
             else
             {
+                yield return CoroutineHelper.StartCoroutine(BossIncoming());
                 Manager.Game.Player.GetComponent<PlayerSkillHandler>().ResetSkillCondition();
                 BossWaveSpawn();
             }
 
             // #3. 웨이브 클리어
             yield return new WaitUntil(()=> enemyList.Count == 0);
+            if (BossAppearance)
+            {
+                yield return CoroutineHelper.StartCoroutine(BossClear());
+            }
             WaveCompleted();
         }
     }
@@ -291,7 +296,6 @@ public class StageManager
     public void RetryBossBattle()
     {
         BattleStop();
-        EnemyReset();
 
         uISceneMain.RetryBossButtonToggle();
         uISceneMain.WaveLoopImageToggle();
@@ -322,6 +326,53 @@ public class StageManager
 
         // 데이터 저장
         Manager.Data.Save();
+    }
+
+    #endregion
+
+    #region Boss Effect
+
+    private IEnumerator BossIncoming()
+    {
+        // TODO : Fade Out 효과 넣기
+        yield return new WaitForSeconds(0.5f);
+
+        Time.timeScale = 0.0f;
+        EnemyReset();
+        // TODO : 여기에 등장 연출 넣기
+        Debug.Log("VS Boss");
+        yield return new WaitForSecondsRealtime(1.0f);
+
+        ApplyGameSpeed(System.Convert.ToBoolean(PlayerPrefs.GetInt("GameSpeed")));
+        yield break;
+    }
+
+    private IEnumerator BossClear()
+    {
+        // TODO : 여기에 등장 연출 넣기
+        Debug.Log("Boss Clear");
+        yield return new WaitForSecondsRealtime(1.0f);
+
+        // TODO : Fade Out 효과 넣기
+        yield return new WaitForSeconds(0.5f);
+
+        yield break;
+    }
+
+    #endregion
+
+    #region Preferences
+
+    public void ApplyGameSpeed(bool isOn)
+    {
+        if (isOn)
+        {
+            Time.timeScale = 1.5f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     #endregion
