@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -221,7 +220,7 @@ public class Player : MonoBehaviour, IDamageable
             if(State != PlayerState.Die)
             {
                 CurrentHp = (long)Mathf.Clamp(CurrentHp + HpRecovery.Value, 0, ModifierHp);
-                playerView.SetHealthBar(GetCurrentHpPercent());
+                playerView.SetHealthBar(GetCurrentHpPercent(), CurrentHp);
             }
 
             yield return new WaitForSeconds(1f);
@@ -229,7 +228,7 @@ public class Player : MonoBehaviour, IDamageable
                                    * (1 + EquipHPStat * 0.01f)
                                    * (1 + RetentionHPEffect * 0.01f));
             CurrentHp = (long)Mathf.Clamp(CurrentHp + hpRecoveryValue, 0, ModifierHp);
-            playerView.SetHealthBar(GetCurrentHpPercent());
+            playerView.SetHealthBar(GetCurrentHpPercent(), CurrentHp);
         }
     }
 
@@ -247,7 +246,7 @@ public class Player : MonoBehaviour, IDamageable
 
         PlayerDamaged(Damage);
         FloatingDamage(new Vector3(0, 0.25f, 0), Damage, damageTypeValue);
-        playerView.SetHealthBar(GetCurrentHpPercent());
+        playerView.SetHealthBar(GetCurrentHpPercent(), CurrentHp);
     }
 
     private void PlayerDamaged(long damage)

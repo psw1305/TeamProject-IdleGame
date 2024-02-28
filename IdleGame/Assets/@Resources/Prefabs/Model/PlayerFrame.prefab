@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 6576681513993346908}
-  UICanvas: {fileID: 0}
+  UICanvas: {fileID: 8085532053192176090}
 --- !u!114 &2376948602761534169
 MonoBehaviour:
   m_ObjectHideFlags: 0
