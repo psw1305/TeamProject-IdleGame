@@ -10,6 +10,8 @@ public class FollowerDataManager
     private Dictionary<string, FollowerBlueprint> _followerDataDictionary = new();
     public Dictionary<string, FollowerBlueprint> FollowerDataDictionary => _followerDataDictionary;
 
+    public UserInvenFollowerData ReplaceFollower;
+
     public void ParseFollowerData()
     {
         _follwerDataContainer = Manager.Asset.GetBlueprint("FollowerDataContainer") as FollowerContainerBlueprint;
@@ -24,15 +26,15 @@ public class FollowerDataManager
         ParseFollowerData();
     }
 
-    public event Action<int?> SetFollowerUIEquipSlot;
+    public event Action<int> SetFollowerUIEquipSlot;
     public event Action<string> SetFollowerUIInvenSlot;
 
-    public void AddSetFollowerUIEquipSlot(Action<int?> handler)
+    public void AddSetFollowerUIEquipSlot(Action<int> handler)
     {
         SetFollowerUIEquipSlot += handler;
     }
 
-    public void RemoveSetFollowerUIEquipSlot(Action<int?> handler)
+    public void RemoveSetFollowerUIEquipSlot(Action<int> handler)
     {
         SetFollowerUIEquipSlot -= handler;
     }
@@ -47,7 +49,7 @@ public class FollowerDataManager
         SetFollowerUIInvenSlot -= handler;
     }
 
-    public void CallSetUIFollowerEquipSlot(int? index)
+    public void CallSetUIFollowerEquipSlot(int index)
     {
         SetFollowerUIEquipSlot?.Invoke(index);
     }
@@ -62,11 +64,11 @@ public class FollowerDataManager
         return Manager.Data.FollowerData.UserEquipFollower.FindIndex(data => data.itemID == "Empty") > -1 ? true : false;
     }
 
-    public int? EquipFollower(UserInvenFollowerData userInvenFollowerData)
+    public int EquipFollower(UserInvenFollowerData userInvenFollowerData)
     {
         if (userInvenFollowerData.level == 1 && userInvenFollowerData.hasCount == 0)
         {
-            return null;
+            return -100;
         }
         int index = Manager.Data.FollowerData.UserEquipFollower.FindIndex(data => data.itemID == "Empty");
         if (index > -1)
@@ -75,7 +77,8 @@ public class FollowerDataManager
             userInvenFollowerData.equipped = true;
             return index;
         }
-        return null;
+        ReplaceFollower = userInvenFollowerData;
+        return -200;
     }
 
     public int UnEquipFollower(UserInvenFollowerData userInvenFollowerData)
