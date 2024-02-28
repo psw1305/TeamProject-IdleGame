@@ -62,6 +62,7 @@ public class UIPopupSkillSlotsEquip : MonoBehaviour
         else
         {
             Manager.SkillData.UnEquipSkill(_userInvenSkillData);
+            Manager.SkillData.CallSetUISkillInvenSlot(_userInvenSkillData.itemID);
             Manager.SkillData.CallSetUISkillEquipSlot(Manager.SkillData.EquipSkill(Manager.SkillData.ReplaceSkill));
             Manager.SkillData.CallSetUISkillInvenSlot(Manager.SkillData.ReplaceSkill.itemID);
             transform.parent.GetComponent<UIPopupSkillSlotContainerEquip>().ToggleSlotReplaceMode();
