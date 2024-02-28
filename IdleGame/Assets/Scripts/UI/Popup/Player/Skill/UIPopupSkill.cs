@@ -24,7 +24,7 @@ public class UIPopupSkill : UIPopup
     private void ReinforceAllSkill(PointerEventData eventData)
     {
         Manager.SkillData.ReinforceAllSkill();
-
+        Manager.Notificate.SetPlayerStateNoti();
         Manager.Notificate.SetReinforceSkillNoti();
         Manager.Game.Player.EquipmentStatModifier();
         (Manager.UI.CurrentScene as UISceneMain).UpdatePlayerPower();

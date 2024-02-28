@@ -60,7 +60,6 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
         else
         {
             _slots[index].SetSlotUI(Manager.Data.SkillInvenDictionary[Manager.Data.UserSkillData.UserEquipSkill[index].itemID]);
-            Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index);
         }
     }
 
@@ -70,7 +69,7 @@ public class UIPopupSkillSlotContainerEquip : MonoBehaviour
         {
             slot.ReplaceMode = !slot.ReplaceMode;
         }
-        _DimCover.enabled = !_DimCover.enabled;
+        _DimCover.gameObject.SetActive(!_DimCover.gameObject.activeSelf);
     }
 
 

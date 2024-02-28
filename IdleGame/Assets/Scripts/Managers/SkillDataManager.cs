@@ -93,6 +93,7 @@ public class SkillDataManager
         if (index > -1)
         {
             Manager.Data.UserSkillData.UserEquipSkill[index].itemID = userInvenSkillData.itemID;
+            Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index);
             userInvenSkillData.equipped = true;
             return index;
         }
@@ -110,6 +111,7 @@ public class SkillDataManager
     {
         int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == userInvenSkillData.itemID);
         Manager.Data.UserSkillData.UserEquipSkill[index].itemID = "Empty";
+        Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index);
         userInvenSkillData.equipped = false;
         return index;
     }
