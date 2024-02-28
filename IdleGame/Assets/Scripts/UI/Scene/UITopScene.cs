@@ -84,9 +84,15 @@ public class UITopScene : UIBase
     
     private void OnShop(PointerEventData eventData)
     {
-        Manager.UI.ShowSubScene<UISubSceneShopSummon>();
+        Manager.UI.ShowSubScene<UISubSceneShopSummon>();        
         sceneCloseBtn.transform.localPosition = new Vector2(360, 0);
         sceneCloseBtn.SetActive(true);
+
+        if(NPCManager.Instance.ShopTutorial == 0)
+        {
+            NPCManager.Instance.ActiveNPC();
+        }
+        
     }
 
     private void CloseSubScene(PointerEventData eventData) 
