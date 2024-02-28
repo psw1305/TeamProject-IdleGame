@@ -422,7 +422,7 @@ public class Player : MonoBehaviour, IDamageable
             {
                 Delay = 60;
             }
-            yield return new WaitForSeconds(Delay);
+            yield return new WaitForSecondsRealtime(Delay);
             ToTalIdleGold += Manager.Stage.IdleGoldReward;
             ToTalIdleTime += 1;
             IdleCheckTime = DateTime.Now;
