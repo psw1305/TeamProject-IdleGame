@@ -658,6 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowerIcon: {fileID: 8901666696281840358}
+  ReplaceMode: 0
 --- !u!114 &3893585144905003766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowerIcon: {fileID: 1716548238817048312}
+  ReplaceMode: 0
 --- !u!114 &1096087989416182278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,6 +1934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowerIcon: {fileID: 8335802876933813854}
+  ReplaceMode: 0
 --- !u!114 &3266605198887564830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,6 +2070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowerIcon: {fileID: 8493553181616082921}
+  ReplaceMode: 0
 --- !u!114 &8655545541199166083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,6 +2494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowerIcon: {fileID: 276807535054500986}
+  ReplaceMode: 0
 --- !u!114 &2219408659448282450
 MonoBehaviour:
   m_ObjectHideFlags: 0
