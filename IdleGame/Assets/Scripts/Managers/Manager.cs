@@ -60,6 +60,6 @@ public class Manager : MonoBehaviour
     public static SkillDataManager SkillData => Instance != null ? Instance.skillData : null;
     public static FollowerDataManager FollowerData => Instance != null ? Instance.followerData : null;
     public static RankingManager Ranking => Instance != null ? Instance.ranking : null;
-    
+
     #endregion
 }
