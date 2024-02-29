@@ -164,7 +164,7 @@ public class UIPopupSkillDetail : UIPopup
     }
     private void ReinforceSkill(PointerEventData eventData)
     {
-        Manager.SkillData.ReinforceSkill(_data);
+        Manager.SkillData.ReinforceSelectSkill(_data);
 
         Manager.Notificate.SetReinforceSkillNoti();
         Manager.Notificate.SetPlayerStateNoti();

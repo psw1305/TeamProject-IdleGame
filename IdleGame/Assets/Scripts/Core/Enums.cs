@@ -95,7 +95,9 @@ public enum MsgAlertType
     NeedMoreGold,
     NeedMoreGem,
     CanNotEquip,
-    CanNotReinforce
+    CanNotReinforce,
+    ItemLimitLevel,
+    CanNotAllReinforce
 }
 
 public enum PopupAlertType

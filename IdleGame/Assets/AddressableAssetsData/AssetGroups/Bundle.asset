@@ -605,7 +605,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a5caf755a9e6f6e4993e4971415b3663
+  - m_GUID: 4cc368636b16954439d4ee2639fa15b5
     m_Address: UIMsgSystemAlert.prefab
     m_ReadOnly: 0
     m_SerializedLabels:

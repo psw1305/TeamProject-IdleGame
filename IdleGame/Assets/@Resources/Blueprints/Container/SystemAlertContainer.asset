@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MsgAlert:
   - AlertType: 0
-    AlertMsg: "\uACE8\uB4DC\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4."
+    ContentMsg: "\uACE8\uB4DC\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4."
   - AlertType: 1
-    AlertMsg: "\uC82C\uC774 \uBD80\uC871\uD569\uB2C8\uB2E4."
+    ContentMsg: "\uC82C\uC774 \uBD80\uC871\uD569\uB2C8\uB2E4."
   - AlertType: 2
-    AlertMsg: "\uC544\uC774\uD15C\uC774 \uD574\uAE08\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4."
+    ContentMsg: "\uC544\uC774\uD15C\uC774 \uD574\uAE08\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4."
   - AlertType: 3
-    AlertMsg: "\uAC15\uD654 \uC7AC\uB8CC\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4."
+    ContentMsg: "\uAC15\uD654 \uC7AC\uB8CC\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4."
+  - AlertType: 4
+    ContentMsg: "\uB354 \uC774\uC0C1 \uAC15\uD654\uAC00 \uBD88\uAC00\uD55C \uC544\uC774\uD15C\uC785\uB2C8\uB2E4."
+  - AlertType: 5
+    ContentMsg: "\uAC15\uD654 \uAC00\uB2A5\uD55C \uC544\uC774\uD15C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
   PopupAlert:
   - AlertType: 0
     Title: "\uC885\uB8CC"

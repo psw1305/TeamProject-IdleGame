@@ -14,7 +14,7 @@ public class SystemAlertBlueprint : ScriptableObject
 public class MsgAlert
 {
     public MsgAlertType AlertType;
-    public string AlertMsg;
+    public string ContentMsg;
 }
 
 [System.Serializable]
