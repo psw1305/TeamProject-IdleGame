@@ -357,6 +357,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (Gold - amount < 0)
         {
+            SystemAlertFloating.Instance.ShowMsgAlert(MsgAlertType.NeedMoreGold);
             return false;
         }
         else
@@ -371,6 +372,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (Gems - amount < 0)
         {
+            SystemAlertFloating.Instance.ShowMsgAlert(MsgAlertType.NeedMoreGem);
             return false;
         }
         else

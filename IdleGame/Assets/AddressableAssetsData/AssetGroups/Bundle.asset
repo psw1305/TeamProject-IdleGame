@@ -593,6 +593,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b3253ad45ea57e439ec0e07cec22a3a
+    m_Address: SystemAlertContainer.blueprint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b46faa560c36584696b50b2b33b8ece
+    m_Address: UIPopupSystemAlert.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4cc368636b16954439d4ee2639fa15b5
+    m_Address: UIMsgSystemAlert.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4a6bef2a1e0af3847be1bf5bec164b6f, type: 2}
   m_SchemaSet:

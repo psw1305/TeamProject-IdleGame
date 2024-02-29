@@ -5,20 +5,13 @@ using UnityEngine.UI;
 public class UIPopupSkillSlotContainerEquip : MonoBehaviour
 {
     private UIPopupSkillSlotsEquip[] _slots = new UIPopupSkillSlotsEquip[5];
-    private Button[] _slotsBtn = new Button[5];
 
-    [SerializeField] private Image _DimCover;
+    [SerializeField] private GameObject _DimCover;
 
 
     private void Start()
     {
         _slots = gameObject.GetComponentsInChildren<UIPopupSkillSlotsEquip>();
-        _slotsBtn = gameObject.GetComponentsInChildren<Button>();
-
-        for (int i = 0; i < _slots.Count(); i++)
-        {
-            _slots[i].SetIndex(i);
-        }
 
         InitChildSlot();
         Manager.SkillData.AddSetAllSkillUIEquipSlot(InitChildSlot);
