@@ -7,16 +7,15 @@ using TMPro;
 
 public class UISceneMain : UIScene
 {
+    #region Serialize Fields
+
+    [SerializeField] private UIUpgradeStat[] upgradeStats;
+
+    #endregion
+
     #region Player Fields
 
     private Player player;
-
-    private UIUpgradeStat UpgradeStat_Hp;
-    private UIUpgradeStat UpgradeStat_HpRecovery;
-    private UIUpgradeStat UpgradeStat_AttackDamage;
-    private UIUpgradeStat UpgradeStat_AttackSpeed;
-    private UIUpgradeStat UpgradeStat_CriticalChance;
-    private UIUpgradeStat UpgradeStat_CriticalDamage;
 
     private TextMeshProUGUI txt_Stage;
     private TextMeshProUGUI txt_PlayerPower;
@@ -98,20 +97,14 @@ public class UISceneMain : UIScene
 
     private void SetUpgradeStats()
     {
-        SetUI<UIUpgradeStat>();
-        UpgradeStat_Hp = GetUI<UIUpgradeStat>("Upgrade_Stat_Hp");
-        UpgradeStat_HpRecovery = GetUI<UIUpgradeStat>("Upgrade_Stat_HpRecovery");
-        UpgradeStat_AttackDamage = GetUI<UIUpgradeStat>("Upgrade_Stat_AttackDamage");
-        UpgradeStat_AttackSpeed = GetUI<UIUpgradeStat>("Upgrade_Stat_AttackSpeed");
-        UpgradeStat_CriticalChance = GetUI<UIUpgradeStat>("Upgrade_Stat_CriticalChance");
-        UpgradeStat_CriticalDamage = GetUI<UIUpgradeStat>("Upgrade_Stat_CriticalDamage");
+        upgradeStats[0].SetUpgradeStat(player.Hp, this);
+        upgradeStats[1].SetUpgradeStat(player.HpRecovery, this);
+        upgradeStats[2].SetUpgradeStat(player.AtkDamage, this);
+        upgradeStats[3].SetUpgradeStat(player.AtkSpeed, this);
+        upgradeStats[4].SetUpgradeStat(player.CritChance, this);
+        upgradeStats[5].SetUpgradeStat(player.CritDamage, this);
 
-        UpgradeStat_Hp.SetUpgradeStat(player.Hp);
-        UpgradeStat_HpRecovery.SetUpgradeStat(player.HpRecovery);
-        UpgradeStat_AttackDamage.SetUpgradeStat(player.AtkDamage);
-        UpgradeStat_AttackSpeed.SetUpgradeStat(player.AtkSpeed);
-        UpgradeStat_CriticalChance.SetUpgradeStat(player.CritChance);
-        UpgradeStat_CriticalDamage.SetUpgradeStat(player.CritDamage);
+        UpdateStatTradeCheck();
     }
 
     private void SetUI()
@@ -175,7 +168,7 @@ public class UISceneMain : UIScene
     {
         TimeSpan remainTime = Delay.IdleClick - timeLeft;
         double totalSecondsLeft = remainTime.TotalSeconds;
-
+        var notiMarker = btnIdleRewards.GetComponent<NotificateIdleReward>();
         while (true)
         {
             if (totalSecondsLeft > 1)
@@ -189,12 +182,13 @@ public class UISceneMain : UIScene
                 {
                     _textIdleNotice.text = Mathf.FloorToInt((float)totalSecondsLeft) + "초";
                 }
-
+                notiMarker.SetNotiDot(false);
                 totalSecondsLeft -= Time.deltaTime;
                 yield return null;
             }
             else
             {
+                notiMarker.SetNotiDot(true);
                 btnIdleRewards.interactable = true;
                 _textIdleNotice.text = "";
                 break;
@@ -240,6 +234,8 @@ public class UISceneMain : UIScene
     {
         if (Manager.Quest.IsQuestComplete())
         {
+            Manager.Quest.EarnQuestReward();
+            Manager.Quest.NextQuest();
             UpdateQuestNum();
             UpdateQuestObjective();
         }
@@ -248,6 +244,19 @@ public class UISceneMain : UIScene
     #endregion
 
     #region Update UI
+
+    public void UpdateStatTradeCheck()
+    {
+        foreach (var upgradeStat in upgradeStats)
+        {
+            upgradeStat.TradeCheck();
+        }
+    }
+
+    public void UpdateStatLayoutChange(GameObject child)
+    {
+        child.transform.SetSiblingIndex(upgradeStats.Length - 1);
+    }
 
     public void UpdateCurrentStage()
     {

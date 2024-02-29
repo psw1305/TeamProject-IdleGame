@@ -18,6 +18,7 @@ public class MeteorProjectile : SkillProjectileHandlerBase
         if (Vector2.Distance(transform.position, TargetPosition) < Mathf.Epsilon)
         {
             Destroy(gameObject);
+            Instantiate(destroyVFX, gameObject.transform.position, destroyVFX.transform.rotation);
         }
     }
 
@@ -26,14 +27,6 @@ public class MeteorProjectile : SkillProjectileHandlerBase
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {
             collision.gameObject.GetComponent<IDamageable>().TakeDamage((long)(Damage * _skillDamageRatio), DamageTypeValue);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (gameObject != null)
-        {
-            Instantiate(destroyVFX, gameObject.transform.position, destroyVFX.transform.rotation);
         }
     }
 }

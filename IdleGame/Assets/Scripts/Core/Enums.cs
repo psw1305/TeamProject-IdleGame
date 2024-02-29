@@ -16,6 +16,7 @@ public enum StatModType
     Integer,
     Percent,
     DecimalPoint,
+    IntegerPercent,
 }
 
 // 스탯 적용 타입

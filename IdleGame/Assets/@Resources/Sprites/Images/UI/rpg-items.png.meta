@@ -719,10 +719,10 @@ TextureImporter:
       name: Sprites_27
       rect:
         serializedVersion: 2
-        x: 880
-        y: 288
-        width: 32
-        height: 32
+        x: 886
+        y: 292
+        width: 21
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

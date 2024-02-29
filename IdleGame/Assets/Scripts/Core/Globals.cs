@@ -1,15 +1,11 @@
 using System;
 
-public static class AssetPath
-{
-}
-
 public static class BaseStat
 {
     public const int AtkDamage = 10;
     public const int AtkSpeed = 500;
     public const int CritChance = 0;
-    public const int CritDamage = 1000;
+    public const int CritDamage = 100;
     public const int Hp = 1000;
     public const int HpRecovery = 80;
 }
@@ -29,7 +25,7 @@ public static class StatModifier
     public const int AtkDamage = 10;
     public const int AtkSpeed = 10;
     public const int CritChance = 1;
-    public const int CritDamage = 10;
+    public const int CritDamage = 1;
     public const int Hp = 100;
     public const int HpRecovery = 8;
 }
