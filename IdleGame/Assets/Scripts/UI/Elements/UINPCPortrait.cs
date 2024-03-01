@@ -1,38 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UINPCPortrait : MonoBehaviour
 {
-    [SerializeField] private Sprite[] body;
-    [SerializeField] private Sprite[] face;
-    [SerializeField] private Sprite[] arm;
+    [SerializeField] private Sprite[] _body;
+    [SerializeField] private Sprite[] _face;
+    [SerializeField] private Sprite[] _arm;
 
-    [SerializeField] private Image[] portrait;
+    [SerializeField] private Image[] _portrait;
 
-
-    private Color On = new Color(1, 1, 1);
-    private Color Off = new Color(0, 0, 0);
-
-
-    private void Update()
+    public void SpriteChange(int body, int face, int arm)
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(body == 1)
         {
-            portrait[0].sprite = body[1];
+            _portrait[2].gameObject.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        else if(body == 0) 
         {
-            portrait[1].sprite = face[1];
+            _portrait[2].gameObject.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {            
-            portrait[2].sprite = arm[1];
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            portrait[2].gameObject.SetActive(!portrait[2].IsActive());
-        }
+
+        _portrait[0].sprite = _body[body];
+        _portrait[1].sprite = _face[face];
+        _portrait[2].sprite = _arm[arm];
     }
 }

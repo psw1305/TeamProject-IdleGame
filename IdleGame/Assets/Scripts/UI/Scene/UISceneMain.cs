@@ -343,7 +343,6 @@ public class UISceneMain : UIScene
     #endregion
 
     #region Timer
-
     public void TimerOn()
     {
         _time = 61;

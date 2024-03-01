@@ -88,9 +88,10 @@ public class UITopScene : UIBase
         sceneCloseBtn.transform.localPosition = new Vector2(360, 0);
         sceneCloseBtn.SetActive(true);
 
-        if(NPCManager.Instance.ShopTutorial == 0)
+        if(PlayerPrefs.GetInt("ShopTutorial") == 0)
         {
-            NPCManager.Instance.ActiveNPC();
+            NPCManager.Instance.ActiveNPC("ShopTutorial");
+            PlayerPrefs.SetInt("ShopTutorial", 1);
         }
         
     }
