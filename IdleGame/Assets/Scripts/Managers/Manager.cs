@@ -45,6 +45,7 @@ public class Manager : MonoBehaviour
     private readonly SkillDataManager skillData = new();
     private readonly FollowerDataManager followerData = new();
     private readonly RankingManager ranking = new();
+    private readonly SystemAlertDataManager systemAlert = new();
 
     public static AssetManager Asset => Instance != null ? Instance.asset : null;
     public static SessionManager Session => Instance != null ? Instance.session : null;
@@ -60,6 +61,6 @@ public class Manager : MonoBehaviour
     public static SkillDataManager SkillData => Instance != null ? Instance.skillData : null;
     public static FollowerDataManager FollowerData => Instance != null ? Instance.followerData : null;
     public static RankingManager Ranking => Instance != null ? Instance.ranking : null;
-
+    public static SystemAlertDataManager SysAlert => Instance != null ? Instance.systemAlert : null;
     #endregion
 }

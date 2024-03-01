@@ -5,11 +5,10 @@ using TMPro;
 public class UIPopupFollowerSlotsEquip : MonoBehaviour
 {
     private UserInvenFollowerData _userInvenFollowerData;
-
-    //[SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image FollowerIcon;
     private Image _bgImg;
     private Button _btn;
+    public bool ReplaceMode = false;
 
     private void Awake()
     {
@@ -43,8 +42,20 @@ public class UIPopupFollowerSlotsEquip : MonoBehaviour
         {
             return;
         }
-
+        
+        if(ReplaceMode == false)
+        {
         var instancePopup = Manager.UI.ShowPopup<UIPopupFollowerDetail>();
         instancePopup.SetFollowerData(_userInvenFollowerData);
+        }
+        else
+        {
+            Manager.FollowerData.UnEquipFollower(_userInvenFollowerData);
+            Manager.FollowerData.CallSetUIFollowerInvenSlot(_userInvenFollowerData.itemID);
+
+            Manager.FollowerData.CallSetUIFollowerEquipSlot(Manager.FollowerData.EquipFollower(Manager.FollowerData.ReplaceFollower));
+            Manager.FollowerData.CallSetUIFollowerInvenSlot(Manager.FollowerData.ReplaceFollower.itemID);
+            transform.parent.GetComponent<UIPopupFollowerContainerEquip>().ToggleSlotReplaceMode();
+        }
     }
 }

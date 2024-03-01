@@ -160,7 +160,7 @@ public class UIPopupFollowerDetail : UIPopup
 
     private void ReinforceFollower(PointerEventData eventData)
     {
-        Manager.FollowerData.ReinforceFollower(_data);
+        Manager.FollowerData.ReinforceSelectFollower(_data);
         Manager.FollowerData.CallSetUIFollowerInvenSlot(_data.itemID);
 
         SetReinforceBtn();

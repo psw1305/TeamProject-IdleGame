@@ -27,12 +27,13 @@ public class SkillDataManager
         }
     }
 
-    #region popup event actions
+    #region slot info update
 
     private event Action<int> SetSkillUIEquipSlot;
     private event Action<string> SetSkillUIInvenSlot;
     private event Action SetAllSkillUIEquipSlot;
 
+    //스킬 팝업 상단 : 장착 슬롯의 단일 업데이트 위한 메서드를 구독, 구독 해제
     public void AddSetSkillUIEquipSlot(Action<int> handler)
     {
         SetSkillUIEquipSlot += handler;
@@ -41,11 +42,17 @@ public class SkillDataManager
     {
         SetSkillUIEquipSlot -= handler;
     }
+    /// <summary>
+    /// 스킬 팝업 상단 : 장착 슬롯의 단일 업데이트 위한 메서드입니다.
+    /// </summary>
+    /// <param name="id"></param>
     public void CallSetUISkillEquipSlot(int index)
     {
         SetSkillUIEquipSlot?.Invoke(index);
     }
 
+
+    //스킬 팝업 상단 : 장착 슬롯의 일괄 업데이트 위한 메서드를 구독, 구독 해제
     public void AddSetAllSkillUIEquipSlot(Action handler)
     {
         SetAllSkillUIEquipSlot += handler;
@@ -54,11 +61,17 @@ public class SkillDataManager
     {
         SetAllSkillUIEquipSlot -= handler;
     }
+    /// <summary>
+    /// 스킬 팝업 상단 : 장착 슬롯의 일괄 업데이트 위한 메서드입니다.
+    /// </summary>
+    /// <param name="id"></param>
     public void CallSetAllSkillUIEquipSlot()
     {
         SetAllSkillUIEquipSlot.Invoke();
     }
 
+
+    //스킬 팝업 하단 : 인벤토리 슬롯 상태를 업데이트하기 위한 메서드를 구독, 구독 해제
     public void AddSetSkillUIInvenSlot(Action<string> handler)
     {
         SetSkillUIInvenSlot += handler;
@@ -67,6 +80,10 @@ public class SkillDataManager
     {
         SetSkillUIInvenSlot -= handler;
     }
+    /// <summary>
+    /// 스킬 팝업 하단 : 인벤토리 슬롯 상태를 업데이트하기 위한 메서드입니다.
+    /// </summary>
+    /// <param name="id"></param>
     public void CallSetUISkillInvenSlot(string id)
     {
         SetSkillUIInvenSlot.Invoke(id);
@@ -74,7 +91,7 @@ public class SkillDataManager
 
     #endregion
 
-    #region Equip, Reinforce Method
+    #region Equip Method
 
     /// <summary>
     /// userInvenSkillData 장착 시도 후 성공 시 슬롯의 인덱스, 실패 시 감시값을 반환합니다.
@@ -84,11 +101,14 @@ public class SkillDataManager
     /// <returns></returns>
     public int EquipSkill(UserInvenSkillData userInvenSkillData)
     {
+        //해당 아이템을 1개 이상 보유했었는지 확인
         if (userInvenSkillData.level == 1 && userInvenSkillData.hasCount == 0)
         {
+            SystemAlertFloating.Instance.ShowMsgAlert(MsgAlertType.CanNotEquip);
             return -100;
         }
 
+        //빈 슬롯을 찾는다면 해당 위치에 스킬을 착용함
         int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == "Empty");
         if (index > -1)
         {
@@ -97,6 +117,7 @@ public class SkillDataManager
             userInvenSkillData.equipped = true;
             return index;
         }
+        //빈 슬롯을 찾지 못한다면 -200을 반환함
         ReplaceSkill = userInvenSkillData;
         return -200;
     }
@@ -109,21 +130,22 @@ public class SkillDataManager
     /// <returns></returns>
     public int UnEquipSkill(UserInvenSkillData userInvenSkillData)
     {
+        //해당아이템이 착용되어있는 인덱스를 찾음
         int index = Manager.Data.UserSkillData.UserEquipSkill.FindIndex(data => data.itemID == userInvenSkillData.itemID);
+        //초기화 작업
         Manager.Data.UserSkillData.UserEquipSkill[index].itemID = "Empty";
         Manager.Game.Player.gameObject.GetComponent<PlayerSkillHandler>().ChangeEquipSkillData(index);
         userInvenSkillData.equipped = false;
         return index;
     }
 
-    public void ReinforceSkill(UserInvenSkillData userInvenSkillData)
-    {
-        //조건 미충족 시 리턴
-        if (userInvenSkillData.hasCount < Mathf.Min(userInvenSkillData.level + 1, 15))
-        {
-            return;
-        }
+    #endregion
 
+    #region Reinforce Method
+
+    //강화 로직
+    private void ReinforceSkill(UserInvenSkillData userInvenSkillData)
+    {
         while (userInvenSkillData.hasCount >= Mathf.Min(userInvenSkillData.level + 1, 15))
         {
             if (userInvenSkillData.level < 100)
@@ -156,8 +178,40 @@ public class SkillDataManager
         CallSetAllSkillUIEquipSlot();
     }
 
+    /// <summary>
+    /// userInvenSkillData로 전달받은 스킬을 강화합니다.
+    /// </summary>
+    /// <param name="userInvenSkillData"></param>
+    public void ReinforceSelectSkill(UserInvenSkillData userInvenSkillData)
+    {
+        if (userInvenSkillData.hasCount < Mathf.Min(userInvenSkillData.level + 1, 15))
+        {
+            SystemAlertFloating.Instance.ShowMsgAlert(MsgAlertType.CanNotReinforce);
+            return;
+        }
+        else if (userInvenSkillData.level >= 100 & (userInvenSkillData.itemID == Manager.Data.SkillInvenList.Last().itemID))
+        {
+            SystemAlertFloating.Instance.ShowMsgAlert(MsgAlertType.ItemLimitLevel);
+            return;
+        }
+
+        ReinforceSkill(userInvenSkillData);
+    }
+
+    /// <summary>
+    /// 스킬을 일괄 강화 합니다.
+    /// </summary>
     public void ReinforceAllSkill()
     {
+        var list = Manager.Data.SkillInvenList.Where(item => item.hasCount >= Mathf.Min(item.level + 1, 15));
+
+        if (list.Count() == 0 || (list.First().itemID == Manager.Data.SkillInvenList.Last().itemID & list.First().level >= 100))
+        {
+            Debug.Log(list.Count());
+            SystemAlertFloating.Instance.ShowMsgAlert(MsgAlertType.CanNotAllReinforce);
+            return;
+        }
+
         foreach (var item in Manager.Data.UserSkillData.UserInvenSkill)
         {
             ReinforceSkill(item);

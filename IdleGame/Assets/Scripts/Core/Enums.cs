@@ -89,3 +89,20 @@ public enum ItemTier
     epic,
     Legendary
 }
+
+public enum MsgAlertType
+{
+    NeedMoreGold,
+    NeedMoreGem,
+    CanNotEquip,
+    CanNotReinforce,
+    ItemLimitLevel,
+    CanNotAllReinforce
+}
+
+public enum PopupAlertType
+{
+    ApplicationQuit,
+    DisconnectNetwork,
+    DevelopingContent
+}

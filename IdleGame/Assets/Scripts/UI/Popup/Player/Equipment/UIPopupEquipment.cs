@@ -260,7 +260,7 @@ public class UIPopupEquipment : UIPopup
     //선택한 아이템을 강화합니다.
     private void ReinforceSelectItem(PointerEventData enterEvent)
     {
-        Manager.Inventory.ReinforceItem(_selectItemData);
+        Manager.Inventory.ReinforceSelectItem(_selectItemData);
         if (_selectItemData.itemID[0] == 'W')
         {
             Manager.Notificate.SetRecommendWeaponNoti();

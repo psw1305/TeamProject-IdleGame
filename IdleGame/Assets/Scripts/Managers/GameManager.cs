@@ -33,6 +33,7 @@ public class GameManager
         Main.SceneStart();
 
         Manager.Quest.InitQuest();
+        Manager.SysAlert.InitAlert();
     }
 
     // 플레이어 데이터가 초기화 되는 부분

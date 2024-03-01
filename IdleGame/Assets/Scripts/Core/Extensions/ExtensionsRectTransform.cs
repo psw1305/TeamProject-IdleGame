@@ -1,5 +1,5 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public static class ExtensionsRectTransform
 {
@@ -16,5 +16,11 @@ public static class ExtensionsRectTransform
         rectTransform
             .DOScale(1f, duration)
             .SetEase(Ease.OutBounce);
+    }
+
+    public static void LerpAlpha(this CanvasGroup canvasGroup, float to, float duration)
+    {
+        canvasGroup.
+            DOFade(to, duration);
     }
 }
