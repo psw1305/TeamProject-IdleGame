@@ -19,6 +19,7 @@ public class StageManager
     private Transform bossSpawnPoint;
     private Coroutine stageCoroutine;
     private UISceneMain uISceneMain;
+    private UIFadeIO _uiFadeIO;
 
     private BackgroundControl backgroundControl;
 
@@ -38,6 +39,7 @@ public class StageManager
     public bool StageClear => StageLevel > StageConfig.BattleCount;
     public bool WaveClear => enemyList.Count == 0;
     public bool PlayerReset { get; private set; }
+    public bool EffectControl { get; set; }
 
     // 스테이지 정보 로드용 프로퍼티
     public StageBlueprint StageConfig => Manager.Asset.GetBlueprint(stageData.StageConfig) as StageBlueprint;
@@ -84,6 +86,8 @@ public class StageManager
         WaveLoop = profile.Stage_WaveLoop;
 
         ratio = Manager.Game.screenRatio;
+
+        _uiFadeIO = Manager.UI.AddElement<UIFadeIO>("FadeIO");
 
         backgroundControl = Object.FindObjectOfType<BackgroundControl>();
         backgroundControl.Initiailize();
@@ -183,6 +187,7 @@ public class StageManager
             // #1. 스폰 전 스테이지를 클리어하고 넘어왔으면 플레이어 리셋
             if (PlayerReset)
             {
+                _uiFadeIO.FadeReset();
                 var Player = Manager.Game.Player;
                 Player.SetCurrentHp(Player.ModifierHp);
                 Manager.Game.Player.GetComponent<PlayerSkillHandler>().ResetSkillCondition();
@@ -334,15 +339,17 @@ public class StageManager
 
     private IEnumerator BossIncoming()
     {
-        // TODO : Fade Out 효과 넣기
-        yield return new WaitForSeconds(0.5f);
+        _uiFadeIO.FadeEffect(0.5f);
+        yield return new WaitUntil(() => EffectControl);
 
         Time.timeScale = 0.0f;
+        EffectControl = false;
         EnemyReset();
         // TODO : 여기에 등장 연출 넣기
         Debug.Log("VS Boss");
         yield return new WaitForSecondsRealtime(1.0f);
 
+        _uiFadeIO.FadeReset();
         ApplyGameSpeed(System.Convert.ToBoolean(PlayerPrefs.GetInt("GameSpeed")));
         yield break;
     }
@@ -353,8 +360,8 @@ public class StageManager
         Debug.Log("Boss Clear");
         yield return new WaitForSecondsRealtime(1.0f);
 
-        // TODO : Fade Out 효과 넣기
-        yield return new WaitForSeconds(0.5f);
+        _uiFadeIO.FadeEffect(0.5f);
+        yield return new WaitUntil(() => EffectControl);
 
         yield break;
     }
