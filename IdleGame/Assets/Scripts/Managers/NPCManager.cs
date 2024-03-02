@@ -15,6 +15,7 @@ public class NPCManager : BehaviourSingleton<NPCManager>
 
     public bool isFirstShop;
     public bool isFirstPlay;
+    public bool isFirstRanking;
 
     protected override void Awake()
     {
@@ -26,6 +27,9 @@ public class NPCManager : BehaviourSingleton<NPCManager>
 
         if (isFirstPlay)
             PlayerPrefs.SetInt("StartTutorial", 0);
+        
+        if (isFirstRanking)
+            PlayerPrefs.SetInt("RankingTutiroal", 0);
 
 
         if (!PlayerPrefs.HasKey("StartTutorial") && PlayerPrefs.GetInt("StartTutorial") == 0)
@@ -34,13 +38,16 @@ public class NPCManager : BehaviourSingleton<NPCManager>
 
         if (!PlayerPrefs.HasKey("ShopTutorial") && PlayerPrefs.GetInt("ShopTutorial") == 0)
             PlayerPrefs.SetInt("ShopTutorial", 0);
+
+        if (!PlayerPrefs.HasKey("RankingTutiroal") && PlayerPrefs.GetInt("RankingTutiroal") == 0)
+            PlayerPrefs.SetInt("RankingTutiroal", 0);
     }
 
     private void Start()
     {
         _scriptsIndex.Add("StartTutorial", new string[] { "안녕하세요 용사님! 처음 뵙겠습니다:0:0:0",
                                                       "저는 안내를 맡은 접수원 에리나 입니다:0:2:0",
-                                                      "이제 전투를 하러 나가실 텐데요:0:1:0",
+                                                      "이제 전투를 하러 가야하는데요:0:1:0",
                                                       "몬스터와 보스를 사냥한 <color=yellow>골드</color>로 능력치를 강화하고:0:0:0",
                                                       "<color=red>스킬</color>과 <color=red>동료</color>를 <color=red>수집</color>해 더욱 강해지세요!:0:5:0"});
 
@@ -51,6 +58,10 @@ public class NPCManager : BehaviourSingleton<NPCManager>
                                                     "많이 구매 할수록 상품 레벨이 높아집니다:0:5:0",
                                                     "등급이 높아질 수록 좋은 아이템을 얻을 수 있답니다:0:0:0",
                                                     "그럼 즐거운 시간 되세요!:0:2:0"});
+
+        _scriptsIndex.Add("RankingTutiroal", new string[] {"이곳에서는 우리 사무소의 순위를 알 수 있어요:0:0:0",
+                                                           "얼마나 많은 보스를 잡고 나아갔는지에 따라 점수를 얻습니다:0:0:5", 
+                                                           "다른 사무소들보다 더 높은 점수를 획득해 봅시다!:0:0:2"});
     }
         
     public void UnactiveNPC()
