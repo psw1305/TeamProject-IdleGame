@@ -72,6 +72,30 @@ public class SessionManager
         });
     }
 
+    // TODO => 추후 로비 씬에서 로그인 버튼으로 옮길 예정
+//    private void OnSignIn()
+//    {
+//#if UNITY_EDITOR
+//        DebugNotice.Instance.Notice("SignIn Button Click");
+//#elif UNITY_ANDROID
+//        bool isSignin = false;
+
+//        if (!isSignin)
+//        {
+//            GoogleSignIn.Configuration = configuration;
+//            GoogleSignIn.Configuration.UseGameSignIn = false;
+//            GoogleSignIn.Configuration.RequestIdToken = true;
+//            GoogleSignIn.DefaultInstance.SignIn().ContinueWith(SignInWithGoogle);
+//        }
+//        else
+//        {
+//            GoogleSignIn.DefaultInstance.SignOut();
+//        }
+
+//        isSignin = !isSignin;
+//#endif
+//    }
+
     #endregion
 
     #region Google Signin Methods
