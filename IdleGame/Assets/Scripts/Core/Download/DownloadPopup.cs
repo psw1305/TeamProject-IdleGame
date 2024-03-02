@@ -46,9 +46,9 @@ public class DownloadPopup : MonoBehaviour
 
     public State CurrentState { get; private set; } = State.None;
 
-    #region Unity Flow
+    #region Progress
 
-    private IEnumerator Start()
+    public IEnumerator DownloadRoutine()
     {
         SetState(State.CalculatingSize, true);
 
@@ -69,15 +69,8 @@ public class DownloadPopup : MonoBehaviour
 
         CurrentState = newState;
 
-        if (prevRoot != null)
-        {
-            prevRoot.root.gameObject.SetActive(false);
-        }
-
-        if (newRoot != null)
-        {
-            newRoot.root.gameObject.SetActive(true);
-        }
+        prevRoot?.root.SetActive(false);
+        newRoot?.root.SetActive(true);
 
         if (updateUI)
         {

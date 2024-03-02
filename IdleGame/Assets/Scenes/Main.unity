@@ -2600,6 +2600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 25
+  ChildNotiDot: {fileID: 0}
 --- !u!114 &1612290726
 MonoBehaviour:
   m_ObjectHideFlags: 0
