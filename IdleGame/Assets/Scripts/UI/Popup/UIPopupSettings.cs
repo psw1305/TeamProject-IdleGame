@@ -1,14 +1,18 @@
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine;
 
 public class UIPopupSettings : UIPopup
 {
+    #region Fields
+
     private Toggle bgmToggle;
     private Toggle sfxToggle;
     private TextMeshProUGUI bgmText;
     private TextMeshProUGUI sfxText;
+
+    #endregion
 
     #region Initialize
 
@@ -41,6 +45,7 @@ public class UIPopupSettings : UIPopup
         SetUI<Button>();
         SetButtonEvent("DimScreen", UIEventType.Click, ClosePopup);
         SetButtonEvent("Btn_Close", UIEventType.Click, ClosePopup);
+        SetButtonEvent("Btn_Nickname_Change", UIEventType.Click, OnNicknameChange);
     }
 
     private void SetAudio()
@@ -101,6 +106,11 @@ public class UIPopupSettings : UIPopup
             AudioSFX.Instance.VolumeScale = 0.0f;
             PlayerPrefs.SetInt("SFX", 0);
         }
+    }
+
+    private void OnNicknameChange(PointerEventData eventData)
+    {
+        Manager.UI.ShowPopup<UIPopupChangeNickname>();
     }
 
     private void ClosePopup(PointerEventData eventData)

@@ -312,7 +312,7 @@ MonoBehaviour:
     - Bundle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 478c5691dce675d42bf7c27b306edcb8
-    m_Address: UIPopupEquipment
+    m_Address: UIPopupEquipment.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle
@@ -607,6 +607,18 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4cc368636b16954439d4ee2639fa15b5
     m_Address: UIMsgSystemAlert.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d77236c13621bfb45a006499126d9130
+    m_Address: UIUserRank.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bundle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db4bed182bb03ac47bb8d0ec0bd2c614
+    m_Address: UIPopupChangeNickname.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bundle

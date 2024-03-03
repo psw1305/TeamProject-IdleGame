@@ -42,6 +42,6 @@ public static class CostModifier
 
 public static class Delay
 {
-    public static readonly TimeSpan IdleClick = new(0, 1, 0);
-    public static readonly TimeSpan BonusClick = new(0, 10, 0);
+    public static readonly TimeSpan IdleClick = new(0, 5, 0);
+    public static readonly TimeSpan BonusClick = new(0, 30, 0);
 }

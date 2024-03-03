@@ -24,7 +24,7 @@ public class GameManager
         Player = playerClone.GetComponent<Player>();
 
         Manager.ObjectPool.Initialize();
-        //Manager.Ranking.Initialize();
+        Manager.Ranking.Initialize();
         Manager.Stage.Initialize();
         Manager.Summon.Initialize();
         Manager.Inventory.Initialize();

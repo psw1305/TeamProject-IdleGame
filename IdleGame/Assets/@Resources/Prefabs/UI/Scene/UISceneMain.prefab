@@ -6181,7 +6181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538635cb09c42f74da158f9d197f3b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  order: 25
+  order: 11
   ChildNotiDot: {fileID: 0}
 --- !u!1 &3189736061468462994
 GameObject:
@@ -8718,11 +8718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666070277701823701, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3666070277701823701, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3666070277701823701, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_SizeDelta.x
@@ -8730,11 +8730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666070277701823701, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 98.18
       objectReference: {fileID: 0}
     - target: {fileID: 3666070277701823701, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4363720311180514263, guid: 6506ab1f120958b4eb2518498aa995fd, type: 3}
       propertyPath: m_IsActive

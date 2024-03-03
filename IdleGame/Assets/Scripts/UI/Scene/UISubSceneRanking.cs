@@ -18,7 +18,6 @@ public class UISubSceneRanking : UIScene
     private void SetButtonEvents()
     {
         SetUI<Button>();
-        SetButtonEvent("Btn_Close", UIEventType.Click, CloseSubScene);
         SetButtonEvent("DimScreen", UIEventType.Click, CloseSubScene);
     }
 
@@ -28,6 +27,7 @@ public class UISubSceneRanking : UIScene
 
     private void SetRanking()
     {
+        Manager.Ranking.UpdateUserScore();
         Manager.Ranking.GetLeaderboard(contents);
     }
 
@@ -35,7 +35,11 @@ public class UISubSceneRanking : UIScene
 
     #region Button Events
 
-    private void CloseSubScene(PointerEventData eventData) => Manager.UI.CloseSubScene();
+    private void CloseSubScene(PointerEventData eventData)
+    {
+        Manager.UI.CloseSubScene();
+        Manager.UI.Top.SetCloseButton(false);
+    }
 
     #endregion
 }
