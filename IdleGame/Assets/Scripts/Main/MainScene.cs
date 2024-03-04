@@ -55,6 +55,12 @@ public class MainScene : MonoBehaviour
         // 스테이지 전투 구성
         Manager.Stage.SetStage(enemySpawnPoint, BossSpawnPointAdd());
         Manager.Stage.BattleStart();
+
+        if(PlayerPrefs.GetInt("StartTutorial") == 0)
+        {
+            NPCManager.Instance.ActiveNPC("StartTutorial");
+            PlayerPrefs.SetInt("StartTutorial", 1);
+        }
     }
 
     private Transform BossSpawnPointAdd()

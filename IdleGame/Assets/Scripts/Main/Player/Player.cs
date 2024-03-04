@@ -192,6 +192,10 @@ public class Player : MonoBehaviour, IDamageable
         //이전 스테이지로, Hp 리셋
         State = PlayerState.Die;
         playerAnimController.OnDead();
+
+        var MainSceneUI = Manager.UI.CurrentScene as UISceneMain;
+        MainSceneUI.TimerOff();
+
         yield return StartCoroutine(Manager.Stage.StageFailed());
         Revive();
     }
@@ -264,6 +268,11 @@ public class Player : MonoBehaviour, IDamageable
             playerAnimController.OnHit();
             CurrentHp -= damage;
         }
+    }
+
+    public void PlayerIsDead()
+    {
+        StartCoroutine(Dead());
     }
 
     public void FloatingDamage(Vector3 position, long Damage, DamageType damageTypeValue)

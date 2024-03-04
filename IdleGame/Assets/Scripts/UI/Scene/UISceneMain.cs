@@ -22,6 +22,9 @@ public class UISceneMain : UIScene
 
     private Image image_WaveLoop;
     private Image image_LevelGauge;
+    private Image image_Timer;
+    private Image image_TimerGauge;
+
     private Image image_1xSpeed;
     private Image image_2xSpeed;
 
@@ -36,6 +39,12 @@ public class UISceneMain : UIScene
     private TextMeshProUGUI _txtQuestNum;
     private TextMeshProUGUI _txtQuestObjective;
     private TextMeshProUGUI _textIdleNotice;
+    private TextMeshProUGUI _textTime;
+
+    private float _time;
+    private float _curTime;
+    private int _minute;
+    private int _second;
 
     #endregion
 
@@ -63,6 +72,8 @@ public class UISceneMain : UIScene
         SetUI<Image>();
         image_WaveLoop = GetUI<Image>("LoopImage");
         image_LevelGauge = GetUI<Image>("ProgressGauge");
+        image_Timer = GetUI<Image>("Timer");
+        image_TimerGauge = GetUI<Image>("TimerGauge");
         image_1xSpeed = GetUI<Image>("Image_1xSpeed");
         image_2xSpeed = GetUI<Image>("Image_2xSpeed");
     }
@@ -77,6 +88,8 @@ public class UISceneMain : UIScene
         _txtQuestNum = GetUI<TextMeshProUGUI>("Txt_QuestNumber");
         _txtQuestObjective = GetUI<TextMeshProUGUI>("Txt_QuestObjective");
         _textIdleNotice = GetUI<TextMeshProUGUI>("Text_IdleRewards_Notice");
+
+        _textTime = GetUI<TextMeshProUGUI>("Time");
     }
 
     private void SetButtons()
@@ -324,6 +337,44 @@ public class UISceneMain : UIScene
         else
         {
             return ($"{Manager.Quest.CurrentQuest.questObjective} {Manager.Quest.CurrentQuest.currentValue} / {Manager.Quest.CurrentQuest.objectiveValue}");
+        }
+    }
+
+    #endregion
+
+    #region Timer
+    public void TimerOn()
+    {
+        _time = 61;
+        image_Timer.gameObject.SetActive(true);
+        StartCoroutine(StartTimer());
+    }
+
+    public void TimerOff()
+    {
+        image_Timer.gameObject.SetActive(false);
+        StopCoroutine(StartTimer());
+    }
+
+    IEnumerator StartTimer()
+    {
+        _curTime = _time; 
+        while(_curTime > 0)
+        {
+            _curTime -= Time.deltaTime;
+            image_TimerGauge.fillAmount = _curTime/_time;
+            _minute = (int)_curTime / 60; 
+            _second = (int)_curTime % 60;
+            _textTime.text = $"{_minute.ToString("00")} : {_second.ToString("00")}";
+            yield return null;
+
+            if(_curTime <= 0)
+            {
+                Manager.Game.Player.PlayerIsDead();
+                _curTime = 0;
+                image_Timer.gameObject.SetActive(false);
+                yield break;
+            }
         }
     }
 

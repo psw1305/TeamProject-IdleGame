@@ -97,6 +97,7 @@ public class QuestManager
         if (questIndex >= QuestDB.Length) questIndex = 0;
 
         CurrentQuest = QuestDB[questIndex];
+        ClearEffectOnOff();
 
         // 데이터 저장
         Manager.Data.Save();
