@@ -138,26 +138,28 @@ public class DataManager
 
     public void Load()
     {
+        LoadFromUserProfile();
         LoadFromUserEquipment();
         LoadFromUserSkill();
         LoadFromUserFollower();
 
         topScene = GameObject.FindObjectOfType<UITopScene>();
+        topScene.DataLoadFinished();
 
-        auth = FirebaseAuth.DefaultInstance;
+        //auth = FirebaseAuth.DefaultInstance;
 
-        if (auth.CurrentUser != null)
-        {
-            // TODO => 임시로 로컬 데이터 생성
-            //FirebaseAppInit();
-            LoadFromUserProfile();
-            topScene.DataLoadFinished();
-        }
-        else
-        {
-            LoadFromUserProfile();
-            topScene.DataLoadFinished();
-        }
+        //if (auth.CurrentUser != null)
+        //{
+        //    // TODO => 임시로 로컬 데이터 생성
+        //    //FirebaseAppInit();
+        //    LoadFromUserProfile();
+        //    topScene.DataLoadFinished();
+        //}
+        //else
+        //{
+        //    LoadFromUserProfile();
+        //    topScene.DataLoadFinished();
+        //}
     }
 
     public void LoadFromUserProfile(string fileName = "game_user.dat")
@@ -296,15 +298,16 @@ public class DataManager
     {
         SaveProfile();
 
-        if (auth.CurrentUser != null)
-        {
-            UpdateServerUserData();
-        }
-        else
-        {
-            SaveToUserProfile();
-        }
+        //if (auth.CurrentUser != null)
+        //{
+        //    UpdateServerUserData();
+        //}
+        //else
+        //{
+        //    SaveToUserProfile();
+        //}
 
+        SaveToUserProfile();
         SaveToUserEquipment();
         SaveToUserSkill();
         SaveToUserFollower();
