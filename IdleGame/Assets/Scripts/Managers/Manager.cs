@@ -32,7 +32,6 @@ public class Manager : MonoBehaviour
     #region Manage
 
     private readonly AssetManager asset = new();
-    private readonly SessionManager session = new();
     private readonly DataManager data = new();
     private readonly GameManager game = new();
     private readonly UIManager ui = new();
@@ -48,7 +47,6 @@ public class Manager : MonoBehaviour
     private readonly SystemAlertDataManager systemAlert = new();
 
     public static AssetManager Asset => Instance != null ? Instance.asset : null;
-    public static SessionManager Session => Instance != null ? Instance.session : null;
     public static DataManager Data => Instance != null ? Instance.data : null;
     public static GameManager Game => Instance != null ? Instance.game : null;
     public static UIManager UI => Instance != null ? Instance.ui : null;

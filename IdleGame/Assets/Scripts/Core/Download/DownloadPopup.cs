@@ -46,9 +46,9 @@ public class DownloadPopup : MonoBehaviour
 
     public State CurrentState { get; private set; } = State.None;
 
-    #region Unity Flow
+    #region Progress
 
-    private IEnumerator Start()
+    public IEnumerator DownloadRoutine()
     {
         SetState(State.CalculatingSize, true);
 

@@ -601,12 +601,12 @@ TextureImporter:
       name: Push_0
       rect:
         serializedVersion: 2
-        x: 25
+        x: 21
         y: 456
-        width: 13
+        width: 21
         height: 21
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

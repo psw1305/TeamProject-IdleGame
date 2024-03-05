@@ -66,6 +66,10 @@ public class UITopScene : UIBase
     public void OnGameStart()
     {
         Manager.Data.Load();
+    }
+
+    public void DataLoadFinished()
+    {
         Manager.Game.Initialize();
         InitTopUI();
 
@@ -79,14 +83,26 @@ public class UITopScene : UIBase
         sceneCloseBtn.transform.localPosition = new Vector2(-360, 0);
         sceneCloseBtn.SetActive(true);
     }
-    
-    private void OnRanking(PointerEventData eventData) => Debug.Log("랭킹시스템 임시 잠금");
+
+    private void OnRanking(PointerEventData eventData)
+    {
+        Manager.UI.ShowSubScene<UISubSceneRanking>();
+        sceneCloseBtn.transform.localPosition = new Vector2(0, 0);
+        sceneCloseBtn.SetActive(true);
+    }
     
     private void OnShop(PointerEventData eventData)
     {
-        Manager.UI.ShowSubScene<UISubSceneShopSummon>();
+        Manager.UI.ShowSubScene<UISubSceneShopSummon>();        
         sceneCloseBtn.transform.localPosition = new Vector2(360, 0);
         sceneCloseBtn.SetActive(true);
+
+        if(PlayerPrefs.GetInt("ShopTutorial") == 0)
+        {
+            NPCManager.Instance.ActiveNPC("ShopTutorial");
+            PlayerPrefs.SetInt("ShopTutorial", 1);
+        }
+        
     }
 
     private void CloseSubScene(PointerEventData eventData) 

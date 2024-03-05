@@ -251,6 +251,7 @@ public class StageManager
     private void BossWaveSpawn()
     {
         uISceneMain.StageLevelGaugeToggle(false);
+        uISceneMain.TimerOn();
 
         // Boss 설계도 가져오기
         var enemyBlueprint = Manager.Asset.GetBlueprint(StageConfig.Boss) as EnemyBlueprint;
@@ -272,6 +273,7 @@ public class StageManager
         // 보스 처치 시 챕터 상승
         if (StageClear)
         {
+            uISceneMain.TimerOff();
             StageLevel = 0;
             PlayerReset = true;
 

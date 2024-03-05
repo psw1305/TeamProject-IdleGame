@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
 using Firebase.Database;
@@ -15,19 +14,21 @@ public class RankingManager
             FirebaseApp app = FirebaseApp.DefaultInstance;
             reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-            var profile = Manager.Data.Profile;
+            //var profile = Manager.Data.Profile;
 
-            // 사용자의 점수를 업데이트
-            UpdateUserScore(profile.Uid, profile.Nickname, profile.Stage_Chapter);
+            //// 사용자의 점수를 업데이트
+            //UpdateUserScore(profile.Uid, profile.Nickname, profile.Stage_Chapter);
         });
     }
 
     // 사용자의 점수를 업데이트
-    private void UpdateUserScore(string userId, string userName, int userScore)
+    public void UpdateUserScore()
     {
-        DatabaseReference userScoreRef = reference.Child("leaderboard").Child(userId);
-        userScoreRef.Child("name").SetValueAsync(userName);
-        userScoreRef.Child("score").SetValueAsync(userScore);
+        var profile = Manager.Data.Profile;
+
+        var userScoreRef = reference.Child("leaderboard").Child(profile.Uid);
+        userScoreRef.Child("name").SetValueAsync(profile.Nickname);
+        userScoreRef.Child("score").SetValueAsync(profile.Stage_Chapter);
     }
 
     // 랭킹 조회
@@ -48,7 +49,7 @@ public class RankingManager
                         string userName = userSnapshot.Child("name").Value.ToString();
                         string userScore = userSnapshot.Child("score").Value.ToString();
 
-                        var uiUserRank = Manager.Asset.InstantiatePrefab("UserRank", contents).GetComponent<UIUserRank>();
+                        var uiUserRank = Manager.Asset.InstantiatePrefab("UIUserRank", contents).GetComponent<UIUserRank>();
                         uiUserRank.Set(rank, userScore, userName);
                         rank--;
                     }
