@@ -348,8 +348,7 @@ public class StageManager
         EffectControl = false;
         EnemyReset();
         // TODO : 여기에 등장 연출 넣기
-        Debug.Log("VS Boss");
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(0.2f);
 
         _uiFadeIO.FadeReset();
         ApplyGameSpeed(System.Convert.ToBoolean(PlayerPrefs.GetInt("GameSpeed")));
@@ -359,12 +358,12 @@ public class StageManager
     private IEnumerator BossClear()
     {
         // TODO : 여기에 등장 연출 넣기
-        Debug.Log("Boss Clear");
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(0.2f);
 
         _uiFadeIO.FadeEffect(0.5f);
         yield return new WaitUntil(() => EffectControl);
 
+        EffectControl = false;
         yield break;
     }
 
