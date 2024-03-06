@@ -3,14 +3,6 @@ using UnityEngine;
 public class MeteorProjectile : SkillProjectileHandlerBase
 {
     [SerializeField] private GameObject destroyVFX;
-    private float _skillDamageRatio;
-    private void Start()
-    {
-        string _skillID = "S0009";
-        _skillDamageRatio = (Manager.SkillData.SkillDataDictionary[_skillID].SkillDamage
-            + (Manager.Data.SkillInvenDictionary[_skillID].level - 1) + Manager.SkillData.SkillDataDictionary[_skillID].ReinforceDamage)
-            / 100;
-    }
 
     private void FixedUpdate()
     {
@@ -26,7 +18,7 @@ public class MeteorProjectile : SkillProjectileHandlerBase
     {
         if (TargetLayerMask.value == (TargetLayerMask.value | (1 << collision.gameObject.layer)))
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage((long)(Damage * _skillDamageRatio), DamageTypeValue);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(Damage, DamageTypeValue);
         }
     }
 }
