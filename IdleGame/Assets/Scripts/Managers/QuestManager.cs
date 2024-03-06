@@ -62,10 +62,10 @@ public class QuestManager
 
     public bool IsQuestComplete()
     {
-        if (CurrentQuest.objectiveValue > CurrentQuest.currentValue)
-            CurrentQuest.isClear = false;
-        else
+        if (CurrentQuest.objectiveValue <= CurrentQuest.currentValue)
             CurrentQuest.isClear = true;
+        else
+            CurrentQuest.isClear = false;
 
         return CurrentQuest.isClear;
     }
