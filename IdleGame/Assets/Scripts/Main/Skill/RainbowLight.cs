@@ -27,6 +27,8 @@ public class RainbowLight : BaseSkill
         {
             StopCoroutine(_loopSkill);
         }
+        gameObject.transform.position = Manager.Game.Player.transform.position;
+        vfxParticle.Stop();
     }
 
     private IEnumerator LoopSkill()
