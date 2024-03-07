@@ -1,0 +1,154 @@
+{
+  "FollowerDataList": [
+    {
+      "itemID": "F0001",
+      "followerName": "고양이",
+      "rarity": "common",
+      "damageCorrection": 20.0,
+      "atkSpeed": 0.2,
+      "reinforceDamage": 2.0,
+      "retentionEffect": 3.0,
+      "reinforceEffect": 0.3
+    },
+    {
+      "itemID": "F0002",
+      "followerName": "인어",
+      "rarity": "common",
+      "damageCorrection": 20.0,
+      "atkSpeed": 0.2,
+      "reinforceDamage": 2.0,
+      "retentionEffect": 3.0,
+      "reinforceEffect": 0.3
+    },
+    {
+      "itemID": "F0003",
+      "followerName": "리자드",
+      "rarity": "common",
+      "damageCorrection": 20.0,
+      "atkSpeed": 0.2,
+      "reinforceDamage": 2.0,
+      "retentionEffect": 3.0,
+      "reinforceEffect": 0.3
+    },
+    {
+      "itemID": "F0004",
+      "followerName": "데몬",
+      "rarity": "uncommon",
+      "damageCorrection": 30.0,
+      "atkSpeed": 0.3,
+      "reinforceDamage": 3.0,
+      "retentionEffect": 4.0,
+      "reinforceEffect": 0.4
+    },
+    {
+      "itemID": "F0005",
+      "followerName": "드래곤",
+      "rarity": "uncommon",
+      "damageCorrection": 30.0,
+      "atkSpeed": 0.3,
+      "reinforceDamage": 3.0,
+      "retentionEffect": 4.0,
+      "reinforceEffect": 0.4
+    },
+    {
+      "itemID": "F0006",
+      "followerName": "웨어울프",
+      "rarity": "uncommon",
+      "damageCorrection": 30.0,
+      "atkSpeed": 0.3,
+      "reinforceDamage": 3.0,
+      "retentionEffect": 4.0,
+      "reinforceEffect": 0.4
+    },
+    {
+      "itemID": "F0007",
+      "followerName": "마법 고양이",
+      "rarity": "rare",
+      "damageCorrection": 40.0,
+      "atkSpeed": 0.4,
+      "reinforceDamage": 4.0,
+      "retentionEffect": 5.0,
+      "reinforceEffect": 0.5
+    },
+    {
+      "itemID": "F0008",
+      "followerName": "병정",
+      "rarity": "rare",
+      "damageCorrection": 40.0,
+      "atkSpeed": 0.4,
+      "reinforceDamage": 4.0,
+      "retentionEffect": 5.0,
+      "reinforceEffect": 0.5
+    },
+    {
+      "itemID": "F0009",
+      "followerName": "기사",
+      "rarity": "rare",
+      "damageCorrection": 40.0,
+      "atkSpeed": 0.4,
+      "reinforceDamage": 4.0,
+      "retentionEffect": 5.0,
+      "reinforceEffect": 0.5
+    },
+    {
+      "itemID": "F0010",
+      "followerName": "금빛 늑대",
+      "rarity": "epic",
+      "damageCorrection": 50.0,
+      "atkSpeed": 0.5,
+      "reinforceDamage": 5.0,
+      "retentionEffect": 6.0,
+      "reinforceEffect": 0.6
+    },
+    {
+      "itemID": "F0011",
+      "followerName": "드래곤 워리어",
+      "rarity": "epic",
+      "damageCorrection": 50.0,
+      "atkSpeed": 0.5,
+      "reinforceDamage": 5.0,
+      "retentionEffect": 6.0,
+      "reinforceEffect": 0.6
+    },
+    {
+      "itemID": "F0012",
+      "followerName": "화이트 코브라",
+      "rarity": "epic",
+      "damageCorrection": 50.0,
+      "atkSpeed": 0.5,
+      "reinforceDamage": 5.0,
+      "retentionEffect": 6.0,
+      "reinforceEffect": 0.6
+    },
+    {
+      "itemID": "F0013",
+      "followerName": "기사단장",
+      "rarity": "legendary",
+      "damageCorrection": 60.0,
+      "atkSpeed": 0.6,
+      "reinforceDamage": 6.0,
+      "retentionEffect": 7.0,
+      "reinforceEffect": 0.7
+    },
+    {
+      "itemID": "F0014",
+      "followerName": "장화신은 고양이",
+      "rarity": "legendary",
+      "damageCorrection": 60.0,
+      "atkSpeed": 0.6,
+      "reinforceDamage": 6.0,
+      "retentionEffect": 7.0,
+      "reinforceEffect": 0.7
+    },
+    {
+      "itemID": "F0015",
+      "followerName": "엘프",
+      "rarity": "legendary",
+      "damageCorrection": 60.0,
+      "atkSpeed": 0.6,
+      "reinforceDamage": 6.0,
+      "retentionEffect": 7.0,
+      "reinforceEffect": 0.7
+    }
+  ]
+}

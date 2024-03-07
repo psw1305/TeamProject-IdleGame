@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cac079f5b5b95341a96ef51d1a2b180, type: 3}
+  m_Name: B_Rhinoceros
+  m_EditorClassIdentifier: 
+  enemyName: "\uBFD4\uC18C\uC804\uC0AC"
+  enemySprite: {fileID: 21300000, guid: 05e42ba3bd79d4a1f80d33fc308b6337, type: 3}
+  projectailVFX: {fileID: 146252, guid: 3ff2cdf1800f3e44b962fb174deb1193, type: 3}
+  enemyType: 1
+  damage: 12
+  hp: 150
+  range: 2.5
+  attackSpeed: 2
+  rewards: 100
+  moveSpeed: 3.5

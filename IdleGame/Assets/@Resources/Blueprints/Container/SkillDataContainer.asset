@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d759cb49615ce2448a06c1f7d4764c21, type: 3}
+  m_Name: SkillDataContainer
+  m_EditorClassIdentifier: 
+  skillDatas:
+  - itemID: S0001
+    skillName: "\uD30C\uC774\uC5B4\uBCFC"
+    rarity: 0
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 120
+    reinforceDamage: 12
+    retentionEffect: 5
+    reinforceEffect: 0.5
+    _sprite: {fileID: 21300000, guid: 50debbb9b1937dd49b89178754741bea, type: 3}
+    skillObject: {fileID: 4650271145879309026, guid: 207724b801b83ea45a1f0b58a3e92c22, type: 3}
+  - itemID: S0002
+    skillName: "\uACF5\uACA9\uB825 \uC99D\uAC00"
+    rarity: 0
+    description: "\uB9CC\uD07C \uACF5\uACA9\uB825\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    skillDamage: 40
+    reinforceDamage: 2
+    retentionEffect: 10
+    reinforceEffect: 0.1
+    _sprite: {fileID: 21300000, guid: 3581871e592983944b28db402e1a4a6b, type: 3}
+    skillObject: {fileID: 6870505122484580750, guid: 03e0d915358ba124db9f299a501801bf, type: 3}
+  - itemID: S0003
+    skillName: "\uCCB4\uC778 \uB77C\uC774\uD2B8"
+    rarity: 0
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC5F0\uC1C4\uACF5\uACA9 \uD569\uB2C8\uB2E4."
+    skillDamage: 40
+    reinforceDamage: 4
+    retentionEffect: 5
+    reinforceEffect: 0.5
+    _sprite: {fileID: 21300000, guid: 272662cfb2e40d44ead2557d87ba652c, type: 3}
+    skillObject: {fileID: 2074202307851300906, guid: f4381d97b2cb92242b4b9c193c9e1f8f, type: 3}
+  - itemID: S0004
+    skillName: "\uC708\uB4DC \uC2AC\uB798\uC2DC"
+    rarity: 1
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uB2E8\uC77C \uD0C0\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 65
+    reinforceDamage: 6.5
+    retentionEffect: 5
+    reinforceEffect: 0.5
+    _sprite: {fileID: 21300000, guid: a77f8885d801e52489df3031b89c00d9, type: 3}
+    skillObject: {fileID: 8269489857933767924, guid: 378e9310bd81f2c45a572e29b6d6ee7f, type: 3}
+  - itemID: S0005
+    skillName: "\uBB38 \uC2AC\uB798\uC2DC"
+    rarity: 1
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uBC94\uC704 \uD0C0\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 55
+    reinforceDamage: 5.5
+    retentionEffect: 5
+    reinforceEffect: 0.5
+    _sprite: {fileID: 21300000, guid: a84954e8a31da734e962242fcafcb1f8, type: 3}
+    skillObject: {fileID: 4734233186292202660, guid: cb1e82ceaba907c44b225a3ae2b2d068, type: 3}
+  - itemID: S0006
+    skillName: "\uBE14\uB7EC\uB4DC \uC2AC\uB798\uC2DC"
+    rarity: 1
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uB2E8\uC77C \uD0C0\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 120
+    reinforceDamage: 20
+    retentionEffect: 40
+    reinforceEffect: 4
+    _sprite: {fileID: 21300000, guid: 95493fd4fd81cd84f982f7d6ef7d11b8, type: 3}
+    skillObject: {fileID: 3141414119778857945, guid: 78e7efef249293f458e5c464de3449e5, type: 3}
+  - itemID: S0007
+    skillName: "\uBB34\uC9C0\uAC1C"
+    rarity: 2
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC5F0\uC1C4\uACF5\uACA9 \uD569\uB2C8\uB2E4."
+    skillDamage: 100
+    reinforceDamage: 10
+    retentionEffect: 40
+    reinforceEffect: 4
+    _sprite: {fileID: 21300000, guid: a0c46f97611a62045ab3d35594d288b9, type: 3}
+    skillObject: {fileID: 6973555567626051342, guid: aa76011e5ad8b704599035845b8a95c4, type: 3}
+  - itemID: S0008
+    skillName: "\uB208\uBCF4\uB77C"
+    rarity: 2
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 5\uCD08\uAC04 \uC801 \uC804\uCCB4\uB97C
+      12\uD68C \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 45
+    reinforceDamage: 4.5
+    retentionEffect: 40
+    reinforceEffect: 4
+    _sprite: {fileID: 21300000, guid: c767cc4d01fd98c47892e983e55284b3, type: 3}
+    skillObject: {fileID: 7316962366331477165, guid: 9be38296fdda3c14a8de34ffe5020bac, type: 3}
+  - itemID: S0009
+    skillName: "\uBA54\uD14C\uC624"
+    rarity: 2
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 8\uAC1C\uC758 \uBA54\uD14C\uC624\uAC00
+      \uB5A8\uC5B4\uC9D1\uB2C8\uB2E4."
+    skillDamage: 90
+    reinforceDamage: 9
+    retentionEffect: 40
+    reinforceEffect: 4
+    _sprite: {fileID: 21300000, guid: 7dc498032f6cef049b3415ae38d21d3d, type: 3}
+    skillObject: {fileID: 202507690137476521, guid: 2c7fa817d0855414db0f2f3b37a25787, type: 3}
+  - itemID: S0010
+    skillName: "\uD504\uB9AC\uC998 \uC2AC\uB798\uC2DC"
+    rarity: 3
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uB2E8\uC77C \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 250
+    reinforceDamage: 25
+    retentionEffect: 40
+    reinforceEffect: 4
+    _sprite: {fileID: 21300000, guid: c22a188fb4cf2004ab111f1b31c16511, type: 3}
+    skillObject: {fileID: 2073296723176474625, guid: d56a57e512429c64497c484bca334ff3, type: 3}
+  - itemID: S0011
+    skillName: "\uD504\uB9AC\uC998 \uBE14\uB9AC\uC790\uB4DC"
+    rarity: 3
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 3.2\uCD08\uAC04 \uC801 \uC804\uCCB4\uB97C
+      \uCD5C\uB300 12\uD68C \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 150
+    reinforceDamage: 15
+    retentionEffect: 600
+    reinforceEffect: 60
+    _sprite: {fileID: 21300000, guid: fc0a268937fe3204bae018131ea8e9ae, type: 3}
+    skillObject: {fileID: 1722493571048203370, guid: c3f15cba3aed939478296e4b8060e032, type: 3}
+  - itemID: S0012
+    skillName: "\uD504\uB9AC\uC998 \uD30C\uC6CC\uC5C5"
+    rarity: 3
+    description: "\uB9CC\uD07C \uB370\uBBF8\uC9C0\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    skillDamage: 550
+    reinforceDamage: 40
+    retentionEffect: 600
+    reinforceEffect: 60
+    _sprite: {fileID: 21300000, guid: d00f4884596cae041b9efd1b0817ed1e, type: 3}
+    skillObject: {fileID: 6870505122484580750, guid: 5394dd230d68a054db892cb903626aba, type: 3}
+  - itemID: S0013
+    skillName: "\uBA54\uAC00 \uBA54\uD14C\uC624"
+    rarity: 4
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C 2.2\uCD08\uB3D9\uC548 4\uAC1C\uC758
+      \uBA54\uAC00 \uBA54\uD14C\uC624\uAC00 \uB5A8\uC5B4\uC9D1\uB2C8\uB2E4."
+    skillDamage: 300
+    reinforceDamage: 30
+    retentionEffect: 600
+    reinforceEffect: 60
+    _sprite: {fileID: 21300000, guid: ed3aeca28164b204c80fde97dd573b4b, type: 3}
+    skillObject: {fileID: 4755445883408343319, guid: bebe646a4e6e78246b61fb22bb73f048, type: 3}
+  - itemID: S0014
+    skillName: "\uD30C\uAD34"
+    rarity: 4
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 800
+    reinforceDamage: 80
+    retentionEffect: 600
+    reinforceEffect: 60
+    _sprite: {fileID: 21300000, guid: 57c6e1f82603db440aebc9c72083075a, type: 3}
+    skillObject: {fileID: 1738230629919607865, guid: 0ccb0170b2777bd40a00c7cabdf46138, type: 3}
+  - itemID: S0015
+    skillName: "\uBE14\uB7EC\uB4DC \uC2A4\uD1B0"
+    rarity: 4
+    description: "\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801 \uC804\uCCB4\uB97C 1\uCD08\uB3D9\uC548
+      12\uD68C \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    skillDamage: 110
+    reinforceDamage: 11
+    retentionEffect: 600
+    reinforceEffect: 60
+    _sprite: {fileID: 21300000, guid: 7f3fb29756d76374698bc0e188e9000d, type: 3}
+    skillObject: {fileID: 4323423245289559117, guid: b6354ce550825ca408108f561cafbfa6, type: 3}

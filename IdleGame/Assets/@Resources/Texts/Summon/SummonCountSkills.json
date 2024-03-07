@@ -1,0 +1,42 @@
+﻿[
+  {
+    "SummonGrade": 1,
+    "needCounts": 0
+  },
+  {
+    "SummonGrade": 2,
+    "needCounts": 150
+  },
+  {
+    "SummonGrade": 3,
+    "needCounts": 400
+  },
+  {
+    "SummonGrade": 4,
+    "needCounts": 1000
+  },
+  {
+    "SummonGrade": 5,
+    "needCounts": 2000
+  },
+  {
+    "SummonGrade": 6,
+    "needCounts": 3500
+  },
+  {
+    "SummonGrade": 7,
+    "needCounts": 5500
+  },
+  {
+    "SummonGrade": 8,
+    "needCounts": 8000
+  },
+  {
+    "SummonGrade": 9,
+    "needCounts": 12000
+  },
+  {
+    "SummonGrade": 10,
+    "needCounts": 18000
+  }
+]

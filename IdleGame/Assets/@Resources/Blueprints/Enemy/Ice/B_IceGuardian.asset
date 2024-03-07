@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cac079f5b5b95341a96ef51d1a2b180, type: 3}
+  m_Name: B_IceGuardian
+  m_EditorClassIdentifier: 
+  enemyName: "\uC5BC\uC74C \uC218\uD638\uC790"
+  enemySprite: {fileID: 21300000, guid: 0193e5f3d1ce24770914b6348341f1ed, type: 3}
+  projectailVFX: {fileID: 192706, guid: f2162a38562187b4ea1135325714295c, type: 3}
+  enemyType: 1
+  damage: 12
+  hp: 150
+  range: 2.5
+  attackSpeed: 2
+  rewards: 100
+  moveSpeed: 3.5

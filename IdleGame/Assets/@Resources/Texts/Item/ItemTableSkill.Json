@@ -1,0 +1,154 @@
+{
+    "SkillDataList": [
+        {
+            "itemID": "S0001",
+           "skillName": "파이어볼",
+            "description": "의 데미지로 여러차례 공격합니다.",
+            "rarity": "common",
+            "skillDamage": 10.0,
+            "reinforceDamage": 1.0,
+            "retentionEffect": 2.0,
+            "reinforceEffect": 0.2
+        },
+        {
+            "itemID": "S0002",
+            "skillName": "공격력 증가",
+            "description": "의 데미지가 증가합니다.",
+            "rarity": "common",
+            "skillDamage": 20.0,
+            "reinforceDamage": 2.0,
+            "retentionEffect": 3.0,
+            "reinforceEffect": 0.3
+        },
+        {
+            "itemID": "S0003",
+            "skillName": "체인 라이트",
+            "description": "의 데미지로 연쇄 공격을 가합니다.",
+            "rarity": "rare",
+            "skillDamage": 40.0,
+            "reinforceDamage": 3.0,
+            "retentionEffect": 4.0,
+            "reinforceEffect": 0.4
+        },
+        {
+            "itemID": "S0004",
+            "skillName": "윈드 슬래시",
+            "description": "의데미지로  임의의 적을 단일 공격합니다.",
+            "rarity": "rare",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "S0005",
+           "skillName": "문 슬래시",
+            "description": "의데미지로 적을 전체 공격합니다.",
+            "rarity": "rare",
+            "skillDamage": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "S0006",
+           "skillName": "블러드 슬래시",
+            "description": "의데미지로 임의의 적을 단일 공격합니다.",
+            "rarity": "eqic",
+            "skillDamage": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "S0007",
+            "skillName": "무지개",
+            "description": "의 데미지로 적을 연쇄공격합니다.",
+            "rarity": "eqic",
+            "skillDamage": 60.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "S0008",
+            "skillName": "블리자드",
+            "description": "의 데미지로 여러차례 공격합니다.",
+            "rarity": "eqic",
+            "skillDamage": 10.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        },
+        {
+            "itemID": "S0009",
+            "skillName": "메테오",
+            "description": "의 데미지로 여러차례 공격합니다.",
+            "rarity": "eqic",
+            "skillDamage": 30.0,
+            "reinforceDamage": 0.8,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0010",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0011",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0012",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0013",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0014",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        } ,
+        {
+            "itemID": "S0015",
+            "skillName": "더미 스킬",
+            "description": "더미 스킬입니다.",
+            "rarity": "legendary",
+            "skillDamage": 60.0,
+            "reinforceDamage": 4.0,
+            "retentionEffect": 5.0,
+            "reinforceEffect": 0.5
+        }
+    ]
+}

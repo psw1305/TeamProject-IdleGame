@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cac079f5b5b95341a96ef51d1a2b180, type: 3}
+  m_Name: EvilMonkey
+  m_EditorClassIdentifier: 
+  enemyName: "\uB9C8\uACC4 \uC6D0\uC22D\uC774"
+  enemySprite: {fileID: 21300000, guid: 6d488b8aba9c649af88446fea529e754, type: 3}
+  projectailVFX: {fileID: 142594, guid: b6d3117b277f36c48b756be615fb5f3b, type: 3}
+  enemyType: 0
+  damage: 2
+  hp: 10
+  range: 2
+  attackSpeed: 1
+  rewards: 5
+  moveSpeed: 2.5

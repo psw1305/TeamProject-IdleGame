@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0900ce843cac3a44f8f1a08124113da7, type: 3}
+  m_Name: SummonRewards
+  m_EditorClassIdentifier: 
+  summonName: "\uB3D9\uB8CC"
+  banner: {fileID: 6489463966578483684, guid: 1f0c7c44213b1f048aa5e4316bede5a0, type: 3}
+  typeLink: Follower
+  countAddLimit: 24
+  _buttonInfo:
+  - btnPrefab: Btn_Summon_2
+    btnText: "11\uD68C \uC18C\uD658"
+    paymentType: 1
+    resourceType: 0
+    amount: 0
+    summonCount: 11
+    onEvent: 0
+    isLimit: 0
+    limitCount: 2
+    isCoolDown: 0
+    coolTime: 00:02:00
+  - btnPrefab: Btn_Summon_3
+    btnText: "35\uD68C \uC18C\uD658"
+    paymentType: 0
+    resourceType: 1
+    amount: 500
+    summonCount: 11
+    onEvent: 0
+    isLimit: 0
+    limitCount: 0
+    isCoolDown: 0
+    coolTime: 00:01:00

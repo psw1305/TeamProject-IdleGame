@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cac079f5b5b95341a96ef51d1a2b180, type: 3}
+  m_Name: B_Predator
+  m_EditorClassIdentifier: 
+  enemyName: "\uD3EC\uC2DD\uC790"
+  enemySprite: {fileID: 21300000, guid: 39b012b44a1a3475395d8141b1bf0981, type: 3}
+  projectailVFX: {fileID: 111912, guid: a42fb76af6cb33646be6633428f143cb, type: 3}
+  enemyType: 1
+  damage: 12
+  hp: 150
+  range: 2.5
+  attackSpeed: 2
+  rewards: 100
+  moveSpeed: 3.5

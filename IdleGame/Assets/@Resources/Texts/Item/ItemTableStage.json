@@ -1,0 +1,2702 @@
+﻿[
+  {
+    "Index": 1,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 1,
+    "EnemyAttackRate": 11,
+    "EnemyGoldRate": 1,
+    "EnemySpawnCount": 5,
+    "IdleGoldReward": 100
+  },
+  {
+    "Index": 2,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 2,
+    "EnemyAttackRate": 14,
+    "EnemyGoldRate": 2,
+    "EnemySpawnCount": 5,
+    "IdleGoldReward": 100
+  },
+  {
+    "Index": 3,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 4,
+    "EnemyAttackRate": 16,
+    "EnemyGoldRate": 3,
+    "EnemySpawnCount": 5,
+    "IdleGoldReward": 110
+  },
+  {
+    "Index": 4,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 6,
+    "EnemyAttackRate": 19,
+    "EnemyGoldRate": 4,
+    "EnemySpawnCount": 5,
+    "IdleGoldReward": 110
+  },
+  {
+    "Index": 5,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 9,
+    "EnemyAttackRate": 23,
+    "EnemyGoldRate": 5,
+    "EnemySpawnCount": 5,
+    "IdleGoldReward": 120
+  },
+  {
+    "Index": 6,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 13,
+    "EnemyAttackRate": 27,
+    "EnemyGoldRate": 6,
+    "EnemySpawnCount": 6,
+    "IdleGoldReward": 120
+  },
+  {
+    "Index": 7,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 19,
+    "EnemyAttackRate": 31,
+    "EnemyGoldRate": 7,
+    "EnemySpawnCount": 6,
+    "IdleGoldReward": 130
+  },
+  {
+    "Index": 8,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 38,
+    "EnemyAttackRate": 38,
+    "EnemyGoldRate": 8,
+    "EnemySpawnCount": 6,
+    "IdleGoldReward": 130
+  },
+  {
+    "Index": 9,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 57,
+    "EnemyAttackRate": 44,
+    "EnemyGoldRate": 10,
+    "EnemySpawnCount": 6,
+    "IdleGoldReward": 140
+  },
+  {
+    "Index": 10,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 85,
+    "EnemyAttackRate": 51,
+    "EnemyGoldRate": 12,
+    "EnemySpawnCount": 6,
+    "IdleGoldReward": 140
+  },
+  {
+    "Index": 11,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 127,
+    "EnemyAttackRate": 59,
+    "EnemyGoldRate": 13,
+    "EnemySpawnCount": 7,
+    "IdleGoldReward": 150
+  },
+  {
+    "Index": 12,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 152,
+    "EnemyAttackRate": 65,
+    "EnemyGoldRate": 14,
+    "EnemySpawnCount": 7,
+    "IdleGoldReward": 150
+  },
+  {
+    "Index": 13,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 182,
+    "EnemyAttackRate": 71,
+    "EnemyGoldRate": 15,
+    "EnemySpawnCount": 7,
+    "IdleGoldReward": 165
+  },
+  {
+    "Index": 14,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 218,
+    "EnemyAttackRate": 80,
+    "EnemyGoldRate": 16,
+    "EnemySpawnCount": 7,
+    "IdleGoldReward": 165
+  },
+  {
+    "Index": 15,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 261,
+    "EnemyAttackRate": 89,
+    "EnemyGoldRate": 17,
+    "EnemySpawnCount": 7,
+    "IdleGoldReward": 180
+  },
+  {
+    "Index": 16,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 313,
+    "EnemyAttackRate": 98,
+    "EnemyGoldRate": 18,
+    "EnemySpawnCount": 8,
+    "IdleGoldReward": 180
+  },
+  {
+    "Index": 17,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 375,
+    "EnemyAttackRate": 108,
+    "EnemyGoldRate": 19,
+    "EnemySpawnCount": 8,
+    "IdleGoldReward": 195
+  },
+  {
+    "Index": 18,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 450,
+    "EnemyAttackRate": 121,
+    "EnemyGoldRate": 20,
+    "EnemySpawnCount": 8,
+    "IdleGoldReward": 195
+  },
+  {
+    "Index": 19,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 540,
+    "EnemyAttackRate": 134,
+    "EnemyGoldRate": 22,
+    "EnemySpawnCount": 8,
+    "IdleGoldReward": 210
+  },
+  {
+    "Index": 20,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 648,
+    "EnemyAttackRate": 148,
+    "EnemyGoldRate": 24,
+    "EnemySpawnCount": 8,
+    "IdleGoldReward": 210
+  },
+  {
+    "Index": 21,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 907,
+    "EnemyAttackRate": 189,
+    "EnemyGoldRate": 26,
+    "EnemySpawnCount": 9,
+    "IdleGoldReward": 230
+  },
+  {
+    "Index": 22,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 1133,
+    "EnemyAttackRate": 210,
+    "EnemyGoldRate": 28,
+    "EnemySpawnCount": 9,
+    "IdleGoldReward": 230
+  },
+  {
+    "Index": 23,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 1416,
+    "EnemyAttackRate": 233,
+    "EnemyGoldRate": 30,
+    "EnemySpawnCount": 9,
+    "IdleGoldReward": 250
+  },
+  {
+    "Index": 24,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 1770,
+    "EnemyAttackRate": 256,
+    "EnemyGoldRate": 33,
+    "EnemySpawnCount": 9,
+    "IdleGoldReward": 250
+  },
+  {
+    "Index": 25,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 2212,
+    "EnemyAttackRate": 280,
+    "EnemyGoldRate": 36,
+    "EnemySpawnCount": 9,
+    "IdleGoldReward": 275
+  },
+  {
+    "Index": 26,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 2765,
+    "EnemyAttackRate": 310,
+    "EnemyGoldRate": 39,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 275
+  },
+  {
+    "Index": 27,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 3456,
+    "EnemyAttackRate": 341,
+    "EnemyGoldRate": 42,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 28,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 4320,
+    "EnemyAttackRate": 373,
+    "EnemyGoldRate": 46,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 29,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 5400,
+    "EnemyAttackRate": 407,
+    "EnemyGoldRate": 50,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 30,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 6750,
+    "EnemyAttackRate": 468,
+    "EnemyGoldRate": 55,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 31,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 8437,
+    "EnemyAttackRate": 512,
+    "EnemyGoldRate": 60,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 32,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 10546,
+    "EnemyAttackRate": 558,
+    "EnemyGoldRate": 66,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 33,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 13182,
+    "EnemyAttackRate": 606,
+    "EnemyGoldRate": 72,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 34,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 16477,
+    "EnemyAttackRate": 662,
+    "EnemyGoldRate": 79,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 35,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 20596,
+    "EnemyAttackRate": 720,
+    "EnemyGoldRate": 86,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 36,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 25745,
+    "EnemyAttackRate": 781,
+    "EnemyGoldRate": 94,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 37,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 32181,
+    "EnemyAttackRate": 844,
+    "EnemyGoldRate": 103,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 38,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 40226,
+    "EnemyAttackRate": 918,
+    "EnemyGoldRate": 113,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 39,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 50282,
+    "EnemyAttackRate": 994,
+    "EnemyGoldRate": 124,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 40,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 62852,
+    "EnemyAttackRate": 1120,
+    "EnemyGoldRate": 136,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 41,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 78565,
+    "EnemyAttackRate": 1205,
+    "EnemyGoldRate": 149,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 42,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 98206,
+    "EnemyAttackRate": 1303,
+    "EnemyGoldRate": 163,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 43,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 122757,
+    "EnemyAttackRate": 1404,
+    "EnemyGoldRate": 179,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 44,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 153446,
+    "EnemyAttackRate": 1510,
+    "EnemyGoldRate": 196,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 45,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 191807,
+    "EnemyAttackRate": 1619,
+    "EnemyGoldRate": 215,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 46,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 239758,
+    "EnemyAttackRate": 1742,
+    "EnemyGoldRate": 236,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 47,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 299697,
+    "EnemyAttackRate": 1869,
+    "EnemyGoldRate": 259,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 48,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 374621,
+    "EnemyAttackRate": 2001,
+    "EnemyGoldRate": 284,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 49,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 468276,
+    "EnemyAttackRate": 2138,
+    "EnemyGoldRate": 312,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 50,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 561931,
+    "EnemyAttackRate": 2950,
+    "EnemyGoldRate": 343,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 51,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 674317,
+    "EnemyAttackRate": 3153,
+    "EnemyGoldRate": 377,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 52,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 809180,
+    "EnemyAttackRate": 3363,
+    "EnemyGoldRate": 414,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 53,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 971016,
+    "EnemyAttackRate": 3580,
+    "EnemyGoldRate": 455,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 54,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1165219,
+    "EnemyAttackRate": 3822,
+    "EnemyGoldRate": 500,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 55,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1398262,
+    "EnemyAttackRate": 4071,
+    "EnemyGoldRate": 550,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 56,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1677914,
+    "EnemyAttackRate": 4328,
+    "EnemyGoldRate": 605,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 57,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 2013496,
+    "EnemyAttackRate": 4592,
+    "EnemyGoldRate": 665,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 58,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 2416195,
+    "EnemyAttackRate": 4884,
+    "EnemyGoldRate": 731,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 59,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 2899434,
+    "EnemyAttackRate": 5185,
+    "EnemyGoldRate": 804,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 60,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 3479320,
+    "EnemyAttackRate": 5707,
+    "EnemyGoldRate": 884,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 61,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 4175184,
+    "EnemyAttackRate": 6038,
+    "EnemyGoldRate": 972,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 62,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 5010220,
+    "EnemyAttackRate": 6402,
+    "EnemyGoldRate": 1069,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 63,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 6012264,
+    "EnemyAttackRate": 6776,
+    "EnemyGoldRate": 1175,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 64,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 7214716,
+    "EnemyAttackRate": 7161,
+    "EnemyGoldRate": 1292,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 65,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 8657659,
+    "EnemyAttackRate": 7556,
+    "EnemyGoldRate": 1421,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 66,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 10389190,
+    "EnemyAttackRate": 7988,
+    "EnemyGoldRate": 1563,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 67,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 12467028,
+    "EnemyAttackRate": 8432,
+    "EnemyGoldRate": 1719,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 68,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 14960433,
+    "EnemyAttackRate": 8887,
+    "EnemyGoldRate": 1890,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 69,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 17952519,
+    "EnemyAttackRate": 9355,
+    "EnemyGoldRate": 2079,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 70,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 21543022,
+    "EnemyAttackRate": 15942,
+    "EnemyGoldRate": 2286,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 71,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 25851626,
+    "EnemyAttackRate": 16785,
+    "EnemyGoldRate": 2514,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 72,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 31021951,
+    "EnemyAttackRate": 17650,
+    "EnemyGoldRate": 2765,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 73,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 37226341,
+    "EnemyAttackRate": 18536,
+    "EnemyGoldRate": 3041,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 74,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 44671609,
+    "EnemyAttackRate": 19494,
+    "EnemyGoldRate": 3345,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 75,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 53605930,
+    "EnemyAttackRate": 20477,
+    "EnemyGoldRate": 3679,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 76,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 64327116,
+    "EnemyAttackRate": 21484,
+    "EnemyGoldRate": 4046,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 77,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 77192539,
+    "EnemyAttackRate": 22516,
+    "EnemyGoldRate": 4450,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 78,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 92631046,
+    "EnemyAttackRate": 23627,
+    "EnemyGoldRate": 4895,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 79,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 111157255,
+    "EnemyAttackRate": 24765,
+    "EnemyGoldRate": 5384,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 80,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 133388706,
+    "EnemyAttackRate": 26856,
+    "EnemyGoldRate": 5922,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 81,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 160066447,
+    "EnemyAttackRate": 28529,
+    "EnemyGoldRate": 7106,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 82,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 192079736,
+    "EnemyAttackRate": 30252,
+    "EnemyGoldRate": 8527,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 83,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 230495683,
+    "EnemyAttackRate": 32092,
+    "EnemyGoldRate": 10232,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 84,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 276594819,
+    "EnemyAttackRate": 33987,
+    "EnemyGoldRate": 12278,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 85,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 331913782,
+    "EnemyAttackRate": 35936,
+    "EnemyGoldRate": 14733,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 86,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 398296538,
+    "EnemyAttackRate": 38011,
+    "EnemyGoldRate": 17679,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 87,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 477955845,
+    "EnemyAttackRate": 40145,
+    "EnemyGoldRate": 21214,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 88,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 573547014,
+    "EnemyAttackRate": 42336,
+    "EnemyGoldRate": 25456,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 89,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 688256416,
+    "EnemyAttackRate": 44665,
+    "EnemyGoldRate": 30547,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 90,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 825907699,
+    "EnemyAttackRate": 48679,
+    "EnemyGoldRate": 36656,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 91,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 991089238,
+    "EnemyAttackRate": 51216,
+    "EnemyGoldRate": 43987,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 92,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 1189307085,
+    "EnemyAttackRate": 53906,
+    "EnemyGoldRate": 52784,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 93,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 1427168502,
+    "EnemyAttackRate": 56665,
+    "EnemyGoldRate": 63340,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 94,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 1712602202,
+    "EnemyAttackRate": 59493,
+    "EnemyGoldRate": 76008,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 95,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 2055122642,
+    "EnemyAttackRate": 62484,
+    "EnemyGoldRate": 91209,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 96,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 2466147170,
+    "EnemyAttackRate": 65548,
+    "EnemyGoldRate": 109450,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 97,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 2959376604,
+    "EnemyAttackRate": 68685,
+    "EnemyGoldRate": 131340,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 98,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 3551251924,
+    "EnemyAttackRate": 71997,
+    "EnemyGoldRate": 157608,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 99,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 4261502308,
+    "EnemyAttackRate": 75388,
+    "EnemyGoldRate": 189129,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 100,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 4900727654,
+    "EnemyAttackRate": 124774,
+    "EnemyGoldRate": 226954,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 101,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 5635836802,
+    "EnemyAttackRate": 130557,
+    "EnemyGoldRate": 272344,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 102,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 6481212322,
+    "EnemyAttackRate": 136471,
+    "EnemyGoldRate": 326812,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 103,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 7453394170,
+    "EnemyAttackRate": 142516,
+    "EnemyGoldRate": 392174,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 104,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 8571403295,
+    "EnemyAttackRate": 148875,
+    "EnemyGoldRate": 470608,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 105,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 9857113789,
+    "EnemyAttackRate": 155373,
+    "EnemyGoldRate": 564729,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 106,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 11335680857,
+    "EnemyAttackRate": 162009,
+    "EnemyGoldRate": 677674,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 107,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 13036032985,
+    "EnemyAttackRate": 168981,
+    "EnemyGoldRate": 813208,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 108,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 14991437932,
+    "EnemyAttackRate": 176098,
+    "EnemyGoldRate": 975849,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 109,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 17240153621,
+    "EnemyAttackRate": 183363,
+    "EnemyGoldRate": 1171018,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 110,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 19826176664,
+    "EnemyAttackRate": 222813,
+    "EnemyGoldRate": 1405221,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 111,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 22800103163,
+    "EnemyAttackRate": 231883,
+    "EnemyGoldRate": 1826787,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 112,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 26220118637,
+    "EnemyAttackRate": 241134,
+    "EnemyGoldRate": 2374823,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 113,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 30153136432,
+    "EnemyAttackRate": 250823,
+    "EnemyGoldRate": 3087269,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 114,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 34676106896,
+    "EnemyAttackRate": 260703,
+    "EnemyGoldRate": 4013449,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 115,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 39877522930,
+    "EnemyAttackRate": 270774,
+    "EnemyGoldRate": 5217483,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 116,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 45859151369,
+    "EnemyAttackRate": 281308,
+    "EnemyGoldRate": 6782727,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 117,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 52738024074,
+    "EnemyAttackRate": 292043,
+    "EnemyGoldRate": 8817545,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 118,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 60648727685,
+    "EnemyAttackRate": 302979,
+    "EnemyGoldRate": 11462808,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 119,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 69746036837,
+    "EnemyAttackRate": 314404,
+    "EnemyGoldRate": 14901650,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 120,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 80207942362,
+    "EnemyAttackRate": 372618,
+    "EnemyGoldRate": 19372145,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 121,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 92239133716,
+    "EnemyAttackRate": 584421,
+    "EnemyGoldRate": 25183788,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 122,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 106075003773,
+    "EnemyAttackRate": 605805,
+    "EnemyGoldRate": 32738924,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 123,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 121986254338,
+    "EnemyAttackRate": 627574,
+    "EnemyGoldRate": 42560601,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 124,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 140284192488,
+    "EnemyAttackRate": 649726,
+    "EnemyGoldRate": 55328781,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 125,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 161326821361,
+    "EnemyAttackRate": 672817,
+    "EnemyGoldRate": 71927415,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 126,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 185525844565,
+    "EnemyAttackRate": 696311,
+    "EnemyGoldRate": 93505639,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 127,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 213354721249,
+    "EnemyAttackRate": 720209,
+    "EnemyGoldRate": 121557330,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 128,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 245357929436,
+    "EnemyAttackRate": 745092,
+    "EnemyGoldRate": 158024529,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 129,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 282161618851,
+    "EnemyAttackRate": 770399,
+    "EnemyGoldRate": 205431887,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 130,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 324485861678,
+    "EnemyAttackRate": 895644,
+    "EnemyGoldRate": 267061453,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 131,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 373158740929,
+    "EnemyAttackRate": 925754,
+    "EnemyGoldRate": 347179888,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 132,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 429132552068,
+    "EnemyAttackRate": 956362,
+    "EnemyGoldRate": 451333854,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 133,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 493502434878,
+    "EnemyAttackRate": 987467,
+    "EnemyGoldRate": 586734010,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 134,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 567527800109,
+    "EnemyAttackRate": 1019794,
+    "EnemyGoldRate": 762754213,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 135,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 652656970125,
+    "EnemyAttackRate": 1052642,
+    "EnemyGoldRate": 991580476,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 136,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 750555515643,
+    "EnemyAttackRate": 1086010,
+    "EnemyGoldRate": 1289054618,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 137,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 863138842989,
+    "EnemyAttackRate": 1120658,
+    "EnemyGoldRate": 1675771003,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 138,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 992609669437,
+    "EnemyAttackRate": 1155851,
+    "EnemyGoldRate": 2178502303,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 139,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1141501119852,
+    "EnemyAttackRate": 1191586,
+    "EnemyGoldRate": 2832052993,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 140,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1312726287829,
+    "EnemyAttackRate": 1365178,
+    "EnemyGoldRate": 3681668890,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 141,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 1509635231003,
+    "EnemyAttackRate": 1884324,
+    "EnemyGoldRate": 4786169557,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 142,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 1736080515653,
+    "EnemyAttackRate": 1941182,
+    "EnemyGoldRate": 6222020424,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 143,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 1996492593000,
+    "EnemyAttackRate": 2000123,
+    "EnemyGoldRate": 8088626551,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 144,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 2295966481950,
+    "EnemyAttackRate": 2059945,
+    "EnemyGoldRate": 10515214516,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 145,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 2640361454242,
+    "EnemyAttackRate": 2120650,
+    "EnemyGoldRate": 13669778870,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 146,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 3036415672378,
+    "EnemyAttackRate": 2183526,
+    "EnemyGoldRate": 17770712531,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 147,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 3491878023234,
+    "EnemyAttackRate": 2247322,
+    "EnemyGoldRate": 23101926290,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 148,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 4015659726719,
+    "EnemyAttackRate": 2312035,
+    "EnemyGoldRate": 30032504177,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 149,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 4618008685726,
+    "EnemyAttackRate": 2379017,
+    "EnemyGoldRate": 39042255430,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 150,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 5079809554298,
+    "EnemyAttackRate": 2691650,
+    "EnemyGoldRate": 50754932059,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 151,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 5587790509727,
+    "EnemyAttackRate": 2767434,
+    "EnemyGoldRate": 65981411676,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 152,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 6146569560699,
+    "EnemyAttackRate": 2845818,
+    "EnemyGoldRate": 85775835178,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 153,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 6761226516768,
+    "EnemyAttackRate": 2925295,
+    "EnemyGoldRate": 111508585731,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 154,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 7437349168444,
+    "EnemyAttackRate": 3005868,
+    "EnemyGoldRate": 144961161450,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 155,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 8181084085288,
+    "EnemyAttackRate": 3089146,
+    "EnemyGoldRate": 188449509885,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 156,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 8999192493816,
+    "EnemyAttackRate": 3173563,
+    "EnemyGoldRate": 244984362850,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 157,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 9899111743197,
+    "EnemyAttackRate": 3259116,
+    "EnemyGoldRate": 318479671705,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 158,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 10889022917516,
+    "EnemyAttackRate": 3347488,
+    "EnemyGoldRate": 414023573216,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 159,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 11977925209267,
+    "EnemyAttackRate": 3437039,
+    "EnemyGoldRate": 538230645180,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 160,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 13175717730193,
+    "EnemyAttackRate": 6371658,
+    "EnemyGoldRate": 699699838734,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 161,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 14493289503212,
+    "EnemyAttackRate": 6540826,
+    "EnemyGoldRate": 979579774227,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 162,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 15942618453533,
+    "EnemyAttackRate": 6712207,
+    "EnemyGoldRate": 1371411683917,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 163,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 17536880298886,
+    "EnemyAttackRate": 6885805,
+    "EnemyGoldRate": 1919976357483,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 164,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 19290568328774,
+    "EnemyAttackRate": 7064898,
+    "EnemyGoldRate": 2687966900476,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 165,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 21219625161651,
+    "EnemyAttackRate": 7246290,
+    "EnemyGoldRate": 3763153660666,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 166,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 23341587677816,
+    "EnemyAttackRate": 7429981,
+    "EnemyGoldRate": 5268415124932,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 167,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 25675746445597,
+    "EnemyAttackRate": 7619373,
+    "EnemyGoldRate": 7375781174904,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 168,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 28243321090156,
+    "EnemyAttackRate": 7811148,
+    "EnemyGoldRate": 10326093644865,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 169,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 31067653199171,
+    "EnemyAttackRate": 8005308,
+    "EnemyGoldRate": 14456531102811,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 170,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 34174418519088,
+    "EnemyAttackRate": 8889161,
+    "EnemyGoldRate": 20239143543935,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 171,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 37591860370996,
+    "EnemyAttackRate": 9108581,
+    "EnemyGoldRate": 28334800961509,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 172,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 41351046408095,
+    "EnemyAttackRate": 9330679,
+    "EnemyGoldRate": 39668721346112,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 173,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 45486151048904,
+    "EnemyAttackRate": 9559416,
+    "EnemyGoldRate": 55536209884556,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 174,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 50034766153794,
+    "EnemyAttackRate": 9790924,
+    "EnemyGoldRate": 77750693838378,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 175,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 55038242769173,
+    "EnemyAttackRate": 10025203,
+    "EnemyGoldRate": 108850971373729,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 176,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 60542067046090,
+    "EnemyAttackRate": 10266363,
+    "EnemyGoldRate": 152391359923221,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 177,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 66596273750699,
+    "EnemyAttackRate": 10510387,
+    "EnemyGoldRate": 213347903892509,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 178,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 73255901125768,
+    "EnemyAttackRate": 10757277,
+    "EnemyGoldRate": 298687065449513,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 179,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 80581491238344,
+    "EnemyAttackRate": 11011294,
+    "EnemyGoldRate": 418161891629318,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 180,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 88639640362178,
+    "EnemyAttackRate": 23056617,
+    "EnemyGoldRate": 585426648281045,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 181,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 97503604398395,
+    "EnemyAttackRate": 23588498,
+    "EnemyGoldRate": 848868640007515,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 182,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 107253964838235,
+    "EnemyAttackRate": 24135465,
+    "EnemyGoldRate": 1.2308595280109E+15,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 183,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 117979361322059,
+    "EnemyAttackRate": 24688697,
+    "EnemyGoldRate": 1.7847463156158E+15,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 184,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 129777297454265,
+    "EnemyAttackRate": 25248201,
+    "EnemyGoldRate": 2.58788215764291E+15,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 185,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 142755027199692,
+    "EnemyAttackRate": 25823301,
+    "EnemyGoldRate": 3.75242912858222E+15,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 186,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 157030529919661,
+    "EnemyAttackRate": 26404876,
+    "EnemyGoldRate": 5.44102223644421E+15,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 187,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 172733582911627,
+    "EnemyAttackRate": 26992924,
+    "EnemyGoldRate": 7.88948224284411E+15,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 188,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 190006941202790,
+    "EnemyAttackRate": 27597090,
+    "EnemyGoldRate": 1.1439749252124E+16,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 189,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 209007635323069,
+    "EnemyAttackRate": 28207947,
+    "EnemyGoldRate": 1.65876364155797E+16,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 190,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 229908398855376,
+    "EnemyAttackRate": 30884452,
+    "EnemyGoldRate": 2.40520728025906E+16,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 191,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 252899238740914,
+    "EnemyAttackRate": 31563935,
+    "EnemyGoldRate": 3.48755055637564E+16,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 192,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 278189162615005,
+    "EnemyAttackRate": 32250822,
+    "EnemyGoldRate": 5.05694830674468E+16,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 193,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 306008078876506,
+    "EnemyAttackRate": 32945092,
+    "EnemyGoldRate": 7.33257504477978E+16,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 194,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 336608886764157,
+    "EnemyAttackRate": 33657782,
+    "EnemyGoldRate": 1.06322338149307E+17,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 195,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 370269775440573,
+    "EnemyAttackRate": 34378105,
+    "EnemyGoldRate": 1.54167390316495E+17,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 196,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 407296752984630,
+    "EnemyAttackRate": 35106047,
+    "EnemyGoldRate": 2.23542715958918E+17,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 197,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 448026428283093,
+    "EnemyAttackRate": 35852990,
+    "EnemyGoldRate": 3.24136938140431E+17,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 198,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 492829071111402,
+    "EnemyAttackRate": 36607796,
+    "EnemyGoldRate": 4.69998560303624E+17,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 199,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 542111978222542,
+    "EnemyAttackRate": 37370468,
+    "EnemyGoldRate": 6.81497912440255E+17,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 200,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 596323176044796,
+    "EnemyAttackRate": 43395701,
+    "EnemyGoldRate": 9.54097077416357E+17,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 201,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 655955493649276,
+    "EnemyAttackRate": 44067476,
+    "EnemyGoldRate": 1.3357359083829E+18,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 202,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 721551043014204,
+    "EnemyAttackRate": 44757999,
+    "EnemyGoldRate": 1.87003027173606E+18,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 203,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 793706147315625,
+    "EnemyAttackRate": 45453896,
+    "EnemyGoldRate": 2.61804238043048E+18,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 204,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 873076762047188,
+    "EnemyAttackRate": 46155153,
+    "EnemyGoldRate": 3.66525933260268E+18,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 205,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 960384438251907,
+    "EnemyAttackRate": 46861786,
+    "EnemyGoldRate": 5.13136306564375E+18,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 206,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 1.0564228820771E+15,
+    "EnemyAttackRate": 47587792,
+    "EnemyGoldRate": 7.18390829190125E+18,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 207,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 1.16206517028481E+15,
+    "EnemyAttackRate": 48319383,
+    "EnemyGoldRate": 1.00574716086617E+19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 208,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 1.27827168731329E+15,
+    "EnemyAttackRate": 49056559,
+    "EnemyGoldRate": 1.40804602521264E+19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 209,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 1.40609885604461E+15,
+    "EnemyAttackRate": 49799312,
+    "EnemyGoldRate": 1.9712644352977E+19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 210,
+    "StageConfig": "StageConfig_Field",
+    "EnemyHpRate": 1.54670874164908E+15,
+    "EnemyAttackRate": 52713675,
+    "EnemyGoldRate": 2.75977020941678E+19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 211,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 1.70137961581398E+15,
+    "EnemyAttackRate": 53514952,
+    "EnemyGoldRate": 3.86367829318349E+19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 212,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 1.87151757739538E+15,
+    "EnemyAttackRate": 54322281,
+    "EnemyGoldRate": 5.40914961045689E+19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 213,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 2.05866933513492E+15,
+    "EnemyAttackRate": 55135645,
+    "EnemyGoldRate": 7.57280945463965E+19,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 214,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 2.26453626864841E+15,
+    "EnemyAttackRate": 55970584,
+    "EnemyGoldRate": 1.06019332364955E+20,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 215,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 2.49098989551325E+15,
+    "EnemyAttackRate": 56811789,
+    "EnemyGoldRate": 1.48427065310937E+20,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 216,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 2.74008888506458E+15,
+    "EnemyAttackRate": 57659270,
+    "EnemyGoldRate": 2.07797891435312E+20,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 217,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 3.01409777357103E+15,
+    "EnemyAttackRate": 58513025,
+    "EnemyGoldRate": 2.90917048009437E+20,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 218,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 3.31550755092814E+15,
+    "EnemyAttackRate": 59389044,
+    "EnemyGoldRate": 4.07283867213211E+20,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 219,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 3.64705830602095E+15,
+    "EnemyAttackRate": 60271564,
+    "EnemyGoldRate": 5.70197414098496E+20,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 220,
+    "StageConfig": "StageConfig_Field2",
+    "EnemyHpRate": 4.01176413662305E+15,
+    "EnemyAttackRate": 63656951,
+    "EnemyGoldRate": 7.98276379737894E+20,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 221,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 4.41294055028535E+15,
+    "EnemyAttackRate": 64589041,
+    "EnemyGoldRate": 1.11758693163305E+21,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 222,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 4.85423460531389E+15,
+    "EnemyAttackRate": 65545046,
+    "EnemyGoldRate": 1.56462170428627E+21,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 223,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 5.33965806584528E+15,
+    "EnemyAttackRate": 66508063,
+    "EnemyGoldRate": 2.19047038600078E+21,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 224,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 5.8736238724298E+15,
+    "EnemyAttackRate": 67478117,
+    "EnemyGoldRate": 3.06665854040109E+21,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 225,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 6.46098625967278E+15,
+    "EnemyAttackRate": 68455183,
+    "EnemyGoldRate": 4.29332195656153E+21,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 226,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 7.10708488564006E+15,
+    "EnemyAttackRate": 69456914,
+    "EnemyGoldRate": 6.01065073918614E+21,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 227,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 7.81779337420407E+15,
+    "EnemyAttackRate": 70465923,
+    "EnemyGoldRate": 8.4149110348606E+21,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 228,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 8.59957271162448E+15,
+    "EnemyAttackRate": 71482208,
+    "EnemyGoldRate": 1.17808754488048E+22,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 229,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 9.45952998278693E+15,
+    "EnemyAttackRate": 72505761,
+    "EnemyGoldRate": 1.64932256283268E+22,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 230,
+    "StageConfig": "StageConfig_Forest",
+    "EnemyHpRate": 1.04054829810656E+16,
+    "EnemyAttackRate": 76439246,
+    "EnemyGoldRate": 2.30905158796575E+22,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 231,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1.14460312791722E+16,
+    "EnemyAttackRate": 77537199,
+    "EnemyGoldRate": 3.23267222315205E+22,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 232,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1.25906344070894E+16,
+    "EnemyAttackRate": 78642975,
+    "EnemyGoldRate": 4.52574111241286E+22,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 233,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1.38496978477983E+16,
+    "EnemyAttackRate": 79756582,
+    "EnemyGoldRate": 6.33603755737801E+22,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 234,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1.52346676325782E+16,
+    "EnemyAttackRate": 80897421,
+    "EnemyGoldRate": 8.87045258032921E+22,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 235,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1.6758134395836E+16,
+    "EnemyAttackRate": 82046364,
+    "EnemyGoldRate": 1.24186336124609E+23,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 236,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 1.84339478354196E+16,
+    "EnemyAttackRate": 83203410,
+    "EnemyGoldRate": 1.73860870574453E+23,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 237,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 2.02773426189616E+16,
+    "EnemyAttackRate": 84368552,
+    "EnemyGoldRate": 2.43405218804234E+23,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 238,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 2.23050768808577E+16,
+    "EnemyAttackRate": 85561753,
+    "EnemyGoldRate": 3.40767306325927E+23,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 239,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 2.45355845689435E+16,
+    "EnemyAttackRate": 86763332,
+    "EnemyGoldRate": 4.77074228856298E+23,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 240,
+    "StageConfig": "StageConfig_Forest2",
+    "EnemyHpRate": 2.69891430258378E+16,
+    "EnemyAttackRate": 91293036,
+    "EnemyGoldRate": 6.67903920398817E+23,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 241,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 2.96880573284216E+16,
+    "EnemyAttackRate": 92557347,
+    "EnemyGoldRate": 9.35065488558344E+23,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 242,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 3.26568630612638E+16,
+    "EnemyAttackRate": 93851644,
+    "EnemyGoldRate": 1.30909168398168E+24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 243,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 3.59225493673902E+16,
+    "EnemyAttackRate": 95154922,
+    "EnemyGoldRate": 1.83272835757435E+24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 244,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 3.95148043041292E+16,
+    "EnemyAttackRate": 96467192,
+    "EnemyGoldRate": 2.56581970060409E+24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 245,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 4.34662847345421E+16,
+    "EnemyAttackRate": 97788453,
+    "EnemyGoldRate": 3.59214758084573E+24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 246,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 4.78129132079963E+16,
+    "EnemyAttackRate": 99140575,
+    "EnemyGoldRate": 5.02900661318402E+24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 247,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 5.2594204528796E+16,
+    "EnemyAttackRate": 100501978,
+    "EnemyGoldRate": 7.04060925845763E+24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 248,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 5.78536249816756E+16,
+    "EnemyAttackRate": 101872672,
+    "EnemyGoldRate": 9.85685296184068E+24,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 249,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 6.36389874798431E+16,
+    "EnemyAttackRate": 103252647,
+    "EnemyGoldRate": 1.3799594146577E+25,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 250,
+    "StageConfig": "StageConfig_Sea",
+    "EnemyHpRate": 7.00028862278275E+16,
+    "EnemyAttackRate": 136630950,
+    "EnemyGoldRate": 2.00094115125366E+25,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 251,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 7.70031748506102E+16,
+    "EnemyAttackRate": 138486370,
+    "EnemyGoldRate": 2.9013646693178E+25,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 252,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 8.47034923356712E+16,
+    "EnemyAttackRate": 140354312,
+    "EnemyGoldRate": 4.20697877051082E+25,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 253,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 9.31738415692384E+16,
+    "EnemyAttackRate": 142234776,
+    "EnemyGoldRate": 6.10011921724068E+25,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 254,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1.02491225726162E+17,
+    "EnemyAttackRate": 144157892,
+    "EnemyGoldRate": 8.84517286499899E+25,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 255,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1.12740348298778E+17,
+    "EnemyAttackRate": 146093915,
+    "EnemyGoldRate": 1.28255006542485E+26,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 256,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1.24014383128656E+17,
+    "EnemyAttackRate": 148042858,
+    "EnemyGoldRate": 1.85969759486604E+26,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 257,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1.36415821441522E+17,
+    "EnemyAttackRate": 150004720,
+    "EnemyGoldRate": 2.69656151255576E+26,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 258,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1.50057403585674E+17,
+    "EnemyAttackRate": 152010456,
+    "EnemyGoldRate": 3.91001419320585E+26,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 259,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1.65063143944242E+17,
+    "EnemyAttackRate": 154029500,
+    "EnemyGoldRate": 5.66952058014848E+26,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 260,
+    "StageConfig": "StageConfig_Sea2",
+    "EnemyHpRate": 1.81569458338666E+17,
+    "EnemyAttackRate": 161537731,
+    "EnemyGoldRate": 8.22080484121529E+26,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 261,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 1.99726404172532E+17,
+    "EnemyAttackRate": 163655194,
+    "EnemyGoldRate": 1.19201670197622E+27,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 262,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 2.19699044589786E+17,
+    "EnemyAttackRate": 165819345,
+    "EnemyGoldRate": 1.72842421786551E+27,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 263,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 2.41668949048764E+17,
+    "EnemyAttackRate": 167997714,
+    "EnemyGoldRate": 2.506215115905E+27,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 264,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 2.65835843953641E+17,
+    "EnemyAttackRate": 170190303,
+    "EnemyGoldRate": 3.63401191806224E+27,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 265,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 2.92419428349005E+17,
+    "EnemyAttackRate": 172397097,
+    "EnemyGoldRate": 5.26931728119025E+27,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 266,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 3.21661371183905E+17,
+    "EnemyAttackRate": 174651866,
+    "EnemyGoldRate": 7.64051005772587E+27,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 267,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 3.53827508302296E+17,
+    "EnemyAttackRate": 176921300,
+    "EnemyGoldRate": 1.10787395837025E+28,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 268,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 3.89210259132525E+17,
+    "EnemyAttackRate": 179205375,
+    "EnemyGoldRate": 1.60641723963686E+28,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 269,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 4.28131285045778E+17,
+    "EnemyAttackRate": 181504090,
+    "EnemyGoldRate": 2.32930499747345E+28,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 270,
+    "StageConfig": "StageConfig_Ice",
+    "EnemyHpRate": 4.70944413550356E+17,
+    "EnemyAttackRate": 190084376,
+    "EnemyGoldRate": 3.37749224633651E+28,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 271,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 5.18038854905391E+17,
+    "EnemyAttackRate": 192527583,
+    "EnemyGoldRate": 4.89736375718793E+28,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 272,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 5.6984274039593E+17,
+    "EnemyAttackRate": 194986394,
+    "EnemyGoldRate": 7.1011774479225E+28,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 273,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 6.26827014435523E+17,
+    "EnemyAttackRate": 197460793,
+    "EnemyGoldRate": 1.02967072994876E+29,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 274,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 6.89509715879076E+17,
+    "EnemyAttackRate": 199987537,
+    "EnemyGoldRate": 1.49302255842571E+29,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 275,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 7.58460687466983E+17,
+    "EnemyAttackRate": 202530340,
+    "EnemyGoldRate": 2.16488270971727E+29,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 276,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 8.34306756213682E+17,
+    "EnemyAttackRate": 205089215,
+    "EnemyGoldRate": 3.13907992909005E+29,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 277,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 9.1773743183505E+17,
+    "EnemyAttackRate": 207664150,
+    "EnemyGoldRate": 4.55166589718057E+29,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 278,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 1.00951117501855E+18,
+    "EnemyAttackRate": 210292816,
+    "EnemyGoldRate": 6.59991555091182E+29,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 279,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 1.11046229252041E+18,
+    "EnemyAttackRate": 212938014,
+    "EnemyGoldRate": 9.56987754882214E+29,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 280,
+    "StageConfig": "StageConfig_Ice2",
+    "EnemyHpRate": 1.22150852177245E+18,
+    "EnemyAttackRate": 222668590,
+    "EnemyGoldRate": 1.38763224457921E+30,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 281,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 1.3436593739497E+18,
+    "EnemyAttackRate": 225434665,
+    "EnemyGoldRate": 2.01206675463986E+30,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 282,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 1.47802531134467E+18,
+    "EnemyAttackRate": 228257692,
+    "EnemyGoldRate": 2.91749679422779E+30,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 283,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 1.62582784247913E+18,
+    "EnemyAttackRate": 231098299,
+    "EnemyGoldRate": 4.2303703516303E+30,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 284,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 1.78841062672705E+18,
+    "EnemyAttackRate": 233956460,
+    "EnemyGoldRate": 6.13403700986393E+30,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 285,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 1.96725168939975E+18,
+    "EnemyAttackRate": 236832187,
+    "EnemyGoldRate": 8.8943536643027E+30,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 286,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 2.16397685833973E+18,
+    "EnemyAttackRate": 239766363,
+    "EnemyGoldRate": 1.28968128132389E+31,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 287,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 2.3803745441737E+18,
+    "EnemyAttackRate": 242718601,
+    "EnemyGoldRate": 1.87003785791964E+31,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 288,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 2.61841199859107E+18,
+    "EnemyAttackRate": 245688903,
+    "EnemyGoldRate": 2.71155489398348E+31,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 289,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 2.88025319845018E+18,
+    "EnemyAttackRate": 248677267,
+    "EnemyGoldRate": 3.93175459627605E+31,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 290,
+    "StageConfig": "StageConfig_Devil",
+    "EnemyHpRate": 3.1682785182952E+18,
+    "EnemyAttackRate": 259716875,
+    "EnemyGoldRate": 5.70104416460027E+31,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 291,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 3.48510637012472E+18,
+    "EnemyAttackRate": 262881105,
+    "EnemyGoldRate": 8.26651403867039E+31,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 292,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 3.83361700713719E+18,
+    "EnemyAttackRate": 266064516,
+    "EnemyGoldRate": 1.19864453560721E+32,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 293,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 4.21697870785091E+18,
+    "EnemyAttackRate": 269267078,
+    "EnemyGoldRate": 1.73803457663045E+32,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 294,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 4.638676578636E+18,
+    "EnemyAttackRate": 272533066,
+    "EnemyGoldRate": 2.52015013611415E+32,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 295,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 5.1025442364996E+18,
+    "EnemyAttackRate": 275818739,
+    "EnemyGoldRate": 3.65421769736552E+32,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 296,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 5.61279866014956E+18,
+    "EnemyAttackRate": 279124099,
+    "EnemyGoldRate": 5.29861566118E+32,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 297,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 6.17407852616451E+18,
+    "EnemyAttackRate": 282449144,
+    "EnemyGoldRate": 7.682992708711E+32,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 298,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 6.79148637878097E+18,
+    "EnemyAttackRate": 285839221,
+    "EnemyGoldRate": 1.1140339427631E+33,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 299,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 7.47063501665906E+18,
+    "EnemyAttackRate": 289249507,
+    "EnemyGoldRate": 1.61534921700649E+33,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  },
+  {
+    "Index": 300,
+    "StageConfig": "StageConfig_Devil2",
+    "EnemyHpRate": 8.21769851832497E+18,
+    "EnemyAttackRate": 301685569,
+    "EnemyGoldRate": 2.34225636465941E+33,
+    "EnemySpawnCount": 10,
+    "IdleGoldReward": 300
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "63711996831",
+    "firebase_url": "https://portfolio-idlegame-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "portfolio-idlegame",
+    "storage_bucket": "portfolio-idlegame.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63711996831:android:df4076aa0dd0be9e51ebaa",
+        "android_client_info": {
+          "package_name": "com.kkhp.pixelidlegame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63711996831-cmd0dfbst02927afhh0qhgq0laosuls6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kkhp.pixelidlegame",
+            "certificate_hash": "39fcb6b2c145f28d9aa760d8767a7c9589e4aa42"
+          }
+        },
+        {
+          "client_id": "63711996831-51h1oa135lu5eop464eb9vt2hhg2jhj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYcw6tlDuHkH78C4aSDRn2rN_Gcgf66xY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63711996831-51h1oa135lu5eop464eb9vt2hhg2jhj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

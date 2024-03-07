@@ -1,0 +1,111 @@
+{
+  "UserEquipSkill": [
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    },
+    {
+      "itemID": "Empty"
+    }
+  ],
+  "UserInvenSkill": [
+    {
+      "itemID": "S0001",
+      "level": 1,
+      "hasCount": 1,
+      "equipped": false
+    },
+    {
+      "itemID": "S0002",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0003",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0004",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0005",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0006",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0007",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0008",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0009",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0010",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0011",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0012",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0013",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0014",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    },
+    {
+      "itemID": "S0015",
+      "level": 1,
+      "hasCount": 0,
+      "equipped": false
+    }
+  ]
+}
