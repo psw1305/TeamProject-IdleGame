@@ -1224,8 +1224,6 @@ GameObject:
   - component: {fileID: 6855033665366577307}
   - component: {fileID: 7074991351876127301}
   - component: {fileID: 2107399442608682900}
-  - component: {fileID: 3559198270406176819}
-  - component: {fileID: 6525594330425453290}
   m_Layer: 5
   m_Name: Login Panel
   m_TagString: Untagged
@@ -1293,47 +1291,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3559198270406176819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604593116912772306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487c913b60305c2468be03783b58a0e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roots:
-  - state: 1
-    root: {fileID: 0}
-  - state: 2
-    root: {fileID: 0}
-  - state: 3
-    root: {fileID: 0}
-  - state: 4
-    root: {fileID: 0}
-  - state: 5
-    root: {fileID: 0}
-  txtTitle: {fileID: 1921494087194303734}
-  txtContent: {fileID: 0}
-  txtDownloadingBarStatus: {fileID: 0}
-  downloadProgressBar: {fileID: 0}
-  downloader: {fileID: 6525594330425453290}
---- !u!114 &6525594330425453290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604593116912772306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25af83b2ff30ae438ee86fcd68a66fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  downloadURL: https://storage.googleapis.com/portfolio-idlegame.appspot.com
 --- !u!1 &6698167813802268008
 GameObject:
   m_ObjectHideFlags: 0
