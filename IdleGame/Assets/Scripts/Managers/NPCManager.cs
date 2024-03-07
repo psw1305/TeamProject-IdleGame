@@ -54,7 +54,7 @@ public class NPCManager : BehaviourSingleton<NPCManager>
         _scriptsIndex.Add("ShopTutorial", new string[] { "이곳은 장비와 동료, 스킬을 구매할 수 있는 공간입니다:1:3:2",
                                                     "다이아로 구매 하거나, 무료로 받을 수도 있습니다:1:0:0",
                                                     "무료 상품은 받을 때마다 1개씩 더 받을 수 있어요:1:2:1",
-                                                    "최대 <color=red>35</color>개 까지 늘어습니다:0:3:0",
+                                                    "최대 <color=red>35</color>개 까지 늘릴 수 있습니다:0:3:0",
                                                     "많이 구매 할수록 상품 레벨이 높아집니다:0:5:0",
                                                     "등급이 높아질 수록 좋은 아이템을 얻을 수 있답니다:0:0:0",
                                                     "그럼 즐거운 시간 되세요!:0:2:0"});
