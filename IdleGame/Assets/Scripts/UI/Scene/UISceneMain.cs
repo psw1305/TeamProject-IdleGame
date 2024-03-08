@@ -285,6 +285,7 @@ public class UISceneMain : UIScene
     public void UpdateQuestObjective()
     {
         _txtQuestObjective.text = QuestObjective();
+        Manager.Quest.ClearEffectOnOff();
     }
 
     public void UpdatePlayerPower()
